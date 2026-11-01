@@ -1,0 +1,242 @@
+{
+  "id": "g_0238",
+  "source": "grammar",
+  "source_ref": "seed=238",
+  "license": "own-generated",
+  "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+  "positioning": "flow",
+  "page": {
+    "size": "Letter",
+    "orientation": "landscape"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "header",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "title",
+      "words": [
+        3,
+        10
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "heading",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "sidebar",
+      "words": [
+        10,
+        50
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "sidebar",
+      "words": [
+        10,
+        50
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "sidebar",
+      "words": [
+        10,
+        50
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_6",
+      "role": "sidebar",
+      "words": [
+        10,
+        50
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_7",
+      "role": "paragraph",
+      "words": [
+        8,
+        25
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_8",
+      "role": "heading",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_9",
+      "role": "paragraph",
+      "words": [
+        60,
+        120
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_10",
+      "role": "heading",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_11",
+      "role": "paragraph",
+      "words": [
+        25,
+        60
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_12",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_13",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_14",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_15",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_16",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_17",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_18",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_19",
+      "role": "sidebar",
+      "words": [
+        10,
+        50
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_20",
+      "role": "sidebar",
+      "words": [
+        10,
+        50
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_21",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_22",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_23",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 2,
+    "tables": 0,
+    "lists": 2,
+    "list_depth": 2,
+    "forms": 0,
+    "asides": 3,
+    "has_header": true,
+    "has_footer": false,
+    "slot_count": 24
+  },
+  "structure_hash": "c86afc80470c68b46a561cb8fa29957d11894b0cd29a8b13a0805d0e6aae0b29"
+}

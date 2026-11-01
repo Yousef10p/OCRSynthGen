@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample Generator</title>
+<style>
+:root { --bg: #eef0f2; --card: #fff; --ink: #1d232a; --muted: #66707a; --line: #d7dce1; --accent: #1f6feb;
+        --ar: #0e7a5f; --en: #7a4b0e; --bad: #b42318; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 14px/1.45 system-ui, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); }
+header { position: sticky; top: 0; z-index: 5; background: var(--card); border-bottom: 1px solid var(--line);
+         padding: 12px 20px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+h1 { font-size: 17px; margin: 0 8px 0 0; font-weight: 600; }
+label { display: flex; gap: 6px; align-items: center; color: var(--muted); }
+select { font: inherit; padding: 4px 6px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); }
+button { font: inherit; cursor: pointer; border-radius: 6px; }
+#go { background: var(--accent); color: #fff; border: 0; padding: 7px 16px; font-weight: 600; }
+#go:disabled { opacity: .55; cursor: progress; }
+#status { color: var(--muted); min-inline-size: 220px; }
+.bar { block-size: 4px; background: var(--line); border-radius: 2px; overflow: hidden; inline-size: 160px; }
+.bar i { display: block; block-size: 100%; inline-size: 0; background: var(--accent); transition: inline-size .3s; }
+.steps { padding: 10px 20px 0; color: var(--muted); font-size: 13px; }
+.steps b { color: var(--ink); font-weight: 600; }
+main { padding: 16px 20px 40px; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.empty { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 80px 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+.thumb { aspect-ratio: 3 / 4; background: #f6f7f8; display: grid; place-items: center; cursor: zoom-in; overflow: hidden; }
+.thumb img { inline-size: 100%; block-size: 100%; object-fit: contain; }
+.wait { color: var(--muted); font-size: 13px; display: grid; justify-items: center; gap: 8px; }
+.spin { inline-size: 22px; block-size: 22px; border: 3px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: s 1s linear infinite; }
+@keyframes s { to { transform: rotate(360deg); } }
+.meta { padding: 8px 10px 10px; display: grid; gap: 6px; }
+.row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.chip { font-size: 12px; padding: 1px 7px; border-radius: 10px; background: #eef1f4; color: var(--ink); white-space: nowrap; }
+.chip.ar { background: #e3f4ee; color: var(--ar); font-weight: 600; } .chip.en { background: #f7ecdc; color: var(--en); font-weight: 600; }
+.chip.warn { background: #fde7e5; color: var(--bad); }
+.small { font-size: 12px; color: var(--muted); }
+.err { color: var(--bad); font-size: 12px; padding: 10px; }
+.open { border: 1px solid var(--line); background: #fff; padding: 3px 10px; font-size: 13px; color: var(--accent); }
+/* preview */
+dialog { inline-size: min(1200px, 96vw); block-size: 92vh; padding: 0; border: 0; border-radius: 12px; }
+dialog::backdrop { background: rgba(15, 20, 25, .6); }
+.pv { display: grid; grid-template-rows: auto auto 1fr; block-size: 100%; }
+.pv-head { display: flex; gap: 10px; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.pv-head h2 { font-size: 15px; margin: 0; flex: 1; }
+.tabs { display: flex; flex-wrap: wrap; gap: 4px; padding: 8px 14px; border-bottom: 1px solid var(--line); }
+.tabs button { border: 1px solid var(--line); background: #fff; padding: 4px 10px; font-size: 13px; }
+.tabs button.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.pv-body { overflow: auto; background: #f6f7f8; }
+.pv-body img { display: block; margin: 0 auto; max-inline-size: 100%; cursor: zoom-in; }
+.pv-body img.full { max-inline-size: none; cursor: zoom-out; }
+.pv-body pre { margin: 0; padding: 14px 16px; white-space: pre-wrap; word-break: break-word; unicode-bidi: plaintext; font: 12.5px/1.55 Consolas, monospace; background: #fff; min-block-size: 100%; }
+.nav { border: 1px solid var(--line); background: #fff; padding: 3px 10px; }
+.facts { padding: 14px 16px; background: #fff; min-block-size: 100%; }
+.facts table { border-collapse: collapse; font-size: 13px; }
+.facts td { padding: 4px 14px 4px 0; vertical-align: top; } .facts td:first-child { color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Sample Generator</h1>
+  <label>Language <select id="language"><option value="mix">mixed (80% Arabic)</option><option value="ar">Arabic</option><option value="en">English</option></select></label>
+  <label>Effects <select id="effect"><option value="mix">mixed (60% OCRSmith)</option><option value="ocrsmith">OCRSmith</option><option value="augraphy">Augraphy</option><option value="scan-simulator">scan-simulator</option><option value="augraphy+scan-simulator">Augraphy + scan-simulator</option></select></label>
+  <label>Templates <select id="source"><option value="mix">bank: all sources</option><option value="grammar">bank: Grammar</option><option value="websight">bank: WebSight</option><option value="doclaynet">bank: DocLayNet</option></select></label>
+  <label>Template maker <select id="templates"><option value="bank">bank</option><option value="llm" id="llm-opt">LLM</option></select></label>
+  <button id="go">Generate 16 samples</button>
+  <div class="bar"><i id="bar"></i></div>
+  <span id="status"></span>
+</header>
+<div class="steps"><b>Pipeline:</b> template → Arabic/English text + random style + photos from img_pool in picture boxes → SynthDoc render (labels) → OCRSmith / Augraphy / scan-simulator (boxes moved) → Markdown with boxes on top</div>
+<main id="grid"><div class="empty">Press <b>Generate 16 samples</b>. Pages appear here one by one as they are made.</div></main>
+
+<dialog id="pv"><div class="pv">
+  <div class="pv-head"><button class="nav" id="prev" title="previous sample">←</button><h2 id="pv-title"></h2>
+    <button class="nav" id="next" title="next sample">→</button><button class="nav" id="close" title="close">✕</button></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="pv-body" id="pv-body"></div>
+</div></dialog>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+let job = null, samples = [], timer = null, current = -1, tab = "final";
+const TABS = [["final", "Final page"], ["words", "Word boxes"], ["slots", "Slot boxes"], ["clean", "Clean render"],
+              ["html", "HTML code"], ["md", "Markdown"], ["json", "Labels JSON"], ["info", "Details"]];
+const FILE = {final: ".jpg", words: "_words.jpg", slots: "_slots.jpg", clean: "_clean.jpg", html: ".html", md: ".md", json: ".json"};
+const url = (s, kind) => `/out/${job.id}/${s.name}${FILE[kind]}`;
+
+fetch("/api/info").then((r) => r.json()).then((info) => {
+  $("llm-opt").textContent = `LLM: ${info.llm_name}` + (info.llm ? "" : " (not available)");
+  if (!info.llm) $("llm-opt").title = info.llm_problem || "";
+});
+
+$("go").onclick = async () => {
+  const body = {n: 16, language: $("language").value, effect: $("effect").value, source: $("source").value,
+                templates: $("templates").value};
+  $("go").disabled = true;
+  const r = await (await fetch("/api/generate", {method: "POST", body: JSON.stringify(body)})).json();
+  job = {id: r.id, n: r.n}; samples = new Array(r.n).fill(null);
+  $("grid").innerHTML = samples.map((_, i) => `<div class="card" id="c${i}"><div class="thumb"><div class="wait"><div class="spin"></div>making sample ${i + 1}…</div></div><div class="meta"><span class="small">s${String(i + 1).padStart(2, "0")}</span></div></div>`).join("");
+  clearInterval(timer); timer = setInterval(poll, 1000); poll();
+};
+
+async function poll() {
+  const j = await (await fetch(`/api/job?id=${job.id}`)).json();
+  j.samples.forEach((s, i) => { if (s && !samples[i]) { samples[i] = s; $(`c${i}`).outerHTML = card(s, i); } });
+  const done = j.samples.filter(Boolean).length;
+  $("bar").style.inlineSize = `${100 * done / j.n}%`;
+  $("status").textContent = `${done} / ${j.n} ready · ${j.elapsed} s · pipeline_out/${j.id}/`;
+  if (done === j.n) { clearInterval(timer); $("go").disabled = false;
+    const ok = j.samples.filter((s) => !s.error);
+    const avg = ok.length ? (ok.reduce((a, s) => a + s.seconds.total, 0) / ok.length).toFixed(1) : "–";
+    $("status").textContent = `${ok.length} / ${j.n} made in ${j.elapsed} s (${avg} s per sample per worker) · pipeline_out/${j.id}/`; }
+}
+
+function card(s, i) {
+  if (s.error) return `<div class="card" id="c${i}"><div class="err"><b>${s.name}</b> failed<br>${esc(s.error)}</div></div>`;
+  const warn = (s.low_contrast ? `<span class="chip warn">faint</span>` : "") + (s.note ? `<span class="chip warn" title="${esc(s.note)}">${s.note.includes("reused") ? "reused LLM template" : "fallback"}</span>` : "");
+  return `<div class="card" id="c${i}">
+    <div class="thumb" onclick="openPreview(${i}, 'final')"><img src="${url(s, "final")}" alt="${s.name}"></div>
+    <div class="meta">
+      <div class="row"><span class="chip ${s.lang}">${s.lang === "ar" ? "Arabic" : "English"}</span><span class="chip">${esc(effectName(s))}</span>${warn}</div>
+      <div class="small">${s.name} · ${s.template} (${s.source}) · ${esc(s.font)} ${s.size_pt}pt · ${s.words} words${s.pictures ? ` · ${s.pictures} picture${s.pictures > 1 ? "s" : ""}` : ""} · ${s.seconds.total} s</div>
+      <div class="row"><button class="open" onclick="openPreview(${i}, 'final')">Preview</button>
+        <button class="open" onclick="openPreview(${i}, 'words')">Boxes</button><button class="open" onclick="openPreview(${i}, 'md')">Markdown</button></div>
+    </div></div>`;
+}
+
+function effectName(s) {
+  const preset = s.attacks.find((a) => a.startsWith("ocrsmith:") || a.startsWith("scan-simulator:"));
+  return s.effect + (preset && !s.effect.endsWith(preset.split(":")[1]) ? " · " + preset.split(":")[1] : "");
+}
+
+function openPreview(i, which) {
+  current = i; tab = which || tab;
+  if (!$("pv").open) $("pv").showModal();
+  show();
+}
+
+async function show() {
+  const s = samples[current];
+  if (!s || s.error) return;
+  $("pv-title").textContent = `${s.name} · ${s.template} · ${s.lang === "ar" ? "Arabic" : "English"} · ${effectName(s)}`;
+  $("tabs").innerHTML = TABS.map(([k, label]) => `<button class="${k === tab ? "on" : ""}" onclick="tab='${k}';show()">${label}</button>`).join("")
+    + `<a class="small" style="margin-inline-start:auto;align-self:center" href="${url(s, tab === "info" ? "json" : tab)}" target="_blank">open file ↗</a>`;
+  const body = $("pv-body");
+  if (tab === "info") {
+    const rows = [["Template", `${s.template} (${s.source})`], ["Language", s.lang], ["Font", `${s.font}, ${s.size_pt}pt`],
+      ["Effect", s.effect], ["Applied", s.attacks.join(", ")], ["Words labelled", `${s.words} (lost: ${s.lost_words})`], ["Pictures from img_pool", s.pictures],
+      ["Contrast", `${s.contrast}${s.low_contrast ? " (faint)" : ""}`], ["Pages rendered", s.pages_rendered],
+      ["Seconds", Object.entries(s.seconds).map(([k, v]) => `${k} ${v}`).join(" · ")], ["Seed", s.seed], ["Note", s.note || "–"]];
+    body.innerHTML = `<div class="facts"><table>${rows.map(([k, v]) => `<tr><td>${k}</td><td>${esc(v)}</td></tr>`).join("")}</table></div>`;
+  } else if (FILE[tab].endsWith(".jpg")) {
+    body.innerHTML = `<img src="${url(s, tab)}" alt="" onclick="this.classList.toggle('full')">`;
+  } else {
+    let text = await (await fetch(url(s, tab))).text();
+    if (tab === "json") text = JSON.stringify(JSON.parse(text), null, 1);
+    body.innerHTML = `<pre>${esc(text)}</pre>`;
+  }
+  body.scrollTop = 0;
+}
+
+const step = (d) => { for (let k = 1; k <= samples.length; k++) { const i = (current + d * k + samples.length) % samples.length;
+  if (samples[i] && !samples[i].error) { current = i; return show(); } } };
+$("prev").onclick = () => step(-1); $("next").onclick = () => step(1); $("close").onclick = () => $("pv").close();
+document.addEventListener("keydown", (e) => { if (!$("pv").open) return;
+  if (e.key === "ArrowLeft") step(-1); if (e.key === "ArrowRight") step(1); });
+</script>
+</body>
+</html>

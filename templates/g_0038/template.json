@@ -1,0 +1,287 @@
+{
+  "id": "g_0038",
+  "source": "grammar",
+  "source_ref": "seed=38",
+  "license": "own-generated",
+  "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+  "positioning": "flow",
+  "page": {
+    "size": "A5",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "header",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "header",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "title",
+      "words": [
+        3,
+        10
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "subtitle",
+      "words": [
+        4,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "paragraph",
+      "words": [
+        25,
+        60
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_6",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_7",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_8",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_9",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_10",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_11",
+      "role": "heading",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_12",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_13",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_14",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_15",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_16",
+      "role": "heading",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_17",
+      "role": "paragraph",
+      "words": [
+        25,
+        60
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_18",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_19",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_20",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_21",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_22",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_23",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_24",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_25",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_26",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_27",
+      "role": "page_number",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_28",
+      "role": "footer",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 2,
+    "tables": 0,
+    "lists": 4,
+    "list_depth": 2,
+    "forms": 0,
+    "asides": 0,
+    "has_header": true,
+    "has_footer": true,
+    "slot_count": 29
+  },
+  "structure_hash": "489c25c06a1ad00927e57f7602f8cce5ad63bb1152d448c4518bc0d23e0e8dcb"
+}

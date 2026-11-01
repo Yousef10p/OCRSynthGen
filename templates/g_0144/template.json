@@ -1,0 +1,386 @@
+{
+  "id": "g_0144",
+  "source": "grammar",
+  "source_ref": "seed=144",
+  "license": "own-generated",
+  "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+  "positioning": "flow",
+  "page": {
+    "size": "A4",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "title",
+      "words": [
+        3,
+        10
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "subtitle",
+      "words": [
+        4,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "heading",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_6",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_7",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_8",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_9",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_10",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_11",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_12",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_13",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_14",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_15",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_16",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_17",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_18",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_19",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_20",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_21",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_22",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_23",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_24",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_25",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_26",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_27",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_28",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_29",
+      "role": "cell",
+      "words": [
+        1,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_30",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_31",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_32",
+      "role": "list_item",
+      "words": [
+        3,
+        20
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_33",
+      "role": "paragraph",
+      "words": [
+        25,
+        60
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_34",
+      "role": "paragraph",
+      "words": [
+        60,
+        120
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_35",
+      "role": "heading",
+      "words": [
+        2,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_36",
+      "role": "sidebar",
+      "words": [
+        10,
+        50
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_37",
+      "role": "sidebar",
+      "words": [
+        10,
+        50
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_38",
+      "role": "sidebar",
+      "words": [
+        10,
+        50
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_39",
+      "role": "sidebar",
+      "words": [
+        10,
+        50
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 2,
+    "tables": 1,
+    "lists": 1,
+    "list_depth": 1,
+    "forms": 0,
+    "asides": 1,
+    "has_header": false,
+    "has_footer": false,
+    "slot_count": 40
+  },
+  "structure_hash": "f249c9751453e8fec700cbff48332c56f403ec4210fddbbd2dcfbe5c732c5e5b"
+}

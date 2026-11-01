@@ -1,0 +1,21 @@
+.venv/
+node_modules/
+data/raw/
+__pycache__/
+.venv-attacks/
+.venv-pipeline/
+pipeline_out/
+.env
+img_pool/
+# generated outputs (re-create them with the commands in README.md)
+synthdoc_out/
+synthdoc_attacked/
+synthdoc_ocrsmith/
+synthdoc_adapter/templates/
+renders/
+previews/
+gallery/
+demo/out/
+demo/index.html
+demo/variants.json
+augraphy_cache/

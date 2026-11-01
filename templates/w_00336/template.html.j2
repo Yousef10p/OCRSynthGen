@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #fceaff;
+}
+
+.hero-header {
+    height: 200px;
+    background-color: #f5b7b1;
+    text-align: center;
+}
+
+.column {
+    width: 33.33%;
+    padding: 20px;
+}
+
+.left-column {
+    background-color: #d7bde2;
+    float: right;
+}
+
+.main-content {
+    background-color: #f0b27a;
+    display: inline-block;
+    width: 33.33%;
+}
+
+.right-column {
+    background-color: #aec6cf;
+    float: left;
+}
+
+.logo {
+    text-align: center;
+    background-color: #ddbea9;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+}
+
+.footer {
+    clear: both;
+    background-color: #bf55ec;
+    text-align: center;
+    padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<div class="hero-header"></div>
+
+<div class="left-column">
+<h2>{{ slot_0 }}</h2>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+
+<div class="main-content">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</div>
+
+<div class="right-column">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</div>
+
+<div class="footer">
+<div class="logo">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+</div>
+</body>
+</html>

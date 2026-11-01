@@ -1,0 +1,50 @@
+{
+  "templates": 523,
+  "per_source": {
+    "grammar": 300,
+    "websight": 123,
+    "doclaynet": 100
+  },
+  "slots_per_template": {
+    "min": 1,
+    "median": 23,
+    "max": 306
+  },
+  "roles": {
+    "cell": 12817,
+    "list_item": 2381,
+    "paragraph": 1829,
+    "label": 1566,
+    "heading": 1125,
+    "table_header": 1063,
+    "field_value": 1061,
+    "footer": 433,
+    "sidebar": 431,
+    "title": 389,
+    "header": 333,
+    "caption": 214,
+    "footnote": 177,
+    "subtitle": 112,
+    "quote": 109,
+    "page_number": 95
+  },
+  "feature_coverage_pct": {
+    "tables": 38.4,
+    "lists": 67.9,
+    "multi_column": 44.2,
+    "forms": 35.0,
+    "header_or_footer": 79.3
+  },
+  "page_sizes": {
+    "Letter portrait": 153,
+    "A4 portrait": 247,
+    "Legal portrait": 30,
+    "A4 landscape": 17,
+    "A5 portrait": 49,
+    "Legal landscape": 6,
+    "A5 landscape": 12,
+    "Letter landscape": 9
+  },
+  "duplicates_removed": 2,
+  "failed": 0
+}

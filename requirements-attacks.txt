@@ -1,0 +1,5 @@
+# Attacks environment (.venv-attacks) for synthdoc_adapter/attack.py
+augraphy==8.2.6
+# scan-simulator (github.com/s1mb1o/scan-simulator) is used from ../scan-simulator: its pyproject.toml
+# does not install with current setuptools, and its own needs (OpenCV, NumPy, SciPy, scikit-image) come with augraphy
+pyyaml

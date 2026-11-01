@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+header {
+    background: #eee;
+    padding: 20px;
+}
+
+.logo-text {
+    font-size: 24px;
+    color: #888;
+}
+
+#main-nav ul {
+    list-style: none;
+}
+
+#main-nav li {
+    display: inline;
+    margin-left: 10px;
+}
+
+#main-nav a {
+    color: #888;
+    text-decoration: none;
+}
+
+section {
+    padding: 40px;
+}
+
+section h1 {
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.placeholder {
+    width: 100%;
+    height: 200px;
+    background: #ddd;
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: #eee;
+    text-align: center;
+    padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div>
+<span class="logo-text">{{ slot_0 }}</span>
+</div>
+<nav id="main-nav">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="portfolio">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<div class="placeholder ph"></div>
+<div class="placeholder ph"></div>
+
+</section>
+<section id="blog">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+<article>
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</article>
+<article>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</article>
+
+</section>
+<section id="contact">
+<h1>{{ slot_12 }}</h1>
+<form>
+<label>{{ slot_13 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<label>{{ slot_15 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+<label>{{ slot_17 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_18 }}</span>
+<span class="">{{ slot_19 }}</span>
+</form>
+</section>
+<footer>
+<p>{{ slot_20 }}</p>
+</footer>
+</body>
+</html>

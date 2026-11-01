@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Arabic document template metadata (template.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "source", "source_ref", "license", "attribution", "positioning", "page", "slots", "features", "structure_hash"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[gwd]_[A-Za-z0-9_]+$"},
+    "source": {"enum": ["grammar", "websight", "doclaynet"]},
+    "source_ref": {"type": "string", "minLength": 1},
+    "license": {"type": "string", "minLength": 1},
+    "attribution": {"type": "string", "minLength": 1},
+    "positioning": {"enum": ["flow", "absolute"]},
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["size", "orientation"],
+      "properties": {
+        "size": {"enum": ["A4", "A5", "Letter", "Legal"]},
+        "orientation": {"enum": ["portrait", "landscape"]}
+      }
+    },
+    "slots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "role", "words", "dir"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^slot_(0|[1-9][0-9]*)$"},
+          "role": {"enum": ["title", "subtitle", "heading", "paragraph", "list_item", "table_header", "cell", "caption", "label", "field_value", "quote", "footnote", "header", "footer", "page_number", "sidebar"]},
+          "words": {
+            "type": "array",
+            "items": {"type": "integer", "minimum": 1},
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "dir": {"enum": ["rtl", "ltr", "auto"]}
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["columns", "tables", "lists", "list_depth", "forms", "asides", "has_header", "has_footer", "slot_count"],
+      "properties": {
+        "columns": {"type": "integer", "minimum": 1},
+        "tables": {"type": "integer", "minimum": 0},
+        "lists": {"type": "integer", "minimum": 0},
+        "list_depth": {"type": "integer", "minimum": 0},
+        "forms": {"type": "integer", "minimum": 0},
+        "asides": {"type": "integer", "minimum": 0},
+        "has_header": {"type": "boolean"},
+        "has_footer": {"type": "boolean"},
+        "slot_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "structure_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "images": {
+      "description": "Picture crops stored next to the template (DocLayNet pictures without text)",
+      "type": "array",
+      "items": {"type": "string", "pattern": "^img_(0|[1-9][0-9]*)\\.png$"}
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>@page { size: A4 landscape; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 10pt; --line-height: 1.8; --align: justify; --page-width: 297mm; --page-height: 210mm; --page-margin: 17mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+@counter-style arabic-letters { system: alphabetic; symbols: "\0623" "\0628" "\062C" "\062F" "\0647" "\0648" "\0632" "\062D" "\0637" "\064A"; suffix: ") "; }
+</style>
+<style>{{ style }}</style>
+</head>
+<body><div class="page">
+<header style="display: flex; justify-content: space-between; gap: 1em; font-size: 0.85em; padding-block: 0.3em; margin-block: 0.8em; border-block-end: 1px solid #444"><span>{{ slot_0 }}</span></header><h1 style="font-size: calc(var(--base-size) * 2.2); text-align: start; margin-block: 0.3em 0.5em">{{ slot_1 }}</h1>
+<main style="column-count: 2; column-gap: 8mm; column-rule: none"><figure style="margin-block: 0.8em; margin-inline: 0; break-inside: avoid"><div class="ph" style="block-size: 42mm; margin-inline: auto; inline-size: 100%"></div>
+<figcaption style="font-size: 0.85em; text-align: center; margin-block-start: 0.3em">{{ slot_2 }}</figcaption></figure><p style="margin-block: 0 0.7em; text-indent: 1.5em; text-align: var(--align); font-size: 1em">{{ slot_3 }}</p>
+<aside style="border: 2px dashed #444; background: transparent; padding: 0.6em 0.9em; margin-block: 0.8em; border-radius: 6px; break-inside: avoid"><p style="margin-block: 0.2em">{{ slot_4 }}</p></aside><p style="margin-block: 0 0.7em; text-indent: 0; text-align: justify; font-size: 1em">{{ slot_5 }}</p>
+<figure style="margin-block: 0.8em; margin-inline: 0; break-inside: avoid"><div class="ph" style="block-size: 43mm; margin-inline: auto; inline-size: 100%"></div>
+<figcaption style="font-size: 0.85em; text-align: center; margin-block-start: 0.3em">{{ slot_6 }}</figcaption></figure><p style="margin-block: 0 0.7em; text-indent: 1.5em; text-align: var(--align); font-size: 1.05em">{{ slot_7 }}</p>
+<p style="margin-block: 0 1em; text-indent: 0; text-align: start; font-size: 0.95em">{{ slot_8 }}</p>
+<figure style="margin-block: 0.8em; margin-inline: 0; break-inside: avoid"><div class="ph" style="block-size: 51mm; margin-inline: auto; inline-size: 50%"></div>
+<figcaption style="font-size: 0.85em; text-align: center; margin-block-start: 0.3em">{{ slot_9 }}</figcaption></figure></main>
+</div></body>
+</html>

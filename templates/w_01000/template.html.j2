@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: grey;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown {
+    background-color: grey;
+    color: whitesmoke;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.slider {
+    width: 100%;
+    height: 400px;
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider .slide {
+    width: 100%;
+    height: 100%;
+}
+
+.destinations {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.destinations .destination {
+    width: 23%;
+    height: 100%;
+    background-color: blue;
+}
+
+footer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    background-color: grey;
+    color: whitesmoke;
+    margin-top: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<div class="dropdown">
+<button class="dropbtn">{{ slot_5 }}</button>
+<div class="dropdown-content">
+<a>{{ slot_6 }}</a>
+<a>{{ slot_7 }}</a>
+<a>{{ slot_8 }}</a>
+<a>{{ slot_9 }}</a>
+<a>{{ slot_10 }}</a>
+<a>{{ slot_11 }}</a>
+<a>{{ slot_12 }}</a>
+</div>
+</div>
+</header>
+<section class="slider">
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+</section>
+<section class="destinations">
+<article>
+<h2>{{ slot_13 }}</h2>
+<div class="destination"></div>
+<div class="destination"></div>
+<div class="destination"></div>
+<div class="destination"></div>
+</article>
+</section>
+<footer>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>
