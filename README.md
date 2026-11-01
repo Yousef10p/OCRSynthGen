@@ -13,6 +13,10 @@ checked and valid, and a pipeline that fills, renders, labels and degrades them.
 
 ## Quick start: make a training set
 
+For a detailed, step-by-step explanation of how a page is made (template storage, text injection,
+the exact SynthDoc and OCRSmith arguments, the Wikipedia text format, the label formats), see
+[OCRREADME.md](OCRREADME.md).
+
 ```bash
 cd D:\code\OCR\arabic-template-bank
 .venv-pipeline\Scripts\python -m pipeline.dataset --n 10000 --out datasets\ocr_v1 --workers 6
