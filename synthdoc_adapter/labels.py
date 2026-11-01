@@ -48,22 +48,28 @@ def split_words(ocr):
 
     def at_edge(w):
         return w["x"] <= 0.5 or w["y"] <= 0.5 or w["x"] + w["width"] >= pw or w["y"] + w["height"] >= ph
-    # cut_x (set by the pipeline's word measuring) marks a word cut on its left or right by any box
-    words = [w for w in ocr["words"] if readable(w) and not w.get("cut_x") and not (w["clipped"] and at_edge(w))]
+    # cut_x and cut_y (set by the pipeline's word measuring): a word cut on its left or right by any box, or
+    # with more than a tenth of its height hidden above or below
+    words = [w for w in ocr["words"] if readable(w) and not w.get("cut_x") and w.get("cut_y", 0) <= 0.1
+             and not (w["clipped"] and at_edge(w))]
     return words, len(ocr["words"]) - len(words)
 
 
 def build_label(page, size, seed, attacks, page_contrast, ocr, slots, words, word_boxes, cut):
-    """The attacked page's labels: word boxes as given, lines and slots rebuilt as the union of their words."""
-    lines = [{"id": ln["id"], "text": ln["text"],
-              "box": union([word_boxes[i] for i, w in enumerate(words) if w["line_id"] == ln["id"]])}
-             for ln in ocr["lines"]]
+    """The attacked page's labels: word boxes as given, lines and slots rebuilt from their words. A line's or a
+    slot's text is its labelled words only, so a word that is cut, hidden or lost is in no text either."""
+    def group(keep):
+        kept = [(w, word_boxes[i]) for i, w in enumerate(words) if word_boxes[i] and keep(w)]
+        return " ".join(w["text"] for w, _ in kept), union([b for _, b in kept])
 
     def inside(w, a):  # word centre inside the slot's original box
         cx, cy = w["x"] + w["width"] / 2, w["y"] + w["height"] / 2
         return a["x"] <= cx <= a["x"] + a["width"] and a["y"] <= cy <= a["y"] + a["height"]
-    slot_boxes = [{"entity_type": a["entity_type"], "property": a.get("rdfa_property"), "text": a.get("text_content"),
-                   "box": union([word_boxes[i] for i, w in enumerate(words) if inside(w, a)])} for a in slots]
+    lines = [dict(zip(("id", "text", "box"), (ln["id"], *group(lambda w, ln=ln: w["line_id"] == ln["id"]))))
+             for ln in ocr["lines"]]
+    slot_boxes = [dict(zip(("entity_type", "property", "text", "box"),
+                           (a["entity_type"], a.get("rdfa_property"), *group(lambda w, a=a: inside(w, a)))))
+                  for a in slots]
     return {"page": page, "width": size[0], "height": size[1], "seed": seed,
             "attacks": attacks, "contrast": round(page_contrast, 1), "no_text": not any(word_boxes),
             "low_contrast": any(word_boxes) and page_contrast < MIN_CONTRAST,

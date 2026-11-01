@@ -46,12 +46,22 @@ from synthdoc.ner_data_generator import NERDataGenerator  # noqa: E402
 from synthdoc_arabic import pipeline as synthdoc_arabic  # noqa: E402
 from synthdoc_arabic.ocr_gt import build_page_gt  # noqa: E402
 
-# The Arabic extension's word measuring script only says whether a word is clipped at all. A word whose
-# side is cut (a long English word in a narrow table cell) must be dropped from the labels, so the script is
-# extended here, in memory, to say that too (nothing in the SynthDoc folder is changed).
+# The Arabic extension's word measuring script only says whether a word is clipped at all. A word partly
+# hidden by a box edge must be dropped from the labels, so the script is extended here, in memory, to say how
+# (nothing in the SynthDoc folder is changed): cut_x, cut on its left or right (a long English word in a narrow
+# table cell); cut_y, the share of its height hidden above or below (a line that doesn't fit its box); slot,
+# the template slot the word is in (so the HTML and Markdown can be rebuilt from what is on the page).
+# cut_y is measured on the letters, not on the word's box: the box is the font's whole line slot, taller than
+# the letters (Arabic fonts leave room for marks), and a tight box often clips only its empty top or bottom.
+# Canvas metrics give the baseline (box top + font ascent) and the letters' own extent around it; the share
+# of that extent beyond the clipping box's top or bottom edge (clip) is what is hidden.
+CUT_Y_JS = ("(() => { const m = ctx.measureText(shown); const base = b.t + m.fontBoundingBoxAscent;"
+            " const top = base - m.actualBoundingBoxAscent, bottom = base + m.actualBoundingBoxDescent;"
+            " return (Math.max(0, clip.t - top) + Math.max(0, bottom - clip.b)) / Math.max(1, bottom - top); })()")
 if "cut_x:" not in synthdoc_arabic.WORDS_JS:
     synthdoc_arabic.WORDS_JS = synthdoc_arabic.WORDS_JS.replace(
-        "split_word:", "cut_x: (l > b.l + 1 || r < b.r - 1), split_word:", 1)
+        "split_word:", "cut_x: (l > b.l + 1 || r < b.r - 1), cut_y: " + CUT_Y_JS
+                       + ", slot: (el.closest('[data-slot]') || {dataset: {}}).dataset.slot || null, split_word:", 1)
 
 from pipeline.img_pool import ImagePool  # noqa: E402
 from pipeline.text_pool import TextPool  # noqa: E402
@@ -67,11 +77,44 @@ EFFECTS = {"clean": 0.15, "ocrsmith": 0.85 / 3, "augraphy": 0.85 / 3, "scan-simu
 SOURCES = {"grammar": 1, "websight": 1, "doclaynet": 1}
 ROLE = {prop: role for role, prop in ROLE_PROPERTY.items()}  # doco:sectionTitle -> heading
 TRIES = 4  # attempts with new seeds when an effect leaves the text too faint
-# Runs at the end of the page body, so before Paged.js copies the page (Paged.js starts as soon as parsing
-# ends, before DOMContentLoaded): an element with no text in it, at least 30 x 30 px, with a plain grey
-# background (the look of an image placeholder) gets one of PHOTOS, covering it. Text on grey (a grey section
-# or banner) is design and stays; table cells and form fields are left alone.
-GREY_BOXES_JS = """(() => {
+# Runs in Paged.js's "before" hook, once the page's fonts have loaded and before Paged.js lays the page out:
+#  1. text that doesn't fit its box: a template box sized for its source's text (a DocLayNet box sized for
+#     the original PDF line) is often too small for the words a slot gets in our fonts and line spacing, and
+#     its overflow:hidden then cuts letters (about 1 word in 6 on DocLayNet pages). Such a box gets
+#     line-height 1.2, then a smaller font down to 80% of its size, then loses words from the end of its last
+#     slot until its text fits. The labels are measured after this, so they match the page, and the HTML and
+#     Markdown are rebuilt from the words on the page (what still can't fit is dropped: cut_x/cut_y);
+#  2. grey picture areas a web page's converter could not name as such (a ".logo" square, a hero image area):
+#     an element with no text in it, at least 30 x 30 px, with a plain grey background gets one of PHOTOS.
+#     Text on grey (a grey section or banner) is design and stays; table cells and form fields are left alone.
+# window.PagedConfig must exist before Paged.js loads, so this goes at the end of <head>, before SynthDoc's
+# Paged.js script.
+PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
+  await document.fonts.ready;
+  for (const el of document.body.querySelectorAll("*")) {
+    if (el.classList.contains("page") || !el.textContent.trim()) continue;
+    const cs = getComputedStyle(el);
+    if (!/hidden|clip/.test(cs.overflowX + " " + cs.overflowY)) continue;
+    const fits = () => el.scrollHeight <= el.clientHeight + 1 && el.scrollWidth <= el.clientWidth + 1;
+    if (fits()) continue;
+    el.style.setProperty("line-height", "1.2", "important");
+    let size = parseFloat(cs.fontSize);
+    for (const min = size * 0.8; !fits() && size > min;) {
+      size *= 0.95;
+      el.style.setProperty("font-size", size + "px", "important");
+    }
+    const spans = [...el.querySelectorAll("[data-slot]")];
+    for (let i = spans.length - 1; i >= 0 && !fits(); i--) {
+      const words = spans[i].textContent.split(/\\s+/).filter(Boolean);
+      let lo = 0, hi = words.length;  // the most words that still fit
+      while (lo < hi) {
+        const mid = Math.ceil((lo + hi) / 2);
+        spans[i].textContent = words.slice(0, mid).join(" ");
+        if (fits()) lo = mid; else hi = mid - 1;
+      }
+      spans[i].textContent = words.slice(0, lo).join(" ");
+    }
+  }
   const photos = PHOTOS; let k = 0;
   for (const el of document.body.querySelectorAll("*")) {
     if (k >= photos.length) break;
@@ -86,7 +129,7 @@ GREY_BOXES_JS = """(() => {
     el.style.setProperty("background", `url("${photos[k++]}") center / cover no-repeat`, "important");
     el.dataset.img = "grey-box";
   }
-})();"""
+}};"""
 # The opening tag of a grey picture box: any element whose class list has "ph"
 PICTURE_BOX = re.compile(r'<(\w+)\b([^>]*\bclass="(?:[^"]*\s)?ph(?:\s[^"]*)?"[^>]*)>')
 _cache = {}
@@ -211,9 +254,8 @@ class DocPipeline:
         # Web pages also have grey picture areas the converter could not name as such (a ".logo" square, a
         # hero image area): find them in the browser, before SynthDoc lays the page out, and fill them too
         spare = [self.pictures.pick(rng).as_uri() for _ in range(12)]
-        script = GREY_BOXES_JS.replace("PHOTOS", json.dumps(spare))
-        end = page.rfind("</body>")
-        return page[:end] + f"<script>{script}</script>\n" + page[end:], used
+        script = PAGE_JS.replace("PHOTOS", json.dumps(spare))
+        return page.replace("</head>", f"<script>{script}</script>\n</head>", 1), used
 
     def render(self, page, values, name):
         """3. SynthDoc renders page 1 and labels it: (image, word/line labels, slot boxes)."""
@@ -226,7 +268,8 @@ class DocPipeline:
         raw = json.loads((synthdoc_arabic._raw_dir / f"{raw_name}.json").read_text(encoding="utf-8"))
         ocr = build_page_gt(raw["page"], {"language": raw["lang"], "direction": raw["dir"], "variant": raw["variant"]})
         for word, measured in zip(ocr["words"], raw["page"]["words"]):  # same order: lines are runs of words
-            word["cut_x"] = measured.get("cut_x", False)
+            word["cut_x"], word["cut_y"] = measured.get("cut_x", False), measured.get("cut_y", 0)
+            word["slot"] = measured.get("slot")
         slots = json.loads(Path(first["label_path"]).read_text(encoding="utf-8"))["annotations"]
         image = Image.open(first["image_path"]).convert("RGB")
         # SynthDoc's own copies are no longer needed (they would double the size of a large set)
@@ -318,6 +361,14 @@ class DocPipeline:
                       "style": s, "pages_rendered": pages})
         t["effects"] = time.perf_counter() - mark
         mark = time.perf_counter()
+        # The HTML and Markdown say what is on the page: each slot holds exactly its labelled words (words cut
+        # to fit a box, hidden or dropped are not there)
+        shown = {sl["id"]: [] for sl in meta["slots"]}
+        for w, box in zip(words, boxes):
+            if box and w.get("slot") in shown:
+                shown[w["slot"]].append(w["text"])
+        filled = Template(page).render(**{k: Markup.escape(" ".join(v)) for k, v in shown.items()},
+                                       style=values["style"])
         md = self.markdown(filled, label, name)
         t["markdown"] = time.perf_counter() - mark
 
