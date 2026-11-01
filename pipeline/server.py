@@ -29,6 +29,7 @@ CHOICES = {
     "effect": {"mix": None, "ocrsmith": {"ocrsmith": 1}, "augraphy": {"augraphy": 1},
                "scan-simulator": {"scan-simulator": 1}, "augraphy+scan-simulator": {"augraphy+scan-simulator": 1}},
     "source": {"mix": None, "grammar": {"grammar": 1}, "websight": {"websight": 1}, "doclaynet": {"doclaynet": 1}},
+    "text": {"wikipedia": "wikipedia", "demo": "demo"},
 }
 JOBS, LOCK = {}, threading.Lock()
 
@@ -44,13 +45,14 @@ def make_sample(out_dir, seed, name, options):
     from pipeline.llm_templates import LLMTemplates
     pipe = DocPipeline(out_dir, languages=CHOICES["language"][options["language"]],
                        effects=CHOICES["effect"][options["effect"]], sources=CHOICES["source"][options["source"]],
-                       templates=options["templates"], llm=LLMTemplates.from_env() if options["templates"] == "llm" else None)
+                       templates=options["templates"], llm=LLMTemplates.from_env() if options["templates"] == "llm" else None,
+                       text=CHOICES["text"][options["text"]])
     return pipe.sample(seed, name)
 
 
 def start_job(options):
     n = max(1, min(int(options.get("n", 16)), 64))
-    options = {k: options.get(k) if options.get(k) in CHOICES[k] else "mix" for k in CHOICES} | \
+    options = {k: options.get(k) if options.get(k) in CHOICES[k] else next(iter(CHOICES[k])) for k in CHOICES} | \
               {"templates": "llm" if options.get("templates") == "llm" else "bank"}
     run = time.strftime("run_%Y%m%d_%H%M%S")
     out_dir, seed = OUT / run, random.randrange(10**6)

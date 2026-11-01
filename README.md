@@ -417,13 +417,42 @@ flowchart LR
 
 1. **Template:** a random bank template (Grammar, WebSight and DocLayNet equally often). If a page ends up
    with no readable text (a template that is all pictures), another template is picked.
-2. **Text:** Arabic (80%) or English (20%). English pages are switched to left-to-right and use installed
-   Latin fonts (Georgia, Calibri, Cambria…); Arabic pages use OCRSmith's 13 Arabic fonts.
+2. **Text:** Arabic (80%) or English (20%), taken from Wikipedia (see below). English pages are switched to
+   left-to-right and use installed Latin fonts (Georgia, Calibri, Cambria…); Arabic pages use OCRSmith's 13
+   Arabic fonts.
 3. **Render:** SynthDoc renders the page and measures every word, line and slot (page 1 only).
 4. **Effects:** OCRSmith (60%), Augraphy alone (10%), scan-simulator alone (10%), or both (20%). Every box
    moves with the page, as in the attack sections above; faint pages are retried with a new seed.
 5. **Markdown:** the filled page as Markdown, with a header at the very top that lists every text block
    (type, box, text) and every line (box, text). Word boxes are in the sample's `.json`.
+
+**Text, from Wikipedia:** the words come from Arabic and English Wikipedia (the `wikimedia/wikipedia` dataset,
+dump of 2023-11-01, through Hugging Face's dataset server): edited and cited text, openly licensed
+(CC BY-SA 4.0), on every topic. `text_pool/` holds a few thousand random articles per language (Arabic:
+4,122 articles, about 130,000 different words; English: 4,533 articles, about 198,000), split into the kinds
+of text a document has, and each kind fills the matching slots:
+
+| From the article | Fills |
+|---|---|
+| article titles | titles |
+| section headings (short lines) | headings, table headers, labels (+ ":") |
+| list lines | list items |
+| paragraphs, cut at whole sentences near the wanted length | paragraphs, quotes, captions, footnotes, sidebars |
+| a few words from a sentence | table cells and form values (when they aren't a random number, date or phone) |
+
+Reference sections are skipped, and lines with much text in the other script are dropped, so a page stays in
+one language. Each sample's `.json` lists the articles its text came from, and its Markdown header names the
+source and licence; CC BY-SA asks for that attribution, and a shared dataset made from it should keep the same
+licence. The old demo sentences are still there (`text="demo"`, or **Text: demo sentences** on the page). To
+build the pool again, or bigger:
+
+```bash
+.venv-pipeline\Scripts\python -m pipeline.text_pool --articles 5000
+```
+
+Real words are longer than the demo ones, and English words longer still, so in narrow table cells some words
+are cut at the cell edge. Those are left out of the labels: the pipeline extends SynthDoc's word measuring (in
+memory, nothing in the SynthDoc folder changes) to report a word cut on its left or right side.
 
 **Pictures:** every grey picture box in a template (418 boxes in 228 templates) gets a random photo from
 `img_pool/`, scaled to cover the box, so the layout and the text boxes don't change. The Markdown names the
@@ -620,6 +649,8 @@ pipeline/doc_pipeline.py      DocPipeline: template -> text -> SynthDoc -> effec
 pipeline/server.py, static/   the sample generator page (Generate 16 samples + preview)
 pipeline/llm_templates.py     optional: templates written by an LLM (Groq or local Ollama)
 pipeline/img_pool.py          downloads img_pool/ and picks its photos
+pipeline/text_pool.py         builds text_pool/ (Wikipedia, ar + en) and cuts text to fit each slot
+text_pool/                    Wikipedia text for the slots (ar.json, en.json; built, not in git)
 img_pool/                     500 photos for the templates' picture boxes (+ sources.json)
 pipeline_out/                 generated samples, one folder per run
 requirements-pipeline.txt     packages for .venv-pipeline (everything in one environment)

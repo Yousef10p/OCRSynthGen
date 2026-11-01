@@ -63,12 +63,13 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
   <label>Language <select id="language"><option value="mix">mixed (80% Arabic)</option><option value="ar">Arabic</option><option value="en">English</option></select></label>
   <label>Effects <select id="effect"><option value="mix">mixed (60% OCRSmith)</option><option value="ocrsmith">OCRSmith</option><option value="augraphy">Augraphy</option><option value="scan-simulator">scan-simulator</option><option value="augraphy+scan-simulator">Augraphy + scan-simulator</option></select></label>
   <label>Templates <select id="source"><option value="mix">bank: all sources</option><option value="grammar">bank: Grammar</option><option value="websight">bank: WebSight</option><option value="doclaynet">bank: DocLayNet</option></select></label>
+  <label>Text <select id="text"><option value="wikipedia">Wikipedia (ar + en)</option><option value="demo">demo sentences</option></select></label>
   <label>Template maker <select id="templates"><option value="bank">bank</option><option value="llm" id="llm-opt">LLM</option></select></label>
   <button id="go">Generate 16 samples</button>
   <div class="bar"><i id="bar"></i></div>
   <span id="status"></span>
 </header>
-<div class="steps"><b>Pipeline:</b> template → Arabic/English text + random style + photos from img_pool in picture boxes → SynthDoc render (labels) → OCRSmith / Augraphy / scan-simulator (boxes moved) → Markdown with boxes on top</div>
+<div class="steps"><b>Pipeline:</b> template → Arabic/English text from Wikipedia + random style + photos from img_pool in picture boxes → SynthDoc render (labels) → OCRSmith / Augraphy / scan-simulator (boxes moved) → Markdown with boxes on top</div>
 <main id="grid"><div class="empty">Press <b>Generate 16 samples</b>. Pages appear here one by one as they are made.</div></main>
 
 <dialog id="pv"><div class="pv">
@@ -94,7 +95,7 @@ fetch("/api/info").then((r) => r.json()).then((info) => {
 
 $("go").onclick = async () => {
   const body = {n: 16, language: $("language").value, effect: $("effect").value, source: $("source").value,
-                templates: $("templates").value};
+                templates: $("templates").value, text: $("text").value};
   $("go").disabled = true;
   const r = await (await fetch("/api/generate", {method: "POST", body: JSON.stringify(body)})).json();
   job = {id: r.id, n: r.n}; samples = new Array(r.n).fill(null);
@@ -147,7 +148,7 @@ async function show() {
   const body = $("pv-body");
   if (tab === "info") {
     const rows = [["Template", `${s.template} (${s.source})`], ["Language", s.lang], ["Font", `${s.font}, ${s.size_pt}pt`],
-      ["Effect", s.effect], ["Applied", s.attacks.join(", ")], ["Words labelled", `${s.words} (lost: ${s.lost_words})`], ["Pictures from img_pool", s.pictures],
+      ["Effect", s.effect], ["Applied", s.attacks.join(", ")], ["Words labelled", `${s.words} (lost: ${s.lost_words})`], ["Pictures from img_pool", s.pictures], ["Text", s.text === "wikipedia" ? `Wikipedia, ${s.text_sources} articles (listed in the labels JSON)` : "demo sentences"],
       ["Contrast", `${s.contrast}${s.low_contrast ? " (faint)" : ""}`], ["Pages rendered", s.pages_rendered],
       ["Seconds", Object.entries(s.seconds).map(([k, v]) => `${k} ${v}`).join(" · ")], ["Seed", s.seed], ["Note", s.note || "–"]];
     body.innerHTML = `<div class="facts"><table>${rows.map(([k, v]) => `<tr><td>${k}</td><td>${esc(v)}</td></tr>`).join("")}</table></div>`;

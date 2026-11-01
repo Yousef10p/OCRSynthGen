@@ -7,7 +7,8 @@
                  moved with the page
     5. markdown  the filled page as Markdown, with the bounding boxes at the very top
 
-Grey picture boxes in a template get a random photo from img_pool/ (see img_pool.py) in step 2.
+Grey picture boxes in a template get a random photo from img_pool/ (see img_pool.py) in step 2, and the
+words come from Wikipedia (text_pool/, see text_pool.py) unless text="demo".
 
 Each sample writes, in out_dir:
     <name>.jpg            final page                   <name>_clean.jpg   SynthDoc's page before effects
@@ -45,7 +46,15 @@ from synthdoc.ner_data_generator import NERDataGenerator  # noqa: E402
 from synthdoc_arabic import pipeline as synthdoc_arabic  # noqa: E402
 from synthdoc_arabic.ocr_gt import build_page_gt  # noqa: E402
 
+# The Arabic extension's word measuring script only says whether a word is clipped at all. A word whose
+# side is cut (a long English word in a narrow table cell) must be dropped from the labels, so the script is
+# extended here, in memory, to say that too (nothing in the SynthDoc folder is changed).
+if "cut_x:" not in synthdoc_arabic.WORDS_JS:
+    synthdoc_arabic.WORDS_JS = synthdoc_arabic.WORDS_JS.replace(
+        "split_word:", "cut_x: (l > b.l + 1 || r < b.r - 1), split_word:", 1)
+
 from pipeline.img_pool import ImagePool  # noqa: E402
+from pipeline.text_pool import TextPool  # noqa: E402
 from src.dedup import load_bank  # noqa: E402
 from src.markdown import to_markdown  # noqa: E402
 
@@ -71,6 +80,12 @@ def arabic_fonts():
     return _cache["fonts"]
 
 
+def text_pool(lang):
+    if ("text", lang) not in _cache:
+        _cache[("text", lang)] = TextPool(lang)
+    return _cache[("text", lang)]
+
+
 def pick(rng, weights):
     return rng.choices(list(weights), weights=list(weights.values()))[0]
 
@@ -80,15 +95,17 @@ class DocPipeline:
 
     languages, effects and sources are {choice: weight}; templates is "bank" or "llm" (an LLMTemplates,
     passed as llm, writes them; if it can't, the sample falls back to the bank and says so).
-    pictures is the ImagePool for grey picture boxes (default img_pool/; False keeps them grey)."""
+    pictures is the ImagePool for grey picture boxes (default img_pool/; False keeps them grey).
+    text is "wikipedia" (text_pool/, the default once it is built) or "demo" (a few built-in sentences)."""
 
     def __init__(self, out_dir, languages=None, effects=None, sources=None, templates="bank", llm=None,
-                 pictures=None):
+                 pictures=None, text=None):
         self.out = Path(out_dir).resolve()
         self.out.mkdir(parents=True, exist_ok=True)
         self.languages, self.effects = languages or LANGUAGES, effects or EFFECTS
         self.sources, self.templates, self.llm = sources or SOURCES, templates, llm
         self.pictures = ImagePool() if pictures is None else pictures
+        self.text = text or ("wikipedia" if TextPool.exists("ar") and TextPool.exists("en") else "demo")
         synthdoc_arabic.install()  # SynthDoc then also measures every word (the Arabic extension)
         self._synthdoc = None
 
@@ -121,9 +138,13 @@ class DocPipeline:
             s, css = style(rng, arabic_fonts(), transparent=False)
         else:
             s, css = style_latin(rng, transparent=False)
-        values = {slot["id"]: Markup(fill(slot, rng, s["digits"], lang)) for slot in meta["slots"]}
+        words = text_pool(lang) if self.text == "wikipedia" else None
+        if words:
+            words.used.clear()
+        values = {slot["id"]: Markup(fill(slot, rng, s["digits"], lang, words)) for slot in meta["slots"]}
         page, used = self.fill_pictures(synthdoc_html(meta, text, lang, folder), rng)
-        s = {**s, "pictures": used}
+        # Where the words came from: the Wikipedia articles used (CC BY-SA asks for attribution)
+        s = {**s, "pictures": used, "text": self.text, "text_sources": words.sources() if words else []}
         # The style travels with the page, so SynthDoc's word labels record it (the Arabic extension reads this)
         variant = {"template": meta["id"], "source": meta["source"], "lang": lang, **s}
         tag = Markup.escape(json.dumps(variant, ensure_ascii=False))
@@ -156,6 +177,8 @@ class DocPipeline:
         raw_name = f"{name}_page_1" if "pages" in result else name
         raw = json.loads((synthdoc_arabic._raw_dir / f"{raw_name}.json").read_text(encoding="utf-8"))
         ocr = build_page_gt(raw["page"], {"language": raw["lang"], "direction": raw["dir"], "variant": raw["variant"]})
+        for word, measured in zip(ocr["words"], raw["page"]["words"]):  # same order: lines are runs of words
+            word["cut_x"] = measured.get("cut_x", False)
         slots = json.loads(Path(first["label_path"]).read_text(encoding="utf-8"))["annotations"]
         return Image.open(first["image_path"]).convert("RGB"), ocr, slots, result.get("total_pages", 1)
 
@@ -198,6 +221,7 @@ class DocPipeline:
         head = ["---", f"image: {name}.jpg", f"width: {label['width']}", f"height: {label['height']}",
                 f"language: {label['lang']}", f"template: {label['template']}",
                 f"effects: {row(label['attacks'])}",
+                f"text: {'Wikipedia, CC BY-SA 4.0 (articles listed in ' + name + '.json)' if label['style']['text'] == 'wikipedia' else 'demo sentences'}",
                 "boxes: [x, y, width, height] in image pixels, after the effects",
                 f"regions:  # {len(regions)} text blocks (template slots)"]
         head += [f"  - {row(r)}" for r in regions]
@@ -252,7 +276,7 @@ class DocPipeline:
                 "effect": effect, "attacks": attacks, "font": s["font"], "size_pt": s["size_pt"],
                 "contrast": label["contrast"], "low_contrast": label["low_contrast"], "words": len(label["words"]),
                 "lost_words": label["lost_words"], "pages_rendered": pages, "note": note,
-                "pictures": len(s["pictures"]),
+                "pictures": len(s["pictures"]), "text": s["text"], "text_sources": len(s["text_sources"]),
                 "seconds": {**times, "total": round(sum(times.values()), 2)}}
 
     def run(self, n=16, seed=None, on_sample=None):

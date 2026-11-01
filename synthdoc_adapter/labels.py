@@ -48,7 +48,8 @@ def split_words(ocr):
 
     def at_edge(w):
         return w["x"] <= 0.5 or w["y"] <= 0.5 or w["x"] + w["width"] >= pw or w["y"] + w["height"] >= ph
-    words = [w for w in ocr["words"] if readable(w) and not (w["clipped"] and at_edge(w))]
+    # cut_x (set by the pipeline's word measuring) marks a word cut on its left or right by any box
+    words = [w for w in ocr["words"] if readable(w) and not w.get("cut_x") and not (w["clipped"] and at_edge(w))]
     return words, len(ocr["words"]) - len(words)
 
 

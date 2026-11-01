@@ -93,10 +93,11 @@ def field(rng):
                        f"{rng.randint(100, 99999):,}.{rng.randint(0, 99):02d}", str(rng.randint(10000, 999999))])
 
 
-def fill(slot, rng, digits, lang="ar"):
+def fill(slot, rng, digits, lang="ar", source=None):
     """HTML-escaped text for one slot: right kind of text for its role, random length in its word range.
 
-    lang="en" fills it with English instead of Arabic."""
+    lang="en" fills it with English instead of Arabic. source (a pipeline TextPool) supplies the words
+    from real text instead of the demo sentences below; numbers, dates and phone numbers stay random."""
     sentences, words = (SENTENCES_EN, WORDS_EN) if lang == "en" else (SENTENCES, WORDS)
     lo, hi = slot["words"]
     n = rng.randint(lo, max(lo, hi))
@@ -107,6 +108,8 @@ def fill(slot, rng, digits, lang="ar"):
         text = number(rng)
     elif role == "field_value" and rng.random() < 0.6:
         text = field(rng)
+    elif source is not None:
+        text = source.text(role, n, rng)
     elif role == "label":
         text = phrase(rng, n, words) + ":"
     elif role in ("paragraph", "quote", "footnote", "sidebar", "list_item", "caption"):
