@@ -3,7 +3,7 @@
   "source": "doclaynet",
   "source_ref": "docling-project/DocLayNet-v1.1:train:shard25:row210",
   "license": "CDLA-Permissive-1.0",
-  "attribution": "DocLayNet v1.1 (IBM Research), patents, layout geometry and text-free picture crops",
+  "attribution": "DocLayNet v1.1 (IBM Research), patents, layout geometry only",
   "positioning": "absolute",
   "page": {
     "size": "Letter",
@@ -94,8 +94,5 @@
     "has_footer": false,
     "slot_count": 8
   },
-  "images": [
-    "img_0.png"
-  ],
   "structure_hash": "d7f661c4765625f6fb100f20450f7aca892324d8848d2bd9c695dd635a456326"
 }

@@ -16,13 +16,15 @@ import statistics
 from lxml.html import builder as E
 from PIL import Image
 
-from src.bank import RAW, add_slot, clear_source, new_document, page_dims, renumber, root_css, to_html, write_template
+from src.bank import RAW, ROOT, add_slot, clear_source, new_document, page_dims, renumber, root_css, to_html, write_template
 from src.dedup import structure_hash
 
 NAMES = ["docling-project/DocLayNet-v1.1", "ds4sd/DocLayNet-v1.1", "pierreguillou/DocLayNet-small"]
 COLUMNS = ["bboxes", "category_id", "pdf_cells", "metadata"]
 CACHE = RAW / "doclaynet_candidates.jsonl"
 PAGES = RAW / "doclaynet_pages"
+# Pictures with no PDF text that still show text (logos, formulas, screenshots...), found by eye: grey boxes
+PICTURES_WITH_TEXT = set(json.loads((ROOT / "config" / "pictures_with_text.json").read_text(encoding="utf-8"))["pictures"])
 TRAIN_FILES = "datasets/docling-project/DocLayNet-v1.1/data/train-*.parquet"
 ROWS_PER_SHARD, KEEP_EVERY = 300, 15  # the stream is ordered by category, so sample every shard
 CATEGORIES = {1: "Caption", 2: "Footnote", 3: "Formula", 4: "List-item", 5: "Page-footer", 6: "Page-header",
@@ -91,7 +93,8 @@ def shard_row(page):
 
 
 def keeps_picture(cat_id, cells):
-    """A picture is kept only if no PDF text cell lies inside it."""
+    """A picture is kept only if no PDF text cell lies inside it (and, in generate(), if it isn't listed in
+    config/pictures_with_text.json: text drawn into the image has no PDF text cell)."""
     return CATEGORIES[cat_id] == "Picture" and not cells
 
 
@@ -212,6 +215,7 @@ def generate(page, tid, rng, image=None):
                     "has_header": False, "has_footer": False, "slot_count": 0}
     boxes = sorted(zip(page["bboxes"], page["category_id"], page["cells"]), key=lambda t: (round(t[0][1] / 10), t[0][0]))
     text_boxes, files = [], {}
+    picture_no = 0
     for bbox, cat_id, cells in boxes:
         cat = CATEGORIES[cat_id]
         x, y, w, h = to_mm(bbox)
@@ -222,7 +226,11 @@ def generate(page, tid, rng, image=None):
         fs = min(max(font_size(cells, h_pt, mm * PT_PER_MM), 5), 40)
         style = (f"inset-inline-start: {x:.1f}mm; inset-block-start: {y:.1f}mm; inline-size: {w:.1f}mm;"
                  f" block-size: {h:.1f}mm; font-size: {fs:.1f}pt")
-        if image is not None and keeps_picture(cat_id, cells):
+        kept = image is not None and keeps_picture(cat_id, cells)
+        if kept:
+            key, picture_no = f"{page['ref']}#{picture_no}", picture_no + 1
+            kept = key not in PICTURES_WITH_TEXT
+        if kept:
             name = f"img_{len(files)}.png"
             files[name] = crop(image, bbox, m, w, h)
             pg.append(E.IMG({"class": "box", "src": name, "alt": "", "style": style}))

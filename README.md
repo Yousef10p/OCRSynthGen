@@ -574,7 +574,11 @@ flowchart LR
 
 The pages are spread evenly over 6 document types: financial reports, scientific articles, laws, government
 tenders, manuals and patents. Tables are rebuilt as empty tables. Of the 97 pictures in these 100 pages,
-43 had no text and are kept as images; the 54 with text and all 26 formulas became grey boxes.
+54 had PDF text inside and became grey boxes, as did all 26 formulas. Of the 43 without PDF text, 27 still
+show text drawn into the image (logos, chemical formulas, screenshots, charts, labelled diagrams), found by
+looking at each one; they are listed in `config/pictures_with_text.json` and became grey boxes too, because
+that text would be on the page without being in the labels. The other 16 (photos, flags, icons) are kept as
+images. When a page is generated, every grey box gets a photo from `img_pool/`.
 
 ---
 

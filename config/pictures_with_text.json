@@ -1,0 +1,33 @@
+{
+ "why": "DocLayNet pictures whose PDF has no text layer but whose image shows text (logos, chemical formulas, screenshots, charts, labelled diagrams), found by looking at all 43 kept crops on 2026-11-01. src/from_doclaynet.py turns these into grey picture boxes, because text inside a picture would be on the page without being in the labels.",
+ "key": "<page source_ref>#<n>: the n-th text-free picture box of that page, in reading order",
+ "pictures": [
+  "docling-project/DocLayNet-v1.1:train:shard4:row195#0",
+  "docling-project/DocLayNet-v1.1:train:shard25:row75#0",
+  "docling-project/DocLayNet-v1.1:train:shard25:row75#1",
+  "docling-project/DocLayNet-v1.1:train:shard25:row75#2",
+  "docling-project/DocLayNet-v1.1:train:shard25:row75#3",
+  "docling-project/DocLayNet-v1.1:train:shard25:row75#4",
+  "docling-project/DocLayNet-v1.1:train:shard14:row45#0",
+  "docling-project/DocLayNet-v1.1:train:shard10:row210#0",
+  "docling-project/DocLayNet-v1.1:train:shard14:row270#0",
+  "docling-project/DocLayNet-v1.1:train:shard27:row210#0",
+  "docling-project/DocLayNet-v1.1:train:shard25:row150#0",
+  "docling-project/DocLayNet-v1.1:train:shard25:row150#1",
+  "docling-project/DocLayNet-v1.1:train:shard25:row150#2",
+  "docling-project/DocLayNet-v1.1:train:shard25:row150#3",
+  "docling-project/DocLayNet-v1.1:train:shard25:row150#4",
+  "docling-project/DocLayNet-v1.1:train:shard27:row135#0",
+  "docling-project/DocLayNet-v1.1:train:shard27:row135#1",
+  "docling-project/DocLayNet-v1.1:train:shard13:row270#0",
+  "docling-project/DocLayNet-v1.1:train:shard14:row90#0",
+  "docling-project/DocLayNet-v1.1:train:shard17:row45#0",
+  "docling-project/DocLayNet-v1.1:train:shard25:row210#0",
+  "docling-project/DocLayNet-v1.1:train:shard15:row120#0",
+  "docling-project/DocLayNet-v1.1:train:shard8:row60#0",
+  "docling-project/DocLayNet-v1.1:train:shard16:row135#0",
+  "docling-project/DocLayNet-v1.1:train:shard13:row60#0",
+  "docling-project/DocLayNet-v1.1:train:shard8:row75#0",
+  "docling-project/DocLayNet-v1.1:train:shard8:row75#1"
+ ]
+}
