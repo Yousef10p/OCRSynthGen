@@ -48,10 +48,14 @@ def split_words(ocr):
 
     def at_edge(w):
         return w["x"] <= 0.5 or w["y"] <= 0.5 or w["x"] + w["width"] >= pw or w["y"] + w["height"] >= ph
+    def measured_wide(w):
+        """A box far wider than the word's letters: punctuation at both ends of a word in right-to-left text
+        puts it in several direction runs, and its box then spans the whole line, over its neighbours."""
+        return w["width"] > max(3, len(w["text"])) * w["font_size_px"] * 1.0
     # cut_x and cut_y (set by the pipeline's word measuring): a word cut on its left or right by any box, or
     # with more than a tenth of its height hidden above or below
     words = [w for w in ocr["words"] if readable(w) and not w.get("cut_x") and w.get("cut_y", 0) <= 0.1
-             and not (w["clipped"] and at_edge(w))]
+             and not (w["clipped"] and at_edge(w)) and not measured_wide(w)]
     return words, len(ocr["words"]) - len(words)
 
 

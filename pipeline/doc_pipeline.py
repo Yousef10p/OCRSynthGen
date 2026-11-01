@@ -84,6 +84,10 @@ TRIES = 4  # attempts with new seeds when an effect leaves the text too faint
 #     line-height 1.2, then a smaller font down to 80% of its size, then loses words from the end of its last
 #     slot until its text fits. The labels are measured after this, so they match the page, and the HTML and
 #     Markdown are rebuilt from the words on the page (what still can't fit is dropped: cut_x/cut_y);
+#     a row wider than its column (a form row: a no-wrap label and a 5em value in a narrow column) would
+#     spill over the next column, text on text: such a row may wrap, and its children lose nowrap/min-width;
+#     the same for the page itself: a page is one sheet with overflow:hidden, so a slot running into the
+#     bottom margin (or off a side) loses words from its end, and a slot left empty hides its paragraph;
 #  2. grey picture areas a web page's converter could not name as such (a ".logo" square, a hero image area):
 #     an element with no text in it, at least 30 x 30 px, with a plain grey background gets one of PHOTOS.
 #     Text on grey (a grey section or banner) is design and stays; table cells and form fields are left alone.
@@ -113,6 +117,36 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
         if (fits()) lo = mid; else hi = mid - 1;
       }
       spans[i].textContent = words.slice(0, lo).join(" ");
+    }
+  }
+  for (const el of document.body.querySelectorAll("*")) {
+    if (el.classList.contains("page") || !el.textContent.trim() || el.scrollWidth <= el.clientWidth + 1) continue;
+    if (/hidden|clip/.test(getComputedStyle(el).overflowX) || !el.clientWidth) continue;
+    el.style.setProperty("flex-wrap", "wrap", "important");
+    for (const c of el.children) {
+      c.style.setProperty("white-space", "normal", "important");
+      c.style.setProperty("min-inline-size", "0", "important");
+      c.style.setProperty("overflow-wrap", "anywhere", "important");
+    }
+  }
+  for (const page of document.querySelectorAll(".page")) {
+    const pr = page.getBoundingClientRect(), bottom = pr.bottom - parseFloat(getComputedStyle(page).paddingBottom);
+    const out = (el) => [...el.getClientRects()].some((r) => r.bottom > bottom + 1 || r.right > pr.right + 1
+                                                             || r.left < pr.left - 1);
+    const spans = [...page.querySelectorAll("[data-slot]")];
+    for (let i = spans.length - 1; i >= 0; i--) {
+      const s = spans[i];
+      if (!out(s)) continue;
+      const words = s.textContent.split(/\\s+/).filter(Boolean);
+      let lo = 0, hi = words.length;  // the most words that stay on the page
+      while (lo < hi) {
+        const mid = Math.ceil((lo + hi) / 2);
+        s.textContent = words.slice(0, mid).join(" ");
+        if (out(s)) hi = mid - 1; else lo = mid;
+      }
+      s.textContent = words.slice(0, lo).join(" ");
+      const block = s.closest("p, li, h1, h2, h3, h4, h5, h6, blockquote, figcaption, dt, dd, caption, label");
+      if (!lo && block && !block.textContent.trim()) block.style.display = "none";
     }
   }
   const photos = PHOTOS; let k = 0;
