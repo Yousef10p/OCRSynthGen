@@ -26,7 +26,7 @@ STATIC = Path(__file__).resolve().parent / "static"
 PORT, WORKERS = 8765, 4
 CHOICES = {
     "language": {"mix": None, "ar": {"ar": 1}, "en": {"en": 1}},
-    "effect": {"mix": None, "ocrsmith": {"ocrsmith": 1}, "augraphy": {"augraphy": 1},
+    "effect": {"mix": None, "clean": {"clean": 1}, "ocrsmith": {"ocrsmith": 1}, "augraphy": {"augraphy": 1},
                "scan-simulator": {"scan-simulator": 1}, "augraphy+scan-simulator": {"augraphy+scan-simulator": 1}},
     "source": {"mix": None, "grammar": {"grammar": 1}, "websight": {"websight": 1}, "doclaynet": {"doclaynet": 1}},
     "text": {"wikipedia": "wikipedia", "demo": "demo"},

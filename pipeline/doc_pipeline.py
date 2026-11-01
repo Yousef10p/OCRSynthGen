@@ -3,8 +3,8 @@
     1. template  an empty template from the bank (or, optionally, one written by a small local LLM)
     2. text      filled with Arabic or English (picked at random, mostly Arabic) and a random typography
     3. render    SynthDoc renders the page and measures every word, line and slot (the labels)
-    4. effects   OCRSmith, Augraphy or scan-simulator (picked at random, mostly OCRSmith); every box is
-                 moved with the page
+    4. effects   none (a clean page, 15%), or OCRSmith, Augraphy or scan-simulator (mostly OCRSmith);
+                 every box is moved with the page
     5. markdown  the filled page as Markdown, with the bounding boxes at the very top
 
 Grey picture boxes in a template get a random photo from img_pool/ (see img_pool.py) in step 2, and the
@@ -59,7 +59,8 @@ from src.dedup import load_bank  # noqa: E402
 from src.markdown import to_markdown  # noqa: E402
 
 LANGUAGES = {"ar": 0.8, "en": 0.2}
-EFFECTS = {"ocrsmith": 0.6, "augraphy": 0.1, "scan-simulator": 0.1, "augraphy+scan-simulator": 0.2}
+# "clean": some pages stay exactly as SynthDoc rendered them, sharp and noise-free (born-digital documents)
+EFFECTS = {"clean": 0.15, "ocrsmith": 0.5, "augraphy": 0.1, "scan-simulator": 0.05, "augraphy+scan-simulator": 0.2}
 SOURCES = {"grammar": 1, "websight": 1, "doclaynet": 1}
 ROLE = {prop: role for role, prop in ROLE_PROPERTY.items()}  # doco:sectionTitle -> heading
 TRIES = 4  # attempts with new seeds when an effect leaves the text too faint
@@ -185,7 +186,11 @@ class DocPipeline:
     def degrade(self, image, words, rng, effect):
         """4. One effect library, retried with new seeds while the text is too faint.
 
-        Returns (image, word boxes, attacks, contrast, seed); word boxes are [x, y, w, h] or None if lost."""
+        Returns (image, word boxes, attacks, contrast, seed); word boxes are [x, y, w, h] or None if lost.
+        effect "clean" keeps SynthDoc's page exactly as rendered: no paper, blur, noise or warp."""
+        if effect == "clean":
+            boxes = [[round(w["x"]), round(w["y"]), round(w["width"]), round(w["height"])] for w in words]
+            return image, boxes, ["clean"], contrast(np.asarray(image.convert("L")), boxes), None
         best = None
         for _ in range(TRIES):
             seed = rng.randrange(2**31)

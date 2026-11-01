@@ -61,7 +61,7 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
 <header>
   <h1>Sample Generator</h1>
   <label>Language <select id="language"><option value="mix">mixed (80% Arabic)</option><option value="ar">Arabic</option><option value="en">English</option></select></label>
-  <label>Effects <select id="effect"><option value="mix">mixed (60% OCRSmith)</option><option value="ocrsmith">OCRSmith</option><option value="augraphy">Augraphy</option><option value="scan-simulator">scan-simulator</option><option value="augraphy+scan-simulator">Augraphy + scan-simulator</option></select></label>
+  <label>Effects <select id="effect"><option value="mix">mixed (15% clean, 50% OCRSmith)</option><option value="clean">clean (no effects)</option><option value="ocrsmith">OCRSmith</option><option value="augraphy">Augraphy</option><option value="scan-simulator">scan-simulator</option><option value="augraphy+scan-simulator">Augraphy + scan-simulator</option></select></label>
   <label>Templates <select id="source"><option value="mix">bank: all sources</option><option value="grammar">bank: Grammar</option><option value="websight">bank: WebSight</option><option value="doclaynet">bank: DocLayNet</option></select></label>
   <label>Text <select id="text"><option value="wikipedia">Wikipedia (ar + en)</option><option value="demo">demo sentences</option></select></label>
   <label>Template maker <select id="templates"><option value="bank">bank</option><option value="llm" id="llm-opt">LLM</option></select></label>
@@ -69,7 +69,7 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
   <div class="bar"><i id="bar"></i></div>
   <span id="status"></span>
 </header>
-<div class="steps"><b>Pipeline:</b> template → Arabic/English text from Wikipedia + random style + photos from img_pool in picture boxes → SynthDoc render (labels) → OCRSmith / Augraphy / scan-simulator (boxes moved) → Markdown with boxes on top</div>
+<div class="steps"><b>Pipeline:</b> template → Arabic/English text from Wikipedia + random style + photos from img_pool in picture boxes → SynthDoc render (labels) → clean, or OCRSmith / Augraphy / scan-simulator (boxes moved) → Markdown with boxes on top</div>
 <main id="grid"><div class="empty">Press <b>Generate 16 samples</b>. Pages appear here one by one as they are made.</div></main>
 
 <dialog id="pv"><div class="pv">
