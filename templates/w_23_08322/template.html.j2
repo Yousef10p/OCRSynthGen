@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#logo {
+    background-color: #fff;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+header, footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+#left-column {
+    float: right;
+    width: 50%;
+}
+
+#promo {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #f8f8f8;
+}
+
+.button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo">
+
+            {{ slot_0 }}
+        </div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<div id="left-column">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+
+            {{ slot_9 }}
+        </div>
+<div id="promo">
+<h2>{{ slot_10 }}</h2>
+<a class="button">{{ slot_11 }}</a>
+<a class="button">{{ slot_12 }}</a>
+</div>
+</main>
+<footer>
+<div id="social-media">
+<ul>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

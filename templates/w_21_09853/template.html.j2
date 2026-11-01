@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+}
+
+header img {
+    width: 100px;
+    height: 50px;
+    background: #000;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+main {
+    margin: 20px 20px;
+}
+
+#live-scoreboard, #match-schedule {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="live-scoreboard">
+<h2>{{ slot_2 }}</h2>
+<div id="scoreboard"></div>
+</section>
+<section id="match-schedule">
+<h2>{{ slot_3 }}</h2>
+<table>
+<tr>
+<th>{{ slot_4 }}</th>
+<th>{{ slot_5 }}</th>
+<th>{{ slot_6 }}</th>
+<th>{{ slot_7 }}</th>
+<th>{{ slot_8 }}</th>
+</tr>
+<tr>
+<td>{{ slot_9 }}</td><td>{{ slot_10 }}</td><td>{{ slot_11 }}</td><td>{{ slot_12 }}</td><td>{{ slot_13 }}</td>
+</tr>
+
+</table>
+</section>
+</main>
+<footer>
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

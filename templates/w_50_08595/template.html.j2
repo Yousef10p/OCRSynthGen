@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-body);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+section {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+.artist-image, .track-image {
+    width: 100px;
+    height: 100px;
+    background-color: lightgray;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: lightgray;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<section id="music-artists">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<div class="artist-image ph"></div>
+<p>{{ slot_3 }}</p>
+<div class="artist-image ph"></div>
+</section>
+<section id="music-tracks">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<div class="track-image ph"></div>
+<p>{{ slot_6 }}</p>
+<div class="track-image ph"></div>
+</section>
+<footer>
+<section id="purchase-music">
+<h2>{{ slot_7 }}</h2>
+<a>{{ slot_8 }}</a>
+<a>{{ slot_9 }}</a>
+</section>
+<section id="social-media">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</section>
+<section id="tour-dates">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<ul>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+</ul>
+</section>
+</footer>
+</body>
+</html>

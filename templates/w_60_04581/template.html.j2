@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+}
+header {
+    background-color: #FF0000;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 40px;
+}
+#slideshow {
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+#slideshow img {
+    margin-bottom: 10px;
+    width: 300px;
+    height: 300px;
+    border: 5px solid #000;
+}
+
+#slideshow p {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+footer {
+    background-color: #0000FF;
+    color: #FFF;
+    text-align: center;
+    padding: 10px 0;
+}
+section {
+    margin: 20px 0;
+}
+@media (max-width: 600px) {
+    header, footer, #slideshow {
+        font-size: 30px;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+
+<section id="menu">
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</section>
+
+<section id="locations">
+<table>
+<thead>
+<tr>
+<th>{{ slot_6 }}</th>
+<th>{{ slot_7 }}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          <td>{{ slot_8 }} </td>
+<td>{{ slot_9 }} </td>
+</tr>
+<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          <td>{{ slot_10 }} </td>
+<td>{{ slot_11 }}</td>
+</tr>
+<tr>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          <td>{{ slot_12 }} </td>
+<td>{{ slot_13 }}</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section id="slideshow">
+<div class="ph" style="inline-size: 600px; block-size: 500px"></div>
+<p>{{ slot_14 }}</p>
+<div class="ph" style="inline-size: 600px; block-size: 500px"></div>
+<p>{{ slot_15 }}</p>
+<div class="ph" style="inline-size: 600px; block-size: 500px"></div>
+<p>{{ slot_16 }}</p>
+</section>
+
+<footer>
+<a>{{ slot_17 }}</a> {{ slot_18 }}
+    <a>{{ slot_19 }}</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-gap: 10px;
+    padding: 10px;
+    color: #333;
+    font-family: var(--font-body);
+}
+
+header {
+    grid-column: 1 / 4;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+header nav ul li a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+header .banner {
+    grid-column: 1 / 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    background-color: #ddd;
+    height: 100px;
+}
+
+main {
+    grid-column: 2;
+}
+
+main aside, main section {
+    margin-top: 20px;
+}
+
+main figure {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+aside {
+    grid-column: 3;
+}
+
+main, aside {
+    padding: 10px;
+}
+
+.rectangle {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label, form input, form button {
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        grid-template-columns: 1fr;
+    }
+
+    header .banner {
+        grid-column: 1;
+    }
+
+    main {
+        grid-column: 1;
+    }
+
+    aside {
+        grid-row: 1;
+        grid-column: 1;
+        display: none;
+    }
+
+    header nav button {
+        display: block;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        background-color: rgba(255,255,255,0.9);
+        padding: 10px;
+    }
+
+    header nav ul.show {
+        display: flex;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<button class="hamburger">{{ slot_0 }}</button>
+<ul class="nav-links">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<div class="banner">{{ slot_5 }}</div>
+</header>
+<main>
+<aside>
+<h2>{{ slot_6 }}</h2>
+<figure>
+<div class="rectangle"></div>
+<figcaption>{{ slot_7 }}</figcaption>
+</figure>
+<figure>
+<div class="rectangle"></div>
+<figcaption>{{ slot_8 }}</figcaption>
+</figure>
+</aside>
+<section>
+<h2>{{ slot_9 }}</h2>
+<article>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</article>
+<article>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</article>
+</section>
+<section>
+<h2>{{ slot_14 }}</h2>
+<article>
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</article>
+<article>
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+</article>
+</section>
+</main>
+<aside>
+<h2>{{ slot_19 }}</h2>
+<div>
+<p>{{ slot_20 }}</p>
+<div class="rectangle"></div>
+</div>
+<div>
+<p>{{ slot_21 }}</p>
+<div class="rectangle"></div>
+</div>
+</aside>
+<section id="subscribe">
+<h2>{{ slot_22 }}</h2>
+<form>
+<label>{{ slot_23 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_24 }}</span>
+<label>{{ slot_25 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_26 }}</span>
+<label>{{ slot_27 }}</label>
+<span class="" style="display: inline-block; inline-size: 0.9em; block-size: 0.9em; border: 1px solid #666"></span>
+<button>{{ slot_28 }}</button>
+</form>
+</section>
+</body>
+</html>

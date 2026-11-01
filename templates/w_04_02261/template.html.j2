@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+nav {
+	background-color: yellow;
+	height: 2em;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+nav a {
+	color: black;
+	text-decoration: none;
+}
+
+nav li {
+	list-style-type: none;
+}
+
+#workout-programs {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.exercise-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.exercise-box {
+	background-color: lightgray;
+	width: 30%;
+	margin-bottom: 1em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 5em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<section id="workout-programs">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+<div class="exercise-container">
+<div class="exercise-box"> <p>{{ slot_5 }}</p></div>
+<div class="exercise-box"> <p>{{ slot_6 }}</p></div>
+<div class="exercise-box"> <p>{{ slot_7 }}</p></div>
+</div>
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="exercise-container">
+<div class="exercise-box"> <p>{{ slot_10 }}</p></div>
+<div class="exercise-box"> <p>{{ slot_11 }}</p></div>
+<div class="exercise-box"> <p>{{ slot_12 }}</p></div>
+</div>
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="exercise-container">
+<div class="exercise-box"> <p>{{ slot_15 }}</p></div>
+<div class="exercise-box"> <p>{{ slot_16 }}</p></div>
+<div class="exercise-box"> <p>{{ slot_17 }}</p></div>
+</div>
+</section>
+</body>
+</html>

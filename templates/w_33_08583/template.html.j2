@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.5;
+    color: #333;
+    background: #FFFFFF;
+}
+
+
+header {
+    background: #333;
+    color: #FFF;
+    padding: 1em;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 1.2em;
+}
+
+nav a {
+    color: #FFF;
+    text-decoration: none;
+    padding: 0 1em;
+}
+
+
+main {
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+section {
+    flex: 0 0 100%;
+    padding: 1em;
+    border: 1px solid #333;
+    margin: 1em 0;
+}
+
+section#idea-submission {
+    flex: 0 0 45%;
+}
+
+section h2 {
+    margin-bottom: 0.5em;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #333;
+}
+
+
+footer {
+    background: #333;
+    color: #FFF;
+    text-align: center;
+    padding: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section>
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</section>
+<section>
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</section>
+<section id="idea-submission">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<form>
+<label>{{ slot_11 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span><br>
+<label>{{ slot_13 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_14 }}</span><br>
+<span class="">{{ slot_15 }}</span>
+</form>
+</section>
+</main>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

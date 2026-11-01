@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+
+.hero {
+    height: 500px;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.header {
+    text-align: center;
+}
+
+.pricing {
+    margin: 5em;
+}
+
+.pricing table {
+    width: 100%;
+}
+
+article {
+    margin: 5em 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<div class="header">
+<h1>{{ slot_5 }}</h1>
+<button>{{ slot_6 }}</button>
+</div>
+</div>
+<div class="pricing">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<table>
+<tr>
+<th>{{ slot_9 }}</th>
+<th>{{ slot_10 }}</th>
+</tr>
+<tr>
+<td>{{ slot_11 }}</td>
+<td>{{ slot_12 }}</td>
+</tr>
+<tr>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+</tr>
+</table>
+</div>
+<div class="blog">
+<h2>{{ slot_15 }}</h2>
+<article>
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+</article>
+</div>
+<footer>
+<p>{{ slot_18 }}</p>
+
+</footer>
+</body>
+</html>

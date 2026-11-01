@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: white;
+}
+
+.fake-img {
+    width: 100px;
+    height: 100px;
+}
+
+.red-rectangle { background-color: red; }
+.green-rectangle { background-color: green; }
+.blue-rectangle { background-color: blue; }
+.yellow-rectangle { background-color: yellow; }
+.purple-rectangle { background-color: purple; }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+}
+
+header nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+header nav ul li {
+    margin: 0 1rem;
+}
+
+header form {
+    display: flex;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
+main section {
+    padding: 2rem;
+}
+
+main section.book-recommendations {
+    background-color: #f44336;
+}
+
+main section.blog {
+    background-color: #4caf50;
+}
+
+main section.new-releases {
+    background-color: #2196f3;
+}
+
+footer {
+    padding: 1rem;
+    background-color: #333;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+</form>
+</header>
+<main>
+<section class="book-recommendations">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="fake-img red-rectangle ph"></div>
+</section>
+<section class="blog">
+<h2>{{ slot_7 }}</h2>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<div class="fake-img green-rectangle ph"></div>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="fake-img blue-rectangle ph"></div>
+</section>
+<section class="new-releases">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<div class="fake-img yellow-rectangle ph"></div>
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+<div class="fake-img purple-rectangle ph"></div>
+</section>
+</main>
+<footer>
+<p>{{ slot_18 }}</p>
+</footer>
+</body>
+</html>

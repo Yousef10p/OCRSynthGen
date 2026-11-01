@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+header {
+    display: flex;
+    align-items: center;
+    background: #f2f2f2;
+}
+header img {
+    height: 50px;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+}
+nav ul li {
+    margin-left: 20px;
+}
+.hero {
+    height: 200px;
+    background: #eee;
+}
+main {
+    margin: 20px 0;
+}
+footer {
+    display: flex;
+    justify-content: space-between;
+    background: #f2f2f2;
+}
+.social-media a {
+    margin-left: 20px;
+}
+.newsletter-signup input {
+    margin-left: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section class="hero">
+
+<div class="hero-image ph"></div>
+</section>
+<main>
+<section class="products">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</section>
+<section class="promotions">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</section>
+<section class="events">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</section>
+</main>
+<footer>
+<div class="social-media">
+<a>{{ slot_10 }}</a>
+<a>{{ slot_11 }}</a>
+<a>{{ slot_12 }}</a>
+</div>
+<form class="newsletter-signup">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<button>{{ slot_14 }}</button>
+</form>
+<div class="customer-support">
+<a>{{ slot_15 }}</a>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #556B2F;
+    color: white;
+    padding: 10px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+h1 {
+    color: #556B2F;
+    text-align: center;
+    font-size: 2em;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.6em;
+    font-size: 1em;
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+}
+
+.product {
+    width: 30%;
+    height: 100px;
+    background-color: #9ACD32; 
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contact {
+    background-color: #DAA520;
+    color: white;
+    padding: 1em;
+}
+
+.form label {
+    display: block;
+    margin: 0.5em 0;
+}
+
+.form input[type="text"], 
+.form textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    border: none;
+}
+
+.form button {
+    background-color: white;
+    border: none;
+    padding: 0.5em;
+    display: block;
+    margin: 0 auto;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<h1>{{ slot_6 }}</h1>
+<div class="products">
+<div class="product">{{ slot_7 }}</div>
+<div class="product">{{ slot_8 }}</div>
+<div class="product">{{ slot_9 }}</div>
+</div>
+<h1>{{ slot_10 }}</h1>
+<p>{{ slot_11 }}</p>
+<div class="contact">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="form">
+<label>{{ slot_14 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<label>{{ slot_16 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<label>{{ slot_18 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_19 }}</span>
+<button>{{ slot_20 }}</button>
+</div>
+</div>
+</main>
+</body>
+</html>

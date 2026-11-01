@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  background-color: rgb(233, 212, 255);
+  margin: 0;
+  font-family: var(--font-body);
+}
+
+.header {
+  padding: 50px;
+  text-align: center;
+  background: #8B0000;
+  background: linear-gradient(to bottom, #ff0000, #8B0000);
+  color: white;
+  font-size: 30px;
+}
+
+.header h1 {
+  font-family: var(--font-heading);
+}
+
+.navigation {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navigation li {
+  float: right;
+}
+
+.navigation li a {
+  display: block;
+  color: pink;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: var(--font-body);
+}
+
+.navigation li a:hover {
+  background-color: #111;
+}
+
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.content div{
+  width: 25%;
+  height: 200px;
+  background-color: rgb(255, 51, 0);
+  margin: 2px;
+  font-family: var(--font-body);
+  color: white;
+}
+
+.content h1 {
+  text-align: center;
+}
+
+.center_img{
+  margin: 0 auto;
+  display: block;
+}
+
+.footer {
+  background: #8B0000;
+  background: linear-gradient(to bottom, #ff0000, #8B0000);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="header">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</header>
+<nav class="navigation">
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<div class="content">
+<div>
+<h1>{{ slot_6 }}</h1>
+<div class="center_img" style="background-color: rgb(51, 0, 255);">{{ slot_7 }}</div>
+<p>{{ slot_8 }} </p>
+</div>
+<div>
+<h1>{{ slot_9 }}</h1>
+<div class="center_img" style="background-color: rgb(255, 165, 0);">{{ slot_10 }}</div>
+<p>{{ slot_11 }}</p>
+</div>
+<div>
+<h1>{{ slot_12 }}</h1>
+<div class="center_img" style="background-color: rgb(0, 255, 85);">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+</div>
+<div>
+<h1>{{ slot_15 }}</h1>
+<div class="center_img" style="background-color: rgb(0, 255, 255);">{{ slot_16 }}</div>
+<p>{{ slot_17 }}</p>
+</div>
+</div>
+<footer class="footer">
+<p>{{ slot_18 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    padding: 0;
+    margin: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.header {
+    background-color: #f44336;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    background-color: lightgray;
+}
+
+.menu-item {
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 20px 0;
+}
+
+.game-categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.game-card {
+    border: 1px solid lightgray;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.game-card-image {
+    width: 200px;
+    height: 100px;
+    background-color: lightgray;
+    margin-bottom: 20px;
+}
+
+.footer {
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="header">{{ slot_0 }}</div>
+<div class="menu">
+<div class="menu-item">{{ slot_1 }}</div>
+<div class="menu-item">{{ slot_2 }}</div>
+<div class="menu-item">{{ slot_3 }}</div>
+<div class="menu-item">{{ slot_4 }}</div>
+</div>
+<h1>{{ slot_5 }}</h1>
+<div class="game-categories">
+<div>
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</div>
+<div class="game-review">
+<h2>{{ slot_10 }}</h2>
+<div class="game-card">
+<div class="game-card-image ph"></div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="game-card">
+<div class="game-card-image ph"></div>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</div>
+<div class="footer">{{ slot_15 }}</div>
+</div>
+</body>
+</html>

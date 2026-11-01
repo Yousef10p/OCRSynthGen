@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+h1, h2 {
+  text-align: center;
+  color: blue;
+}
+
+#navigation {
+  width: 20%;
+  height: 100%;
+  position: fixed;
+  background-color: grey;
+}
+
+#navigation ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#navigation li {
+  padding: 10px;
+  text-align: center;
+}
+
+
+.patient-testimonial, .blog-post {
+  width: 200px;
+  height: 100px;
+  background-color: yellow;
+  margin: 10px;
+  display: inline-block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="navigation">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div id="header">
+<h1>{{ slot_5 }}</h1>
+</div>
+<div id="services">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</div>
+<div id="testimonials">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+
+<div class="patient-testimonial">{{ slot_10 }}</div>
+<div class="patient-testimonial">{{ slot_11 }}</div>
+</div>
+<div id="blog">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+
+<div class="blog-post">{{ slot_14 }}</div>
+<div class="blog-post">{{ slot_15 }}</div>
+</div>
+<div id="contact">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+<p>{{ slot_20 }}</p>
+<p>{{ slot_21 }}</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+.product-image, .service-image {
+    width: 200px;
+    height: 200px;
+    background-color: #ccc;
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    margin: 0;
+    padding: 10px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background-color: #f8f8f8;
+}
+
+section {
+    padding: 20px;
+}
+
+#products, #services, #blog, #videos, #social-media {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#blog p, #videos p {
+    margin: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<h1>{{ slot_0 }}</h1>
+
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+
+<section id="products">
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li class="product">
+<h3>{{ slot_7 }}</h3>
+<div class="product-image ph"></div>
+</li>
+<li class="product">
+<h3>{{ slot_8 }}</h3>
+<div class="product-image ph"></div>
+</li>
+<li class="product">
+<h3>{{ slot_9 }}</h3>
+<div class="product-image ph"></div>
+</li>
+<li class="product">
+<h3>{{ slot_10 }}</h3>
+<div class="product-image ph"></div>
+</li>
+</ul>
+</section>
+
+<section id="services">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li class="service">{{ slot_12 }}</li>
+<li class="service">{{ slot_13 }}</li>
+</ul>
+</section>
+
+<section id="blog">
+<h2>{{ slot_14 }}</h2>
+<ul>
+<li class="blog-post">
+<h3>{{ slot_15 }}</h3>
+<p>
+                {{ slot_16 }}
+            </p>
+</li>
+<li class="blog-post">
+<h3>{{ slot_17 }}</h3>
+<p>
+                {{ slot_18 }}
+            </p>
+</li>
+</ul>
+</section>
+
+<section id="videos">
+<h2>{{ slot_19 }}</h2>
+<ul>
+<li class="video">
+<h3>{{ slot_20 }}</h3>
+<p>{{ slot_21 }} <a>{{ slot_22 }}</a>{{ slot_23 }}</p>
+</li>
+<li class="video">
+<h3>{{ slot_24 }}</h3>
+<p>{{ slot_25 }} <a>{{ slot_26 }}</a>{{ slot_27 }}</p>
+</li>
+</ul>
+</section>
+
+<section id="social-media">
+<h2>{{ slot_28 }}</h2>
+<ul>
+<li><a>{{ slot_29 }}</a></li>
+<li><a>{{ slot_30 }}</a></li>
+<li><a>{{ slot_31 }}</a></li>
+</ul>
+</section>
+</body>
+</html>

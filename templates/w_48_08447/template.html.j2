@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    background-color: beige;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+
+#logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+form input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 15px;
+}
+
+#hero {
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#hero a {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#featured {
+    padding: 50px;
+}
+
+#featured h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.listing {
+    margin-bottom: 50px;
+    display: flex;
+}
+
+.listing-img {
+    width: 300px;
+    height: 200px;
+    background-color: grey;
+    margin-left: 20px;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo">{{ slot_0 }}</div>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+</form>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+<section id="hero">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+<a>{{ slot_9 }}</a>
+<a>{{ slot_10 }}</a>
+</section>
+<section id="featured">
+<h2>{{ slot_11 }}</h2>
+<div class="listing">
+<div class="listing-img ph"></div>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<a>{{ slot_14 }}</a>
+</div>
+<div class="listing">
+<div class="listing-img ph"></div>
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+<a>{{ slot_17 }}</a>
+</div>
+</section>
+<footer>
+<p>{{ slot_18 }}</p>
+</footer>
+</body>
+</html>

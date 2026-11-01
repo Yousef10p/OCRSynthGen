@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+.nav {
+    background-color: #f8f9fa;
+    padding: 16px;
+}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav li {
+    display: inline;
+    margin-left: 16px;
+}
+
+.nav a {
+    color: #212529;
+    text-decoration: none;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 16px;
+}
+
+.main-content__left {
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.vehicle {
+    background-color: #007bff; 
+    height: 300px;
+}
+
+.configurator {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.configurator input,
+.configurator label {
+    margin-bottom: 8px;
+}
+
+.configurator button {
+    margin-top: 8px;
+}
+
+.main-content__right {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 16px;
+}
+
+.contact-form label,
+.contact-form input,
+.contact-form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.contact-form button {
+    margin-top: 8px;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav class="nav">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main class="main-content">
+<section class="main-content__left">
+
+<div class="vehicle"></div>
+<div class="configurator">
+<form>
+<label>{{ slot_4 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_5 }}</span>
+<label>{{ slot_6 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<label>{{ slot_8 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_9 }}</span>
+<button>{{ slot_10 }}</button>
+</form>
+</div>
+</section>
+<section class="main-content__right">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+</main>
+<footer>
+<form class="contact-form">
+<h2>{{ slot_13 }}</h2>
+<label>{{ slot_14 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<label>{{ slot_16 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<label>{{ slot_18 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_19 }}</span>
+<button>{{ slot_20 }}</button>
+</form>
+</footer>
+</body>
+</html>

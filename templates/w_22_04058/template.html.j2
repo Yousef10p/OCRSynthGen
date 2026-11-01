@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.listing, .services {
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid #000;
+}
+.listing-item {
+    margin-bottom: 1em;
+}
+.listing-item img {
+    background-color: #ddd;
+    width: 100px;
+    height: 100px;
+}
+.contact-testimonial {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 20%;
+}
+.contact, .testimonial {
+    margin-bottom: 1em;
+}
+.testimonial p {
+    text-align: left;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="main">
+<div class="listing">
+<h2>{{ slot_0 }}</h2>
+<div class="listing-item">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_1 }}</p>
+</div>
+<div class="listing-item">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_2 }}</p>
+</div>
+</div>
+<div class="services">
+<h2>{{ slot_3 }}</h2>
+<ul>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+</div>
+<div class="contact-testimonial">
+<div class="contact">
+<h2>{{ slot_7 }}</h2>
+<p><b>{{ slot_8 }}</b> {{ slot_9 }}</p>
+<p><b>{{ slot_10 }}</b> {{ slot_11 }}</p>
+<p><b>{{ slot_12 }}</b> {{ slot_13 }}</p>
+</div>
+<div class="testimonial">
+<h2>{{ slot_14 }}</h2>
+<p><i>{{ slot_15 }}</i> {{ slot_16 }}</p>
+</div>
+</div>
+</div>
+</body>
+</html>

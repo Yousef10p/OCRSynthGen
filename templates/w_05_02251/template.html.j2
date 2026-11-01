@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+.header {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+
+.header a {
+    margin: 0 10px;
+}
+
+.blog-post {
+    margin: 20px;
+}
+
+.blog-image-placeholder {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+</div>
+<section id="blog">
+<h2>{{ slot_4 }}</h2>
+<div class="blog-post">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<div class="blog-image-placeholder ph"></div>
+</div>
+<div class="blog-post">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<div class="blog-image-placeholder ph"></div>
+</div>
+</section>
+<section id="schedule">
+<h2>{{ slot_9 }}</h2>
+<table>
+<tr>
+<th>{{ slot_10 }}</th>
+<th>{{ slot_11 }}</th>
+<th>{{ slot_12 }}</th>
+</tr>
+<tr>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+</tr>
+<tr>
+<td>{{ slot_16 }}</td>
+<td>{{ slot_17 }}</td>
+<td>{{ slot_18 }}</td>
+</tr>
+</table>
+</section>
+<section id="membership">
+<h2>{{ slot_19 }}</h2>
+<p>{{ slot_20 }}</p>
+</section>
+</body>
+</html>

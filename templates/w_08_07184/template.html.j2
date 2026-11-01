@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+header {
+    display: flex;
+    justify-content: space-between;
+}
+nav ul {
+    list-style-type: none;
+}
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+.music-slider, .artist-bio {
+    display: flex;
+    flex-direction: column;
+}
+.music-slide, .artist-bio {
+    border: 1px solid #000;
+    margin: 1em;
+    padding: 1em;
+}
+.music-image, .artist-image {
+    width: 100px;
+    height: 100px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="music">
+<h2>{{ slot_5 }}</h2>
+
+<div class="music-slider">
+<div class="music-slide">
+
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+<div class="music-image ph"></div>
+</div>
+
+</div>
+</section>
+<section id="about">
+<h2>{{ slot_8 }}</h2>
+
+<div class="artist-bio">
+
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="artist-image ph"></div>
+
+</div>
+</section>
+<footer id="contact">
+<h2>{{ slot_11 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_13 }}</span>
+<button>{{ slot_14 }}</button>
+</form>
+</footer>
+</body>
+</html>

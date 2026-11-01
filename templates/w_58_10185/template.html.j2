@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header {
+    background-color: #4772fa;
+    color: white;
+    padding: 15px;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+header ul li {
+    padding: 10px;
+}
+
+.box1 {
+    display: flex;
+    padding: 10px;
+}
+
+.box1 .section1 {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.box1 .button {
+    background-color: #4772fa;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.boximg {
+    flex: 1;
+    width: 100px;
+    height: 100px;
+    background-color: red; 
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.column1,
+.column2,
+.column3 {
+    flex: 1;
+    padding: 20px;
+    margin-left: 10px;
+    border: 1px solid #ececec;
+    border-radius: 2px;
+}
+
+.footer {
+    background-color: #4772fa;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="header">
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+</div>
+<div class="box1">
+<section>
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<a class="button">{{ slot_7 }}</a>
+</section>
+<div class="boximg ph"></div>
+</div>
+<div class="content">
+<div class="column1">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<a class="button">{{ slot_10 }}</a>
+</div>
+<div class="column2">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+<a class="button">{{ slot_13 }}</a>
+</div>
+<div class="column3">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+<a class="button">{{ slot_16 }}</a>
+</div>
+</div>
+<div class="content">
+<div class="column1">
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+<a class="button">{{ slot_19 }}</a>
+</div>
+<div class="column2">
+<h3>{{ slot_20 }}</h3>
+<p>{{ slot_21 }}</p>
+<a class="button">{{ slot_22 }}</a>
+</div>
+<div class="column3">
+<h3>{{ slot_23 }}</h3>
+<p>{{ slot_24 }}</p>
+<a class="button">{{ slot_25 }}</a>
+</div>
+</div>
+<div class="footer">
+<p>{{ slot_26 }}</p>
+</div>
+</div></body>
+</html>

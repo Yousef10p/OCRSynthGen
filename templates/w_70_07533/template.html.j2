@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: #333;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    background-color: #ff6347;
+    padding: 1em 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+h2 {
+    color: #ff6347;
+}
+
+.portfolio-item {
+    width: 100px;
+    height: 100px;
+    background-color: #ff6347;
+    margin: 1em;
+}
+
+article {
+    border-bottom: 1px solid #ff6347;
+    margin: 1em;
+}
+
+footer {
+    background-color: #ff6347;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="portfolio">
+<h2>{{ slot_3 }}</h2>
+<div class="portfolio-item"></div>
+<div class="portfolio-item"></div>
+<div class="portfolio-item"></div>
+</section>
+<section id="blog">
+<h2>{{ slot_4 }}</h2>
+<article>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</article>
+<article>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</article>
+</section>
+<section id="contact">
+<h2>{{ slot_9 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_12 }}</span>
+<span class="">{{ slot_13 }}</span>
+</form>
+</section>
+<footer>
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

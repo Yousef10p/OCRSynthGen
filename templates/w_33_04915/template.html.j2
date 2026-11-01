@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+header input {
+  width: 50%;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+nav {
+  width: 20%;
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.event, .venue {
+  margin-bottom: 20px;
+}
+
+.event h1, .venue h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.event p, .venue p {
+  margin: 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.featured-image {
+  width: 100px;
+  height: 100px;
+  background-color: #f00;
+  margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</nav>
+<main>
+<div class="event">
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+<div class="featured-image ph"></div>
+</div>
+<div class="event">
+<h1>{{ slot_12 }}</h1>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+<div class="featured-image ph"></div>
+</div>
+<aside>
+<h2>{{ slot_16 }}</h2>
+<div class="venue">
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+<div class="featured-image ph"></div>
+</div>
+<div class="venue">
+<h3>{{ slot_19 }}</h3>
+<p>{{ slot_20 }}</p>
+<div class="featured-image ph"></div>
+</div>
+</aside>
+</main>
+</body>
+</html>

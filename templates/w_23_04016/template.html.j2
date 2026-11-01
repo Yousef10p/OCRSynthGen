@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+nav li {
+  float: right;
+}
+nav li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+nav li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.image {
+  height: 200px;
+  width: 200px;
+}
+.player, .schedule, .item {
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li class="dropdown">
+<a class="dropbtn">{{ slot_3 }}</a>
+<div class="dropdown-content">
+<a>{{ slot_4 }}</a>
+<a>{{ slot_5 }}</a>
+</div>
+</li>
+</ul>
+</nav>
+</header>
+<section id="players">
+<h1>{{ slot_6 }}</h1>
+<div class="player">
+<h2>{{ slot_7 }}</h2>
+<div class="image ph"></div>
+<p>{{ slot_8 }}</p>
+</div>
+
+</section>
+<section id="schedule">
+<h1>{{ slot_9 }}</h1>
+<div class="schedule">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</div>
+
+</section>
+<section id="store">
+<h1>{{ slot_12 }}</h1>
+<div class="item">
+<h2>{{ slot_13 }}</h2>
+<div class="image ph"></div>
+<p>{{ slot_14 }}</p>
+</div>
+
+</section>
+</body>
+</html>

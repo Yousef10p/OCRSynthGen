@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: gray;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.equipment-item {
+    width: 200px;
+    float: right;
+    margin: 20px;
+}
+
+.equipment-item-image {
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.equipment-item p {
+    text-align: center;
+}
+
+#schedule-table {
+    width: 100%;
+    border: 1px solid black;
+}
+
+#schedule-table th, #schedule-table td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="equipment">
+<h2>{{ slot_3 }}</h2>
+<div class="equipment-item">
+<h3>{{ slot_4 }}</h3>
+<div class="equipment-item-image ph"></div>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="equipment-item">
+<h3>{{ slot_6 }}</h3>
+<div class="equipment-item-image ph"></div>
+<p>{{ slot_7 }}</p>
+</div>
+
+</section>
+<section id="schedule">
+<h2>{{ slot_8 }}</h2>
+<table id="schedule-table">
+<thead>
+<tr>
+<th>{{ slot_9 }}</th>
+<th>{{ slot_10 }}</th>
+<th>{{ slot_11 }}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{{ slot_12 }}</td>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+</tr>
+<tr>
+<td>{{ slot_15 }}</td>
+<td>{{ slot_16 }}</td>
+<td>{{ slot_17 }}</td>
+</tr>
+
+</tbody>
+</table>
+</section>
+</main>
+</body>
+</html>

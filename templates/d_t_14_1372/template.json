@@ -1,0 +1,170 @@
+{
+  "id": "d_t_14_1372",
+  "source": "doclaynet",
+  "source_ref": "docling-project/DocLayNet-v1.1:train:shard14:row1372",
+  "license": "CDLA-Permissive-1.0",
+  "attribution": "DocLayNet v1.1 (IBM Research), government_tenders, layout geometry only",
+  "positioning": "absolute",
+  "page": {
+    "size": "A4",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "paragraph",
+      "words": [
+        11,
+        18
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "heading",
+      "words": [
+        3,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "paragraph",
+      "words": [
+        11,
+        18
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "heading",
+      "words": [
+        3,
+        6
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "paragraph",
+      "words": [
+        11,
+        18
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "paragraph",
+      "words": [
+        17,
+        27
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_6",
+      "role": "paragraph",
+      "words": [
+        17,
+        27
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_7",
+      "role": "paragraph",
+      "words": [
+        17,
+        27
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_8",
+      "role": "paragraph",
+      "words": [
+        17,
+        27
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_9",
+      "role": "heading",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_10",
+      "role": "paragraph",
+      "words": [
+        34,
+        54
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_11",
+      "role": "paragraph",
+      "words": [
+        17,
+        27
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_12",
+      "role": "paragraph",
+      "words": [
+        5,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_13",
+      "role": "paragraph",
+      "words": [
+        11,
+        18
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_14",
+      "role": "footnote",
+      "words": [
+        14,
+        23
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_15",
+      "role": "footer",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 1,
+    "tables": 0,
+    "lists": 0,
+    "list_depth": 0,
+    "forms": 0,
+    "asides": 0,
+    "has_header": false,
+    "has_footer": true,
+    "slot_count": 16
+  },
+  "structure_hash": "02fb9dabb2ea323d43e8bd7f2eb8d7f21fe9cd490f6fb77d3e36eb771ca77fce"
+}

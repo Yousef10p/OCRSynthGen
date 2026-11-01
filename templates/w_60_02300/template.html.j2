@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.5;
+}
+
+header {
+    background-image: none;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 20px 0;
+}
+
+header nav ul li {
+    display: inline;
+    padding: 0 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), none;
+    background-size: cover;
+    background-position: center center;
+}
+
+#hero h1, #hero h2 {
+    margin-bottom: 20px;
+}
+
+#about, #products, #contact {
+    padding: 50px 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+footer p {
+    margin-bottom: 20px;
+}
+
+footer .footer-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+}
+
+header .logo, footer .footer-image {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo ph"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<h1>{{ slot_5 }}</h1>
+<h2>{{ slot_6 }}</h2>
+<div class="ph" style="inline-size: 560px; block-size: 315px"></div>
+</section>
+<section id="about">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</section>
+<section id="products">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</section>
+<section id="contact">
+<h2>{{ slot_11 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_15 }}</span>
+<button>{{ slot_16 }}</button>
+</form>
+</section>
+</main>
+<footer>
+<p>{{ slot_17 }}</p>
+<div class="footer-image ph"></div>
+</footer>
+</body>
+</html>

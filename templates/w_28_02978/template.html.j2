@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+header {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+h1 {
+  margin: 0;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+section {
+  margin: 20px;
+}
+.package {
+  float: right;
+  width: 30%;
+  background: #f0f0f0;
+  padding: 10px;
+  margin: 10px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 20px;
+}
+input, textarea, button {
+  margin: 10px 0;
+  padding: 10px;
+}
+footer {
+  text-align: center;
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<p>{{ slot_4 }}</p>
+<section id="packages">
+<div class="package">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="package">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="package">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</div>
+</section>
+<section id="contact">
+<h2>{{ slot_11 }}</h2>
+<form>
+<label>{{ slot_12 }}</label><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<label>{{ slot_14 }}</label><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<label>{{ slot_16 }}</label><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_17 }}</span>
+<button>{{ slot_18 }}</button>
+</form>
+<p>{{ slot_19 }} <a>{{ slot_20 }}</a></p>
+</section>
+<section id="blog">
+<h2>{{ slot_21 }}</h2>
+<article>
+<h3>{{ slot_22 }}</h3>
+<p>{{ slot_23 }}</p>
+</article>
+<article>
+<h3>{{ slot_24 }}</h3>
+<p>{{ slot_25 }}</p>
+</article>
+</section>
+</main>
+<footer>
+<p>{{ slot_26 }}</p>
+</footer>
+</body>
+</html>

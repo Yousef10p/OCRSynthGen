@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: lightgray;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+#hero {
+    background-image: none;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2em;
+}
+
+.destination-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin: 20px;
+}
+
+.destination {
+    background-color: lightgray;
+    padding: 20px;
+    height: 150px;
+}
+
+.review-container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-gap: 20px;
+    margin: 20px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h2>{{ slot_0 }}</h2>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<h1>{{ slot_5 }}</h1>
+</section>
+<section id="destinations">
+<h2>{{ slot_6 }}</h2>
+<div class="destination-container">
+<span class="destination" id="dest1"></span>
+<span class="destination" id="dest2"></span>
+<span class="destination" id="dest3"></span>
+</div>
+</section>
+<section id="reviews">
+<h2>{{ slot_7 }}</h2>
+<div class="review-container">
+<h4 class="username">{{ slot_8 }}</h4>
+<p class="review-text">{{ slot_9 }}</p>
+<h4 class="username">{{ slot_10 }}</h4>
+<p class="review-text">{{ slot_11 }}</p>
+<h4 class="username">{{ slot_12 }}</h4>
+<p class="review-text">{{ slot_13 }}</p>
+</div>
+</section>
+<section id="about">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</section>
+</main>
+</body>
+</html>

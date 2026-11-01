@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #f2f2f2;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: var(--font-body);
+	color: #555;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+}
+
+main {
+	display: flex;
+  justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: #f2f2f2;
+}
+
+.calculator {
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+#display {
+	width: 100%;
+	height: 50px;
+	margin-bottom: 20px;
+	border: 1px solid #333;
+	border-radius: 5px;
+	text-align: left;
+	padding: 10px;
+	font-size: 24px;
+}
+
+.buttons {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 10px;
+}
+
+button {
+	border: none;
+	background-color: #f2f2f2;
+	color: #555;
+	border-radius: 5px;
+	padding: 15px;
+	font-size: 24px;
+}
+
+.operator {
+	background-color: #ddd;
+}
+
+.clear {
+	background-color: #f33;
+	color: #fff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<section class="calculator">
+<h2>{{ slot_1 }}</h2>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_2 }}</span>
+<div class="buttons">
+<button>{{ slot_3 }}</button>
+<button>{{ slot_4 }}</button>
+<button>{{ slot_5 }}</button>
+<button>{{ slot_6 }}</button>
+<button>{{ slot_7 }}</button>
+<button>{{ slot_8 }}</button>
+<button>{{ slot_9 }}</button>
+<button>{{ slot_10 }}</button>
+<button>{{ slot_11 }}</button>
+<button>{{ slot_12 }}</button>
+<button class="operator">{{ slot_13 }}</button>
+<button class="operator">{{ slot_14 }}</button>
+<button class="operator">{{ slot_15 }}</button>
+<button class="operator">{{ slot_16 }}</button>
+<button>{{ slot_17 }}</button>
+<button class="clear">{{ slot_18 }}</button>
+</div>
+</section>
+</main>
+</body>
+</html>

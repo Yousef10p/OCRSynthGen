@@ -1,0 +1,278 @@
+{
+  "id": "w_68_03875",
+  "source": "websight",
+  "source_ref": "v0.1:shard68:row3875",
+  "license": "CC-BY-4.0",
+  "attribution": "WebSight (HuggingFaceM4)",
+  "positioning": "flow",
+  "page": {
+    "size": "Letter",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "title",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "heading",
+      "words": [
+        3,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "header",
+      "words": [
+        18,
+        35
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_6",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_7",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_8",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_9",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_10",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_11",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_12",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_13",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_14",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_15",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_16",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_17",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_18",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_19",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_20",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_21",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_22",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_23",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_24",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_25",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_26",
+      "role": "list_item",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_27",
+      "role": "footer",
+      "words": [
+        4,
+        9
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 1,
+    "tables": 0,
+    "lists": 5,
+    "list_depth": 2,
+    "forms": 0,
+    "asides": 0,
+    "has_header": true,
+    "has_footer": true,
+    "slot_count": 28
+  },
+  "structure_hash": "cee723bcdc1df4260e309faa53e6bb3db3147892f853773cdbdbb792c1096de5"
+}

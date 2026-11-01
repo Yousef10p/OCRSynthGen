@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.property {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.image-placeholder {
+    background-color: #e9ecef;
+    display: block;
+    padding-bottom: 65%;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form textarea {
+    width: 100%;
+    height: 100px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a> {{ slot_2 }}
+            <a>{{ slot_3 }}</a> {{ slot_4 }}
+            <a>{{ slot_5 }}</a>
+</nav>
+</header>
+<main>
+<section id="sale">
+<h2>{{ slot_6 }}</h2>
+<div class="property">
+<div class="image-placeholder ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="property">
+<div class="image-placeholder ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_8 }}</p>
+</div>
+</section>
+<section id="rent">
+<h2>{{ slot_9 }}</h2>
+<div class="property">
+<div class="image-placeholder ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="property">
+<div class="image-placeholder ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_11 }}</p>
+</div>
+</section>
+<section id="contact">
+<h2>{{ slot_12 }}</h2>
+<form>
+<label>{{ slot_13 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span><br>
+<label>{{ slot_15 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span><br>
+<label>{{ slot_17 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_18 }}</span><br>
+<span class="">{{ slot_19 }}</span>
+</form>
+</section>
+</main>
+</body>
+</html>

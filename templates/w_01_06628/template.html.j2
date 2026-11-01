@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+#search-bar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 300px;
+    height: 50px;
+    background-color: lightgray;
+}
+
+#search-bar form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#search-bar form input[type="text"] {
+    width: 70%;
+    height: 30px;
+}
+
+#search-bar form button[type="submit"] {
+    width: 20%;
+    height: 30px;
+}
+
+#categorized-menu {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    background-color: lightblue;
+}
+
+#categorized-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+#categorized-menu ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#featured-deals {
+    position: absolute;
+    top: 140px;
+    right: 10px;
+    width: 70%;
+    background-color: lightgreen;
+}
+
+#featured-deals .deal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#featured-deals .deal h3 {
+    width: 30%;
+}
+
+#featured-deals .deal .deal-image {
+    width: 60%;
+    height: 100px;
+    background-color: black;
+}
+
+#privacy-issues {
+    position: absolute;
+    top: 230px;
+    right: 10px;
+    width: 30%;
+    background-color: lightpink;
+}
+
+#privacy-issues .privacy-issue {
+    margin-bottom: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="search-bar">
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<button>{{ slot_1 }}</button>
+</form>
+</div>
+<div id="categorized-menu">
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</div>
+<div id="featured-deals">
+<h2>{{ slot_6 }}</h2>
+<div class="deal">
+<h3>{{ slot_7 }}</h3>
+<div class="deal-image ph"></div>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="deal">
+<h3>{{ slot_9 }}</h3>
+<div class="deal-image ph"></div>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+<div id="privacy-issues">
+<h2>{{ slot_11 }}</h2>
+<div class="privacy-issue">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="privacy-issue">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</body>
+</html>

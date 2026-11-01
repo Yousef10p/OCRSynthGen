@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+header, aside, main, footer {
+    padding: 20px;
+}
+
+header {
+    background-color: #f8f8f8;
+}
+
+aside {
+    background-color: #f0f0f0;
+    width: 20%;
+    float: right;
+}
+
+main {
+    margin-right: 20%;
+    width: 60%;
+    float: right;
+    background-color: #e8e8e8;
+}
+
+footer {
+    clear: both;
+    background-color: #d8d8d8;
+}
+
+.blog-post, .review {
+    background-color: #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    height: 100px;
+}
+
+ul, form {
+    list-style-type: none;
+    padding: 0;
+}
+
+input[type="text"], input[type="email"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#chatbot {
+    width: 20%;
+    background-color: #ccc;
+    height: 100px;
+    float: left;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+</header>
+<aside>
+<h2>{{ slot_4 }}</h2>
+<div class="blog-post">{{ slot_5 }}</div>
+<div class="blog-post">{{ slot_6 }}</div>
+<div class="blog-post">{{ slot_7 }}</div>
+</aside>
+<main>
+<section id="reviews">
+<h2>{{ slot_8 }}</h2>
+<div class="review">{{ slot_9 }}</div>
+<div class="review">{{ slot_10 }}</div>
+<div class="review">{{ slot_11 }}</div>
+</section>
+<section id="social-media">
+<h2>{{ slot_12 }}</h2>
+<ul>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+</ul>
+</section>
+</main>
+<footer>
+<h2>{{ slot_16 }}</h2>
+<form>
+<label>{{ slot_17 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span><br>
+<label>{{ slot_19 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_20 }}</span><br><br>
+<span class="">{{ slot_21 }}</span>
+</form>
+<div id="chatbot">{{ slot_22 }}</div>
+</footer>
+</body>
+</html>

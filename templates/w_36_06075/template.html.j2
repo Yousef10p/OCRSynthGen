@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+header, footer {
+    background-color: #f4e4fa;
+    padding: 12px 0;
+    text-align: center;
+}
+header > h1 {
+    margin: 0;
+}
+header .services > a {
+    text-decoration: none;
+    color: black;
+    margin: 0 10px;
+}
+.services, .locations {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.colored-rectangle {
+    background-color: #a6e4fa;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<div class="services">
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+</div>
+</header>
+<main>
+<section id="about-us">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+<div class="colored-rectangle"></div>
+</section>
+<section id="services">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+
+</ul>
+</section>
+<section id="locations">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+
+</ul>
+</section>
+</main>
+<footer>
+<a>{{ slot_14 }}</a>
+</footer>
+</body>
+</html>

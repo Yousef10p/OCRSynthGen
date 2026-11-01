@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+
+header {
+    background-color: #ff0000;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+
+nav {
+    background-color: #00ff00;
+    color: #000000;
+    width: 200px;
+    float: right;
+}
+
+
+section {
+    margin-right: 220px;
+}
+
+
+footer {
+    background-color: #0000ff;
+    color: #ffffff;
+    clear: both;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.placeholder {
+    background: #ff0000;
+    width: 200px;
+    height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<nav>
+<h3>{{ slot_1 }}</h3>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</nav>
+<section>
+<h2>{{ slot_5 }}</h2>
+<p class="placeholder">{{ slot_6 }}</p>
+</section>
+</main>
+<footer>
+<h4>{{ slot_7 }}</h4>
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+<h4>{{ slot_11 }}</h4>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</footer>
+</body>
+</html>

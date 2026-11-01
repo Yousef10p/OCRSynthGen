@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-body);
+	background-color: #f2f2f2;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+.header {
+	background-color: #e0e0e0;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+}
+
+.header ul li a {
+	display: inline-block;
+	padding: 10px;
+	color: #000;
+}
+
+.header ul li a:hover {
+	background-color: #ccc;
+}
+
+.main {
+	margin: 20px;
+}
+
+.content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.content h2 {
+	color: #4c4c4c;
+}
+
+.footer {
+	background-color: #4c4c4c;
+	padding: 20px;
+	color: #fff;
+	text-align: center;
+}
+
+form {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 10px;
+}
+
+form input, form textarea, form button {
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+}
+
+form button {
+	background-color: #09f;
+	color: #fff;
+	cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</div>
+<div class="main">
+<div class="content">
+<h1>{{ slot_5 }}</h1>
+<div class="product-section" id="products">
+<h2>{{ slot_6 }}</h2>
+
+</div>
+<div class="tutorial-section" id="tutorials">
+<h2>{{ slot_7 }}</h2>
+
+</div>
+<div class="idea-section" id="ideas">
+<h2>{{ slot_8 }}</h2>
+
+</div>
+<div class="review-section">
+<h2>{{ slot_9 }}</h2>
+
+</div>
+<div class="tip-section">
+<h2>{{ slot_10 }}</h2>
+
+</div>
+</div>
+</div>
+<div class="footer" id="contact">
+<h2>{{ slot_11 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_14 }}</span>
+<button>{{ slot_15 }}</button>
+</form>
+</div>
+</body>
+</html>

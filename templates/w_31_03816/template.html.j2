@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	font-family: var(--font-body);
+}
+
+.container {
+	width: 90%;
+	margin: 0 auto;
+}
+
+header {
+	background-color: lightgrey;
+}
+
+header h1 {
+	display: inline-block;
+	font-size: 32px;
+	margin: 15px 0;
+}
+
+header nav {
+	display: inline-block;
+	float: left;
+}
+
+header nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+header nav ul li {
+	display: inline-block;
+	margin-left: 15px;
+}
+
+header nav ul li a {
+	text-decoration: none;
+	color: black;
+}
+
+.hero {
+	background-color: lightgrey;
+	height: 400px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.hero-content h2 {
+	font-size: 52px;
+}
+
+.services-section, .blog-section {
+	margin-top: 50px;
+}
+
+.services-section h3, .blog-section h3 {
+	font-size: 32px;
+}
+
+.services-section div, .blog-section div {
+	display: flex;
+	margin-top: 50px;
+}
+
+.services-section div div, .blog-section div {
+	margin-left: 50px;
+}
+
+.contact-section {
+	background-color: lightgrey;
+	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="hero">
+<div class="hero-content">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</div>
+</div>
+<div class="services-section">
+<h3>{{ slot_8 }}</h3>
+<div class="featured">
+<div>
+<div style="background-color: lightgrey; width: 200px; height: 200px;"></div>
+<h4>{{ slot_9 }}</h4>
+<p>{{ slot_10 }}</p>
+</div>
+<div>
+<div style="background-color: lightgrey; width: 200px; height: 200px;"></div>
+<h4>{{ slot_11 }}</h4>
+<p>{{ slot_12 }}</p>
+</div>
+<div>
+<div style="background-color: lightgrey; width: 200px; height: 200px;"></div>
+<h4>{{ slot_13 }}</h4>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</div>
+<div class="blog-section">
+<h3>{{ slot_15 }}</h3>
+<div>
+<div>
+<div style="background-color: lightgrey; width: 200px; height: 200px;"></div>
+<h4>{{ slot_16 }}</h4>
+<p>{{ slot_17 }}</p>
+</div>
+<div>
+<div style="background-color: lightgrey; width: 200px; height: 200px;"></div>
+<h4>{{ slot_18 }}</h4>
+<p>{{ slot_19 }}</p>
+</div>
+<div>
+<div style="background-color: lightgrey; width: 200px; height: 200px;"></div>
+<h4>{{ slot_20 }}</h4>
+<p>{{ slot_21 }}</p>
+</div>
+</div>
+</div>
+<div class="contact-section">
+<div class="contact-content">
+<h3>{{ slot_22 }}</h3>
+<p>{{ slot_23 }}</p>
+<p>{{ slot_24 }}</p>
+<p>{{ slot_25 }}</p>
+</div>
+</div>
+</div>
+</body>
+</html>

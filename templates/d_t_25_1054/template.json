@@ -1,0 +1,53 @@
+{
+  "id": "d_t_25_1054",
+  "source": "doclaynet",
+  "source_ref": "docling-project/DocLayNet-v1.1:train:shard25:row1054",
+  "license": "CDLA-Permissive-1.0",
+  "attribution": "DocLayNet v1.1 (IBM Research), patents, layout geometry only",
+  "positioning": "absolute",
+  "page": {
+    "size": "A4",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "paragraph",
+      "words": [
+        104,
+        164
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "paragraph",
+      "words": [
+        95,
+        151
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "paragraph",
+      "words": [
+        70,
+        112
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 1,
+    "tables": 0,
+    "lists": 0,
+    "list_depth": 0,
+    "forms": 0,
+    "asides": 0,
+    "has_header": false,
+    "has_footer": false,
+    "slot_count": 3
+  },
+  "structure_hash": "803263d53fb28df39dda027a60d18fc19bafc1562ff9f66efac99337f5539daa"
+}

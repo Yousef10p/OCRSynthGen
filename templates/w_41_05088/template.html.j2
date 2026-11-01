@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40%;
+  background-color: #ffe6b3;
+}
+
+.full-width-image {
+  width: 100%;
+  height: 100%;
+  background-color: #e8d2a6;
+}
+
+button {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  background-color: #f2a22c;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+aside {
+  width: 20%;
+  height: 60%;
+  background-color: #ffcccc;
+}
+
+main {
+  width: 80%;
+  height: 60%;
+  background-color: #e7ffcc;
+}
+
+section {
+  margin: 1em;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.5em 0;
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="full-width-image ph" style="inline-size: 100%; block-size: 150px"></div>
+<button>{{ slot_0 }}</button>
+</header>
+<aside>
+<ul class="menu">
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+<ul class="offers">
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+</aside>
+<main>
+<section>
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+</section>
+<section>
+<h1>{{ slot_9 }}</h1>
+<p>{{ slot_10 }}</p>
+</section>
+<section>
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+</section>
+<section>
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+</section>
+</main>
+</body>
+</html>

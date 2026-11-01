@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body); 
+  margin: 0; 
+  padding: 0; 
+}
+
+header nav ul {
+  display: flex;
+  justify-content: space-around;  
+  list-style: none; 
+  background-color: #333; 
+  padding: 20px 0;
+}
+
+header nav ul li a {
+  color: #fff; 
+  text-decoration: none; 
+}
+
+.slider {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 20px 0;
+}
+
+.products {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+
+.product, .promotion {
+  flex: 1;
+}
+
+.product-img, .promotion-img {
+  background-color: #999; 
+  color: #fff; 
+  padding: 150px;  
+  margin-bottom: 15px; 
+  text-align: center; 
+}
+
+.about {
+  text-align: center; 
+  background-color: #f2f2f2; 
+  padding: 20px 0; 
+}
+
+.contact {
+  text-align: center; 
+  padding: 20px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="slider" id="slider">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="products" id="products">
+<div class="product">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<div class="product-img">{{ slot_6 }}</div>
+<div class="product-img">{{ slot_7 }}</div>
+<div class="product-img">{{ slot_8 }}</div>
+</div>
+<div class="promotion">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="promotion-img">{{ slot_11 }}</div>
+<div class="promotion-img">{{ slot_12 }}</div>
+<div class="promotion-img">{{ slot_13 }}</div>
+</div>
+</div>
+<div class="about" id="about">
+<h1>{{ slot_14 }}</h1>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="contact" id="contact">
+<h1>{{ slot_16 }}</h1>
+<p>{{ slot_17 }}</p>
+<a>{{ slot_18 }}</a> 
+<a>{{ slot_19 }}</a> 
+</div>
+</body>
+</html>

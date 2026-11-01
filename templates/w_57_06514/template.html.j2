@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #000;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+}
+
+header ul li {
+    margin-right: 20px;
+}
+
+
+#hero .rotating-images {
+    display: flex;
+    justify-content: space-between;
+    height: 300px;
+    color: #000;
+}
+
+#hero .rotating-images div {
+    background-color: #fff;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#services button {
+    margin-top: 20px;
+}
+
+
+#testimonials .testimonial {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+}
+
+
+footer form {
+    margin-top: 20px;
+}
+
+footer input, footer textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero">
+<div class="rotating-images">
+<div>{{ slot_4 }}</div>
+<div>{{ slot_5 }}</div>
+<div>{{ slot_6 }}</div>
+</div>
+</section>
+<section id="services">
+<h2>{{ slot_7 }}</h2>
+
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+<button>{{ slot_11 }}</button>
+</section>
+<section id="testimonials">
+<h2>{{ slot_12 }}</h2>
+
+<div class="testimonial">{{ slot_13 }}</div>
+<div class="testimonial">{{ slot_14 }}</div>
+<div class="testimonial">{{ slot_15 }}</div>
+</section>
+<footer id="contact">
+<h2>{{ slot_16 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_19 }}</span>
+<button>{{ slot_20 }}</button>
+</form>
+</footer>
+</body>
+</html>

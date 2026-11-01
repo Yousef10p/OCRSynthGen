@@ -1,0 +1,44 @@
+{
+  "id": "d_t_14_0309",
+  "source": "doclaynet",
+  "source_ref": "docling-project/DocLayNet-v1.1:train:shard14:row309",
+  "license": "CDLA-Permissive-1.0",
+  "attribution": "DocLayNet v1.1 (IBM Research), government_tenders, layout geometry only",
+  "positioning": "absolute",
+  "page": {
+    "size": "A4",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "footer",
+      "words": [
+        4,
+        6
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "footer",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 1,
+    "tables": 0,
+    "lists": 0,
+    "list_depth": 0,
+    "forms": 0,
+    "asides": 0,
+    "has_header": false,
+    "has_footer": true,
+    "slot_count": 2
+  },
+  "structure_hash": "86be7318aa0113ea8060c95adeafe45691efa7c548f80e4d227096cd3e5bacc7"
+}

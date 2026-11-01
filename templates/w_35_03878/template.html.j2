@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+nav {
+    width: 20%;
+    height: 100vh;
+    background: #f1f1f1;
+    position: fixed;
+    padding: 20px;
+    font-size: 20px;
+}
+nav ul {
+    list-style-type: none;
+}
+#reviews, #offers {
+    margin-right: 20%;
+    padding: 20px;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+}
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<nav>
+<h1>{{ slot_0 }}</h1>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</nav>
+
+<section id="reviews">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+<p>{{ slot_8 }}</p>
+</section>
+
+<section id="offers">
+<h1>{{ slot_9 }}</h1>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+</section>
+<footer>
+<div>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</div>
+</footer>
+</body>
+</html>

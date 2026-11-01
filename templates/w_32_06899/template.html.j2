@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.banner {
+    background-color: yellow;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar {
+    background-color: lightgray;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+.navbar li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.grid-item {
+    border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.filler {
+    background-color: lightblue;
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+}
+
+.testimonial-section {
+    margin-bottom: 20px;
+}
+
+.testimonial {
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-section {
+    font-weight: bold;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="banner">{{ slot_0 }}</div>
+<div class="navbar">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</div>
+<div class="grid">
+<div class="grid-item"><div class="filler"></div> {{ slot_7 }}</div>
+<div class="grid-item"><div class="filler"></div> {{ slot_8 }}</div>
+<div class="grid-item"><div class="filler"></div> {{ slot_9 }}</div>
+<div class="grid-item"><div class="filler"></div> {{ slot_10 }}</div>
+</div>
+<div class="testimonial-section">
+<div class="testimonial">{{ slot_11 }}</div>
+<div class="testimonial">{{ slot_12 }}</div>
+<div class="testimonial">{{ slot_13 }}</div>
+</div>
+<div class="contact-section"> {{ slot_14 }}</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 8vh;
+    background: #333;
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+}
+
+header, main, footer {
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+header {
+    background: none center center/cover no-repeat;
+    color: white;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    background: lightgray;
+    margin: 20px;
+}
+
+footer {
+    background: #333;
+    color: white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_3 }}</span>
+</ul>
+</nav>
+
+<header>
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<button>{{ slot_6 }}</button>
+</header>
+
+<main>
+<section id="packages">
+<h2>{{ slot_7 }}</h2>
+
+<div class="image ph"></div>
+<p>{{ slot_8 }}</p>
+</section>
+<section id="destinations">
+<h2>{{ slot_9 }}</h2>
+
+<div class="image ph"></div>
+<p>{{ slot_10 }}</p>
+</section>
+<section id="about">
+<h2>{{ slot_11 }}</h2>
+
+<div class="image ph"></div>
+<p>{{ slot_12 }}</p>
+</section>
+</main>
+
+<footer>
+<p>{{ slot_13 }}</p>
+<button>{{ slot_14 }}</button>
+</footer>
+</body>
+</html>

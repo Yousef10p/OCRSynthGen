@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #eee;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 15px;
+}
+
+nav ul a {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+aside p {
+    text-align: center;
+    font-style: italic;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="ph"></div>
+<aside id="categories" style="width:20%; float:right;">
+<h2>{{ slot_5 }}</h2>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</aside>
+<aside id="reviews" style="width:20%; float:left;">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</aside>
+<aside id="testimonials" style="width:20%; float:left;">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</aside>
+</body>
+</html>

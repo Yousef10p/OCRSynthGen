@@ -1,0 +1,287 @@
+{
+  "id": "d_t_05_0020",
+  "source": "doclaynet",
+  "source_ref": "docling-project/DocLayNet-v1.1:train:shard5:row20",
+  "license": "CDLA-Permissive-1.0",
+  "attribution": "DocLayNet v1.1 (IBM Research), financial_reports, layout geometry only",
+  "positioning": "absolute",
+  "page": {
+    "size": "Letter",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "header",
+      "words": [
+        8,
+        13
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "heading",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "list_item",
+      "words": [
+        20,
+        32
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "heading",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "paragraph",
+      "words": [
+        26,
+        41
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "list_item",
+      "words": [
+        26,
+        41
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_6",
+      "role": "heading",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_7",
+      "role": "paragraph",
+      "words": [
+        29,
+        46
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_8",
+      "role": "list_item",
+      "words": [
+        14,
+        22
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_9",
+      "role": "list_item",
+      "words": [
+        5,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_10",
+      "role": "list_item",
+      "words": [
+        8,
+        13
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_11",
+      "role": "heading",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_12",
+      "role": "heading",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_13",
+      "role": "paragraph",
+      "words": [
+        14,
+        22
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_14",
+      "role": "list_item",
+      "words": [
+        5,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_15",
+      "role": "list_item",
+      "words": [
+        8,
+        13
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_16",
+      "role": "heading",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_17",
+      "role": "list_item",
+      "words": [
+        8,
+        13
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_18",
+      "role": "paragraph",
+      "words": [
+        17,
+        27
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_19",
+      "role": "list_item",
+      "words": [
+        5,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_20",
+      "role": "list_item",
+      "words": [
+        5,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_21",
+      "role": "heading",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_22",
+      "role": "paragraph",
+      "words": [
+        5,
+        8
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_23",
+      "role": "list_item",
+      "words": [
+        20,
+        32
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_24",
+      "role": "heading",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_25",
+      "role": "list_item",
+      "words": [
+        14,
+        22
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_26",
+      "role": "list_item",
+      "words": [
+        17,
+        27
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_27",
+      "role": "list_item",
+      "words": [
+        14,
+        22
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_28",
+      "role": "footer",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 1,
+    "tables": 0,
+    "lists": 14,
+    "list_depth": 1,
+    "forms": 0,
+    "asides": 0,
+    "has_header": true,
+    "has_footer": true,
+    "slot_count": 29
+  },
+  "structure_hash": "e4bd99a04151f29964208472a18b172ca577447a48ac7e5ec8c5b130d1e00cea"
+}

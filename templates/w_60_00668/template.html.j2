@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+font-family: var(--font-body);
+margin: 0;
+padding: 0;
+background-color: #f0f0f0;
+color: #333;
+}
+header, main, footer {
+padding: 20px;
+}
+header {
+background-color: #333;
+color: #fff;
+position: sticky;
+top: 0;
+}
+nav ul {
+list-style-type: none;
+padding: 0;
+display: flex;
+justify-content: space-around;
+}
+nav ul li a {
+color: #fff;
+text-decoration: none;
+}
+nav ul li a:hover {
+text-decoration: underline;
+}
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 20px;
+}
+.grid div {
+border: 1px solid #333;
+padding: 10px;
+}
+.grid div h3 {
+margin-top: 0;
+}
+.grid div .img {
+height: 150px;
+background-color: #999;
+margin-bottom: 10px;
+}
+footer {
+background-color: #333;
+color: #fff;
+text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="destinations">
+<h1>{{ slot_4 }}</h1>
+<button>{{ slot_5 }}</button>
+<button>{{ slot_6 }}</button>
+<button>{{ slot_7 }}</button>
+<h2>{{ slot_8 }}</h2>
+<div class="grid">
+<div>
+<h3>{{ slot_9 }}</h3>
+<div class="img ph"></div>
+<p>{{ slot_10 }}</p>
+</div>
+<div>
+<h3>{{ slot_11 }}</h3>
+<div class="img ph"></div>
+<p>{{ slot_12 }}</p>
+</div>
+<div>
+<h3>{{ slot_13 }}</h3>
+<div class="img ph"></div>
+<p>{{ slot_14 }}</p>
+</div>
+<div>
+<h3>{{ slot_15 }}</h3>
+<div class="img ph"></div>
+<p>{{ slot_16 }}</p>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

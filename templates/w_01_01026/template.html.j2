@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+header.banner {
+  grid-column: span 2;
+  height: 100px;
+  background: #f7d780;
+  border-bottom: 2px solid #000;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+aside.sidebar {
+  background: #cfe8a9;
+  padding: 20px;
+}
+
+aside li, main li {
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+
+main .hero-image {
+  height: 200px;
+  margin-bottom: 20px;
+  background: #999;
+}
+
+main .recipe {
+  margin-bottom: 10px;
+}
+
+.ingredients li:before, .recipe li:before {
+  content: "";
+}
+
+.ingredients, .recipe {
+  padding-right: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="banner">{{ slot_0 }}</header>
+<aside class="sidebar">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+<h2>{{ slot_5 }}</h2>
+<ul>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</aside>
+<main>
+<h1>{{ slot_9 }}</h1>
+<div class="hero-image">{{ slot_10 }}</div>
+<h2>{{ slot_11 }}</h2>
+<ul class="ingredients">
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+</ul>
+<h2>{{ slot_16 }}</h2>
+<ol>
+<li>{{ slot_17 }}</li>
+<li>{{ slot_18 }}</li>
+<li>{{ slot_19 }}</li>
+<li>{{ slot_20 }}</li>
+</ol>
+<p>{{ slot_21 }}</p>
+</main>
+</body>
+</html>

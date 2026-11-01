@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+#wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: 100vh;
+    background: lightgray;
+    padding: 20px;
+}
+
+#header {
+    height: 300px;
+    background: yellow;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+img {
+    width: 100%;
+    height: 200px;
+    background: red;
+    display: block;
+    margin-bottom: 10px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 20px;
+    background: lightgray;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="wrapper">
+<nav id="navbar">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<header id="header">
+</header>
+<main>
+<section id="mission">
+<h1>{{ slot_6 }}</h1>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_7 }}</p>
+</section>
+<section id="programs">
+<h1>{{ slot_8 }}</h1>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_9 }}</p>
+</section>
+<section id="impact">
+<h1>{{ slot_10 }}</h1>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_11 }}</p>
+</section>
+</main>
+<footer>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #333;
+    color: #fff;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.event, .news, .user-content {
+    height: 150px;
+    margin: 15px 0;
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<section id="upcoming-events">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="event"><div>{{ slot_8 }}</div></div>
+<div class="event"><div>{{ slot_9 }}</div></div>
+</section>
+<section id="latest-news">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<article class="news"><div>{{ slot_12 }}</div></article>
+<article class="news"><div>{{ slot_13 }}</div></article>
+</section>
+<section id="user-content">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<div class="user-content"><div>{{ slot_16 }}</div></div>
+<div class="user-content"><div>{{ slot_17 }}</div></div>
+</section>
+</main>
+</body>
+</html>

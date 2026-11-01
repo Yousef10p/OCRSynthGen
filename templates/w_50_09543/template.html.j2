@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-image: none;
+    background-size: cover;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    padding: 2em 0;
+}
+
+section {
+    margin: 2em 0;
+}
+
+.fitness-tracker, .fitness-blog, .faq {
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+input, button {
+    grid-column: span 3;
+}
+
+.achievements {
+    margin: 1em 0;
+}
+
+.achievement-display {
+    background: red; 
+    height: 200px;
+}
+
+.blog-articles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.blog-articles article {
+    background: red; 
+    height: 300px;
+}
+
+.faq-section {
+    margin: 1em 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<header>
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</header>
+<section id="fitness-tracker">
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }} </p>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_5 }}</span>
+<button>{{ slot_6 }}</button>
+</form>
+<div class="achievements">
+<h3>{{ slot_7 }}</h3>
+
+<div class="achievement-display"></div>
+</div>
+</section>
+<section id="fitness-blog">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+
+<div class="blog-articles">
+<article>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</article>
+</div>
+</section>
+<section id="faq">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="accordion">
+
+<div class="faq-section">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</section>
+</div>
+</body>
+</html>

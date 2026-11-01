@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  margin-right: 10px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+}
+
+.product-title {
+  margin: 20px 0;
+}
+
+.product-description {
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+</header>
+<section class="filters">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+<label>{{ slot_5 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>
+<label>{{ slot_7 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<label>{{ slot_9 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+</section>
+<section class="products">
+<div class="product">
+<div class="product-image ph"></div>
+<h2 class="product-title">{{ slot_11 }}</h2>
+<p class="product-description">{{ slot_12 }}</p>
+</div>
+<div class="product">
+<div class="product-image ph"></div>
+<h2 class="product-title">{{ slot_13 }}</h2>
+<p class="product-description">{{ slot_14 }}</p>
+</div>
+
+</section>
+</body>
+</html>

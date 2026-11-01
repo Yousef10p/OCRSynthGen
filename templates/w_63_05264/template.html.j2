@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header {
+    background-color: #f8f9fa;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+nav ul {
+    list-style-type: none;
+}
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+main {
+    margin: 20px 0;
+}
+.products {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.products .product {
+    text-align: center;
+    margin: 0 20px;
+}
+.products .product .image {
+    background-color: #ddd;
+    height: 200px;
+    width: 200px;
+} 
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section>
+<h2>{{ slot_5 }}</h2>
+<div class="products">
+<div class="product">
+<h3>{{ slot_6 }}</h3>
+<div class="image ph"></div>
+<p>{{ slot_7 }}</p>
+<button>{{ slot_8 }}</button>
+</div>
+<div class="product">
+<h3>{{ slot_9 }}</h3>
+<div class="image ph"></div>
+<p>{{ slot_10 }}</p>
+<button>{{ slot_11 }}</button>
+</div>
+<div class="product">
+<h3>{{ slot_12 }}</h3>
+<div class="image ph"></div>
+<p>{{ slot_13 }}</p>
+<button>{{ slot_14 }}</button>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

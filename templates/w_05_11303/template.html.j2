@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+}
+
+header ul {
+    list-style-type: none;
+}
+
+header ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+header ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+section {
+    padding: 100px 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+}
+
+section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+section p {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #555;
+}
+
+section div {
+    background-color: #f1f1f1;
+    height: 200px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero">
+<div class="hero-text">{{ slot_5 }}</div>
+</section>
+<section id="product">
+<h2>{{ slot_6 }}</h2>
+<div class="product-image ph"></div>
+<p>{{ slot_7 }}</p>
+</section>
+<section id="blog">
+<h2>{{ slot_8 }}</h2>
+<div class="blog-image ph"></div>
+<p>{{ slot_9 }}</p>
+</section>
+<section id="team">
+<h2>{{ slot_10 }}</h2>
+<div class="team-image ph"></div>
+<p>{{ slot_11 }}</p>
+</section>
+<section id="investors">
+<h2>{{ slot_12 }}</h2>
+<div class="investors-image ph"></div>
+<p>{{ slot_13 }}</p>
+</section>
+<section id="press">
+<h2>{{ slot_14 }}</h2>
+<div class="press-image ph"></div>
+<p>{{ slot_15 }}</p>
+</section>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

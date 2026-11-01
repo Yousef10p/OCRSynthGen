@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav a {
+  color: black;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: red;
+}
+
+#slider .product {
+  position: relative;
+}
+#slider .product-image {
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+}
+#slider .product p {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  text-align: center;
+}
+
+#updates {
+  float: left;
+}
+
+#social-media a {
+  color: blue;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<section id="slider">
+
+<div class="product">
+<div class="product-image ph"></div>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="product">
+<div class="product-image ph"></div>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="product">
+<div class="product-image ph"></div>
+<p>{{ slot_7 }}</p>
+</div>
+</section>
+<footer>
+<div id="updates">
+<h3>{{ slot_8 }}</h3>
+<ul>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+</ul>
+</div>
+<div id="social-media">
+<h3>{{ slot_12 }}</h3>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+</div>
+</footer>
+</body>
+</html>

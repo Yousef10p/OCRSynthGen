@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header, footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    float: right;
+    width: 20%;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+main {
+    float: left;
+    width: 80%;
+    padding: 20px;
+}
+
+.slider {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    text-align: center;
+    line-height: 400px;
+    font-size: 3em;
+}
+
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+<h2>{{ slot_5 }}</h2>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</nav>
+<main>
+
+<div class="slider">
+<div class="slide" style="background-color:red;">{{ slot_9 }}</div>
+<div class="slide" style="background-color:green;">{{ slot_10 }}</div>
+<div class="slide" style="background-color:blue;">{{ slot_11 }}</div>
+</div>
+</main>
+<footer>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

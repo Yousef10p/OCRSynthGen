@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	font-family: var(--font-body);
+	margin: 0;
+	padding: 0;
+	background: #F0F0F0;
+}
+.header, .footer, .grid-item {
+	padding: 20px;
+}
+.header, .footer {
+	background: #333;
+	color: #FFF;
+}
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	padding: 10px;
+}
+.grid-item {
+	background-color: #BBB;
+	margin: 10px;
+	padding: 20px;
+	font-size: 15px;
+}
+.promo-image {
+	height: 200px;
+	background-color: #AAA;
+	margin-bottom: 10px;
+}
+button {
+	display: block;
+	margin: 20px auto;
+	padding: 10px 20px;
+	background: #FC0;
+	border: none;
+	cursor: pointer;
+}
+.footer a {
+	color: #FFF;
+	margin: 0 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+<div class="grid-container">
+<div class="grid-item">
+<div class="promo-image ph"></div>
+<h2>{{ slot_2 }}</h2>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</div>
+<div class="grid-item">
+<div class="promo-image ph"></div>
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</div>
+<div class="grid-item">
+<div class="promo-image ph"></div>
+<h2>{{ slot_10 }}</h2>
+<ul>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+</ul>
+</div>
+</div>
+<button>{{ slot_14 }}</button>
+<div class="footer">
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+</div>
+</body>
+</html>

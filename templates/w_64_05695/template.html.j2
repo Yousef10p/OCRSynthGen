@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.fake-image {
+    background: #666; 
+    height: 100px;
+}
+
+.member {
+    width: 40%;
+}
+
+.social-media-links-container, .merchandise-links-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</header>
+<section id="game-schedule">
+<div class="fake-image">{{ slot_5 }}</div>
+<p>{{ slot_6 }}</p>
+<div class="fake-image">{{ slot_7 }}</div>
+<p>{{ slot_8 }}</p>
+</section>
+<main>
+<h1>{{ slot_9 }}</h1>
+<div class="member-container">
+<div class="member fake-image">{{ slot_10 }}</div>
+<p>{{ slot_11 }}</p>
+<div class="member fake-image">{{ slot_12 }}</div>
+<p>{{ slot_13 }}</p>
+</div>
+<h1>{{ slot_14 }}</h1>
+<div class="fake-image">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+<div class="fake-image">{{ slot_17 }}</div>
+<p>{{ slot_18 }}</p>
+</main>
+<footer>
+<div class="social-media-links-container">
+<a>{{ slot_19 }}</a>
+<a>{{ slot_20 }}</a>
+<a>{{ slot_21 }}</a>
+</div>
+<div class="merchandise-links-container">
+<a>{{ slot_22 }}</a>
+<a>{{ slot_23 }}</a>
+<a>{{ slot_24 }}</a>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+ #left-sidebar {
+  float: right;
+  width: 20%;
+  background: #f2f2f2;
+  padding: 10px;
+  position: fixed;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 5px;
+}
+
+#popular-destinations {
+  list-style: none;
+}
+
+#main {
+  margin-right: 22%;
+  margin-top: 10px;
+  position: absolute;
+}
+
+.package-container {
+  margin-bottom: 15px;
+}
+
+.package-description {
+  color: #777;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="left-sidebar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<h2>{{ slot_1 }}</h2>
+<ul id="popular-destinations">
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+</div>
+<div id="main">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+<h2>{{ slot_9 }}</h2>
+<div class="package-container">
+<h3>{{ slot_10 }}</h3>
+<div class="package-description">
+<p>{{ slot_11 }}</p>
+</div>
+</div>
+<div class="package-container">
+<h3>{{ slot_12 }}</h3>
+<div class="package-description">
+<p>{{ slot_13 }}</p>
+</div>
+</div>
+<div class="package-container">
+<h3>{{ slot_14 }}</h3>
+<div class="package-description">
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+<div class="package-container">
+<h3>{{ slot_16 }}</h3>
+<div class="package-description">
+<p>{{ slot_17 }}</p>
+</div>
+</div>
+</div>
+</body>
+</html>

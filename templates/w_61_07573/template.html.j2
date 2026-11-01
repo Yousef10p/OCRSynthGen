@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.logo {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+nav {
+    width: 20%;
+    padding: 20px;
+}
+
+#carousel {
+    margin: 20px 0;
+    height: 200px;
+    background: grey;
+    text-align: center;
+    line-height: 200px;
+    color: white;
+}
+
+#details p {
+    height: 100px;
+    background: red;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+    margin: 0 0 20px 20px;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background: black;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="logo" style="text-align:center;">
+<h1 style="text-align:center;">{{ slot_0 }}</h1>
+</div>
+<div style="float:right;">
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</div>
+<div id="carousel">
+		{{ slot_5 }}
+	</div>
+<div id="details">
+<p style="display: inline-block; width: 33%; vertical-align: top;">{{ slot_6 }}</p>
+<p style="display: inline-block; width: 33%; vertical-align: top;">{{ slot_7 }}</p>
+<p style="display: inline-block; width: 33%; vertical-align: top;">{{ slot_8 }}</p>
+</div>
+<footer>
+		{{ slot_9 }} 
+		<a>{{ slot_10 }}</a> {{ slot_11 }}
+		<a>{{ slot_12 }}</a> {{ slot_13 }} 
+		<a>{{ slot_14 }}</a>
+</footer>
+</body>
+</html>

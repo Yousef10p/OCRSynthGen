@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+#blog-section {
+    float: right; 
+    width: 20%; 
+    height: 100vh;
+    background-color: #B5D6B2; 
+    padding: 20px; 
+    box-sizing: border-box;
+}
+
+#main-content {
+    float: right; 
+    width: 80%; 
+    height: 100vh;
+    background-color: #C8F2EF; 
+    padding: 20px; 
+    box-sizing: border-box;
+}
+
+form {
+    background-color: #BFC8AD; 
+    padding: 20px; 
+    margin: 20px;
+}
+
+input {
+    width: 100%; 
+    padding: 12px 20px; 
+    margin: 8px 0; 
+    box-sizing: border-box;
+}
+
+nav ul {
+    list-style-type: none; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #4D455D;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #998DA0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="left-column">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<div id="blog-section">
+<h2>{{ slot_5 }}</h2>
+<article>
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</article>
+</div>
+<form id="newsletter-form">
+<h2>{{ slot_8 }}</h2>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_9 }}</span>
+<button>{{ slot_10 }}</button>
+</form>
+</div>
+<div id="main-content">
+<h1>{{ slot_11 }}</h1>
+<section id="products">
+<h2>{{ slot_12 }}</h2>
+<div class="product-tile" style="background-color: #F7A072;"></div>
+<div class="product-tile" style="background-color: #FFC09F;"></div>
+<div class="product-tile" style="background-color: #BDBEA9;"></div>
+</section>
+<section id="services">
+<h2>{{ slot_13 }}</h2>
+<div class="service-tile" style="background-color: #FFE6BC;"></div>
+<div class="service-tile" style="background-color: #FF9F29;"></div>
+</section>
+<section id="features">
+<h2>{{ slot_14 }}</h2>
+<div class="feature-tile" style="background-color: #80B3FF;"></div>
+<div class="feature-tile" style="background-color: #FF3333;"></div>
+</section>
+</div>
+</body>
+</html>

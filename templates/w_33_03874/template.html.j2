@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: var(--font-body);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to left, #f7ba2b, #ea5455);
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+  padding: 1rem;
+}
+
+#menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+#menu:hover img,
+#locations:hover .location {
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+}
+
+footer {
+  background: #ea5455;
+  color: white;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+  }
+  nav ul li {
+    border-bottom: 1px solid white;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="menu">
+<h2>{{ slot_4 }}</h2>
+
+<table>
+<caption>{{ slot_5 }}</caption>
+<tr>
+<th>{{ slot_6 }}</th>
+<th>{{ slot_7 }}</th>
+</tr>
+<tr>
+<td>{{ slot_8 }}</td>
+<td>{{ slot_9 }}</td>
+</tr>
+<tr>
+<td>{{ slot_10 }}</td>
+<td>{{ slot_11 }}</td>
+</tr>
+
+</table>
+</section>
+<section id="locations">
+<h2>{{ slot_12 }}</h2>
+
+<div class="location">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="location">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+
+</section>
+<section id="about">
+
+</section>
+</main>
+<footer>
+<p>{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

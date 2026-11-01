@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+header {
+  background-color: #f00;
+  padding: 20px;
+}
+nav {
+  background-color: #0f0;
+  padding: 20px;
+}
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 20px;
+}
+section {
+  background-color: #00f;
+  padding: 20px;
+  min-height: 100px;
+}
+footer {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>{{ slot_0 }}</header>
+<nav>
+<a>{{ slot_1 }}</a> {{ slot_2 }}
+        <a>{{ slot_3 }}</a> {{ slot_4 }}
+        <a>{{ slot_5 }}</a> {{ slot_6 }}
+        <a>{{ slot_7 }}</a>
+</nav>
+<main>
+<section id="Starters">{{ slot_8 }}</section>
+<section id="Main">{{ slot_9 }}</section>
+<section id="Desserts">{{ slot_10 }}</section>
+<section id="Drinks">{{ slot_11 }}</section>
+</main>
+<footer>
+        {{ slot_12 }}
+        <a>{{ slot_13 }}</a> {{ slot_14 }}
+        <a>{{ slot_15 }}</a>
+</footer>
+</body>
+</html>

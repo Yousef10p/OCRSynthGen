@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: blue;
+    color: yellow;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: yellow;
+}
+
+#hero-image {
+    background-color: blue;
+    height: 300px;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+}
+
+.product-icon {
+    background-color: blue;
+    width: 50px;
+    height: 50px;
+}
+
+.testimonial {
+    background-color: yellow;
+    color: blue;
+}
+
+footer {
+    background-color: blue;
+    color: yellow;
+    display: flex;
+    justify-content: space-around;
+}
+
+#contact, #social-media {
+    display: flex;
+    flex-direction: column;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<div class="ph"></div>
+</section>
+<section id="products">
+<div class="product">
+<i class="product-icon"></i>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="product">
+<i class="product-icon"></i>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="product">
+<i class="product-icon"></i>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+</section>
+<section id="testimonials">
+<div class="testimonial">
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="testimonial">
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</div>
+</section>
+</main>
+<footer>
+<div id="contact">
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</div>
+<div id="social-media">
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+</div>
+</footer>
+</body>
+</html>

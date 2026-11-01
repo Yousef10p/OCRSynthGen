@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto auto auto;
+    grid-gap: 10px;
+}
+
+header {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    justify-self: center;
+}
+
+#logo {
+    background-color: #000;
+    width: 100px;
+    height: 100px;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+}
+
+#nav {
+    grid-column: 1;
+    grid-row: 2 / span 2;
+}
+
+#nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+#nav li {
+    border-bottom: 1px solid #000;
+}
+
+#featured, #recent {
+    grid-row: 3;
+}
+
+#featured, #recent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+#featured div, #recent div {
+    background-color: #000;
+    width: 100px;
+    height: 100px;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+}
+
+#featured p, #recent p {
+    margin-top: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo">{{ slot_0 }}</div>
+</header>
+<main>
+<div id="nav">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</div>
+<div id="featured">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div id="product-1">{{ slot_9 }}</div>
+<p>{{ slot_10 }}</p>
+<div id="product-2">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+</div>
+<div id="recent">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div id="collection-1">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+<div id="collection-2">{{ slot_17 }}</div>
+<p>{{ slot_18 }}</p>
+</div>
+</main>
+</body>
+</html>

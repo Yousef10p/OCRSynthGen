@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+}
+
+
+.player-profile, .game-schedule, .fan-engagement, .social-media-feeds, .chat {
+  margin: 10px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+
+.player-picture {
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+}
+
+.player-info {
+  margin-top: 10px;
+}
+
+.player-name {
+  font-size: 24px;
+}
+
+.player-role {
+  color: #888;
+}
+
+.player-story {
+  font-size: 14px;
+}
+
+
+.game-schedule {
+  width: 400px;
+}
+
+.game-schedule table {
+  width: 100%;
+}
+
+.game-schedule th, .game-schedule td {
+  padding: 5px;
+  text-align: right;
+}
+
+
+.fan-engagement, .social-media-feeds, .chat {
+  width: 400px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<section class="player-profile">
+
+<div class="player-picture">{{ slot_0 }}</div>
+
+<div class="player-info">
+<h2 class="player-name">{{ slot_1 }}</h2>
+<p class="player-role">{{ slot_2 }}</p>
+<p class="player-story">{{ slot_3 }}</p>
+</div>
+</section>
+
+<section class="game-schedule">
+<h2>{{ slot_4 }}</h2>
+<table>
+<thead>
+<tr>
+<th>{{ slot_5 }}</th>
+<th>{{ slot_6 }}</th>
+<th>{{ slot_7 }}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{{ slot_8 }}</td>
+<td>{{ slot_9 }}</td>
+<td>{{ slot_10 }}</td>
+</tr>
+
+</tbody>
+</table>
+</section>
+
+<section class="fan-engagement">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+
+<section class="social-media-feeds">
+<h2>{{ slot_13 }}</h2>
+
+</section>
+
+<section class="chat">
+<h2>{{ slot_14 }}</h2>
+
+</section>
+</body>
+</html>

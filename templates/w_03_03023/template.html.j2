@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: lightgray;
+  padding: 20px;
+  text-align: right;
+}
+
+nav {
+  background-color: darkgray; 
+  padding: 15px;
+}
+
+.menu li {
+  display: inline;
+  margin-left: 10px;
+}
+
+section {
+  padding: 20px;
+}
+
+.news-image, .schedule, .practice, .shop { 
+  background-color: lightgray; 
+  height: 200px; 
+  line-height: 200px;
+  text-align: center;
+}
+
+footer {
+  background-color: darkgray;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<div class="logo">{{ slot_1 }}</div>
+</header>
+<nav class="menu">
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+<section class="news">
+<h2>{{ slot_7 }}</h2>
+<div>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="news-image">{{ slot_10 }}</div>
+</section>
+<section class="schedule">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+<section class="practice">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</section>
+<section class="shop">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</section>
+<footer>
+<p>{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

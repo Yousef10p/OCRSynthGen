@@ -1,0 +1,143 @@
+{
+  "id": "d_t_24_1811",
+  "source": "doclaynet",
+  "source_ref": "docling-project/DocLayNet-v1.1:train:shard24:row1811",
+  "license": "CDLA-Permissive-1.0",
+  "attribution": "DocLayNet v1.1 (IBM Research), patents, layout geometry only",
+  "positioning": "absolute",
+  "page": {
+    "size": "Letter",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "header",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "header",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "header",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "paragraph",
+      "words": [
+        34,
+        54
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "paragraph",
+      "words": [
+        9,
+        15
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "paragraph",
+      "words": [
+        71,
+        113
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_6",
+      "role": "paragraph",
+      "words": [
+        73,
+        115
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_7",
+      "role": "paragraph",
+      "words": [
+        74,
+        118
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_8",
+      "role": "paragraph",
+      "words": [
+        44,
+        70
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_9",
+      "role": "paragraph",
+      "words": [
+        30,
+        47
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_10",
+      "role": "paragraph",
+      "words": [
+        9,
+        14
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_11",
+      "role": "paragraph",
+      "words": [
+        26,
+        42
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_12",
+      "role": "paragraph",
+      "words": [
+        15,
+        24
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 2,
+    "tables": 0,
+    "lists": 0,
+    "list_depth": 0,
+    "forms": 0,
+    "asides": 0,
+    "has_header": true,
+    "has_footer": false,
+    "slot_count": 13
+  },
+  "structure_hash": "8a4280d2314989f9e93ad952f2720872975432d41c9c8c8991d4530d29b17154"
+}

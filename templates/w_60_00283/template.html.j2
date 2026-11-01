@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+nav {
+    background-color: #222;
+    padding: 1em 0;
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+#hero {
+    height: 500px;
+    background: linear-gradient(to bottom left, red, green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#hero h1 {
+    color: white;
+    font-size: 2em;
+}
+
+#hero button {
+    margin-top: 1em;
+    padding: 1em 2em;
+    border: none;
+    background-color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#about h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    flex: 0 1 calc(25% - 1em);
+    margin: 1em;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    text-align: center;
+    padding: 1em;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    background-color: #222;
+}
+
+.card h3 {
+    margin: 1em 0;
+}
+
+.card p {
+    font-size: 0.9em;
+}
+
+#contact {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact input,
+#contact textarea {
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #222;
+}
+
+#contact button {
+    padding: 1em 2em;
+    background-color: #222;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        margin-bottom: 1em;
+    }
+
+    .card {
+        flex: 0 1 calc(50% - 1em);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .card {
+        flex: 0 1 calc(100%);
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<section id="hero">
+<h1>{{ slot_3 }}</h1>
+<button>{{ slot_4 }}</button>
+</section>
+<section id="about">
+<h2>{{ slot_5 }}</h2>
+<div class="cards-container">
+<div class="card">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="card">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="card">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+</div>
+</section>
+<section id="contact">
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_14 }}</span>
+<button>{{ slot_15 }}</button>
+</form>
+</section>
+</body>
+</html>

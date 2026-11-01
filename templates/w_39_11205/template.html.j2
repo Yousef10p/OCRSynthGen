@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+.hero {
+    position: relative;
+    height: 100vh;
+    background: black;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lightgrey;
+    width: 100px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    animation: slide-down 0.3s ease-out;
+}
+
+@keyframes slide-down {
+    from { height: 0; }
+    to { height: auto; }
+}
+
+
+.project {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+}
+
+.project-image:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+
+.testimonials {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: lightgrey;
+}
+
+.quote {
+    width: 30vw;
+}
+
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin: 30px auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.contact-form input[type="submit"] {
+    background-color: grey;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.contact-form input[type="submit"]:hover {
+    background-color: black;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<section class="hero">
+<div class="hero-video ph" style="inline-size: 100%; block-size: 150px"></div>
+</section>
+<nav>
+<ul class="menu">
+<li class="dropdown">
+<a>{{ slot_0 }}</a>
+<ul class="dropdown-content">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a>{{ slot_4 }}</a>
+<ul class="dropdown-content">
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</nav>
+<section class="featured">
+<div class="project">
+<div class="desc">{{ slot_8 }}</div>
+<div class="project-image ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="project">
+<div class="desc">{{ slot_9 }}</div>
+<div class="project-image ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="project">
+<div class="desc">{{ slot_10 }}</div>
+<div class="project-image ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</section>
+<section class="testimonials">
+<div class="quote">
+<p>{{ slot_11 }}</p>
+<p class="author">{{ slot_12 }}</p>
+</div>
+<div class="quote">
+<p>{{ slot_13 }}</p>
+<p class="author">{{ slot_14 }}</p>
+</div>
+</section>
+<section class="contact" id="contact">
+<form class="contact-form">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_17 }}</span>
+<span class="">{{ slot_18 }}</span>
+</form>
+</section>
+</body>
+</html>

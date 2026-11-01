@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to left, #43c6ac, #191654);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #000;
+  color: #fff;
+  grid-column: span 2;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #191654;
+}
+
+h1, h2 {
+  text-align: center;
+  grid-column: span 2;
+}
+
+section {
+  margin: 20px;
+}
+
+.product, .info-item {
+  background: #43c6ac;
+  height: 300px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<section>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="product">{{ slot_8 }}</div>
+<div class="product">{{ slot_9 }}</div>
+<div class="product">{{ slot_10 }}</div>
+</section>
+<section>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div class="info">
+<div class="info-item">{{ slot_13 }}</div>
+<div class="info-item">{{ slot_14 }}</div>
+</div>
+</section>
+</body>
+</html>

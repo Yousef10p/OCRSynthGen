@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: black;
+    color: #00acee;
+    font-family: var(--font-body);
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    background-color: #00acee;
+    height: 2em;
+    padding: 0.5em 0;
+}
+
+nav ol {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 1em;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.heading {
+    font-size: 1.5em;
+    color: #00acee;
+    margin: 2em 2em 0 0;
+}
+
+#latest_news, #about_us, #contact_us {
+    margin: 1em;
+}
+
+#latest_news pre, #about_us, #contact_us {
+    text-align: right;
+}
+
+#social_platforms {
+    display: flex;
+    justify-content: space-around;
+}
+
+.social_platform {
+    width: 3em;
+    height: 3em;
+    background-color: black;
+}
+
+#images {
+    display: flex;
+    justify-content: space-around;
+}
+
+.image {
+    width: 10em;
+    height: 10em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ol>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span></li>
+</ol>
+</nav>
+<p class="heading">{{ slot_5 }}</p>
+<p id="latest_news">
+             {{ slot_6 }}
+             </p><pre>
+{{ slot_7 }}
+              </pre>
+<pre>
+{{ slot_8 }}
+              </pre>
+<pre>
+{{ slot_9 }}
+              </pre>
+<p class="heading">{{ slot_10 }}</p>
+<div id="social_platforms">
+<a><div class="social_platform" style="background-color: blue;"></div></a>
+<a><div class="social_platform" style="background-color: lightblue;"></div></a>
+<a><div class="social_platform" style="background-color: yellow;"></div></a>
+<a><div class="social_platform" style="background-color: green;"></div></a>
+</div>
+<p class="heading">{{ slot_11 }}</p>
+<p class="about_us">
+        {{ slot_12 }}
+    </p>
+<p class="heading">{{ slot_13 }}</p>
+<p class="contact_us">
+        {{ slot_14 }}
+    </p>
+<div class="ph"></div>
+</body>
+</html>

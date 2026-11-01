@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+
+header {
+    background-color: #eee;
+    padding: 20px;
+    text-align: center;
+}
+
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+
+#testimonials .testimonial, #articles article {
+    border: 1px solid #000;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<span class="">{{ slot_1 }}</span>
+</form>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="testimonials">
+<div class="testimonial">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="testimonial">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</div>
+</section>
+<section id="articles">
+<article>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</article>
+<article>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</article>
+</section>
+<footer>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="">{{ slot_15 }}</span>
+</form>
+<a>{{ slot_16 }}</a>
+</footer>
+</body>
+</html>

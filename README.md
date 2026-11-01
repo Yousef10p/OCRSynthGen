@@ -1,14 +1,47 @@
-# Arabic Document Template Bank
+# OCRSynthGen: Arabic Document Template Bank and Synthetic OCR Generator
 
-This project builds a bank of **empty Arabic (right-to-left) document templates**. It is the first step
-of a synthetic Arabic OCR dataset.
+This project builds a bank of **empty Arabic (right-to-left) document templates** and turns them into a
+**labelled synthetic OCR dataset**: page images with word, line and block boxes, text and Markdown.
 
 A template is a page layout with no text. Every place where text should go is a placeholder such as
 `{{ slot_3 }}`, and each placeholder has a type (title, paragraph, table cell…) and a word range. A later
 stage fills the placeholders with Arabic text and renders the pages to images. This project builds the
 templates; a [demo](#demo-from-empty-template-to-varied-scan-like-pages) shows that later stage.
 
-**Result:** 523 unique templates from 3 sources, all checked and valid.
+**Result:** 113,077 unique templates from 3 sources (77,159 DocLayNet, 35,618 WebSight, 300 Grammar), all
+checked and valid, and a pipeline that fills, renders, labels and degrades them.
+
+## Quick start: make a training set
+
+```bash
+cd D:\code\OCR\arabic-template-bank
+.venv-pipeline\Scripts\python -m pipeline.dataset --n 10000 --out datasets\ocr_v1 --workers 6
+```
+
+Each sample: a page from a random template, filled with Wikipedia text (80% Arabic, 20% English) in a random
+font and size, pictures from `img_pool/`, rendered by SynthDoc, then left clean (15%) or degraded with
+OCRSmith, Augraphy and/or scan-simulator (85%); every box moves with the page.
+
+| In `--out` | What |
+|---|---|
+| `images/<id>.jpg` | the page |
+| `labels/<id>.json` | words, lines and slots (blocks), each with its box `[x, y, w, h]` in image pixels and its text; how the page was made; the Wikipedia articles used |
+| `markdown/<id>.md` | the page as Markdown, with every block and line box in a header at the top |
+| `html/<id>.html` | the filled page |
+| `manifest.jsonl` | one line per sample: id, `split` (train/val, 5% val), files, language, template, effects… |
+| `dataset.json` | counts and the options, sources and licences of the set |
+
+Options: `--language ar|en`, `--effect clean|ocrsmith|augraphy|scan-simulator|augraphy+scan-simulator`,
+`--val 0.05`, `--seed 0` (the same seed makes the same set). An interrupted run continues where it stopped
+when run again. Speed: about 2–4 s per sample per worker; each worker needs about 1.5 GB of memory.
+
+To look at samples one by one instead: `.venv-pipeline\Scripts\python pipeline\server.py`, then open
+http://localhost:8765 (**Generate 16 samples**, with previews). Setup of `.venv-pipeline`, `text_pool/` and
+`img_pool/`: see [the sample generator](#the-sample-generator-the-whole-pipeline-in-one-class).
+
+**Licences of a generated set:** the text is Wikipedia (CC BY-SA 4.0), so a set you share must keep
+CC BY-SA and the attribution (each label lists its articles); photos are Unsplash (Unsplash License);
+templates come from WebSight (CC BY 4.0), DocLayNet (CDLA-Permissive-1.0) and our own grammar.
 
 ---
 
@@ -524,6 +557,37 @@ fall back to the bank ("fallback"). To build up the saved set beforehand, within
 ```
 
 ---
+
+## All of WebSight and DocLayNet
+
+The first build took a slice of each source (the sections below). `src/full_sources.py` then went through
+all of both, with the same conversion, in parallel (one dataset shard per worker process):
+
+| | Pages read | Templates made | Exact copies removed | Near-duplicates removed | In the bank |
+|---|---|---|---|---|---|
+| WebSight v0.1 | 822,987 | 40,447 (document-like: 15+ slots and a table, list or columns) | 4,785 | 39 (and 5 failing validation) | 35,618 |
+| DocLayNet v1.1 | 80,863 (train, val, test) | 80,096 | 2,412 | 525 | 77,159 |
+
+- Only the HTML column of WebSight and the layout columns of DocLayNet were downloaded, never screenshots or
+  page images. So every picture in the new DocLayNet templates is a grey box, which the generator fills with
+  an `img_pool/` photo (and no text drawn inside a picture reaches a page unlabelled).
+- New ids say where a page came from: `w_<shard>_<row>`, `d_<t|v|s>_<shard>_<row>` (train, val, test).
+- **Near-duplicates** (`src/near_dedup.py`): each template becomes a set of layout features (for web pages:
+  runs of 4 elements of the page skeleton with their slot types, plus the layout CSS; for DocLayNet: each
+  box's kind, position and size on a 1/20 grid). Templates of the same source that share at least 90% of
+  their features (Jaccard) are one group (found with MinHash LSH, checked exactly); each group keeps one.
+- Each WebSight worker holds about 2 GB; with 15.5 GB of memory, use 3 workers for WebSight
+  (`--workers 3 --only websight`). DocLayNet runs fine with 8.
+
+```bash
+.venv\Scripts\python -m src.full_sources --workers 3
+.venv\Scripts\python -m src.dedup
+.venv\Scripts\python -m src.near_dedup
+.venv\Scripts\python -m src.validate
+```
+
+The gallery previews every template of the first build plus a fixed random sample of 400 per source
+(previews of 100,000 templates would take gigabytes), 60 cards at a time.
 
 ## The three sources
 

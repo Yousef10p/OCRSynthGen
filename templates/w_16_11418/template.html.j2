@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: #006699;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.service, .testimonial {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #006699;
+    border-radius: 5px;
+}
+
+.service-image, .customer-image {
+    background-color: #006699;
+    color: white;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    background-color: #006699;
+    color: white;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="services">
+<h2>{{ slot_3 }}</h2>
+<div class="service">
+<h3>{{ slot_4 }}</h3>
+            {{ slot_5 }}
+            <p>{{ slot_6 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_7 }}</h3>
+            {{ slot_8 }}
+            <p>{{ slot_9 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_10 }}</h3>
+            {{ slot_11 }}
+            <p>{{ slot_12 }}</p>
+</div>
+</section>
+<section id="testimonials">
+<h2>{{ slot_13 }}</h2>
+<div class="testimonial">
+<h3>{{ slot_14 }}</h3>
+            {{ slot_15 }}
+            <p>{{ slot_16 }}</p>
+</div>
+<div class="testimonial">
+<h3>{{ slot_17 }}</h3>
+            {{ slot_18 }}
+            <p>{{ slot_19 }}</p>
+</div>
+</section>
+<section id="call-to-action">
+<h2>{{ slot_20 }}</h2>
+<a class="cta">{{ slot_21 }}</a>
+</section>
+</main>
+<footer>
+<p>{{ slot_22 }}</p>
+</footer>
+</body>
+</html>

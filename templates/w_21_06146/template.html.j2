@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+header, main, footer {
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.services, .projects {
+    margin-bottom: 50px;
+    padding: 20px;
+}
+
+.image-placeholder {
+    background-color: #f0f0f0;
+    height: 200px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav id="navbar">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<div class="services">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="services">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="projects">
+<article>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="image-placeholder">{{ slot_11 }}</div>
+</article>
+<article>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="image-placeholder">{{ slot_14 }}</div>
+</article>
+</div>
+</main>
+<footer>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 0mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+.page { position: relative; block-size: var(--page-height); padding: 0; overflow: hidden; }
+.box { position: absolute; margin: 0; padding: 0; overflow: hidden; box-sizing: border-box; }
+h1.box, h2.box { font-weight: bold; }
+ul.box { list-style-position: inside; }
+.box table { inline-size: 100%; block-size: 100%; border-collapse: collapse; table-layout: fixed; }
+.box th, .box td { border: 1px solid #888; padding: 0 0.2em; overflow: hidden; }
+</style>
+<style>{{ style }}</style>
+</head>
+<body><div class="page">
+<header class="box" style="inset-inline-start: 34.3mm; inset-block-start: 13.7mm; inline-size: 46.7mm; block-size: 5.0mm; font-size: 14.2pt">{{ slot_0 }}</header><h2 class="box" style="inset-inline-start: 34.2mm; inset-block-start: 25.4mm; inline-size: 127.3mm; block-size: 5.5mm; font-size: 15.5pt">{{ slot_1 }}</h2>
+<p class="box" style="inset-inline-start: 34.1mm; inset-block-start: 33.8mm; inline-size: 141.3mm; block-size: 31.6mm; font-size: 17.9pt">{{ slot_2 }}</p>
+<div class="box ph" style="inset-inline-start: 31.4mm; inset-block-start: 104.6mm; inline-size: 145.0mm; block-size: 18.5mm; font-size: 26.2pt"></div>
+<p class="box" style="inset-inline-start: 51.0mm; inset-block-start: 126.4mm; inline-size: 107.5mm; block-size: 5.7mm; font-size: 16.2pt">{{ slot_3 }}</p>
+<p class="box" style="inset-inline-start: 34.2mm; inset-block-start: 142.0mm; inline-size: 139.9mm; block-size: 40.6mm; font-size: 14.4pt">{{ slot_4 }}</p>
+<p class="box" style="inset-inline-start: 34.1mm; inset-block-start: 186.5mm; inline-size: 41.0mm; block-size: 5.7mm; font-size: 16.2pt">{{ slot_5 }}</p>
+<p class="box" style="inset-inline-start: 57.6mm; inset-block-start: 195.4mm; inline-size: 27.7mm; block-size: 4.4mm; font-size: 12.6pt">{{ slot_6 }}</p>
+<p class="box" style="inset-inline-start: 34.2mm; inset-block-start: 204.0mm; inline-size: 142.4mm; block-size: 58.2mm; font-size: 18.3pt">{{ slot_7 }}</p>
+</div></body>
+</html>

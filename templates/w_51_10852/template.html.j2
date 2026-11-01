@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 1em;
+}
+
+#featured {
+  display: flex;
+  justify-content: space-between;
+}
+
+#featured article {
+  flex: 0 1 30%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.placeholder {
+  width: 100%;
+  height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_3 }}</span>
+<button>{{ slot_4 }}</button>
+</form>
+</nav>
+</header>
+<main>
+<section id="featured">
+<h2>{{ slot_5 }}</h2>
+<article>
+<header>{{ slot_6 }}</header>
+<div class="placeholder ph"></div>
+<p>{{ slot_7 }}</p>
+<button>{{ slot_8 }}</button>
+</article>
+<article>
+<header>{{ slot_9 }}</header>
+<div class="placeholder ph"></div>
+<p>{{ slot_10 }}</p>
+<button>{{ slot_11 }}</button>
+</article>
+<article>
+<header>{{ slot_12 }}</header>
+<div class="placeholder ph"></div>
+<p>{{ slot_13 }}</p>
+<button>{{ slot_14 }}</button>
+</article>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+.color-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.home .video-container {
+    position: relative; 
+}
+
+.home .video-container video {
+    width: 100%;
+    height: auto;
+}
+
+.home .content {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.home .content h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.home .content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.home .content a.cta-btn {
+    font-size: 1.2rem;
+    color: white;
+    background-color: blue;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f8f8;
+}
+
+#navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+#navbar ul li a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: black;
+}
+
+
+.home, .services, .about, .contact, .social {
+    padding: 2rem;
+    text-align: center;
+}
+
+.services, .about, .contact, .social {
+    margin-top: 2rem;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav id="navbar">
+<a class="logo">{{ slot_0 }}</a>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="home" id="home">
+<div class="video-container ph"></div>
+<div class="content">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+<a class="cta-btn">{{ slot_8 }}</a>
+</div>
+</div>
+<div class="services" id="services">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="about" id="about">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="contact" id="contact">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="social" id="social">
+<h2>{{ slot_15 }}</h2>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+</div>
+
+</body>
+</html>

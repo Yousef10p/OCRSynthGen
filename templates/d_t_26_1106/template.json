@@ -1,0 +1,80 @@
+{
+  "id": "d_t_26_1106",
+  "source": "doclaynet",
+  "source_ref": "docling-project/DocLayNet-v1.1:train:shard26:row1106",
+  "license": "CDLA-Permissive-1.0",
+  "attribution": "DocLayNet v1.1 (IBM Research), manuals, layout geometry only",
+  "positioning": "absolute",
+  "page": {
+    "size": "A4",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "paragraph",
+      "words": [
+        16,
+        26
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "caption",
+      "words": [
+        9,
+        14
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "paragraph",
+      "words": [
+        8,
+        13
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "paragraph",
+      "words": [
+        16,
+        26
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "paragraph",
+      "words": [
+        20,
+        32
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "footer",
+      "words": [
+        4,
+        6
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 1,
+    "tables": 0,
+    "lists": 0,
+    "list_depth": 0,
+    "forms": 0,
+    "asides": 0,
+    "has_header": false,
+    "has_footer": true,
+    "slot_count": 6
+  },
+  "structure_hash": "8361f5f34d1db9c58ba82a7730697d7962e432e4688939d65cc3258494bb243a"
+}

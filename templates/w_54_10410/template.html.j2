@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.banner {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.banner-content {
+  display: inline-block;
+  padding-right: 100%;
+  animation: slide 20s linear infinite;
+}
+
+.trailer {
+  display: inline-block;
+  height: 300px;
+  width: 500px;
+  background-color: grey;
+}
+
+@keyframes slide {
+  from {transform: translateX(0);}
+  to {transform: translateX(50%);}
+}
+
+.trailer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.movie-thumbnail {
+  height: 200px;
+  background-color: grey;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<h1>{{ slot_0 }}</h1>
+<div class="banner">
+<div class="banner-content">
+<h2>{{ slot_1 }}</h2>
+<div class="trailer">{{ slot_2 }}</div>
+<div class="trailer">{{ slot_3 }}</div>
+<div class="trailer">{{ slot_4 }}</div>
+</div>
+</div>
+<h1>{{ slot_5 }}</h1>
+<section class="trailer-grid">
+<div class="movie-thumbnail">{{ slot_6 }}</div>
+<div class="movie-thumbnail">{{ slot_7 }}</div>
+<div class="movie-thumbnail">{{ slot_8 }}</div>
+<div class="movie-thumbnail">{{ slot_9 }}</div>
+<div class="movie-thumbnail">{{ slot_10 }}</div>
+<div class="movie-thumbnail">{{ slot_11 }}</div>
+<div class="movie-thumbnail">{{ slot_12 }}</div>
+<div class="movie-thumbnail">{{ slot_13 }}</div>
+<div class="movie-thumbnail">{{ slot_14 }}</div>
+<div class="movie-thumbnail">{{ slot_15 }}</div>
+<div class="movie-thumbnail">{{ slot_16 }}</div>
+<div class="movie-thumbnail">{{ slot_17 }}</div>
+</section>
+
+</body>
+</html>

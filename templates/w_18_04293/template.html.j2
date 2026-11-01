@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: var(--font-body);
+    background-color: #f6f6f6;
+}
+nav {
+    background-color: #333;
+    color: #fff;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1em;
+    display: block;
+}
+
+.section img {
+    width: 100px;
+    height: 200px;
+    background-color: #ff0000;
+}
+.section {
+    padding: 2em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<section class="section" id="cars">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</section>
+<section class="section" id="motorbikes">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</section>
+<section class="section" id="parts">
+<h1>{{ slot_9 }}</h1>
+<p>{{ slot_10 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</section>
+<section class="section" id="accessories">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</section>
+<section class="section" id="comparison">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+<table>
+<tr>
+<th>{{ slot_15 }}</th>
+<th>{{ slot_16 }}</th>
+<th>{{ slot_17 }}</th>
+</tr>
+<tr>
+<td>{{ slot_18 }}</td>
+<td>{{ slot_19 }}</td>
+<td>{{ slot_20 }}</td>
+</tr>
+<tr>
+<td>{{ slot_21 }}</td>
+<td>{{ slot_22 }}</td>
+<td>{{ slot_23 }}</td>
+</tr>
+</table>
+</section>
+</body>
+</html>

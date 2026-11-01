@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+#menu-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+nav {
+  display: none;
+  background-color: #333;
+}
+
+#slideshow {
+  height: 400px;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+#about-us, #services, #contact {
+  padding: 20px;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<button id="menu-btn">{{ slot_0 }}</button>
+<nav id="menu">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<section id="slideshow">
+<div class="slide" style="background-color:red;">{{ slot_4 }}</div>
+<div class="slide" style="background-color:green;">{{ slot_5 }}</div>
+<div class="slide" style="background-color:blue;">{{ slot_6 }}</div>
+</section>
+<section id="about-us">
+<p>{{ slot_7 }}</p>
+</section>
+<section id="services">
+<p>{{ slot_8 }}</p>
+</section>
+<section id="contact">
+<form>
+<label>{{ slot_9 }} <span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span></label>
+<label>{{ slot_11 }} <span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span></label>
+<span class="">{{ slot_13 }}</span>
+</form>
+</section>
+<footer>
+<p>{{ slot_14 }}</p>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+</footer>
+</body>
+</html>

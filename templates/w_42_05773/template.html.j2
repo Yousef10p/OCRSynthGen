@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background: #f4f4f4;
+    padding: 10px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    list-style: none;
+    margin-left: 15px;
+}
+
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px;
+}
+
+#feature-image {
+    background: #38a5ff;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 15px;
+}
+
+#hero {
+    background: #38a5ff;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+}
+
+#hero h1 {
+    margin-bottom: 5px;
+}
+
+.hero-title, .hero-text {
+    text-align: center;
+}
+
+section {
+    padding: 30px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+section article {
+    margin-bottom: 30px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav class="navbar">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero">
+<div class="hero-image" id="hero-image">{{ slot_4 }}</div>
+<h1 class="hero-title">{{ slot_5 }}</h1>
+<p class="hero-text">{{ slot_6 }}</p>
+</section>
+<section id="breaking">
+<h2>{{ slot_7 }}</h2>
+<article>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<div class="feature-image" id="image-1">{{ slot_10 }}</div>
+<p>{{ slot_11 }}</p>
+</article>
+<article>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="feature-image" id="image-2">{{ slot_14 }}</div>
+<p>{{ slot_15 }}</p>
+</article>
+</section>
+<section id="features">
+<h2>{{ slot_16 }}</h2>
+<article>
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+<div class="feature-image" id="image-3">{{ slot_19 }}</div>
+<p>{{ slot_20 }}</p>
+</article>
+<article>
+<h3>{{ slot_21 }}</h3>
+<p>{{ slot_22 }}</p>
+<div class="feature-image" id="image-4">{{ slot_23 }}</div>
+<p>{{ slot_24 }}</p>
+</article>
+</section>
+<section id="opinion">
+<h2>{{ slot_25 }}</h2>
+<article>
+<h3>{{ slot_26 }}</h3>
+<p>{{ slot_27 }}</p>
+<div class="feature-image" id="image-5">{{ slot_28 }}</div>
+<p>{{ slot_29 }}</p>
+</article>
+<article>
+<h3>{{ slot_30 }}</h3>
+<p>{{ slot_31 }}</p>
+<div class="feature-image" id="image-6">{{ slot_32 }}</div>
+<p>{{ slot_33 }}</p>
+</article>
+</section>
+<section id="sports">
+<h2>{{ slot_34 }}</h2>
+<article>
+<h3>{{ slot_35 }}</h3>
+<p>{{ slot_36 }}</p>
+<div class="feature-image" id="image-7">{{ slot_37 }}</div>
+<p>{{ slot_38 }}</p>
+</article>
+<article>
+<h3>{{ slot_39 }}</h3>
+<p>{{ slot_40 }}</p>
+<div class="feature-image" id="image-8">{{ slot_41 }}</div>
+<p>{{ slot_42 }}</p>
+</article>
+</section>
+</body>
+</html>

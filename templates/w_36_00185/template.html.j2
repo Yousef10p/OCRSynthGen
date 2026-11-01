@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+}
+
+header, footer {
+  background-color: #F3F3F3;
+  padding: 20px;
+}
+
+.hero {
+  position: relative;
+  height: 500px;
+  color: white;
+  text-align: center;
+  padding-top: 200px;
+}
+
+.hero h1, .hero p {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.healthy-life-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  opacity: 0.7;
+  background-color: #99D98C;
+}
+
+.nav-bar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-bar ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.resources-section ul, .services-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.resources-section ul li, .services-section ul li {
+  margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="hero">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<div class="healthy-life-image ph"></div>
+</div>
+<div class="nav-bar">
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</div>
+</header>
+<main>
+<section>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</section>
+
+</main>
+<footer>
+<div class="resources-section">
+<h3>{{ slot_8 }}</h3>
+<ul>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+</ul>
+</div>
+<div class="services-section">
+<h3>{{ slot_13 }}</h3>
+<ul>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+<li><a>{{ slot_16 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

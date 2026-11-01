@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  background-color: #FEF5ED;
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  background-color: #A7C4A0;
+  color: #000000;
+  text-align: center;
+  padding: 20px;
+}
+nav ul {
+  background-color: #000000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+nav ul li {
+  display: inline-block;
+  padding: 10px;
+}
+nav ul li a {
+  color: #FEF5ED;
+  text-decoration: none;
+}
+#concert-schedule, #lineup, #tickets {
+  padding: 20px;
+}
+#concert-schedule {
+  background-color: #A7C4A0;
+}
+#lineup {
+  background-color: #F2F3F4;
+}
+#tickets {
+  background-color: #A7C4A0;
+}
+.artist, .time {
+  font-size: 16px;
+  color: #000000;
+}
+.concert {
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<div id="concert-schedule">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<div class="concert-schedule">
+<div class="concert">
+<h3>{{ slot_6 }}</h3>
+<p class="artist">{{ slot_7 }}</p>
+<p class="time">{{ slot_8 }}</p>
+</div>
+<div class="concert">
+<h3>{{ slot_9 }}</h3>
+<p class="artist">{{ slot_10 }}</p>
+<p class="time">{{ slot_11 }}</p>
+</div>
+
+</div>
+</div>
+<div id="lineup">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</div>
+<div id="tickets">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</div>
+</body>
+</html>

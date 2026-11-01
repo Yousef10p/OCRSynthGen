@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.4;
+  color: #000;
+}
+
+.grid {
+  display: grid;
+  grid-gap: 20px;
+}
+
+
+#showcase {
+  background: #ddd;
+  color: #000;
+  position: relative;
+}
+
+.content-wrap {
+  padding: 0 20px;
+}
+
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+
+#section-b ul {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#section-b li {
+  display: flex;
+}
+
+.carousel-image {
+  width: 50px;
+  height: 50px;
+  background: #ddd;
+}
+
+
+#section-c {
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 10px;
+  grid-column: 2;
+}
+
+
+#section-d {
+  grid-template-columns: 1fr 2fr;
+}
+
+.box {
+  padding: 10px;
+  background: #ddd;
+}
+
+
+#main-footer div {
+  padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="grid" id="showcase">
+<div class="bg-image ph"></div>
+<div class="content-wrap">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<a class="btn">{{ slot_2 }}</a>
+</div>
+</header>
+
+<section class="grid" id="section-b">
+<ul>
+<li>
+<div class="carousel-image ph"></div>
+<div class="card-content">
+<h3 class="card-title">{{ slot_3 }}</h3>
+<p>{{ slot_4 }}</p>
+</div>
+</li>
+<li>
+<div class="carousel-image ph"></div>
+<div class="card-content">
+<h3 class="card-title">{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</div>
+</li>
+</ul>
+</section>
+
+<section class="grid" id="section-c">
+<div class="content-wrap">
+<h2 class="content-title">{{ slot_7 }}</h2>
+<div class="content-text">
+<p>{{ slot_8 }}</p>
+</div>
+<a class="btn">{{ slot_9 }}</a>
+</div>
+</section>
+
+<section class="grid" id="section-d">
+<div class="box">
+<h2 class="content-title">{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<a class="btn">{{ slot_12 }}</a>
+</div>
+<div class="box">
+<div class="box-img ph"></div>
+</div>
+</section>
+<footer class="grid" id="main-footer">
+<div>{{ slot_13 }}</div>
+<div>{{ slot_14 }}</div>
+</footer>
+</body>
+</html>

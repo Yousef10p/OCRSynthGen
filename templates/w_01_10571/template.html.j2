@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#header {
+    background-color: #f44336;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#menu {
+    float: left;
+    width: 20%;
+}
+
+#search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.item {
+    float: right;
+    width: 20%;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.25);
+    position: relative;
+}
+
+.item img {
+    width: 100%;
+    height: 200px;
+    background-color: lightgrey;
+}
+
+.price {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<h1>{{ slot_0 }}</h1>
+<div id="menu">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li class="category">{{ slot_2 }}</li>
+<li class="category">{{ slot_3 }}</li>
+<li class="category">{{ slot_4 }}</li>
+<li class="category">{{ slot_5 }}</li>
+</ul>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+</div>
+</div>
+<div id="content">
+
+</div>
+<div class="item" id="item1">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<span class="price">{{ slot_10 }}</span>
+</div>
+<div class="item" id="item2">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<span class="price">{{ slot_13 }}</span>
+</div>
+<div class="item" id="item3">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<span class="price">{{ slot_16 }}</span>
+</div>
+<div class="item" id="item4">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+<span class="price">{{ slot_19 }}</span>
+</div>
+</body>
+</html>

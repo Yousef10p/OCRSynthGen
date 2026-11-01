@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+body {
+    margin: 50px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.calculator {
+    margin-bottom: 50px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+} 
+
+.calculator label {
+    margin-bottom: 5px;
+}
+
+.calculator input {
+    padding: 10px;
+    margin-bottom: 15px;
+} 
+
+.calculator button {
+    padding: 10px;
+    background-color: lightblue;
+    border: none;
+    cursor: pointer;
+}
+
+.result {
+    border: 1px solid lightgray;
+    padding: 20px;
+}
+
+.result h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.result table {
+    width: 100%;
+}
+
+.result th, .result td {
+    padding: 10px;
+    text-align: right;
+    border-bottom: 1px solid lightgray; 
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="calculator">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<form>
+<label>{{ slot_3 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+<label>{{ slot_5 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>
+<label>{{ slot_7 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<button>{{ slot_9 }}</button>
+</form>
+</div>
+<div class="result">
+<h2>{{ slot_10 }}</h2>
+<table>
+<thead>
+<tr>
+<th>{{ slot_11 }}</th>
+<th>{{ slot_12 }}</th>
+<th>{{ slot_13 }}</th>
+<th>{{ slot_14 }}</th>
+</tr>
+</thead>
+<tbody>
+
+</tbody>
+</table>
+</div>
+</body>
+</html>

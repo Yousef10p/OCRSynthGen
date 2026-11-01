@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-image, .menu-item, .location, .contact-info {
+    height: 200px;
+    width: 100%;
+    background-color: #f2f2f2; 
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+nav {
+    background-color: #333;
+    color: #fff;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+.cta-button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="header-image" id="hero-image">{{ slot_0 }}</div>
+<button class="cta-button">{{ slot_1 }}</button>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="menus">
+<h2>{{ slot_5 }}</h2>
+<div class="menu-item">{{ slot_6 }}</div>
+<div class="menu-item">{{ slot_7 }}</div>
+<div class="menu-item">{{ slot_8 }}</div>
+</section>
+<section id="locations">
+<h2>{{ slot_9 }}</h2>
+<div class="location">{{ slot_10 }}</div>
+<div class="location">{{ slot_11 }}</div>
+<div class="location">{{ slot_12 }}</div>
+</section>
+<section id="contact">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    font-family: var(--font-body);
+}
+
+.sidebar {
+    flex: 1;
+    background: lightgray;
+    padding: 1em;
+}
+
+.middle {
+    width: 30%;
+    padding: 1em;
+}
+
+.product img {
+    background: darkgray; 
+    height: 200px;
+}
+
+.product p {
+    margin-top: 1em;
+}
+
+.reviews {
+    flex: 1;
+    background: lightgray;
+    padding: 1em;
+}
+
+.reviews blockquote {
+    margin-top: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<aside class="sidebar">
+<h2>{{ slot_0 }}</h2>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</aside>
+<div class="middle">
+<h1>{{ slot_5 }}</h1>
+<div class="product">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="product">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+
+</div>
+<aside class="reviews">
+<h2>{{ slot_10 }}</h2>
+<blockquote>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</blockquote>
+<blockquote>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</blockquote>
+
+</aside>
+</body>
+</html>

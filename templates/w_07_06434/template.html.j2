@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+#menu ul li {
+    display: inline-block;
+    margin: 0 20px;
+    height: 50px;
+    line-height: 50px;
+}
+
+#menu ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+#banner {
+    text-align: center;
+    height: 400px;
+    background: #ccc;
+    margin-top: 50px;
+    padding-top: 100px;
+}
+
+#banner h1 {
+    font-size: 50px;
+}
+
+#packages, #dining {
+    width: 50%;
+    float: right;
+    margin-top: 50px;
+}
+
+#footer {
+    clear: both;
+    background: #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+.package, .diningOption {
+    margin: 10px 0;
+    padding: 10px;
+    background: #eee;
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="menu">
+<ul>
+<li class="room"><a>{{ slot_0 }}</a></li>
+<li class="room"><a>{{ slot_1 }}</a></li>
+<li class="room"><a>{{ slot_2 }}</a></li>
+</ul>
+</div>
+<div id="banner">
+<h1>{{ slot_3 }}</h1>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div id="packages">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<div class="package"><a>{{ slot_6 }}</a></div>
+<div class="package"><a>{{ slot_7 }}</a></div>
+</div>
+<div id="dining">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="diningOption"><a>{{ slot_10 }}</a></div>
+<div class="diningOption"><a>{{ slot_11 }}</a></div>
+</div>
+<div id="footer">
+<h3>{{ slot_12 }}</h3>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<h3>{{ slot_15 }}</h3>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+</div>
+</body>
+</html>

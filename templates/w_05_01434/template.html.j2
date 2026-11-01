@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: #000;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    padding: 20px;
+    text-align: center;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+}
+.item {
+    padding: 20px;
+    color: #fff;
+}
+.blog {
+    padding: 0 20px;
+}
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="grid-container">
+<div class="product-grid">
+<div class="item" style="background-color: #f00;">{{ slot_1 }}</div>
+<div class="item" style="background-color: #0f0;">{{ slot_2 }}</div>
+<div class="item" style="background-color: #00f;">{{ slot_3 }}</div>
+<div class="item" style="background-color: #ff0;">{{ slot_4 }}</div>
+<div class="item" style="background-color: #f0f;">{{ slot_5 }}</div>
+<div class="item" style="background-color: #0ff;">{{ slot_6 }}</div>
+</div>
+<div class="blog">
+<h2>{{ slot_7 }}</h2>
+<h4>{{ slot_8 }}</h4>
+<p>{{ slot_9 }}</p>
+<h4>{{ slot_10 }}</h4>
+<p>{{ slot_11 }}</p>
+<h4>{{ slot_12 }}</h4>
+<p>{{ slot_13 }}</p>
+</div>
+</div>
+<div class="footer">
+<p>{{ slot_14 }}</p>
+</div>
+</body>
+</html>

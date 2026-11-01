@@ -1,0 +1,341 @@
+{
+  "id": "d_v_00_0564",
+  "source": "doclaynet",
+  "source_ref": "docling-project/DocLayNet-v1.1:val:shard0:row564",
+  "license": "CDLA-Permissive-1.0",
+  "attribution": "DocLayNet v1.1 (IBM Research), financial_reports, layout geometry only",
+  "positioning": "absolute",
+  "page": {
+    "size": "A4",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "header",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "heading",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "heading",
+      "words": [
+        1,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "paragraph",
+      "words": [
+        15,
+        24
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "paragraph",
+      "words": [
+        24,
+        38
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "paragraph",
+      "words": [
+        3,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_6",
+      "role": "paragraph",
+      "words": [
+        2,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_7",
+      "role": "paragraph",
+      "words": [
+        2,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_8",
+      "role": "paragraph",
+      "words": [
+        11,
+        18
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_9",
+      "role": "paragraph",
+      "words": [
+        3,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_10",
+      "role": "paragraph",
+      "words": [
+        2,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_11",
+      "role": "paragraph",
+      "words": [
+        9,
+        14
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_12",
+      "role": "paragraph",
+      "words": [
+        3,
+        6
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_13",
+      "role": "heading",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_14",
+      "role": "paragraph",
+      "words": [
+        15,
+        24
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_15",
+      "role": "paragraph",
+      "words": [
+        12,
+        19
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_16",
+      "role": "paragraph",
+      "words": [
+        18,
+        29
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_17",
+      "role": "paragraph",
+      "words": [
+        8,
+        14
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_18",
+      "role": "paragraph",
+      "words": [
+        18,
+        29
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_19",
+      "role": "paragraph",
+      "words": [
+        12,
+        19
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_20",
+      "role": "paragraph",
+      "words": [
+        3,
+        5
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_21",
+      "role": "paragraph",
+      "words": [
+        4,
+        7
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_22",
+      "role": "paragraph",
+      "words": [
+        2,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_23",
+      "role": "paragraph",
+      "words": [
+        5,
+        9
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_24",
+      "role": "paragraph",
+      "words": [
+        3,
+        6
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_25",
+      "role": "paragraph",
+      "words": [
+        2,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_26",
+      "role": "paragraph",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_27",
+      "role": "paragraph",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_28",
+      "role": "paragraph",
+      "words": [
+        2,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_29",
+      "role": "paragraph",
+      "words": [
+        6,
+        10
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_30",
+      "role": "paragraph",
+      "words": [
+        4,
+        7
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_31",
+      "role": "paragraph",
+      "words": [
+        3,
+        5
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_32",
+      "role": "paragraph",
+      "words": [
+        2,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_33",
+      "role": "paragraph",
+      "words": [
+        2,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_34",
+      "role": "paragraph",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 4,
+    "tables": 0,
+    "lists": 0,
+    "list_depth": 0,
+    "forms": 0,
+    "asides": 0,
+    "has_header": true,
+    "has_footer": false,
+    "slot_count": 35
+  },
+  "structure_hash": "6d830bb1c818f830931ea1986593e98ffd3121686e306dd255abe11066c61641"
+}

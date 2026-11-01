@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header, footer {
+    background-color: #006699;
+    color: #fff;
+    padding: 10px;
+}
+
+.service, .accordion {
+    margin: 20px;
+}
+
+.service h3, .accordion h2 {
+    background-color: #99ccff;
+    padding: 10px;
+    margin: 0;
+}
+
+.service p, .accordion p {
+    padding: 10px;
+    margin: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<section class="services">
+<h2>{{ slot_1 }}</h2>
+<div class="service" id="service1">
+<h3>{{ slot_2 }}</h3>
+<p>{{ slot_3 }}</p>
+</div>
+<div class="service" id="service2">
+<h3>{{ slot_4 }}</h3>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="service" id="service3">
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</div>
+</section>
+<section class="accordion">
+<h2>{{ slot_8 }}</h2>
+<details>
+<summary>{{ slot_9 }}</summary>
+<p>{{ slot_10 }}</p>
+</details>
+<details>
+<summary>{{ slot_11 }}</summary>
+<p>{{ slot_12 }}</p>
+</details>
+<details>
+<summary>{{ slot_13 }}</summary>
+<p>{{ slot_14 }}</p>
+</details>
+</section>
+<footer>
+<h2>{{ slot_15 }}</h2>
+<ul>
+<li>{{ slot_16 }}</li>
+<li>{{ slot_17 }}</li>
+<li>{{ slot_18 }}</li>
+</ul>
+</footer>
+</body>
+</html>

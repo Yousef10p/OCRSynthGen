@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: var(--font-body);
+}
+a {
+	text-decoration: none;
+}
+.product-image, .hero-image {
+	height: 100vh;
+	width: 100%;
+	background-color: #1abc9c;
+}
+.testimonial {
+	padding: 20px;
+}
+.btn {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #3498db;
+	color: white;
+	text-align: center;
+}
+.social-icons a {
+	margin: 0 10px;
+}
+footer {
+	background-color: #34495e;
+	color: white;
+	padding: 20px;
+	text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<section class="hero-image" id="hero">
+<h1>{{ slot_4 }}</h1>
+<a class="btn">{{ slot_5 }}</a>
+</section>
+<section id="products">
+<h2>{{ slot_6 }}</h2>
+<div class="product-image ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="product-image ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="product-image ph" style="inline-size: 100%; block-size: 150px"></div>
+<a class="btn">{{ slot_7 }}</a>
+</section>
+<section id="testimonials">
+<h2>{{ slot_8 }}</h2>
+<p class="testimonial">{{ slot_9 }}</p>
+<p class="testimonial">{{ slot_10 }}</p>
+</section>
+<section id="get-started">
+<h2>{{ slot_11 }}</h2>
+<a class="btn">{{ slot_12 }}</a>
+</section>
+<section id="support">
+<h2>{{ slot_13 }}</h2>
+<a class="btn">{{ slot_14 }}</a>
+<a class="btn">{{ slot_15 }}</a>
+</section>
+<footer>
+<p class="copyright">{{ slot_16 }}</p>
+<div class="social-icons">
+<a><i class="fab fa-facebook-f"></i></a>
+<a><i class="fab fa-twitter"></i></a>
+<a><i class="fab fa-instagram"></i></a>
+</div>
+</footer>
+</body>
+</html>

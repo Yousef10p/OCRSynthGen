@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+#container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#header {
+    background-color: #DDD;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+}
+
+#content {
+    display: flex;
+}
+
+#left-column {
+    width: 70%;
+    padding: 20px;
+}
+
+#right-column {
+    width: 30%;
+    padding: 20px;
+    border-right: 1px solid #CCC;
+}
+
+.article {
+    margin-bottom: 2em;
+}
+
+h2 {
+    color: #444;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #AAA;
+}
+
+#category-list, #related-articles {
+    padding: 0;
+    list-style-type: none;
+}
+
+#category-list li, #related-articles li {
+    margin-bottom: 0.5em;
+}
+
+.color-rect {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: #000;
+    margin-left: 0.5em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="container">
+<div id="header">{{ slot_0 }}</div>
+<div id="content">
+<div id="left-column">
+<h2>{{ slot_1 }}</h2>
+<div class="article">
+<h3>{{ slot_2 }}</h3>
+<p>{{ slot_3 }} </p>
+</div>
+<div class="article">
+<h3>{{ slot_4 }}</h3>
+<p>{{ slot_5 }} </p>
+</div>
+</div>
+<div id="right-column">
+<h2>{{ slot_6 }}</h2>
+<ul id="category-list">
+<li><span class="color-rect"></span>{{ slot_7 }}</li>
+<li><span class="color-rect"></span>{{ slot_8 }}</li>
+<li><span class="color-rect"></span>{{ slot_9 }}</li>
+</ul>
+<h2>{{ slot_10 }}</h2>
+<ul id="related-articles">
+<li><span class="color-rect"></span>{{ slot_11 }}</li>
+<li><span class="color-rect"></span>{{ slot_12 }}</li>
+<li><span class="color-rect"></span>{{ slot_13 }}</li>
+</ul>
+</div>
+</div>
+<div id="footer">{{ slot_14 }}</div>
+</div>
+</body>
+</html>

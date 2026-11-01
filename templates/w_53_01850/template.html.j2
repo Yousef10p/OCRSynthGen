@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 10px;
+}
+
+nav ul li {
+  display: inline;
+  padding: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+}
+
+nav ul li a:visited {
+  color: #000;
+}
+
+section {
+  margin: 30px;
+  text-align: center;
+}
+
+
+section:hover {
+  background-color: #f2f2f2;
+}
+
+a:hover {
+  color: #ff0000;
+}
+
+
+.product-rectangle, .service-rectangle, .case-studies-rectangle, .news-rectangle, .jobs-rectangle, .legal-rectangle {
+  background-color: #00ff00; 
+  height: 200px;
+  margin: 10px;
+}
+
+.product-rectangle:hover, .service-rectangle:hover, .case-studies-rectangle:hover, .news-rectangle:hover, .jobs-rectangle:hover, .legal-rectangle:hover {
+  background-color: #ff0000; 
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="products">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="product-column">
+<div class="product-rectangle"></div>
+<div class="product-rectangle"></div>
+<div class="product-rectangle"></div>
+</div>
+</section>
+<section id="services">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="services-column">
+<div class="service-rectangle"></div>
+<div class="service-rectangle"></div>
+<div class="service-rectangle"></div>
+</div>
+</section>
+<section id="case-studies">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div class="case-studies-column">
+<div class="case-studies-rectangle"></div>
+<div class="case-studies-rectangle"></div>
+<div class="case-studies-rectangle"></div>
+</div>
+</section>
+</main>
+<footer>
+<section id="news">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="news-column">
+<div class="news-rectangle"></div>
+<div class="news-rectangle"></div>
+</div>
+</section>
+<section id="jobs">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+<div class="jobs-column">
+<div class="jobs-rectangle"></div>
+<div class="jobs-rectangle"></div>
+</div>
+</section>
+<section id="legal">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+<div class="legal-column">
+<div class="legal-rectangle"></div>
+<div class="legal-rectangle"></div>
+</div>
+</section>
+</footer>
+</body>
+</html>

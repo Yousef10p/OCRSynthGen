@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header, footer {
+    background: #f8f8f8;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header {
+    font-size: 2em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+main section {
+    margin: 20px 0;
+    width: 80%;
+}
+
+.rectangle {
+    background: #ccc;
+    width: 50%;
+    height: 200px;
+}
+
+footer img {
+    width: 50px;
+}
+
+section, footer, header {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<button>{{ slot_2 }}</button>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="case-studies">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="rectangle"></div>
+</section>
+<section id="testimonials">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="rectangle"></div>
+</section>
+<section id="blog">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<div class="rectangle"></div>
+</section>
+</main>
+<footer>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<ul>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+</footer>
+</body>
+</html>

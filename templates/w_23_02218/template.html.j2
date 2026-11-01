@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+header .logo {
+  font-size: 20px;
+}
+
+nav {
+  background-color: #ddd;
+  color: #666;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #666;
+}
+
+.container {
+  width: 100%;
+  padding: 10px;
+}
+
+.music-item {
+  width: 100%;
+  height: 200px;
+  margin: 10px 0;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .music-item {
+    width: 100%;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo">
+        {{ slot_0 }}</div>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li><li>
+</li></ul>
+</nav>
+<div class="container" id="new_music">
+<h2>{{ slot_4 }}</h2>
+<div class="music-item">{{ slot_5 }}</div>
+<div class="music-item">{{ slot_6 }}</div>
+<div class="music-item">{{ slot_7 }}</div>
+</div>
+<div class="container" id="top_songs">
+<h2>{{ slot_8 }}</h2>
+<div class="music-item">{{ slot_9 }}</div>
+<div class="music-item">{{ slot_10 }}</div>
+<div class="music-item">{{ slot_11 }}</div>
+</div>
+<div class="container" id="top_artists">
+<h2>{{ slot_12 }}</h2>
+<div class="music-item">{{ slot_13 }}</div>
+<div class="music-item">{{ slot_14 }}</div>
+<div class="music-item">{{ slot_15 }}</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+#map {
+    height: 400px;
+    background-color: #ccc;
+    text-align: center;
+    line-height: 400px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    background-color: #ddd;
+    padding: 20px 0;
+}
+
+section.destination {
+    margin: 20px 0;
+    padding: 20px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+
+section.destination h2 {
+    color: #354;
+    margin-bottom: 10px;
+}
+
+section.destination p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+section.destination .package {
+    height: 200px;
+    background-color: #ddd;
+    text-align: center;
+    line-height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<section id="map">
+<div>{{ slot_1 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</section>
+<section class="destination" id="country1">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="package">{{ slot_8 }}</div>
+</section>
+<section class="destination" id="country2">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="package">{{ slot_11 }}</div>
+</section>
+<section class="destination" id="country3">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="package">{{ slot_14 }}</div>
+</section>
+<section class="destination" id="country4">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+<div class="package">{{ slot_17 }}</div>
+</section>
+</body>
+</html>

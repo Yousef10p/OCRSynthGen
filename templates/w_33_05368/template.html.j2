@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+header, footer {
+    background-color: #444;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 1em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#hero {
+    height: 50vh;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#product-box {
+    width: 200px;
+    height: 200px;
+    background-color: #888;
+    margin: 0 auto;
+}
+
+#reviews {
+    background-color: #666;
+    color: white;
+    padding: 2em;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    position: sticky;
+    text-align: center;
+    padding: 1em 0;
+}
+
+button {
+    border: none;
+    padding: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1em;
+    background-color: #e14;
+    color: white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+<button>{{ slot_5 }}</button>
+</section>
+<section id="products">
+<h2>{{ slot_6 }}</h2>
+<div id="product-box"></div>
+<p>{{ slot_7 }}</p>
+<button>{{ slot_8 }}</button>
+</section>
+<section id="reviews">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="review">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="review">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</section>
+</main>
+<footer id="sales">
+<p>{{ slot_15 }}</p>
+<button>{{ slot_16 }}</button>
+</footer>
+</body>
+</html>

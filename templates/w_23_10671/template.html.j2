@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    font-family: var(--font-body);
+}
+
+#sidebar, #blog, #social {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: -2px 2px 10px #ddd;
+}
+
+#sidebar {
+    width: 20%;
+}
+
+#blog {
+    width: 60%;
+}
+
+#social {
+    width: 20%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="sidebar">
+<h2>{{ slot_0 }}</h2>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</div>
+<div id="blog">
+<h2>{{ slot_6 }}</h2>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+<div id="social">
+<h2>{{ slot_11 }}</h2>
+<p><a>{{ slot_12 }}</a></p>
+<p><a>{{ slot_13 }}</a></p>
+<p><a>{{ slot_14 }}</a></p>
+</div>
+</body>
+</html>

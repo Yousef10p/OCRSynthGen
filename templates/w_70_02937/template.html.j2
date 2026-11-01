@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.photo {
+    height: 200px;
+    background: gray; 
+}
+
+h1 {
+    grid-column: 1 / span 4;
+}
+
+.reviews {
+    display: none;
+}
+
+button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    background: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<h1>{{ slot_0 }}</h1>
+<section class="featured">
+<div class="photo">
+
+<p>{{ slot_1 }}</p>
+<div class="reviews">{{ slot_2 }}</div>
+<button>{{ slot_3 }}</button>
+</div>
+</section>
+<h1>{{ slot_4 }}</h1>
+<section class="landscapes">
+<div class="photo">
+
+<p>{{ slot_5 }}</p>
+<div class="reviews">{{ slot_6 }}</div>
+<button>{{ slot_7 }}</button>
+</div>
+</section>
+<h1>{{ slot_8 }}</h1>
+<section class="portraits">
+<div class="photo">
+
+<p>{{ slot_9 }}</p>
+<div class="reviews">{{ slot_10 }}</div>
+<button>{{ slot_11 }}</button>
+</div>
+</section>
+<h1>{{ slot_12 }}</h1>
+<section class="abstracts">
+<div class="photo">
+
+<p>{{ slot_13 }}</p>
+<div class="reviews">{{ slot_14 }}</div>
+<button>{{ slot_15 }}</button>
+</div>
+</section>
+</div>
+</body>
+</html>

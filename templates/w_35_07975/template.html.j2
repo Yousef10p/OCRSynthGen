@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: white;
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: gray;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+#cart-link {
+    display: flex;
+    align-items: center;
+}
+
+#cart-count {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.item {
+    background-color: lightgray;
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.item-image {
+    background-color: white;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+#cart {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 300px;
+    background-color: white;
+    padding: 10px;
+}
+
+#cart h2 {
+    text-align: center;
+}
+
+#cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+#checkout {
+    display: block;
+    margin: 10px auto;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="navbar">
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a id="cart-link">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<span id="cart-count">{{ slot_3 }}</span>
+</a>
+</div>
+<div class="container">
+<div class="item">
+<h2>{{ slot_4 }}</h2>
+<div class="item-image ph"></div>
+<p>{{ slot_5 }}</p>
+<button class="add-to-cart">{{ slot_6 }}</button>
+</div>
+<div class="item">
+<h2>{{ slot_7 }}</h2>
+<div class="item-image ph"></div>
+<p>{{ slot_8 }}</p>
+<button class="add-to-cart">{{ slot_9 }}</button>
+</div>
+<div class="item">
+<h2>{{ slot_10 }}</h2>
+<div class="item-image ph"></div>
+<p>{{ slot_11 }}</p>
+<button class="add-to-cart">{{ slot_12 }}</button>
+</div>
+</div>
+<div class="cart" id="cart">
+<h2>{{ slot_13 }}</h2>
+<ul id="cart-items"></ul>
+<button id="checkout">{{ slot_14 }}</button>
+</div>
+</body>
+</html>

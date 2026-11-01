@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    font-family: var(--font-body);
+}
+header {
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+nav .logo a {
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+nav .nav-links {
+    display: flex;
+}
+nav .nav-links li {
+    list-style-type: none;
+    margin: 0 10px;
+}
+nav .nav-links li a {
+    text-decoration: none;
+    color: #333;
+}
+section {
+    padding: 20px;
+}
+section h2 {
+    margin-bottom: 20px;
+}
+section .article, section .item {
+    margin: 20px 0;
+}
+section .article h3, section .item h3 {
+    margin-bottom: 10px;
+}
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+.image {
+    width: 100px;
+    height: 100px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<div class="logo"><a>{{ slot_0 }}</a></div>
+<ul class="nav-links">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="blog">
+<h2>{{ slot_4 }}</h2>
+<div class="article">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<div class="image ph"></div>
+</div>
+
+</section>
+<section id="portfolio">
+<h2>{{ slot_7 }}</h2>
+<div class="item">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<div class="image ph"></div>
+</div>
+
+</section>
+<section id="chatbot">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<div class="image ph"></div>
+</section>
+<footer>
+<div class="footer-links">
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: #F0F0F0;
+}
+header {
+    background-color: #000;
+    color: #FFF;
+    padding: 10px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+nav ul li a {
+    color: #FFF;
+    text-decoration: none;
+}
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #CCC;
+}
+.search-bar input[type="submit"] {
+    padding: 10px;
+    border: none;
+    background-color: #FFF;
+    cursor: pointer;
+}
+section {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+section h2 {
+    color: #000;
+}
+section p {
+    color: #333;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<h1>{{ slot_0 }}</h1>
+<form class="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+<span class="">{{ slot_2 }}</span>
+</form>
+<ul>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="home">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</section>
+<section id="about">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</section>
+<section id="services">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+<section id="contact">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</section>
+</main>
+</body>
+</html>

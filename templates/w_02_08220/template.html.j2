@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+     font-family: var(--font-body);
+}
+
+header {
+     background-color: #f3f3f3;
+     padding: 10px;
+}
+
+nav ul {
+     list-style: none;
+     padding: 0;
+}
+
+nav ul li {
+     display: inline;
+     margin-left: 10px;
+}
+
+
+.course, .simulation, .achievement {
+     width: 100px;
+     height: 100px;
+     margin-bottom: 10px;
+}
+
+.course {
+     background-color: #f3f3f3;
+}
+
+.simulation {
+     background-color: #f3f3f3;
+}
+
+.achievement {
+     background-color: #f3f3f3;
+}
+
+footer {
+     background-color: #f3f3f3;
+     padding: 10px;
+     text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="courses">
+<h2>{{ slot_7 }}</h2>
+<div class="course">{{ slot_8 }}</div>
+<p>{{ slot_9 }}</p>
+<div class="course">{{ slot_10 }}</div>
+<p>{{ slot_11 }}</p>
+</section>
+<section id="simulations">
+<h2>{{ slot_12 }}</h2>
+<div class="simulation">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+<div class="simulation">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+</section>
+<section id="achievements">
+<h2>{{ slot_17 }}</h2>
+<div class="achievement">{{ slot_18 }}</div>
+<p>{{ slot_19 }}</p>
+<div class="achievement">{{ slot_20 }}</div>
+<p>{{ slot_21 }}</p>
+</section>
+</main>
+<footer>
+<p><a>{{ slot_22 }}</a> {{ slot_23 }} <a>{{ slot_24 }}</a> {{ slot_25 }} <a>{{ slot_26 }}</a></p>
+</footer>
+</body>
+</html>

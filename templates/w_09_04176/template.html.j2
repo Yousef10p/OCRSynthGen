@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font-body);
+  color: #333;
+}
+header {
+  position: relative;
+  height: 100vh;
+  color: white;
+}
+.hero-image, .place, .review {
+  background-color: #ccc;
+}
+.hero-image, .left, .center, .right {
+  padding: 20px;
+}
+.left, .center, .right {
+  float: right;
+  width: 33.33%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<section class="hero-image">
+<p>{{ slot_0 }}</p>
+<button>{{ slot_1 }}</button>
+</section>
+</header>
+<main>
+<section class="left">
+<h2>{{ slot_2 }}</h2>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</section>
+<section class="center">
+<h2>{{ slot_10 }}</h2>
+<section class="place">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</section>
+<section class="place">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</section>
+<section class="place">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</section>
+</section>
+<section class="right">
+<h2>{{ slot_17 }}</h2>
+<section class="review">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+</section>
+<section class="review">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_20 }}</p>
+<p>{{ slot_21 }}</p>
+</section>
+</section>
+</main>
+</body>
+</html>

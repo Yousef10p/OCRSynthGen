@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+header, footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    right: 0;
+}
+
+header {
+    top: 0;
+    background-color: #333;
+    color: #fff;
+}
+
+footer {
+    bottom: 0;
+    background-color: #333;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.chat-btn {
+    background-color: #ff006e;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: -2px 2px 4px rgba(0,0,0,0.5);
+    transition: all .3s ease;
+}
+
+.chat-btn:hover {
+    background-color: #c70057;
+    box-shadow: -4px 4px 8px rgba(0,0,0,0.5);
+}
+
+.img-placeholder {
+    width: 300px;
+    height: 200px;
+    background-color: #999;
+    margin: 20px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a class="chat-btn">{{ slot_4 }}</a>
+</header>
+<main>
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<div class="img-placeholder ph"></div>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+<p>{{ slot_10 }}</p>
+</main>
+<footer>
+<a>{{ slot_11 }}</a>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</footer>
+</body>
+</html>

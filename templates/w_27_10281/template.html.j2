@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body); 
+}
+   
+.logo {
+  font-size: 2em; 
+  text-align: center;
+  padding: 1em 0;
+  background-color: black; 
+  color: white; 
+}
+
+.nav { 
+  display: flex;  
+  justify-content: space-around;
+  background-color: lightgray; 
+}
+
+.nav-items {
+  display: flex; 
+  justify-content: space-around;
+  width: 100%; 
+  list-style-type: none; 
+}
+
+.content { 
+  text-align: center; 
+  padding: 5em 0; 
+}
+
+h1 {
+  font-size: 3em; 
+}
+
+p { 
+  font-size: 1.5em; 
+}
+
+
+.hero { 
+  background-color: gray; 
+  color: white; 
+}
+
+.btn { 
+  background-color: red; 
+  color: white; 
+  padding: 0.5em 1em; 
+  border: none; 
+  border-radius: 0.5em;
+}
+
+
+.program-img, .product-img, .video-img, .challenges-img {
+  width: 100%; 
+  height: 200px; 
+  background-color: gray; 
+  margin: 2em 0; 
+}
+
+.program-desc, .product-desc, .video-desc, .challenges-desc {
+  font-size: 1.2em; 
+}
+.learn-more {
+  background-color: red; 
+  color: white; 
+  padding: 0.5em 1em; 
+  border: none; 
+  border-radius: 0.5em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header id="header">
+
+<div class="logo">
+            {{ slot_0 }} 
+        </div>
+
+<nav class="nav">
+<ul class="nav-items">
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}
+            </li></ul>
+</nav>
+</header>
+
+<main class="content">
+
+<section class="hero">
+<h1 class="hero-title">{{ slot_6 }}</h1>
+<p class="hero-description">{{ slot_7 }}</p>
+<button class="btn">{{ slot_8 }}</button>
+</section>
+
+<section class="programs">
+<h1 class="programs-title">{{ slot_9 }}</h1>
+<p class="programs-description">{{ slot_10 }}</p>
+<div class="program-img">{{ slot_11 }}</div>
+<p class="program-desc">{{ slot_12 }}</p>
+<p class="learn-more">{{ slot_13 }}</p>
+</section>
+
+<section class="products">
+<h1 class="products-title">{{ slot_14 }}</h1>
+<p class="products-description">{{ slot_15 }}</p>
+<div class="product-img">{{ slot_16 }}</div>
+<p class="product-desc">{{ slot_17 }}</p>
+<p class="learn-more">{{ slot_18 }}</p>
+</section>
+
+<section class="workouts">
+<h1 class="workouts-title">{{ slot_19 }}</h1>
+<p class="workouts-description">{{ slot_20 }}</p>
+<div class="video-img">{{ slot_21 }}</div>
+<p class="video-desc">{{ slot_22 }}</p>
+<p class="learn-more">{{ slot_23 }}</p>
+</section>
+
+<section class="challenges">
+<h1 class="challenges-title">{{ slot_24 }}</h1>
+<p class="challenges-description">{{ slot_25 }}</p>
+<div class="challenges-img">{{ slot_26 }}</div>
+<p class="challenges-desc">{{ slot_27 }}</p>
+<p class="learn-more">{{ slot_28 }}</p>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: var(--font-body);
+}
+header {
+    background-color: #f8f8f8;
+    padding: 10px 0;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none;
+}
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+.hero {
+    background-color: #ddd;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.promotions {
+    padding: 50px;
+    text-align: center;
+}
+.promotions h2 {
+    margin-bottom: 30px;
+}
+.promotion {
+    margin-bottom: 50px;
+}
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+.social-links a {
+    margin: 0 10px;
+}
+.contact a {
+    margin: 0 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo">{{ slot_0 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="hero">
+<div class="hero-text">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+<a class="cta-button">{{ slot_8 }}</a>
+</div>
+</section>
+<section class="promotions">
+<h2>{{ slot_9 }}</h2>
+<div class="promotion">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="promotion">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+</section>
+</main>
+<footer>
+<div>{{ slot_14 }}</div>
+<div class="social-links">
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+</div>
+<div class="contact">
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+</div>
+</footer>
+</body>
+</html>

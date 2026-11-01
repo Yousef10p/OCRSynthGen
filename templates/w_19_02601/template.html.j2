@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: #333;
+}
+
+header {
+    background-color: #900;
+    color: #ffc;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav {
+    background-color: #f80;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.slideshow-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.slideshow-img {
+    background: #fc0;
+    height: 200px;
+    flex-grow: 1;
+    margin: 20px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.item-image {
+    background: #f80;
+    height: 200px;
+    width: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="slideshow">
+<div class="slideshow-container">
+<div class="slideshow-img ph"></div>
+<div class="slideshow-img ph"></div>
+<div class="slideshow-img ph"></div>
+
+</div>
+</section>
+<section id="menu">
+<h2>{{ slot_5 }}</h2>
+<div class="menu-item">
+<div class="item-image ph"></div>
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="menu-item">
+<div class="item-image ph"></div>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+
+</section>
+<section id="reservations">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<button>{{ slot_12 }}</button>
+</section>
+<section id="orders">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<button>{{ slot_15 }}</button>
+</section>
+</main>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

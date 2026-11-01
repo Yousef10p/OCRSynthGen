@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.grid div {
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+.grid div h3 {
+  margin: 0;
+}
+
+.grid div p {
+  margin: 5px 0;
+}
+
+section {
+  padding: 20px;
+}
+
+#about,
+#language-choice,
+#topic-choice,
+#teaching-method-choice {
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="about">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="language-choice">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="grid">
+<div>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+<div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+</div>
+</section>
+<section id="topic-choice">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="grid">
+<div>
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+<div>
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+</div>
+</div>
+</section>
+<section id="teaching-method-choice">
+<h2>{{ slot_19 }}</h2>
+<p>{{ slot_20 }}</p>
+<div class="grid">
+<div>
+<h3>{{ slot_21 }}</h3>
+<p>{{ slot_22 }}</p>
+</div>
+<div>
+<h3>{{ slot_23 }}</h3>
+<p>{{ slot_24 }}</p>
+</div>
+</div>
+</section>
+</body>
+</html>

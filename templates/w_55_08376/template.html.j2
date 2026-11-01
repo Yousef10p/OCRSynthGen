@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+nav {
+    width: 250px;
+    height: 100vh;
+    background: #ccc;
+    position: fixed;
+    top: 0;
+    right: -250px;
+    z-index: 1;
+}
+.nav-links {
+    padding: 20px;
+}
+.nav-links ul li {
+    list-style: none;
+    padding: 15px;
+}
+.nav-links ul li a {
+    text-decoration: none;
+}
+section {
+    margin-right: 250px;
+    padding: 30px;
+}
+.col {
+    float: right;
+    width: 33.3%;
+}
+.icon {
+    width: 200px;
+    height: 200px;
+    background: #333;
+    margin: 10px;
+}
+#icon-1 {
+    background: red;
+}
+#icon-2 {
+    background: green;
+}
+#icon-3 {
+    background: blue;
+}
+#icon-4 {
+    background: yellow;
+}
+
+@media (max-width: 700px) {
+    nav, .col {
+        width: 100%;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<div class="nav-links" id="navLinks">
+<i class="fa fa-times"></i>
+<ul>
+<li><a>{{ slot_0 }}</a>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+<i class="fa fa-bars"></i>
+</div>
+</nav>
+<section>
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+<div class="row">
+<div class="col">
+<div class="icon" id="icon-1"></div>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="col">
+<div class="icon" id="icon-2"></div>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="col">
+<div class="icon" id="icon-3"></div>
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="col">
+<div class="icon" id="icon-4"></div>
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+</div>
+</div>
+</section>
+</body>
+</html>

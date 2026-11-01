@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #ff00ff;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.social-media {
+    display: flex;
+}
+
+.social-media li {
+    margin: 0 1rem;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.product-image {
+    height: 50px;
+    width: 50px;
+    background-color: #ddd;
+    margin-left: 1rem;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<ul class="social-media">
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</header>
+<section id="new-arrivals">
+<h2>{{ slot_8 }}</h2>
+<article class="product">
+<h3>{{ slot_9 }}</h3>
+<div class="product-image ph"></div>
+<p>{{ slot_10 }}</p>
+</article>
+
+</section>
+<section id="bestsellers">
+<h2>{{ slot_11 }}</h2>
+<article class="product">
+<h3>{{ slot_12 }}</h3>
+<div class="product-image ph"></div>
+<p>{{ slot_13 }}</p>
+</article>
+
+</section>
+<section id="featured">
+<h2>{{ slot_14 }}</h2>
+<article class="product">
+<h3>{{ slot_15 }}</h3>
+<div class="product-image ph"></div>
+<p>{{ slot_16 }}</p>
+</article>
+
+</section>
+<section id="blog">
+<h2>{{ slot_17 }}</h2>
+
+</section>
+</body>
+</html>

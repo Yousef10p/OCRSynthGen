@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#header_section {
+    background-color: lightblue;
+    padding: 20px;
+}
+
+#class_schedule_section {
+    background-color: lightgreen;
+    padding: 20px;
+}
+
+#membership_section {
+    background-color: lightpink;
+    padding: 20px;
+}
+
+#blog_section {
+    background-color: lightyellow;
+    padding: 20px;
+}
+
+#testimonials_section {
+    background-color: lightgray;
+    padding: 20px;
+}
+
+.blog_post_image {
+    background-color: lightgray;
+    height: 200px;
+    width: 200px;
+    display: block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header_section">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+<div id="class_schedule_section">
+<h2>{{ slot_2 }}</h2>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</div>
+<div id="membership_section">
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</div>
+<div id="blog_section">
+<h2>{{ slot_10 }}</h2>
+<div class="blog_post">
+<h3>{{ slot_11 }}</h3>
+<div class="blog_post_image">{{ slot_12 }}</div>
+<p>{{ slot_13 }}</p>
+</div>
+</div>
+<div id="testimonials_section">
+<h2>{{ slot_14 }}</h2>
+<ul>
+<li>{{ slot_15 }}</li>
+<li>{{ slot_16 }}</li>
+<li>{{ slot_17 }}</li>
+</ul>
+</div>
+</body>
+</html>

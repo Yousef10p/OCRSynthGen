@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.search-bar {
+    flex: 1;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.featured-articles {
+    padding: 20px;
+}
+
+.carousel-item img {
+    background-color: #bbb;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    right: 0;
+    padding: 10px;
+    left: 0;
+    bottom: 0;
+    color: #fff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+    {{ slot_0 }}
+        <span class="search-bar" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+<div class="nav">
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+<a>{{ slot_5 }}</a>
+<a>{{ slot_6 }}</a>
+</div>
+<div class="featured-articles">
+<div class="carousel slide" id="carouselExampleIndicators">
+<ol class="carousel-indicators">
+<li class="active"></li>
+<li></li>
+<li></li>
+</ol>
+<div class="carousel-inner">
+<div class="carousel-item active">
+<div class="d-block w-100 ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="carousel-caption d-none d-md-block">
+<h5>{{ slot_7 }}</h5>
+<p>{{ slot_8 }}</p>
+</div>
+</div>
+<div class="carousel-item">
+<div class="d-block w-100 ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="carousel-caption d-none d-md-block">
+<h5>{{ slot_9 }}</h5>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+<div class="carousel-item">
+<div class="d-block w-100 ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="carousel-caption d-none d-md-block">
+<h5>{{ slot_11 }}</h5>
+<p>{{ slot_12 }}</p>
+</div>
+</div>
+</div>
+<a class="carousel-control-prev">
+<span class="carousel-control-prev-icon"></span>
+<span class="sr-only">{{ slot_13 }}</span>
+</a>
+<a class="carousel-control-next">
+<span class="carousel-control-next-icon"></span>
+<span class="sr-only">{{ slot_14 }}</span>
+</a>
+</div>
+</div>
+</body>
+</html>

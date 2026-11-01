@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #555;
+}
+
+nav li {
+    float: right;
+}
+
+nav li a, .dropdown {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover, .dropdown:hover .dropdown-content {
+    background-color: #777;
+}
+
+nav li .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+}
+
+nav li .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+form {
+    margin: 10px;
+}
+
+
+#product {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    height: 200px;
+    padding: 50px;
+}
+
+
+#contact, #social-media {
+    float: right;
+    width: 33.33%;
+    padding: 15px;
+}
+
+#newsletter {
+    float: left;
+    width: 33.33%;
+    padding: 15px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li class="dropdown">
+<a>{{ slot_2 }}</a>
+<div class="dropdown-content">
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</div>
+</li>
+<li class="dropdown">
+<a>{{ slot_5 }}</a>
+<div class="dropdown-content">
+<a>{{ slot_6 }}</a>
+<a>{{ slot_7 }}</a>
+</div>
+</li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</nav>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_9 }}</span>
+</form>
+<main>
+
+<div id="product">{{ slot_10 }}</div>
+</main>
+<footer>
+
+<div id="social-media">
+<a>{{ slot_11 }}</a>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+</div>
+
+<div id="contact">
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+</div>
+
+<form id="newsletter">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
+<span class="">{{ slot_20 }}</span>
+</form>
+</footer>
+</body>
+</html>

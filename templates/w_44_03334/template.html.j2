@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+header {
+    background: #f8f8f8;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+    text-transform: uppercase;
+}
+
+.fullscreen-image {
+    background-image: none;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullscreen-image h1 {
+    font-size: 2em;
+}
+
+.fullscreen-image p {
+    font-size: 1.2em;
+}
+
+.cta {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.product {
+    width: 30%;
+    text-align: center;
+}
+
+footer {
+    background: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</nav>
+</header>
+<section class="fullscreen-image">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<button class="cta">{{ slot_7 }}</button>
+</section>
+<section class="products">
+<div class="product">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="product-image ph"></div>
+</div>
+<div class="product">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<div class="product-image ph"></div>
+</div>
+<div class="product">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="product-image ph"></div>
+</div>
+</section>
+<footer>
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

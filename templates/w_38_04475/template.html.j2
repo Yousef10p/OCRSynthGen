@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header, footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.slider {
+    position: relative;
+    height: 300px;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.packages .package {
+    display: inline-block;
+    width: 30%;
+    margin: 1%;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.quote form {
+    display: flex;
+    flex-direction: column;
+}
+
+.quote input,
+.quote textarea {
+    margin-bottom: 10px;
+}
+
+.social-icons span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+}
+
+.book-now {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="slider">
+<div class="slide" style="background-color: red;"></div>
+<div class="slide" style="background-color: green;"></div>
+<div class="slide" style="background-color: blue;"></div>
+</section>
+<section class="packages">
+<h2>{{ slot_5 }}</h2>
+<div class="package">
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="package">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+</section>
+<section class="quote">
+<h2>{{ slot_10 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<button>{{ slot_14 }}</button>
+</form>
+</section>
+</main>
+<footer>
+<p>{{ slot_15 }}</p>
+<div class="social-icons">
+<span style="background-color: yellow;"></span>
+<span style="background-color: orange;"></span>
+<span style="background-color: purple;"></span>
+</div>
+<a>{{ slot_16 }}</a>
+<button class="book-now">{{ slot_17 }}</button>
+</footer>
+</body>
+</html>

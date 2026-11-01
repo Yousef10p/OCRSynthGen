@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f7f2e9;
+    color: #524a48;
+}
+
+h1, h2, h3 {
+    color: #d66547;
+}
+
+a {
+    color: #d66547;
+    text-decoration: none;
+}
+
+nav ul {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.recipe, .review, .restaurant {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #d66547;
+}
+
+.recipe-image, .restaurant-image {
+    width: 100%;
+    height: 200px;
+    background-color: #d66547;
+}
+
+button {
+    background-color: #d66547;
+    color: #f7f2e9;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="recipes">
+<h2>{{ slot_4 }}</h2>
+<div class="recipe">
+<div class="recipe-image ph"></div>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<button>{{ slot_7 }}</button>
+</div>
+<div class="recipe">
+<div class="recipe-image ph"></div>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<button>{{ slot_10 }}</button>
+</div>
+</section>
+<section id="reviews">
+<h2>{{ slot_11 }}</h2>
+<div class="review">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="review">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+</section>
+<section id="restaurants">
+<h2>{{ slot_16 }}</h2>
+<div class="restaurant">
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+<button>{{ slot_19 }}</button>
+</div>
+</section>
+</body>
+</html>

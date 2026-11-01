@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+*::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav {
+  width: 100%;
+  background-color: #f8f8f8;
+}
+.top-nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #000;
+}
+.hero {
+  width: 100%;
+  height: 300px;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+.latest-news {
+  width: 70%;
+  margin-top: 30px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+tr:nth-child(even){background-color: #f2f2f2}
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: right;
+  background-color: #4CAF50;
+  color: white;
+}
+.player-image {
+  background: #ccc;
+  width: 100%;
+  height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav class="top-nav">
+<a> {{ slot_0 }} </a>
+<a> {{ slot_1 }} </a>
+<a> {{ slot_2 }} </a>
+</nav>
+<section class="hero">
+<p class="hero-text">{{ slot_3 }}</p>
+</section>
+<section class="latest-news">
+<p class="section-header">{{ slot_4 }}</p>
+<a>{{ slot_5 }}</a>
+</section>
+<section class="schedule">
+<p class="section-header">{{ slot_6 }}</p>
+<table>
+<tr>
+<th>{{ slot_7 }}</th>
+<th>{{ slot_8 }}</th>
+<th>{{ slot_9 }}</th>
+</tr>
+<tr>
+<td>{{ slot_10 }}</td>
+<td>{{ slot_11 }}</td>
+<td>{{ slot_12 }}</td>
+</tr>
+<tr>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+</tr>
+
+</table>
+</section>
+<section class="player-section">
+<p class="section-header">{{ slot_16 }}</p>
+<div class="player-image ph"></div>
+<p class="player-info">{{ slot_17 }}</p>
+</section>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  background-color: #9c27b0;
+  color: white;
+}
+
+#countdown {
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+#countdown div {
+  display: inline-block;
+  font-size: 2em;
+  padding: 10px;
+}
+
+// replace img with color divs, and use grid or flexbox to align vertically
+#ticket-info, #performers, #vendor-info {
+  background-color: #2196f3;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<h1>{{ slot_0 }}</h1>
+<div id="countdown">
+<div id="days">{{ slot_1 }}</div> {{ slot_2 }}
+      <div id="hours">{{ slot_3 }}</div> {{ slot_4 }}
+      <div id="minutes">{{ slot_5 }}</div> {{ slot_6 }}
+      <div id="seconds">{{ slot_7 }}</div> {{ slot_8 }}
+    </div>
+
+
+    {{ slot_9 }}
+    <ul>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+</ul>
+  
+    {{ slot_13 }}
+    <div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div> {{ slot_14 }}
+      <div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</body>
+</html>

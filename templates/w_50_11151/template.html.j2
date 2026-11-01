@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header {
+    background-color: lightgray;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+}
+.logo {
+    font-size: 2em;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline-block;
+    margin: 0 20px;
+}
+section {
+    margin: 20px 0;
+    width: 80%;
+}
+.image-placeholder {
+    background-color: lightgray;
+    height: 200px;
+    margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo">{{ slot_0 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="pizza">
+<h2>{{ slot_5 }}</h2>
+<div class="image-placeholder ph"></div>
+<p>{{ slot_6 }}</p>
+<h3>{{ slot_7 }}</h3>
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+</section>
+<section id="burger">
+<h2>{{ slot_11 }}</h2>
+<div class="image-placeholder ph"></div>
+<p>{{ slot_12 }}</p>
+<h3>{{ slot_13 }}</h3>
+<ul>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+<li>{{ slot_16 }}</li>
+</ul>
+</section>
+<section id="sushi">
+<h2>{{ slot_17 }}</h2>
+<div class="image-placeholder ph"></div>
+<p>{{ slot_18 }}</p>
+<h3>{{ slot_19 }}</h3>
+<ul>
+<li>{{ slot_20 }}</li>
+<li>{{ slot_21 }}</li>
+<li>{{ slot_22 }}</li>
+</ul>
+</section>
+<section id="steak">
+<h2>{{ slot_23 }}</h2>
+<div class="image-placeholder ph"></div>
+<p>{{ slot_24 }}</p>
+<h3>{{ slot_25 }}</h3>
+<ul>
+<li>{{ slot_26 }}</li>
+<li>{{ slot_27 }}</li>
+<li>{{ slot_28 }}</li>
+</ul>
+</section>
+</main>
+</body>
+</html>

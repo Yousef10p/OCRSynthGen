@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.hero-image {
+    height: 500px;
+    background-color: #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    margin: 40px 0;
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer div {
+    width: 20%;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+</ul>
+</nav>
+</header>
+<section class="hero-image">
+<h1>{{ slot_3 }}</h1>
+</section>
+<section class="offerings">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</section>
+<section class="case-studies">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</section>
+<section class="testimonials">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</section>
+<footer>
+<div class="mission">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="values">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="team">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="contact">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+</div>
+</footer>
+</body>
+</html>

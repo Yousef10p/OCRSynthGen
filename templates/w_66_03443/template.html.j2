@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: #F2F2F2;
+    font-family: var(--font-body);
+}
+
+#header, #banner {
+    background-color: #007BFF;
+    color: #FFF;
+    text-align: center;
+    padding: 20px;
+}
+
+#features {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.feature {
+    flex-basis: 20%;
+    border: 1px solid #007BFF;
+    text-align: center;
+    padding: 20px;
+}
+
+#pricing {
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 15px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #F2F2F2;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div id="banner">
+<h2>{{ slot_1 }}</h2>
+</div>
+<div id="features">
+<div class="feature">
+<h3>{{ slot_2 }}</h3>
+<p>{{ slot_3 }}</p>
+<div class="ph" style="inline-size: 200px; block-size: 200px"></div>
+</div>
+<div class="feature">
+<h3>{{ slot_4 }}</h3>
+<p>{{ slot_5 }}</p>
+<div class="ph" style="inline-size: 200px; block-size: 200px"></div>
+</div>
+<div class="feature">
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+<div class="ph" style="inline-size: 200px; block-size: 200px"></div>
+</div>
+</div>
+<div id="pricing">
+<h2>{{ slot_8 }}</h2>
+<table>
+<tr>
+<th>{{ slot_9 }}</th>
+<th>{{ slot_10 }}</th>
+<th>{{ slot_11 }}</th>
+</tr>
+<tr>
+<td>{{ slot_12 }}</td>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+</tr>
+<tr>
+<td>{{ slot_15 }}</td>
+<td>{{ slot_16 }}</td>
+<td>{{ slot_17 }}</td>
+</tr>
+<tr>
+<td>{{ slot_18 }}</td>
+<td>{{ slot_19 }}</td>
+<td>{{ slot_20 }}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

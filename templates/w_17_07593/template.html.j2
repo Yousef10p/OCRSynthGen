@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.logo, .menu {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.content {
+    margin-right: 180px;
+}
+
+.menu {
+    bottom: 0;
+}
+
+.footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="logo">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="menu">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div class="content">
+<div class="image ph"></div>
+<div class="text">
+<p>{{ slot_5 }}</p>
+</div>
+</div>
+<div class="footer">
+<div class="social-media">
+<p>{{ slot_6 }}</p>
+<a>{{ slot_7 }}</a> {{ slot_8 }} <a>{{ slot_9 }}</a> {{ slot_10 }} <a>{{ slot_11 }}</a>
+</div>
+<div class="contact-info">
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="cta">
+<a>{{ slot_15 }}</a>
+</div>
+</div>
+</div>
+</body>
+</html>

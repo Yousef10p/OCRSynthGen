@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+header, footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+aside, main {
+  padding: 20px;
+}
+
+aside {
+  background-color: #ddd;
+  width: 25%;
+  float: right;
+}
+
+main {
+  background-color: #eee;
+  width: 50%;
+  float: right;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #f00;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<div class="cta-button">{{ slot_1 }}</div>
+</header>
+<aside>
+<h2>{{ slot_2 }}</h2>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</aside>
+<main>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</main>
+<footer>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+</footer>
+</body>
+</html>

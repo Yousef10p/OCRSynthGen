@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+}
+#left-column {
+    width: 20%;
+    border-left: 1px solid black;
+    padding: 1em;
+}
+#main-content {
+    width: 60%;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1em;
+}
+#contact-form, #scheduling-tool {
+    width: 20%;
+    border-right: 1px solid black;
+    padding: 1em;
+}
+.content-tile {
+    background-color: lightgrey;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+input, textarea, button {
+    display: block;
+    width: 100%;
+    margin: 0.5em 0;
+}
+button[type="submit"] {
+    background-color: #008CBA;
+    color: white;
+    padding: 0.5em;
+    border: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="left-column">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<h1>{{ slot_2 }}</h1>
+<p>{{ slot_3 }}</p>
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+</div>
+<div id="main-content">
+<div class="content-tile">{{ slot_6 }}</div>
+<div class="content-tile">{{ slot_7 }}</div>
+<div class="content-tile">{{ slot_8 }}</div>
+</div>
+<div id="contact-form">
+<h1>{{ slot_9 }}</h1>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_12 }}</span>
+<button>{{ slot_13 }}</button>
+</form>
+</div>
+<div id="scheduling-tool">
+<h1>{{ slot_14 }}</h1>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+<button>{{ slot_17 }}</button>
+</form>
+</div>
+</body>
+</html>

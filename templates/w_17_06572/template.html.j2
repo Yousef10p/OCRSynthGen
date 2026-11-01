@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: #f6f6f6;
+  padding: 20px;
+}
+
+nav a {
+  margin-left: 10px;
+}
+
+#pie-chart {
+  width: 200px;
+  height: 200px;
+  background-color: #ddd;
+  position: relative;
+}
+
+#pie-slice {
+  width: 100px;
+  height: 100px;
+  background-color: #06c;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: right;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f6f6f6;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+</nav>
+</header>
+<main>
+<section id="login-section">
+<h2>{{ slot_3 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_5 }}</span>
+<button>{{ slot_6 }}</button>
+</form>
+</section>
+<section id="balance-section">
+<h2>{{ slot_7 }}</h2>
+<div id="pie-chart">
+<div id="pie-slice"></div>
+<p>{{ slot_8 }}</p>
+</div>
+</section>
+<section id="transaction-section">
+<h2>{{ slot_9 }}</h2>
+<table>
+<thead>
+<tr>
+<th>{{ slot_10 }}</th>
+<th>{{ slot_11 }}</th>
+<th>{{ slot_12 }}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+</tr>
+</tbody>
+</table>
+</section>
+</main>
+</body>
+</html>

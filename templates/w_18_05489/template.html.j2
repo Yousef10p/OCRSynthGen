@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+#menu {
+    position: fixed;
+    right: 0;
+    top: 50px;
+    width: 200px;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+#featured-pets {
+    margin-right: 220px;
+    padding: 20px;
+}
+
+.pet {
+    display: inline-block;
+    width: 30%;
+    margin: 1%;
+}
+
+.pet-image {
+    height: 200px;
+    background-color: #ddd;
+    margin-bottom: 10px;
+}
+
+#cta {
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 50px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="menu">
+<h3>{{ slot_0 }}</h3>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+<div id="featured-pets">
+<h2>{{ slot_5 }}</h2>
+<div class="pet">
+<h4>{{ slot_6 }}</h4>
+<div class="pet-image ph"></div>
+<p>{{ slot_7 }}</p>
+<button>{{ slot_8 }}</button>
+</div>
+<div class="pet">
+<h4>{{ slot_9 }}</h4>
+<div class="pet-image ph"></div>
+<p>{{ slot_10 }}</p>
+<button>{{ slot_11 }}</button>
+</div>
+</div>
+<div id="cta">
+<h1>{{ slot_12 }}</h1>
+<p>{{ slot_13 }}</p>
+<button>{{ slot_14 }}</button>
+</div>
+</body>
+</html>

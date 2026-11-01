@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: "header header header"
+                         "sidebar-left main sidebar-right";
+}
+header {
+    grid-area: header;
+    background-color: #f8f8f8;
+}
+main {
+    grid-area: main;
+}
+aside#sidebar-left {
+    grid-area: sidebar-left;
+    background-color: #f1f1f1;
+}
+aside#sidebar-right {
+    grid-area: sidebar-right;
+    background-color: #e6e6e6;
+}
+.destination, .promotion, .review, .testimonial {
+    width: 100%;
+    height: 50px;
+    margin: 10px 0;
+    background-color: #ccc;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<aside id="sidebar-left">
+<h3>{{ slot_5 }}</h3>
+<div class="destination">{{ slot_6 }}</div>
+<div class="destination">{{ slot_7 }}</div>
+<div class="destination">{{ slot_8 }}</div>
+<h3>{{ slot_9 }}</h3>
+<div class="promotion">{{ slot_10 }}</div>
+<div class="promotion">{{ slot_11 }}</div>
+<div class="promotion">{{ slot_12 }}</div>
+</aside>
+<main>
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+</main>
+<aside id="sidebar-right">
+<h3>{{ slot_15 }}</h3>
+<div class="review">{{ slot_16 }}</div>
+<div class="review">{{ slot_17 }}</div>
+<h3>{{ slot_18 }}</h3>
+<div class="testimonial">{{ slot_19 }}</div>
+<div class="testimonial">{{ slot_20 }}</div>
+</aside>
+</body>
+</html>

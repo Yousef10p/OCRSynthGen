@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+body {
+    padding: 1rem;
+}
+
+a {
+    color: #2e6c80;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#search {
+    height: 2rem;
+    padding: 0 1rem;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 2rem;
+    outline: none;
+}
+
+main section {
+    margin-bottom: 2rem;
+}
+
+.charts p, .radio-stations p {
+    background: lightgray;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+
+.filters h3 {
+    margin: 1rem 0;
+}
+
+.filters p {
+    background: lightgray;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<a class="back-link">{{ slot_0 }}</a>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+</form>
+</header>
+<main>
+<section>
+<h2>{{ slot_2 }}</h2>
+<div class="charts">
+<p>{{ slot_3 }}</p>
+<p>{{ slot_4 }} </p>
+<p>{{ slot_5 }}</p>
+</div>
+</section>
+<section>
+<h2>{{ slot_6 }}</h2>
+<div class="radio-stations">
+<p>{{ slot_7 }}</p>
+<p>{{ slot_8 }}</p>
+<p>{{ slot_9 }}</p>
+</div>
+</section>
+<section class="filters">
+<h3>{{ slot_10 }}</h3>
+<div>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+</div>
+<h3>{{ slot_14 }}</h3>
+<div>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+<p>{{ slot_17 }}</p>
+</div>
+<h3>{{ slot_18 }}</h3>
+<div>
+<p>{{ slot_19 }}</p>
+<p>{{ slot_20 }}</p>
+<p>{{ slot_21 }}</p>
+</div>
+</section>
+</main>
+</body>
+</html>

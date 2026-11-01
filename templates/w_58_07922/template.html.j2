@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    background-color: #f2f2f2;
+    height: 100%;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    margin-bottom: 0.5em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+section {
+    margin: 2em 0;
+}
+
+div {
+    margin-bottom: 2em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<section id="destinations">
+<div>
+
+<div style="height:100px;width:100%;background-color:skyblue;">{{ slot_3 }}</div>
+<p>{{ slot_4 }}</p>
+</div>
+<div>
+
+<div style="height:100px;width:100%;background-color:salmon;">{{ slot_5 }}</div>
+<p>{{ slot_6 }}</p>
+</div>
+</section>
+<section id="packages">
+<div>
+
+<div style="height:100px;width:100%;background-color:yellow;">{{ slot_7 }}</div>
+<p>{{ slot_8 }}</p>
+</div>
+<div>
+
+<div style="height:100px;width:100%;background-color:violet;">{{ slot_9 }}</div>
+<p>{{ slot_10 }}</p>
+</div>
+</section>
+<section id="services">
+<div>
+
+<div style="height:100px;width:100%;background-color:turquoise;">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+</div>
+<div>
+
+<div style="height:100px;width:100%;background-color:wheat;">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+</div>
+</section>
+</body>
+</html>

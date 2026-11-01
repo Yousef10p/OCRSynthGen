@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+
+header {
+    padding: 20px;
+    background: #f4f4f4;
+    text-align: center;
+    color: #333;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
+}
+
+nav a {
+    margin: 0 10px;
+}
+
+.full-width {
+    width: 100%;
+    height: 300px;
+    background-color: #ccc;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background: #f4f4f4;
+    padding: 10px;
+}
+
+.category {
+    height: 200px;
+    color: #fff;
+}
+
+#Electronics {
+    background-color: #f00;
+}
+
+#Computers {
+    background-color: #0f0;
+}
+
+#Phones {
+    background-color: #00f;
+}
+
+#Accessories {
+    background-color: #ff0;
+}
+
+#search {
+    padding: 10px;
+    width: 200px;
+    margin: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>{{ slot_0 }}</header>
+<nav>
+<a>{{ slot_1 }}</a> {{ slot_2 }}
+        <a>{{ slot_3 }}</a> {{ slot_4 }}
+        <a>{{ slot_5 }}</a> {{ slot_6 }}
+        <a>{{ slot_7 }}</a> {{ slot_8 }}
+    </nav>
+<div class="full-width" id="full-width">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="categories">
+<a>
+<div class="category" id="Electronics">{{ slot_9 }}</div>
+</a>
+<a>
+<div class="category" id="Computers">{{ slot_10 }}</div>
+</a>
+<a>
+<div class="category" id="Phones">{{ slot_11 }}</div>
+</a>
+<a>
+<div class="category" id="Accessories">{{ slot_12 }}</div>
+</a>
+</div>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<a>{{ slot_14 }}</a>
+<div class="reviews">
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</div>
+</body>
+</html>

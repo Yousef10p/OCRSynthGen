@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#header {
+    text-align: center;
+}
+
+
+#navigation {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+}
+
+#navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#navigation li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+#navigation a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#navigation a:hover {
+    color: #f00;
+}
+
+
+div[id] {
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<div id="header">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+
+<div id="navigation">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</div>
+
+<div id="products">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }} </p>
+
+<div id="product1" style="background-color: #f00;">{{ slot_5 }}</div>
+<div id="product2" style="background-color: #0f0;">{{ slot_6 }}</div>
+<div id="product3" style="background-color: #00f;">{{ slot_7 }}</div>
+</div>
+
+<div id="services">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }} </p>
+
+<div id="service1" style="background-color: #f0f;">{{ slot_10 }}</div>
+<div id="service2" style="background-color: #ff0;">{{ slot_11 }}</div>
+</div>
+
+<div id="about us">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }} </p>
+
+<div id="team1" style="background-color: #0ff;">{{ slot_14 }}</div>
+<div id="team2" style="background-color: #f0f;">{{ slot_15 }}</div>
+</div>
+</body>
+</html>

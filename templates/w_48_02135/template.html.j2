@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    font-family: var(--font-body);
+}
+aside, main {
+    padding: 20px;
+}
+aside {
+    width: 30%;
+    background-color: #f0f0f0;
+}
+main {
+    width: 70%;
+    background-color: #ffffff;
+}
+.product-grid, .related-item {
+    display: flex;
+    flex-wrap: wrap;
+}
+.product-image, .customer-review, .related-item {
+    width: 31%;
+    margin: 1%;
+    padding: 10px;
+    background-color: #ddd;
+    transition: all 0.3s ease;
+}
+.product-image:hover, .customer-review:hover, .related-item:hover {
+    transform: scale(1.05);
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+    {{ slot_0 }}<aside>
+<h3>{{ slot_1 }}</h3>
+        {{ slot_2 }}<ul>
+            {{ slot_3 }}<li><a>{{ slot_4 }}</a></li>
+            {{ slot_5 }}<li><a>{{ slot_6 }}</a></li>
+            {{ slot_7 }}<li><a>{{ slot_8 }}</a></li>
+</ul>
+        {{ slot_9 }}<h3>{{ slot_10 }}</h3>
+        {{ slot_11 }}<div class="featured-image">{{ slot_12 }}</div>
+        {{ slot_13 }}<h3>{{ slot_14 }}</h3>
+        {{ slot_15 }}<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+</aside>
+
+    {{ slot_17 }}
+    {{ slot_18 }}<main>
+        {{ slot_19 }}<h1>{{ slot_20 }}</h1>
+        {{ slot_21 }}<div class="product-grid">
+            {{ slot_22 }}
+            {{ slot_23 }}<div class="product-image">{{ slot_24 }}</div>
+            {{ slot_25 }}<div class="product-image">{{ slot_26 }}</div>
+            {{ slot_27 }}
+</div>
+</main>
+
+    {{ slot_28 }}
+    {{ slot_29 }}<aside>
+<h3>{{ slot_30 }}</h3>
+        {{ slot_31 }}<div class="customer-review">{{ slot_32 }}</div>
+        {{ slot_33 }}<div class="customer-review">{{ slot_34 }}</div>
+<h3>{{ slot_35 }}</h3>
+        {{ slot_36 }}<div class="related-item">{{ slot_37 }}</div>
+        {{ slot_38 }}<div class="related-item">{{ slot_39 }}</div>
+</aside>
+</body>
+</html>

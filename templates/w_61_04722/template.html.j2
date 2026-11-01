@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.menu {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.menu ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.menu li {
+    margin-bottom: 10px;
+}
+
+.main-content {
+    margin-right: 200px;
+    padding: 20px;
+}
+
+.studio-image, .service-image, .classes-image, .membership-image {
+    width: 100%;
+    height: 200px;
+    background: #ddd;
+    margin-bottom: 20px;
+}
+
+.footer {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.footer li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.footer form {
+    margin-top: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="menu">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</div>
+<div class="main-content">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+<div class="studio-image ph"></div>
+<h2 id="services">{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="service-image ph"></div>
+<h2 id="classes">{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="classes-image ph"></div>
+<h2 id="membership">{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="membership-image ph"></div>
+</div>
+<div class="footer">
+<p>{{ slot_11 }}</p>
+<ul>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_17 }}</span>
+<button>{{ slot_18 }}</button>
+</form>
+</div>
+</body>
+</html>

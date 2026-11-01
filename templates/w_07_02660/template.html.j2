@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    height: 100%;
+    font-family: var(--font-body);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fafafa;
+    color: #333;
+}
+header, main, footer {
+    width: 100%;
+}
+h1, h2, p {
+    text-align: center;
+}
+header {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 20px 0px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+.booking-widget, .amenities-image, .review-image {
+    height: 100px;
+    width: 200px;
+    margin: 10px auto;
+    background-color: #00ff00; 
+}
+.review-box {
+    width: 75%;
+    margin: 20px auto;
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="rooms">
+<h2>{{ slot_6 }}</h2>
+
+<div class="booking-widget">{{ slot_7 }}</div>
+</section>
+<section id="amenities">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+
+<div class="amenities-image">{{ slot_10 }}</div>
+</section>
+<section id="reviews">
+<h2>{{ slot_11 }}</h2>
+
+<div class="review-box">
+<p>{{ slot_12 }}</p>
+<div class="review-image">{{ slot_13 }}</div>
+</div>
+<div class="review-box">
+<p>{{ slot_14 }}</p>
+<div class="review-image">{{ slot_15 }}</div>
+</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

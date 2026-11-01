@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f4a261;
+    color: #2b2b2b;
+    padding: 20px;
+    text-align: center;
+}
+h1 {
+    font-size: 2em;
+}
+
+nav {
+    background-color: #2a9d8e;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #2b2b2b;
+}
+
+main {
+    padding: 20px;
+}
+
+.menu-item {
+    background-color: #e76f51;
+    color: #2b2b2b;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+footer {
+    background-color: #264653;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="location1">
+<h2>{{ slot_4 }}</h2>
+<div class="menu-item">{{ slot_5 }}</div>
+<div class="menu-item">{{ slot_6 }}</div>
+<div class="menu-item">{{ slot_7 }}</div>
+</section>
+<section id="location2">
+<h2>{{ slot_8 }}</h2>
+<div class="menu-item">{{ slot_9 }}</div>
+<div class="menu-item">{{ slot_10 }}</div>
+<div class="menu-item">{{ slot_11 }}</div>
+</section>
+<section id="location3">
+<h2>{{ slot_12 }}</h2>
+<div class="menu-item">{{ slot_13 }}</div>
+<div class="menu-item">{{ slot_14 }}</div>
+<div class="menu-item">{{ slot_15 }}</div>
+</section>
+</main>
+<footer>
+<a>{{ slot_16 }}</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-body);
+	color: #444;
+	background-color: #d0e1f9;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+header, main, footer {
+	padding: 2em;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+.navbar, .footnav {
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	margin: 0;
+	padding: 0;
+	background-color: #222;
+	color: #d6d7d9;
+	font-weight: bold;
+}
+.navbar a, .footnav a {
+	display: block;
+	padding: 1em;
+	transition: all 0.3s ease-out;
+}
+.navbar a:hover, .footnav a:hover {
+	color: #d0e1f9;
+	background-color: #333;
+}
+.logo div {
+	height: 150px;
+	width: 150px;
+	background-color: #333;
+	margin: 2em auto;
+}
+footer {
+	font-size: 0.8em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul class="navbar">
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="home">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="about">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</section>
+<section id="services">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</section>
+<section id="blog">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+<section id="contact">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</section>
+</main>
+<footer>
+<div class="logo ph"></div>
+<div>
+<ul class="footnav">
+<li><a>{{ slot_15 }}</a></li>
+<li><a>{{ slot_16 }}</a></li>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+<li><a>{{ slot_19 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

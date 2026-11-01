@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f4f4f4; 
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000; 
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff9933; 
+    color: #fff;
+    border-radius: 2px;
+    text-decoration: none;
+}
+
+.col-4, .col-6, .col-8 {
+    width: 100%;
+    
+    @media screen and (min-width: 600px) {
+        .col-4 {
+            width: 33.33%;
+        }
+    }
+
+    @media screen and (min-width: 900px) {
+        .col-6 {
+            width: 50%;
+        }
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav> 
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+
+<header style="background:none center center / cover no-repeat;">
+<a class="cta-btn">{{ slot_4 }}</a> 
+</header>
+
+<section id="about-us">
+<h1>{{ slot_5 }}</h1>
+<div class="col-6"> 
+<p> {{ slot_6 }}</p>
+</div>
+<div class="col-6"> 
+<p>{{ slot_7 }}</p>
+</div>
+</section>
+<section id="properties">
+<h1>{{ slot_8 }}</h1>
+<div class="col-4">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+
+<div class="property-image" style="color:red; width:100px; height:100px;"> 
+                    {{ slot_11 }}
+                </div>
+</div>
+</section>
+<section id="contact-us">
+<h1>{{ slot_12 }}</h1>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_15 }}</span>
+<button>{{ slot_16 }}</button>
+</form>
+</section>
+<section id="schedule-a-tour">
+<h1>{{ slot_17 }}</h1>
+
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_20 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_21 }}</span>
+<button>{{ slot_22 }}</button>
+</form>
+</section>
+</body>
+</html>

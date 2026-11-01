@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+header, footer {
+  background: rgba(0,0,0,0.1);
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+}
+
+header {
+  top: 0;
+}
+
+footer {
+  bottom: 0;
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+}
+
+nav a {
+  float: left;
+}
+
+main {
+  margin: 60px auto;
+  max-width: 900px;
+  padding: 20px;
+}
+
+section {
+  text-align: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  margin-top: 40px;
+}
+
+.grid-item {
+  background: rgba(0,0,0,0.1);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+form {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+}
+
+input, textarea, button {
+  grid-column: span 2;
+}
+
+footer a {
+  display: block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+</nav>
+</header>
+<main>
+<section>
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }}</p>
+<a>{{ slot_4 }}</a>
+</section>
+<div class="grid-container">
+<div class="grid-item">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="grid-item">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="grid-item">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="grid-item">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+</div>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_15 }}</span>
+<button>{{ slot_16 }}</button>
+</form>
+</main>
+<footer id="contact">
+<h2>{{ slot_17 }}</h2>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+<a>{{ slot_20 }}</a>
+</footer>
+</body>
+</html>

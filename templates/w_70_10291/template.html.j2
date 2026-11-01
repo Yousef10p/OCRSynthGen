@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    color: #fff;
+    padding: 0 15px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-item {
+    margin-right: 15px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    margin: 15px;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #222;
+    padding: 5px;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+.product-colored-rectangle {
+    background: #222;
+    width: 100%;
+    height: 100%;
+}
+
+.product-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.product-description, .product-btn {
+    margin: 0;
+}
+
+.product-btn:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    color: #fff;
+    padding: 0 15px;
+}
+
+.social-media, .contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-media-item, .contact-text {
+    font-size: 14px;
+    margin: 0;
+}
+
+.contact-number, .contact-email {
+    font-size: 24px;
+    margin: 0;
+}
+
+.newsletter-text, .newsletter-input, .newsletter-btn {
+    margin: 0;
+}
+
+.newsletter-input {
+    height: 30px;
+    width: 150px;
+}
+
+.newsletter-btn:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<span class="logo">{{ slot_0 }}</span>
+<span class="menu">
+<span class="menu-item">{{ slot_1 }}</span>
+<span class="menu-item">{{ slot_2 }}</span>
+<span class="menu-item">{{ slot_3 }}</span>
+</span>
+</header>
+<main>
+<div class="product-grid">
+
+<div class="product">
+<div class="product-image ph"></div>
+<div class="product-info">
+<p class="product-title">{{ slot_4 }}</p>
+<p class="product-description">{{ slot_5 }}</p>
+<p class="product-btn">{{ slot_6 }}</p>
+</div>
+</div>
+</div>
+</main>
+<footer>
+<div class="social-media">
+<span class="social-media-item">{{ slot_7 }}</span>
+<span class="social-media-item">{{ slot_8 }}</span>
+<span class="social-media-item">{{ slot_9 }}</span>
+</div>
+<div class="contact">
+<p class="contact-text">{{ slot_10 }}</p>
+<p class="contact-number">{{ slot_11 }}</p>
+<p class="contact-email">{{ slot_12 }}</p>
+</div>
+<div class="newsletter">
+<p class="newsletter-text">{{ slot_13 }}</p>
+<span class="newsletter-input" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<div class="newsletter-btn">{{ slot_15 }}</div>
+</div>
+</footer>
+</body>
+</html>

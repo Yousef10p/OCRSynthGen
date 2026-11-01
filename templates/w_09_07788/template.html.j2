@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: none no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 1em;
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#timeline {
+    display: flex;
+    justify-content: space-around;
+    overflow-x: scroll;
+}
+
+.timeline-box {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#instruments {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.instrument {
+    width: 30%;
+    height: 200px;
+    margin: 1em;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+aside ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+aside ul li {
+    margin: 1em 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<div class="hero-content">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+</div>
+</section>
+<section id="history">
+<div class="timeline">
+
+<div class="timeline-box">{{ slot_6 }}</div>
+<div class="timeline-box">{{ slot_7 }}</div>
+<div class="timeline-box">{{ slot_8 }}</div>
+<div class="timeline-box">{{ slot_9 }}</div>
+<div class="timeline-box">{{ slot_10 }}</div>
+<div class="timeline-box">{{ slot_11 }}</div>
+<div class="timeline-box">{{ slot_12 }}</div>
+</div>
+</section>
+<section id="instruments">
+<h2>{{ slot_13 }}</h2>
+
+<div class="instrument">{{ slot_14 }}</div>
+<div class="instrument">{{ slot_15 }}</div>
+<div class="instrument">{{ slot_16 }}</div>
+
+</section>
+</main>
+<aside>
+<h3>{{ slot_17 }}</h3>
+<ul>
+<li><a>{{ slot_18 }}</a></li>
+<li><a>{{ slot_19 }}</a></li>
+<li><a>{{ slot_20 }}</a></li>
+</ul>
+</aside>
+</body>
+</html>

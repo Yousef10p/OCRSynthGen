@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+header, main {
+    padding: 1em;
+}
+.banner, .products, .featured {
+    margin-bottom: 1em;
+}
+.banner {
+    background-color: lightblue;
+    min-height: 100px;
+    color: white;
+    text-align: center;
+    padding-top: 3em;
+}
+.products article, .featured article {
+    border: 1px solid lightgray;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+nav {
+    margin-bottom: 1em;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav li {
+    display: inline;
+    margin-left: 1em;
+}
+form[role="search"] {
+    float: left;
+}
+.cart {
+    float: left;
+    margin-left: 2em;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    color: blue;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+</form>
+<a class="cart">{{ slot_5 }}</a>
+</header>
+<main>
+<section class="banner">{{ slot_6 }}</section>
+<section class="products">
+<h2>{{ slot_7 }}</h2>
+<article>{{ slot_8 }}</article>
+<article>{{ slot_9 }}</article>
+<article>{{ slot_10 }}</article>
+
+</section>
+<section class="featured">
+<h2>{{ slot_11 }}</h2>
+<article>{{ slot_12 }}</article>
+<article>{{ slot_13 }}</article>
+<article>{{ slot_14 }}</article>
+
+</section>
+</main>
+</body>
+</html>

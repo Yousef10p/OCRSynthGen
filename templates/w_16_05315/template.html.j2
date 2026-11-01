@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    line-height: 1.5;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    padding: 1em;
+}
+
+.logo {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.logo-text {
+    font-size: 2em;
+}
+
+.intro {
+    text-align: center;
+    padding: 2em;
+}
+
+.featured-products {
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+}
+
+.product {
+    border: 1px solid #333;
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<ul class="navbar">
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</header>
+<div class="logo">
+<div class="logo-text">{{ slot_5 }}</div>
+</div>
+<main>
+<section class="intro">
+<h1>{{ slot_6 }} <span class="logo-text">{{ slot_7 }}</span>{{ slot_8 }}</h1><p>{{ slot_9 }}</p>
+</section>
+<section class="featured-products">
+<h2>{{ slot_10 }}</h2>
+<div class="product">{{ slot_11 }}</div>
+<div class="product">{{ slot_12 }}</div>
+<div class="product">{{ slot_13 }}</div>
+<div class="product">{{ slot_14 }}</div>
+</section>
+</main>
+</body>
+</html>

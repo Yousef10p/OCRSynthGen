@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+}
+
+#hero {
+    text-align: center;
+}
+
+.hero-text h2 {
+    font-size: 2em;
+}
+
+.hero-text p {
+    font-size: 1.5em;
+}
+
+
+.product, .blog-post, .review {
+    height: 100px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.blog-post, .review {
+    padding: 20px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #eaeaea;
+}
+
+.footer-text, .social-media-links a {
+    margin: 20px;
+}
+
+.social-media-links {
+    display: flex;
+    justify-content: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<div class="hero-image ph"></div>
+<div class="hero-text">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</div>
+<section id="products">
+<h2>{{ slot_7 }}</h2>
+<div class="product"></div>
+<div class="product"></div>
+<div class="product"></div>
+</section>
+<section id="blog">
+<h2>{{ slot_8 }}</h2>
+<div class="blog-post">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="blog-post">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+</section>
+<section id="reviews">
+<h2>{{ slot_13 }}</h2>
+<div class="review">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="review">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+</div>
+</section>
+<section id="privacy">
+<h2>{{ slot_18 }}</h2>
+<p>{{ slot_19 }}</p>
+</section>
+<section id="about">
+<h2>{{ slot_20 }}</h2>
+<p>{{ slot_21 }}</p>
+</section>
+</section></main>
+<footer>
+<div class="social-media-links">
+<a>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</a>
+<a>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</a>
+<a>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</a>
+</div>
+<div class="footer-text">
+<p>{{ slot_22 }}</p>
+</div>
+</footer>
+</body>
+</html>

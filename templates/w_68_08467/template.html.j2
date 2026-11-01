@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+header {
+  width: 50%;
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #f44336;
+}
+
+article {
+  width: 50%;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+}
+
+.food:hover {
+  color: #f44336;
+}
+
+img {
+  width: 50%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="menu">
+<h2>{{ slot_3 }}</h2>
+<article>
+<h3>{{ slot_4 }}</h3>
+<p class="food">{{ slot_5 }}</p>
+<p class="price">{{ slot_6 }}</p>
+<p class="food">{{ slot_7 }}</p>
+<p class="price">{{ slot_8 }}</p>
+<h3>{{ slot_9 }}</h3>
+<p class="food">{{ slot_10 }}</p>
+<p class="price">{{ slot_11 }}</p>
+<p class="food">{{ slot_12 }}</p>
+<p class="price">{{ slot_13 }}</p>
+<h3>{{ slot_14 }}</h3>
+<p class="food">{{ slot_15 }}</p>
+<p class="price">{{ slot_16 }}</p>
+<p class="food">{{ slot_17 }}</p>
+<p class="price">{{ slot_18 }}</p>
+</article>
+</section>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</body>
+</html>

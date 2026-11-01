@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #f8f8f8;
+    padding: 1em;
+}
+
+nav a {
+    margin-left: 1em;
+    color: #000;
+    text-decoration: none;
+}
+
+section {
+    margin-top: 5em;
+    padding: 2em;
+}
+
+.band, .stage {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 1em;
+    background-color: #f00; 
+    color: #fff; 
+    text-align: center;
+    line-height: 100px;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 0.5em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+</nav>
+<section id="bands">
+<h2>{{ slot_3 }}</h2>
+<div class="band">{{ slot_4 }}</div>
+<div class="band">{{ slot_5 }}</div>
+<div class="band">{{ slot_6 }}</div>
+<div class="band">{{ slot_7 }}</div>
+</section>
+<section id="stages">
+<h2>{{ slot_8 }}</h2>
+<div class="stage">{{ slot_9 }}</div>
+<div class="stage">{{ slot_10 }}</div>
+<div class="stage">{{ slot_11 }}</div>
+<div class="stage">{{ slot_12 }}</div>
+</section>
+<section id="schedule">
+<h2>{{ slot_13 }}</h2>
+<table>
+<tr>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+<td>{{ slot_16 }}</td>
+</tr>
+<tr>
+<td>{{ slot_17 }}</td>
+<td>{{ slot_18 }}</td>
+<td>{{ slot_19 }}</td>
+</tr>
+</table>
+</section>
+</body>
+</html>

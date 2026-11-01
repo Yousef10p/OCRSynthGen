@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    padding: 10px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.search-bar input[type="text"] {
+    width: 70%;
+    padding: 5px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+main {
+    margin: 20px 0;
+    line-height: 1.5;
+}
+
+aside, section {
+    margin: 20px 0;
+}
+
+.blog {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer button {
+    margin-top: 20px;
+}
+
+
+@media (max-width: 700px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-bar input[type="text"] {
+        width: 80%;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+<div class="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+<button>{{ slot_5 }}</button>
+</div>
+<main>
+<p>{{ slot_6 }}</p>
+</main>
+<aside>
+<h2>{{ slot_7 }}</h2>
+
+</aside>
+<section>
+
+</section>
+<div class="blog">
+<h2>{{ slot_8 }}</h2>
+
+</div>
+<footer>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+<button id="calculator">{{ slot_13 }}</button>
+<div class="modal" id="modal">
+
+</div>
+<section class="social-media">
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+</section>
+</footer>
+</div>
+</body>
+</html>

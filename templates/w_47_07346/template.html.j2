@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.services-item, .portfolio-item, .case-study-item, .blog-entry {
+    border: 1px solid #000;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.social-media-links a {
+    margin-left: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="services">
+<h1>{{ slot_5 }}</h1>
+<article class="services-item">{{ slot_6 }}</article>
+<article class="services-item">{{ slot_7 }}</article>
+<article class="services-item">{{ slot_8 }}</article>
+</section>
+<section id="portfolio">
+<h1>{{ slot_9 }}</h1>
+<div class="portfolio-item">{{ slot_10 }}</div>
+<div class="portfolio-item">{{ slot_11 }}</div>
+<div class="portfolio-item">{{ slot_12 }}</div>
+</section>
+<section id="case-studies">
+<h1>{{ slot_13 }}</h1>
+<article class="case-study-item">{{ slot_14 }}</article>
+<article class="case-study-item">{{ slot_15 }}</article>
+<article class="case-study-item">{{ slot_16 }}</article>
+</section>
+<footer>
+<section id="blog">
+<h1>{{ slot_17 }}</h1>
+<article class="blog-entry">{{ slot_18 }}</article>
+<article class="blog-entry">{{ slot_19 }}</article>
+<article class="blog-entry">{{ slot_20 }}</article>
+</section>
+<section id="social-media">
+<h1>{{ slot_21 }}</h1>
+<div class="social-media-links">
+<a>{{ slot_22 }}</a>
+<a>{{ slot_23 }}</a>
+<a>{{ slot_24 }}</a>
+</div>
+</section>
+</footer>
+</body>
+</html>

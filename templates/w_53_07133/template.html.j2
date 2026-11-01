@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+#mainMenu {
+  position: fixed;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+#mainMenu ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#mainMenu li {
+  padding: 10px;
+}
+
+#comparisonSlider {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.car {
+  width: 300px;
+  height: 200px;
+  margin: 20px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  animation: slide 10s infinite;
+}
+
+.car p {
+  border: 1px solid red;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200px);
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="mainMenu">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</div>
+<br>
+<div id="comparisonSlider">
+<div class="car" id="car1">
+<p>{{ slot_4 }}</p>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="car" id="car2">
+<p>{{ slot_8 }}</p>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="car" id="car3">
+<p>{{ slot_12 }}</p>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</body>
+</html>

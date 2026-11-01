@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  width: 100%;
+  height: 300px;
+  background-color: #eee;
+  text-align: center;
+}
+
+nav {
+  float: right;
+  width: 200px;
+  height: 100%;
+  background-color: #ddd;
+}
+
+main {
+  margin-right: 200px;
+  padding: 20px;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+}
+
+.carousel-item {
+  width: 200px;
+  height: 200px;
+  background-color: #ccc;
+  margin-left: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+{{ slot_0 }}  <header>
+{{ slot_1 }}    <div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+{{ slot_2 }}  </header>
+{{ slot_3 }}  <nav>
+{{ slot_4 }}    <ul>
+{{ slot_5 }}      <li><a>{{ slot_6 }}</a></li>
+{{ slot_7 }}      <li><a>{{ slot_8 }}</a></li>
+{{ slot_9 }}      <li><a>{{ slot_10 }}</a></li>
+{{ slot_11 }}    </ul>
+{{ slot_12 }}  </nav>
+{{ slot_13 }}  <main>
+{{ slot_14 }}    <section>
+{{ slot_15 }}      <h2>{{ slot_16 }}</h2>
+{{ slot_17 }}      <div class="carousel">
+{{ slot_18 }}        <div class="carousel-item">{{ slot_19 }}</div>
+{{ slot_20 }}        <div class="carousel-item">{{ slot_21 }}</div>
+{{ slot_22 }}        <div class="carousel-item">{{ slot_23 }}</div>
+{{ slot_24 }}      </div>
+{{ slot_25 }}    </section>
+{{ slot_26 }}    <section>
+{{ slot_27 }}      <h2>{{ slot_28 }}</h2>
+{{ slot_29 }}      <p>{{ slot_30 }}</p>
+{{ slot_31 }}    </section>
+{{ slot_32 }}    <section>
+{{ slot_33 }}      <h2>{{ slot_34 }}</h2>
+{{ slot_35 }}      <p>{{ slot_36 }}</p>
+{{ slot_37 }}    </section>
+{{ slot_38 }}  </main>
+{{ slot_39 }}</body>
+</html>

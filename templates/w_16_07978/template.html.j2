@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.main { display: flex; }
+
+
+header { background-color: #f4f4f4; padding: 20px; text-align: center; }
+.logo { color: #333; font-size: 24px; }
+
+
+aside { flex: 1; padding: 20px; background-color: #fafafa; }
+
+
+section { flex: 2; padding: 20px; }
+.products { display: flex; flex-wrap: wrap; justify-content: space-between; }
+.product { width: 30%; margin-bottom: 20px; }
+.product-image { height: 100px; background-color: #ddd; margin-bottom: 10px; }
+
+
+footer { background-color: #333; color: #fff; padding: 20px; display: flex; justify-content: space-between; }
+.social-links a { margin-left: 10px; color: #fff; }
+.support-faqs { width: 40%; }
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1 class="logo">{{ slot_0 }}</h1>
+</header>
+<div class="main">
+<aside class="categories">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</aside>
+<section class="products">
+<h2>{{ slot_5 }}</h2>
+<div class="product">
+<div class="product-image ph"></div>
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+<div class="product-specs"></div>
+<div class="product-price">{{ slot_8 }}</div>
+</div>
+</section>
+<aside class="details">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</aside>
+</div>
+<footer>
+<div class="logo">{{ slot_11 }}</div>
+<div class="social-links">
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</div>
+<div class="support-faqs">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+</div>
+</footer>
+</body>
+</html>

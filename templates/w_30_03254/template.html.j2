@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+nav ul {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #3498db;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#slider {
+    height: 200px;
+    background: #2ecc71;
+    margin-right: 200px;
+}
+
+.slide {
+    width: 100%;
+    height: 200px;
+    background: #f1c40f;
+    color: black;
+}
+
+.section {
+    margin: 20px;
+}
+
+.review, .testimonial {
+    margin-bottom: 20px;
+}
+
+.review-image, .testimonial-image {
+    width: 100px;
+    height: 100px;
+    background: #34495e;
+    margin-bottom: 10px;
+}
+
+.contact-form {
+    margin: 20px;
+}
+
+.contact-form input, .contact-form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.social-media a {
+    color: white;
+    margin-left: 5px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #34495e;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<div id="slider">
+<div class="slide">{{ slot_3 }}</div>
+<div class="slide">{{ slot_4 }}</div>
+<div class="slide">{{ slot_5 }}</div>
+</div>
+<div class="section">
+<h2>{{ slot_6 }}</h2>
+<div class="review">
+<p>{{ slot_7 }}</p>
+<div class="review-image ph"></div>
+</div>
+
+</div>
+<div class="section">
+<h2>{{ slot_8 }}</h2>
+<div class="testimonial">
+<p>{{ slot_9 }}</p>
+<div class="testimonial-image ph"></div>
+</div>
+
+</div>
+<div class="contact-form">
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_12 }}</span>
+<button>{{ slot_13 }}</button>
+</form>
+</div>
+<footer>
+<div class="social-media">
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+</div>
+</footer>
+</body>
+</html>

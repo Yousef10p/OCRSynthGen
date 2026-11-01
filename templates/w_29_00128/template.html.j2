@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-areas: 
+    "nav nav"
+    "main sidebar";
+}
+
+nav {
+    grid-area: nav;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid;
+}
+
+#nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+#slider {
+    grid-area: main;
+    display: grid;
+    grid-template-rows: 50px auto 50px;
+    height: 200px; 
+    border: 1px solid;
+}
+
+.slider-images {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+    color: white;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+#sidebar {
+    grid-area: sidebar;
+    padding: 10px;
+}
+
+#sidebar input {
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<nav>
+
+<div id="logo">{{ slot_0 }}</div>
+
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+</form>
+
+<div id="nav-links">
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</div>
+</nav>
+
+<section id="main">
+
+<div id="slider">
+<div class="slider-images">
+
+<div class="image">{{ slot_5 }}</div>
+<div class="image">{{ slot_6 }}</div>
+<div class="image">{{ slot_7 }}</div>
+<div class="image">{{ slot_8 }}</div>
+<div class="image">{{ slot_9 }}</div>
+</div>
+
+<div class="slider-controls">
+<button id="prev">{{ slot_10 }}</button>
+<button id="next">{{ slot_11 }}</button>
+</div>
+</div>
+
+<div id="sidebar">
+<h3>{{ slot_12 }}</h3>
+<span class="" style="display: inline-block; inline-size: 0.9em; block-size: 0.9em; border: 1px solid #666"></span> {{ slot_13 }}<br>
+<span class="" style="display: inline-block; inline-size: 0.9em; block-size: 0.9em; border: 1px solid #666"></span> {{ slot_14 }}<br>
+<span class="" style="display: inline-block; inline-size: 0.9em; block-size: 0.9em; border: 1px solid #666"></span> {{ slot_15 }}
+
+        <h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+<p>{{ slot_20 }}</p>
+<p>{{ slot_21 }}</p>
+</div>
+</section>
+</body>
+</html>

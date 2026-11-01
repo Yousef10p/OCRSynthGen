@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.main-content {
+    margin: 0 20%;
+}
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin: 1em 0;
+}
+
+.main-content-inner > p {
+    text-align: center;
+    font-size: 1.2em;
+    color: #777;
+    margin-bottom: 2em;
+}
+
+.wellness-assessment, .nutrition-guides, .health-events {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.wellness-assessment h2, .nutrition-guides h2, .health-events h2 {
+    color: #333;
+    margin-bottom: .5em;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+    padding: 20px;
+    background-color: #222;
+    color: #fff;
+}
+
+.sidebar img {
+    width: 100%;
+    height: 80px;
+    background-color: #888;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="main-content">
+<h1>{{ slot_0 }}</h1>
+<div class="main-content-inner">
+<p>{{ slot_1 }}</p>
+<div class="wellness-assessment">
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }}</p>
+<div class="assessment-placeholder ph"></div>
+<button>{{ slot_4 }}</button>
+</div>
+<div class="nutrition-guides">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="guides-placeholder ph"></div>
+<button>{{ slot_7 }}</button>
+</div>
+<div class="health-events">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="events-placeholder ph"></div>
+<button>{{ slot_10 }}</button>
+</div>
+</div>
+<div class="sidebar">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+<li><a>{{ slot_16 }}</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</body>
+</html>

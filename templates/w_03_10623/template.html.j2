@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.news-opinion-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#news, #opinions {
+    flex-basis: 50%;
+    padding-left: 20px;
+}
+
+#videos {
+    padding-top: 20px;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<h1>{{ slot_3 }}</h1>
+<div class="news-opinion-container">
+<div id="news">
+<h2>{{ slot_4 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_5 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_6 }}</p>
+</div>
+<div id="opinions">
+<h2>{{ slot_7 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_8 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_9 }}</p>
+</div>
+</div>
+<div id="videos">
+<h2>{{ slot_10 }}</h2>
+<div class="ph" style="inline-size: 560px; block-size: 315px"></div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+<div class="ph" style="inline-size: 560px; block-size: 315px"></div>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</main>
+<footer>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

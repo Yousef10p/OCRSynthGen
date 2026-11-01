@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: #f8f8f8;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 20px;
+}
+
+section {
+  padding: 60px 20px;
+}
+
+.cta-button {
+  color: white;
+  background-color: #5a5a5a;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+h2, h3 {
+  color: #5a5a5a;
+}
+
+.impact-box, .story {
+  display: flex;
+  justify-content: space-between;
+}
+
+.impact-item, .story {
+  flex: 1;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+img {
+  width: 100%;
+  height: 200px;
+  background-color: #ddd;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<a class="cta-button">{{ slot_6 }}</a>
+</section>
+<section id="donation">
+
+</section>
+<section id="impact">
+<h2>{{ slot_7 }}</h2>
+<div class="impact-box">
+<div class="impact-item">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="impact-item">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+</div>
+</section>
+<section id="stories">
+<h2>{{ slot_12 }}</h2>
+<div class="story">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="story">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_14 }}</p>
+</div>
+</section>
+</main>
+</body>
+</html>

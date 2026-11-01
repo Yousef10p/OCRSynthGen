@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+#main-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 50px;
+  background: #333;
+  color: #fff;
+}
+
+#main-menu ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+#main-menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#slider {
+  position: relative;
+}
+
+#slider slide {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #333;
+  color: #fff;
+  display: none;
+}
+
+#slider slide.active {
+  display: block;
+}
+
+#slider .image {
+  width: 200px;
+  height: 200px;
+  background: #666;
+  margin-bottom: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav id="main-menu">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<fullscreen-slider id="slider">
+<slide>
+<div class="image">{{ slot_5 }}</div>
+<p>{{ slot_6 }}</p>
+<slide>
+<slide>
+<div class="image">{{ slot_7 }}</div>
+<p>{{ slot_8 }}</p>
+<slide>
+<slide>
+<div class="image">{{ slot_9 }}</div>
+<p>{{ slot_10 }}</p>
+<slide>
+<slide>
+<div class="image">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+<slide>
+<slide>
+<div class="image">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+</slide></slide></slide></slide></slide></slide></slide></slide></slide></fullscreen-slider>
+</body>
+</html>

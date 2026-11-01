@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.logo {
+    font-size: 20px;
+}
+
+.nav {
+    list-style-type: none;
+}
+
+.nav li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero {
+    background-color: #f0f0f0;
+    padding: 50px;
+    text-align: center;
+}
+
+.memberships,
+.schedule,
+.blog {
+    margin: 50px;
+}
+
+.membership,
+.class,
+.post {
+    margin-bottom: 20px;
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    margin-bottom: 10px;
+}
+
+.cta {
+    background-color: #f00;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="logo">{{ slot_0 }}</div>
+<ul class="nav">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</div>
+<div class="hero">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<a class="cta">{{ slot_6 }}</a>
+</div>
+<div class="memberships" id="memberships">
+<h2>{{ slot_7 }}</h2>
+
+<div class="membership"><div class="img ph"></div><p>{{ slot_8 }}</p></div>
+<div class="membership"><div class="img ph"></div><p>{{ slot_9 }}</p></div>
+</div>
+<div class="schedule" id="schedule">
+<h2>{{ slot_10 }}</h2>
+<div class="class">{{ slot_11 }}</div>
+<div class="class">{{ slot_12 }}</div>
+</div>
+<div class="blog" id="blog">
+<h2>{{ slot_13 }}</h2>
+<div class="post">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="post">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+</div>
+</div>
+</body>
+</html>

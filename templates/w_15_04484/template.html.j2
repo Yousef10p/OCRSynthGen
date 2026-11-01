@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+}
+
+header {
+    background-color: #2e2e2e;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header #logo {
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav {
+    background-color: #4f4f4f;
+}
+
+nav ul {
+    list-style: none;
+    padding: 5px 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#games, #reviews {
+    padding: 20px;
+    min-height: 500px;
+}
+
+#games img, #reviews div {
+    width: 300px;
+    height: 200px;
+    margin: 20px;
+    background-color: darkgrey; 
+}
+
+#contact {
+    background-color: #2e2e2e;
+    color : white;
+    padding: 50px 20px;
+}
+
+#contact form {
+    margin-top: 20px;
+}
+
+#contact input, #contact textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+}
+
+#contact input[type="submit"] {
+    background-color: #e63c17;
+    color: white;
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo">{{ slot_0 }}<span style="color:#e63c17">{{ slot_1 }}</span></div>
+<nav>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="games">
+<h1>{{ slot_6 }}</h1>
+<h4>{{ slot_7 }}</h4>
+
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+</section>
+<section id="reviews">
+<h1>{{ slot_8 }}</h1>
+
+<div class="review">
+<div class="username">{{ slot_9 }}</div>
+<div class="review-text">{{ slot_10 }}</div>
+</div>
+
+</section>
+<section id="contact">
+<h1>{{ slot_11 }}</h1>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_14 }}</span>
+<span class="">{{ slot_15 }}</span>
+</form>
+</section>
+</main>
+</body>
+</html>

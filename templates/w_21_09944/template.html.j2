@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#menu ul {
+    list-style-type: none;
+}
+
+#menu li {
+    display: inline;
+    margin: 0 1em;
+}
+
+#content {
+    margin-right: 10em;
+}
+
+.service, .customer {
+    width: 30em;
+    margin: 1em 0;
+    padding: 1em;
+    color: white;
+}
+
+.service {
+    background-color: #333333;
+}
+
+.customer {
+    background-color: #666666;
+}
+
+#cta {
+    display: block;
+    width: 10em;
+    height: 2em;
+    background-color: orange;
+    color: white;
+    text-align: center;
+    padding: 0.5em 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="menu">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div id="content">
+<div class="service">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="service">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="service">
+<h1>{{ slot_9 }}</h1>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="customer">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="customer">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+</div>
+<a id="cta">{{ slot_15 }}</a>
+</div>
+</body>
+</html>

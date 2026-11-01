@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  padding: 1rem;
+}
+
+article {
+  margin: 1rem 0;
+}
+
+article h3 a {
+  color: #333;
+  text-decoration: none;
+}
+
+article p {
+  line-height: 1.5;
+}
+
+.author, .comments {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.social-sharing a {
+  margin-left: 0.5rem;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 0.5rem;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section>
+<h2>{{ slot_5 }}</h2>
+<article>
+<h3><a>{{ slot_6 }}</a></h3>
+<p>{{ slot_7 }}</p>
+<div class="author">{{ slot_8 }}</div>
+<div class="comments">{{ slot_9 }}</div>
+<div class="social-sharing">
+<a>{{ slot_10 }}</a>
+<a>{{ slot_11 }}</a>
+<a>{{ slot_12 }}</a>
+</div>
+</article>
+<article>
+<h3><a>{{ slot_13 }}</a></h3>
+<p>{{ slot_14 }}</p>
+<div class="author">{{ slot_15 }}</div>
+<div class="comments">{{ slot_16 }}</div>
+<div class="social-sharing">
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+</div>
+</article>
+</section>
+</main>
+<footer>
+<p>{{ slot_20 }}</p>
+</footer>
+</body>
+</html>

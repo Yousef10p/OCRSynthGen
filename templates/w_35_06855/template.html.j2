@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+
+header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+
+aside {
+    margin: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+
+main {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+section {
+    width: 30%;
+    text-align: center;
+}
+
+.news-item {
+    background-color: #f8f9fa;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+
+@media screen and (max-width: 600px) {
+    body, header, main, aside, section {
+        flex-direction: column;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav li {
+        margin: 10px 0;
+    }
+    
+    section {
+        width: 100%;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<aside>
+<h2>{{ slot_4 }}</h2>
+<table>
+<thead>
+<tr>
+<th colspan="2">{{ slot_5 }}</th>
+</tr>
+<tr>
+<th>{{ slot_6 }}</th>
+<th>{{ slot_7 }}</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>{{ slot_8 }}</td>
+<td>{{ slot_9 }}</td>
+</tr>
+<tr>
+<td>{{ slot_10 }}</td>
+<td>{{ slot_11 }}</td>
+</tr>
+
+</tbody>
+</table>
+</aside>
+<main>
+<section id="soccer">
+<h2>{{ slot_12 }}</h2>
+<div class="news-item">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="news-item">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+</section>
+<section id="basketball">
+<h2>{{ slot_17 }}</h2>
+<div class="news-item">
+<h3>{{ slot_18 }}</h3>
+<p>{{ slot_19 }}</p>
+</div>
+<div class="news-item">
+<h3>{{ slot_20 }}</h3>
+<p>{{ slot_21 }}</p>
+</div>
+</section>
+<section id="baseball">
+<h2>{{ slot_22 }}</h2>
+<div class="news-item">
+<h3>{{ slot_23 }}</h3>
+<p>{{ slot_24 }}</p>
+</div>
+<div class="news-item">
+<h3>{{ slot_25 }}</h3>
+<p>{{ slot_26 }}</p>
+</div>
+</section>
+</main>
+</body>
+</html>

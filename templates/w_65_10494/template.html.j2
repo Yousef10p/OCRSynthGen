@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    color: #fff;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #b30000; 
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    padding: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 50px 0;
+}
+
+section {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.genre1 {background-color: #006600;}
+.genre2 {background-color: #cc0000;}
+.genre3 {background-color: #ffff00;}
+.genre4 {background-color: #ff66ff;}
+
+button {
+    background-color: #fff;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #b30000;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<button>{{ slot_7 }}</button>
+</header>
+<main>
+<section class="genre1">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<a></a>
+</section>
+<section class="genre2">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<a></a>
+</section>
+<section class="genre3">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<a></a>
+</section>
+<section class="genre4">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<a></a>
+</section>
+</main>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

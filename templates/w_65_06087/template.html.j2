@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+.header h1 {
+    font-size: 2em;
+    margin: 10px 0;
+}
+.header p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+.service {
+    width: 50%;
+    margin: auto;
+    padding: 20px 0;
+    text-align: right;
+}
+.service h2 {
+    font-size: 1.5em;
+    margin: 15px 0;
+}
+.service p {
+    margin: 15px 0;
+}
+.service ul {
+    margin: 15px 0;
+}
+.portrait {
+    height: 100px;
+    width: 100px;
+    background-color: #000;
+    display: inline-block;
+    margin: 10px;
+}
+.testimonial {
+    margin: 20px 0;
+    width: 50%;
+    margin: auto;
+    padding: 20px 0;
+    text-align: right;
+}
+.testimonial h2 {
+    font-size: 1.5em;
+    margin: 15px 0;
+}
+.testimonial p {
+    margin: 15px 0;
+}
+.quote {
+    margin: 15px 0;
+}
+.footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+<div class="content">
+<div class="service">
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }}</p>
+<ul>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+</div>
+<div class="employee">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="portrait">{{ slot_10 }}</div>
+<div class="portrait">{{ slot_11 }}</div>
+<div class="portrait">{{ slot_12 }}</div>
+</div>
+<div class="testimonial">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="quote">
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</div>
+<div class="quote">
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>{{ slot_19 }}</p>
+</div>
+</body>
+</html>

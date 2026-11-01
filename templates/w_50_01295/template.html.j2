@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+.navigation {
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 200px;
+    list-style: none;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+.navigation li {
+    padding: 10px 20px;
+    transition: all 0.3s;
+}
+.navigation li:hover {
+    background-color: #555;
+    cursor: pointer;
+}
+.hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+h1, h3 {
+    margin: 0;
+    padding: 10px 0;
+}
+.cta {
+    background-color: #008CBA;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.cta:hover {
+    background-color: #005f79;
+}
+.row {
+    display: flex;
+    justify-content: space-around;
+}
+.product-service {
+    width: 45%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.img-placeholder {
+    background-color: #ddd;
+    height: 200px;
+    margin-top: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="navigation">
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+<div class="hero">
+<h1>{{ slot_5 }}</h1>
+<h3>{{ slot_6 }}</h3>
+<button class="cta">{{ slot_7 }}</button>
+</div>
+<div class="products-services">
+<div class="row">
+<div class="product-service">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="img-placeholder ph"></div>
+</div>
+<div class="product-service">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<div class="img-placeholder ph"></div>
+</div>
+</div>
+<div class="row">
+<div class="product-service">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="img-placeholder ph"></div>
+</div>
+<div class="product-service">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<div class="img-placeholder ph"></div>
+</div>
+</div>
+</div>
+</body>
+</html>

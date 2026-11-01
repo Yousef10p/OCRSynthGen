@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.header {
+    background-color: red;
+    padding: 10px;
+    text-align: center;
+}
+
+.header-title {
+    font-size: 36px;
+}
+
+.navigation {
+    background-color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+}
+
+.practice-area, .lawyers {
+    padding: 20px;
+}
+
+.section-title {
+    color: red;
+    text-align: center;
+    font-size: 24px;
+    padding: 10px;
+}
+
+.practice-area-grid, .lawyers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.practice-area-item, .lawyer-item {
+    background-color: red;
+    padding: 10px;
+}
+
+.practice-area-title, .lawyer-title {
+    font-size: 20px;
+}
+
+.contact-form {
+    padding: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+input[type="submit"] {
+    background-color: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1 class="header-title">{{ slot_0 }}</h1>
+</div>
+<div class="navigation">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div class="practice-area">
+<h2 class="section-title">{{ slot_5 }}</h2>
+<div class="practice-area-grid">
+<div class="practice-area-item">
+<h3 class="practice-area-title">{{ slot_6 }}</h3>
+<div class="practice-area-description">{{ slot_7 }}</div>
+</div>
+<div class="practice-area-item">
+<h3 class="practice-area-title">{{ slot_8 }}</h3>
+<div class="practice-area-description">{{ slot_9 }}</div>
+</div>
+<div class="practice-area-item">
+<h3 class="practice-area-title">{{ slot_10 }}</h3>
+<div class="practice-area-description">{{ slot_11 }}</div>
+</div>
+</div>
+</div>
+<div class="lawyers">
+<h2 class="section-title">{{ slot_12 }}</h2>
+<div class="lawyers-grid">
+<div class="lawyer-item">
+<h3 class="lawyer-title">{{ slot_13 }}</h3>
+<div class="lawyer-bio">{{ slot_14 }}</div>
+</div>
+<div class="lawyer-item">
+<h3 class="lawyer-title">{{ slot_15 }}</h3>
+<div class="lawyer-bio">{{ slot_16 }}
+                </div>
+<div class="lawyer-item">
+<h3 class="lawyer-title">{{ slot_17 }}</h3>
+<div class="lawyer-bio">{{ slot_18 }}</div>
+</div>
+</div>
+</div>
+<div class="contact-form">
+<h2 class="section-title">{{ slot_19 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_20 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_21 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_22 }}</span>
+<span class="">{{ slot_23 }}</span>
+</form>
+</div>
+</div></body>
+</html>

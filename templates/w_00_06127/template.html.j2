@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+header ul li {
+    margin: 0 10px;
+}
+
+header ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    margin-top: 130px; 
+    padding: 20px;
+}
+
+section h1 {
+    margin-bottom: 10px;
+}
+
+.product {
+    width: 100px; 
+    height: 100px; 
+    margin: 10px;
+    background: #ddd; 
+    display: inline-block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="men">
+<h1>{{ slot_3 }}</h1>
+
+<div class="product">{{ slot_4 }}</div>
+<div class="product">{{ slot_5 }}</div>
+<div class="product">{{ slot_6 }}</div>
+</section>
+<section id="women">
+<h1>{{ slot_7 }}</h1>
+<div class="product">{{ slot_8 }}</div>
+<div class="product">{{ slot_9 }}</div>
+<div class="product">{{ slot_10 }}</div>
+</section>
+<section id="kids">
+<h1>{{ slot_11 }}</h1>
+<div class="product">{{ slot_12 }}</div>
+<div class="product">{{ slot_13 }}</div>
+<div class="product">{{ slot_14 }}</div>
+</section>
+</body>
+</html>

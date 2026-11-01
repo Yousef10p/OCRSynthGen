@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-body);
+}
+.hero {
+    width: 100vw;
+    height: 60vh;
+    background-color: lightgray;
+    text-align: center;
+}
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>{{ slot_0 }}
+    <div class="hero">{{ slot_1 }}
+            <h2>{{ slot_2 }}
+            <ul>{{ slot_3 }}
+        </ul></h2></div>{{ slot_4 }}
+        <div class="column">{{ slot_5 }}
+            <span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>{{ slot_7 }}
+            <div class="ph" style="inline-size: 100%; block-size: 150px"></div>{{ slot_8 }}
+            <p>{{ slot_9 }}</p>{{ slot_10 }}
+            <div class="ph" style="inline-size: 100%; block-size: 150px"></div>{{ slot_11 }}
+            <p>{{ slot_12 }}</p>{{ slot_13 }}
+            <div class="ph" style="inline-size: 100%; block-size: 150px"></div>{{ slot_14 }}
+            <p>{{ slot_15 }}</p>{{ slot_16 }}
+            <div class="ph" style="inline-size: 100%; block-size: 150px"></div>{{ slot_17 }}
+            <p>{{ slot_18 }}</p>{{ slot_19 }}
+        </div>{{ slot_20 }}
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+header {
+    background-color: #c6d5ff;
+    padding: 20px;
+}
+
+#hero-section {
+    display: flex;
+    background-color: #b3d9ff;
+    padding: 40px;
+    justify-content: space-between;
+}
+
+.hero-article,
+.column-article {
+    width: 30%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+.image-placeholder {
+    background-color: #c6d5ff;
+    height: 100px;
+    margin: 20px 0;
+}
+
+#column-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    #hero-section,
+    .hero-article,
+    .column-article,
+    #column-section {
+        flex-direction: column;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero-section">
+<article class="hero-article" id="breaking-news">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<aside class="image-placeholder">{{ slot_7 }}</aside>
+</article>
+<div id="column-section">
+<article class="column-article" id="political-news">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<aside class="image-placeholder">{{ slot_10 }}</aside>
+</article>
+<article class="column-article" id="sports-news">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+<aside class="image-placeholder">{{ slot_13 }}</aside>
+</article>
+<article class="column-article" id="tech-news">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+<aside class="image-placeholder">{{ slot_16 }}</aside>
+</article>
+</div>
+</section>
+</body>
+</html>

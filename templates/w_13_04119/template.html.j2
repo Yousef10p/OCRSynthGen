@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#carousel {
+  width: 100%;
+  height: 500px;
+  background-color: #f2f2f2;
+}
+
+.carousel-item {
+  width: 100%;
+  height: 500px;
+  background-color: #333;
+  color: #f2f2f2;
+  text-align: center;
+  line-height: 500px;
+  font-size: 50px;
+}
+
+#genres ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#genres li {
+  display: inline-block;
+  padding: 20px;
+}
+
+#genres a {
+  color: #333;
+  text-decoration: none;
+}
+
+#albums {
+  margin-top: 50px;
+}
+
+#footer {
+  background-color: #333;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+#footer a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="topnav">
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a style="float:left">{{ slot_4 }}</a>
+</div>
+<div id="carousel">
+<div class="carousel-item" id="artist-1">{{ slot_5 }}</div>
+<div class="carousel-item" id="artist-2">{{ slot_6 }}</div>
+<div class="carousel-item" id="artist-3">{{ slot_7 }}</div>
+<div class="carousel-item" id="artist-4">{{ slot_8 }}</div>
+<div class="carousel-item" id="artist-5">{{ slot_9 }}</div>
+</div>
+<div id="genres">
+<h2>{{ slot_10 }}</h2>
+<ul>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+</ul>
+</div>
+<div id="albums">
+<h2>{{ slot_14 }}</h2>
+
+</div>
+<div id="footer">
+<a>{{ slot_15 }}</a>
+</div>
+</body>
+</html>

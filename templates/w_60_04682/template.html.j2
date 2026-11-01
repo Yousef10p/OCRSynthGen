@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    color: #333333;
+    background-color: #f0f0f0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#nav-bar {
+    background-color: orange;
+    padding: 2em;
+    text-align: center;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+#sidebar {
+    flex: 1 0 auto;
+    margin-top: 5em;
+    width: 20%;
+    background-color: white;
+    padding: 2em;
+}
+
+#main-section {
+    flex: 1 0 auto;
+    margin-top: 5em;
+    width: 80%;
+    padding: 2em;
+    background-color: white;
+}
+
+#categories, #featured-workouts, #blog-section, #social-media {
+    margin-bottom: 2em;
+}
+
+#categories ul, #featured-workouts ul {
+    list-style-type: none;
+    padding-right: 0;
+}
+
+#blog-section p, #social-media a {
+    margin-bottom: 1em;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header id="nav-bar">
+<h1>{{ slot_0 }}</h1>
+</header>
+<aside id="sidebar">
+<div id="categories">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+<div id="featured-workouts">
+<h2>{{ slot_5 }}</h2>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</div>
+<div id="blog-section">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</div>
+<div id="social-media">
+<h2>{{ slot_11 }}</h2>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</div>
+</aside>
+<main id="main-section">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</main>
+</body>
+</html>

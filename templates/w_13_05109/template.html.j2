@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+header {
+    background-color: #F5A9CB;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+}
+nav ul li {
+    list-style-type: none;
+    margin: 0 10px;
+}
+.hero {
+    background-color: #92A9FB;
+    text-align: center;
+    padding: 50px 0;
+}
+aside {
+    background-color: #AADFFB;
+    
+    max-width: 300px;
+    height: 100vh;
+    float: left;  
+    padding: 20px;
+}
+.property {
+    
+    max-height: 200px;
+    border: 1px solid black;
+    margin: 10px;
+    text-align: center;
+    padding: 10px;
+}
+main {
+    
+    max-width: calc(100% - 320px); 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #F5A9CB;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+</header>
+<section class="hero">
+<h1>{{ slot_4 }}</h1>
+</section>
+<aside>
+<h2>{{ slot_5 }}</h2>
+<form>
+<label>{{ slot_6 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<br>
+<label>{{ slot_8 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_9 }}</span>
+<br>
+<span class="">{{ slot_10 }}</span>
+</form>
+</aside>
+<main>
+<div class="property">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="property">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</div>
+
+</main>
+</body>
+</html>

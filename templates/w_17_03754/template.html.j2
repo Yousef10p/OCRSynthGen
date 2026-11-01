@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: #f0f0f0;
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+}
+
+.col-12, .col-8, .col-6, .col-4, .col-4, .col-3 {
+    padding: 15px;
+}
+
+.featured-img, .curated-img, .fashion-img, .trending-img, .privacy-img, .security-img, .computer-scient-img {
+    height: 150px;
+    background-color: #e6e6ff;
+    margin-bottom: 15px;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.left-side {
+    background-color: #ffe6e6;
+    padding: 15px;
+    margin-left: 1.66%;
+}
+
+.right-side {
+    background-color: #e6ffe6;
+    padding: 15px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="row">
+<div class="col-12">
+<h1>{{ slot_0 }}</h1>
+</div>
+</div>
+<div class="row">
+<div class="col-4">
+<div class="featured-img ph"></div>
+<p>{{ slot_1 }}</p>
+</div>
+<div class="col-4">
+<div class="curated-img ph"></div>
+<p>{{ slot_2 }}</p>
+</div>
+<div class="col-4">
+<div class="fashion-img ph"></div>
+<p>{{ slot_3 }}</p>
+</div>
+</div>
+<div class="row">
+<div class="col-3">
+<div class="trending-img ph"></div>
+<p>{{ slot_4 }}</p>
+</div>
+<div class="col-3">
+<div class="privacy-img ph"></div>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="col-3">
+<div class="security-img ph"></div>
+<p>{{ slot_6 }} </p>
+</div>
+<div class="col-3">
+<div class="computer-scient-img ph"></div>
+<p>{{ slot_7 }}</p>
+</div>
+</div>
+<div class="row">
+<div class="col-6 left-side">
+<h2>{{ slot_8 }}</h2>
+<ul id="left-side-nav">
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+</ul>
+</div>
+<div class="col-6 right-side">
+<h2>{{ slot_13 }}</h2>
+<ul id="right-side-nav">
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+<li><a>{{ slot_16 }}</a></li>
+<li><a>{{ slot_17 }}</a></li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

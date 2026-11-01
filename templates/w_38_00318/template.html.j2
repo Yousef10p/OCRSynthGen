@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  grid-gap: 10px;
+  font-family: var(--font-body);
+}
+
+header, footer {
+  grid-column: 1 / span 3;
+  text-align: center;
+  background-color: #990000;
+  color: white;
+}
+
+main {
+  grid-column: 2;
+}
+
+aside {
+  grid-column: 3;
+  background-color: #ddd;
+}
+
+form {
+  grid-column: 2 / span 2;
+  justify-self: center;
+  display: flex;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+}
+
+.products, .categories {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product, .category {
+  flex: 1 1 200px;
+  margin: 5px;
+  padding: 10px;
+  background-color: #990000;
+  color: white;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+<h1>{{ slot_0 }}</h1>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+</form>
+</header>
+
+<main>
+<section class="products">
+<h2>{{ slot_2 }}</h2>
+<div class="product" id="prod1">{{ slot_3 }}</div>
+<div class="product" id="prod2">{{ slot_4 }}</div>
+<div class="product" id="prod3">{{ slot_5 }}</div>
+
+</section>
+<section class="categories">
+<h2>{{ slot_6 }}</h2>
+<div class="category" id="cat1">{{ slot_7 }}</div>
+<div class="category" id="cat2">{{ slot_8 }}</div>
+<div class="category" id="cat3">{{ slot_9 }}</div>
+
+</section>
+</main>
+
+<aside>
+<div class="blog">{{ slot_10 }}</div>
+<div class="customer-review">{{ slot_11 }}</div>
+<div id="social-links">
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</div>
+</aside>
+
+<footer>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

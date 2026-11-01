@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: #EFEFEF;
+    font-family: var(--font-body);
+    color: #333333;
+}
+h1, h2, h3 {
+    color: #008B8B;
+}
+article {
+    margin: 20px 0;
+    border-bottom: 1px solid #CCC;
+}
+article p {
+    font-size: 14px;
+}
+#chart-1, #chart-2 {
+    width: 300px; 
+    height: 200px;
+    background-color: #FFD700; 
+    margin: 20px 0;
+}
+#financial-data {
+    border: 1px solid #000;
+    text-align: right;
+    width: 100%;
+}
+#financial-data th, #financial-data td {
+    padding: 10px;
+    border-bottom: 1px solid #CCC;
+}
+#financial-data th {
+    background-color: #008B8B;
+    color: white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<h1>{{ slot_0 }}</h1>
+<div class="chart" id="chart-1"></div> 
+<div class="chart" id="chart-2"></div> 
+<table id="financial-data">
+<tr>
+<th>{{ slot_1 }}</th>
+<th>{{ slot_2 }}</th>
+<th>{{ slot_3 }}</th>
+</tr>
+<tr>
+<td>{{ slot_4 }}</td>
+<td>{{ slot_5 }}</td>
+<td>{{ slot_6 }}</td>
+</tr>
+<tr>
+<td>{{ slot_7 }}</td>
+<td>{{ slot_8 }}</td>
+<td>{{ slot_9 }}</td>
+</tr>
+</table>
+<h2>{{ slot_10 }}</h2>
+<article>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</article>
+<article>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</article>
+</body>
+</html>

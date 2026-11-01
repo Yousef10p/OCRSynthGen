@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+#news, #schedule, #roster, #tickets, #social {
+    margin: 20px;
+}
+
+.news-item, .player {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+<a>{{ slot_5 }}</a>
+</nav>
+</header>
+<main>
+<section id="home">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+</section>
+<section id="news">
+<h2>{{ slot_8 }}</h2>
+<div class="news-item">
+<p>{{ slot_9 }}</p>
+</div>
+<div class="news-item">
+<p>{{ slot_10 }}</p>
+</div>
+<div class="news-item">
+<p>{{ slot_11 }}</p>
+</div>
+</section>
+<section id="schedule">
+<h2>{{ slot_12 }}</h2>
+<table>
+<tr>
+<th>{{ slot_13 }}</th>
+<th>{{ slot_14 }}</th>
+<th>{{ slot_15 }}</th>
+<th>{{ slot_16 }}</th>
+</tr>
+<tr>
+<td>{{ slot_17 }}</td>
+<td>{{ slot_18 }}</td>
+<td>{{ slot_19 }}</td>
+<td>{{ slot_20 }}</td>
+</tr>
+<tr>
+<td>{{ slot_21 }}</td>
+<td>{{ slot_22 }}</td>
+<td>{{ slot_23 }}</td>
+<td>{{ slot_24 }}</td>
+</tr>
+</table>
+</section>
+<section id="roster">
+<h2>{{ slot_25 }}</h2>
+<div class="player">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_26 }}</h3>
+<p>{{ slot_27 }}</p>
+</div>
+<div class="player">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_28 }}</h3>
+<p>{{ slot_29 }}</p>
+</div>
+</section>
+<section id="tickets">
+<h2>{{ slot_30 }}</h2>
+<p>{{ slot_31 }} <a>{{ slot_32 }}</a></p>
+</section>
+<section id="social">
+<h2>{{ slot_33 }}</h2>
+<p>{{ slot_34 }} <a>{{ slot_35 }}</a></p>
+<p>{{ slot_36 }} <a>{{ slot_37 }}</a></p>
+</section>
+</main>
+</body>
+</html>

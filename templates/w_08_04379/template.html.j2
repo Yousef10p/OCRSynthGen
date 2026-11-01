@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+nav {
+  background-color: #333;
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none; 
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+
+.banner {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+
+.property, .neighborhood {
+  height: 150px;
+  width: 200px;
+  margin: auto;
+  border: 1px solid #ddd;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 20px auto;
+}
+
+form input, form textarea {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+form input[type="submit"] {
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+
+<div class="banner">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+</div>
+
+<section id="properties">
+<h2>{{ slot_6 }}</h2>
+
+<div class="property"><div>{{ slot_7 }}</div></div>
+<div class="property"><div>{{ slot_8 }}</div></div>
+<div class="property"><div>{{ slot_9 }}</div></div>
+</section>
+
+<section id="neighborhoods">
+<h2>{{ slot_10 }}</h2>
+
+<div class="neighborhood"><div>{{ slot_11 }}</div></div>
+<div class="neighborhood"><div>{{ slot_12 }}</div></div>
+<div class="neighborhood"><div>{{ slot_13 }}</div></div>
+</section>
+
+<section id="contact">
+<h2>{{ slot_14 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_17 }}</span>
+<span class="">{{ slot_18 }}</span>
+</form>
+</section>
+</body>
+</html>

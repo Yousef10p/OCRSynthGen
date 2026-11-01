@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #eee;
+}
+#logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+#nav-menu {
+    list-style: none;
+    display: flex;
+}
+#nav-menu li {
+    margin: 0 10px;
+    padding: 5px;
+    border: 2px solid transparent;
+}
+#nav-menu li:hover {
+    border-color: #333;
+}
+#hero, #products, #demo {
+    padding: 40px 20px;
+}
+.product, .video-placeholder {
+    margin: 20px 0;
+}
+.img-placeholder, .video-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo"><p>{{ slot_0 }}</p></div>
+<nav>
+<ul id="nav-menu">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="products">
+<h2>{{ slot_7 }}</h2>
+<div class="product">
+<div class="img-placeholder">{{ slot_8 }}</div>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="product">
+<div class="img-placeholder">{{ slot_11 }}</div>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="product">
+<div class="img-placeholder">{{ slot_14 }}</div>
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+</section>
+<section id="demo">
+<h2>{{ slot_17 }}</h2>
+<div class="video-placeholder">{{ slot_18 }}</div>
+<p>{{ slot_19 }}</p>
+</section>
+</main>
+<footer>
+<p>{{ slot_20 }}</p>
+</footer>
+</body>
+</html>

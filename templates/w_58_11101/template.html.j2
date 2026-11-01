@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+}
+#sidebar {
+    float: right;
+    width: 30%;
+    padding: 10px;
+}
+#content {
+    float: left;
+    width: 70%;
+    padding: 10px;
+}
+.graph-container {
+    height: 100px;
+    width: 100%;
+    position: relative;
+}
+.yellow, .red, .blue, .green {
+    width: 25%;
+    height: 100px;
+    position: absolute;
+    top: 0;
+}
+.yellow {
+    background-color: yellow;
+    right: 0;
+}
+.red {
+    background-color: red;
+    right: 25%;
+}
+.blue {
+    background-color: blue;
+    right: 50%;
+}
+.green {
+    background-color: green;
+    right: 75%;
+}
+footer {
+    clear: both;
+    text-align: center;
+    padding: 20px;
+    background-color: lightgrey;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="sidebar">
+<h2>{{ slot_0 }}</h2>
+
+<div class="graph-container">
+<div class="yellow"></div>
+<div class="red"></div>
+<div class="blue"></div>
+<div class="green"></div>
+</div>
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<h2>{{ slot_3 }}</h2>
+<ul>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+</div>
+<div id="content">
+<h1>{{ slot_7 }}</h1>
+<article>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</article>
+<article>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</article>
+</div>
+<footer>
+<div id="footer-content">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+</div>
+</footer>
+</body>
+</html>

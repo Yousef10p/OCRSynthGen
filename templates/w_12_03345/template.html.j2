@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header, nav, main, aside, footer {
+    padding: 20px;
+}
+header {
+    background: linear-gradient(#000, #fff);
+    color: #fff;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+main {
+    display: flex;
+    justify-content: space-between;
+}
+section {
+    width: 30%;
+}
+.slider {
+    width: 100%;
+    height: 200px;
+    background: #ccc;
+}
+aside {
+    width: 20%;
+    text-align: center;
+}
+footer form {
+    display: flex;
+    justify-content: center;
+}
+footer form input[type="text"] {
+    width: 70%;
+    padding: 10px;
+}
+footer form input[type="submit"] {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="flights">
+<h2>{{ slot_4 }}</h2>
+<div class="slider">{{ slot_5 }}</div>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="hotels">
+<h2>{{ slot_7 }}</h2>
+<div class="slider">{{ slot_8 }}</div>
+<p>{{ slot_9 }}</p>
+</section>
+<section id="packages">
+<h2>{{ slot_10 }}</h2>
+<div class="slider">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+</section>
+<aside>
+<h3>{{ slot_13 }}</h3>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+</aside>
+</main>
+<footer>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<span class="">{{ slot_18 }}</span>
+</form>
+</footer>
+</body>
+</html>

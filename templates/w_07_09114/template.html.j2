@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header, section, footer {
+    padding: 10px;
+}
+
+header {
+    background-color: #f4f4f4;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.prod {
+    width: 200px;
+    height: 150px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+table {
+    width: 100%;
+}
+
+section form {
+    margin-top: 20px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 20px;
+    background-color: #f4f4f4;
+}
+
+footer .social {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="products">
+<h2>{{ slot_4 }}</h2>
+<div class="prod"> </div> 
+<p>{{ slot_5 }}</p>
+</section>
+<section id="classes">
+<h2>{{ slot_6 }}</h2>
+<table>
+<tr>
+<th>{{ slot_7 }}</th>
+<th>{{ slot_8 }}</th>
+<th>{{ slot_9 }}</th>
+</tr>
+<tr>
+<td>{{ slot_10 }}</td>
+<td>{{ slot_11 }}</td>
+<td>{{ slot_12 }}</td>
+</tr>
+
+</table>
+</section>
+<section id="trial">
+<h2>{{ slot_13 }}</h2>
+<form>
+<label>{{ slot_14 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span><br>
+<label>{{ slot_16 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span><br>
+<span class="">{{ slot_18 }}</span>
+</form>
+</section>
+<footer>
+<p>{{ slot_19 }}</p>
+<div class="social"> </div> 
+<form>
+<label>{{ slot_20 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_21 }}</span>
+<span class="">{{ slot_22 }}</span>
+</form>
+</footer>
+</body>
+</html>

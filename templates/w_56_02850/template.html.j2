@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+.hero-header {
+  position: relative;
+  color: white;
+  background-color: #333;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+.cta-button {
+  background-color: #f44336;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #da190b;
+}
+
+.main-menu {
+  background-color: #333;
+  overflow: hidden;
+}
+
+.main-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-menu li {
+  float: right;
+}
+
+.main-menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.main-menu li a:hover {
+  background-color: #111;
+}
+
+.products, .classes, .workshops {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.product::before, .class::before, .workshop::before {
+  content: "";
+  display: inline-block;
+  height: 100px;
+  width: 200px;
+  background: grey;
+}
+
+main .cta-button {
+  margin: 20px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="hero-header">
+<div class="hero-text">
+<h1>{{ slot_0 }}</h1>
+<h2>{{ slot_1 }}</h2>
+<button class="cta-button">{{ slot_2 }}</button>
+</div>
+</header>
+<nav class="main-menu">
+<ul>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<main>
+<h2 id="products">{{ slot_6 }}</h2>
+<section class="products">
+<div class="product"></div>
+<p>{{ slot_7 }}</p>
+<button class="cta-button">{{ slot_8 }}</button>
+</section>
+<h2 id="classes">{{ slot_9 }}</h2>
+<section class="classes">
+<div class="class"></div>
+<p>{{ slot_10 }}</p>
+<button class="cta-button">{{ slot_11 }}</button>
+</section>
+<h2 id="workshops">{{ slot_12 }}</h2>
+<section class="workshops">
+<div class="workshop"></div>
+<p>{{ slot_13 }}</p>
+<button class="cta-button">{{ slot_14 }}</button>
+</section>
+</main>
+</body>
+</html>

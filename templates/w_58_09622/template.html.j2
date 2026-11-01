@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  background: #333;
+  color: #fff;
+  padding: 1em;
+}
+
+.hero {
+  height: 300px;
+  background: #999;
+}
+
+.services, .blog, .workout, .nutrition {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
+  padding: 1em;
+}
+
+.services div, .blog div, .workout div, .nutrition div {
+  height: 200px;
+  background: #ddd;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero"></div>
+<nav class="sticky">
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<form><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span></form>
+</nav>
+<div class="services" id="services">
+<div>{{ slot_5 }}</div>
+<div>{{ slot_6 }}</div>
+<div>{{ slot_7 }}</div>
+<div>{{ slot_8 }}</div>
+<div>{{ slot_9 }}</div>
+<div>{{ slot_10 }}</div>
+<div>{{ slot_11 }}</div>
+<div>{{ slot_12 }}</div>
+</div>
+<div class="blog" id="blog">
+<div>{{ slot_13 }}</div>
+<div>{{ slot_14 }}</div>
+<div>{{ slot_15 }}</div>
+</div>
+<div class="workout" id="workout">
+<div>{{ slot_16 }}</div>
+<div>{{ slot_17 }}</div>
+<div>{{ slot_18 }}</div>
+</div>
+<div class="nutrition" id="nutrition">
+<div>{{ slot_19 }}</div>
+<div>{{ slot_20 }}</div>
+<div>{{ slot_21 }}</div>
+</div>
+</body>
+</html>

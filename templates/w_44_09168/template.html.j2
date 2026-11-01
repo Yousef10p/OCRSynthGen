@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-body);
+}
+#header {
+    background-color: #f8f8f8;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+#main {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+#courses, #about, #instructor {
+    width: 30%;
+    background-color: #e6e6e6;
+    padding: 20px;
+}
+#pricing, #testimonials, #social {
+    width: 25%;
+    background-color: #e6e6e6;
+    padding: 20px;
+}
+#footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f0f0f0;
+    padding: 20px 0;
+}
+.course-image, .instructor-image {
+    height: 200px;
+    background-color: #a0a0a0;  
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<div id="logo">{{ slot_0 }}</div>
+</div>
+<div id="main">
+<div id="courses">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+</div>
+<div id="about">
+<h2>{{ slot_7 }}</h2>
+
+<div class="course-image ph"></div>
+<p>{{ slot_8 }}</p>
+</div>
+<div id="instructor">
+<h2>{{ slot_9 }}</h2>
+
+<div class="instructor-image ph"></div>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+<div id="footer">
+<div id="pricing">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</div>
+<div id="testimonials">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</div>
+<div id="social">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</div>
+</div>
+</body>
+</html>

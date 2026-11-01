@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: white;
+  background: linear-gradient(to bottom, #333, #000);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+#hero {
+  height: 40vh;
+  width: 100%;
+  animation: slide 10s infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#hero h1, #hero p {
+  text-align: center;
+}
+
+#hero .cta {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 2px solid white;
+  text-decoration: none;
+  color: white;
+  transition: background 0.3s;
+}
+
+#hero .cta:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.section {
+  margin-top: 50px;
+  padding: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section h2 {
+  text-align: center;
+}
+
+.section .rect,
+.client-rect,
+.contact-rect {
+  height: 200px;
+  width: 200px;
+  margin: 30px;
+}
+
+footer {
+  margin-top: 50px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes slide {
+  0% {
+    background-position: right;
+  }
+  50% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo">{{ slot_0 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<div id="hero">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<a class="cta">{{ slot_7 }}</a>
+<div class="background-animation"></div>
+</div>
+<div class="section" id="services">
+<h2>{{ slot_8 }}</h2>
+
+<div class="rect"></div>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="section" id="about">
+<h2>{{ slot_10 }}</h2>
+
+<div class="rect"></div>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="section" id="clients">
+<h2>{{ slot_12 }}</h2>
+
+<div class="client-rect"></div>
+<p>{{ slot_13 }}</p>
+</div>
+<footer>
+<div class="contact-rect"></div>
+<p>{{ slot_14 }}<br>{{ slot_15 }}<br>{{ slot_16 }}<br>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+nav, footer {
+    background-color: #f8f8f8;
+    padding: 10px;
+}
+
+nav ul, footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li, footer ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+#hero-overlay {
+    height: 400px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#course {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
+.course {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+}
+
+.course button {
+    background-color: lightblue;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.faq {
+    margin: 20px;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero">
+<div id="hero-overlay">
+
+<div id="hero-overlay-text">{{ slot_3 }}</div>
+</div>
+</section>
+<section id="courses">
+<div class="course">
+<h3>{{ slot_4 }}</h3>
+<p>{{ slot_5 }}</p>
+<button>{{ slot_6 }}</button>
+</div>
+<div class="course">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<button>{{ slot_9 }}</button>
+</div>
+<div class="course">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+<button>{{ slot_12 }}</button>
+</div>
+</section>
+<section id="faq">
+
+<div class="faq">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+            {{ slot_15 }}
+        </section>
+<footer>
+<ul>
+<li><a>{{ slot_16 }}</a></li>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+</ul>
+</footer>
+</body>
+</html>

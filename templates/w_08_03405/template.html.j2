@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 60px;
+  background: #f8f8f8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+}
+
+.navbar li {
+  margin: 20px;
+}
+
+.slider {
+  width: 100%;
+  height: 300px;
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.services, .products {
+  margin: 60px 0;
+  padding: 20px;
+}
+
+.service, .product {
+  width: 100%;
+  height: 150px;
+  margin: 20px 0;
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="header">
+<ul class="navbar">
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+<div class="slider">
+<div class="slider-content" id="slider-1">{{ slot_5 }}</div>
+<div class="slider-content" id="slider-2">{{ slot_6 }}</div>
+<div class="slider-content" id="slider-3">{{ slot_7 }}</div>
+</div>
+</header>
+<section class="services" id="services">
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+<div class="service">{{ slot_10 }}</div>
+<div class="service">{{ slot_11 }}</div>
+<div class="service">{{ slot_12 }}</div>
+</section>
+<section class="products" id="products">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+<div class="product" id="product-1">{{ slot_15 }}</div>
+<div class="product" id="product-2">{{ slot_16 }}</div>
+<div class="product" id="product-3">{{ slot_17 }}</div>
+</section>
+</body>
+</html>

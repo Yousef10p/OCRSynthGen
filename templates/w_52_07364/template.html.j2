@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+.hero-image {
+    height: 400px;
+    width: 100%;
+    background-color: lightgrey;
+}
+
+header {
+    position: relative;
+}
+
+.left-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 20%;
+    background-color: grey;
+}
+
+.left-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.featured-products {
+    padding: 20px;
+    background-color: lightgrey;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.product {
+    height: 200px;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: darkgrey;
+    color: white;
+}
+
+footer section {
+    width: 40%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="hero-image ph"></div>
+<nav class="left-nav">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section class="featured-products">
+<h2>{{ slot_4 }}</h2>
+<div class="product-grid">
+<div class="product">{{ slot_5 }}</div>
+<div class="product">{{ slot_6 }}</div>
+<div class="product">{{ slot_7 }}</div>
+</div>
+</section>
+<footer>
+<section class="contact-info">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+</section>
+<section class="customer-reviews">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+</section>
+</footer>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: white;
+    background: linear-gradient(-45deg, #0099ff, #66ccff);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background: #000066;
+    color: white;
+    padding: 1em;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+#carousel {
+    display: flex;
+    justify-content: center;
+}
+
+.slide {
+    display: none;
+    flex-direction: column;
+    width: 70%;
+    align-items: center;
+}
+
+#slide1 {
+    background: #006666;
+}
+
+#slide2 {
+    background: #660066;
+}
+
+#slide3 {
+    background: #666600;
+}
+
+button {
+    background: white;
+    border: none;
+    color: #000066;
+    padding: 1em 2em;
+    margin: 1em;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea {
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="destinations">
+<h1>{{ slot_2 }}</h1>
+<div id="carousel">
+<div class="slide" id="slide1">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+</div>
+<div class="slide" id="slide2">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="slide" id="slide3">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</div>
+</div>
+<button id="next">{{ slot_9 }}</button>
+<button id="prev">{{ slot_10 }}</button>
+</section>
+<section id="book">
+<h1>{{ slot_11 }}</h1>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_14 }}</span>
+<span class="">{{ slot_15 }}</span>
+</form>
+</section>
+</body>
+</html>

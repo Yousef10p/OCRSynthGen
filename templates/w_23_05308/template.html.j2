@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* { box-sizing: border-box;}
+body {margin: 0;}
+header {
+  padding: 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+nav ul { list-style: none; }
+nav ul li { display: inline; margin: 0 10px; }
+main { padding: 20px; }
+.game-preview { display: inline-block; margin: 20px; }
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="screenshot-gallery">
+<div class="game-preview" style="position:absolute;top:100px;right:100px;width:100px;height:100px;background:blue;"></div>
+<div class="game-preview" style="position:absolute;top:200px;right:200px;width:100px;height:100px;background:red;"></div>
+
+</section>
+<section id="games">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<a>{{ slot_6 }}</a> 
+<a>{{ slot_7 }}</a> 
+</section>
+<section id="accounts">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<button>{{ slot_10 }}</button> 
+</section>
+<section id="support">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<a>{{ slot_13 }}</a> 
+<a>{{ slot_14 }}</a> 
+</section>
+</main>
+</body>
+</html>

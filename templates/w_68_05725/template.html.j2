@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 2.5rem;
+}
+.hero button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.5rem;
+}
+.blog, .map {
+    margin: 2rem;
+}
+.blog div {
+    margin-top: 2rem;
+}
+.blog h2, .map h2 {
+    font-size: 2rem;
+}
+.blog p, .map h3 {
+    color: #333;
+}
+.placeholder {
+    height: 200px;
+    width: 100%;
+    background-color: #ddd;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+footer ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+}
+footer a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="hero">
+<h1>{{ slot_0 }}</h1>
+<button>{{ slot_1 }}</button>
+</div>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<section class="blog">
+<h2>{{ slot_6 }}</h2>
+<div class="article">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+
+</section>
+<section class="map">
+<h2>{{ slot_9 }}</h2>
+
+<div class="placeholder ph"></div>
+</section>
+<footer>
+<ul>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+<li>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

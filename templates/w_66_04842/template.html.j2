@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    background-color: #dddddd;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #7f00ff;
+    color: white;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#countdown {
+    background-color: #ff00bf;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.artist, .ticket-type {
+    padding: 10px;
+    border-bottom: 1px solid #888888;
+}
+
+#venue, #aboutUs {
+    background-color: #9400d3;
+    color: white;
+    padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="countdown">
+<h2>{{ slot_5 }}</h2>
+<div id="timer">{{ slot_6 }}</div>
+</section>
+<section id="lineup">
+<h2>{{ slot_7 }}</h2>
+<div class="artist">{{ slot_8 }}</div>
+<div class="artist">{{ slot_9 }}</div>
+<div class="artist">{{ slot_10 }}</div>
+</section>
+<section id="tickets">
+<h2>{{ slot_11 }}</h2>
+<div class="ticket-type">{{ slot_12 }}</div>
+<div class="ticket-type">{{ slot_13 }}</div>
+</section>
+<section id="venue">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</section>
+<section id="aboutUs">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+</section>
+</main>
+</body>
+</html>

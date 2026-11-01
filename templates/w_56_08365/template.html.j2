@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+}
+.logo {
+  height: 50px;
+  width: 50px;
+  background-color: #666;
+}
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+nav ul li {
+  margin: 0 10px;
+}
+.stock-prices {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.price-box {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px 0;
+  width: 70%;
+  text-align: center;
+}
+.featured-article {
+  background-color: #fff;
+  padding: 20px;
+  margin: 10px 0;
+  width: 70%;
+  text-align: center;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="stock-prices">
+<h2>{{ slot_5 }}</h2>
+<div class="price-box">
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+<div class="stock-price">{{ slot_8 }}</div>
+</div>
+<div class="price-box">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="stock-price">{{ slot_11 }}</div>
+</div>
+<div class="price-box">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="stock-price">{{ slot_14 }}</div>
+</div>
+</div>
+<div class="featured-article">
+<h2>{{ slot_15 }}</h2>
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+</div>
+<footer>
+<p>{{ slot_18 }}</p>
+</footer>
+</body>
+</html>

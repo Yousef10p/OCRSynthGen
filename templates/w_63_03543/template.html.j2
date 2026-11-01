@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: rgb(244, 164, 88); 
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.content {
+    margin: 1em;
+    padding: 1em;
+    background-color: white; 
+}
+.product {
+    display: inline-block;
+    margin: 0.5em;
+    width: 20%; 
+}
+.rect-img {
+    height: 8em;
+    background-color: green;
+}
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: rgb(244, 92, 56);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.social-media,
+.customer-service {
+    color: white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div> {{ slot_0 }}
+        <nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</div>
+<div class="content">
+<p>{{ slot_5 }}</p>
+<div class="products">
+<div class="product">
+<div class="rect-img ph"></div>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="product">
+<div class="rect-img ph"></div>
+<p>{{ slot_7 }}</p>
+</div>
+
+</div>
+</div>
+<footer>
+<div class="social-media">
+<a>{{ slot_8 }}</a> {{ slot_9 }}
+            <a>{{ slot_10 }}</a> {{ slot_11 }}
+            <a>{{ slot_12 }}</a> {{ slot_13 }}
+            <a>{{ slot_14 }}</a>
+</div>
+<p class="customer-service">{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

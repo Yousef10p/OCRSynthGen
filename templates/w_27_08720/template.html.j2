@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+ul.dropdown-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.dropdown-menu > li {
+    display: inline-block;
+    position: relative;
+}
+
+ul.dropdown-menu > li > a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+ul.dropdown-menu > li > ul {
+    position: absolute;
+    display: none;
+}
+
+ul.dropdown-menu > li > a:hover + ul {
+    display: block;
+}
+
+.collage .img {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.collage {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul class="dropdown-menu">
+<li><a>{{ slot_0 }}</a>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_4 }}</a>
+<ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_8 }}</a>
+<ul>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</header>
+<section class="collage">
+<div class="img ph"></div>
+<div class="img ph"></div>
+<div class="img ph"></div>
+<div class="img ph"></div>
+</section>
+<section class="description">
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</section>
+</body>
+</html>

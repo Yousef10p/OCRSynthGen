@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: var(--font-body);
+}
+
+
+.logo {
+    text-align: center;
+}
+
+.logo h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+.services ul {
+    list-style-type: none;
+}
+
+.services li {
+    width: 100%;
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.content h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.content .image {
+    height: 200px;
+    width: 200px;
+    background-color: #666;
+    margin-bottom: 20px;
+}
+
+.content p {
+    width: 600px;
+    text-align: justify;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="logo">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="services">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</div>
+<div class="content">
+<h2 id="kitchen">{{ slot_6 }}</h2>
+<div class="image">{{ slot_7 }}</div>
+<p>{{ slot_8 }}</p>
+<h2 id="bathroom">{{ slot_9 }}</h2>
+<div class="image">{{ slot_10 }}</div>
+<p>{{ slot_11 }}</p>
+<h2 id="floor">{{ slot_12 }}</h2>
+<div class="image">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+<h2 id="painting">{{ slot_15 }}</h2>
+<div class="image">{{ slot_16 }}</div>
+<p>{{ slot_17 }}</p>
+</div>
+</body>
+</html>

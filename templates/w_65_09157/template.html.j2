@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+}
+header {
+    background-color: #f50057;
+    color: #ffffff;
+    padding: 10px;
+}
+h1, h2 {
+    text-align: center;
+}
+#menu, #franchise, #locations {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+}
+.dish, .location {
+    height: 100px;
+    background-color: #f5f5f5;
+    margin: 10px 0;
+    text-align: center;
+    line-height: 100px;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<section id="menu">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }}</li>
+<div class="dish">{{ slot_3 }}</div>
+<li>{{ slot_4 }}</li>
+<div class="dish">{{ slot_5 }}</div>
+</ul>
+</section>
+<section id="franchise">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<ul>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+</ul>
+</section>
+<section id="locations">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li>{{ slot_12 }}</li>
+<div class="location">{{ slot_13 }}</div>
+<li>{{ slot_14 }}</li>
+<div class="location">{{ slot_15 }}</div>
+</ul>
+</section>
+</main>
+</body>
+</html>

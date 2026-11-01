@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #f9c;
+  text-align: center;
+  padding: 10px;
+}
+
+nav {
+  width: 200px;
+  position: absolute;
+  top: 100px;
+}
+
+.content {
+  margin-right: 220px;
+  padding: 20px;
+}
+
+.colored-rectangle {
+  background-color: #fc0;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+h2, h3 {
+  color: #00f;
+}
+
+p {
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #00f;
+  text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+{{ slot_0 }}
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="content">
+<h1>{{ slot_1 }}</h1>
+<p>{{ slot_2 }}</p>
+<h2>{{ slot_3 }}</h2>
+<nav>
+<ul>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+<div id="category1">
+<h3>{{ slot_7 }}</h3>
+<div class="colored-rectangle">{{ slot_8 }}</div>
+<p>{{ slot_9 }}</p>
+
+<div class="colored-rectangle">{{ slot_10 }}</div>
+<p>{{ slot_11 }}</p>
+
+</div>
+<div id="category2">
+<h3>{{ slot_12 }}</h3>
+<div class="colored-rectangle">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+
+<div class="colored-rectangle">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+
+</div>
+<div id="category3">
+<h3>{{ slot_17 }}</h3>
+<div class="colored-rectangle">{{ slot_18 }}</div>
+<p>{{ slot_19 }}</p>
+
+<div class="colored-rectangle">{{ slot_20 }}</div>
+<p>{{ slot_21 }}</p>
+
+</div>
+</div>
+</body>
+</html>

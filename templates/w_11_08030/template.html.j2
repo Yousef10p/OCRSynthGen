@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+#video-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+#video-section video {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    z-index: -1;
+}
+
+.content {
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#services-section, #testimonials-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#services-section .service-box, #services-section .locations-box,
+#testimonials-section .testimonial-box {
+    flex: 1;
+}
+
+#testimonials-section .testimonial-box {
+    flex: 1 0 0;
+    padding: 20px;
+    margin: 10px;
+    background: #f1f1f1;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="video-section">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="content">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+</div>
+<div id="services-section">
+<div class="service-box">
+<h2>{{ slot_2 }}</h2>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+</div>
+<div class="locations-box">
+<h2>{{ slot_7 }}</h2>
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+</div>
+</div>
+<div id="testimonials-section">
+<h2>{{ slot_11 }}</h2>
+<div class="testimonials-container">
+<div class="testimonial-box">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="testimonial-box">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</div>
+</body>
+</html>

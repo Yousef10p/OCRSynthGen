@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+main {
+    margin: 10px;
+}
+
+section {
+    margin: 20px;
+}
+
+.tool, .calculator {
+    width: 100px;
+    height: 100px;
+    background-color: #f1f1f1;
+    margin: 10px;
+}
+
+footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="home">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="tools">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="tool">{{ slot_9 }}</div>
+<div class="tool">{{ slot_10 }}</div>
+<div class="tool">{{ slot_11 }}</div>
+</section>
+<section id="calculators">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="calculator">{{ slot_14 }}</div>
+<div class="calculator">{{ slot_15 }}</div>
+</section>
+<section id="about">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+</section>
+</main>
+<footer>
+<p>{{ slot_18 }}</p>
+</footer>
+</body>
+</html>

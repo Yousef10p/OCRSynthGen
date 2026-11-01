@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #eee;
+}
+
+.parallax {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), none;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container h1 {
+  font-size: 2em;
+  letter-spacing: 2px;
+}
+
+.container p {
+  font-size: 1em;
+  letter-spacing: 1px;
+}
+
+.parallax a {
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.parallax a:hover {
+  background-color: white;
+  color: black;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+  padding: 20px;
+}
+
+.category {
+  border: 2px solid black;
+  padding: 20px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  height: 100vh;
+  background-color: #444;
+  color: white;
+}
+
+.sidebar div {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+}
+
+.sidebar a {
+  border: none;
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.credits {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+}
+
+.credits a {
+  color: white;
+  text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="parallax">
+<div class="container">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<a class="btn-transparent">{{ slot_2 }}</a>
+</div>
+</div>
+<div class="grid">
+<div class="category">
+<i class="fa fa-user"></i>
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+</div>
+<div class="category">
+<i class="fa fa-camera"></i>
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="category">
+<i class="fa fa-shopping-cart"></i>
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</div>
+</div>
+<div class="sidebar">
+<h2>{{ slot_9 }}</h2>
+<div class="item">
+    {{ slot_10 }}
+  </div>
+<div class="item">
+    {{ slot_11 }}
+  </div>
+<div class="item">
+    {{ slot_12 }}
+  </div>
+<a class="btn-red">{{ slot_13 }}</a>
+</div>
+<p class="credits">{{ slot_14 }} <a>{{ slot_15 }}</a></p>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+nav {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+nav ul{
+  list-style: none;
+}
+
+nav a{
+  color: #fff;
+  text-decoration: none;
+}
+
+nav span{
+  margin-right: 10px;
+}
+
+
+nav input{
+  display: none;
+}
+
+nav label{
+  display: none;
+}
+
+nav span.arrow{
+  font-weight: bold;
+}
+
+
+section.testimonials{
+  padding: 20px;
+}
+
+section.testimonials h2{
+  text-align: center;
+}
+
+section.testimonials .client-testimonial{
+  display: flex;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+section.testimonials .client-testimonial .placeholder{
+  width: 100px;
+  height: 100px;
+  margin-left: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<label class="menu-icon">
+<span></span>
+</label>
+<span class="" style="display: inline-block; inline-size: 0.9em; block-size: 0.9em; border: 1px solid #666"></span>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a><span class="arrow">{{ slot_2 }}</span>
+<ul>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_6 }}</a><span class="arrow">{{ slot_7 }}</span>
+<ul>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_11 }}</a></li>
+</ul>
+</nav>
+<section id="testimonials">
+<h2>{{ slot_12 }}</h2>
+<div class="col">
+<div class="client-testimonial">
+<div class="placeholder ph"></div>
+<p>{{ slot_13 }}</p>
+<p class="client-name">{{ slot_14 }}</p>
+</div>
+<div class="client-testimonial">
+<div class="placeholder ph"></div>
+<p>{{ slot_15 }}</p>
+<p class="client-name">{{ slot_16 }}</p>
+</div>
+</div>
+</section>
+</body>
+</html>

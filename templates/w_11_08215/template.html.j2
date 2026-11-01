@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+.header, .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.header nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer .social-links a {
+    margin: 0 5px;
+}
+
+.fullscreen-image {
+    height: 500px;
+    background-color: #ddd;
+}
+
+.destination, .deal, .review {
+    background-color: #ddd;
+    height: 200px;
+    margin: 20px 0;
+    text-align: center;
+    padding-top: 85px;
+}
+
+h2, .contact-info {
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    .header, .destination, .deal, .review, .footer {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="logo"><a>{{ slot_0 }}</a></div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</div>
+<div class="fullscreen-image ph"></div>
+<section id="top_destinations">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="destination">{{ slot_8 }}</div>
+<div class="destination">{{ slot_9 }}</div>
+<div class="destination">{{ slot_10 }}</div>
+</section>
+<section id="deals">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div class="deal">{{ slot_13 }}</div>
+<div class="deal">{{ slot_14 }}</div>
+<div class="deal">{{ slot_15 }}</div>
+</section>
+<section id="reviews">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+<div class="review">{{ slot_18 }}</div>
+<div class="review">{{ slot_19 }}</div>
+<div class="review">{{ slot_20 }}</div>
+</section>
+<div class="footer">
+<div class="social-links"><a>{{ slot_21 }}</a> {{ slot_22 }} <a>{{ slot_23 }}</a> {{ slot_24 }} <a>{{ slot_25 }}</a></div>
+<div class="contact-info">{{ slot_26 }}</div>
+</div>
+</body>
+</html>

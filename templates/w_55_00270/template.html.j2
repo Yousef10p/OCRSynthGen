@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    padding: 20px;
+}
+
+#splash {
+    background: none no-repeat center center;
+    height: 100vh;
+}
+
+#splash button {
+    display: block;
+    margin: 300px auto;
+    padding: 20px;
+    font-size: 2em;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h1, p, ul {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+li:before {
+    content: "";
+    padding-left: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="splash">
+<button>{{ slot_3 }}</button>
+</section>
+<section id="popular">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+
+</ul>
+</section>
+<section id="about">
+<h1>{{ slot_9 }}</h1>
+<p>{{ slot_10 }}</p>
+</section>
+<section id="services">
+<h1>{{ slot_11 }}</h1>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+
+</ul>
+</section>
+</body>
+</html>

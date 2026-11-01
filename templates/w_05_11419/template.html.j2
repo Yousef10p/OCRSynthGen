@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.menu > ul > li {
+  float: right;
+  background: lightgrey;
+  width: 200px;
+  position: relative;
+}
+
+.menu li a {
+  display: inline-block;
+  color: black; 
+  text-decoration: none;
+}
+
+.menu li a:hover {
+  background: green;
+}
+
+.menu li:hover .submenu {
+  display: block;
+  right: 0;
+}
+
+.hero {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero .logo {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: red;
+}
+
+.backgroud-video {
+  height: 300px;
+}
+
+.content {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav class="menu">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li>
+<a>{{ slot_2 }}</a>
+<ul>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</li>
+<li>
+<a>{{ slot_5 }}</a>
+<ul>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="hero">
+<div class="logo ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="background-video ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="content">
+<h1>{{ slot_9 }}</h1>
+<p>{{ slot_10 }}</p>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</div>
+<footer>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

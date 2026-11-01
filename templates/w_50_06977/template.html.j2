@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+
+#slider {
+    height: 400px;
+    position: relative;
+}
+
+.slides {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ddd;
+}
+
+
+.menu {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.menu ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.menu ul li ul {
+    display: none;
+}
+
+.menu ul li:hover ul {
+    display: block;
+}
+
+
+.product, .reviews, .blog {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product {
+    background-color: #f1f1f1;
+}
+
+.reviews {
+    background-color: #e1e1e1;
+}
+
+.blog {
+    background-color: #d1d1d1;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="slider">
+<div class="slide" id="slide-1"></div>
+<div class="slide" id="slide-2"></div>
+<div class="slide" id="slide-3"></div>
+</div>
+<div class="menu">
+<ul>
+<li>
+                {{ slot_0 }}
+                <ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</li>
+<li>
+                {{ slot_4 }}
+                <ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</li>
+<li>
+                {{ slot_8 }}
+                <ul>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="product">
+<h1>{{ slot_12 }}</h1>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="reviews">
+<h1>{{ slot_14 }}</h1>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="blog">
+<h1>{{ slot_16 }}</h1>
+<p>{{ slot_17 }}</p>
+</div>
+</body>
+</html>

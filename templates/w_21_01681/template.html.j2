@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#menu li {
+    margin-bottom: 10px;
+}
+
+#video {
+    top: 0;
+    right: 200px;
+    left: 0;
+    height: 400px;
+    background-color: #ccc;
+}
+
+#sidebar {
+    position: absolute;
+    top: 500px;
+    right: 200px;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+#content {
+    position: absolute;
+    top: 200px;
+    right: 200px;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    overflow: auto;
+}
+
+.player {
+    margin-bottom: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="menu">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</div>
+<div id="video">{{ slot_3 }}</div>
+<div id="sidebar">
+<h3>{{ slot_4 }}</h3>
+<ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</div>
+<div id="content">
+<p id="schedule">{{ slot_9 }}</p>
+<p id="tickets">{{ slot_10 }}</p>
+<p id="news">{{ slot_11 }}</p>
+<p class="player" id="roster1">{{ slot_12 }}</p>
+<p class="player" id="roster2">{{ slot_13 }}</p>
+<p class="player" id="roster3">{{ slot_14 }}</p>
+<p class="player" id="roster4">{{ slot_15 }}</p>
+</div>
+</body>
+</html>

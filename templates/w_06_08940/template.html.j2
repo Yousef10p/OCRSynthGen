@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: #f7f7f7;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+aside {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+article {
+    text-align: justify;
+    width: 70%;
+    padding: 20px;
+}
+
+footer {
+    background-color: #f7f7f7;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+#tags-categories div, #social-media div {
+    margin: 10px 0;
+}
+
+
+#featured-image {
+    width: 100%;
+    height: 300px;
+    background-color: #f7f7f7;
+    content: "";
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="page-wrapper">
+<header id="header">
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<aside>
+<section id="recent-posts">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</section>
+<section id="tags-categories">
+<h2>{{ slot_5 }}</h2>
+<div>{{ slot_6 }}</div>
+<div>{{ slot_7 }}</div>
+<div>{{ slot_8 }}</div>
+<div>{{ slot_9 }}</div>
+</section>
+</aside>
+<article>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</article>
+</main>
+<footer>
+<section id="social-media">
+<h2>{{ slot_12 }}</h2>
+<div>{{ slot_13 }}</div>
+<div>{{ slot_14 }}</div>
+<div>{{ slot_15 }}</div>
+</section>
+<section id="email-subscription">
+<h2>{{ slot_16 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<span class="">{{ slot_18 }}</span>
+</form>
+</section>
+</footer>
+</div>
+</body>
+</html>

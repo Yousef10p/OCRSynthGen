@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+#latest-releases, #book-reviews {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.book, .author-bio, .review {
+    background: #fff;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+footer div {
+    display: inline-block;
+    vertical-align: top;
+    width: 33%;
+}
+
+footer a, footer p {
+    color: #fff;
+}
+
+footer form {
+    margin-top: 20px;
+}
+
+footer input[type="email"] {
+    padding: 10px;
+    width: 70%;
+    margin-left: 10px;
+}
+
+footer input[type="submit"] {
+    padding: 10px 20px;
+    background: #f4f4f4;
+    color: #333;
+    border: 1px solid #333;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<section id="latest-releases">
+<h2>{{ slot_1 }}</h2>
+<div class="book">
+<h3>{{ slot_2 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_3 }}</p>
+<a>{{ slot_4 }}</a>
+</div>
+<div class="author-bio">
+<h3>{{ slot_5 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_6 }}</p>
+<a>{{ slot_7 }}</a>
+</div>
+
+</section>
+<section id="book-reviews">
+<h2>{{ slot_8 }}</h2>
+<div class="review">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<a>{{ slot_11 }}</a>
+</div>
+
+</section>
+<footer>
+<p>{{ slot_12 }}</p>
+<div>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="">{{ slot_16 }}</span>
+</form>
+</div>
+<div>
+<h3>{{ slot_17 }}</h3>
+<ul>
+<li><a>{{ slot_18 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

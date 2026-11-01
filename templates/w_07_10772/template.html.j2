@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.jumbotron {
+  background-color: #f4f4f4;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rectangle {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.page-footer {
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand">{{ slot_0 }}</a>
+<button class="navbar-toggler">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link">{{ slot_1 }}</a>
+</li>
+<li class="nav-item">
+<a class="nav-link">{{ slot_2 }}</a>
+</li>
+<li class="nav-item">
+<a class="nav-link">{{ slot_3 }}</a>
+</li>
+<li class="nav-item">
+<a class="nav-link">{{ slot_4 }}</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="jumbotron text-center" style="margin-bottom:0">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<button class="btn btn-primary">{{ slot_7 }}</button>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-sm-4">
+<div class="rectangle" style="background-color: red;">
+<p>{{ slot_8 }}</p>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="rectangle" style="background-color: green;">
+<p>{{ slot_9 }}</p>
+</div>
+</div>
+<div class="col-sm-4">
+<div class="rectangle" style="background-color: blue;">
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+</div>
+</div>
+<footer class="page-footer font-small blue">
+<div class="container-fluid text-center text-md-left">
+<div class="row">
+<div class="col-md-6">
+<h5 class="text-uppercase">{{ slot_11 }}</h5>
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

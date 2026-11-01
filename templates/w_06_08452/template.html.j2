@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: var(--font-body);
+	color: #333;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 15px;
+}
+
+header {
+	background-color: #f8f9fa;
+	text-align: center;
+	padding: 30px 0;
+}
+
+main {
+	display: flex;
+}
+
+.feed {
+	flex: 2;
+	border: 1px solid #ccc;
+	padding: 15px;
+}
+
+.feed ul {
+	list-style: none;
+	padding: 0;
+}
+
+.feed li {
+	margin-bottom: 20px;
+}
+
+aside {
+	flex: 1;
+	border: 1px solid #ccc;
+	padding: 15px;
+}
+
+footer {
+	background-color: #f8f9fa;
+	text-align: center;
+	padding: 15px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<div class="feed">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li class="post">
+<h3>{{ slot_2 }}</h3>
+<p>{{ slot_3 }}</p>
+</li>
+
+<li class="post">
+<h3>{{ slot_4 }}</h3>
+<p>{{ slot_5 }}</p>
+</li>
+
+</ul>
+</div>
+<aside>
+<div class="promotions">
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li class="promotion">{{ slot_7 }}</li>
+<li class="promotion">{{ slot_8 }}</li>
+</ul>
+</div>
+<div class="social-media-links">
+<h2>{{ slot_9 }}</h2>
+<ul>
+<li class="blog-post"><a>{{ slot_10 }}</a></li>
+<li class="blog-post"><a>{{ slot_11 }}</a></li>
+</ul>
+<h2>{{ slot_12 }}</h2>
+<ul>
+<li class="social-media"><a>{{ slot_13 }}</a></li>
+<li class="social-media"><a>{{ slot_14 }}</a></li>
+</ul>
+</div>
+</aside>
+</main>
+<footer>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

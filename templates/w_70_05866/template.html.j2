@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+.hero {
+    background: lightpink;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.hero a {
+    color: black;
+    text-decoration: none;
+    margin: 0 5px;
+}
+.columns .container {
+    display: flex;
+}
+.left, .right {
+    width: 50%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero" id="hero">
+<div>
+<strong>{{ slot_0 }}</strong>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+<div class="social">
+<a>{{ slot_4 }}</a>
+<a>{{ slot_5 }}</a>
+<a>{{ slot_6 }}</a>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="container">
+<div class="left">
+<strong>{{ slot_7 }}</strong>
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+</div>
+<div class="right">
+<strong>{{ slot_11 }}</strong>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

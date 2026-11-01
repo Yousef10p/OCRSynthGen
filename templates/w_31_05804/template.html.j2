@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+header, footer {
+    background-color: #003366;
+    color: #fff;
+    padding: 10px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+nav ul {
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+article {
+    margin: 20px 0;
+}
+
+article p {
+    text-align: justify;
+    margin: 10px;
+}
+
+.rectangle {
+    background-color: #ddd;
+    height: 100px;
+    margin: 10px auto;
+    width: 80%;
+}
+
+#captain-image, #coach-image, #players-image,
+#schedule-image, #ticket-image {
+    margin: 10px auto;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<h2>{{ slot_1 }}</h2>
+<nav>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<article id="captain">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<div class="rectangle ph"></div>
+</article>
+<article id="coach">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<div class="rectangle ph"></div>
+</article>
+<article id="players">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="rectangle ph"></div>
+</article>
+</main>
+<footer>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div class="rectangle ph"></div>
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="rectangle ph"></div>
+</footer>
+</body>
+</html>

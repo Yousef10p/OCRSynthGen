@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: var(--font-body);
+}
+
+#logo {
+    text-align: center;
+    background-color: #008000;
+    padding: 20px 0;
+}
+
+#menu {
+    float: right;
+    width: 20%;
+    background-color: #00008B;
+    height: 100%;
+    padding: 20px;
+}
+
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#menu a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#content {
+    margin-right: 20%;
+    padding: 20px;
+}
+
+#slideshow {
+    height: 300px;
+    background-color: #008000;
+    text-align: center;
+    line-height: 300px;
+    font-size: 3em;
+}
+
+.region, .activity {
+    padding: 20px;
+}
+
+.region {
+    background-color: #008000;
+}
+
+.activity {
+    background-color: #00008B;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="logo">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div id="menu">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div id="slideshow">
+<div class="slide" id="slide1">{{ slot_5 }}</div>
+<div class="slide" id="slide2">{{ slot_6 }}</div>
+<div class="slide" id="slide3">{{ slot_7 }}</div>
+</div>
+<div id="content">
+<div class="region" id="region1">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="region" id="region2">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="activity" id="activity1">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="activity" id="activity2">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</body>
+</html>

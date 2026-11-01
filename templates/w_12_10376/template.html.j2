@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f8f8f8;
+}
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+nav ul li {
+    list-style: none;
+}
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+#services, #testimonials, #blog {
+    margin: 100px 0;
+}
+.services, .testimonials, .blog {
+    display: flex;
+    justify-content: space-around;
+}
+.service, .testimonial, .post {
+    flex-basis: 30%;
+    text-align: center;
+}
+.image {
+    height: 200px;
+    width: 100%;
+    background-color: lightgray;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="services">
+<h2>{{ slot_7 }}</h2>
+<div class="services">
+<div class="service">
+<h3>{{ slot_8 }}</h3>
+<div class="image ph"></div>
+<p>{{ slot_9 }}</p>
+</div>
+
+</div>
+</section>
+<aside id="testimonials">
+<h2>{{ slot_10 }}</h2>
+<div class="testimonial">
+<p>{{ slot_11 }}</p>
+<h4>{{ slot_12 }}</h4>
+</div>
+
+</aside>
+<section id="blog">
+<h2>{{ slot_13 }}</h2>
+<div class="post">
+<h3>{{ slot_14 }}</h3>
+<div class="image ph"></div>
+<p>{{ slot_15 }}</p>
+</div>
+
+</section>
+<footer id="contact">
+
+</footer>
+</body>
+</html>

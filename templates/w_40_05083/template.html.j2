@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+
+.banner-section {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(-45deg, blue, purple);
+    padding: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.banner-text {
+    width: 50%;
+}
+
+.banner-image {
+    width: 50%;
+    height: 100%;
+    background: #555;
+}
+
+
+.services-section {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.service {
+    width: 30%;
+    padding: 10px;
+    background: #f2f2f2;
+    border: 1px solid #ccc;
+}
+
+
+.footer-section {
+    padding: 20px;
+    background: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-info, .services-links {
+    width: 45%;
+}
+
+.contact-info {
+    text-align: left;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<section class="banner-section">
+<div class="banner-text">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+<div class="banner-image ph"></div>
+</section>
+
+<section class="services-section">
+<div class="service">
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }}</p>
+</div>
+<div class="service">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="service">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</div>
+</section>
+
+<footer class="footer-section">
+<div class="contact-info">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}<br>{{ slot_10 }}<br>{{ slot_11 }}<br>{{ slot_12 }}</p>
+</div>
+<div class="services-links">
+<h3>{{ slot_13 }}</h3>
+<ul>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+<li><a>{{ slot_16 }}</a></li>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

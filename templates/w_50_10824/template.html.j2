@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background: #f8f8f8;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+
+.product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+
+.image1, .image2 {
+    background: #ddd;
+    height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+
+<div class="content">
+<div class="menu">
+
+<div id="tab1">{{ slot_1 }}</div>
+<div id="tab2">{{ slot_2 }}</div>
+<div id="tab3">{{ slot_3 }}</div>
+</div>
+
+<div class="product">
+<div class="image1">{{ slot_4 }}</div>
+<p id="p1">{{ slot_5 }}</p>
+<div class="image2">{{ slot_6 }}</div>
+<p id="p2">{{ slot_7 }}</p>
+</div>
+</div>
+
+
+<footer>
+<div>
+<p>{{ slot_8 }}</p>
+<a>{{ slot_9 }}</a> {{ slot_10 }}
+        <a>{{ slot_11 }}</a> {{ slot_12 }}
+        <a>{{ slot_13 }}</a>
+</div>
+
+<div>
+<p>{{ slot_14 }}</p>
+</div>
+
+<div>
+<p>{{ slot_15 }}</p>
+<form>
+<label>{{ slot_16 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<span class="">{{ slot_18 }}</span>
+</form>
+</div>
+</footer>
+</body>
+</html>

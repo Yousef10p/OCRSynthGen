@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+.logo .logo-icon {
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li ul {
+    display: none;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+.testimonial-image, .service {
+    width: 100px;
+    height: 100px;
+    background-color: #f8f8f8;
+    margin: 20px 0;
+}
+
+.services .service {
+    width: 300px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo ph"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li>
+<a>{{ slot_2 }}</a>
+<ul>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="testimonials">
+<h2>{{ slot_7 }}</h2>
+<div class="testimonial">
+<div class="testimonial-image ph"></div>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="testimonial">
+<div class="testimonial-image ph"></div>
+<p>{{ slot_9 }}</p>
+</div>
+</section>
+<section class="services">
+<h2>{{ slot_10 }}</h2>
+<div class="service">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+</section>
+</main>
+</body>
+</html>

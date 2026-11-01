@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #f8f8f8;
+    padding: 20px;
+}
+
+.hero {
+    background: #ccc;
+    height: 200px;
+}
+
+nav, .left-column {
+    float: right;
+    width: 20%;
+    background: #f0f0f0;
+    height: 400px;
+    padding: 20px;
+    margin-left: 2%;
+    box-sizing: border-box;
+}
+
+main {
+    overflow: hidden;
+}
+
+.blog-post {
+    background: #f0f0f0;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    float: right;
+    width: 20%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #f8f8f8;
+}
+
+footer {
+    clear: both;
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.certification, .social-media a {
+    color: #fff;
+    margin-left: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="hero">{{ slot_0 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<div class="left-column">
+<div class="blog-post">{{ slot_5 }}</div>
+<div class="blog-post">{{ slot_6 }}</div>
+<div class="blog-post">{{ slot_7 }}</div>
+</div>
+<form class="contact-form">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_9 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_10 }}</span>
+<button>{{ slot_11 }}</button>
+</form>
+</main>
+<footer>
+<div class="certification">{{ slot_12 }}</div>
+<div class="certification">{{ slot_13 }}</div>
+<div class="social-media">
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+</div>
+</footer>
+</body>
+</html>

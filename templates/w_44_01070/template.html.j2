@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {box-sizing: border-box;}
+body {margin: 0; padding: 0; font-family: var(--font-body);}
+nav ul {display: flex; list-style-type: none; justify-content: space-around;}
+nav, footer {background-color: #f8f8f8; padding: 1em;}
+.header-image {height: 200px; background-color: #ddd;}
+main section {margin: 1em;}
+footer form {margin-bottom: 1em;}
+a {color: #008CBA;}
+a:hover {color: #005A87;}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<header>
+<div class="header-image ph"></div>
+</header>
+<main>
+<section id="services"><h1>{{ slot_3 }}</h1><p>{{ slot_4 }}</p></section>
+<section id="portfolio"><h1>{{ slot_5 }}</h1><p>{{ slot_6 }}</p></section>
+<section id="about"><h1>{{ slot_7 }}</h1><p>{{ slot_8 }}</p></section>
+</main>
+<footer>
+<form>
+<label>{{ slot_9 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span><br>
+<span class="">{{ slot_11 }}</span>
+</form>
+<div class="social-media-links">
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</div>
+</footer>
+</body>
+</html>

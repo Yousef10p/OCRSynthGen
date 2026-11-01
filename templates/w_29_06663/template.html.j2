@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+body {
+    background-color: #F0F0F0;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.donate-button {
+    background-color: white;
+    color: #007BFF;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.donate-button:hover {
+    background-color: #007BFF;
+    color: white;
+}
+
+.left-footer {
+    float: right;
+    width: 30%;
+}
+
+.center-footer {
+    float: right;
+    width: 40%;
+}
+
+.right-footer {
+    float: left;
+    width: 30%;
+}
+
+footer {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px 0;
+}
+
+footer h2 {
+    margin: 20px 0;
+}
+
+footer:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+header img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<div class="donate-button">{{ slot_2 }}</div>
+</header>
+<footer>
+<div class="left-footer">
+<h2>{{ slot_3 }}</h2>
+<ul>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+</div>
+<div class="center-footer">
+<h2>{{ slot_7 }}</h2>
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+</div>
+<div class="right-footer">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="">{{ slot_14 }}</span>
+</form>
+</div>
+</footer>
+</body>
+</html>

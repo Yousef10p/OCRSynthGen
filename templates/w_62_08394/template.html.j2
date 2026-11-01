@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+font-family: var(--font-body);
+}
+header {
+background-color: #f8f9fa;
+padding: 20px;
+text-align: center;
+}
+h1 {
+font-size: 3.5em;
+margin-bottom: 15px;
+}
+nav {
+padding: 10px;
+text-align: center;
+}
+nav a {
+margin: 0 10px;
+text-decoration: none;
+color: #000;
+}
+main {
+display: grid;
+grid-template-columns: 1fr 1fr;
+}
+main section {
+padding: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+h2 {
+font-size: 2.5em;
+margin-bottom: 15px;
+}
+.video {
+background-color: #000;
+width: 100%;
+height: 200px;
+}
+.class-list {
+display: flex;
+}
+.class-item {
+margin: 0 10px;
+text-align: center;
+}
+h3 {
+font-size: 2em;
+margin-bottom: 10px;
+}
+.class-img {
+background-color: #000;
+width: 200px;
+height: 100px;
+margin-bottom: 10px;
+}
+.membership-table {
+margin: 0 auto;
+}
+table {
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid #000;
+padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+<main>
+<section id="routines">
+<h2>{{ slot_4 }}</h2>
+<div class="video ph"></div>
+<p>{{ slot_5 }}</p>
+</section>
+<section id="classes">
+<h2>{{ slot_6 }}</h2>
+<div class="class-list">
+<div class="class-item">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<div class="class-img ph"></div>
+</div>
+<div class="class-item">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="class-img ph"></div>
+</div>
+</div>
+</section>
+<section id="memberships">
+<h2>{{ slot_11 }}</h2>
+<div class="membership-table">
+<table>
+<tr>
+<th>{{ slot_12 }}</th>
+<th>{{ slot_13 }}</th>
+</tr>
+<tr>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+</tr>
+<tr>
+<td>{{ slot_16 }}</td>
+<td>{{ slot_17 }}</td>
+</tr>
+</table>
+</div>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+img.placeholder {
+    content: "";
+    height: 50px;
+    width: 100px;
+    background-color: grey; 
+}
+
+.restaurant-slider-section, .menu-section, .reservations-section, .contact-section {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.menu-section ul {
+    column-count: 2;
+}
+
+input {
+    display: block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="restaurant-slider-section">
+<div class="placeholder ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="placeholder ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="placeholder ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="menu-section">
+<h1>{{ slot_0 }}</h1>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+</div>
+<div class="reservations-section">
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+</div>
+<div class="contact-section">
+<h1>{{ slot_12 }}</h1>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+</div>
+</body>
+</html>

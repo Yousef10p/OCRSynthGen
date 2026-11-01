@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-body);
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+.container {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header__logo {
+    max-width: 100px;
+}
+
+.header__nav-items {
+    list-style: none;
+}
+
+.header__nav-items li {
+    display: inline;
+    margin: 0 1em;
+}
+
+.body__main-image {
+    height: 300px;
+    background: none no-repeat center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.body__about, .body__products, .body__blog, .body__contact {
+    padding: 2em 0;
+}
+
+.body__products__grid {
+    min-height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (min-width: 800px) {
+    .body__products__grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .body__products__grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer__social-media__icon {
+    margin-right: 2em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<header class="header">
+<h1 class="header__branding">
+<div class="header__logo ph" style="inline-size: 100%; block-size: 150px"></div>
+</h1>
+<nav class="header__navigation">
+<ul class="header__nav-items">
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+</header>
+<main class="body">
+<section class="body__main-image">
+<h2 class="body__main-image__text-overlay">{{ slot_4 }}</h2>
+</section>
+<section class="body__about">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</section>
+<section class="body__products">
+<h2>{{ slot_7 }}</h2>
+<div class="body__products__grid">
+<div class="body__products__grid__item">{{ slot_8 }}</div>
+<div class="body__products__grid__item">{{ slot_9 }}</div>
+<div class="body__products__grid__item">{{ slot_10 }}</div>
+<div class="body__products__grid__item">{{ slot_11 }}</div>
+<div class="body__products__grid__item">{{ slot_12 }}</div>
+<div class="body__products__grid__item">{{ slot_13 }}</div>
+</div>
+</section>
+<section class="body__blog">
+<h2>{{ slot_14 }}</h2>
+<article class="body__blog__post">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</article>
+</section>
+<section class="body__contact">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+</section>
+</main>
+<footer class="footer">
+<p>{{ slot_20 }}</p>
+<div class="footer__social-media">
+<i class="footer__social-media__icon">{{ slot_21 }}</i>
+<i class="footer__social-media__icon">{{ slot_22 }}</i>
+<i class="footer__social-media__icon">{{ slot_23 }}</i>
+</div>
+</footer>
+</div>
+</body>
+</html>

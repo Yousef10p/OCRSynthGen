@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  background: #222;
+  padding: 0.5rem 1rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  background: #222;
+  flex-direction: column;
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  padding: 1rem;
+  display: none;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 0;
+}
+
+.hamburger {
+  display: block;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #fff;
+  margin: 6px 0;
+}
+
+#hero {
+  height: 100vh;
+  background: none;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#sign-up, #features, #benefits {
+  margin-top: 5rem;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature, .benefit {
+  margin: 1rem 0;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #222;
+  color: white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<div class="hamburger">
+<div class="bar1"></div>
+<div class="bar2"></div>
+<div class="bar3"></div>
+</div>
+<ul class="menu">
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+<button>{{ slot_5 }}</button>
+</section>
+<section id="features">
+<h2>{{ slot_6 }}</h2>
+<div class="feature">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="feature">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="feature">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+</section>
+<section id="benefits">
+<h2>{{ slot_13 }}</h2>
+<div class="benefit">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="benefit">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+</div>
+<div class="benefit">
+<h3>{{ slot_18 }}</h3>
+<p>{{ slot_19 }}</p>
+</div>
+</section>
+<section id="sign-up">
+<h2>{{ slot_20 }}</h2>
+<p>{{ slot_21 }}</p>
+<button>{{ slot_22 }}</button>
+</section>
+</main>
+</body>
+</html>

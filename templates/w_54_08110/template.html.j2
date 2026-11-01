@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+#main-menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 200px;
+    background: #f8f8f8;
+}
+#main-menu-panel ul {
+    list-style-type: none;
+    padding: 10px;
+}
+#main-menu-panel ul li a {
+    text-decoration: none;
+    color: #000;
+}
+#search-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: #fff;
+}
+#search-bar input {
+    width: 200px;
+    height: 30px;
+}
+#full-width-image {
+    width: 100%;
+    height: 400px;
+    background: #ddd;
+}
+#main-content-panel {
+    margin-right: 220px;
+    padding: 10px;
+}
+.section {
+    margin-bottom: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="main-menu-panel">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div id="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_5 }}</span>
+</div>
+<div class="ph"></div>
+<div id="main-content-panel">
+<div class="section" id="home">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="section" id="flights">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="section" id="hotels">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="section" id="cruises">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="section" id="excursions">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</body>
+</html>

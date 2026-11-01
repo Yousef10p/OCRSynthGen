@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    
+    background-color: #F0F0F0;
+    font-family: var(--font-body);
+}
+
+.hero {
+    width: 100%;
+    height: 500px;
+    background-color: #88c1d0;
+    text-align: center;
+}
+
+.hero h1 {
+    padding-top: 150px;
+    font-size: 50px;
+    color: white;
+}
+
+.hero p {
+    color: white;
+    font-size: 20px;
+}
+
+.promo ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+.promo ul li {
+    display: inline-block;
+    margin: 50px;
+    background-color: #ffca4b;
+    padding: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.flights ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+
+.flights ul li {
+    margin: 20px 0;
+    background-color: #88c1d0;
+    padding: 20px;
+}
+
+.blog h2 {
+    text-align: center;
+}
+
+.blog-post {
+    width: 30%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffca4b;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_2 }}</span>
+<span class="">{{ slot_3 }}</span>
+</form>
+</div>
+<div class="promo">
+<h2>{{ slot_4 }}</h2>
+<ul>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</div>
+<div class="flights">
+<h2>{{ slot_9 }}</h2>
+<ul>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+</ul>
+</div>
+<div class="blog">
+<h2>{{ slot_13 }}</h2>
+<div class="blog-post">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="blog-post">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+</div>
+</div>
+</body>
+</html>

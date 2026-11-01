@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: var(--font-body);
+    color: #333;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #333;
+    color: #fff;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 1em 0;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.banner, .products, .recipe, .contact, .resources, .faq {
+    padding: 2em;
+    margin: 3em 0;
+    text-align: center;
+}
+
+.banner {
+    background: #e6e6e6;
+}
+
+.product-images, .recipe-images {
+    display: flex;
+    justify-content: space-around;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    background: #ddd;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="banner" id="banner">
+<h1>{{ slot_6 }}</h1>
+</section>
+<section class="products" id="products">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="product-images ph"></div>
+</section>
+<section class="recipe" id="recipe">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="recipe-images ph"></div>
+</section>
+</main>
+<footer>
+<div class="contact" id="contact">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="resources" id="resources">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="faq" id="faq">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</div>
+</footer>
+</body>
+</html>

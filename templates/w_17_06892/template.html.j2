@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+}
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    float: right;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #111;
+}
+.section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#home {
+    background: lightblue;
+}
+#products {
+    background: lightgreen;
+}
+#about {
+    background: lightpink;
+}
+#testimonials {
+    background: lightyellow;
+}
+#contact {
+    background: lightgray;
+}
+.carousel {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    overflow-x: auto;
+}
+.product {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.placeholder {
+    width: 200px;
+    height: 200px;
+    background: darkgray;
+    margin-bottom: 20px;
+}
+.customer {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+.customer .placeholder {
+    margin-left: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="section" id="home"><h1>{{ slot_5 }}</h1></div>
+<div class="section" id="products">
+<h1>{{ slot_6 }}</h1>
+<div class="carousel">
+<div class="product"><div class="placeholder ph"></div><p>{{ slot_7 }}</p></div>
+<div class="product"><div class="placeholder ph"></div><p>{{ slot_8 }}</p></div>
+<div class="product"><div class="placeholder ph"></div><p>{{ slot_9 }}</p></div>
+</div>
+</div>
+<div class="section" id="about">
+<h1>{{ slot_10 }}</h1>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="section" id="testimonials">
+<h1>{{ slot_12 }}</h1>
+<div class="customer">
+<div class="placeholder ph"></div>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="customer">
+<div class="placeholder ph"></div>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+<div class="section" id="contact">
+<h1>{{ slot_15 }}</h1>
+<p>{{ slot_16 }}</p>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+</div>
+
+</body>
+</html>

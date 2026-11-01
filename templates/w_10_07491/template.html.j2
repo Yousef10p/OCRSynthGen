@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.rectangle {
+  width: 100px;
+  height: 100px;
+  background-color: grey;
+  margin: 10px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.player {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: blue;
+  color: white;
+}
+
+.popular, .recommended, .playlists {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+h1, h3 {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+}
+
+audio {
+  width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="navbar">
+<h1>{{ slot_0 }}</h1>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</div>
+<div class="player">
+<p>{{ slot_4 }}</p>
+
+</div>
+<div class="popular" id="popular">
+<h3>{{ slot_5 }}</h3>
+<div class="rectangle" id="rect1">{{ slot_6 }}</div>
+<div class="rectangle" id="rect2">{{ slot_7 }}</div>
+<div class="rectangle" id="rect3">{{ slot_8 }}</div>
+<div class="rectangle" id="rect4">{{ slot_9 }}</div>
+</div>
+<div class="recommended" id="recommended">
+<h3>{{ slot_10 }}</h3>
+<div class="rectangle" id="rect1">{{ slot_11 }}</div>
+<div class="rectangle" id="rect2">{{ slot_12 }}</div>
+<div class="rectangle" id="rect3">{{ slot_13 }}</div>
+<div class="rectangle" id="rect4">{{ slot_14 }}</div>
+</div>
+<div class="playlists" id="playlists">
+<h3>{{ slot_15 }}</h3>
+<ul>
+<li>{{ slot_16 }}</li>
+<li>{{ slot_17 }}</li>
+<li>{{ slot_18 }}</li>
+<li>{{ slot_19 }}</li>
+</ul>
+</div>
+</body>
+</html>

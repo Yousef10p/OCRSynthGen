@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: var(--font-body);
+}
+
+header, footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.header h1, .footer p {
+    color: #333;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hero-banner, .customer-reviews, .blog-articles, .social-media-links {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="header">
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+</header>
+<section class="hero-banner">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</section>
+<section class="customer-reviews&gt; &lt;h2&gt;Customer Reviews&lt;/h2&gt; &lt;p&gt;Reviews of our services and products&lt;/p&gt; &lt;/section&gt; &lt;section class=">
+<h2>{{ slot_9 }}</h2>
+<article>{{ slot_10 }}</article>
+<article>{{ slot_11 }}</article>
+<article>{{ slot_12 }}</article>
+</section>
+<section class="social-media-links">
+<h2>{{ slot_13 }}</h2>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+</section>
+<footer>
+<p>{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

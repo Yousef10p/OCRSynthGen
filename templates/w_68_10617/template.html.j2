@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+􀀀􀀀􀀀􀀀*{
+  margin: 0;
+  padding: 0; 
+}
+
+header {
+  display: flex;
+  font-family: var(--font-body);
+  line-height: 130%;
+  height: 100vh;
+  position: relative;
+}
+.logo {
+  width: 20vw;
+  background-color: lightblue;
+}
+.logoImg {
+  content: "";
+  width: 15vw;
+  height: 5vh;
+  background-color: blue;
+  positoin: absolute;
+  margin: 2vw 2vw 0 0;
+}
+nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+ul {
+  display: flex;
+  list-style-type: none;
+  width: 100vw;
+  justify-content: space-around;
+}
+
+.main {
+  display: flex;
+}
+.main:before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: lightsalmon;
+}
+.slogan {
+  position: absolute;
+  z-index: 1;
+  bottom: 20vh;
+  right: 1vw;
+}
+.heroImg {
+  content: "";
+  width: 60vw;
+  height: 60vh;
+  background-color: aqua;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.ingredients {
+  display: flex;
+}
+.ingredientsImg {
+  content: "";
+  width: 30vw;
+  height: 30vh;
+  background-color: lightcoral;
+}
+
+.productsImg{
+  content: "";
+  width: 25vw;
+  height: 20vh;
+  background-color: lightpink;
+}
+
+footer {}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo ph"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="main">
+<div class="mainTop">
+<p class="slogan">{{ slot_5 }}</p>
+<div class="heroImg ph"></div>
+</div>
+<div class="mainBottom">
+<div class="article">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="heroImgSmall ph"></div>
+</div>
+</section>
+<section class="ingredients">
+<div class="ingredientsLeft">
+<div class="ingredientsImg ph"></div>
+</div>
+<div class="ingredientsRight">
+<h2>{{ slot_8 }}
+      </h2><p>{{ slot_9 }}</p>
+</div>
+</section>
+<section class="products">
+<h2>{{ slot_10 }}</h2>
+<p>
+      {{ slot_11 }}
+    </p>
+<div class="car1"><div class="ph" style="inline-size: 100%; block-size: 150px"></div></div>
+<div class="car2"><div class="ph" style="inline-size: 100%; block-size: 150px"></div></div>
+<div class="car3"><div class="ph" style="inline-size: 100%; block-size: 150px"></div></div>
+</section>
+<section>
+<h2>{{ slot_12 }}</h2>
+<p>
+      {{ slot_13 }}
+    </p>
+</section>
+</main>
+<footer>
+<div class="footerLeft">
+<h2>{{ slot_14 }}</h2>
+<p>
+      {{ slot_15 }}
+    </p>
+</div>
+<div class="footerRight">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</footer>
+</body>
+</html>

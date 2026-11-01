@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #800080; 
+  font-family: var(--font-body);
+  box-sizing: border-box;
+  background-color: #808080; 
+  overflow: auto;
+  width: 100%;
+  height: 100vh;
+}
+
+nav {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+}
+
+nav a {
+  color: white;
+}
+
+.cta {
+  background: #800080;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.class-type, .teacher {
+  width: 150px;
+  height: 150px;
+  background: #ffc0cb; 
+  margin: 10px;
+}
+
+.contact-info {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+<a class="cta">{{ slot_4 }}</a>
+</nav>
+</header>
+<section id="classes">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="class-type">{{ slot_7 }}</div>
+<div class="class-type">{{ slot_8 }}</div>
+<div class="class-type">{{ slot_9 }}</div>
+</section>
+<section id="teachers">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<div class="teacher">{{ slot_12 }}</div>
+<div class="teacher">{{ slot_13 }}</div>
+<div class="teacher">{{ slot_14 }}</div>
+</section>
+<section id="about">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</section>
+<section id="contact">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+<div class="contact-info">
+<span>{{ slot_19 }}</span>
+<span>{{ slot_20 }}</span>
+</div>
+</section>
+</body>
+</html>

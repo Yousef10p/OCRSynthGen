@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header, footer {
+    background-color: #ddd;
+    padding: 20px;
+}
+
+.sidebar {
+    float: right;
+    width: 20%;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.content {
+    float: left;
+    width: 80%;
+}
+
+.clothing-item {
+    margin-bottom: 20px;
+}
+
+.item-image {
+    width: 100px;
+    height: 100px;
+    background-color: #990000;
+    margin-left: 10px;
+    float: right;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<div class="sidebar">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div class="content">
+<div class="clothing-item">
+<div class="item-image">{{ slot_5 }}</div>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="clothing-item">
+<div class="item-image">{{ slot_7 }}</div>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="clothing-item">
+<div class="item-image">{{ slot_9 }}</div>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="clothing-item">
+<div class="item-image">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+</div>
+</div>
+<footer>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+</footer>
+</div>
+</body>
+</html>

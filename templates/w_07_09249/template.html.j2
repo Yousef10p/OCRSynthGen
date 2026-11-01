@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to left, #12c2e9, #c471ed, #f64f59);
+  padding: 20px;
+}
+
+header img {
+  height: 50px;
+  margin-left: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav input {
+  border: none;
+  padding: 10px;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+nav a {
+  margin-left: 20px;
+}
+
+.gradient {
+  background: linear-gradient(to left, #12c2e9, #c471ed, #f64f59);
+  padding: 50px;
+  color: white;
+  text-align: center;
+}
+
+.gradient h1 {
+  font-family: var(--font-heading);
+  font-size: 48px;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.review img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<a>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</a>
+<a>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</a>
+<a>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</a>
+</nav>
+</header>
+<main>
+<section class="gradient">
+<h1>{{ slot_1 }}<em>{{ slot_2 }}</em> {{ slot_3 }}<em>{{ slot_4 }}</em>{{ slot_5 }} <em>{{ slot_6 }}</em>{{ slot_7 }} <strong>{{ slot_8 }}</strong> {{ slot_9 }} <strong>{{ slot_10 }}</strong>{{ slot_11 }}</h1>
+</section>
+<section>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }} <strong>{{ slot_14 }}</strong>{{ slot_15 }} <em>{{ slot_16 }}</em> {{ slot_17 }} <em>{{ slot_18 }}</em> {{ slot_19 }} <strong>{{ slot_20 }}</strong> {{ slot_21 }}</p>
+</section>
+<section>
+<h2>{{ slot_22 }}</h2>
+<p>{{ slot_23 }} <strong>{{ slot_24 }}</strong>{{ slot_25 }} <em>{{ slot_26 }}</em> <strong>{{ slot_27 }}</strong> {{ slot_28 }} <em>{{ slot_29 }}</em> {{ slot_30 }} <strong>{{ slot_31 }}</strong> {{ slot_32 }}</p>
+</section>
+<section>
+<h2>{{ slot_33 }}</h2>
+<div class="reviews">
+<div class="review">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_34 }} <strong>{{ slot_35 }}</strong> {{ slot_36 }}</p>
+<p><strong>{{ slot_37 }}</strong>{{ slot_38 }}</p>
+</div>
+<div class="review">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_39 }}<em>{{ slot_40 }}</em> {{ slot_41 }} <strong>{{ slot_42 }}</strong> {{ slot_43 }}</p>
+<p><strong>{{ slot_44 }}</strong>{{ slot_45 }}</p>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<p>
+<a>{{ slot_46 }}</a>
+<a>{{ slot_47 }}</a>
+<a>{{ slot_48 }}</a>
+</p>
+</footer>
+</body>
+</html>

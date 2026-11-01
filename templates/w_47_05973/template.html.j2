@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+header {
+  background-color: #f8f8f8;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  background-color: #ddd;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+nav ul li {
+  display: inline;
+  margin-left: 10px;
+}
+.video-bg {
+  height: 200px;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main section {
+  margin: 10px 0;
+  padding: 20px;
+}
+main section h2 {
+  margin-bottom: 10px;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+footer section {
+  flex-basis: 30%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<div class="video-bg">{{ slot_3 }}</div>
+<section id="investment">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</section>
+<section id="planning">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</section>
+<section id="retirement">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</section>
+</main>
+<footer>
+<section class="contact">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</section>
+<section class="social">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</section>
+<section class="mission">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</section>
+</footer>
+</body>
+</html>

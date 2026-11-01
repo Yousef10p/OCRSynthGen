@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-color: orange;
+    height: 600px;
+    text-align: center;
+    color: white;
+    padding-top: 200px;
+}
+
+#header h1 {
+    font-size: 36px;
+    margin-top: -100px;
+}
+
+.product-section {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+}
+
+.product-name {
+    font-size: 24px;
+}
+
+.product-description {
+    font-size: 16px;
+}
+
+.product-price {
+    font-size: 20px;
+    color: green;
+}
+
+#footer {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#footer h2 {
+    font-size: 24px;
+}
+
+#footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#footer a {
+    color: lightblue;
+    font-size: 18px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="product-section">
+<div class="product">
+<div class="product-img ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2 class="product-name">{{ slot_1 }}</h2>
+<p class="product-description">{{ slot_2 }}</p>
+<p class="product-price">{{ slot_3 }}</p>
+</div>
+
+</div>
+<div id="footer">
+<div id="contact">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<p>{{ slot_6 }}</p>
+<p>{{ slot_7 }}</p>
+</div>
+<div id="hours">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+</div>
+<div id="social">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+<li><a>{{ slot_16 }}</a></li>
+</ul>
+</div>
+</div>
+</body>
+</html>

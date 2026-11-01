@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+font-family: var(--font-body);
+}
+
+#hero {
+background-color: lightgray; 
+height: 300px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+#cta {
+background-color: blue;
+color: white;
+border: none;
+padding: 10px 20px;
+display: block;
+margin: 0 auto;
+cursor: pointer;
+}
+
+section {
+margin: 50px 0;
+padding: 20px;
+}
+
+footer {
+background-color: #333;
+color: white;
+padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<section id="hero">{{ slot_0 }}</section>
+<button id="cta">{{ slot_1 }}</button>
+<section id="services">
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }}</p>
+</section>
+<section id="testimonials">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</section>
+<section id="blog">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</section>
+<footer>
+<ul>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+</ul>
+<form id="newsletter">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<button>{{ slot_12 }}</button>
+</form>
+<form id="contact">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_15 }}</span>
+<button>{{ slot_16 }}</button>
+</form>
+</footer>
+</body>
+</html>

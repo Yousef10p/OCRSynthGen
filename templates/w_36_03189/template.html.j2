@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: var(--font-body);
+	background-color: #F2F2F2;
+	color: #333;
+	line-height: 1.6;
+}
+
+.rectangle {
+	width: 100px;
+	height: 100px;
+	background-color: #333;
+	display: block;
+}
+
+header {
+	background-color: #fff;
+	padding: 10px 0;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+	height: 50px;
+}
+
+nav ul {
+	display: flex;
+	list-style-type: none;
+	justify-content: space-around;
+}
+
+.hero {
+	text-align: center;
+	padding: 50px 0;
+}
+
+.try-ons, .testimonials, .contact {
+	padding: 50px 0;
+	text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section class="hero">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<a>{{ slot_6 }}</a>
+</section>
+<section class="try-ons">
+<h2>{{ slot_7 }}</h2>
+
+<div class="rectangle"></div>
+<p>{{ slot_8 }}</p>
+<button>{{ slot_9 }}</button>
+</section>
+<section class="testimonials">
+<h2>{{ slot_10 }}</h2>
+
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+</section>
+<section class="contact">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+<p>{{ slot_17 }}</p>
+</section>
+</body>
+</html>

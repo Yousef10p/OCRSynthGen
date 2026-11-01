@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background-color: #f8f8f8;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    padding: 20px 0;
+}
+
+#carousel {
+    width: 100%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+#carousel-content div {
+    width: 200px;
+    height: 300px;
+    border: 1px solid #ddd;
+    margin:0 10px;
+}
+
+#second-menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.column {
+    width: 30%;
+    text-align: center;
+}
+
+.column button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+#featured-women, #featured-men {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.featured-item {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+    margin:0 10px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="carousel">
+<div id="carousel-content">
+<div>{{ slot_5 }}</div>
+<div>{{ slot_6 }}</div>
+<div>{{ slot_7 }}</div>
+<div>{{ slot_8 }}</div>
+<div>{{ slot_9 }}</div>
+<div>{{ slot_10 }}</div>
+</div>
+</section>
+<section id="second-menu">
+<div class="column">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<button>{{ slot_13 }}</button>
+</div>
+<div class="column">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<button>{{ slot_16 }}</button>
+</div>
+<section>
+<section id="featured-women">
+<h2>{{ slot_17 }}</h2>
+<div class="featured-item">{{ slot_18 }}</div>
+<div class="featured-item">{{ slot_19 }}</div>
+<div class="featured-item">{{ slot_20 }}</div>
+<button>{{ slot_21 }}</button>
+</section>
+<section id="featured-men">
+<h2>{{ slot_22 }}</h2>
+<div class="featured-item">{{ slot_23 }}</div>
+<div class="featured-item">{{ slot_24 }}</div>
+<div class="featured-item">{{ slot_25 }}</div>
+<button>{{ slot_26 }}</button>
+</section>
+</section></section></body>
+</html>

@@ -38,21 +38,35 @@ def structure_hash(text, meta):
     return hashlib.sha256(json.dumps(key).encode()).hexdigest()
 
 
+FIRST_BUILD = re.compile(r"^(g_\d{4}|w_\d{5}|d_\d{4})$")  # ids of the bank's first build
+
+
 def load_bank():
     metas = [json.loads(p.read_text(encoding="utf-8")) for p in TEMPLATES.glob("*/template.json")]
     return sorted(metas, key=lambda m: (SOURCE_ORDER[m["source"]], m["id"]))
 
 
+def write_index():
+    """bank_index.jsonl: one line per template (id, source, features, structure hash).
+
+    Written to a temporary file and then swapped in, so a running generator never reads a half-written index."""
+    tmp = ROOT / "bank_index.jsonl.tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        for m in load_bank():
+            f.write(json.dumps({k: m[k] for k in ("id", "source", "features", "structure_hash")}) + "\n")
+    tmp.replace(ROOT / "bank_index.jsonl")
+
+
 def run():
     seen, removed = set(), []
-    for meta in load_bank():
+    # Templates of the bank's first build go first, so a copy of one of them is what gets removed (the
+    # gallery and the render sets refer to the first build)
+    for meta in sorted(load_bank(), key=lambda m: not FIRST_BUILD.match(m["id"])):
         if meta["structure_hash"] in seen:
             removed.append(meta["id"])
             shutil.rmtree(TEMPLATES / meta["id"])
         seen.add(meta["structure_hash"])
-    with open(ROOT / "bank_index.jsonl", "w", encoding="utf-8") as f:
-        for m in load_bank():
-            f.write(json.dumps({k: m[k] for k in ("id", "source", "features", "structure_hash")}) + "\n")
+    write_index()
     REPORTS.mkdir(exist_ok=True)
     (REPORTS / "dedup.json").write_text(json.dumps({"removed": len(removed), "removed_ids": removed}, indent=2))
     print(f"dedup: removed {len(removed)} exact duplicates")

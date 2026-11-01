@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: #fafafa;
+    color: #333;
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    margin: 20px;
+    display: flex;
+}
+
+#user-greeting, #new-tracks, #top-artists {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.track, .artist {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 10px;
+    background-color: #ddd; 
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<section id="user-greeting">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<ol>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ol>
+</section>
+<section id="new-tracks">
+<h2>{{ slot_6 }}</h2>
+<div class="track" id="track1">{{ slot_7 }}</div>
+<div class="track" id="track2">{{ slot_8 }}</div>
+<div class="track" id="track3">{{ slot_9 }}</div>
+</section>
+<section id="top-artists">
+<h2>{{ slot_10 }}</h2>
+<div class="artist" id="artist1">{{ slot_11 }}</div>
+<div class="artist" id="artist2">{{ slot_12 }}</div>
+<div class="artist" id="artist3">{{ slot_13 }}</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

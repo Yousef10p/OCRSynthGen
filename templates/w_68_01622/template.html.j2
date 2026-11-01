@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #333;
+}
+
+.foodImage {
+  background-color: #ddd;
+  height: 200px;
+  margin: 20px 0;
+  width: 100%;
+  text-align: center;
+  line-height: 200px;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  margin: 20px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+footer ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer p {
+  margin-top: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="signatureDish">
+<h1>{{ slot_3 }}</h1>
+<div class="foodImage">{{ slot_4 }}</div>
+<p>{{ slot_5 }}</p>
+</section>
+<section id="aboutUs">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+</section>
+<section id="contact">
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+</section>
+</main>
+<footer>
+<ul>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

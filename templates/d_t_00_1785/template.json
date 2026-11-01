@@ -1,0 +1,80 @@
+{
+  "id": "d_t_00_1785",
+  "source": "doclaynet",
+  "source_ref": "docling-project/DocLayNet-v1.1:train:shard0:row1785",
+  "license": "CDLA-Permissive-1.0",
+  "attribution": "DocLayNet v1.1 (IBM Research), financial_reports, layout geometry only",
+  "positioning": "absolute",
+  "page": {
+    "size": "A4",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "heading",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "paragraph",
+      "words": [
+        12,
+        19
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "heading",
+      "words": [
+        2,
+        4
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "caption",
+      "words": [
+        7,
+        11
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "heading",
+      "words": [
+        2,
+        3
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "caption",
+      "words": [
+        5,
+        8
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 1,
+    "tables": 0,
+    "lists": 0,
+    "list_depth": 0,
+    "forms": 0,
+    "asides": 0,
+    "has_header": false,
+    "has_footer": false,
+    "slot_count": 6
+  },
+  "structure_hash": "42252f421ca7c6c2323cc56becb01c95f3c60e7678218d2ee73a4cd9e56f0c91"
+}

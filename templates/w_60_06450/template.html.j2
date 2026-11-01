@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+  background-color: #f0f0f0;
+}
+
+.logo {
+  font-size: 2em;
+}
+
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-links a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.hero {
+  background-color: #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.product, .about, .contact {
+  background-color: #ddd;
+  padding: 20px;
+}
+
+.image-rect {
+  height: 200px;
+  width: 200px;
+  background-color: #333;
+  margin-bottom: 10px;
+}
+
+.image-rect {
+  height: 200px;
+  width: 200px;
+  background-color: #333;
+  margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="nav">
+<div class="logo">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="nav-links">
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</div>
+</div>
+<div class="hero">
+<h1>{{ slot_5 }}</h1>
+</div>
+<div class="content">
+<div class="products">
+<div class="product">
+<h2>{{ slot_6 }}</h2>
+<div class="product-image">
+<div class="image-rect ph"></div>
+<p>{{ slot_7 }}</p>
+<a>{{ slot_8 }}</a>
+</div>
+</div>
+
+</div>
+<div class="about">
+<h2>{{ slot_9 }}</h2>
+<div class="about-image">
+<div class="image-rect ph"></div>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+<div class="contact">
+<h2>{{ slot_11 }}</h2>
+<form>
+<label>{{ slot_12 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span><br>
+<label>{{ slot_14 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span><br>
+<label>{{ slot_16 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_17 }}</span><br>
+<span class="">{{ slot_18 }}</span>
+</form>
+</div>
+</div>
+</div>
+</body>
+</html>

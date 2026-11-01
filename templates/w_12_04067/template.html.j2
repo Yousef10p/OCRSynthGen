@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#grid {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+}
+
+.item, .quiz-item, .poll-item {
+    background-color: #eee;
+    margin: 10px;
+    padding: 10px;
+}
+
+.placeholder-image {
+    width: 100%;
+    height: 120px;
+    background-color: #777;
+}
+
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="grid">
+<div class="news-section">
+<h2>{{ slot_0 }}</h2>
+<div class="item">{{ slot_1 }}</div>
+<div class="item">{{ slot_2 }}</div>
+</div>
+<div class="photos-section">
+<h2>{{ slot_3 }}</h2>
+<div class="item"><div class="placeholder-image ph"></div></div>
+<div class="item"><div class="placeholder-image ph"></div></div>
+</div>
+<div class="videos-section">
+<h2>{{ slot_4 }}</h2>
+<div class="item">{{ slot_5 }}</div>
+<div class="item">{{ slot_6 }}</div>
+</div>
+<div class="podcasts-section">
+<h2>{{ slot_7 }}</h2>
+<div class="item">{{ slot_8 }}</div>
+<div class="item">{{ slot_9 }}</div>
+</div>
+<div class="quiz-section">
+<h2>{{ slot_10 }}</h2>
+<div class="quiz-item">{{ slot_11 }}</div>
+<div class="quiz-item">{{ slot_12 }}</div>
+</div>
+<div class="poll-section">
+<h2>{{ slot_13 }}</h2>
+<div class="poll-item">{{ slot_14 }}</div>
+<div class="poll-item">{{ slot_15 }}</div>
+</div>
+</div>
+</body>
+</html>

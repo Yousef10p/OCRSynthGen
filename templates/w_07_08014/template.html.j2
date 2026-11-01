@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.header {
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+.site-header {
+  display: flex;
+  justify-content: space-between;
+}
+.section {
+  margin: 10px;
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #d0e0d0;
+}
+.section-header {
+  font-size: 2em;
+}
+.player-info {
+  display: flex;
+  margin-bottom: 10px;
+}
+.player-name {
+  width: 20%;
+}
+.player-picture {
+  width: 80%;
+  height: 50px;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+input, button {
+  margin: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<header class="site-header">
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+</nav>
+</header>
+<div class="section" id="home">
+<div class="news">
+<h1 class="section-header">{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="scores">
+<h1 class="section-header">{{ slot_6 }}</h1>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</div>
+</div>
+<div class="section" id="team">
+<div class="team-info">
+<div class="player_info">
+<h2 class="player-name">{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="player-picture ph"></div>
+</div>
+<div class="player_info">
+<h2 class="player-name">{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div class="player-picture ph"></div>
+</div>
+</div>
+</div>
+<div class="section" id="tickets">
+<h1 class="section-header">{{ slot_13 }}</h1>
+<form>
+<label>{{ slot_14 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<button>{{ slot_16 }}</button>
+</form>
+</div>
+</div>
+</body>
+</html>

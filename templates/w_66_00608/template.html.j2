@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+#menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: #f9f9f9;
+  padding: 20px;
+  width: 200px;
+}
+
+#content {
+  margin-right: 250px;
+  padding: 20px;
+}
+
+.imagePlaceholder {
+  width: 100px;
+  height: 100px;
+  background: #ccc;
+  margin: 10px 0;
+}
+
+#col1, #col2, #col3, #col4, #col5 {
+  width: 40%;
+  float: right;
+  padding: 15px;
+  margin: 15px;
+  background: #f9f9f9;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="menu">
+<ul>
+<li><a>{{ slot_0 }}</a>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_3 }}</a>
+<ul>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_6 }}</a>
+<ul>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="content">
+<div id="col1">
+<h1>{{ slot_9 }}</h1>
+<p>{{ slot_10 }}</p>
+<div class="imagePlaceholder ph"></div>
+</div>
+<div id="col2">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+<div class="imagePlaceholder ph"></div>
+</div>
+<div id="col3">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+<div class="imagePlaceholder ph"></div>
+</div>
+<div id="col4">
+<h1>{{ slot_15 }}</h1>
+<p>{{ slot_16 }}</p>
+<div class="imagePlaceholder ph"></div>
+</div>
+<div id="col5">
+<h1>{{ slot_17 }}</h1>
+<p>{{ slot_18 }}</p>
+<div class="imagePlaceholder ph"></div>
+</div>
+</div>
+</body>
+</html>

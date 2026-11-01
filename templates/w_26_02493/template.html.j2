@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background-color: #ffde59;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  width: 100%;
+}
+
+nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+.product-image, .locations-image, .events-image {
+  height: 200px;
+  background-color: #ffde59;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffde59;
+  padding: 10px;
+}
+
+footer a {
+  margin-left: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+.contact-info {
+  text-align: left;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="products">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+<div class="product-image ph"></div>
+</section>
+<section id="locations">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<div class="locations-image ph"></div>
+</section>
+<section id="events">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+<div class="events-image ph"></div>
+</section>
+</main>
+<footer>
+<div class="social-media">
+<a>{{ slot_9 }}</a>
+<a>{{ slot_10 }}</a>
+<a>{{ slot_11 }}</a>
+</div>
+<div class="contact-info">
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</div>
+</footer>
+</body>
+</html>

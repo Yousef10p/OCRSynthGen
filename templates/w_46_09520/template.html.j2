@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+}
+
+#navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+#navbar ul li {
+  margin: 0 10px;
+}
+
+#carousel {
+  display: flex;
+  overflow-x: auto;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #333;
+}
+
+.carousel-item .image {
+  height: 400px;
+  width: 300px;
+  background-color: #f00;
+}
+
+.carousel-item h2 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.carousel-item p {
+  margin-top: 5px;
+}
+
+.carousel-item .cta {
+  display: block;
+  width: 100px;
+  margin: 10px auto;
+  padding: 5px;
+  background-color: #0f0;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="navbar">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</div>
+<div id="carousel">
+<div class="carousel-item">
+<div class="image ph"></div>
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+<a class="cta">{{ slot_5 }}</a>
+</div>
+<div class="carousel-item">
+<div class="image ph"></div>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<a class="cta">{{ slot_8 }}</a>
+</div>
+<div class="carousel-item">
+<div class="image ph"></div>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<a class="cta">{{ slot_11 }}</a>
+</div>
+</div>
+<div id="about">
+<h1>{{ slot_12 }}</h1>
+<p>{{ slot_13 }}</p>
+</div>
+<div id="equipment">
+<h1>{{ slot_14 }}</h1>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-body);
+}
+
+
+#logo {
+	text-align: center;
+	background-color: #f00;
+	padding: 20px;
+	color: #fff;
+}
+menu {
+	text-align: center;
+	background-color: #0f0;
+	padding: 10px;
+	color: #fff;
+}
+
+
+#hero {
+	text-align: center;
+	padding: 50px;
+}
+#hero h1, #hero p {
+	color: #f00;
+}
+#events {
+	text-align: center;
+	padding: 20px;
+}
+#events h1, #events p {
+	color: #0f0;
+}
+
+
+footer {
+	background-color: #00f;
+	padding: 20px;
+	color: #fff;
+	text-align: center;
+}
+footer a, #partners h1, #partners p, #partners li {
+	color: #ff0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo">{{ slot_0 }}</div>
+<menu>{{ slot_1 }}</menu>
+</header>
+<main>
+<section id="hero">
+<h1>{{ slot_2 }}</h1>
+<p>{{ slot_3 }}</p>
+</section>
+<section id="events">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</section>
+</main>
+<footer>
+<a>{{ slot_9 }}</a>
+<section id="partners">
+<h1>{{ slot_10 }}</h1>
+<p>{{ slot_11 }}</p>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</section>
+</footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header h1 {
+    text-align: center;
+}
+
+header nav {
+    text-align: center;
+}
+
+#about, #services, #testimonials, #contact {
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.client {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.clientPhoto {
+    background-color: #c0c0c0;
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+}
+
+.client p {
+    margin: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a> {{ slot_2 }}
+            <a>{{ slot_3 }}</a> {{ slot_4 }}
+            <a>{{ slot_5 }}</a> {{ slot_6 }}
+            <a>{{ slot_7 }}</a>
+</nav>
+</header>
+<section id="about">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</section>
+<section id="services">
+<h2>{{ slot_10 }}</h2>
+<ul>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</section>
+<section id="testimonials">
+<h2>{{ slot_15 }}</h2>
+<div class="testimonials">
+<div class="client">
+<div class="clientPhoto ph"></div>
+<p>{{ slot_16 }}</p>
+</div>
+<div class="client">
+<div class="clientPhoto ph"></div>
+<p>{{ slot_17 }}</p>
+</div>
+</div>
+</section>
+<section id="contact">
+<h2>{{ slot_18 }}</h2>
+<p>{{ slot_19 }}</p>
+<p>{{ slot_20 }}</p>
+</section>
+</body>
+</html>

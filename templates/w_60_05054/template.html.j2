@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown {
+    display: none;
+}
+.dropdown:hover {
+    display: block;
+}
+.dropdown > li {
+    padding: 10px;
+    cursor: default;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    font-size:2rem;
+}
+nav ul li {
+    padding: 0.5em 1em;
+    margin: 0 0.5em;
+}
+
+.main-content {
+    display:flex;
+    flex-flow:row wrap;
+    justify-content:space-around;
+    width:100%;
+}
+
+.main-content section {
+    border:1px solid black;
+    width: 45%;
+    margin:1em;
+}
+
+@media screen and (max-width: 600px) {
+  .main-content section {
+    width: 100%;
+    margin:1em 0;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul class="dropdown">
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}
+                    <ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</li>
+<li>{{ slot_5 }}
+                    <ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+</li>
+<li>{{ slot_8 }}
+                    <ul>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+</li>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+</ul>
+</nav>
+</header>
+<main class="main-content">
+<section id="home">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</section>
+<section id="about">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+</section>
+<section id="contact">
+<h2>{{ slot_18 }}</h2>
+<p>{{ slot_19 }}</p>
+</section>
+<section id="tracking">
+<h2>{{ slot_20 }}</h2>
+<p>{{ slot_21 }}</p>
+</section>
+<section id="goals">
+<h2>{{ slot_22 }}</h2>
+<p>{{ slot_23 }}</p>
+</section>
+</main>
+</body>
+</html>

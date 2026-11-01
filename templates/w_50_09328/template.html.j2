@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+header, nav, footer, main, aside, section {
+    padding: 20px;
+    margin: 20px;
+}
+
+header {
+    background: #333;
+    color: white;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+aside {
+    float: right;
+    width: 25%;
+    background: #666;
+    color: white;
+    border-left: 2px solid black;
+}
+
+section {
+    float: right;
+    width: 70%;
+}
+
+footer {
+    clear: both;
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+
+        {{ slot_0 }}
+            <h1>{{ slot_1 }}</h1>
+<p>{{ slot_2 }}</p>
+        {{ slot_3 }}
+        
+
+<nav>
+<ul>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+
+</header>
+
+
+<main>
+
+<aside>
+<div id="rooms">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<button>{{ slot_9 }}</button>
+<button>{{ slot_10 }}</button>
+<button>{{ slot_11 }}</button>
+<button>{{ slot_12 }}</button>
+</div>
+<div id="styles">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<button>{{ slot_15 }}</button>
+<button>{{ slot_16 }}</button>
+<button>{{ slot_17 }}</button>
+<button>{{ slot_18 }}</button>
+</div>
+</aside>
+
+
+<section id="catalog">
+<div>
+<h2>{{ slot_19 }}</h2>
+<p>{{ slot_20 }}</p>
+
+
+                {{ slot_21 }}
+                    <h3>{{ slot_22 }}</h3>
+<p>{{ slot_23 }}</p>
+                {{ slot_24 }} 
+<h3>{{ slot_25 }}</h3>
+<p>{{ slot_26 }}</p>
+                {{ slot_27 }}
+                
+                {{ slot_28 }}
+                    <h3>{{ slot_29 }}</h3>
+<p>{{ slot_30 }}</p>
+                {{ slot_31 }}
+            </div>
+</section>
+
+</main>
+
+
+<footer>
+<p>{{ slot_32 }}</p>
+</footer>
+
+</body>
+</html>

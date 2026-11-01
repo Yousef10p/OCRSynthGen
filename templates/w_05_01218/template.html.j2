@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+.header {
+  background: #f2f2f2;
+  padding: 20px;
+  text-align: center;
+}
+.site-logo img {
+  width: 100px;
+  height: auto;
+}
+.site-title h1 {
+  margin: 0;
+}
+.nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+.nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+.image-carousel {
+  background: #f2c7d8;
+  padding: 50px;
+  text-align: center;
+}
+.image-carousel h2, .about-us h2, .services h2, .gallery h2, .contact h2 {
+  text-align: center;
+  padding: 20px;
+}
+.image-carousel img, .about-us img, .gallery img {
+  width: 20%;  
+  height: auto;
+}
+.image-carousel table, .gallery table {
+  width: 100%;
+  margin: 0 auto;
+}
+.image-carousel p, .services p, .contact p {
+  text-align: center;
+  padding: 10px;
+}
+.footer {
+  background: #f2f2f2;
+  text-align: center;
+  padding: 10px;
+}
+.footer p ,.footer a{ 
+  margin: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="site-logo ph"></div>
+<div class="site-title">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="nav">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</div>
+</div>
+<div class="image-carousel">
+<div class="image-slider">
+<h2>{{ slot_6 }}</h2>
+<center><div class="ph" style="inline-size: 100%; block-size: 150px"></div></center>
+<br>
+<p>{{ slot_7 }}</p>
+<p>{{ slot_8 }}</p>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</div>
+</div>
+<div class="about-us">
+<h2>{{ slot_13 }}</h2>
+<center><div class="ph" style="inline-size: 100%; block-size: 150px"></div></center>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="services">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</div>
+<div class="gallery">
+<h2>{{ slot_17 }}</h2>
+<table>
+<tr>
+<td><center><div class="ph" style="inline-size: 200px"></div></center>
+<center><div class="ph" style="inline-size: 200px"></div></center>
+</td></tr>
+<tr>
+<center><div class="ph" style="inline-size: 200px"></div></center>
+<center><div class="ph" style="inline-size: 200px"></div></center>
+</tr>
+</table>
+</div>
+<div class="contact">
+<h2>{{ slot_18 }}</h2>
+<p>{{ slot_19 }}</p>
+</div>
+<div class="footer">
+<center><p>{{ slot_20 }}</p></center>
+<p>{{ slot_21 }}</p>
+<center><a>{{ slot_22 }}</a></center>
+</div>
+</body>
+</html>

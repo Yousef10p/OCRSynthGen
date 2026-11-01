@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+}
+
+#hero {
+    background: #eee;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+#content {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#sidebar, #main, #social {
+    flex: 1;
+    padding: 20px;
+    background: #f9f9f9;
+    margin: 0 20px;
+}
+
+.image-placeholder {
+    background: #ddd;
+    height: 150px;
+    margin: 20px 0;
+}
+
+ul, form {
+    padding: 0;
+    list-style-type: none;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+ul li, h2 {
+    margin: 10px 0;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="hero"></div>
+<div id="content">
+<div id="sidebar">
+<h2>{{ slot_0 }}</h2>
+<div class="image-placeholder ph"></div>
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</div>
+<div id="main">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<h2>{{ slot_6 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_9 }}</span>
+<span class="">{{ slot_10 }}</span>
+</form>
+</div>
+<div id="social">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

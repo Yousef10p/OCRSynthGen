@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+:root {
+    --text-color: #333;
+    --bg-color: #eee;
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    font-family: var(--font-body);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px;
+}
+
+header, footer {
+    grid-column: 1 / span 3;
+    text-align: center;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h1, h2, form {
+    text-align: center;
+}
+
+.games, .profiles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game, article {
+    width: 100%;
+    border: 1px solid var(--text-color);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd; 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input[type="text"] {
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        grid-template-columns: 1fr;
+    }
+
+    header, footer {
+        grid-column: 1;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+</header>
+<section class="games">
+<h2>{{ slot_4 }}</h2>
+<div class="game">
+<span>{{ slot_5 }}</span>
+<span>{{ slot_6 }}</span>
+</div>
+<div class="game">
+<span>{{ slot_7 }}</span>
+<span>{{ slot_8 }}</span>
+</div>
+
+</section>
+<section class="news">
+<h2>{{ slot_9 }}</h2>
+<article>{{ slot_10 }}</article>
+<article>{{ slot_11 }}</article>
+
+</section>
+<section class="profiles">
+<h2>{{ slot_12 }}</h2>
+<article>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_13 }}</p>
+</article>
+<article>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_14 }}</p>
+</article>
+
+</section>
+<footer>
+<h2>{{ slot_15 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<span class="">{{ slot_18 }}</span>
+</form>
+</footer>
+</body>
+</html>

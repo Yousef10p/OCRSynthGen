@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+#slidecarousel {
+    height: 300px;
+    background-color: #ddd;
+}
+
+.slide {
+    width: 100%;
+    height: 300px;
+    background-color: #aaa;
+}
+
+#menu {
+    padding: 20px;
+}
+
+#location, #booking {
+    padding: 30px;
+    background-color: #f8f8f8;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+#social, #contact {
+    margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+</header>
+<main>
+<section id="slidecarousel">
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+</section>
+<section id="menu">
+<h2>{{ slot_4 }}</h2>
+<ul>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+</section>
+<section id="location">{{ slot_8 }}</section>
+<section id="booking">
+<h2>{{ slot_9 }}</h2>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<span class="">{{ slot_12 }}</span>
+</section>
+</main>
+<footer>
+<div id="social">{{ slot_13 }}</div>
+<div id="contact">{{ slot_14 }}</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header, nav, main, footer {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+}
+
+#hero {
+  background-color: #eee;
+  text-align: center;
+}
+
+aside {
+  background-color: #ccc;
+  height: 200px;
+  width: 200px;
+}
+
+footer section {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+</ul>
+</nav>
+<section id="hero">
+<h1>{{ slot_2 }}</h1>
+<p>{{ slot_3 }}</p>
+<p>{{ slot_4 }}</p>
+</section>
+</header>
+<main>
+<section>
+<article>
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<aside>{{ slot_7 }}</aside>
+</article>
+<article>
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<aside>{{ slot_10 }}</aside>
+</article>
+</section>
+</main>
+<footer>
+<section>
+<h3>{{ slot_11 }}</h3>
+<aside>{{ slot_12 }}</aside>
+</section>
+<section>
+<h3>{{ slot_13 }}</h3>
+<aside>{{ slot_14 }}</aside>
+</section>
+</footer>
+</body>
+</html>

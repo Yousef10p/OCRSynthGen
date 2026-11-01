@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	font-family: var(--font-body);
+	margin: 0;
+	padding: 0;
+	background-color: #F2F2F2;
+	color: #333;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+a:hover {
+	color: #00A0C6;
+}
+
+.products .product {
+	float: right;
+	width: 30%;
+	padding: 15px;
+	margin: 15px;
+	text-align: center;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+}
+
+.products .product img {
+	width: 100%;
+	max-height: 150px;
+}
+
+.products .product:hover {
+	transform: scale(1.1);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.advertisement {
+	clear: both;
+	margin: 20px;
+	padding: 15px;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+}
+
+.advertisement img {
+	width: 100%;
+	max-height: 300px;
+}
+
+.footer .column {
+	float: right;
+	width: 30%;
+	padding: 15px;
+	margin: 15px;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+}
+
+.carousel-item {
+	float: right;
+	width: 25%;
+	padding: 10px 0;
+	text-align: center;
+	background-color: #CCC;
+	border-radius: 5px;
+}
+
+.carousel-item:hover {
+	background-color: #00A0C6;
+	color: #FFF;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<header>
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+</header>
+<section class="products">
+<div class="product">
+<h2>{{ slot_5 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="product">
+<h2>{{ slot_7 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="product">
+<h2>{{ slot_9 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_10 }}</p>
+</div>
+</section>
+<section class="advertisement">
+<h2>{{ slot_11 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</section>
+<footer>
+<div class="column">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="column">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="column">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+</div>
+</footer>
+<div class="carousel">
+<div class="carousel-item">
+<h4>{{ slot_18 }}</h4>
+</div>
+<div class="carousel-item">
+<h4>{{ slot_19 }}</h4>
+</div>
+<div class="carousel-item">
+<h4>{{ slot_20 }}</h4></div>
+</div>
+<div class="carousel-item">
+<h4>{{ slot_21 }}</h4>
+</div>
+
+</body>
+</html>

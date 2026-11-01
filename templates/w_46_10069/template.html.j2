@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  background-color: #ddd;
+  margin-left: 20px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav li {
+  position: relative;
+}
+
+nav > ul > li > a {
+  padding: 10px 20px;
+}
+
+nav .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  background-color: #eee;
+}
+
+nav .dropdown a {
+  display: block;
+  padding: 10px 20px;
+}
+
+nav li:hover .dropdown {
+  display: block;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+article {
+  flex: 1;
+  margin: 15px;
+}
+
+article p {
+  line-height: 1.5;
+}
+
+article img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  background-color: #ddd;
+  margin-top: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo ph"></div>
+<nav>
+<ul>
+<li>
+<a>{{ slot_0 }}</a>
+<div class="dropdown">
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</div>
+</li>
+<li>
+<a>{{ slot_4 }}</a>
+<div class="dropdown">
+<a>{{ slot_5 }}</a>
+<a>{{ slot_6 }}</a>
+<a>{{ slot_7 }}</a>
+</div>
+</li>
+<li>
+<a>{{ slot_8 }}</a>
+<div class="dropdown">
+<a>{{ slot_9 }}</a>
+<a>{{ slot_10 }}</a>
+</div>
+</li>
+</ul>
+</nav>
+</header>
+<main>
+<article>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</article>
+<article>
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</article>
+<article>
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</article>
+</main>
+</body>
+</html>

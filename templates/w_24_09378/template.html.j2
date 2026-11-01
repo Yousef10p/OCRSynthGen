@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f5;
+    font-family: var(--font-body);
+}
+.container {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+.left, .center, .right {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+.left {
+    width: 15%;
+    position: relative;
+}
+.center {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.right {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    width: 100%;
+    height: auto;
+}
+.menu {
+    list-style-type: none;
+    padding: 0;
+}
+.menu li {
+    margin: 5px 0;
+}
+.menu li a {
+    color: #000;
+    text-decoration: none;
+}
+.info, .updates, .reviews li {
+    font-size: 0.8em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="left">
+<div class="logo ph" style="inline-size: 100%; block-size: 150px"></div>
+<ul class="menu">
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+<p class="info">{{ slot_3 }}</p>
+<p class="updates">{{ slot_4 }}</p>
+</div>
+<div class="center">
+<h1>{{ slot_5 }}</h1>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+<h1>{{ slot_9 }}</h1>
+<ul>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+</ul>
+</div>
+<div class="right">
+<h1>{{ slot_13 }}</h1>
+<ul>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+</ul>
+<h1>{{ slot_16 }}</h1>
+<ul class="reviews">
+<li>{{ slot_17 }}</li>
+<li>{{ slot_18 }}</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

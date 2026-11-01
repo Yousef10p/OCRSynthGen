@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+}
+nav {
+  position: fixed;
+  height: 100%;
+  width: 200px;
+  background: #f8f8f8;
+  padding: 50px 20px 0 0;
+}
+nav ul {
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  margin: 20px 0;
+}
+nav a {
+  text-decoration: none;
+  color: #333;
+ }
+#prodtabs {
+  margin-right: 220px;
+}
+.tab {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.tab h2 {
+  margin: 0 0 20px 0;
+}
+.img-placeholder {
+  width: 100%;
+  height: 200px;
+  background: #999;
+}
+#testi {
+  padding: 50px 0;
+}
+.testimonial {
+  margin-bottom: 50px;
+}
+span {
+  display: block;
+  font-style: italic;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="prodtabs">
+<div class="tab" id="prod1">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<div class="img-placeholder ph"></div>
+</div>
+<div class="tab" id="prod2">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="img-placeholder ph"></div>
+</div>
+<div class="tab" id="prod3">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="img-placeholder ph"></div>
+</div>
+</section>
+<section id="testi">
+<h2>{{ slot_10 }}</h2>
+<div class="testimonial">
+<p>{{ slot_11 }}</p>
+<span>{{ slot_12 }}</span>
+</div>
+<div class="testimonial">
+<p>{{ slot_13 }}</p>
+<span>{{ slot_14 }}</span>
+</div>
+</section>
+</body>
+</html>

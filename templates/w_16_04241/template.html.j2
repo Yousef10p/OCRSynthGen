@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+nav {
+    height: 50px;
+    background-color: #f8f8f8;
+} 
+
+nav ul {
+   list-style-type: none;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+
+nav ul li a {
+   text-decoration: none;
+   color: black;
+   font-weight: bold;
+}
+
+.banner {
+   width: 100%;
+   height: 400px;
+   background-color: #e5e5e5;
+}
+
+.side {
+   float: right;
+   width: 15%;
+   height: 300px;
+   background-color: #e6d7d7;
+}
+
+.side ul {
+   list-style-type: none;
+   padding-right: 15px;
+}
+
+.side ul li a {
+   text-decoration: none;
+   color: black;
+}
+
+.content {
+   float: left;
+   width: 84%;
+   height: 300px;
+   background-color: #e6d7d7;
+}
+
+.trending, .shoes, .shirts, .pants, .accessories, .brands {
+   float: right;
+   width: 45%;
+   height: 80px;
+   margin: 10px;
+   background-color: #c9c8c8;
+}
+
+.trending h2, .shoes h2, .shirts h2, .pants h2, .accessories h2, .brands h2 {
+   margin: 10px;
+   font-size: 20px;
+}
+
+.trending p, .shoes p, .shirts p, .pants p, .accessories p, .brands p {
+   margin: 10px;
+   font-size: 14px;
+}
+
+.img1, .img2, .img3, .img4, .img5, .img6 {
+   width: 80px;
+   height: 80px;
+   background-color: #48c189;
+   margin: 20px;
+   float: left;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<div class="banner ph"></div>
+<section>
+<div class="side">
+<ul>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+</ul>
+</div>
+<div class="content">
+<div class="trending">
+<h2>{{ slot_12 }}</h2>
+<div class="img1 ph"></div>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="shoes">
+<h2>{{ slot_14 }}</h2>
+<div class="img2 ph"></div>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="shirts">
+<h2>{{ slot_16 }}</h2>
+<div class="img3 ph"></div>
+<p>{{ slot_17 }}</p>
+</div>
+<div class="pants">
+<h2>{{ slot_18 }}</h2>
+<div class="img4 ph"></div>
+<p>{{ slot_19 }}</p>
+</div>
+<div class="accessories">
+<h2>{{ slot_20 }}</h2>
+<div class="img5 ph"></div>
+<p>{{ slot_21 }}</p>
+</div>
+<div class="brands">
+<h2>{{ slot_22 }}</h2>
+<div class="img6 ph"></div>
+<p>{{ slot_23 }}</p>
+</div>
+</div>
+</section>
+</body>
+</html>

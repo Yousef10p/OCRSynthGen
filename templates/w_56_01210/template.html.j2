@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+header {
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav li {
+  margin-left: 20px;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.collection {
+  display: inline-block;
+  margin: 20px;
+  text-align: center;
+}
+
+img[src^="/"] {
+  width: 100px;
+  height: 100px;
+  background: #ddd;
+}
+
+footer {
+  background: #eee;
+  padding: 20px;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section>
+<h2>{{ slot_5 }}</h2>
+<div class="collection">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="collection">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="collection">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_8 }}</p>
+</div>
+</section>
+</main>
+<footer>
+<div id="contact">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</div>
+<div id="social">
+<h3>{{ slot_13 }}</h3>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+</div>
+</footer>
+</body>
+</html>

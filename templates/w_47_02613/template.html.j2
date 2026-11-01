@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+#hero-banner {
+    background: #000;
+    color: #fff;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#sidebar {
+    width: 200px;
+    float: left;
+    background: #f0f0f0;
+    padding: 20px;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    padding: 20px 0;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background: #f0f0f0;
+    border: none;
+    cursor: pointer;
+}
+
+.featured-product {
+    width: 300px;
+    height: 200px;
+    background: #000;
+    color: #fff;
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+    line-height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header id="hero-banner">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</header>
+<aside id="sidebar">
+<h3>{{ slot_2 }}</h3>
+<ul>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+<h3>{{ slot_6 }}</h3>
+<ul>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+<h3>{{ slot_8 }}</h3>
+<ul>
+<li><a>{{ slot_9 }}</a></li>
+</ul>
+</aside>
+<footer>
+<button>{{ slot_10 }}</button>
+<h3>{{ slot_11 }}</h3>
+<ul>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+</footer>
+<div class="featured-product-1">{{ slot_15 }}</div>
+<div class="featured-product-2">{{ slot_16 }}</div>
+<div class="featured-product-3">{{ slot_17 }}</div>
+</body>
+</html>

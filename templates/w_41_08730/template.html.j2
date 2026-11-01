@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: grey;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background-color: lightgrey;
+    padding: 10px 0;
+}
+
+nav a {
+    margin: 0 10px;
+}
+
+main {
+    margin: 20px auto;
+    width: 80%;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+section h2 {
+    width: 100%;
+    text-align: center;
+}
+
+section p, section address {
+    padding: 10px;
+}
+
+section .fake_img {
+    width: 200px;
+    height: 200px;
+    flex: 1 1 300px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</nav>
+</header>
+<main>
+<section id="intro">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="fake_img" style="background-color: yellow;">{{ slot_7 }}</div>
+</section>
+<section id="services">
+<h2>{{ slot_8 }}</h2>
+<ul>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+</ul>
+</section>
+<section id="contact">
+<h2>{{ slot_12 }}</h2>
+<address>
+                    {{ slot_13 }} <br>
+                    {{ slot_14 }} <br>
+                    {{ slot_15 }} <br>
+                    {{ slot_16 }} <br>
+                    {{ slot_17 }} <br>
+                    {{ slot_18 }} <br>
+</address>
+<div class="fake_img" style="background-color: blue;">{{ slot_19 }}</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_20 }}</p>
+</footer>
+</body>
+</html>

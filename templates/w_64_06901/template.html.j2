@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: #ffffff;
+}
+
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+nav ul {
+  text-align: left;
+  background-color: #009999;
+  padding: 1em 0;
+}
+
+
+nav ul li {
+  display: inline-block;
+  margin: 0 1em;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+
+#video-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+
+main {
+  max-width: 800px;
+  margin: 5em auto;
+  background-color: #009999;
+  padding: 2em;
+  border-radius: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+    {{ slot_0 }}     <div id="video-background">
+    {{ slot_1 }}       
+    {{ slot_2 }}     </div>
+   {{ slot_3 }}     <header>
+   {{ slot_4 }}       <nav>
+   {{ slot_5 }}         <ul>
+   {{ slot_6 }}           <li><a>{{ slot_7 }}</a></li>
+   {{ slot_8 }}           <li><a>{{ slot_9 }}</a></li>
+   {{ slot_10 }}           <li><a>{{ slot_11 }}</a></li>
+   {{ slot_12 }}           <li><a>{{ slot_13 }}</a></li>
+   {{ slot_14 }}         </ul>
+   {{ slot_15 }}       </nav>
+   {{ slot_16 }}     </header>
+   {{ slot_17 }}     <main>
+   {{ slot_18 }}       <section>
+   {{ slot_19 }}         <h2>{{ slot_20 }}</h2>
+   {{ slot_21 }}         <p>{{ slot_22 }} </p>
+   {{ slot_23 }}         <ul>
+   {{ slot_24 }}           <li>{{ slot_25 }}</li>
+   {{ slot_26 }}           <li>{{ slot_27 }}</li>
+   {{ slot_28 }}           <li>{{ slot_29 }}</li>
+   {{ slot_30 }}         </ul>
+   {{ slot_31 }}       </section>
+   {{ slot_32 }}       <section>
+   {{ slot_33 }}         
+   {{ slot_34 }}         <h2>{{ slot_35 }}</h2>
+   {{ slot_36 }}         <p>{{ slot_37 }}</p>
+   {{ slot_38 }}         <ol>
+   {{ slot_39 }}           <li>{{ slot_40 }}</li>
+   {{ slot_41 }}           <li>{{ slot_42 }}</li>
+   {{ slot_43 }}           <li>{{ slot_44 }}</li>
+   {{ slot_45 }}         </ol>
+   {{ slot_46 }}       </section>
+   {{ slot_47 }}     </main>
+   {{ slot_48 }}   </body>
+</html>

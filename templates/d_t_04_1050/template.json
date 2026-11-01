@@ -1,0 +1,233 @@
+{
+  "id": "d_t_04_1050",
+  "source": "doclaynet",
+  "source_ref": "docling-project/DocLayNet-v1.1:train:shard4:row1050",
+  "license": "CDLA-Permissive-1.0",
+  "attribution": "DocLayNet v1.1 (IBM Research), financial_reports, layout geometry only",
+  "positioning": "absolute",
+  "page": {
+    "size": "Letter",
+    "orientation": "portrait"
+  },
+  "slots": [
+    {
+      "id": "slot_0",
+      "role": "heading",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_1",
+      "role": "heading",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_2",
+      "role": "list_item",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_3",
+      "role": "heading",
+      "words": [
+        1,
+        2
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_4",
+      "role": "table_header",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_5",
+      "role": "table_header",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_6",
+      "role": "table_header",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_7",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_8",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_9",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_10",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_11",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_12",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_13",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_14",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_15",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_16",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_17",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_18",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_19",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_20",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_21",
+      "role": "cell",
+      "words": [
+        8,
+        12
+      ],
+      "dir": "rtl"
+    },
+    {
+      "id": "slot_22",
+      "role": "footer",
+      "words": [
+        1,
+        1
+      ],
+      "dir": "rtl"
+    }
+  ],
+  "features": {
+    "columns": 1,
+    "tables": 1,
+    "lists": 1,
+    "list_depth": 1,
+    "forms": 0,
+    "asides": 0,
+    "has_header": false,
+    "has_footer": true,
+    "slot_count": 23
+  },
+  "structure_hash": "c53bb0cd38df5e5e99ae38b14cc2293f264091d7ad2352c79058c2a2a5114bee"
+}

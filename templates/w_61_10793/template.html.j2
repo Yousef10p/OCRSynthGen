@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar {
+    position: sticky;
+    top: 0;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    background-color: #333;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#call-to-action {
+    font-size: 2em;
+    color: white;
+    background-color: red;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+.service, .patient {
+    width: 30%;
+    float: right;
+    margin: 1.66%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav id="navbar">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero">
+<div class="slide-container">
+
+</div>
+<button id="call-to-action">{{ slot_4 }}</button>
+</section>
+<section id="services">
+<h2>{{ slot_5 }}</h2>
+<div class="services-container">
+<div class="service">{{ slot_6 }}<p>{{ slot_7 }}</p></div>
+<div class="service">{{ slot_8 }}<p>{{ slot_9 }}</p></div>
+<div class="service">{{ slot_10 }}<p>{{ slot_11 }}</p></div>
+</div>
+</section>
+<section id="patients">
+<h2>{{ slot_12 }}</h2>
+<div class="patients-container">
+<div class="patient">{{ slot_13 }}<p>{{ slot_14 }}</p></div>
+<div class="patient">{{ slot_15 }}<p>{{ slot_16 }}</p></div>
+<div class="patient">{{ slot_17 }}<p>{{ slot_18 }}</p></div>
+</div>
+</section>
+</body>
+</html>

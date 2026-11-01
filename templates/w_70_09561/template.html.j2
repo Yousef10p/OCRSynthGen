@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.hero, footer {
+    background-color: #333;
+    color: #fff;
+}
+
+.hero {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+}
+
+.button {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #27ae60;
+}
+
+.services, .blog {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.services .service, .blog .blog-post {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    margin: 0 1.5%;
+}
+
+footer ul {
+    padding: 0;
+    list-style: none;
+}
+
+footer ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<section class="hero">
+<h1>{{ slot_0 }}</h1>
+<a class="button">{{ slot_1 }}</a>
+</section>
+<section class="services">
+<h2>{{ slot_2 }}</h2>
+<article class="service">
+<h3>{{ slot_3 }}</h3>
+<p>{{ slot_4 }}</p>
+</article>
+<article class="service">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</article>
+<article class="service">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</article>
+</section>
+<section class="blog">
+<h2>{{ slot_9 }}</h2>
+<article class="blog-post">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</article>
+<article class="blog-post">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</article>
+</section>
+<footer>
+<ul>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+<li><a>{{ slot_16 }}</a></li>
+</ul>
+</footer>
+</body>
+</html>

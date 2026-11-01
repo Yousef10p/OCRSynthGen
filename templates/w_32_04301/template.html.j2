@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  background-color: white;
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #f4f4f4;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: black;
+}
+
+#searchbar {
+  width: 100px;
+}
+
+.service, .product {
+  height: 200px;
+  width: 300px;
+  background-color: #ddd;
+  margin: 5px;
+}
+
+footer {
+  background-color: #f4f4f4;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_5 }}</span></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="services">
+<h1>{{ slot_6 }}</h1>
+<div class="service">{{ slot_7 }}</div>
+<div class="service">{{ slot_8 }}</div>
+
+</section>
+<section id="products">
+<h1>{{ slot_9 }}</h1>
+<div class="product">{{ slot_10 }}</div>
+<div class="product">{{ slot_11 }}</div>
+
+</section>
+
+</main>
+<footer>
+<a>{{ slot_12 }}</a> {{ slot_13 }} <a>{{ slot_14 }}</a> {{ slot_15 }} <a>{{ slot_16 }}</a> {{ slot_17 }} <a>{{ slot_18 }}</a> {{ slot_19 }} <a>{{ slot_20 }}</a>
+</footer>
+</body>
+</html>

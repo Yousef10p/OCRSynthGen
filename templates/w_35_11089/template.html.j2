@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+body {
+    background-color: #F4F4F4;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+header h1 {
+    margin: 20px 0;
+}
+
+.placeholder {
+    width: 200px;
+    height: 200px;
+    background-color: #C4C4C4;
+    margin: 10px auto;
+}
+
+section {
+    margin: 40px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<a class="logo">{{ slot_0 }}</a>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</header>
+<section id="workout-plans">
+<h2>{{ slot_7 }}</h2>
+<div class="workout-plan">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<div class="placeholder">{{ slot_10 }}</div>
+</div>
+<div class="workout-plan">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+<div class="placeholder">{{ slot_13 }}</div>
+</div>
+<div class="workout-plan">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+<div class="placeholder">{{ slot_16 }}</div>
+</div>
+</section>
+<section id="meal-plans">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+
+<div class="meal-plan">{{ slot_19 }}</div>
+<div class="meal-plan">{{ slot_20 }}</div>
+</section>
+<section id="wellness">
+<h2>{{ slot_21 }}</h2>
+<p>{{ slot_22 }}</p>
+
+<div class="wellness-resource">{{ slot_23 }}</div>
+<div class="wellness-resource">{{ slot_24 }}</div>
+</section>
+<section id="privacy">
+<h2>{{ slot_25 }}</h2>
+<p>{{ slot_26 }}</p>
+
+</section>
+<footer>
+<p>{{ slot_27 }}</p>
+</footer>
+</body>
+</html>

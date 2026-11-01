@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.banner {
+    background-color: #ff0000;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+section {
+    margin: 20px;
+}
+
+.news-item, 
+.schedules, 
+.tickets, 
+.player-profiles, 
+.highlights {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.news-image, 
+.schedules img,
+.tickets img, 
+.player-profiles img, 
+.highlights img {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+}
+
+footer {
+    padding: 20px;
+    background-color: #f8f8f8;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section>
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<div class="banner">{{ slot_7 }}</div>
+</section>
+<section class="team-news">
+<h2>{{ slot_8 }}</h2>
+<div class="news-item">
+<h3>{{ slot_9 }}</h3>
+<div class="news-image ph"></div>
+<p>{{ slot_10 }}</p>
+</div>
+</section>
+<section class="schedules">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+<section class="tickets">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</section>
+<section class="player-profiles">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</section>
+<section class="highlights">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+</section>
+<footer>
+<p>{{ slot_19 }}</p>
+</footer>
+</body>
+</html>

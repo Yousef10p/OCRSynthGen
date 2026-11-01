@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-body);
+}
+
+header, main, footer {
+    padding: 1em;
+}
+
+header {
+    background-color: #000;
+    color: #fff;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+}
+
+main {
+    flex: 1;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+article {
+    border: 1px solid #000;
+    margin-bottom: 2em;
+    padding: 1em;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer li {
+    border-top: 1px solid #fff;
+    padding: .5em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<section>
+<h2>{{ slot_1 }}</h2>
+<ol>
+<li>{{ slot_2 }}</li>
+<p>{{ slot_3 }}</p>
+<li>{{ slot_4 }}</li>
+<p>{{ slot_5 }}</p>
+<li>{{ slot_6 }}</li>
+<p>{{ slot_7 }}</p>
+</ol>
+</section>
+<section id="member-portal">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</section>
+<section id="blog">
+<h2>{{ slot_10 }}</h2>
+<article>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</article>
+<article>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</article>
+</section>
+</main>
+<footer>
+<p>{{ slot_15 }}</p>
+<ul>
+<li><a>{{ slot_16 }}</a></li>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+</ul>
+<p>{{ slot_19 }}</p>
+<ul>
+<li>{{ slot_20 }}</li>
+<li>{{ slot_21 }}</li>
+<li>{{ slot_22 }}</li>
+</ul>
+</footer>
+</body>
+</html>

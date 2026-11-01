@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: white;
+  background: linear-gradient(-45deg, blue, white);
+}
+
+header {
+  background-color: #000080;
+  padding: 20px;
+  text-align: center;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+.about {
+  background-color: #00008B;
+  padding: 50px;
+  text-align: center;
+}
+
+main {
+  margin: 20px;
+}
+
+section {
+  margin: 20px 0;
+}
+
+li {
+  list-style-type: disc;
+}
+
+diagonal-stripe {
+    width: 0; 
+    height: 0; 
+    border-style: solid; 
+    border-width: 100px 100px 0 0; 
+    border-color: transparent blue transparent transparent; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+  }
+
+h1, h2 {
+  color: #000080;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  color: #000080;
+}
+
+input[type="submit"] {
+  background-color: #000080;
+  color: white;
+  cursor: pointer;
+}
+
+form {
+  padding: 20px;
+  margin: 20px;
+  background-color: #f8f8f8;
+  color: #000080;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<diagonal-stripe class="about">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+</diagonal-stripe>
+<section>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</section>
+<section>
+<h2>{{ slot_8 }}</h2>
+<ul>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+</ul>
+<p>{{ slot_12 }}</p>
+</section>
+<section>
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<form>
+<label>{{ slot_15 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span><br>
+<label>{{ slot_17 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span><br>
+<label>{{ slot_19 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_20 }}</span><br>
+<span class="">{{ slot_21 }}</span>
+</form>
+</section>
+</main>
+</body>
+</html>

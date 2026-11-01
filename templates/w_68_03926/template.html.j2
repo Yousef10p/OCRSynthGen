@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+#logo {
+    font-size: 2em;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: #000;
+}
+
+nav ul ul {
+    display: none;
+}
+
+nav ul li:hover > ul {
+    display: block;
+    position: absolute;
+    background: #f2f2f2;
+    width: 200px;
+    z-index: 1;
+}
+
+#hero-image {
+    height: 500px;
+    background-color: #ccc;
+}
+
+#products article, #chatbot {
+    width: 50%;
+    margin: auto;
+}
+
+footer {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo">{{ slot_0 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_5 }}</a>
+<ul>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_9 }}</a>
+<ul>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<main>
+<section id="products">
+<article>
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</article>
+<article>
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</article>
+<article>
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+</article>
+</section>
+<section id="chatbot">
+<h2>{{ slot_19 }}</h2>
+<p>{{ slot_20 }}</p>
+</section>
+</main>
+<footer>
+<p>{{ slot_21 }}</p>
+</footer>
+</body>
+</html>

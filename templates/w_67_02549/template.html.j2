@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+#header {
+  background-color: lightblue;
+  text-align: center;
+  padding: 20px;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 10px;
+}
+
+.section {
+  margin: 20px;
+}
+
+#insurance-plans {
+  background-color: lightgray;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div id="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+</div>
+<div class="section">
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }}</p>
+<ul>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</div>
+<div class="section">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<ul>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+</ul>
+</div>
+<div class="section" id="insurance-plans">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<ul>
+<li>{{ slot_16 }}</li>
+<li>{{ slot_17 }}</li>
+<li>{{ slot_18 }}</li>
+</ul>
+</div>
+</body>
+</html>

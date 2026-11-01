@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.call-to-action {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.pricing {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pricing table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pricing th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.pricing td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.testimonials {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.review {
+    margin-top: 10px;
+}
+
+.portrait {
+    margin-left: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<button class="call-to-action">{{ slot_1 }}</button>
+</header>
+<section class="pricing">
+<table>
+<caption>{{ slot_2 }}</caption>
+<tr>
+<th>{{ slot_3 }}</th>
+<th>{{ slot_4 }}</th>
+<th>{{ slot_5 }}</th>
+</tr>
+<tr>
+<td>{{ slot_6 }}</td>
+<td>{{ slot_7 }}</td>
+<td>{{ slot_8 }}</td>
+</tr>
+<tr>
+<td>{{ slot_9 }}</td>
+<td>{{ slot_10 }}</td>
+<td>{{ slot_11 }}</td>
+</tr>
+<tr>
+<td>{{ slot_12 }}</td>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+</tr>
+</table>
+</section>
+<section class="testimonials">
+<h2>{{ slot_15 }}</h2>
+<div class="review">
+<div class="portrait" style="background-color: blue; display: inline-block; height: 100px; width: 100px;"></div>
+<p>{{ slot_16 }}</p>
+</div>
+<div class="review">
+<div class="portrait" style="background-color: red; display: inline-block; height: 100px; width: 100px;"></div>
+<p>{{ slot_17 }}</p>
+</div>
+
+</section>
+</body>
+</html>

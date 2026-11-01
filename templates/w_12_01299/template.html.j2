@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-body);
+}
+
+nav, main, article, aside {
+    width: 100%;
+}
+
+nav, article {
+    padding: 20px 10%;
+    text-align: center;
+}
+
+nav {
+    background-color: #f7b733;
+    color: #fff;
+}
+
+nav button {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+}
+
+main section, main aside {
+    padding: 20px;
+}
+
+main section {
+    background-color: #f7b733;
+    color: #fff;
+    width: 60%;
+}
+
+main aside {
+    background-color: #f1f1f1;
+    color: #000;
+    width: 30%;
+}
+
+main aside div {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+article table {
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<button id="a1">{{ slot_0 }}</button>
+<button id="a2">{{ slot_1 }}</button>
+<button id="a3">{{ slot_2 }}</button>
+</nav>
+<main>
+<section>
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+</section>
+<aside>
+<div id="b1">{{ slot_5 }}</div>
+<div id="b2">{{ slot_6 }}</div>
+<div id="b3">{{ slot_7 }}</div>
+<div id="b4">{{ slot_8 }}</div>
+</aside>
+</main>
+<article>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<table>
+<tr>
+<th>{{ slot_11 }}</th>
+<th>{{ slot_12 }}</th>
+</tr>
+<tr>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+</tr>
+<tr>
+<td>{{ slot_15 }}</td>
+<td>{{ slot_16 }}</td>
+</tr>
+
+</table>
+</article>
+</body>
+</html>

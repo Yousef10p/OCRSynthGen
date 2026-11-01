@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-body);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav ul { display: flex; justify-content: space-around; }
+
+nav ul li { list-style-type: none; }
+
+nav ul li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+}
+
+section {
+    margin: 20px 0;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+article {
+    background-color: #a478e8;
+    padding: 20px 40px;
+    margin: 2px;
+    flex-basis: 30%;
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="blog-section">
+<h2>{{ slot_7 }}</h2>
+<article class="blog">{{ slot_8 }}</article>
+<article class="blog">{{ slot_9 }}</article>
+<article class="blog">{{ slot_10 }}</article>
+<article class="blog">{{ slot_11 }}</article>
+<article class="blog">{{ slot_12 }}</article>
+</section>
+<section id="recipe-section">
+<h2>{{ slot_13 }}</h2>
+<article class="recipe">{{ slot_14 }}</article>
+<article class="recipe">{{ slot_15 }}</article>
+<article class="recipe">{{ slot_16 }}</article>
+<article class="recipe">{{ slot_17 }}</article>
+<article class="recipe">{{ slot_18 }}</article>
+</section>
+<section id="cocktail-secret-section">
+<h2>{{ slot_19 }}</h2>
+<article class="cocktail-secret">{{ slot_20 }}</article>
+<article class="cocktail-secret">{{ slot_21 }}</article>
+<article class="cocktail-secret">{{ slot_22 }}</article>
+<article class="cocktail-secret">{{ slot_23 }}</article>
+<article class="cocktail-secret">{{ slot_24 }}</article>
+</section>
+<section id="industry-news-section">
+<h2>{{ slot_25 }}</h2>
+<article class="industry-news">{{ slot_26 }}</article>
+<article class="industry-news">{{ slot_27 }}</article>
+<article class="industry-news">{{ slot_28 }}</article>
+<article class="industry-news">{{ slot_29 }}</article>
+<article class="industry-news">{{ slot_30 }}</article>
+</section>
+<section id="online-order-section">
+<h2>{{ slot_31 }}</h2>
+<article class="online-order">{{ slot_32 }}</article>
+<article class="online-order">{{ slot_33 }}</article>
+<article class="online-order">{{ slot_34 }}</article>
+<article class="online-order">{{ slot_35 }}</article>
+<article class="online-order">{{ slot_36 }}</article>
+</section>
+<section id="delivery-section">
+<h2>{{ slot_37 }}</h2>
+<article class="delivery">{{ slot_38 }}</article>
+<article class="delivery">{{ slot_39 }}</article>
+<article class="delivery">{{ slot_40 }}</article>
+<article class="delivery">{{ slot_41 }}</article>
+<article class="delivery">{{ slot_42 }}</article>
+</section>
+</main>
+</body>
+</html>

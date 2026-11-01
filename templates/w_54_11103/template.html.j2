@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.work-examples, .blog-post, .social-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.work-image, .linkedin-image, .instagram-image {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+
+
+@media screen and (max-width: 768px) {
+  .work-examples, .blog-post, .social-icons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .work-examples, .blog-post, .social-icons {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="nav-bar">
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+</div>
+<div class="hero">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+</div>
+<div id="work">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="work-examples">
+<div>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<div class="work-image">{{ slot_9 }}</div>
+</div>
+     {{ slot_10 }}
+     <div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+<div class="work-image">{{ slot_13 }}</div>
+</div>
+</div>
+<div id="blog">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<div class="blog-post">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+</div>
+    {{ slot_18 }}
+    <div class="blog-post">
+<h3>{{ slot_19 }}</h3>
+<p>{{ slot_20 }}</p>
+</div>
+</div>
+<div id="social">
+<h2>{{ slot_21 }}</h2>
+<div class="social-icons">
+<div>
+<a>{{ slot_22 }}</a>
+<div class="linkedin-image">{{ slot_23 }}</div>
+</div>
+      {{ slot_24 }}
+      <div>
+<a>{{ slot_25 }}</a>
+<div class="instagram-image">{{ slot_26 }}</div>
+</div>
+</div>
+</div>
+</div></body>
+</html>

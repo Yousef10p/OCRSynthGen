@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+#left_column {
+    width: 20%;
+    float: right;
+    padding: 15px;
+}
+
+#logo {
+    width: 100%;
+    height: 80px;
+    background-color: #424242;
+    margin-bottom: 10px;
+}
+
+#navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.service, .study, .testimonial {
+    margin-bottom: 20px;
+    padding: 15px;
+    color: #fff;
+}
+
+#service1 .service {
+    background-color: #00838f;
+}
+
+#service2 .service {
+    background-color: #006064;
+}
+
+#study1 .study {
+    background-color: #1de9b6;
+}
+
+#testimonial1 .testimonial {
+    background-color: #00bfa5;
+}
+
+#contact {
+    clear: both;
+    padding: 15px;
+    color: #fff;
+    background-color: #37474f;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="left_column">
+<div class="ph"></div>
+<div id="navigation">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</div>
+</div>
+<div id="center_column">
+<h1>{{ slot_4 }}</h1>
+<div class="service" id="service1">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="service" id="service2">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</div>
+
+</div>
+<div id="case_studies">
+<h1>{{ slot_9 }}</h1>
+<div class="study" id="study1">
+<p>{{ slot_10 }}</p>
+</div>
+
+</div>
+<div id="testimonials">
+<h1>{{ slot_11 }}</h1>
+<div class="testimonial" id="testimonial1">
+<p>{{ slot_12 }}</p>
+</div>
+
+</div>
+<div id="contact">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+<p>{{ slot_17 }}</p>
+</div>
+</body>
+</html>

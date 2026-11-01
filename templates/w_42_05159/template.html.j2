@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#hero {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+#hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.2em;
+}
+
+.testimonial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.testimonial .image-placeholder {
+    background-color: #333;
+    height: 50px;
+    width: 50px;
+}
+
+.course, .program, .article {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.course .image-placeholder, .program .image-placeholder, .article .image-placeholder {
+    background-color: #666;
+    height: 300px;
+    width: 100%;
+}
+
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+nav li {
+  list-style-type: none;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header id="hero">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+
+<div class="testimonial">
+<div class="image-placeholder ph"></div>
+<p>{{ slot_2 }}</p>
+</div>
+<div class="testimonial">
+<div class="image-placeholder ph"></div>
+<p>{{ slot_3 }}</p>
+</div>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+<section id="courses">
+<h2>{{ slot_7 }}</h2>
+
+<div class="course">
+<div class="image-placeholder ph"></div>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+
+</section>
+<section id="programs">
+<h2>{{ slot_10 }}</h2>
+
+<div class="program">
+<div class="image-placeholder ph"></div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+
+</section>
+<section id="blog">
+<h2>{{ slot_13 }}</h2>
+
+<div class="article">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="article">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+
+</div>
+</section>
+</body>
+</html>

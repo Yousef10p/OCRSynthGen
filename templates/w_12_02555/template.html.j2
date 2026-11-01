@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+:root {
+  --blue: #267482;
+  --green: #358F7C;
+  --yellow: #F2AD4D;
+  --orange: #FF7466;
+}
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: var(--blue);
+  color: white;
+}
+
+nav {
+  background-color: var(--green);
+  padding: 1em;
+}
+
+nav img {
+  height: 50px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 1em;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+h2 {
+  color: var(--yellow);
+}
+
+.project {
+  border: 1px solid white;
+  padding: 1em;
+}
+
+.project h3 {
+  color: var(--orange);
+}
+
+.project-image {
+  background-color: white;
+  height: 200px;
+}
+
+#donate .donation-option {
+  background-color: var(--yellow);
+  height: 100px;
+}
+
+#blog {
+  background-color: var(--green);
+}
+
+@media screen and (max-width: 768px) {
+  nav ul li {
+    display: block;
+  }
+
+  .project {
+    width: 100%;
+  }
+
+  .project-image {
+    height: 100px;
+  }
+
+  #donate .donation-option {
+    height: 50px;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="projects">
+<h2>{{ slot_4 }}</h2>
+<div class="project">
+<h3>{{ slot_5 }}</h3>
+<div class="project-image">{{ slot_6 }}</div>
+<p>{{ slot_7 }}</p>
+</div>
+
+</section>
+<section id="volunteer">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+
+</section>
+<section id="donate">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<div class="donation-option">{{ slot_12 }}</div>
+</section>
+<section id="blog">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+
+</section>
+</body>
+</html>

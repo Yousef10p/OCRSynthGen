@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
+.nav-bar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-bar a:hover {
+  opacity: 0.7;
+}
+
+.slider {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#paris {
+  background-color: #f00;
+}
+
+#italy {
+  background-color: #0f0;
+}
+
+#greece {
+  background-color: #00f;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 2rem auto;
+}
+
+.contact-form input, .contact-form textarea {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: none;
+  background-color: #ddd;
+}
+
+.contact-form input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  opacity: 0.7;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="nav-bar">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</header>
+<div class="slider">
+<div class="slide" id="paris">{{ slot_4 }}</div>
+<div class="slide" id="italy">{{ slot_5 }}</div>
+<div class="slide" id="greece">{{ slot_6 }}</div>
+</div>
+<form class="contact-form" id="contact">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_9 }}</span>
+<span class="">{{ slot_10 }}</span>
+</form>
+<footer>
+<p><a>{{ slot_11 }}</a> {{ slot_12 }} <a>{{ slot_13 }}</a> {{ slot_14 }} <a>{{ slot_15 }}</a> {{ slot_16 }} <a>{{ slot_17 }}</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+.sidebar, .content, footer {
+  padding: 20px;
+}
+.sidebar {
+  width: 20%;
+  float: right;
+  background-color: #f0f0f0;
+}
+.content {
+  margin-right: 25%;
+  background-color: #fff;
+}
+.product-image {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  display: inline-block;
+}
+footer {
+  clear: both;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="sidebar">
+<h2>{{ slot_0 }}</h2>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</div>
+<div class="content">
+<h1>{{ slot_4 }}</h1>
+<div class="product">
+<h2>{{ slot_5 }}</h2>
+<div class="product-image ph"></div>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="product">
+<h2>{{ slot_7 }}</h2>
+<div class="product-image ph"></div>
+<p>{{ slot_8 }}</p>
+</div>
+</div>
+<footer>
+<p>{{ slot_9 }} <a>{{ slot_10 }}</a> {{ slot_11 }} <a>{{ slot_12 }}</a> {{ slot_13 }} <a>{{ slot_14 }}</a></p>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

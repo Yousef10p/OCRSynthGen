@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#hero {
+    position: relative;
+    height: 400px;
+    background: #eee;
+}
+
+#hero #nav {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+}
+
+#hero .logo {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#hero #nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+#hero #nav ul li {
+    margin: 0 10px;
+}
+
+#featured {
+    padding: 20px;
+}
+
+#featured .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+#footer {
+    background-color: #eee;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+}
+
+.social-links a {
+    margin: 0 10px;
+}
+
+.contact-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.contact-form form input,
+.contact-form form textarea,
+.contact-form form button {
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="hero">
+<nav id="nav">
+<span class="logo">{{ slot_0 }}</span>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</div>
+<div id="featured">
+<h2>{{ slot_4 }}</h2>
+<div class="product-grid">
+<div class="product">{{ slot_5 }} <button>{{ slot_6 }}</button></div>
+<div class="product">{{ slot_7 }} <button>{{ slot_8 }}</button></div>
+<div class="product">{{ slot_9 }} <button>{{ slot_10 }}</button></div>
+</div>
+</div>
+<div id="footer">
+<div class="social-links">
+<a>{{ slot_11 }}</a>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+</div>
+<div class="contact-form">
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_16 }}</span>
+<button>{{ slot_17 }}</button>
+</form>
+</div>
+</div>
+</body>
+</html>

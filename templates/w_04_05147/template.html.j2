@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+}
+
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.slideshow {
+    display: flex;
+    justify-content: center;
+}
+
+.slide {
+    margin: 0 10px;
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+}
+
+
+.review {
+    margin: 10px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.review blockquote {
+    margin: 0;
+    font-style: italic;
+}
+
+.review cite {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+
+form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    margin: 10px;
+}
+
+form label {
+    grid-column: 1;
+}
+
+form input {
+    grid-column: 2;
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+form input[type="submit"] {
+    grid-column: 1 / span 2;
+    justify-self: center;
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+
+    {{ slot_4 }}<div id="home">
+<h2>{{ slot_5 }}</h2>
+<div class="slideshow">
+<div class="slide">
+<div class="image ph"></div>
+<p></p><p>{{ slot_6 }}</p><p>
+</p></div>
+<div class="slide">
+<div class="image ph"></div>
+<p>{{ slot_7 }}</p><p>
+</p></div>
+</div>
+</div>
+
+    {{ slot_8 }}<div id="reviews">
+<h2>{{ slot_9 }}</h2>
+<div class="review">
+<blockquote>{{ slot_10 }}</blockquote>
+<cite>{{ slot_11 }}</cite>
+</div>
+
+</div>
+<div id="bookings">
+<h2>{{ slot_12 }}</h2>
+<form>
+<label>{{ slot_13 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<label>{{ slot_15 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+<label>{{ slot_17 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span>
+<span class="">{{ slot_19 }}</span>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-image: none; 
+    background-size: cover;
+}
+header {
+    background-color: #333; 
+    color: white; 
+    padding: 10px;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none; 
+    padding: 0; 
+    text-align: center; 
+}
+nav ul li {
+    display: inline; 
+    margin: 0 10px; 
+}
+nav ul li a {
+    color: white; 
+    text-decoration: none; 
+}
+.item {
+    margin-bottom: 10px; 
+    height: 50px; 
+    width: 100px; 
+    background-color: #f2f2f2; 
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="menu">
+<h2>{{ slot_2 }}</h2>
+<h3>{{ slot_3 }}</h3>
+<div class="item">{{ slot_4 }}</div>
+<div class="item">{{ slot_5 }}</div>
+<h3>{{ slot_6 }}</h3>
+<div class="item">{{ slot_7 }}</div>
+<div class="item">{{ slot_8 }}</div>
+<h3>{{ slot_9 }}</h3>
+<div class="item">{{ slot_10 }}</div>
+<div class="item">{{ slot_11 }}</div>
+<h3>{{ slot_12 }}</h3>
+<div class="item">{{ slot_13 }}</div>
+<div class="item">{{ slot_14 }}</div>
+</section>
+</main>
+</body>
+</html>

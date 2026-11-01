@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#container {
+    display: flex;
+}
+
+#nav {
+    width: 20%;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+#content {
+    width: 80%;
+    padding: 10px;
+}
+
+#attorney-bios, #testimonials {
+    display: flex;
+    justify-content: space-between;
+}
+
+.attorney-bio, .testimonial {
+    width: 45%;
+    background-color: #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="container">
+<div id="nav">
+<h2>{{ slot_0 }}</h2>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</div>
+<div id="content">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+<h2>{{ slot_5 }}</h2>
+<div id="attorney-bios">
+<div class="attorney-bio">
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="attorney-bio">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+</div>
+<h2>{{ slot_10 }}</h2>
+<div id="testimonials">
+<div class="testimonial">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="testimonial">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

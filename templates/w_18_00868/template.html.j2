@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #eee;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+  background-color: #000;
+  margin-bottom: 20px;
+}
+
+.main {
+  display: flex;
+  width: 80%;
+  margin-top: 70px;
+}
+
+.sidebar {
+  width: 20%;
+  background: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.main-content {
+  width: 80%;
+  background: #fff;
+  padding: 20px;
+}
+
+.search-bar {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="logo ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="main">
+<div class="sidebar">
+<p>{{ slot_0 }}</p>
+<ul>
+<li>{{ slot_1 }}</li>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+<li>{{ slot_5 }}</li>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+<li>{{ slot_9 }}</li>
+<ul>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+</ul>
+</ul>
+</div>
+<div class="main-content">
+<form class="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="">{{ slot_14 }}</span>
+</form>
+</div>
+</div>
+</body>
+</html>

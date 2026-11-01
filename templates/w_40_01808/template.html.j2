@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    text-align: center;
+    background-color: #f8f8f8;
+    font-family: var(--font-body);
+    font-size: 1.2em;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: right;
+    padding: 1em;
+}
+
+h1 {
+    color: #4CAF50;
+    font-size: 2em;
+}
+
+h2 {
+    color: #2196F3;
+    font-size: 1.6em;
+}
+
+p {
+    color: #333;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 1em;
+}
+
+.rectangle {
+    height: 100px;
+    width: 100px;
+    background-color: pink;
+    display: inline-block;
+    margin: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<h1>{{ slot_5 }}</h1>
+</header>
+<section id="Products">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="rectangle" id="product1"></div>
+
+<p>{{ slot_8 }}</p>
+</section>
+<section id="Services">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="rectangle" id="services1"></div>
+
+<p>{{ slot_11 }}</p>
+</section>
+<footer>
+<div id="Blog">{{ slot_12 }} <a>{{ slot_13 }}</a></div>
+<div id="Social">{{ slot_14 }} <a>{{ slot_15 }}</a></div>
+<div id="Support">{{ slot_16 }}  <a>{{ slot_17 }}</a></div>
+</footer>
+</body>
+</html>

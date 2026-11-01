@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header__logo {
+    font-size: 24px;
+}
+
+.header__nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.program {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.program__card {
+    width: 30%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.program__card-image {
+    height: 100px;
+    background-color: #ddd;
+    margin-bottom: 10px;
+}
+
+.program__card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.program__card-join {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #009688;
+    color: white;
+    border: none;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .program__card {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .program__card {
+        width: 90%;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="header">
+<h1 class="header__logo">{{ slot_0 }}</h1>
+<nav class="header__nav">
+<ul>
+<li class="header__nav-item">{{ slot_1 }}</li>
+<li class="header__nav-item">{{ slot_2 }}</li>
+<li class="header__nav-item">{{ slot_3 }}</li>
+</ul>
+</nav>
+</header>
+<main>
+<div class="program">
+<div class="program__card">
+<div class="program__card-image">{{ slot_4 }}</div>
+<h2 class="program__card-title">{{ slot_5 }}</h2>
+<p class="program__card-description">{{ slot_6 }}</p>
+<span class="program__card-duration">{{ slot_7 }}</span>
+<span class="program__card-price">{{ slot_8 }}</span>
+<button class="program__card-join">{{ slot_9 }}</button>
+</div>
+<div class="program__card">
+<div class="program__card-image">{{ slot_10 }}</div>
+<h2 class="program__card-title">{{ slot_11 }}</h2>
+<p class="program__card-description">{{ slot_12 }}</p>
+<span class="program__card-duration">{{ slot_13 }}</span>
+<span class="program__card-price">{{ slot_14 }}</span>
+<button class="program__card-join">{{ slot_15 }}</button>
+</div>
+<div class="program__card">
+<div class="program__card-image">{{ slot_16 }}</div>
+<h2 class="program__card-title">{{ slot_17 }}</h2>
+<p class="program__card-description">{{ slot_18 }}</p>
+<span class="program__card-duration">{{ slot_19 }}</span>
+<span class="program__card-price">{{ slot_20 }}</span>
+<button class="program__card-join">{{ slot_21 }}</button>
+</div>
+</div>
+</main>
+<footer class="footer">
+<p class="footer__info">{{ slot_22 }}</p>
+<p class="footer__social">{{ slot_23 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	background-color: #ECECEC;
+	font-family: var(--font-body);
+	margin: 0;
+	padding: 0;
+}
+
+.banner {
+	background-color: #A3A3A3;
+	color: white;
+	padding: 5px 0;
+	text-align: center;
+}
+
+.banner h1 {
+	font-size: 3em;
+}
+
+.banner h2 {
+	font-size: 1.5em;
+}
+
+.navigation ul {
+	list-style-type: none;
+	padding: 5px 0;
+}
+
+.navigation li {
+	display: inline;
+	margin: 0 15px;
+}
+
+.navigation a {
+	color: white;
+	text-decoration: none;
+}
+
+.content {
+	background-color: #D3D3D3;
+	padding: 10px;
+	margin: 0;
+}
+
+.services, .privacy-policy, .other-questions, .account-options, .loans {
+	margin: 10px 0;
+	padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<div class="banner">
+<div class="branding">
+<h1>{{ slot_0 }}</h1>
+<h2>{{ slot_1 }}</h2>
+</div>
+<div class="navigation">
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</div>
+</div>
+
+<div class="content">
+<div class="services">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<p style="background-color:#AAAAAA;">{{ slot_9 }}</p>
+</div>
+<div class="privacy-policy">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<p style="background-color:#AAAAAA;">{{ slot_12 }}</p>
+</div>
+<div class="other-questions">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<p style="background-color:#AAAAAA;">{{ slot_15 }}</p>
+</div>
+<div class="account-options">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+<p style="background-color:#AAAAAA;">{{ slot_18 }}</p>
+</div>
+<div class="loans">
+<h2>{{ slot_19 }}</h2>
+<p>{{ slot_20 }}</p>
+<p style="background-color:#AAAAAA;">{{ slot_21 }}</p>
+</div>
+</div>
+</body>
+</html>

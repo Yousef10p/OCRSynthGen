@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.header {
+  background-color: #0080ff;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.header-title {
+  font-size: 1.5em;
+}
+
+.nav {
+  background-color: #333;
+  color: white;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+.nav-item {
+  display: inline;
+  margin: 5px;
+}
+
+.nav-item a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-item a:hover {
+  color: #0080ff;
+}
+
+.main {
+  margin: 10px;
+}
+
+.mission, .volunteer, .donate {
+  margin: 20px 0;
+}
+
+.mission-title, .volunteer-title, .donate-title {
+  color: #0080ff;
+}
+
+.mission-text, .volunteer-text, .donate-text {
+  margin: 10px 0;
+}
+
+.volunteer-button, .donate-button {
+  display: block;
+  margin: 10px 0;
+  padding: 5px;
+  background-color: #0080ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header class="header">
+<h1 class="header-title">{{ slot_0 }}</h1>
+</header>
+
+<nav class="nav">
+<ul class="nav-list">
+<li class="nav-item"><a>{{ slot_1 }}</a></li>
+<li class="nav-item"><a>{{ slot_2 }}</a></li>
+<li class="nav-item"><a>{{ slot_3 }}</a></li>
+<li class="nav-item"><a>{{ slot_4 }}</a></li>
+<li class="nav-item"><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+
+<main class="main">
+
+<section class="mission">
+<h2 class="mission-title">{{ slot_6 }}</h2>
+<p class="mission-text">{{ slot_7 }}</p>
+</section>
+
+<section class="volunteer">
+<h2 class="volunteer-title">{{ slot_8 }}</h2>
+<p class="volunteer-text">{{ slot_9 }}</p>
+<button class="volunteer-button">{{ slot_10 }}</button>
+</section>
+
+<section class="donate">
+<h2 class="donate-title">{{ slot_11 }}</h2>
+<p class="donate-text">{{ slot_12 }}</p>
+<button class="donate-button">{{ slot_13 }}</button>
+</section>
+</main>
+
+<footer class="footer">
+<p class="footer-text">{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

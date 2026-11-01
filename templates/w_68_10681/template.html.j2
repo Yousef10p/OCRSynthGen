@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #eee;
+  color: #333;
+}
+
+.header ul {
+  display: flex;
+  list-style: none;
+}
+
+
+.header ul li {
+  padding: 0 20px;
+}
+
+.header ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+
+.banner {
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}
+
+.banner h1 {
+  font-size: 2.5em;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.destinations, .packages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.destinations > .content, .packages > .content {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.content .destination, .content .package {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 30%;
+  margin: 10px;
+}
+
+.content .destination img, .content .package img {
+  width: 100%;
+  height: 100px;
+  background-color: #ddd;
+  margin-bottom: 20px;
+}
+
+.content .package button {
+  background-color: #333;
+  color: #fff;
+  border: 0;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.content .package button:hover {
+  background-color: #555;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header class="header">
+<div class="logo">
+<button>{{ slot_0 }}</button>
+</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<div class="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>
+</div>
+</header>
+
+<div class="banner">
+<h1>{{ slot_7 }}</h1>
+</div>
+
+<div class="destinations">
+<h2>{{ slot_8 }}</h2>
+<div class="content">
+<div class="destination">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_9 }}</h3>
+</div>
+<div class="destination">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_10 }}</h3>
+</div>
+<div class="destination">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_11 }}</h3>
+</div>
+</div>
+</div>
+
+<div class="packages">
+<h2>{{ slot_12 }}</h2>
+<div class="content">
+<div class="package">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+<button>{{ slot_15 }}</button>
+</div>
+<div class="package">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+<button>{{ slot_18 }}</button>
+</div>
+<div class="package">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_19 }}</h3>
+<p>{{ slot_20 }}</p>
+<button>{{ slot_21 }}</button>
+</div>
+</div>
+</div>
+</body>
+</html>

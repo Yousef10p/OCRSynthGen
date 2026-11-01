@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
+}
+
+body {
+ font-family: var(--font-body);
+ line-height: 1.6;
+ color: #333;
+}
+
+.container {
+ width: 90%;
+ margin: auto;
+}
+
+header {
+ background: #333;
+ color: #fff;
+ padding: 10px 0;
+ position: sticky;
+ top: 0;
+ z-index: 999;
+}
+
+header h1 {
+ font-size: 24px;
+ font-weight: 400;
+}
+
+nav ul {
+ list-style: none;
+}
+
+nav ul li {
+ display: inline;
+ margin-left: 10px;
+}
+
+nav ul li a {
+ color: #fff;
+ text-decoration: none;
+}
+
+main {
+ display: flex;
+ justify-content: space-between;
+ margin: 20px 0;
+}
+
+main section, main aside {
+ width: 45%;
+}
+
+footer {
+ background: #333;
+ color: #fff;
+ padding: 20px 0;
+ text-align: center;
+}
+
+footer ul {
+ list-style: none;
+}
+
+footer ul li {
+ display: inline;
+ margin-left: 10px;
+}
+
+footer ul li a {
+ color: #fff;
+ text-decoration: none;
+}
+
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul id="menu">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<button>{{ slot_9 }}</button>
+</section>
+<section id="courses">
+<h2>{{ slot_10 }}</h2>
+<div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+<a>{{ slot_13 }}</a>
+</div>
+
+</section>
+
+</main>
+<aside>
+<h2>{{ slot_14 }}</h2>
+<div>
+
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+
+</aside>
+<footer>
+<h2>{{ slot_17 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_20 }}</span>
+<button>{{ slot_21 }}</button>
+</form>
+<h2>{{ slot_22 }}</h2>
+<ul>
+<li><a><i class="fab fa-facebook"></i></a></li>
+<li><a><i class="fab fa-twitter"></i></a></li>
+<li><a><i class="fab fa-instagram"></i></a></li>
+</ul>
+</footer>
+</body>
+</html>

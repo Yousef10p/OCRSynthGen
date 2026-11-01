@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 20px;
+    width: 100%;
+}
+
+
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product img {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    margin-bottom: 10px;
+}
+
+.review {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 20px;
+    width: 100%;
+}
+
+footer .contact-info,
+footer .opening-hours {
+    text-align: center;
+}
+
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="container">
+<div id="left-column">
+<div class="product">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2>{{ slot_5 }}</h2>
+</div>
+            {{ slot_6 }}
+            <div class="product">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2>{{ slot_7 }}</h2>
+</div>
+</div>
+<div id="center-column">
+<div class="product-info">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<h4>{{ slot_10 }}</h4>
+</div>
+            {{ slot_11 }}
+            <div class="product-info">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<h4>{{ slot_14 }}</h4>
+</div>
+</div>
+<div id="right-column">
+<div class="review">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+            {{ slot_17 }}
+            <div class="review">
+<h3>{{ slot_18 }}</h3>
+<p>{{ slot_19 }}</p>
+</div>
+<div id="social-links">
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+</div>
+</div>
+</div>
+<footer>
+<div class="contact-info">
+<p>{{ slot_20 }}</p>
+</div>
+<div class="opening-hours">
+<p>{{ slot_21 }}</p>
+</div>
+<div id="social-links">
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+</div>
+</footer>
+</body>
+</html>

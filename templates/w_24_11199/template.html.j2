@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+
+.header {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+
+.header > input {
+    margin-bottom: 10px;
+}
+
+.header > button {
+    margin-left: 5px;
+}
+
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.left-column, .right-column {
+    flex: 1;
+}
+
+.destinations {
+    list-style-type: none;
+    padding: 0;
+}
+
+.destinations > li {
+    margin-bottom: 20px;
+}
+
+.destinations > li > h3 {
+    margin-bottom: 10px;
+}
+
+
+.image {
+    height: 100px;
+    width: 200px;
+    background-color: #ddd;
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<button>{{ slot_1 }}</button>
+<button>{{ slot_2 }}</button>
+<button>{{ slot_3 }}</button>
+</div>
+<div class="content">
+<div class="left-column">
+<h2>{{ slot_4 }}</h2>
+<nav>
+<ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</nav>
+</div>
+<div class="right-column">
+<h2>{{ slot_8 }}</h2>
+<ul class="destinations">
+<li>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="image ph"></div>
+</li>
+<li>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+<div class="image ph"></div>
+</li>
+<li>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+<div class="image ph"></div>
+</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

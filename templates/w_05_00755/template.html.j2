@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header, footer {
+  background-color: lightgray;
+  text-align: center;
+  padding: 1em;
+}
+
+#slideshow > .slideshow-item {
+  width: 100%;
+  height: 200px;
+  color: white;
+  text-align: center;
+  padding: 2em;
+  box-sizing: border-box;
+}
+
+form {
+  margin-top: 2em;
+}
+
+form input {
+  margin-bottom: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<h2>{{ slot_1 }}</h2>
+</header>
+<section id="slideshow">
+<div class="slideshow-item" style="background-color: red;">{{ slot_2 }}</div>
+<div class="slideshow-item" style="background-color: green;">{{ slot_3 }}</div>
+<div class="slideshow-item" style="background-color: blue;">{{ slot_4 }}</div>
+</section>
+<section id="reservation">
+<h2>{{ slot_5 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<button>{{ slot_9 }}</button>
+</form>
+</section>
+<section id="menus">
+<h2>{{ slot_10 }}</h2>
+<ul>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+</ul>
+</section>
+<footer>
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

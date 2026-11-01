@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav li {
+    float: right;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #111;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+}
+
+footer p {
+    margin: 0;
+    padding: 10px;
+}
+
+section {
+    margin: 20px;
+}
+
+.recipe {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    color: white;
+    padding: 10px;
+    margin: 20px;
+    background-color: #333;
+}
+
+.recipe:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<main>
+<section>
+<h1>{{ slot_3 }}</h1>
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<p>{{ slot_6 }}</p>
+</section>
+<section>
+<h1>{{ slot_7 }}</h1>
+<div class="recipe">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="recipe">
+<h2>{{ slot_11 }}</h2>
+        {{ slot_12 }}
+    </div>
+<div class="recipe">
+<h2>{{ slot_13 }}</h2>
+        {{ slot_14 }}
+    </div>
+</section></main>
+<footer>
+<div class="footer-content">
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</div>
+</footer>
+</body>
+</html>

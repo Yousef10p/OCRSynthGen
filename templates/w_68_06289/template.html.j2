@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    color: black;
+    font-family: var(--font-body);
+    background-color: beige;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: gray;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+section {
+    margin: 20px;
+}
+
+article {
+    margin: 20px;
+    background-color: white;
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+#blog {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="living">
+<h2>{{ slot_4 }}</h2>
+<article>
+<div>
+<p>{{ slot_5 }}</p>
+<h3>{{ slot_6 }}</h3>
+</div>
+</article>
+<article>
+<div>
+<p>{{ slot_7 }}</p>
+<h3>{{ slot_8 }}</h3>
+</div>
+</article>
+</section>
+<section id="bedroom">
+<h2>{{ slot_9 }}</h2>
+<article>
+<div>
+<p>{{ slot_10 }}</p>
+<h3>{{ slot_11 }}</h3>
+</div>
+</article>
+<article>
+<div>
+<p>{{ slot_12 }}</p>
+<h3>{{ slot_13 }}</h3>
+</div>
+</article>
+</section>
+<section id="kitchen">
+<h2>{{ slot_14 }}</h2>
+<article>
+<div>
+<p>{{ slot_15 }}</p>
+<h3>{{ slot_16 }}</h3>
+</div>
+</article>
+<article>
+<div>
+<p>{{ slot_17 }}</p>
+<h3>{{ slot_18 }}</h3>
+</div>
+</article>
+</section>
+<section id="blog">
+<h2>{{ slot_19 }}</h2>
+<article>
+<h3>{{ slot_20 }}</h3>
+<p>{{ slot_21 }}</p>
+<p>{{ slot_22 }}</p>
+</article>
+<article>
+<h3>{{ slot_23 }}</h3>
+<p>{{ slot_24 }}</p>
+<p>{{ slot_25 }}</p>
+</article>
+</section>
+<footer>
+<nav>
+<ul>
+<li><a>{{ slot_26 }}</a></li>
+<li><a>{{ slot_27 }}</a></li>
+<li><a>{{ slot_28 }}</a></li>
+</ul>
+</nav>
+</footer>
+</body>
+</html>

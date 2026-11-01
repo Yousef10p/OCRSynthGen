@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+:root {
+  --primary-color: #f2316d;
+  --secondary-color: #ffa7c4;
+  --text-color: #66fcf1;
+}
+
+body {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+header {
+  width: 100%;
+  color: black;
+  position: absolute;
+  top: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 1em;
+}
+
+nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+#hero {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#hero .hero-image {
+  width: 50vw;
+  height: 50vh;
+  background-color: #f7b801;
+  margin-bottom: 2em;
+}
+
+#collections {
+  margin-top: 100vh;
+}
+
+#collections .collage-image {
+  display: flex;
+}
+
+#collections .collage-image .image {
+  width: 25vw;
+  height: 25vh;
+  background-color: #c5c1c0;
+  margin: 1em;
+}
+
+#team .team-member {
+  display: flex;
+  align-items: center;
+  margin: 2em 0;
+}
+
+#team .team-member .member-image {
+  width: 10vw;
+  height: 10vh;
+  background-color: #f4a261;
+  margin-left: 1em;
+}
+
+#contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3em;
+}
+
+#contact form label {
+  margin-top: 1em;
+}
+
+#contact form input,
+#contact form textarea {
+  width: 50%;
+  margin-top: 0.5em;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+
+<div class="hero-image ph"></div>
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }} </p>
+</section>
+<section id="collections">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}<br>
+</p><div class="collage-image ph"></div>
+</section>
+<section id="team">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="team-member">
+
+<div class="member-image ph"></div>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="team-member">
+
+<div class="member-image ph"></div>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+</section>
+<section id="contact">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<form>
+<label>{{ slot_16 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<label>{{ slot_18 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
+<label>{{ slot_20 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_21 }}</span>
+<span class="">{{ slot_22 }}</span>
+</form>
+</section>
+</main>
+<footer>
+<p>{{ slot_23 }}</p>
+</footer>
+</body>
+</html>

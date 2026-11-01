@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+header {
+    background-color: #8c9eff;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+.logo {
+    font-size: 30px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+.banner {
+    background-color: #ffda77;
+    text-align: center;
+    padding: 50px;
+    font-size: 22px;
+}
+main {
+    display: block;
+    margin: 20px;
+}
+main p {
+    text-align: justify;
+    line-height: 1.6;
+}
+.product-image, .installation-image, .ideas-image {
+    background-color: #ef9b9b;
+    width: 500px;
+    height: 200px;
+    display: block;
+    margin: 20px auto;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo">{{ slot_0 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<div class="banner">{{ slot_4 }}</div>
+<p>{{ slot_5 }}<strong> {{ slot_6 }}</strong></p>
+<h2>{{ slot_7 }}</h2>
+<div class="product-image ph"></div><p>{{ slot_8 }}<i> {{ slot_9 }}</i></p>
+<h2>{{ slot_10 }}</h2>
+<div class="installation-image ph"></div><p>{{ slot_11 }}<strong> {{ slot_12 }}</strong></p>
+<h2>{{ slot_13 }}</h2>
+<div class="ideas-image ph"></div><p>{{ slot_14 }}<i> {{ slot_15 }}</i></p>
+</main>
+</body>
+</html>

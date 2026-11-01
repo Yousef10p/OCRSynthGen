@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: #4B535A;
+    color: #D4DEE1;
+    font-family: var(--font-body);
+}
+
+header h1 {
+    color: #1F2833;
+    text-align: center;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #66FCF1;
+    text-decoration: none;
+}
+
+#home, #destinations, #packages, #transportation, #travel-tips {
+    margin: 20px;
+    padding: 20px;
+}
+
+.location-image, .slideshow-content, .transport, .package {
+    width: 200px;
+    height: 200px;
+    background-color: #2F3842;
+    margin: 10px;
+    color: #66FCF1;
+}
+
+footer {
+    background-color: #1F2833;
+    color: #66FCF1;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header id="home">
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<section id="slideshow">
+<h2>{{ slot_5 }}</h2>
+
+<div id="slideshow-content"></div>
+</section>
+
+<section id="destinations">
+<h2>{{ slot_6 }}</h2>
+<div class="location">
+<h3>{{ slot_7 }}</h3>
+<div class="location-image ph"></div>
+<p>{{ slot_8 }}</p>
+<a>{{ slot_9 }}</a>
+</div>
+
+</section>
+<section id="packages">
+<h2>{{ slot_10 }}</h2>
+
+<div class="package">
+<h3></h3>
+<p></p>
+<a>{{ slot_11 }}</a>
+</div>
+
+</section>
+<section id="transportation">
+<h2>{{ slot_12 }}</h2>
+
+<div class="transport">
+<h3></h3>
+<p></p>
+<a>{{ slot_13 }}</a>
+</div>
+
+</section>
+<section id="travel-tips">
+<h2>{{ slot_14 }}</h2>
+
+<div class="tip">
+<h3></h3>
+<p></p>
+</div>
+
+</section>
+<footer>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

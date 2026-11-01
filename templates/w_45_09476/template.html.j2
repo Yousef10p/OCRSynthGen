@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background: #f5f5f5;
+}
+
+.hero {
+    height: 300px;
+    background: #f09;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    background: #ecafaf;
+    padding: 20px 0;
+}
+
+.dropdown-list {
+    display: none;
+    position: absolute;
+    background: #ffb;
+    padding: 10px;
+}
+
+.navbar-item.dropdown:hover .dropdown-list {
+    display: block;
+}
+
+.product-image,
+.review,
+.blog-post {
+    margin: 10px;
+    background: #f09;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.featured-products,
+.customer-reviews,
+.blog {
+    margin: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="hero">
+<nav class="navbar">
+<ul class="navbar-list">
+<li class="navbar-item">{{ slot_0 }}</li>
+<li class="navbar-item dropdown">
+                    {{ slot_1 }}
+                    <ul class="dropdown-list">
+<li class="dropdown-item">{{ slot_2 }}</li>
+<li class="dropdown-item">{{ slot_3 }}</li>
+</ul>
+</li>
+<li class="navbar-item">{{ slot_4 }}</li>
+<li class="navbar-item">{{ slot_5 }}</li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="featured-products">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+
+<div class="product-image featured">{{ slot_8 }}</div>
+<div class="product-image featured">{{ slot_9 }}</div>
+<div class="product-image featured">{{ slot_10 }}</div>
+</section>
+<section class="customer-reviews">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div class="review">{{ slot_13 }}</div>
+<div class="review">{{ slot_14 }}</div>
+<div class="review">{{ slot_15 }}</div>
+</section>
+<section class="blog">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+<div class="blog-post">{{ slot_18 }}</div>
+<div class="blog-post">{{ slot_19 }}</div>
+<div class="blog-post">{{ slot_20 }}</div>
+</section>
+</main>
+</body>
+</html>

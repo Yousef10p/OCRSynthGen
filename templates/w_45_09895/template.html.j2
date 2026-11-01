@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  font-family: var(--font-body);
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+nav {
+  text-align: center;
+}
+
+nav a {
+  margin: 0 10px;
+}
+
+.portfolio-item {
+  padding: 10px;
+  margin: 10px;
+  border-left: 1px solid #000;
+}
+
+table {
+  margin: 10px;
+}
+
+th, td {
+  padding: 20px;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+<main>
+<h2 id="portfolio">{{ slot_4 }}</h2>
+<div class="portfolio-item">
+<h3>{{ slot_5 }}</h3>
+<p class="case-study">{{ slot_6 }}</p>
+</div>
+<div class="portfolio-item">
+<h3>{{ slot_7 }}</h3>
+<p class="case-study">{{ slot_8 }}</p>
+</div>
+<h2 id="pricing">{{ slot_9 }}</h2>
+<table>
+<tr>
+<th>{{ slot_10 }}</th>
+<th>{{ slot_11 }}</th>
+</tr>
+<tr>
+<td>{{ slot_12 }}</td>
+<td>{{ slot_13 }}</td>
+</tr>
+<tr>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+</tr>
+<tr>
+<td>{{ slot_16 }}</td>
+<td>{{ slot_17 }}</td>
+</tr>
+</table>
+<h2 id="contact">{{ slot_18 }}</h2>
+<p>{{ slot_19 }}</p>
+<p>{{ slot_20 }}</p>
+</main>
+<footer>
+<p>{{ slot_21 }}</p>
+</footer>
+</body>
+</html>

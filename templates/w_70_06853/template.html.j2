@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+#logo {
+    color: #007bff;
+    font-size: 24px;
+}
+
+#search-bar {
+    display: flex;
+    align-items: center;
+}
+
+#login-signup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav, aside {
+    flex: 1;
+    background-color: #e9ecef;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+section {
+    flex: 2;
+    background-color: #e9ecef;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+header, #logo, nav, aside, section {
+    background-color: #6c757d;
+    height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1 id="logo">{{ slot_0 }}</h1>
+<div id="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+</div>
+<div id="login-signup">
+<a>{{ slot_2 }}</a> {{ slot_3 }} <a>{{ slot_4 }}</a>
+</div>
+</header>
+<nav>
+<h2>{{ slot_5 }}</h2>
+<ul>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</nav>
+<aside>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</aside>
+<section id="blog">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+<section id="featured">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</section>
+<section id="reviews">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</section>
+</body>
+</html>

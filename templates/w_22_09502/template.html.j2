@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: lightgreen;
+}
+h1, h2 {
+    text-align: center;
+    color: darkgreen;
+}
+.colored-box {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+</section>
+<section id="workouts">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="colored-box" style="background-color: green;">{{ slot_7 }}</div>
+<br>
+<a>{{ slot_8 }}</a>
+</section>
+<section id="nutrition">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="colored-box" style="background-color: lightgreen;">{{ slot_11 }}</div>
+<br>
+<a>{{ slot_12 }}</a>
+</section>
+<section id="community">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="colored-box" style="background-color: darkgreen;">{{ slot_15 }}</div>
+<br>
+<a>{{ slot_16 }}</a>
+</section>
+</main>
+</body>
+</html>

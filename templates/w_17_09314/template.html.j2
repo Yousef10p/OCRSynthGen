@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    color: white;
+    margin-right: 20px;
+}
+
+.nav-bar ul {
+    list-style: none;
+    display: flex;
+    margin-left: 20px;
+}
+
+.nav-bar ul li {
+    margin: 0 10px;
+}
+
+.nav-bar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 48px;
+}
+
+.plan, .privacy, .services {
+    padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="main-container">
+<div class="video-background ph"></div>
+<header>
+<nav class="nav-bar">
+<h1 class="logo">{{ slot_0 }}</h1>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section class="content">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+</section>
+</div>
+<section class="plan" id="plan">
+<h2>{{ slot_6 }}</h2>
+
+        {{ slot_7 }}
+        <h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+        {{ slot_10 }}
+    </section>
+<section class="privacy" id="privacy">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+<section class="services" id="services">
+<h2>{{ slot_13 }}</h2>
+
+        {{ slot_14 }}
+        <h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+        {{ slot_17 }}
+    </section>
+</body>
+</html>

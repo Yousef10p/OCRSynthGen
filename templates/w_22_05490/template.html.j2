@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* { padding: 0; margin: 0; box-sizing: border-box; }
+body { 
+    font-family: var(--font-body); 
+    color: #333; 
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eee;
+    padding: 1rem;
+}
+a { color: #666; text-decoration: none; }
+.search-bar {
+    display: flex;
+    flex-direction: column;
+}
+.world-map, .itinerary-builder {
+    margin: 20px;
+    width: 400px;
+    height: 300px;
+    background: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 10px;
+    color: white;
+    background: black;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<div class="search-bar">
+                {{ slot_3 }}
+                <span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+<span class="">{{ slot_5 }}</span>
+</div>
+</header>
+<section class="world-map">{{ slot_6 }}</section>
+<section class="itinerary-builder">
+<form>
+<h2>{{ slot_7 }}</h2>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_9 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<span class="">{{ slot_11 }}</span>
+</form>
+<h2>{{ slot_12 }}</h2>
+<ul class="itinerary">
+<li>{{ slot_13 }}</li>
+</ul>
+</section>
+<footer>
+            {{ slot_14 }}
+        </footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f1;
+  font-family: var(--font-body);
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#headerTitle {
+  margin: 0;
+  font-size: 24px;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 20px;
+}
+
+#hero {
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), none;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#heroText {
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+}
+
+.actionBtn {
+  margin-top: 30px;
+}
+
+.container {
+  margin-top: 100px;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.sectionParagraph {
+  margin: 20px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<h1 id="headerTitle">{{ slot_0 }}</h1>
+</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<div id="hero">
+<p id="heroText">{{ slot_5 }}<br>{{ slot_6 }}</p>
+<button class="actionBtn">{{ slot_7 }}</button>
+<button class="actionBtn">{{ slot_8 }}</button>
+</div>
+<div class="container">
+<p class="sectionParagraph" id="services">
+      {{ slot_9 }}<br>
+      {{ slot_10 }}</p>
+<p class="sectionParagraph" id="aboutUs">
+      {{ slot_11 }}</p>
+<p class="sectionParagraph" id="contact">
+      {{ slot_12 }}<br>
+      {{ slot_13 }}<br>
+      {{ slot_14 }}<br>
+      {{ slot_15 }}</p>
+</div>
+</body>
+</html>

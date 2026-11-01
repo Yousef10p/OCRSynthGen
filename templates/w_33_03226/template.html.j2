@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+body {
+    font-family: var(--font-body);
+    background-color: #4a90e2;
+    color: #222;
+}
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-color: #d7d7d7;
+}
+.nav {
+    background-color: #4a90e2;
+    color: #d7d7d7;
+}
+.nav__list {
+    list-style: none;
+    
+}
+.nav__item {
+}
+.nav__link {
+    text-decoration: none;
+    color: #d7d7d7;
+}
+.nav__link--active {
+    color: #fff;
+}
+.main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+}
+.main__section {
+    padding: 20px;
+}
+.main__title {
+}
+.main__subtitle {
+}
+.main__text {
+    line-height: 1.5;
+}
+.contact-form {
+}
+.contact-form__input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.contact-form__btn {
+    padding: 10px;
+    background-color: #d7d7d7;
+    border: none;
+    color: #222;
+    cursor: pointer;
+}
+.footer {
+    background-color: #4a90e2;
+    color: #d7d7d7;
+    text-align: center;
+    padding: 10px;
+}
+.footer__text {
+}
+@media (max-width: 600px) {
+    
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero"> </div>
+<nav class="nav">
+<ul class="nav__list">
+<li class="nav__item"><a class="nav__link nav__link--active">{{ slot_0 }}</a></li>
+<li class="nav__item"><a class="nav__link">{{ slot_1 }}</a></li>
+<li class="nav__item"><a class="nav__link">{{ slot_2 }}</a></li>
+<li class="nav__item"><a class="nav__link">{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<main class="main">
+<section class="main__section" id="home">
+<h1 class="main__title">{{ slot_4 }}</h1>
+<div class="main__content" style="background-color: #d7d7d7;"></div>
+</section>
+<section class="main__section" id="about">
+<h2 class="main__subtitle">{{ slot_5 }}</h2>
+<p class="main__text">{{ slot_6 }} </p>
+</section>
+<section class="main__section" id="properties">
+<h2 class="main__subtitle">{{ slot_7 }}</h2>
+<p class="main__text">{{ slot_8 }}</p>
+</section>
+<section class="main__section" id="contact">
+<h2 class="main__subtitle">{{ slot_9 }}</h2>
+<p class="main__text">{{ slot_10 }}</p>
+<form class="contact-form">
+<span class="contact-form__input" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<span class="contact-form__input" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="contact-form__input contact-form__input--textarea" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_13 }}</span>
+<button class="contact-form__btn">{{ slot_14 }}</button>
+</form>
+</section>
+</main>
+<footer class="footer">
+<p class="footer__text">{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

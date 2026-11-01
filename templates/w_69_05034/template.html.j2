@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+.hero-image {
+  background: none;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3rem;
+}
+
+.hero-text {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+}
+
+.two-columns,
+.service-desc {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.column {
+  width: 45%;
+}
+
+.column img {
+  background: none;
+  background-size: cover;
+  height: 15rem;
+}
+
+.contact-column form {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-left, .footer-right {
+  flex-basis: 50%;
+}
+
+.footer-right ul a {
+  list-style: none;
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero-image">
+<div class="hero-text">{{ slot_0 }}</div>
+</div>
+<div class="two-columns">
+<div class="column">
+<h2>{{ slot_1 }}</h2>
+<div class="work-image ph"></div>
+</div>
+<div class="column">
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }}</p>
+</div>
+</div>
+<div class="service-desc">
+<div class="service-column">
+<h2>{{ slot_4 }}</h2>
+<ul>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+</div>
+<div class="contact-column">
+<h2>{{ slot_8 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_9 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_11 }}</span>
+<button>{{ slot_12 }}</button>
+</form>
+</div>
+</div>
+<div class="testimonial">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</div>
+<footer>
+<div class="footer-left">{{ slot_15 }}</div>
+<div class="footer-right">
+<ul class="socials">
+<li><a>{{ slot_16 }}</a></li>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

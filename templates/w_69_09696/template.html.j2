@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background: #fff;
+}
+
+.navbar a {
+  float: right;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.showcase {
+  height: 100vh;
+  text-align: center;
+  background-color: #f8f8f8;
+}
+
+.portfolio {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.project {
+  height: 200px;
+  margin: 25px;
+}
+
+.project > p {
+  font-size: 12px;
+}
+
+.blog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.post {
+  margin: 25px;
+}
+
+.contact form {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.contact input, .contact textarea, .contact button {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<div class="navbar">
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</div>
+
+<div class="showcase" id="showcase">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<button>{{ slot_6 }}</button>
+</div>
+
+<div class="portfolio" id="portfolio">
+<h2>{{ slot_7 }}</h2>
+<div class="project"><div style="background:blue;">{{ slot_8 }}</div><p>{{ slot_9 }}</p></div>
+<div class="project"><div style="background:red;">{{ slot_10 }}</div><p>{{ slot_11 }}</p></div>
+</div>
+
+<div class="blog" id="blog">
+<h2>{{ slot_12 }}</h2>
+<div class="post"><h3>{{ slot_13 }}</h3><p>{{ slot_14 }}</p></div>
+<div class="post"><h3>{{ slot_15 }}</h3><p>{{ slot_16 }}</p></div>
+</div>
+
+<div class="contact" id="contact">
+<h2>{{ slot_17 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_20 }}</span>
+<button>{{ slot_21 }}</button>
+</form>
+</div>
+</body>
+</html>

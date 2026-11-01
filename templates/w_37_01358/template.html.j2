@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 20px;
+}
+
+#income, #expenses, #net-worth, #debt {
+    background-color: #f0f0f0;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+.chart {
+    margin-bottom: 10px;
+}
+
+.privacy {
+    background-color: #f8f8f8;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<section class="financial-data" id="income">
+<h2>{{ slot_1 }}</h2>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
+<div class="chart">
+
+<div style="width: 45%; height: 300px; background-color: red;"></div>
+</div>
+<div class="privacy">
+<h3>{{ slot_2 }}</h3>
+<p>{{ slot_3 }}</p>
+</div>
+</div>
+<div class="chart">
+
+<div style="width: 45%; height: 300px; background-color: blue;"></div>
+</div>
+<div class="table">
+
+<table>
+<tr>
+<td>{{ slot_4 }}</td>
+<td>{{ slot_5 }}</td>
+</tr>
+</table>
+</div>
+</section>
+
+<section class="financial-data" id="expenses">
+<h2>{{ slot_6 }}</h2>
+<div class="chart">
+
+<div style="width: 45%; height: 300px; background-color: green;"></div>
+</div>
+<div class="privacy">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="chart">
+
+<div style="width: 45%; height: 300px; background-color: yellow;"></div>
+</div>
+<div class="table">
+
+<table>
+<tr>
+<td>{{ slot_9 }}</td>
+<td>{{ slot_10 }}</td>
+</tr>
+</table>
+</div>
+</section>
+<section class="financial-data" id="net-worth">
+<h2>{{ slot_11 }}</h2>
+<div class="chart">
+
+<div style="width: 45%; height: 300px; background-color: purple;"></div>
+</div>
+<div class="privacy">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="chart">
+
+<div style="width: 45%; height: 300px; background-color: orange;"></div>
+</div>
+<div class="table">
+
+<table>
+<tr>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+</tr>
+</table>
+</div>
+</section>
+<section class="financial-data" id="debt">
+<h2>{{ slot_16 }}</h2>
+<div class="chart">
+
+<div style="width: 45%; height: 300px; background-color: pink;"></div>
+</div>
+<div class="privacy">
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+</div>
+<div class="chart">
+
+<div style="width: 45%; height: 300px; background-color: teal;"></div>
+</div>
+<div class="table">
+
+<table>
+<tr>
+<td>{{ slot_19 }}</td>
+<td>{{ slot_20 }}</td>
+</tr>
+</table>
+</div>
+</section>
+</main>
+
+<footer>
+<p>{{ slot_21 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.header-title {
+    font-size: 24px;
+}
+nav {
+    background-color: #333;
+    height: 40px;
+    position: fixed;
+    top: 60px;
+    width: 100%;
+}
+ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+li a {
+    color: #fff;
+    text-decoration: none;
+}
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+}
+.home-paragraph {
+    width: 60%;
+    text-align: center;
+}
+.home-image {
+    width: 80%;
+    height: 300px;
+    background-color: #ddd;
+    margin-top: 20px;
+}
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+}
+.portfolio-paragraph {
+    width: 60%;
+    text-align: center;
+}
+.portfolio-images {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+.portfolio-image1 {
+    width: 30%;
+    height: 200px;
+    background-color: #ddd;
+}
+.portfolio-image2 {
+    width: 30%;
+    height: 200px;
+    background-color: #ddd;
+}
+.portfolio-image3 {
+    width: 30%;
+    height: 200px;
+    background-color: #ddd;
+}
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+}
+.about-paragraph {
+    width: 60%;
+    text-align: center;
+}
+.about-image {
+    width: 60%;
+    height: 300px;
+    background-color: #ddd;
+    margin-top: 20px;
+}
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+}
+.contact-paragraph {
+    width: 60%;
+    text-align: center;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.contact-form input, .contact-form textarea {
+    width: 80%;
+    margin-bottom: 10px;
+}
+.contact-form button {
+    width: 80%;
+    height: 40px;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.footer-paragraph {
+    font-size: 12px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header id="header">
+<h1 class="header-title">{{ slot_0 }}</h1>
+</header>
+<nav id="navigation">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<section class="home" id="home">
+<p class="home-paragraph">{{ slot_5 }}</p>
+<div class="home-image ph"></div>
+</section>
+<section class="portfolio" id="portfolio">
+<h2 class="portfolio-header">{{ slot_6 }}</h2>
+<p class="portfolio-paragraph">{{ slot_7 }}</p>
+<div class="portfolio-images ph"></div>
+</section>
+<section class="about" id="about">
+<h2 class="about-header">{{ slot_8 }}</h2>
+<p class="about-paragraph">{{ slot_9 }}</p>
+<div class="about-image ph"></div>
+</section>
+<section class="contact" id="contact">
+<h2 class="contact-header">{{ slot_10 }}</h2>
+<p class="contact-paragraph">{{ slot_11 }}</p>
+<form class="contact-form">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_14 }}</span>
+<button>{{ slot_15 }}</button>
+</form>
+</section>
+<footer id="footer">
+<p class="footer-paragraph">{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

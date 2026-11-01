@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  background-color: white;
+  color: #333;
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+header, nav, aside, section {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 10px;
+}
+
+header {
+  background-color: lightgray;
+  text-align: center;
+  color: white;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+img {
+  width: 300px;
+  height: 200px;
+  background-color: blue; 
+}
+
+.listings img {
+  display: inline-block;
+}
+
+.neighborhoods, .schools, .amenities {
+  background-color: lightblue;
+  padding: 10px;
+}
+
+section {
+  clear: both;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #333;
+  font-size: 16px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+<aside>
+<h2>{{ slot_7 }}</h2>
+<div class="neighborhoods">
+<p>{{ slot_8 }}</p>
+</div>
+<h2>{{ slot_9 }}</h2>
+<div class="schools">
+<p>{{ slot_10 }}</p>
+</div>
+<h2>{{ slot_11 }}</h2>
+<div class="amenities">
+<p>{{ slot_12 }}</p>
+</div>
+</aside>
+<section>
+<h2>{{ slot_13 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<button>{{ slot_15 }}</button>
+</form>
+<h2>{{ slot_16 }}</h2>
+<div class="listings">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.4;
+    color: #fff;
+}
+
+
+#showcase {
+    background: none no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+#showcase .content-wrap {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    max-width: 400px;
+}
+
+
+#main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+}
+
+#main .content-wrap {
+    padding: 20px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#section-a {
+    grid-column: 1 / 3;
+}
+
+#section-b ul {
+    list-style: none;
+}
+
+#section-b .card {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+}
+
+#section-b .card img {
+    width: 100px;
+    height: 100px;
+}
+
+#main-footer {
+    grid-column: 1 / 3;
+    text-align: center;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header class="grid" id="showcase">
+<div class="bg-image ph"></div>
+<div class="content-wrap">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+
+
+<main id="main">
+
+<section class="grid" id="section-a">
+<div class="content-wrap">
+<h2 class="content-title">{{ slot_2 }}</h2>
+<div class="content-text">
+<p>{{ slot_3 }}</p>
+</div>
+</div>
+</section>
+
+<section class="grid" id="section-b">
+<ul>
+<li>
+<div class="card">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div> 
+<div class="card-content">
+<h3 class="card-title">{{ slot_4 }}</h3>
+<p>{{ slot_5 }}</p>
+</div>
+</div>
+</li>
+
+</ul>
+</section>
+
+<section class="grid" id="section-c">
+<div class="content-wrap">
+<h2 class="content-title">{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</div>
+</section>
+
+<section class="grid" id="section-d">
+<div class="box">
+<h2 class="content-title">{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="box">
+<h2 class="content-title">{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</div>
+</section>
+</main>
+
+<footer class="grid" id="main-footer">
+<div>{{ slot_13 }}</div>
+<div>{{ slot_14 }} <a>{{ slot_15 }}</a></div>
+</footer>
+</header></body>
+</html>

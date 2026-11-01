@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#full-width-banner {
+    text-align: center;
+    padding-top: 150px;
+}
+
+#logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#slider {
+    text-align: center;
+    padding-top: 75px;
+}
+
+#slider p {
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 25px;
+}
+
+#navigation {
+    padding-top: 100px;
+}
+
+#navigation h3 {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#navigation li {
+    padding-bottom: 5px;
+}
+
+#sections {
+    clear: both;
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+#sections section {
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    margin: 15px;
+    background-color: #f2f2f2;
+}
+
+footer {
+    clear: both;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    padding-top: 25px;
+    background-color: #333;
+    color: #fff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="full-width-section" id="full-width-banner">
+<h1>{{ slot_0 }}</h1>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="ph"></div>
+<div class="slider-container" id="slider">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_1 }}</p>
+</div>
+<nav class="nav-container" id="navigation">
+<h3>{{ slot_2 }}</h3>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+<h3>{{ slot_6 }}</h3>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</nav>
+<div id="sections">
+<section>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</section>
+<section>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</section>
+</div>
+<footer>
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    font-family: var(--font-body);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+#home, #inspiration, #products, #wishlist, #about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.inspiration-content, .product-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-rectangle {
+    width: 100px;
+    height: 100px;
+    background-color: #333;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<section id="home">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="inspiration">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+<ul>
+<li class="inspiration-content"><div class="color-rectangle"></div><p>{{ slot_9 }}</p></li>
+<li class="inspiration-content"><div class="color-rectangle"></div><p>{{ slot_10 }}</p></li>
+</ul>
+</section>
+<section id="products">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+<div class="products-content">
+<ul>
+<li class="product-image"><div class="color-rectangle"></div><p>{{ slot_13 }}</p></li>
+<li class="product-image"><div class="color-rectangle"></div><p>{{ slot_14 }}</p></li>
+<li class="product-image"><div class="color-rectangle"></div><p>{{ slot_15 }}</p></li>
+<li class="product-image"><div class="color-rectangle"></div><p>{{ slot_16 }}</p></li>
+</ul>
+</div>
+</section>
+<section id="wishlist">
+<h1>{{ slot_17 }}</h1>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+</section>
+<section id="about">
+<h1>{{ slot_20 }}</h1>
+<p>{{ slot_21 }}</p>
+</section>
+</body>
+</html>

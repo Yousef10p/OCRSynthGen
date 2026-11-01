@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  color: #333;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 20px;
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 20px;
+}
+
+nav ul li:hover {
+  color: #333;
+}
+
+#carousel article {
+  width: 25%;
+  float: right;
+  padding: 20px;
+  text-align: center;
+}
+
+.color-rect {
+  background-color: blue;
+  height: 100px;
+}
+
+#description {
+  clear: both;
+  padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .color-rect {
+    display: none;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+
+<nav>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</nav>
+
+<section id="carousel">
+<article>
+
+<div class="color-rect">{{ slot_6 }}</div><p>{{ slot_7 }}</p>
+</article>
+<article>
+
+<div class="color-rect">{{ slot_8 }}</div><p>{{ slot_9 }}</p>
+</article>
+<article>
+
+<div class="color-rect">{{ slot_10 }}</div><p>{{ slot_11 }}</p>
+</article>
+</section>
+
+<section id="description">
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</section>
+</body>
+</html>

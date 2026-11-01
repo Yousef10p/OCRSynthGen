@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    color: #555;
+}
+
+header, footer{
+    background-color: #5e7f2b;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.intro {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 30px 0;
+}
+
+button {
+    background-color: #95c83d;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.1em;
+}
+
+aside {
+    background-color: #d0ccbf;
+    float: left;
+    width: 30%;
+    padding: 20px;
+}
+
+aside article, aside blockquote {
+    margin: 10px 0;
+}
+
+aside li {
+    list-style-type: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<section class="intro">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<button>{{ slot_3 }}</button>
+</section>
+<aside>
+<h2>{{ slot_4 }}</h2>
+<article>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</article>
+<article>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</article>
+<h2>{{ slot_9 }}</h2>
+<blockquote>{{ slot_10 }}</blockquote>
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+</aside>
+</main>
+</body>
+</html>

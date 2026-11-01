@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  color: #333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+header {
+  background: #e0e0e0;
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 3em;
+}
+
+
+nav {
+  background: #333;
+  color: #fff;
+  display: block;
+  padding: 10px;
+}
+
+nav a {
+  color: #fff;
+  margin-left: 10px;
+}
+
+
+section {
+  margin: 10px;
+  padding: 10px;
+}
+
+
+aside:nth-of-type(1) {
+  float: right;
+  width: 20%;
+  padding: 10px;
+}
+
+
+aside:nth-of-type(2) {
+  float: left;
+  width: 20%;
+  padding: 10px;
+}
+
+
+.member-profile {
+  margin-bottom: 20px;
+}
+
+
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  nav a {
+    display: block;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  aside:nth-of-type(1), aside:nth-of-type(2) {
+    float: none;
+    width: 100%;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="page-container">
+<header>
+<div class="header-content">
+<h1>{{ slot_0 }}</h1>
+</div>
+</header>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+<section>
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</section>
+<aside>
+<h3>{{ slot_6 }}</h3>
+<table>
+<tr>
+<th>{{ slot_7 }}</th>
+<th>{{ slot_8 }}</th>
+<th>{{ slot_9 }}</th>
+</tr>
+<tr>
+<td>{{ slot_10 }}</td>
+<td>{{ slot_11 }}</td>
+<td>{{ slot_12 }}</td>
+</tr>
+<tr>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+</tr>
+</table>
+</aside>
+<aside>
+<h3>{{ slot_16 }}</h3>
+<div class="member-profile">
+<h4>{{ slot_17 }}</h4>
+<p>{{ slot_18 }}</p>
+</div>
+<div class="member-profile">
+<h4>{{ slot_19 }}</h4>
+<p>{{ slot_20 }}</p>
+</div>
+</aside>
+<footer>
+<p>{{ slot_21 }}</p>
+</footer>
+</div>
+</body>
+</html>

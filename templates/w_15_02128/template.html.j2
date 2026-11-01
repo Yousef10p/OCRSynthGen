@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+}
+
+nav {
+    width: 100%;
+    text-align: left;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 1em;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+aside {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart {
+    background-color: lightblue;
+    height: 100px;
+    margin-bottom: 1em;
+}
+
+#calculator {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#display {
+    width: 100%;
+    height: 50px;
+    text-align: left;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo">
+<p>{{ slot_0 }}</p>
+</div>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<main>
+<aside>
+<div class="chart">
+<p>{{ slot_5 }}</p>
+</div>
+<div class="chart">
+<p>{{ slot_6 }}</p>
+</div>
+<div class="chart">
+<p>{{ slot_7 }}</p>
+</div>
+</aside>
+<div id="calculator">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<div id="buttons">
+<button>{{ slot_9 }}</button>
+<button>{{ slot_10 }}</button>
+<button>{{ slot_11 }}</button>
+<button>{{ slot_12 }}</button>
+<button>{{ slot_13 }}</button>
+<button>{{ slot_14 }}</button>
+<button>{{ slot_15 }}</button>
+<button>{{ slot_16 }}</button>
+<button>{{ slot_17 }}</button>
+<button>{{ slot_18 }}</button>
+<button>{{ slot_19 }}</button>
+<button>{{ slot_20 }}</button>
+<button>{{ slot_21 }}</button>
+<button>{{ slot_22 }}</button>
+<button>{{ slot_23 }}</button>
+<button>{{ slot_24 }}</button>
+<button>{{ slot_25 }}</button>
+</div>
+</div>
+</main>
+<footer>
+<p>{{ slot_26 }}</p>
+</footer>
+</body>
+</html>

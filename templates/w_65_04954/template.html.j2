@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+main {
+    margin-top: 60px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+main section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.artist-image, .album-image, .genre-image {
+    width: 100%;
+    height: 200px;
+    background-color: #333;
+    margin-top: 20px;
+}
+
+a.call-to-action {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+<a>{{ slot_5 }}</a>
+<a>{{ slot_6 }}</a>
+</nav>
+</header>
+<main>
+<section id="main">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<a class="call-to-action">{{ slot_9 }}</a>
+</section>
+<section id="recommendations">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<a class="call-to-action">{{ slot_12 }}</a>
+</section>
+<section id="artists">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="artist-image ph"></div>
+</section>
+<section id="albums">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+<div class="album-image ph"></div>
+</section>
+<section id="genres">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+<div class="genre-image ph"></div>
+</section>
+<section id="profile">
+<h2>{{ slot_19 }}</h2>
+<p>{{ slot_20 }}</p>
+<a class="call-to-action">{{ slot_21 }}</a>
+</section>
+</main>
+<footer>
+<p>{{ slot_22 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: white;
+}
+
+header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    background-color: grey;
+}
+
+#logo {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    margin: 15px 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 20px;
+}
+
+#carousel {
+    height: 200px;
+    background-color: grey;
+    color: white;
+}
+
+.fake-image {
+    height: 200px;
+    width: 100%;
+}
+
+.blog-post {
+    width: 30%;
+    margin: 10px;
+}
+
+.button {
+    color: white;
+    text-decoration: none;
+    background-color: grey;
+    padding: 10px;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<div id="carousel">
+<div class="breaking-news">{{ slot_3 }}</div>
+<div class="breaking-news">{{ slot_4 }}</div>
+<div class="breaking-news">{{ slot_5 }}</div>
+</div>
+<article id="smartphones">
+<h1>{{ slot_6 }}</h1>
+<div class="blog-post">
+<h2>{{ slot_7 }}</h2>
+<div class="fake-image ph"></div>
+<p>{{ slot_8 }}</p>
+<a class="button">{{ slot_9 }}</a>
+</div>
+<div class="blog-post">
+<h2>{{ slot_10 }}</h2>
+<div class="fake-image ph"></div>
+<p>{{ slot_11 }}</p>
+<a class="button">{{ slot_12 }}</a>
+</div>
+</article>
+<article id="computers">
+<h1>{{ slot_13 }}</h1>
+<div class="blog-post">
+<h2>{{ slot_14 }}</h2>
+<div class="fake-image ph"></div>
+<p>{{ slot_15 }}</p>
+<a class="button">{{ slot_16 }}</a>
+</div>
+<div class="blog-post">
+<h2>{{ slot_17 }}</h2>
+<div class="fake-image ph"></div>
+<p>{{ slot_18 }}</p>
+<a class="button">{{ slot_19 }}</a>
+</div>
+</article>
+<article id="gaming">
+<h1>{{ slot_20 }}</h1>
+<div class="blog-post">
+<h2>{{ slot_21 }}</h2>
+<div class="fake-image ph"></div>
+<p>{{ slot_22 }}</p>
+<a class="button">{{ slot_23 }}</a>
+</div>
+<div class="blog-post">
+<h2>{{ slot_24 }}</h2>
+<div class="fake-image ph"></div>
+<p>{{ slot_25 }}</p>
+<a class="button">{{ slot_26 }}</a>
+</div>
+</article>
+</body>
+</html>

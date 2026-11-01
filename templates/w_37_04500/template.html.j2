@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+#hero {
+    position: relative;
+    height: 100vh;
+    color: white;
+    background-color: #333;
+    text-align: center;
+}
+
+#hero button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+#sidebar-left, #sidebar-right {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+}
+
+#sidebar-left {
+    right: 0;
+    background-color: #f0f0f0;
+}
+
+#sidebar-right {
+    left: 0;
+    background-color: #e0e0e0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero">
+<h1>{{ slot_2 }}</h1>
+<button>{{ slot_3 }}</button>
+</section>
+<aside id="sidebar-left">
+<h2>{{ slot_4 }}</h2>
+<ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+<h2>{{ slot_7 }}</h2>
+<ul>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+</ul>
+<h2>{{ slot_10 }}</h2>
+<ul>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+</ul>
+</aside>
+<aside id="sidebar-right">
+<h2>{{ slot_13 }}</h2>
+<ul>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+</ul>
+<h2>{{ slot_16 }}</h2>
+<ul>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+</ul>
+</aside>
+</body>
+</html>

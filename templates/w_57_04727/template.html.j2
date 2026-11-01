@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  color: #2b6777;
+}
+
+
+nav {
+  background-color: #61a5c2;
+  height: 50px;
+  margin: 0;
+  text-align: center;
+}
+
+.map-area {
+  font-size: 16px;
+  margin: 0;
+  color: #ffffff;
+}
+
+
+.sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 200px;
+  background-color: #61a5c2;
+  height: 100%;
+  padding: 20px;
+}
+
+.filters ul li {
+  list-style: none;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+
+main {
+  position: absolute;
+  right: 200px;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.column {
+  display: inline-block;
+  width: 200px;
+  margin-left: 20px;
+}
+
+
+.social-media {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 20px;
+}
+
+.social-media ul li {
+  list-style: none;
+  font-size: 14px;
+  color: #2b6777;
+  margin-bottom: 10px;
+}
+
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #61a5c2;
+  height: 50px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<nav>
+<div class="map-area">{{ slot_0 }}</div>
+</nav>
+
+<aside class="sidebar">
+<div class="filters">
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</div>
+</aside>
+
+<main>
+<div class="column">
+<p>{{ slot_6 }}</p>
+</div>
+<div class="column">
+<p>{{ slot_7 }}</p>
+</div>
+<div class="column">
+<p>{{ slot_8 }}</p>
+</div>
+<div class="column">
+<p>{{ slot_9 }}</p>
+</div>
+<div class="column">
+<p>{{ slot_10 }}</p>
+</div>
+</main>
+
+<section class="social-media">
+<ul>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+</ul>
+</section>
+
+<footer>
+<p><a>{{ slot_16 }}</a></p>
+<p><a>{{ slot_17 }}</a></p>
+</footer>
+</body>
+</html>

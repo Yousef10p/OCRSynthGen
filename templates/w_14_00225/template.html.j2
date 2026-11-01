@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: #000;
+    color: gold;
+    font-family: var(--font-body);
+}
+
+ul#menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul#menu > li {
+    display: inline-block;
+}
+
+ul#menu > li > a {
+    display: block;
+    padding: 10px;
+    color: gold;
+    text-decoration: none;
+}
+
+ul#menu .dropdown {
+    display: none;
+    position: absolute;
+    background-color: #000;
+}
+
+ul#menu .dropdown > li > a {
+    display: block;
+}
+
+#content div {
+    display: none;
+}
+
+#content .service:target, #content .area:target, #content .attorney:target {
+    display: block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<ul id="menu">
+<li><a>{{ slot_0 }}</a>
+<ul class="dropdown">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_4 }}</a>
+<ul class="dropdown">
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_8 }}</a>
+<ul class="dropdown">
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+</ul>
+</li>
+</ul>
+<div id="content">
+<div class="service" id="service1">{{ slot_12 }}</div>
+<div class="service" id="service2">{{ slot_13 }}</div>
+<div class="service" id="service3">{{ slot_14 }}</div>
+<div class="area" id="area1">{{ slot_15 }}</div>
+<div class="area" id="area2">{{ slot_16 }}</div>
+<div class="area" id="area3">{{ slot_17 }}</div>
+<div class="attorney" id="attorney1">{{ slot_18 }}</div>
+<div class="attorney" id="attorney2">{{ slot_19 }}</div>
+<div class="attorney" id="attorney3">{{ slot_20 }}</div>
+</div>
+</body>
+</html>

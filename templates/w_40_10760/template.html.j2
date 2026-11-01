@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+ font-family: var(--font-body);
+}
+
+header {
+ text-align: center;
+ background-color: #f8f9fa;
+ padding: 20px;
+}
+
+button {
+ background-color: #007bff;
+ color: white;
+ padding: 10px 20px;
+ border: none;
+ cursor: pointer;
+}
+
+.box {
+ width: 100px;
+ height: 100px;
+ margin: 5px;
+ background-color: #6c757d;
+}
+
+footer {
+ display: flex;
+ justify-content: space-around;
+ margin-top: 50px;
+ background-color: #f8f9fa;
+ padding: 20px;
+}
+
+.branch-locations, .careers, .industry-partnerships {
+ text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<button>{{ slot_2 }}</button>
+</header>
+<main>
+<div class="product-info">
+<h2>{{ slot_3 }}</h2>
+<div class="product-info">
+<div class="box box1"></div>
+<p>{{ slot_4 }}</p>
+</div>
+</div>
+<div class="customer-stories">
+<h2>{{ slot_5 }}</h2>
+<div class="customer-stories">
+<div class="box box2"></div>
+<p>{{ slot_6 }}</p>
+</div>
+</div>
+</main>
+<footer>
+<div class="branch-locations">
+<h3>{{ slot_7 }}</h3>
+<ul>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+</ul>
+</div>
+<div class="careers">
+<h3>{{ slot_10 }}</h3>
+<ul>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+</ul>
+</div>
+<div class="industry-partnerships">
+<h3>{{ slot_13 }}</h3>
+<ul>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

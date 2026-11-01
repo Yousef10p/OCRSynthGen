@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  background-color: #333;
+  color: #fff;
+  padding: 1em 0;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+section {
+  margin: 2em 0;
+  padding: 1em;
+}
+
+.box {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+#yoga {
+  background-color: #ff0;
+}
+
+#pilates {
+  background-color: #0ff;
+}
+
+#spin {
+  background-color: #f0f;
+}
+
+#single {
+  background-color: #f00;
+}
+
+#unlimited {
+  background-color: #0f0;
+}
+
+#annual {
+  background-color: #00f;
+}
+
+.cta {
+  display: block;
+  width: 200px;
+  margin: 2em auto;
+  padding: 1em;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="classes">
+<h2>{{ slot_3 }}</h2>
+<div class="box" id="yoga">{{ slot_4 }}</div>
+<p>{{ slot_5 }}</p>
+<div class="box" id="pilates">{{ slot_6 }}</div>
+<p>{{ slot_7 }}</p>
+<div class="box" id="spin">{{ slot_8 }}</div>
+<p>{{ slot_9 }}</p>
+</section>
+<section id="membership">
+<h2>{{ slot_10 }}</h2>
+<div class="box" id="single">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+<div class="box" id="unlimited">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+<div class="box" id="annual">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+</section>
+<a class="cta" id="book">{{ slot_17 }}</a>
+</body>
+</html>

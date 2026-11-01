@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font-body);
+}
+header, footer {
+  background: #333;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+}
+header {
+  top: 0;
+  height: 40px;
+}
+footer {
+  bottom: 0;
+  height: 20px;
+}
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
+section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section#corporate, 
+section#weddings, 
+section#birthdays {
+  height: 30vh;
+  width: 100%;
+}
+.hero-content {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.hero-picture {
+  background: #000;
+  height: 100vh;
+  width: 100%;
+}
+.cta {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  background: #f00;
+  color: #fff;
+  text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<div class="hero-content">
+<h1>{{ slot_3 }}</h1>
+<h2>{{ slot_4 }}</h2>
+<a class="cta">{{ slot_5 }}</a>
+</div>
+<div class="hero-picture ph"></div> 
+</section>
+<section id="services">
+<div id="corporate">
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</div>
+<div id="weddings">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+<div id="birthdays">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+</section>
+</main>
+<footer>
+<ul>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+</footer>
+</body>
+</html>

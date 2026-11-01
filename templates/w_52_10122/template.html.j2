@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    font-family: var(--font-body);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-template-rows: auto auto;
+}
+
+#sidebar {
+    background-color: #f0f0f0;
+    grid-row: 1 / 2;
+}
+h2 {
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+}
+a {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    border: solid 1px gray;
+}
+
+#content {
+    grid-column: 2 / 3;
+    margin: 20px;
+    text-align: center;
+}
+.placeholder {
+    background-color: #808080;
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+}
+
+#footer {
+    grid-column: 1 / span 2;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+}
+a:hover {
+    color: blue;
+}
+.testimonial {
+    margin: 20px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="sidebar">
+<h2>{{ slot_0 }}</h2>
+<p class="testimonial">{{ slot_1 }}</p>
+<a>{{ slot_2 }}</a>
+<p class="testimonial">{{ slot_3 }}</p>
+<a>{{ slot_4 }}</a>
+<p class="testimonial">{{ slot_5 }}</p>
+<a>{{ slot_6 }}</a>
+</div>
+<div id="content">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+<div class="placeholder ph"></div>
+<p>{{ slot_9 }}</p>
+</div>
+<div id="footer">
+<h2>{{ slot_10 }}</h2>
+<a>{{ slot_11 }}</a>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<h2>{{ slot_14 }}</h2>
+<a>{{ slot_15 }}</a>
+</div>
+</body>
+</html>

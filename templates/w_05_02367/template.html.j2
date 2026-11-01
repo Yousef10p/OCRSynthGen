@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+nav {
+    text-align: center;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 1em;
+}
+
+.logo {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.logo-rect {
+    background-color: #000;
+    height: 100px;
+    width: 200px;
+}
+
+#products, #services, #resources, #testimonials, #case-studies {
+    margin-bottom: 2em;
+}
+
+.products-img, .services-image, .resources-image {
+    background-color: #ccc;
+    height: 150px;
+}
+
+#contact form {
+    display: grid;
+    gap: 0.5em;
+}
+
+#contact input, #contact textarea {
+    width: 100%;
+    padding: 0.5em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul class="nav-links">
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<div class="logo ph"></div>
+<section id="products">
+<h2>{{ slot_3 }}</h2>
+<div class="product-image ph"></div>
+<p>{{ slot_4 }}</p>
+</section>
+<section id="services">
+<h2>{{ slot_5 }}</h2>
+<div class="services-image ph"></div>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="resources">
+<h2>{{ slot_7 }}</h2>
+<div class="resources-image ph"></div>
+<p>{{ slot_8 }}</p>
+</section>
+<section id="testimonials">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</section>
+<section id="case-studies">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+<section id="contact">
+<h2>{{ slot_13 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_16 }}</span>
+<span class="">{{ slot_17 }}</span>
+</form>
+</section>
+</body>
+</html>

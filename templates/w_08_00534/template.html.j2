@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background: #333;
+  color: #fff;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav a {
+  color: #fff;
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+}
+
+header, aside, section, footer {
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 0 10px #000;
+}
+
+.hero h1, aside h1, section h1, footer h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.hero p, aside p, section p {
+  line-height: 1.6em;
+  margin-bottom: 20px;
+}
+
+footer a {
+  margin-left: 10px;
+}
+
+.product-image, .partnership-image {
+  width: 100px;
+  height: 100px;
+  background: orange;
+}
+
+#blog, #products, #events, #partnerships {
+  display: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<header id="home">
+<div class="hero">
+<h1>{{ slot_5 }}</h1>
+<div class="product">
+<h2>{{ slot_6 }}</h2>
+<div class="product-image ph"></div>
+<p>{{ slot_7 }}</p>
+</div>
+
+</div>
+</header>
+<aside id="events">
+<h1>{{ slot_8 }}</h1>
+<div class="event">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</div>
+
+</aside>
+<section id="partnerships">
+<h1>{{ slot_11 }}</h1>
+<div class="partnership">
+<h2>{{ slot_12 }}</h2>
+<div class="partnership-image ph"></div>
+<p>{{ slot_13 }}</p>
+</div>
+
+</section>
+<footer>
+<a>{{ slot_14 }}</a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+</footer>
+</body>
+</html>

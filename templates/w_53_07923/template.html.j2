@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+div {
+  display: block;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #333;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<div id="introductory-area">
+<h1>{{ slot_0 }}</h1>
+<h3>{{ slot_1 }}</h3>
+</div>
+
+<div id="classes-area">
+<h2>{{ slot_2 }}</h2>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+</div>
+
+<div id="instructors-area">
+<h2>{{ slot_8 }}</h2>
+<div class="instructor">
+<h3>{{ slot_9 }}</h3>
+<div class="instructor-profile">{{ slot_10 }}</div>
+</div>
+<div class="instructor">
+<h3>{{ slot_11 }}</h3>
+<div class="instructor-profile">{{ slot_12 }}</div>
+</div>
+</div>
+
+<div id="pricing-area">
+<h2>{{ slot_13 }}</h2>
+<table>
+<tr>
+<th>{{ slot_14 }}</th>
+<th>{{ slot_15 }}</th>
+</tr>
+<tr>
+<td>{{ slot_16 }}</td>
+<td>{{ slot_17 }}</td>
+</tr>
+<tr>
+<td>{{ slot_18 }}</td>
+<td>{{ slot_19 }}</td>
+</tr>
+<tr>
+<td>{{ slot_20 }}</td>
+<td>{{ slot_21 }}</td>
+</tr>
+<tr>
+<td>{{ slot_22 }}</td>
+<td>{{ slot_23 }}</td>
+</tr>
+<tr>
+<td>{{ slot_24 }}</td>
+<td>{{ slot_25 }}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  display: grid;
+  grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+}
+
+header, footer {
+  background-color: #404040;
+  color: white;
+  padding: 1em;
+}
+
+header { grid-area: header; }
+footer { grid-area: footer; }
+
+#logo {
+  text-align: center;
+  margin: 0;
+  padding: 1em 0;
+}
+
+main {
+  grid-area: main;
+  display: grid;
+  grid-template-areas: "main sidebar";
+  grid-template-columns: 2fr 1fr;
+}
+
+.accordion, aside {
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid #ddd;
+}
+
+.accordion h2, aside h2 {
+  margin-top: 0;
+}
+
+.accordion details summary {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  cursor: pointer;
+}
+
+aside a {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    grid-template-areas: 
+      "main"
+      "sidebar";
+    grid-template-columns: 1fr;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1 id="logo">{{ slot_0 }}</h1>
+</header>
+<main>
+<section class="accordion" style="{ grid-area: main; }">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<details>
+<summary>{{ slot_3 }}</summary>
+<p>{{ slot_4 }}</p>
+</details>
+<details>
+<summary>{{ slot_5 }}</summary>
+<p>{{ slot_6 }}</p>
+</details>
+<details>
+<summary>{{ slot_7 }}</summary>
+<p>{{ slot_8 }}</p>
+</details>
+</section>
+<aside style="{ grid-area: sidebar; }">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }} <a>{{ slot_11 }}</a></p>
+<p>{{ slot_12 }} <a>{{ slot_13 }}</a></p>
+<p>{{ slot_14 }}</p>
+<ul>
+<li><a>{{ slot_15 }}</a></li>
+<li><a>{{ slot_16 }}</a></li>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+</ul>
+</aside>
+</main>
+<footer>
+<p>{{ slot_19 }}</p>
+</footer>
+</body>
+</html>

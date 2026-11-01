@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0 50px;
+}
+.left-side, .right-side {
+    flex: 1;
+    padding: 20px;
+}
+.left-side {
+    background-color: #f2f2f2;
+}
+.right-side {
+    text-align: center;
+    background-color: #e0e0e0;
+}
+.logo .placeholder-logo {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    background-color: #999;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+nav ul a {
+    text-decoration: none;
+    color: #000;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="left-side">
+<h1>{{ slot_0 }}</h1>
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<h1>{{ slot_9 }}</h1>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="right-side">
+<div class="logo ph"></div>
+<nav>
+<ul>
+<li><a>{{ slot_16 }}</a></li>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+<li><a>{{ slot_19 }}</a></li>
+<li><a>{{ slot_20 }}</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  text-align: center;
+  font-family: var(--font-body);
+  background: #f2f2f2;
+  color: #333;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  height: 80px;
+  width: 100%;
+  background: #ddd;
+  line-height: 80px;
+}
+
+section {
+  margin-top: 100px;
+  padding: 40px;
+  min-height: 500px;
+}
+
+#home {
+  background: #F1356D;
+}
+
+#destinations {
+  background: #467fcf;
+}
+
+#packages {
+  background: #008744;
+}
+
+#about {
+  background: #ff8e00;
+}
+
+#contact {
+  background: #e6194b;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background: lightblue;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="home">
+<p>{{ slot_6 }}</p>
+<button>{{ slot_7 }}</button>
+</section>
+<section id="destinations">
+<p>{{ slot_8 }}</p>
+<button>{{ slot_9 }}</button>
+</section>
+<section id="packages">
+<p>{{ slot_10 }}</p>
+<button>{{ slot_11 }}</button>
+</section>
+<section id="about">
+<p>{{ slot_12 }}</p>
+<button>{{ slot_13 }}</button>
+</section>
+<section id="contact">
+<p>{{ slot_14 }}</p>
+<button>{{ slot_15 }}</button>
+</section>
+</main>
+</body>
+</html>

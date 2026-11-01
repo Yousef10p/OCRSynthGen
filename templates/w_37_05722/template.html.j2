@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  color: white;
+}
+
+.header, .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height: 90px;
+  background-color: brown;
+}
+
+.masonry-grid {
+  display: grid;
+  grid-auto-rows: 200px;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-flow: dense;
+  margin: 20px;
+}
+
+.grid-item {
+  padding: 20px;
+  background-color: green;
+}
+
+
+.placeholder-img-dog,
+.placeholder-img-cat,
+.placeholder-img-fish,
+.placeholder-img-reptile {
+  background-color: gray;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header brown">
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+</div>
+<div class="masonry-grid">
+<div class="grid-item green">
+<h2>{{ slot_4 }}</h2>
+<div class="placeholder-img-dog ph"></div>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="grid-item green">
+<h2>{{ slot_6 }}</h2>
+<div class="placeholder-img-cat ph"></div>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="grid-item green">
+<h2>{{ slot_8 }}</h2>
+<div class="placeholder-img-fish ph"></div>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="grid-item green">
+<h2>{{ slot_10 }}</h2>
+<div class="placeholder-img-reptile ph"></div>
+<p>{{ slot_11 }}</p>
+</div>
+</div>
+<div class="footer brown">
+<p>{{ slot_12 }}</p>
+<div>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+</div>
+<p>{{ slot_16 }}</p>
+</div>
+</body>
+</html>

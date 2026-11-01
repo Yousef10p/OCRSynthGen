@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+header span {
+    background-color: #c0c0c0;
+    padding: 1rem;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav li {
+    margin-left: 1rem;
+}
+
+div[id="product-feed"] > div {
+    background-color: #c0c0c0;
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+aside section {
+    margin-bottom: 1rem;
+}
+
+article {
+    background-color: #c0c0c0;
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+footer {
+    background-color: #c0c0c0;
+    padding: 1rem;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<span>{{ slot_0 }}</span>
+<nav>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+<div>{{ slot_4 }}</div>
+</header>
+<main>
+<section>
+<div>{{ slot_5 }}</div>
+<div>{{ slot_6 }}</div>
+<div>{{ slot_7 }}</div>
+</section>
+<section id="product-feed">
+<div>{{ slot_8 }}</div>
+<div>{{ slot_9 }}</div>
+<div>{{ slot_10 }}</div>
+
+</section>
+</main>
+<aside>
+<section>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+<section>
+<h2>{{ slot_13 }}</h2>
+<article>
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</article>
+
+</section>
+<section>
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+<div>{{ slot_18 }}</div>
+</section>
+</aside>
+<footer>
+<span>{{ slot_19 }}</span>
+<span>{{ slot_20 }}</span>
+<span>{{ slot_21 }}</span>
+</footer>
+</body>
+</html>

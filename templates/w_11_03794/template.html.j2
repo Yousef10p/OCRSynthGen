@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: #f0f0f0;
+    font-family: var(--font-body);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 1em;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.vacation-option {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.vacation {
+    width: 30%;
+    margin-bottom: 1em;
+}
+
+.vacation .image {
+    background: #ccc;
+    height: 200px;
+    margin-bottom: 0.5em;
+}
+
+#search_form {
+    margin-bottom: 1em;
+}
+
+#search_input {
+    padding: 0.5em;
+    margin-left: 0.5em;
+}
+
+#search_button {
+    padding: 0.5em;
+}
+
+#search_results {
+    margin-top: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header id="top">
+<h1>{{ slot_0 }}</h1>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="destinations">
+<div class="vacation-option">
+<h2>{{ slot_4 }}</h2>
+<div class="vacation">
+<div class="image ph"></div>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="vacation">
+<div class="image ph"></div>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="vacation">
+<div class="image ph"></div>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+</section>
+<section id="search">
+<h2>{{ slot_11 }}</h2>
+<form id="search_form">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<button id="search_button">{{ slot_13 }}</button>
+</form>
+<div id="search_results"></div>
+</section>
+<section id="about">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</section>
+</main>
+</body>
+</html>

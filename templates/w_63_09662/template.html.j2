@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+}
+
+header img {
+  height: 50px;
+  margin-left: auto;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 10px;
+}
+
+nav a:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+#about, #practice-areas, #meet-our-team, #contact {
+  margin: 20px;
+  padding: 20px;
+}
+
+#about {
+  background-color: #f4f4f4;
+  border: 1px solid #333;
+}
+
+#practice-areas {
+  background-color: #ccc;
+  border: 1px solid #333;
+}
+
+#meet-our-team {
+  background-color: #ddd;
+  border: 1px solid #333;
+}
+
+#contact {
+  background-color: #eee;
+  border: 1px solid #333;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+</header>
+<main>
+<section id="about">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+</section>
+<section id="practice-areas">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+</section>
+<section id="meet-our-team">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+</section>
+<section id="contact">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</section>
+</main>
+</body>
+</html>

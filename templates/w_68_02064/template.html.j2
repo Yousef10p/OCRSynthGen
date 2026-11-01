@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+
+header {
+    text-align: center;
+    padding: 30px 0;
+    background: rgb(255,94,0);
+    background: linear-gradient(-90deg, rgba(255,94,0,1) 0%, rgba(255,150,0,1) 100%);
+    color: white;
+}
+
+header p {
+    font-size: 20px;
+}
+
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 800px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.comparison-table thead th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.comparison-table tbody tr:nth-child(even){background-color: #f2f2f2;}
+.comparison-table tbody tr:hover {background-color: #ddd;}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.compare-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.compare-button:hover {
+    background-color: #007B9A;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header class="header">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</header>
+
+<table class="comparison-table">
+<thead>
+<tr>
+<th>{{ slot_2 }}</th>
+<th>{{ slot_3 }}</th>
+<th>{{ slot_4 }}</th>
+<th>{{ slot_5 }}</th>
+<th>{{ slot_6 }}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{{ slot_7 }}</td>
+<td>{{ slot_8 }}</td>
+<td>{{ slot_9 }}</td>
+<td>{{ slot_10 }}</td>
+<td>{{ slot_11 }}</td>
+</tr>
+<tr>
+<td>{{ slot_12 }}</td>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+<td>{{ slot_16 }}</td>
+</tr>
+<tr>
+<td>{{ slot_17 }}</td>
+<td>{{ slot_18 }}</td>
+<td>{{ slot_19 }}</td>
+<td>{{ slot_20 }}</td>
+<td>{{ slot_21 }}</td>
+</tr>
+</tbody>
+</table>
+<button class="compare-button">{{ slot_22 }}</button>
+
+<footer>
+<p>{{ slot_23 }}</p>
+</footer>
+</body>
+</html>

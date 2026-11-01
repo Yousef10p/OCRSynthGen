@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  text-align: center;
+  font-family: var(--font-body);
+}
+.header, .content, .footer {
+  width: 80%;
+  margin: auto;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+.logo {
+  border: 2px solid black;
+  padding: 10px;
+}
+nav ul {
+  list-style-type: none;
+}
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+.section:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="logo">{{ slot_0 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</div>
+<div class="content">
+<section class="portfolio">
+<h2>{{ slot_5 }}</h2>
+<div class="project">{{ slot_6 }}</div>
+<div class="project">{{ slot_7 }}</div>
+<div class="project">{{ slot_8 }}</div>
+</section>
+<section class="blog">
+<h2>{{ slot_9 }}</h2>
+<article>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</article>
+<article>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</article>
+</section>
+<section class="testimonials">
+<h2>{{ slot_14 }}</h2>
+<div class="testimonial">{{ slot_15 }}</div>
+<div class="testimonial">{{ slot_16 }}</div>
+</section>
+</div>
+<div class="footer">
+<div class="social-media">
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+header {
+    background: #f8a5c2;
+    padding: 2em 0;
+    margin-bottom: 1em;
+}
+
+.product-video, .product-specifications, .where-to-buy {
+    background: #c8e6c9;
+    padding: 1em;
+    margin: 1em;
+}
+
+h2 {
+    color: #455a64;
+}
+
+.video-placeholder, .product-image {
+    background: #b3e5fc;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1em;
+}
+
+li {
+    margin-bottom: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>{{ slot_0 }}</header>
+<section class="product-video">
+<h2>{{ slot_1 }}</h2>
+<div class="video-placeholder">{{ slot_2 }}</div>
+</section>
+<section class="product-specifications">
+<h2>{{ slot_3 }}</h2>
+<div class="product-image">{{ slot_4 }}</div>
+<ul>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</section>
+<section class="where-to-buy">
+<h2>{{ slot_10 }}</h2>
+<ul>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</section>
+</body>
+</html>

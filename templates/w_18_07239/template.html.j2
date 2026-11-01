@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu-section {
+    margin: 20px;
+    text-align: center;
+}
+
+.menu-section img {
+    height: 200px;
+    width: 200px;
+    background-color: #f0f0f0; 
+}
+
+footer {
+    background-color: #333;
+    position: fixed;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+    right: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="food-menu">
+<h2>{{ slot_5 }}</h2>
+<div class="menu-section">
+<h3>{{ slot_6 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="menu-section">
+<h3>{{ slot_8 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_9 }}</p>
+</div>
+
+</section>
+<section id="beverage-menu">
+<h2>{{ slot_10 }}</h2>
+<div class="menu-section">
+<h3>{{ slot_11 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="menu-section">
+<h3>{{ slot_13 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_14 }}</p>
+</div>
+
+</section>
+<section id="contact">
+<h2>{{ slot_15 }}</h2>
+
+</section>
+</main>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+
+</body>
+</html>

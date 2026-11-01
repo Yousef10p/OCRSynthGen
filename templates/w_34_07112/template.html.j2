@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+header h1 {
+    display: inline-block;
+    margin-left: auto;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.banner {
+    background: #ccc;
+    height: 300px;
+}
+
+section {
+    padding: 20px;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image {
+    background: #55f;
+    color: #fff;
+    font-size: 2em;
+    margin: 10px;
+    padding: 30px;
+    width: calc(33.33% - 20px);
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+footer form input, footer form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+footer form input[type="submit"] {
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="banner ph"></div> 
+<section id="destination">
+<h2>{{ slot_4 }}</h2>
+
+<p>{{ slot_5 }}</p>
+
+<div class="image-container">
+<div class="image">{{ slot_6 }}</div>
+<div class="image">{{ slot_7 }}</div>
+<div class="image">{{ slot_8 }}</div>
+
+</div>
+</section>
+<section id="experiences">
+<h2>{{ slot_9 }}</h2>
+
+<div class="image-container">
+<div class="image">{{ slot_10 }}</div>
+<div class="image">{{ slot_11 }}</div>
+<div class="image">{{ slot_12 }}</div>
+
+</div>
+</section>
+<footer id="contact">
+<h2>{{ slot_13 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_16 }}</span>
+<span class="">{{ slot_17 }}</span>
+</form>
+<p>{{ slot_18 }}</p>
+</footer>
+</body>
+</html>

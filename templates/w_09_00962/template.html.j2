@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+header, footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 5px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  margin: auto;
+  width: 90%;
+}
+
+.item {
+  width: 100%;
+  padding: 10px;
+}
+
+.color-rectangle {
+  width: 100%;
+  height: 200px;
+  background-color: #ccc;
+}
+
+.reviews-container, #newsletter {
+  padding: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+form input[type="email"] {
+  padding: 5px;
+  width: 60%;
+}
+
+form button[type="submit"] {
+  padding: 5px 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="destinations">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<div class="gallery">
+<article class="item"><div class="color-rectangle"></div><p>{{ slot_6 }}</p></article>
+<article class="item"><div class="color-rectangle"></div><p>{{ slot_7 }}</p></article>
+<article class="item"><div class="color-rectangle"></div><p>{{ slot_8 }}</p></article>
+
+</div>
+</section>
+<section id="activities">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="gallery">
+<article class="item"><div class="color-rectangle"></div><p>{{ slot_11 }}</p></article>
+<article class="item"><div class="color-rectangle"></div><p>{{ slot_12 }}</p></article>
+<article class="item"><div class="color-rectangle"></div><p>{{ slot_13 }}</p></article>
+
+</div>
+</section>
+<footer>
+<section id="reviews">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<div class="reviews-container">
+<article class="review">
+<p>{{ slot_16 }}</p>
+</article>
+<article class="review">
+<p>{{ slot_17 }}</p>
+</article>
+
+</div>
+</section>
+<section id="newsletter">
+<h2>{{ slot_18 }}</h2>
+<p>{{ slot_19 }}</p>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_20 }}</span>
+<button>{{ slot_21 }}</button>
+</form>
+</section>
+<p>{{ slot_22 }}</p>
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#carousel {
+    width: 100%;
+    height: 200px;
+    background: #999;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 200px;
+    color: #fff;
+    display: none;
+}
+
+#cta {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#cta button {
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+aside {
+    width: 20%;
+    padding: 10px;
+    background: #f2f2f2;
+    float: right;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section>
+<div id="carousel">
+<div class="slide" style="background:red;">{{ slot_5 }}</div>
+<div class="slide" style="background:blue;">{{ slot_6 }}</div>
+<div class="slide" style="background:green;">{{ slot_7 }}</div>
+</div>
+<div id="cta">
+<button>{{ slot_8 }}</button>
+</div>
+</section>
+<aside id="left-sidebar">
+<h2>{{ slot_9 }}</h2>
+<ul>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+</ul>
+</aside>
+<aside id="right-sidebar">
+<h2>{{ slot_13 }}</h2>
+<ul>
+<li style="background: yellow;">{{ slot_14 }}</li>
+<li style="background: orange;">{{ slot_15 }}</li>
+<li style="background: purple;">{{ slot_16 }}</li>
+</ul>
+<h2>{{ slot_17 }}</h2>
+<ul>
+<li>{{ slot_18 }}</li>
+<li>{{ slot_19 }}</li>
+<li>{{ slot_20 }}</li>
+</ul>
+</aside>
+</body>
+</html>

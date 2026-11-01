@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  width: 100%;
+  background: #eee;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+nav ul li {
+  margin: 0 1em;
+}
+
+.car-image {
+  width: 100%;
+  height: 200px;
+  background: #ccc;
+  margin: 1em 0;
+}
+
+.banner {
+  width: 100%;
+  height: 300px;
+  background: #999;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  padding: 2em;
+}
+
+aside {
+  width: 25%;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  background: #eee;
+  padding: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<div class="banner ph"></div>
+</header>
+<main>
+<section id="tesla">
+<h2>{{ slot_3 }}</h2>
+<div class="car-image ph"></div>
+<p>{{ slot_4 }}</p>
+</section>
+<section id="ford">
+<h2>{{ slot_5 }}</h2>
+<div class="car-image ph"></div>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="bmw">
+<h2>{{ slot_7 }}</h2>
+<div class="car-image ph"></div>
+<p>{{ slot_8 }}</p>
+</section>
+<aside>
+<h3>{{ slot_9 }}</h3>
+<blockquote>
+        {{ slot_10 }}
+        <footer>{{ slot_11 }}</footer>
+</blockquote>
+<blockquote>
+        {{ slot_12 }}
+        <footer>{{ slot_13 }}</footer>
+</blockquote>
+</aside>
+</main>
+<footer>
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 10px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+section#featured-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+section#featured-products article {
+    width: 30%;
+}
+
+section#featured-products .product-image {
+    height: 200px;
+    background-color: #f1f1f1;
+}
+
+button {
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+
+button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+
+    {{ slot_3 }}
+        <h2>{{ slot_4 }}</h2>
+<article class="product">
+<div class="product-image ph"></div>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+            {{ slot_7 }}
+        </article>
+<article class="product">
+<div class="product-image ph"></div>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+            {{ slot_10 }}
+        </article>
+<article class="product">
+<div class="product-image ph"></div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+            {{ slot_13 }}
+        </article>
+    
+    {{ slot_14 }}
+</body>
+</html>

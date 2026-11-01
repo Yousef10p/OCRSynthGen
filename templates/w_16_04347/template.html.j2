@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+
+nav a {
+  margin: 0 10px;
+}
+
+#login-signup {
+  display: flex;
+  align-items: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 20px;
+}
+
+main section {
+  position: relative;
+  height: 200px;
+  margin: 10px;
+  overflow: hidden;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f8f8;
+}
+
+
+main section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+}
+
+@media (max-width: 600px) {
+  header, footer, main {
+    flex-direction: column;
+  }
+
+  main {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<form id="search-form">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<span class="">{{ slot_1 }}</span>
+</form>
+<nav>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+<a>{{ slot_5 }}</a>
+</nav>
+<div id="login-signup">
+<form id="login-form">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<span class="">{{ slot_8 }}</span>
+</form>
+<a>{{ slot_9 }}</a>
+</div>
+</header>
+<main>
+<section id="courses">{{ slot_10 }}</section>
+<section id="instructors">{{ slot_11 }}</section>
+<section id="reviews">{{ slot_12 }}</section>
+</main>
+<footer>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 10px;
+}
+
+.hero {
+  background-color: #007bff;
+  color: white;
+  padding: 100px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.product, .blog-post, .social-media {
+  height: 300px;
+  width: 300px;
+  background-color: grey;
+  margin: 20px;
+  text-align: center;
+  line-height: 300px;
+  color: white;
+  display: inline-block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="hero">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+<button>{{ slot_5 }}</button>
+</div>
+<section id="products">
+<h2>{{ slot_6 }}</h2>
+
+<div class="product">{{ slot_7 }}</div>
+<div class="product">{{ slot_8 }}</div>
+<div class="product">{{ slot_9 }}</div>
+</section>
+<section id="blog">
+<h2>{{ slot_10 }}</h2>
+
+<div class="blog-post">{{ slot_11 }}</div>
+<div class="blog-post">{{ slot_12 }}</div>
+<div class="blog-post">{{ slot_13 }}</div>
+</section>
+<section id="media">
+<h2>{{ slot_14 }}</h2>
+
+<div class="social-media">{{ slot_15 }}</div>
+<div class="social-media">{{ slot_16 }}</div>
+<div class="social-media">{{ slot_17 }}</div>
+</section>
+</body>
+</html>

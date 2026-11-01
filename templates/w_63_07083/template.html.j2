@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.4;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+}
+
+
+#showcase {
+    position: relative;
+    
+}
+
+#showcase .bg-image {
+    
+}
+
+#showcase .content-wrap {
+    
+}
+
+#main {
+    
+}
+
+#main .grid {
+    
+}
+
+#section-a .content-wrap {
+    
+}
+
+#section-b .card {
+    
+}
+
+#section-c .content-wrap {
+    
+}
+
+#section-d .box {
+    
+}
+
+#section-d form input[type='text'] {
+    
+}
+
+#section-d form textarea {
+    
+}
+
+#section-d form button[type='submit'] {
+    
+}
+
+#main-footer .grid {
+    
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header class="grid" id="showcase">
+<div class="bg-image ph"></div>
+<div class="content-wrap">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+</header>
+
+<main id="main">
+
+<section class="grid" id="section-a">
+<div class="content-wrap">
+<h2 class="content-title">{{ slot_2 }}</h2>
+<div class="content-text">
+<p>{{ slot_3 }}</p>
+</div>
+</div>
+</section>
+
+<section class="grid" id="section-b">
+<ul>
+<li>
+<div class="card">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="card-content">
+<h3 class="card-title">{{ slot_4 }}</h3>
+<p>{{ slot_5 }}</p>
+</div>
+</div>
+</li>
+<li>
+<div class="card">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="card-content">
+<h3 class="card-title">{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</div>
+</div>
+</li>
+</ul>
+</section>
+
+<section class="grid" id="section-c">
+<div class="content-wrap">
+<h2 class="content-title">{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<a class="btn">{{ slot_10 }}</a>
+</div>
+</section>
+
+<section class="grid" id="section-d">
+<div class="box">
+<h2 class="content-title">{{ slot_11 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_14 }}</span>
+<button class="btn">{{ slot_15 }}</button>
+</form>
+</div>
+<div class="box">
+<h2 class="content-title">{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+</div>
+</section>
+</main>
+
+<footer class="grid" id="main-footer">
+<div>{{ slot_18 }}</div>
+<div>{{ slot_19 }} <a>{{ slot_20 }}</a></div>
+</footer>
+</body>
+</html>

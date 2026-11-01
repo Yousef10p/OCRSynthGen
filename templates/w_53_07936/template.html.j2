@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+a {
+    color: #265301;
+    text-decoration: none;
+}
+
+header, footer {
+    background-color: #bbb;
+    padding: 20px;
+}
+
+.hero-image {
+    background-color: #777;
+    color: #fff;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+#products .product, #blog .blog-post, #webinars .webinar, #case-studies .case-study {
+    background-color: #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#social-media .feed {
+    background-color: #ddd;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<div class="hero-image">{{ slot_3 }}</div>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+</form>
+</header>
+<main>
+<section id="products">
+<h2>{{ slot_5 }}</h2>
+<article class="product">{{ slot_6 }}</article>
+<article class="product">{{ slot_7 }}</article>
+</section>
+<section id="blog">
+<h2>{{ slot_8 }}</h2>
+<article class="blog-post">{{ slot_9 }}</article>
+<article class="blog-post">{{ slot_10 }}</article>
+</section>
+<section id="webinars">
+<h2>{{ slot_11 }}</h2>
+<article class="webinar">{{ slot_12 }}</article>
+<article class="webinar">{{ slot_13 }}</article>
+</section>
+</main>
+<footer>
+<section id="case-studies">
+<h2>{{ slot_14 }}</h2>
+<article class="case-study">{{ slot_15 }}</article>
+<article class="case-study">{{ slot_16 }}</article>
+</section>
+<section id="social-media">
+<h2>{{ slot_17 }}</h2>
+<div class="feed">{{ slot_18 }}</div>
+</section>
+</footer>
+</body>
+</html>

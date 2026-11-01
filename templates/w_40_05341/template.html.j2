@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+}
+
+#sidebar {
+    width: 200px;
+    margin-left: 20px;
+}
+
+#search-bar {
+    margin-bottom: 20px;
+}
+
+#categories {
+    margin-bottom: 20px;
+}
+
+#filters {
+    margin-bottom: 20px;
+}
+
+#main-content {
+    flex: 1;
+}
+
+.product, .review, .promotion {
+    height: 200px;
+    margin-bottom: 20px;
+    background: #f0f0f0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="sidebar">
+<div id="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+</div>
+<div id="categories">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+<div id="filters">
+<h2>{{ slot_5 }}</h2>
+<div>
+<label>{{ slot_6 }}</label>
+<span class="slider" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+</div>
+<div>
+<label>{{ slot_8 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_9 }}</span>
+</div>
+<div>
+<label>{{ slot_10 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+</div>
+</div>
+</div>
+<div id="main-content">
+<div id="product-listings">
+<h2>{{ slot_12 }}</h2>
+<div class="product">{{ slot_13 }}</div>
+<div class="product">{{ slot_14 }}</div>
+<div class="product">{{ slot_15 }}</div>
+</div>
+<div id="reviews">
+<h2>{{ slot_16 }}</h2>
+<div class="review">{{ slot_17 }}</div>
+<div class="review">{{ slot_18 }}</div>
+<div class="review">{{ slot_19 }}</div>
+</div>
+<div id="promotions">
+<h2>{{ slot_20 }}</h2>
+<div class="promotion">{{ slot_21 }}</div>
+<div class="promotion">{{ slot_22 }}</div>
+<div class="promotion">{{ slot_23 }}</div>
+</div>
+</div>
+</body>
+</html>

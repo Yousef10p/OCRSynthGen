@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #333;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    color: white;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+}
+article h3 {
+    color: #4caf50;
+}
+.article-image, .video-preview, .resource-image {
+    background-color: #bbdefb;
+    height: 100px;
+    margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="articles">
+<h2>{{ slot_4 }}</h2>
+<article>
+<h3>{{ slot_5 }}</h3>
+<div class="article-image ph"></div><p>{{ slot_6 }}</p>
+</article>
+<article>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p><div class="article-image ph"></div>
+</article>
+<article>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="article-image ph"></div>
+</article>
+</section>
+<section id="videos">
+<h2>{{ slot_11 }}</h2>
+<article>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="video-preview ph"></div>
+</article>
+<article>
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+<div class="video-preview ph"></div>
+</article>
+<article>
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+<div class="video-preview ph"></div>
+</article>
+</section>
+<section id="wellness-resources">
+<h2>{{ slot_18 }}</h2>
+<article>
+<h3>{{ slot_19 }}</h3>
+<p>{{ slot_20 }}</p>
+<div class="resource-image ph"></div>
+</article>
+<article>
+<h3>{{ slot_21 }}</h3>
+<p>{{ slot_22 }}</p>
+<div class="resource-image ph"></div>
+</article>
+<article>
+<h3>{{ slot_23 }}</h3>
+<p>{{ slot_24 }}</p>
+<div class="resource-image ph"></div>
+</article>
+</section>
+</main>
+</body>
+</html>

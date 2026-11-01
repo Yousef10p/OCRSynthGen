@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+    color: #fff;
+    background: #333;
+}
+.navbar ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+}
+.navbar li {
+    float: right;
+    width: 20%;
+    padding: 15px;
+}
+.navbar li:hover {
+    background-color: #111;
+}
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.navbar li ul {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.navbar li:hover ul {
+    display: block;
+}
+.navbar li ul li {
+    float: none;
+    position: relative;
+}
+.navbar li ul li:hover {
+    background-color: #1a1a1a;
+}
+.header {
+    background-color: #666;
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+.main-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
+.col-1, .col-2, .col-3 {
+    flex: 1;
+    padding: 15px;
+}
+.box {
+    height: 150px;
+    width: 100%;
+    background-color: #888;
+}
+.footer {
+    background-color: #666;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="navbar">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_5 }}</a>
+<ul>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+</ul>
+</div>
+<div class="header">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="main-content">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="col-1">
+<div class="box">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+</div>
+<div class="col-2">
+<div class="box">{{ slot_17 }}</div>
+<p>{{ slot_18 }}</p>
+</div>
+<div class="col-3">
+<div class="box">{{ slot_19 }}</div>
+<p>{{ slot_20 }}</p>
+</div>
+</div>
+
+<div class="footer">
+<p>{{ slot_21 }}</p>
+</div>
+</body>
+</html>

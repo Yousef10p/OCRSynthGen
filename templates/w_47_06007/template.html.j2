@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-family: var(--font-body);
+    color: #fff;
+}
+
+header, footer {
+    background: #000;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+#banner {
+    display: flex;
+    justify-content: space-between;
+}
+
+#banner div {
+    width: 50%;
+    padding: 20px;
+}
+
+#banner .right-column {
+    background: #f00;
+}
+
+#banner .left-column {
+    background: #0f0;
+}
+
+#gym-near-you {
+    background: #00f;
+    padding: 20px;
+    text-align: center;
+}
+
+footer div {
+    width: 50%;
+    display: inline-block;
+}
+
+footer h2 {
+    text-align: center;
+}
+
+footer a {
+    color: #fff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<div id="banner">
+<div class="right-column">
+<h1>{{ slot_2 }}</h1>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+<div class="left-column">
+<h1>{{ slot_5 }}</h1>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<button>{{ slot_8 }}</button>
+</div>
+</div>
+<form id="gym-near-you">
+<h2>{{ slot_9 }}</h2>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<button>{{ slot_11 }}</button>
+</form>
+</main>
+<footer>
+<div id="social">
+<h2>{{ slot_12 }}</h2>
+<ul>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+</ul>
+</div>
+<div id="blog">
+<h2>{{ slot_16 }}</h2>
+<ul>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

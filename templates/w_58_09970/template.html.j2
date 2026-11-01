@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: #f8f8f8;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.logo {
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navigation {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.searchbar {
+    position: absolute;
+    left: 10px;
+}
+
+.searchbar input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+p {
+    width: 60%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.placeholder-image {
+    background-color: #ccc;
+    width: 60%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .navigation {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .searchbar {
+        position: relative;
+        margin-top: 10px;
+    }
+
+    section {
+        width: 100%;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<div class="logo">{{ slot_0 }}</div>
+<ul class="navigation">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+<div class="searchbar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>
+</div>
+</nav>
+</header>
+<section id="home">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+<div class="placeholder-image">{{ slot_9 }}</div>
+</section>
+<section id="products">
+<h1>{{ slot_10 }}</h1>
+<p>{{ slot_11 }}</p>
+<div class="placeholder-image">{{ slot_12 }}</div>
+</section>
+<section id="services">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+<div class="placeholder-image">{{ slot_15 }}</div>
+</section>
+<section id="about">
+<h1>{{ slot_16 }}</h1>
+<p>{{ slot_17 }}</p>
+<div class="placeholder-image">{{ slot_18 }}</div>
+</section>
+<section id="contact">
+<h1>{{ slot_19 }}</h1>
+<p>{{ slot_20 }}</p>
+<div class="placeholder-image">{{ slot_21 }}</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+header {
+    background-color: navy;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: darkblue;
+}
+
+nav li {
+    float: right;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.service {
+    float: right;
+    width: 33.33%;
+    padding: 15px;
+}
+
+#services {
+    clear: both;
+    background-color: navy;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+#schedule {
+    background-color: navy;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+footer {
+    background-color: navy;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.social-media, .contact {
+    float: right;
+    width: 50%;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<main id="services">
+<div class="service">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+
+<div style="width:300px;height:200px;background:red;"></div>
+</div>
+<div class="service">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+
+<div style="width:300px;height:200px;background:red;"></div>
+</div>
+
+</main>
+<section id="schedule">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+
+<div style="width:300px;height:200px;background:red;"></div>
+</section>
+<footer>
+<div class="social-media">
+<h3>{{ slot_10 }}</h3>
+
+<a>{{ slot_11 }}</a>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+</div>
+<div class="contact">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+<p>{{ slot_17 }}</p>
+</div>
+</footer>
+</body>
+</html>

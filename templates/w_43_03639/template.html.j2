@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+
+#header {
+  background-color: #f4f4f4;
+  padding: 20px;
+  text-align: center;
+}
+
+#hero-banner {
+  background-color: #f4f4f4;
+  padding: 20px;
+  text-align: center;
+}
+
+#exotic, #performance, #sedan {
+  padding: 20px;
+}
+
+
+#sidebar {
+  background-color: #f4f4f4;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  overflow: auto;
+}
+
+
+#content {
+  margin-right: 200px;
+  padding: 20px;
+}
+
+
+#footer {
+  background-color: #f4f4f4;
+  padding: 20px;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<div id="header">
+<h1>{{ slot_0 }}</h1>
+
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</div>
+
+<div id="hero-banner">
+
+<div id="car-image" style="background-color: blue; width: 100%; height: 300px; text-align: center;">{{ slot_4 }}</div>
+</div>
+
+<div id="sidebar">
+
+<div id="exotic">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div id="exotic-image" style="background-color: red; width: 100%; height: 150px; text-align: center;">{{ slot_7 }}</div>
+</div>
+
+<div id="performance">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div id="performance-image" style="background-color: green; width: 100%; height: 150px; text-align: center;">{{ slot_10 }}</div>
+</div>
+
+<div id="sedan">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div id="sedan-image" style="background-color: yellow; width: 100%; height: 150px; text-align: center;">{{ slot_13 }}</div>
+</div>
+</div>
+
+<div id="content">
+<p>{{ slot_14 }}</p>
+</div>
+
+<div id="footer">
+<p>{{ slot_15 }}</p>
+</div>
+</body>
+</html>

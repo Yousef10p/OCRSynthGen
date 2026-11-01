@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 10px 0;
+}
+
+.logo {
+    font-size: 24px;
+    text-align: center;
+}
+
+nav ul {
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.main-content, .service, .product {
+    width: 50%;
+    margin: auto;
+}
+
+#contact-us span {
+    display: block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<div class="logo">{{ slot_0 }}</div>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="home">
+<div class="main-content">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+</div>
+</section>
+<section id="about-us">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</section>
+<section id="services">
+<h2>{{ slot_10 }}</h2>
+<div class="service">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</section>
+<section id="products">
+<h2>{{ slot_15 }}</h2>
+<div class="product">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+</div>
+<div class="product">
+<h3>{{ slot_18 }}</h3>
+<p>{{ slot_19 }}</p>
+</div>
+</section>
+<section id="contact-us">
+<h2>{{ slot_20 }}</h2>
+<p>{{ slot_21 }}</p>
+<div>
+<span>{{ slot_22 }}</span>
+<span>{{ slot_23 }}</span>
+<span>{{ slot_24 }}</span>
+</div>
+</section>
+</body>
+</html>

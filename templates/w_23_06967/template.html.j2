@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: #fff;
+}
+header img {
+    height: 50px;
+    width: 50px;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+}
+nav ul li {
+    margin: 0 10px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+#featured {
+    display: flex;
+    justify-content: space-between;
+}
+#featured .product {
+    border: 1px solid #333;
+    padding: 10px;
+}
+#reviews {
+    display: flex;
+    justify-content: space-between;
+}
+#reviews .review {
+    border: 1px solid #333;
+    padding: 10px;
+}
+footer {
+    display: flex;
+    justify-content: space-between;
+    background: #333;
+    color: #fff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="featured">
+<h2>{{ slot_4 }}</h2>
+<div class="product">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="product">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+
+</section>
+<section id="reviews">
+<h2>{{ slot_9 }}</h2>
+<div class="review">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="review">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+
+</section>
+<footer>
+<div id="contact">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+</div>
+</footer>
+</body>
+</html>

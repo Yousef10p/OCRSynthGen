@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+}
+#logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+nav a {
+    margin: 0 10px;
+}
+#slider {
+    
+}
+.destination, .activity {
+    
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<a id="logo">{{ slot_0 }}</a>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+<a>{{ slot_5 }}</a>
+</nav>
+</header>
+<section id="slider">
+<article>
+<h1>{{ slot_6 }}</h1>
+
+<div class="destinations">
+<div class="destination"></div>
+<div class="destination"></div>
+<div class="destination"></div>
+
+</div>
+</article>
+<article>
+<h1>{{ slot_7 }}</h1>
+
+<div class="activities">
+<div class="activity"></div>
+<div class="activity"></div>
+<div class="activity"></div>
+
+</div>
+</article>
+<aside>
+<h1>{{ slot_8 }}</h1>
+
+<ul>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+
+</ul>
+</aside>
+</section>
+<footer>
+
+<address>
+                {{ slot_12 }}<br>
+                {{ slot_13 }}<br>
+                {{ slot_14 }}<br>
+                {{ slot_15 }}
+            </address>
+</footer>
+</body>
+</html>

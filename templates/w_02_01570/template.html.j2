@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+.navbar {
+    width: 100%;
+    background: #333;
+    color: #fff;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar li {
+    display: inline-block;
+    padding: 10px;
+}
+
+.slider {
+    width: 100%;
+    height: 500px;
+    background: #f0f0f0;
+    text-align: center;
+    line-height: 500px;
+}
+
+.slider-item {
+    display: none;
+}
+
+.content {
+    display: flex;
+}
+
+.left-column {
+    flex: 1;
+    padding: 10px;
+    background: #f0f0f0;
+}
+
+.right-column {
+    flex: 2;
+    padding: 10px;
+    background: #e0e0e0;
+}
+
+.footer {
+    width: 100%;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+.left-column img, .right-column img {
+    width: 100%;
+    height: 200px;
+    background: #ccc;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="navbar">
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+<div class="slider">
+<div class="slider-item">{{ slot_5 }}</div>
+<div class="slider-item">{{ slot_6 }}</div>
+<div class="slider-item">{{ slot_7 }}</div>
+</div>
+<div class="content">
+<div class="left-column">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="right-column">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</div>
+<div class="footer">
+<p>{{ slot_14 }}</p>
+</div>
+</body>
+</html>

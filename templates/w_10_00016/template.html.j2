@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+#header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+#content {
+    display: flex;
+    margin-top: 10px;
+}
+
+#news-ticker {
+    flex: 1;
+    margin-left: 10px;
+}
+
+#sidebar {
+    flex: 1;
+    background-color: #ddd;
+    padding: 10px;
+}
+
+#feed {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 50px;
+}
+
+.feed-item {
+    border: 1px solid #000;
+    margin: 5px;
+}
+
+.feed-color {
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div id="content">
+<div id="news-ticker">
+
+<h2>{{ slot_1 }}</h2>
+<div class="news-item">{{ slot_2 }}</div>
+<div class="news-item">{{ slot_3 }}</div>
+<div class="news-item">{{ slot_4 }}</div>
+</div>
+<div id="sidebar">
+<h3>{{ slot_5 }}</h3>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>
+<div id="feed-settings">
+<label>{{ slot_7 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<label>{{ slot_9 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<button id="apply-settings">{{ slot_11 }}</button>
+</div>
+<div id="feed">
+<div class="feed-item"><div class="feed-color"></div> {{ slot_12 }}</div>
+<div class="feed-item"><div class="feed-color"></div> {{ slot_13 }}</div>
+<div class="feed-item"><div class="feed-color"></div> {{ slot_14 }}</div>
+</div>
+</div>
+</div>
+<footer>
+<p>{{ slot_15 }}</p>
+</footer>
+
+</body>
+</html>

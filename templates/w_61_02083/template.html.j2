@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+.jumbotron {
+    background: none no-repeat center center;
+    background-size: cover;
+}
+.container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.col-md-4, .col-sm-4 {
+    background-color: rgba(200, 50, 50, 0.1);
+    border: 1px solid rgba(200, 50, 50, 0.2);
+    border-radius: 5px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+footer {
+    position: absolute;
+    height: 60px;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding-top: 20px;
+    color: rgba(200, 50, 50, 0.3);
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+<div class="container">
+<div class="navbar-header">
+<a class="navbar-brand">{{ slot_0 }}</a>
+</div>
+<div class="navbar-collapse collapse" id="navbar">
+<ul class="nav navbar-nav navbar-right">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="jumbotron">
+<div class="container">
+<h1>{{ slot_4 }}</h1>
+<p><a class="btn btn-primary btn-lg">{{ slot_5 }}</a></p>
+</div>
+</div>
+<div class="container" id="features">
+<div class="row">
+<div class="col-md-4">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="col-md-4">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="col-md-4">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</div>
+</div>
+</div>
+<div class="container" id="pricing">
+<div class="row">
+<div class="col-md-4">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="col-md-4">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</div>
+<div class="col-md-4">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+</div>
+</div>
+</div>
+<div class="container" id="faq">
+<div class="row">
+<h2>{{ slot_18 }}</h2>
+<p>{{ slot_19 }}</p>
+</div>
+</div>
+<footer class="container">
+<div class="row">
+<p class="col-sm-4">{{ slot_20 }}</p>
+<ul class="col-sm-8">
+<li class="col-sm-1"><a>{{ slot_21 }}</a></li>
+<li class="col-sm-1"><a>{{ slot_22 }}</a></li>
+<li class="col-sm-1"><a>{{ slot_23 }}</a></li>
+<li class="col-sm-1"><a>{{ slot_24 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

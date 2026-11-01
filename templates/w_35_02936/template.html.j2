@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #333;
+  color: #fff;
+}
+
+li {
+  padding: 1em;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hero-placeholder,
+.service-placeholder {
+  background-color: #aaa;
+  height: 200px;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+
+</ul>
+</nav>
+</header>
+<section class="hero" id="home">
+
+<div class="hero-placeholder ph"></div>
+</section>
+<section class="about" id="about">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</section>
+<section class="services" id="services">
+<h2>{{ slot_6 }}</h2>
+<div class="service">
+<h3>{{ slot_7 }}</h3>
+<div class="service-placeholder ph"></div>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_9 }}</h3>
+<div class="service-placeholder ph"></div>
+<p>{{ slot_10 }}</p>
+</div>
+
+</section>
+<section class="contact" id="contact">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+<footer>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+</footer>
+</body>
+</html>

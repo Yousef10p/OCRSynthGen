@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+main {
+    margin: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+.property, .partner, .contact {
+    background-color: #ddd;
+    margin-bottom: 10px;
+    color: #333;
+    padding: 20px;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="listings">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+<div class="property">{{ slot_5 }}</div>
+<div class="property">{{ slot_6 }}</div>
+<div class="property">{{ slot_7 }}</div>
+</section>
+<section id="partners">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="partner">{{ slot_10 }}</div>
+<div class="partner">{{ slot_11 }}</div>
+<div class="partner">{{ slot_12 }}</div>
+</section>
+<section id="contact">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="contact">{{ slot_15 }}</div>
+</section>
+</main>
+<footer>
+<div class="footer-links">
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+</div>
+<div class="footer-contact">{{ slot_19 }}</div>
+</footer>
+</body>
+</html>

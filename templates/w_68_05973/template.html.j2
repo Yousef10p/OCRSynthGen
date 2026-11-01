@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+header {
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	padding: 16px;
+}
+
+.banner {
+	width: 100%;
+	height: 20px;
+  	background: linear-gradient(-45deg, blue, red);
+}
+
+nav[role=navigation] {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	background: lightgray;
+	padding: 1rem 0;
+	margin: 0.5rem 0;
+}
+
+nav[role=navigation] ul {
+	list-style-type:none;
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+	margin: 0;
+	padding: 0;
+}
+
+nav[role=navigation] a {
+	color: black;
+	text-decoration: none;
+}
+
+nav[role=navigation] a:hover {
+	color: red;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 16px;
+}
+
+main>section {
+	width: 100%;
+	margin: 16px 0;
+}
+
+main>section>article {
+	padding: 16px;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	justify-content: center;
+	margin: 16px 0;
+}
+
+
+
+@media screen and (max-width: 600px) {
+	nav[role=navigation] ul {
+		flex-direction: column;
+	}
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+        {{ slot_0 }}
+    </header>
+<div class="banner ph"></div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="products">
+<h2>{{ slot_4 }}</h2>
+<article>
+                {{ slot_5 }}
+                <h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</article>
+<article>
+                {{ slot_8 }}
+                <h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</article>
+</section>
+<section id="blog">
+<h2>{{ slot_11 }}</h2>
+<article>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</article>
+<article>
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</article>
+</section>
+</main>
+</body>
+</html>

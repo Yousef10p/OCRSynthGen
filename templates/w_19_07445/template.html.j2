@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background-color: #694534;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+#hero {
+  background-color: white;
+  text-align: center;
+  padding: 50px 0;
+}
+
+#hero h2 {
+  color: black;
+}
+
+.cta-btn {
+  background-color: #f47b20;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 10px;
+}
+
+#gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image {
+  height: 200px;
+  width: 200px;
+  background-color: #694534;
+  margin: 10px;
+}
+
+#questions {
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<div>
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<a class="cta-btn">{{ slot_7 }}</a>
+<a class="cta-btn">{{ slot_8 }}</a>
+</div>
+</section>
+<section id="gallery">
+<h2>{{ slot_9 }}</h2>
+<div class="image ph"></div>
+<div class="image ph"></div>
+<div class="image ph"></div>
+<div class="image ph"></div>
+</section>
+<section id="questions">
+<h2>{{ slot_10 }}</h2>
+<details>
+<summary>{{ slot_11 }}</summary>
+<p>{{ slot_12 }}</p>
+</details>
+<details>
+<summary>{{ slot_13 }}</summary>
+<p>{{ slot_14 }}</p>
+</details>
+<details>
+<summary>{{ slot_15 }}</summary>
+<p>{{ slot_16 }}</p>
+</details>
+</section>
+</main>
+</body>
+</html>

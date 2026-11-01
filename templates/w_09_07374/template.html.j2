@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.img-slider {
+    display: flex;
+    overflow-x: auto;
+}
+
+.img-slider div {
+    flex: none;
+    min-width: 50%;
+    height: 200px;
+    margin: 20px;
+}
+
+table {
+    margin: auto;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: right;
+    padding: 8px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="img-slider">
+<div style="background-color:blue;width:100%;height:100%;">{{ slot_0 }}</div>
+<div style="background-color:green;width:100%;height:100%;">{{ slot_1 }}</div>
+<div style="background-color:red;width:100%;height:100%;">{{ slot_2 }}</div>
+</div>
+<h2>{{ slot_3 }}</h2>
+<table>
+<tr>
+<th>{{ slot_4 }}</th>
+<th>{{ slot_5 }}</th>
+<th>{{ slot_6 }}</th>
+<th>{{ slot_7 }}</th>
+<th>{{ slot_8 }}</th>
+<th>{{ slot_9 }}</th>
+</tr>
+<tr>
+<td>{{ slot_10 }}</td>
+<td>{{ slot_11 }}</td>
+<td>{{ slot_12 }}</td>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+</tr>
+<tr>
+<td>{{ slot_16 }}</td>
+<td>{{ slot_17 }}</td>
+<td>{{ slot_18 }}</td>
+<td>{{ slot_19 }}</td>
+<td>{{ slot_20 }}</td>
+</tr>
+<tr>
+<td>{{ slot_21 }}</td>
+<td>{{ slot_22 }}</td>
+<td>{{ slot_23 }}</td>
+<td>{{ slot_24 }}</td>
+<td>{{ slot_25 }}</td>
+</tr>
+</table>
+</body>
+</html>

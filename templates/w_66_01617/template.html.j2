@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: #333;
+    color: #fff;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+}
+
+#hero-image {
+    height: 100vh;
+    background-image: none;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+}
+
+#products {
+    background-color: #f4f4f4;
+}
+
+#services {
+    background-color: #ccc;
+}
+
+#security-privacy {
+    background-color: #ff5722;
+}
+
+#about-us {
+    background-color: #333;
+    color: #fff;
+}
+
+#contact-us {
+    background-color: #f4f4f4;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero-image">
+<div>
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</div>
+</section>
+<section id="products">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</section>
+<section id="services">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</section>
+<section id="security-privacy">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</section>
+<section id="about-us">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</section>
+<section id="contact-us">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+</section>
+</body>
+</html>

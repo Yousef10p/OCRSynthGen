@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	font-family: var(--font-body);
+}
+
+#banner {
+	background-color: red;
+	padding: 20px;
+	text-align: center;
+	color: white;
+	font-size: 30px;
+}
+
+#main {
+	display: flex;
+	justify-content: space-between;
+	margin: 20px;
+}
+
+nav {
+	width: 20%;
+}
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+nav ul li a {
+	display: block;
+	padding: 10px;
+	background-color: lightgray;
+	text-decoration: none;
+	color: black;
+	margin-bottom: 5px;
+}
+
+#about, #properties, #contact {
+	width: 70%;
+}
+
+.property {
+	height: 100px;
+	margin: 10px 0;
+	text-align: center;
+	padding-top: 40px;
+	color: white;
+	font-size: 20px;
+}
+
+footer {
+	display: flex;
+	justify-content: space-around;
+	padding: 20px;
+	background-color: blue;
+	color: white;
+}
+
+footer a {
+	color: white;
+	text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header id="banner">{{ slot_0 }}</header>
+<div id="main">
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<div id="about">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</div>
+<div id="properties">
+<h2>{{ slot_6 }}</h2>
+<div class="property" style="background-color: yellow;">{{ slot_7 }}</div>
+<div class="property" style="background-color: green;">{{ slot_8 }}</div>
+</div>
+<div id="contact">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+<footer>
+<a>{{ slot_11 }}</a>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    background: #f6f6f6;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #333;
+}
+
+#content {
+    margin-right: 170px;
+}
+
+.item {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+#starters .item {
+    background-color: #ff6666;
+}
+
+#main-course .item {
+    background-color: #66b3ff;
+}
+
+#desserts .item {
+    background-color: #66ff99;
+}
+
+#drinks .item {
+    background-color: #ffcc99;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="menu">
+<h3>{{ slot_0 }}</h3>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div id="content">
+<div id="starters">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="item">{{ slot_7 }}</div>
+<div class="item">{{ slot_8 }}</div>
+</div>
+<div id="main-course">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="item">{{ slot_11 }}</div>
+<div class="item">{{ slot_12 }}</div>
+</div>
+<div id="desserts">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="item">{{ slot_15 }}</div>
+<div class="item">{{ slot_16 }}</div>
+</div>
+<div id="drinks">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+<div class="item">{{ slot_19 }}</div>
+<div class="item">{{ slot_20 }}</div>
+</div>
+</div>
+</body>
+</html>

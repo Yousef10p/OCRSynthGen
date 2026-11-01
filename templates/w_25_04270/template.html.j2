@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+#banner {
+    height: 200px;
+    width: 100%;
+}
+.image {
+    height: 200px;
+    width: 33.33%;
+    float: right;
+    text-align: center;
+    line-height: 200px;
+    color: white;
+}
+#food1 { background: green; }
+#food2 { background: blue; }
+#food3 { background: red; }
+#drink1 { background: purple; }
+#drink2 { background: orange; }
+#drink3 { background: brown; }
+#menu {
+    float: right;
+    width: 20%;
+    padding: 1em;
+}
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+#menu li a {
+    display: block;
+    padding: 0.5em;
+    background: #eee;
+    margin-bottom: 0.5em;
+}
+#content {
+    margin-right: 20%;
+    padding: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="banner"> 
+<div class="image" id="food1">{{ slot_0 }}</div>
+<div class="image" id="food2">{{ slot_1 }}</div>
+<div class="image" id="food3">{{ slot_2 }}</div>
+</div>
+<div id="menu"> 
+<ul>
+<li><a>{{ slot_3 }}</a>
+<ul>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_7 }}</a>
+<ul>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="content">
+
+<div id="foods">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+</div>
+<div id="food2">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+</div>
+<div id="food3">
+<h1>{{ slot_15 }}</h1>
+<p>{{ slot_16 }}</p>
+</div>
+<div id="drinks">
+<h1>{{ slot_17 }}</h1>
+<p>{{ slot_18 }}</p>
+</div>
+<div id="drink2">
+<h1>{{ slot_19 }}</h1>
+<p>{{ slot_20 }}</p>
+</div>
+<div id="drink3">
+<h1>{{ slot_21 }}</h1>
+<p>{{ slot_22 }}</p>
+</div>
+</div>
+</body>
+</html>

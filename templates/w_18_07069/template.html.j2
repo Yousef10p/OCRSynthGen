@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    background-color: #f8f8f8;
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+    background-color: #ddd;
+    margin: 10px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 10px;
+}
+
+.company-overview {
+    margin: 10px;
+}
+
+
+main .products-services .product {
+    border: 1px solid #ddd;
+    margin: 10px;
+}
+
+.product-image {
+    height: 200px;
+    width: 200px;
+    background-color: #ddd;
+}
+
+
+footer {
+    background-color: #f8f8f8;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo">{{ slot_0 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<div class="company-overview">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</div>
+</header>
+<main>
+<section class="products-services">
+<h2>{{ slot_6 }}</h2>
+<div class="product">
+<h3>{{ slot_7 }}</h3>
+<div class="product-image">{{ slot_8 }}</div>
+<p>{{ slot_9 }}</p>
+</div>
+</section>
+<section class="about-us">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</section>
+</main>
+<footer>
+<div class="social-media">
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</div>
+<div class="services-list">
+<h3>{{ slot_15 }}</h3>
+<ul>
+<li>{{ slot_16 }}</li>
+<li>{{ slot_17 }}</li>
+<li>{{ slot_18 }}</li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

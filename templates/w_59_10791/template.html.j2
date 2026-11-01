@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+#hero {
+  background-color: #eee;
+  padding: 50px;
+  margin: 0;
+}
+
+#hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+#services, #attorneys {
+  float: right;
+  width: 50%;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+#services h2, #attorneys h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.attorney {
+  margin-bottom: 40px;
+}
+
+.attorney h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.attorney p {
+  margin-bottom: 10px;
+}
+
+.rectangle {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="hero">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<button>{{ slot_2 }}</button>
+</div>
+<div id="services">
+<h2>{{ slot_3 }}</h2>
+<ul>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</div>
+<div id="attorneys">
+<h2>{{ slot_9 }}</h2>
+<div class="attorney">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+<div class="rectangle" style="background-color:#ff0000;"></div>
+</div>
+<div class="attorney">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="rectangle" style="background-color:#00ff00;"></div>
+</div>
+<div class="attorney">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+<div class="rectangle" style="background-color:#0000ff;"></div>
+</div>
+</div>
+</body>
+</html>

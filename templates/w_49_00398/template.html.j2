@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  text-align: center;
+}
+header, main, footer {
+  display: flex;
+  justify-content: space-around;
+}
+.product, .video, .post, .plans {
+  background-color: #ddd;
+  margin: 10px;
+  padding: 10px;
+}
+.social-icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="home">
+<h1>{{ slot_4 }}</h1>
+</section>
+<section id="products">
+<h2>{{ slot_5 }}</h2>
+<div class="product">{{ slot_6 }}</div>
+<div class="product">{{ slot_7 }}</div>
+<div class="product">{{ slot_8 }}</div>
+</section>
+<section id="tutorials">
+<h2>{{ slot_9 }}</h2>
+<div class="video">{{ slot_10 }}</div>
+<div class="video">{{ slot_11 }}</div>
+</section>
+<section id="blog">
+<h2>{{ slot_12 }}</h2>
+<div class="post">{{ slot_13 }}</div>
+<div class="post">{{ slot_14 }}</div>
+</section>
+</main>
+<footer>
+<h3>{{ slot_15 }}</h3>
+<div class="plans">{{ slot_16 }}</div>
+<div class="plans">{{ slot_17 }}</div>
+<div class="social-icons">{{ slot_18 }}</div>
+</footer>
+</body>
+</html>

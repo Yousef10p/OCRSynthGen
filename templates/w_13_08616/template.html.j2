@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+header {
+    background: #292841;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    margin: 10px 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.main-content {
+    margin: 20px 0;
+    padding: 20px;
+    color: #292841;
+}
+
+#services {
+    background: #F9C74F;
+    height: 100vh;
+}
+
+#services-section, #about-us, #contact-us {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.color-bar {
+    height: 50px;
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.color-item {
+    flex-grow: 1;
+    border: 1px solid black;
+}
+
+#col1 {
+    background: #F94144;
+}
+
+#col2 {
+    background: #F3722C;
+}
+
+#col3 {
+    background: #F8961E;
+}
+
+#col4 {
+    background: #F9844A;
+}
+
+#col5 {
+    background: #F9C74F;
+}
+
+footer {
+    background: #292841;
+    color: white;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="main-content" id="services">
+<div class="color-bar">
+<div class="row">
+<span class="color-item" id="col1"></span>
+<span class="color-item" id="col2"></span>
+<span class="color-item" id="col3"></span>
+<span class="color-item" id="col4"></span>
+<span class="color-item" id="col5"></span>
+</div>
+</div>
+<article id="services-section">
+<h2>{{ slot_5 }}</h2>
+<div class="service-row">
+<p>{{ slot_6 }}</p>
+<form id="user-input">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<button>{{ slot_9 }}</button>
+</form>
+</div>
+</article>
+</div>
+<div class="main-content" id="about-us">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="main-content" id="contact-us">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</div>
+<footer>
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.banner img {
+    width: 100px;
+    height: 100px;
+    background: red;
+    margin: 20px auto;
+}
+
+.banner h1 {
+    font-size: 2em;
+}
+
+section {
+    padding: 40px;
+    margin: 20px;
+    background: #fff;
+}
+
+#about-text, #services-text, #patient-text, #help-text {
+    padding: 20px;
+}
+
+.about-text img, .services-text img, .patient-text img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background: blue;
+    margin: 20px auto;
+}
+
+.help-button {
+    background: blue;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.partners, .resources {
+    float: right;
+    width: 50%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+
+<div class="banner">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h1>{{ slot_5 }}</h1>
+</div>
+</header>
+
+<main>
+
+<section id="about">
+<h2>{{ slot_6 }}</h2>
+<div class="about-text">
+<p>{{ slot_7 }}</p>
+</div>
+</section>
+
+<section id="services">
+<h2>{{ slot_8 }}</h2>
+<div class="services-text">
+<p>{{ slot_9 }}</p>
+</div>
+<div class="service-box">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</section>
+
+<section id="portal">
+<h2>{{ slot_10 }}</h2>
+<div class="patient-text">
+<p>{{ slot_11 }}</p>
+</div>
+<div class="portal-box">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</section>
+
+<section id="help">
+<h2>{{ slot_12 }}</h2>
+<div class="help-text">
+<p>{{ slot_13 }}</p>
+</div>
+<button class="help-button">{{ slot_14 }}</button>
+</section>
+</main>
+
+<footer>
+
+<div class="partners">
+<h3>{{ slot_15 }}</h3>
+<ul>
+<li><a>{{ slot_16 }}</a></li>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+</ul>
+</div>
+
+<div class="resources">
+<h3>{{ slot_19 }}</h3>
+<ul>
+<li><a>{{ slot_20 }}</a></li>
+<li><a>{{ slot_21 }}</a></li>
+<li><a>{{ slot_22 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

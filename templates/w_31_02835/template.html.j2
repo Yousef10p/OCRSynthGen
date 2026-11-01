@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+header, footer {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero {
+  background-color: #ccc;
+  padding: 50px;
+  text-align: center;
+}
+
+.hero h1, .hero p {
+  margin-bottom: 20px;
+}
+
+.hero button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.cuisine-list, .delivery-scheduling {
+  padding: 30px;
+  text-align: center;
+}
+
+.cuisine-list ul, .delivery-scheduling ul {
+  list-style-type: none;
+}
+
+.cuisine-list li, .delivery-scheduling li {
+  margin-bottom: 10px;
+}
+
+form label, form input, form button {
+  margin-bottom: 10px;
+}
+
+form input[type="text"], form input[type="time"] {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+
+</header>
+<main>
+<section class="hero">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<button>{{ slot_2 }}</button>
+</section>
+<section>
+<div class="cuisine-list">
+<h2>{{ slot_3 }}</h2>
+<ul>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</div>
+</section>
+<section>
+<form>
+<label>{{ slot_9 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<button>{{ slot_11 }}</button>
+</form>
+</section>
+<section class="delivery-scheduling">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<form>
+<label>{{ slot_14 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<button>{{ slot_16 }}</button>
+</form>
+</section>
+</main>
+<footer>
+<h2>{{ slot_17 }}</h2>
+<ul>
+<li>{{ slot_18 }}</li>
+<li>{{ slot_19 }}</li>
+<li>{{ slot_20 }}</li>
+<li>{{ slot_21 }}</li>
+<li>{{ slot_22 }}</li>
+</ul>
+</footer>
+</body>
+</html>

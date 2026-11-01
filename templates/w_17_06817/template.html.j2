@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header, footer {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+section {
+    margin: 20px;
+    width: 60%;
+}
+
+.image {
+    background-color: #c0c0c0;
+    height: 200px;
+    width: 100%;
+}
+
+.social-sharing {
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-sharing a {
+    margin: 0 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<main>
+<section>
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<figure>
+<div class="image ph"></div>
+<figcaption>{{ slot_6 }}</figcaption>
+</figure>
+<div class="social-sharing">
+<a>{{ slot_7 }}</a>
+<a>{{ slot_8 }}</a>
+<a>{{ slot_9 }}</a>
+</div>
+</section>
+<section>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<figure>
+<div class="image ph"></div>
+<figcaption>{{ slot_12 }}</figcaption>
+</figure>
+<div class="social-sharing">
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

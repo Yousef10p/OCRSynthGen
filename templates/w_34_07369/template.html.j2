@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.hero, .cta, .left-column, .right-column, footer {
+    padding: 20px;
+}
+
+.hero {
+    background-color: #DDD;
+    height: 50vh;
+}
+
+.cta {
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-column, .right-column {
+    flex: 1;
+}
+
+footer {
+    background-color: #333;
+    color: #FFF;
+}
+
+.social-links a {
+    margin-left: 10px;
+    color: #FFF;
+}
+
+table {
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero"></div>
+<div class="cta">
+<button>{{ slot_0 }}</button>
+</div>
+<div class="wrapper">
+<div class="left-column">
+<p>{{ slot_1 }}</p>
+</div>
+<div class="right-column">
+<p>{{ slot_2 }}</p>
+<table>
+<tr>
+<td>{{ slot_3 }}</td>
+<td>{{ slot_4 }}</td>
+</tr>
+<tr>
+<td>{{ slot_5 }}</td>
+<td>{{ slot_6 }}</td>
+</tr>
+<tr>
+<td>{{ slot_7 }}</td>
+<td>{{ slot_8 }}</td>
+</tr>
+</table>
+</div>
+</div>
+<footer>
+<div class="social-links">
+<a>{{ slot_9 }}</a>
+<a>{{ slot_10 }}</a>
+<a>{{ slot_11 }}</a>
+</div>
+<div class="contact">
+            {{ slot_12 }} <a>{{ slot_13 }}</a>{{ slot_14 }}
+        </div>
+</footer>
+</body>
+</html>

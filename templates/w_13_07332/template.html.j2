@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+}
+
+.header {
+    text-align: center;
+}
+
+.header img {
+    width: 100px;
+    height: 100px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.left-column, .right-column {
+    width: 50%;
+    padding: 20px;
+}
+
+.left-column h2, .right-column h2 {
+    text-align: center;
+}
+
+.market-report-placeholder {
+    background-color: lightgray; 
+    height: 200px;
+}
+
+.right-column form {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-column label {
+    margin-bottom: 5px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="container">
+<div class="left-column">
+<h2>{{ slot_0 }}</h2>
+<p>{{ slot_1 }}</p>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+
+<div class="market-report-placeholder ph"></div>
+</div>
+<div class="right-column">
+<h2>{{ slot_9 }}</h2>
+<form>
+<label>{{ slot_10 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<label>{{ slot_12 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="">{{ slot_14 }}</span>
+</form>
+<h2>{{ slot_15 }}</h2>
+<form>
+<label>{{ slot_16 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<label>{{ slot_18 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
+<label>{{ slot_20 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_21 }}</span>
+<span class="">{{ slot_22 }}</span>
+</form>
+</div>
+</div>
+</body>
+</html>

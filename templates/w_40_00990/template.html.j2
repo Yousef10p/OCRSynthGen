@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+font-family: var(--font-body);
+}
+
+
+#header {
+text-align: center;
+}
+
+#header img {
+height: 100px;
+width: 100px;
+display: inline-block;
+}
+
+#nav {
+margin-top: 10px;
+}
+
+#nav a {
+margin-left: 10px;
+}
+
+
+#content {
+display: flex;
+justify-content: space-between;
+padding: 20px;
+}
+
+#content div:first-child, #content div:last-child {
+flex-grow: 1;
+}
+
+#featured, #reviews {
+flex-grow: 1;
+margin-left: 20px;
+}
+
+#featured ul, #reviews blockquote {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+#about {
+flex-grow: 1;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div id="nav">
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+<a>{{ slot_5 }}</a>
+</div>
+</div>
+<div id="content">
+<div id="featured">
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</div>
+<div id="reviews">
+<h2>{{ slot_9 }}</h2>
+<blockquote>
+{{ slot_10 }}
+</blockquote>
+</div>
+<div id="about">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</body>
+</html>

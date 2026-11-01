@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #F2D7D9;
+    color: #442C2E;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 40px;
+}
+
+header input {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 20px;
+    width: 80%;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.book-result {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.book-result img {
+    width: 200px;
+    height: 300px;
+    background-color: #7C99AC;
+    margin-left: 20px;
+}
+
+.book-info p {
+    margin: 5px 0;
+}
+
+.filter-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer {
+    background-color: #F2D7D9;
+    color: #442C2E;
+    text-align: center;
+    padding: 20px;
+}
+
+footer a {
+    margin: 0 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+</header>
+<main>
+<section class="book-result">
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="book-info">
+<p><strong>{{ slot_4 }}</strong> {{ slot_5 }}</p>
+<p><strong>{{ slot_6 }}</strong> {{ slot_7 }}</p>
+<p><strong>{{ slot_8 }}</strong> {{ slot_9 }}</p>
+<p><a class="button">{{ slot_10 }}</a></p>
+</div>
+</section>
+<section class="filter-section">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li><span class="" style="display: inline-block; inline-size: 0.9em; block-size: 0.9em; border: 1px solid #666"></span> <label>{{ slot_12 }}</label></li>
+<li><span class="" style="display: inline-block; inline-size: 0.9em; block-size: 0.9em; border: 1px solid #666"></span> <label>{{ slot_13 }}</label></li>
+<li><span class="" style="display: inline-block; inline-size: 0.9em; block-size: 0.9em; border: 1px solid #666"></span> <label>{{ slot_14 }}</label></li>
+
+</ul>
+<div class="book-list">
+
+</div>
+</section>
+</main>
+<footer>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+</footer>
+</body>
+</html>

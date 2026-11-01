@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+section, aside {
+    width: 45%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.slider, .slide {
+    width: 100%;
+    height: 200px;
+}
+
+.slide {
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+aside {
+    background: #ddd;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="services">
+<h1>{{ slot_3 }}</h1>
+<div class="slider">
+<div class="slide">{{ slot_4 }}</div>
+<div class="slide">{{ slot_5 }}</div>
+<div class="slide">{{ slot_6 }}</div>
+</div>
+</section>
+<section id="team">
+<h1>{{ slot_7 }}</h1>
+<div class="slider">
+<div class="slide">{{ slot_8 }}</div>
+<div class="slide">{{ slot_9 }}</div>
+<div class="slide">{{ slot_10 }}</div>
+</div>
+</section>
+<aside id="about">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</aside>
+</main>
+</body>
+</html>

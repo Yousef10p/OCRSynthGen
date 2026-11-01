@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+#sidebar {
+    width: 20%;
+    padding: 10px;
+    background-color: #f8f8f8;
+}
+.category {
+    margin: 10px 0;
+}
+#content {
+    width: 80%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.product {
+    display: flex;
+    flex-direction: column;
+}
+.rectangle {
+    height: 100px;
+    margin-bottom: 10px;
+    background-color: #ccc;
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+label {
+    margin-top: 10px;
+}
+button {
+    margin-top: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="sidebar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<div class="category">{{ slot_1 }}</div>
+<div class="category">{{ slot_2 }}</div>
+<div class="category">{{ slot_3 }}</div>
+</div>
+<div id="content">
+<div class="product">
+<div class="rectangle" id="rect1"></div>
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="product">
+<div class="rectangle" id="rect2"></div>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</div>
+</div>
+<div id="footer">
+<a>{{ slot_8 }}</a>
+<a>{{ slot_9 }}</a>
+<div class="form">
+<label>{{ slot_10 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<label>{{ slot_12 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_13 }}</span>
+<button>{{ slot_14 }}</button>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: steelblue;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0px 20px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.search-bar input {
+    width: 40%;
+    padding: 5px 10px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background-color: tomato;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.grid-container {
+    display: grid;                    
+    grid-template-columns: auto auto auto;
+    padding: 20px;
+}
+
+.grid-container > div {
+    background-color: blanchedalmond;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.food-img {
+    background-color: teal;
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="navbar">
+<a>{{ slot_0 }}</a> {{ slot_1 }}
+            <a>{{ slot_2 }}</a> {{ slot_3 }}
+            <a>{{ slot_4 }}</a> {{ slot_5 }}
+            <a>{{ slot_6 }}</a>
+</div>
+<div class="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<button>{{ slot_8 }}</button>
+</div>
+<div class="grid-container">
+<div>
+<h2>{{ slot_9 }}</h2>
+<div class="food-img ph"></div>
+<p>{{ slot_10 }}</p>
+</div>
+<div>
+<h2>{{ slot_11 }}</h2>
+<div class="food-img ph"></div>
+<p>{{ slot_12 }}</p>
+</div>
+<div>
+<h2>{{ slot_13 }}</h2>
+<div class="food-img ph"></div>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</body>
+</html>

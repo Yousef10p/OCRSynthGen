@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+font-family: var(--font-body);
+}
+
+header {
+background-color: #f5f5f5;
+padding: 20px;
+}
+
+nav ul {
+list-style: none;
+padding: 0;
+}
+
+nav ul li {
+display: inline;
+margin-left: 10px;
+}
+
+nav ul li a {
+text-decoration: none;
+color: #333;
+}
+
+#featured, #concerts, #questions {
+margin-top: 20px;
+padding: 20px;
+}
+
+#featured div, #concerts div, #questions div {
+background-color: #ddd;
+width: 100px;
+height: 100px;
+}
+
+footer {
+background-color: #f5f5f5;
+margin-top: 20px;
+padding: 20px;
+text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="featured">
+<h2>{{ slot_5 }}</h2>
+<div id="featured-artists">
+
+</div>
+<a>{{ slot_6 }}</a>
+</section>
+<section id="concerts">
+<h2>{{ slot_7 }}</h2>
+<div id="upcoming-concerts">
+
+</div>
+<a>{{ slot_8 }}</a>
+</section>
+<section id="questions">
+<h2>{{ slot_9 }}</h2>
+<div id="sensitive-questions">
+
+</div>
+<a>{{ slot_10 }}</a>
+</section>
+<footer>
+<ul>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+</footer>
+</body>
+</html>

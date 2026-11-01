@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+ body { 
+    font-family: var(--font-body); 
+ } 
+
+#hero { 
+    width: 100%; 
+    height: 500px; 
+    background-color: #f2f2f2; 
+    text-align: center; 
+    padding: 20px; 
+} 
+
+#menu { 
+    background-color: #333; 
+    color: #fff; 
+    padding: 20px; 
+    margin-top: 15px; 
+} 
+
+#menu ul { 
+    list-style-type: none; 
+} 
+
+#menu li { 
+    display: inline; 
+    margin-left: 15px; 
+} 
+
+#menu a { 
+    color: #fff; 
+    text-decoration: none; 
+} 
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+{{ slot_0 }} <section id="hero">
+ 
+{{ slot_1 }} <p>{{ slot_2 }}</p> 
+{{ slot_3 }} </section>
+
+{{ slot_4 }} <section id="menu">
+ 
+{{ slot_5 }} <ul> 
+{{ slot_6 }} <li><a>{{ slot_7 }}</a></li> 
+{{ slot_8 }} <li><a>{{ slot_9 }}</a></li> 
+{{ slot_10 }} <li><a>{{ slot_11 }}</a></li> 
+{{ slot_12 }} </ul> 
+{{ slot_13 }}  </section> 
+{{ slot_14 }} </body>
+</html>

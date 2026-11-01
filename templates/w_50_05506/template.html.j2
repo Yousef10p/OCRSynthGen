@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  background-color: #08416e;
+  color: #3c7eab;
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: #FFB800;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: #08416e;
+  text-decoration: none;
+}
+
+section {
+  margin: 20px;
+}
+
+.artist-box {
+  background-color: #ff5733;
+  width: 100px;
+  height: 100px;
+  margin: 20px 0;
+}
+
+.music-box {
+  background-color: #ff5733;
+  width: 100%;
+  height: 300px;
+}
+
+footer {
+  background-color: #FFB800;
+  color: #08416e;
+  text-align: center;
+  padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="about">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</section>
+<section id="artists">
+<h2>{{ slot_8 }}</h2>
+<ul class="artists">
+<li><div class="artist-box"></div><p>{{ slot_9 }}</p></li>
+<li><div class="artist-box"></div><p>{{ slot_10 }}</p></li>
+<li><div class="artist-box"></div><p>{{ slot_11 }}</p></li>
+</ul>
+</section>
+<section id="music">
+<h2>{{ slot_12 }}</h2>
+<div class="music-box"></div>
+<p>{{ slot_13 }}</p>
+</section>
+<section id="bookings">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</section>
+<section id="contact">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+</section>
+</main>
+<footer>
+<p>{{ slot_18 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+.header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+nav a {
+  color: #fff;
+  margin: 0 10px;
+}
+.banner {
+  background-color: #eee;
+  height: 300px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.about-us, .menu, .reservations, .catering {
+  margin: 10px;
+}
+.cta {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</nav>
+</div>
+<div class="banner ph"></div>
+<div class="about-us" id="about-us">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="menu" id="menu">
+<h2>{{ slot_7 }}</h2>
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+</ul>
+<a class="cta">{{ slot_12 }}</a>
+</div>
+<div class="reservations" id="reservations">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<a class="cta">{{ slot_15 }}</a>
+</div>
+<div class="catering" id="catering">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+<a class="cta">{{ slot_18 }}</a>
+</div>
+</body>
+</html>

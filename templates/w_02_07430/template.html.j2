@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.hero {
+    text-align: center;
+    padding: 20px;
+    background-color: #1DB954;
+    color: #FFF;
+    position: relative;
+}
+nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+nav ul {
+    list-style-type: none;
+}
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #FFF;
+}
+.wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.genres-section, .artists-section, .playlists-section {
+    margin-bottom: 50px;
+}
+.genre, .artist, .playlist {
+    margin-bottom: 20px;
+}
+.genre, .artist, .playlist h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.genre, .artist, .playlist p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<h1>{{ slot_3 }}</h1>
+</div>
+<div class="wrapper">
+<div class="genres-section" id="genres">
+<h2>{{ slot_4 }}</h2>
+<div class="genre">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="genre">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+</div>
+<div class="artists-section" id="artists">
+<h2>{{ slot_9 }}</h2>
+<div class="artist">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="artist">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+</div>
+<div class="playlists-section" id="playlists">
+<h2>{{ slot_14 }}</h2>
+<div class="playlist">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+<div class="playlist">
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+</div>
+</div>
+</div>
+</body>
+</html>

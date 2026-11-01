@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f0e9d2;
+    color: #555;
+}
+
+.header {
+    padding: 20px;
+    background-color: #d3e8c5;
+    color: #4c4c47;
+    text-align: center;
+}
+
+.slideshow, .image {
+    height: 150px;
+    background-color: #9dc5bb;
+    margin: 20px;
+    color: #555;
+    text-align: center;
+}
+
+.donation-form, .volunteer-signup, .event-calendar {
+    padding: 20px;
+    background-color: #9dc5bb;
+    margin: 20px;
+    color: #555;
+}
+
+form input[type="text"], form input[type="submit"] {
+    margin: 10px 0;
+}
+
+form input[type="submit"] {
+    background-color: #d3e8c5;
+    color: #4c4c47;
+    border: none;
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+<div class="slideshow">
+<div class="image">{{ slot_2 }}</div>
+<div class="image">{{ slot_3 }}</div>
+<div class="image">{{ slot_4 }}</div>
+</div>
+<div class="donation-form">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<form>
+<label>{{ slot_7 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<span class="">{{ slot_9 }}</span>
+</form>
+</div>
+<div class="volunteer-signup">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<form>
+<label>{{ slot_12 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<label>{{ slot_14 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="">{{ slot_16 }}</span>
+</form>
+</div>
+<div class="event-calendar">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+<ul>
+<li>{{ slot_19 }}</li>
+<li>{{ slot_20 }}</li>
+<li>{{ slot_21 }}</li>
+</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: white;
+    background-color: black;
+}
+
+
+section {
+    padding: 50px;
+}
+
+
+#hero {
+    background-color: blue;
+    text-align: center;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#hero h1 {
+    font-size: 3em;
+}
+#hero h2 {
+    font-size: 2em;
+}
+#hero button {
+    margin-top: 50px;
+    padding: 20px 40px;
+    font-size: 1em;
+    border: none;
+    color: blue;
+    background-color: white;
+}
+
+
+#testimonials {
+    background-color: white;
+    color: black;
+}
+.testimonial {
+    margin: 20px 0;
+}
+
+
+#expertise {
+    background-color: blue;
+    color: white;
+}
+#expertise ul {
+    list-style: none;
+    padding: 0;
+}
+#expertise li {
+    background-color: white;
+    color: black;
+    margin: 10px 0;
+    padding: 20px;
+}
+
+
+#blog {
+    background-color: white;
+    color: black;
+}
+.blog-post {
+    margin: 20px 0;
+}
+.blog-post h3 {
+    color: blue;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<section id="hero">
+<h1>{{ slot_0 }}</h1>
+<h2>{{ slot_1 }}</h2>
+<button>{{ slot_2 }}</button>
+</section>
+<section id="testimonials">
+<h2>{{ slot_3 }}</h2>
+<div class="testimonial">
+<p>{{ slot_4 }}</p>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="testimonial">
+<p>{{ slot_6 }}</p>
+<p>{{ slot_7 }}</p>
+</div>
+</section>
+<section id="expertise">
+<h2>{{ slot_8 }}</h2>
+<ul>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+</ul>
+</section>
+<section id="blog">
+<h2>{{ slot_12 }}</h2>
+<div class="blog-post">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="blog-post">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+</section>
+</body>
+</html>

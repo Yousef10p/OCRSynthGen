@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-size: 16px;
+    font-family: var(--font-body);
+}
+
+
+nav {
+    background-color: #333;
+    padding: 1em 0;
+    margin-bottom: 1em;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+nav ul li {
+    display: inline-block;
+    margin-left: 1em;
+}
+nav ul li:last-child {
+    margin-left: 0;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+
+.hero {
+    background-color: #eee;
+    padding: 2em 0;
+}
+.hero h1 {
+    color: #333;
+    font-size: 2em;
+}
+.hero p {
+    color: #666;
+}
+.button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.about-us {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 2em 0;
+}
+
+
+.services {
+    background-color: #f4f4f4;
+    padding: 2em 0;
+}
+.service {
+    margin-bottom: 1em;
+}
+.service:last-child {
+    margin-bottom: 0;
+}
+.service h3 {
+    color: #333;
+}
+
+
+.portfolio {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 2em 0;
+}
+.project {
+    margin-bottom: 2em;
+}
+.project:last-child {
+    margin-bottom: 0;
+}
+.project h3 {
+    color: #fff;
+}
+.image {
+    background-color: #888;
+    height: 200px;
+    width: 100%;
+}
+
+
+.contact-us {
+    background-color: #333;
+    color: #fff;
+    padding: 2em 0;
+}
+.contact-us label {
+    display: block;
+    color: #fff;
+}
+.contact-us input,
+.contact-us textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+}
+.contact-us button {
+    padding: 0.5em 1em;
+    background-color: #eee;
+    color: #333;
+    border: none;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<section class="hero">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<div class="button">{{ slot_7 }}</div>
+</section>
+<section class="about-us">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</section>
+<section class="services">
+<h2>{{ slot_10 }}</h2>
+<div class="service">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</section>
+<section class="portfolio">
+<h2>{{ slot_15 }}</h2>
+<div class="project">
+<h3>{{ slot_16 }}</h3>
+<div class="image">{{ slot_17 }}</div>
+<p>{{ slot_18 }}</p>
+</div>
+</section>
+<section class="contact-us">
+<h2>{{ slot_19 }}</h2>
+<form>
+<label>{{ slot_20 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_21 }}</span>
+<label>{{ slot_22 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_23 }}</span>
+<label>{{ slot_24 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_25 }}</span>
+<button>{{ slot_26 }}</button>
+</form>
+</section>
+</body>
+</html>

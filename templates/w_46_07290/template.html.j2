@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#left-column {
+    width: 20%;
+    float: right;
+}
+
+#right-column {
+    width: 80%;
+    float: left;
+}
+
+#menu {
+    list-style-type: none;
+    padding: 0;
+}
+
+#hero-image {
+    height: 100px;
+    background-color: lightgray;
+}
+
+.blog-post, .review {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: lightgray;
+}
+
+#social-media {
+    list-style-type: none;
+    float: left;
+    padding: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="left-column">
+<ul id="menu">
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+<div id="right-column">
+<div class="ph"></div>
+<div id="blog">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+
+<div class="blog-post">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+</div>
+<div id="reviews">
+<h2>{{ slot_9 }}</h2>
+
+<div class="review">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+</div>
+</div>
+<footer>
+<ul id="social-media">
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    width: 20%;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li a {
+    display: block;
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+#workouts {
+    width: 80%;
+    height: 50vh;
+    background-color: #ccc;
+}
+
+.workout-plan {
+    height: 20%;
+    width: 45%;
+    background-color: #f4f4f4;
+    margin: 5px;
+}
+
+#tracking {
+    width: 100%;
+    height: 50vh;
+    background-color: #ddd;
+}
+
+.tracking-graph {
+    height: 90%;
+    width: 95%;
+    background-color: #f4f4f4;
+    margin: auto;
+}
+
+footer {
+    width: 100%;
+    height: 20vh;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-icons, .footer-posts {
+    width: 45%;
+    height: 75%;
+    background-color: #f4f4f4;
+    margin: auto;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<section id="workouts">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+<div class="workout-plan">{{ slot_8 }}</div>
+<div class="workout-plan">{{ slot_9 }}</div>
+<div class="workout-plan">{{ slot_10 }}</div>
+</section>
+<section id="tracking">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+<div class="tracking-graph">{{ slot_13 }}</div>
+</section>
+<footer>
+<h3>{{ slot_14 }}</h3>
+<div class="social-icons">{{ slot_15 }}</div>
+<h3>{{ slot_16 }}</h3>
+<div class="footer-posts">{{ slot_17 }}</div>
+</footer>
+</body>
+</html>

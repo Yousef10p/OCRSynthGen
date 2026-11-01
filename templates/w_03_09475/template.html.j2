@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    color: white;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: white;
+}
+
+nav li {
+    display: inline-block;
+    margin: 10px;
+}
+
+h1, h2, h3 {
+    color: orange;
+}
+
+#home, #products, #blog, #events {
+    margin: 10px;
+    padding: 20px;
+    background-color: #444;
+}
+
+.product-catalog, .blog-post, .event-item {
+    display: flex;
+    margin: 10px;
+}
+
+.product-thumb, .product-thumb {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<div id="home">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+</div>
+<div id="products">
+<h2>{{ slot_6 }}</h2>
+<div class="product-catalog">
+<div class="product-item">
+<div class="product-thumb"></div>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="product-item">
+<div class="product-thumb"></div>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+
+</div>
+</div>
+<div id="blog">
+<h2>{{ slot_11 }}</h2>
+<div class="blog-post">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="blog-post">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+<div id="events">
+<h2>{{ slot_16 }}</h2>
+<div class="event-item">
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+</div>
+<div class="event-item">
+<h3>{{ slot_19 }}</h3>
+<p>{{ slot_20 }}</p>
+</div>
+</div>
+</body>
+</html>

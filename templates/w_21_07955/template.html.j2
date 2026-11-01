@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    color: #fff;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #f44336;
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+main article {
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #000;
+    color: #fff;
+}
+
+footer a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<a class="cta">{{ slot_1 }}</a>
+</header>
+<main>
+<section id="testimonials">
+<h2>{{ slot_2 }}</h2>
+<article>
+<p>{{ slot_3 }}</p>
+<p>{{ slot_4 }}</p>
+</article>
+<article>
+<p>{{ slot_5 }}</p>
+<p>{{ slot_6 }}</p>
+</article>
+</section>
+<section id="trainers">
+<h2>{{ slot_7 }}</h2>
+<article>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</article>
+<article>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</article>
+</section>
+<section id="services">
+<h2>{{ slot_12 }}</h2>
+<ul>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+</ul>
+</section>
+</main>
+<footer>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+</footer>
+</body>
+</html>

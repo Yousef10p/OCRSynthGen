@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	font-family: var(--font-body);
+	margin: 0;
+	padding: 0;
+	background-color: #f0f0f0;
+}
+
+header {
+	text-align: center;
+	padding: 50px 0;
+	background-color: #333;
+	color: #fff;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+aside {
+	float: left;
+	width: 30%;
+	padding: 10px;
+	background-color: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+main {
+	float: right;
+	width: 70%;
+	padding: 10px;
+}
+
+footer {
+	clear: both;
+	text-align: center;
+	padding: 10px;
+	background-color: #333;
+	color: #fff;
+}
+
+.infographic {
+	height: 200px;
+	background-color: #999;
+}
+
+button, .infographic {
+	display: block;
+	margin: 20px auto;
+}
+
+address, a {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<button>{{ slot_1 }}</button>
+</header>
+<aside>
+<h2>{{ slot_2 }}</h2>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+</aside>
+<main>
+<section>
+<h2>{{ slot_7 }}</h2>
+<div class="infographic"></div>
+<article>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</article>
+<article>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</article>
+</section>
+<section>
+<h2>{{ slot_12 }}</h2>
+<blockquote>
+<p>{{ slot_13 }}</p>
+<footer>{{ slot_14 }}</footer>
+</blockquote>
+</section>
+</main>
+<footer>
+<address>{{ slot_15 }}</address>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+#menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background: #000;
+  color: #fff;
+}
+
+#menu ul {
+  list-style-type: none;
+  padding: 20px;
+}
+
+#menu ul li {
+  display: inline;
+  margin-left: 10px;
+}
+
+#slideshow {
+  height: 500px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#products, #blog, #social {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.product, .post, .profile {
+  width: 20%;
+  height: 200px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="menu">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</div>
+<div id="slideshow">
+<div class="slide">{{ slot_4 }}</div>
+<div class="slide">{{ slot_5 }}</div>
+<div class="slide">{{ slot_6 }}</div>
+<div class="slide">{{ slot_7 }}</div>
+</div>
+<div id="products">
+<div class="product">{{ slot_8 }}</div>
+<div class="product">{{ slot_9 }}</div>
+<div class="product">{{ slot_10 }}</div>
+<div class="product">{{ slot_11 }}</div>
+</div>
+<div id="blog">
+<h1>{{ slot_12 }}</h1>
+<div class="post">{{ slot_13 }}</div>
+<div class="post">{{ slot_14 }}</div>
+<div class="post">{{ slot_15 }}</div>
+</div>
+<div id="social">
+<h1>{{ slot_16 }}</h1>
+<div class="profile">{{ slot_17 }}</div>
+<div class="profile">{{ slot_18 }}</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-body);
+}
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	background-color: #333;
+}
+nav ul li {
+	float: right;
+}
+nav ul li a {
+	display: block;
+	color: white;
+	text-align: right;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+h1, h2, p {
+	text-align: left;
+	color: #333;
+	margin-left: 20px;
+}
+.prod-image {
+	background-color: #aaa;
+	width: 200px;
+	height: 200px;
+	margin: 10px;
+	float: left;
+}
+.social-widgets {
+	background-color: #ddd;
+	width: 200px;
+	height: 200px;
+	margin: 10px;
+	float: left;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+<main>
+<h1>{{ slot_4 }}</h1>
+<div class="product-section">
+<article>
+<h2>{{ slot_5 }}</h2>
+<div class="prod-image ph"></div>
+<p>{{ slot_6 }}</p>
+</article>
+<article>
+<h2>{{ slot_7 }}</h2>
+<div class="prod-image ph"></div>
+<p>{{ slot_8 }}</p>
+</article>
+<article>
+<h2>{{ slot_9 }}</h2>
+<div class="prod-image ph"></div>
+<p>{{ slot_10 }}</p>
+</article>
+</div>
+<aside>
+<h2>{{ slot_11 }}</h2>
+<div class="social-widgets">
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</div>
+</aside>
+</main>
+</body>
+</html>

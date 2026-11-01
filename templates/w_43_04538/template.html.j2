@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #fff;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #333;
+  color: white;
+  padding: 15px;
+}
+.nav-item {
+  cursor: pointer;
+}
+
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+.mySlides {
+  display: none;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+
+.destinations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+.destination {
+  border: 1px solid #333;
+  padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="navbar">
+<div class="nav-item">{{ slot_0 }}</div>
+<div class="nav-item">{{ slot_1 }}</div>
+<div class="nav-item">{{ slot_2 }}</div>
+</div>
+<div class="slideshow-container">
+<div class="mySlides fade">
+<div class="numbertext">{{ slot_3 }}</div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="text">{{ slot_4 }}</div>
+</div>
+<div class="mySlides fade">
+<div class="numbertext">{{ slot_5 }}</div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="text">{{ slot_6 }}</div>
+</div>
+<div class="mySlides fade">
+<div class="numbertext">{{ slot_7 }}</div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="text">{{ slot_8 }}</div>
+</div>
+</div>
+<br>
+<div style="text-align:center">
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+<h2>{{ slot_9 }}</h2>
+<div class="destinations">
+<div class="destination">
+    {{ slot_10 }}
+    <p>{{ slot_11 }}</p>
+</div>
+<div class="destination">
+    {{ slot_12 }}
+    <p>{{ slot_13 }}</p>
+</div>
+<div class="destination">
+    {{ slot_14 }}
+    <p>{{ slot_15 }}</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+}
+
+.news, .products, .social {
+    background-color: #f0f0f0;
+    margin: 0 10px;
+}
+
+.news-item, .product-item, .blog-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.news-item h3, .product-item h3, .blog-item h3 {
+    font-size: 1.2em;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li a {
+    color: #333;
+    text-decoration: none;
+    margin: 5px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+{{ slot_0 }}<div class="container">
+{{ slot_1 }}    <div class="news">
+{{ slot_2 }}        <h2>{{ slot_3 }}</h2>
+{{ slot_4 }}        <div class="news-item">
+{{ slot_5 }}            <h3>{{ slot_6 }}</h3>
+{{ slot_7 }}            <p>{{ slot_8 }}</p>
+{{ slot_9 }}        </div>
+{{ slot_10 }}        
+{{ slot_11 }}    </div>
+{{ slot_12 }}    <div class="products">
+{{ slot_13 }}         <h2>{{ slot_14 }}</h2>
+{{ slot_15 }}         <div class="product-item">
+{{ slot_16 }}             <h3>{{ slot_17 }}</h3>
+{{ slot_18 }}             <p>{{ slot_19 }}</p>
+{{ slot_20 }}         </div>
+{{ slot_21 }}         
+{{ slot_22 }}    </div>
+{{ slot_23 }}    <div class="social">
+{{ slot_24 }}        <h2>{{ slot_25 }}</h2>
+{{ slot_26 }}        <ul>
+{{ slot_27 }}            <li><a>{{ slot_28 }}</a></li>
+{{ slot_29 }}            <li><a>{{ slot_30 }}</a></li>
+{{ slot_31 }}            <li><a>{{ slot_32 }}</a></li>
+{{ slot_33 }}        </ul>
+{{ slot_34 }}        <h2>{{ slot_35 }}</h2>
+{{ slot_36 }}        <ul>
+{{ slot_37 }}            <li><a>{{ slot_38 }}</a></li>
+{{ slot_39 }}            <li><a>{{ slot_40 }}</a></li>
+{{ slot_41 }}        </ul>
+{{ slot_42 }}    </div>
+{{ slot_43 }}</div>
+{{ slot_44 }}</body>
+</html>

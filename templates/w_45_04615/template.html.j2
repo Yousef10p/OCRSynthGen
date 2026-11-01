@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: grey;
+  padding: 20px 0;
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+#container {
+  margin-top: 60px;
+}
+
+.content, .product, .services, .about, .contact {
+  background: blue; 
+  width: 90%;
+  padding: 30px;
+  margin: 30px;
+  color: white;
+  display: block;
+}
+
+.content a, .product a, .services a, .about a, .contact a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<div id="container">
+<div class="content">{{ slot_5 }} 
+      <a>{{ slot_6 }}</a>
+</div>
+<div class="product">{{ slot_7 }}
+    <a>{{ slot_8 }}</a>
+</div>
+<div class="services">{{ slot_9 }}
+    <a>{{ slot_10 }}</a>
+</div>
+<div class="about">{{ slot_11 }}
+    <a>{{ slot_12 }}</a>
+</div>
+<div class="contact">{{ slot_13 }}
+    <a>{{ slot_14 }}</a>
+</div>
+</div>
+</body>
+</html>

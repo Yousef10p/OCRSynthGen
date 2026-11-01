@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+.header {
+    background-color: #f8f9fa;
+    height: 40px;
+}
+
+.navigation-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.navigation-bar li {
+    float: right;
+}
+
+.navigation-bar li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navigation-bar li a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.content-wrapper {
+    display: flex;
+}
+
+.course-content, .resource-content, .event-content {
+    padding: 10px;
+    flex-grow: 1;
+    min-height: 400px;
+}
+
+.course-content {
+    background-color: #add8e6;
+}
+
+.resource-content {
+    background-color: #90ee90;
+}
+
+.event-content {
+    background-color: #f08080;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<ul class="navigation-bar">
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</div>
+<div class="content-wrapper">
+<div class="course-content">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<p>{{ slot_6 }}</p>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="resource-content">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="event-content">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</body>
+</html>

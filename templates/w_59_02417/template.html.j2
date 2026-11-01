@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+}
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+.rectangle {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+<a>{{ slot_5 }}</a>
+</nav>
+</header>
+<div class="content" id="services">
+<section>
+<h2>{{ slot_6 }}</h2>
+</section>
+<section>
+<div class="rectangle" id="service1"></div>
+<p>{{ slot_7 }}</p>
+</section>
+<section>
+<div class="rectangle" id="service2"></div>
+<p>{{ slot_8 }}</p>
+</section>
+<section>
+<div class="rectangle" id="service3"></div>
+<p>{{ slot_9 }}</p>
+</section>
+</div>
+<div class="content" id="products">
+<section>
+<h2>{{ slot_10 }}</h2>
+</section>
+<section>
+<div class="rectangle" id="product1"></div>
+<p>{{ slot_11 }}</p>
+</section>
+<section>
+<div class="rectangle" id="product2"></div>
+<p>{{ slot_12 }}</p>
+</section>
+<section>
+<div class="rectangle" id="product3"></div>
+<p>{{ slot_13 }}</p>
+</section>
+</div>
+<footer>
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

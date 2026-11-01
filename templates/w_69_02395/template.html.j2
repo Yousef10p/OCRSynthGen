@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+nav {
+    width: 15%;
+    position: fixed;
+    height: 100%;
+    background-color: #6D1537;
+    display: flex;
+    flex-direction: column;
+}
+
+nav li {
+    padding: 20px;
+    color: #FFBDC8;
+    text-align: center;
+}
+
+
+header.hero-image {
+    height: 100vh;
+    background-color: #B83C5A;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header.hero-image p {
+    color: #F1FAFF;
+    font-size: 2em;
+    text-align: center;
+}
+
+header.hero-image button {
+    background-color: #F86F85;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+}
+
+
+main, footer {
+    margin-right: 15%;
+    padding: 20px;
+}
+
+main section, footer section {
+    padding: 20px;
+}
+
+
+footer section {
+    background-color: #6D1537;
+    color: #FFBDC8;
+}
+
+@media (max-width: 600px) {
+    nav, main, footer {
+        width: 100%;
+    }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+<header class="hero-image"><p>{{ slot_4 }}</p><button>{{ slot_5 }}</button></header>
+<main>
+<section>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</section>
+<section>
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</section>
+<section>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</section>
+</main>
+<footer>
+<section>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</section>
+<section>
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</section>
+<section>
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+</section>
+</footer>
+</body>
+</html>

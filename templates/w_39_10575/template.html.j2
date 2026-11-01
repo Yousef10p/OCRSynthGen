@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+main section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-placeholder {
+  width: 200px;
+  height: 200px;
+  background-color: lightgrey;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+<main>
+<section>
+<p>{{ slot_4 }}</p>
+</section>
+<section>
+<h2>{{ slot_5 }}</h2>
+<div class="img-placeholder" id="img1">{{ slot_6 }}</div>
+<p>{{ slot_7 }}</p>
+</section>
+<section>
+<h2>{{ slot_8 }}</h2>
+<div class="img-placeholder" id="img2">{{ slot_9 }}</div>
+<p>{{ slot_10 }}</p>
+</section>
+<section>
+<h2>{{ slot_11 }}</h2>
+<div class="img-placeholder" id="img3">{{ slot_12 }}</div>
+<p>{{ slot_13 }}</p>
+</section>
+<section>
+<h2>{{ slot_14 }}</h2>
+<div class="img-placeholder" id="img4">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+</section>
+</main>
+<footer>
+<p>{{ slot_17 }}</p>
+<ul>
+<li>{{ slot_18 }}</li>
+<li>{{ slot_19 }}</li>
+<li>{{ slot_20 }}</li>
+</ul>
+<p>{{ slot_21 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  display: flex;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  background: white;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: black;
+}
+
+.slider {
+  width: 100%;
+  height: 300px;
+}
+
+.slide {
+  height: 300px;
+  width: 100%;
+}
+
+aside {
+  position: fixed;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: white;
+  z-index: 100;
+}
+
+aside ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+article {
+  margin-top: 200px;
+  margin-right: 300px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="slider">
+<div class="slide" style="background-color: red;"></div>
+<div class="slide" style="background-color: green;"></div>
+<div class="slide" style="background-color: blue;"></div>
+</section>
+<aside class="social-media">
+<h3>{{ slot_5 }}</h3>
+<ul>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</aside>
+<article>
+<h1>{{ slot_9 }}</h1>
+<p>{{ slot_10 }}</p>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</article>
+</main>
+</body>
+</html>

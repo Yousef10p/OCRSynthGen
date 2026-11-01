@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+*{
+  margin:0;
+  padding:0;
+}
+body{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  height: 100vh;
+  grid-template-areas: "nav main"
+                         "nav main";
+}
+nav.active{
+  grid-area: nav;
+}
+button{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+#top-banner{
+  color: white;
+  background: blue;
+  grid-area: 1 / 1 / 2 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.active-nav {
+  grid-area: nav;
+}
+.links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+ul {
+  grid-column: span 2;
+}
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: none;
+}
+@media (max-width: 600px) {
+  body {
+    grid-template-areas: "nav"
+                         "main";
+  }
+  .active-nav {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<button>{{ slot_0 }}</button>
+<div class="links">
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<ul>
+<li>{{ slot_3 }}</li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+<ul>
+<li>{{ slot_6 }}</li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</div>
+<button id="back-to-top">{{ slot_9 }}</button>
+</nav>
+<div class="top-banner">{{ slot_10 }}</div>
+<main>
+
+<section id="home">
+<div class="block">{{ slot_11 }}</div>
+
+</section>
+<section id="artist">
+<h1>{{ slot_12 }}</h1>
+<div class="block">{{ slot_13 }}</div>
+
+</section>
+<section id="album">
+<h1>{{ slot_14 }}</h1>
+<div class="block">{{ slot_15 }}</div>
+
+</section>
+<section id="work">
+<h1>{{ slot_16 }}</h1>
+<div class="block">{{ slot_17 }}</div>
+</section>
+<section id="videos">
+<div class="block">{{ slot_18 }}</div>
+
+</section>
+</main>
+</body>
+</html>

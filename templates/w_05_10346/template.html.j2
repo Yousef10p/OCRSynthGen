@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	font-family: var(--font-body);
+	background-color: #f4f4f4;
+	padding: 1em;
+}
+
+header {
+	text-align: center;
+}
+
+header h1 {
+	font-size: 2.5em;
+}
+
+nav ul {
+	display: flex;
+	justify-content: space-around;
+}
+
+nav ul li {
+	list-style: none;
+}
+
+main {
+	margin: 0 auto;
+	max-width: 800px;
+}
+
+section {
+	margin-bottom: 2em;
+}
+
+h2 {
+	color: #333;
+}
+
+
+.dish {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	align-items: center;
+	margin-bottom: 1em;
+}
+
+.dish-image {
+	height: 100px;
+	background-color: #ddd; 
+}
+
+
+.reservation-image, .order-image {
+	height: 200px;
+	background-color: #ddd; 
+}
+
+.red {
+	color: red;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><ahref>{{ slot_1 }}</ahref></li>
+<li><ahref>{{ slot_2 }}</ahref></li>
+<li><ahref>{{ slot_3 }}</ahref></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="menu">
+<h2>{{ slot_4 }}</h2>
+
+<ul>
+<li class="dish">
+<h3>{{ slot_5 }}</h3>
+<p class="red">{{ slot_6 }}</p>
+<div class="dish-image dish1 ph"></div>
+</li>
+<li class="dish">
+<h3>{{ slot_7 }}</h3>
+<p class="red">{{ slot_8 }}</p>
+<div class="dish-image dish2 ph"></div>
+</li>
+<li class="dish">
+<h3>{{ slot_9 }}</h3>
+<p class="red">{{ slot_10 }}</p>
+<div class="dish-image dish3 ph"></div>
+</li>
+</ul>
+</section>
+<section id="reservation">
+<h2>{{ slot_11 }}</h2>
+<p class="red">{{ slot_12 }}</p>
+
+<div class="reservation-image ph"></div>
+</section>
+<section id="order">
+<h2>{{ slot_13 }}</h2>
+<p class="red">{{ slot_14 }}</p>
+
+<div class="order-image ph"></div>
+</section>
+</main>
+</body>
+</html>

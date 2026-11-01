@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+.navigation ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navigation li {
+    float: right;
+}
+
+.navigation li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navigation li a:hover {
+    background-color: #111;
+}
+
+.hero {
+    background-color: lightblue;
+    text-align: center;
+    padding: 50px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.mission, .programs, .volunteers {
+    text-align: center;
+    border: 1px solid #333;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+.color-rect {
+    
+    height: 20px;
+    background-color: #f2f2f2;
+}
+
+.donate-btn {
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="navigation">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</div>
+<div class="hero">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+<button class="donate-btn">{{ slot_5 }}</button>
+</div>
+<div class="content">
+<div class="mission">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+
+<div class="color-rect">{{ slot_8 }}</div>
+</div>
+<div class="programs">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+
+<div class="color-rect">{{ slot_11 }}</div>
+</div>
+<div class="volunteers">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+
+<div class="color-rect">{{ slot_14 }}</div>
+</div>
+</div>
+</body>
+</html>

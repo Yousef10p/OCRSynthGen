@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+.container {
+    display: flex;
+}
+
+.left-side {
+    width: 20%;
+    background-color: #f0f0f0;
+}
+
+.left-side nav {
+    position: fixed;
+    width: inherit;
+}
+
+.left-side ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.left-side ul li a {
+    display: block;
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.right-side {
+    width: 80%;
+    margin-right: 20%;
+    padding: 10px;
+}
+
+.info {
+    margin-bottom: 20px;
+}
+
+.info h1, .info h2 {
+    margin-top: 0;
+}
+
+.event-image, .package-image, .services-image, .review-image, .contact-image {
+    height: 150px;
+    margin-top: 10px;
+    background-color: #ccc; 
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="left-side">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+</div>
+<div class="right-side">
+<div class="info" id="home">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="info" id="events">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="event-image ph"></div> 
+</div>
+<div class="info" id="packages">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div class="package-image ph"></div> 
+</div>
+<div class="info" id="services">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="services-image ph"></div> 
+</div>
+<div class="info" id="reviews">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+<div class="review-image ph"></div> 
+</div>
+<div class="info" id="contact">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+<div class="contact-image ph"></div> 
+</div>
+</div>
+</div>
+</body>
+</html>

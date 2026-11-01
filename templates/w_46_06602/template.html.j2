@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-left: 10px;
+}
+
+aside {
+    float: right;
+    width: 20%;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+section {
+    margin: 10px;
+}
+
+.home-container, .training-container, .nutrition-container, .blog-container {
+    display: flex;
+}
+
+.home-item, .training-item, .nutrition-item, .blog-item {
+    background-color: #585858; 
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<aside>
+<h2>{{ slot_4 }}</h2>
+
+<p>{{ slot_5 }}</p>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</aside>
+<main>
+<section id="home">
+<h1>{{ slot_8 }}
+                <div class="home-container">
+<div class="home-item"></div> 
+<p>{{ slot_9 }}</p>
+</div>
+</h1></section>
+<section id="training">
+<h1>{{ slot_10 }}
+                <div class="training-container">
+<div class="training-item"></div> 
+<p>{{ slot_11 }}</p>
+</div>
+</h1></section>
+<section id="nutrition">
+<h1>{{ slot_12 }}
+                <div class="nutrition-container">
+<div class="nutrition-item"></div> 
+<p>{{ slot_13 }}</p>
+</div>
+</h1></section>
+<section id="blog">
+<h1>{{ slot_14 }}
+                <div class="blog-container">
+<div class="blog-item"></div> 
+<p>{{ slot_15 }}</p>
+</div>
+</h1></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #e6b968; 
+    color: #FFF;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 2rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+nav ul li a {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+main {
+    margin: 2rem 0;
+}
+
+h2 {
+    margin: 2rem 0 1rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+p {
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    background-color: #c8d5b9; 
+    border-radius: 5px;
+}
+
+.image {
+    width: 75%;
+    height: 200px;
+    background-color: #564d4d; 
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: #cd5c5c; 
+    color: #FFF;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="menu">
+<h2>{{ slot_5 }}</h2>
+<ul class="grid">
+<li class="item">
+<h3>{{ slot_6 }}</h3>
+<div class="image ph"></div>
+<p>{{ slot_7 }}</p>
+</li>
+<li class="item">
+<h3>{{ slot_8 }}</h3>
+<div class="image ph"></div>
+<p>{{ slot_9 }}</p>
+</li>
+<li class="item">
+<h3>{{ slot_10 }}</h3>
+<div class="image ph"></div>
+<p>{{ slot_11 }}</p>
+</li>
+
+</ul>
+</section>
+<section id="reviews">
+<h2>{{ slot_12 }}</h2>
+<ul class="grid">
+<li>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+</li>
+<li>
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+</li>
+<li>
+<h3>{{ slot_19 }}</h3>
+<p>{{ slot_20 }}</p>
+<p>{{ slot_21 }}</p>
+</li>
+
+</ul>
+</section>
+</main>
+<footer>
+<p>{{ slot_22 }}</p>
+</footer>
+</body>
+</html>

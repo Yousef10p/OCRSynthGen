@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #495057;
+}
+
+.highlighted-destinations, .deals {
+    margin: 50px 0;
+}
+
+.highlighted-destinations .destination, .deals .deal {
+    width: 30%;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #e9ecef;
+}
+
+.destination-image, .deal-image {
+    height: 200px;
+    background-color: #007bff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="highlighted-destinations">
+<h1>{{ slot_3 }}</h1>
+<div class="destination">
+<h2>{{ slot_4 }}</h2>
+<div class="destination-image">{{ slot_5 }}</div>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="destination">
+<h2>{{ slot_7 }}</h2>
+<div class="destination-image">{{ slot_8 }}</div>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="destination">
+<h2>{{ slot_10 }}</h2>
+<div class="destination-image">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+</div>
+</div>
+<div class="deals">
+<h1>{{ slot_13 }}</h1>
+<div class="deal">
+<h2>{{ slot_14 }}</h2>
+<div class="deal-image">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+</div>
+<div class="deal">
+<h2>{{ slot_17 }}</h2>
+<div class="deal-image">{{ slot_18 }}</div>
+<p>{{ slot_19 }}</p>
+</div>
+<div class="deal">
+<h2>{{ slot_20 }}</h2>
+<div class="deal-image">{{ slot_21 }}</div>
+<p>{{ slot_22 }}</p>
+</div>
+</div>
+</body>
+</html>

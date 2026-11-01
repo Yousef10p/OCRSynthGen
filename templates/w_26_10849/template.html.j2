@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f8f8f8;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav button {
+  padding: 8px 16px;
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+section {
+  margin-top: 120px;
+  padding: 20px;
+}
+
+.product {
+  height: 200px;
+  background-color: #ddd;
+  margin-bottom: 20px;
+}
+
+.tip {
+  margin-bottom: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+<button>{{ slot_3 }}</button>
+</nav>
+<section id="skincare">
+<h2>{{ slot_4 }}</h2>
+<div class="product"></div>
+<p>{{ slot_5 }}</p>
+</section>
+<section id="makeup">
+<h2>{{ slot_6 }}</h2>
+<div class="product"></div>
+<p>{{ slot_7 }}</p>
+</section>
+<section id="haircare">
+<h2>{{ slot_8 }}</h2>
+<div class="product"></div>
+<p>{{ slot_9 }}</p>
+</section>
+<section id="beauty-tips">
+<h2>{{ slot_10 }}</h2>
+<div class="tip one">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="tip two">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</section>
+</body>
+</html>

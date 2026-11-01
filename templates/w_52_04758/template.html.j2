@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+nav {
+    background-color: #f8f8f8;
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 10px;
+}
+
+nav ul li a {
+    display: block;
+    color: #333;
+    padding: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 50px;
+}
+
+header img {
+    width: 100%; 
+    height: auto; 
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.feature-sections {
+    margin-right: 220px;
+    padding: 20px;
+}
+
+.deal, .category {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul class="nav-links">
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<button>{{ slot_4 }}</button>
+</header>
+<section class="feature-sections">
+<h2>{{ slot_5 }}</h2>
+<div class="category">{{ slot_6 }}</div>
+<div class="category">{{ slot_7 }}</div>
+<div class="category">{{ slot_8 }}</div>
+<h2>{{ slot_9 }}</h2>
+<div class="deal">{{ slot_10 }}</div>
+<div class="deal">{{ slot_11 }}</div>
+</section>
+<footer>
+<a>{{ slot_12 }}</a> {{ slot_13 }}
+        <a>{{ slot_14 }}</a> {{ slot_15 }}
+        <a>{{ slot_16 }}</a> {{ slot_17 }}
+        <a>{{ slot_18 }}</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-size: 20px;
+  color: white;
+  background-color: black;
+}
+
+.hero {
+  font-size: 40px;
+  text-align: center;
+  background-color: red;
+  padding: 20px 0;
+}
+
+.content {
+  display: flex;
+}
+
+.sidebar, .featured, .gallery {
+  padding: 10px;
+}
+
+.sidebar, .gallery {
+  background-color: blue;
+}
+
+.featured {
+  background-color: green;
+  flex: 1;
+}
+
+.product, .review {
+  background-color: yellow;
+  color: black;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero">{{ slot_0 }}</div>
+<div class="content">
+<div class="sidebar">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</div>
+<div class="featured">
+<h2>{{ slot_6 }}</h2>
+<div class="product">{{ slot_7 }}</div>
+<div class="reviews">
+<h3>{{ slot_8 }}</h3>
+<div class="review">{{ slot_9 }}</div>
+<div class="review">{{ slot_10 }}</div>
+</div>
+<div class="related">
+<h3>{{ slot_11 }}</h3>
+<div class="product">{{ slot_12 }}</div>
+<div class="product">{{ slot_13 }}</div>
+</div>
+</div>
+<div class="gallery">
+<h2>{{ slot_14 }}</h2>
+<div class="product">{{ slot_15 }}</div>
+<div class="product">{{ slot_16 }}</div>
+<div class="product">{{ slot_17 }}</div>
+</div>
+</div>
+</body>
+</html>

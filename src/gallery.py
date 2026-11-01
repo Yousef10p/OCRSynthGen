@@ -5,9 +5,11 @@ Arabic words, so the template's own typography (fonts, sizes, line height, align
 The gallery shows both side by side. The text previews load the default fonts from assets/fonts/.
 """
 import json
+import random
 import re
 import shutil
 import sys
+from collections import Counter, defaultdict
 
 from jinja2 import Environment
 from markupsafe import Markup, escape
@@ -20,6 +22,9 @@ from src.markdown import to_markdown
 PREVIEWS, GALLERY, FONTS, RENDERS = ROOT / "previews", ROOT / "gallery", ROOT / "assets" / "fonts", ROOT / "renders"
 SYNTHDOC = ROOT / "synthdoc_out"
 SOURCES = [("grammar", "Grammar"), ("websight", "WebSight"), ("doclaynet", "DocLayNet")]
+# The gallery previews every template of the bank's first build and PER_SOURCE others per source
+PER_SOURCE = 400
+FIRST_BUILD = re.compile(r"^(g_\d{4}|w_\d{5}|d_\d{4})$")
 # Versions of each bank template in the Show menu: (value, label, which items have it)
 VERSIONS = [("empty", "empty", lambda it: True), ("ocrsmith", "OCRSmith render", lambda it: it["render"]),
             ("synthdoc", "SynthDoc-augraphy-scan-simulator", lambda it: it["synthdoc"]),
@@ -84,6 +89,7 @@ body { font: 14px sans-serif; margin: 16px; background: #f3f3f3; }
 </div>
 <div class="legend">{% for r, c in colors.items() %}<span style="border-color: {{ c }}">{{ r }}</span>{% endfor %}</div>
 <div id="grid"></div>
+<p><button id="more" style="display:none" onclick="more()">Show 60 more</button></p>
 <p id="empty">Nothing shown yet: pick a set from the <b>Show</b> menu above.</p>
 <script>
 const ITEMS = {{ items_json }};
@@ -142,21 +148,30 @@ const VERSIONS = {empty: [() => true, emptyCard], ocrsmith: [(it) => it.render, 
                   synthdoc_ocrsmith: [(it) => it.synthdoc && it.synthdoc.ocrsmith, synthdocCard("synthdoc_ocrsmith", "ocrsmith")],
                   documents: [() => true, ocrsmithDocCard]};
 // Nothing is built until a set is picked: the page opens empty.
+// Cards are added PAGE at a time ("Show more"), so a set of thousands opens at once.
+const PAGE = 60;
+let matching = [], shown = 0;
 function apply() {
   const value = document.getElementById("show").value, feat = document.getElementById("feature").value;
   const [source, version] = value.split(":");
   grid.innerHTML = "";
   document.getElementById("empty").style.display = value ? "none" : "";
-  let n = 0;
-  for (const it of value ? ITEMS : []) {
-    const [has, makeCard] = VERSIONS[version];
-    if (it.source !== source || !has(it) || (feat && !TESTS[feat](it.features))) continue;
+  matching = value ? ITEMS.filter((it) => it.source === source && VERSIONS[version][0](it)
+                                  && (!feat || TESTS[feat](it.features))) : [];
+  shown = 0;
+  more();
+}
+function more() {
+  const version = document.getElementById("show").value.split(":")[1];
+  for (const it of matching.slice(shown, shown + PAGE)) {
     const card = document.createElement("div");
     card.className = "card";
-    card.innerHTML = makeCard(it);
-    grid.appendChild(card); n++;
+    card.innerHTML = VERSIONS[version][1](it);
+    grid.appendChild(card);
   }
-  document.getElementById("shown").textContent = value ? n + " shown" : "";
+  shown = Math.min(shown + PAGE, matching.length);
+  document.getElementById("shown").textContent = matching.length ? `${shown} of ${matching.length} shown` : "";
+  document.getElementById("more").style.display = shown < matching.length ? "" : "none";
 }
 document.getElementById("show").onchange = apply;
 document.getElementById("feature").onchange = apply;
@@ -246,7 +261,9 @@ def run():
     # Rendered pages from demo/render_demo.py --gallery, if they were made.
     renders = RENDERS / "renders.json"
     renders = json.loads(renders.read_text(encoding="utf-8")) if renders.exists() else {}
-    for m in load_bank():
+    bank = load_bank()
+    totals = Counter(m["source"] for m in bank)
+    for m in gallery_sample(bank):
         text = (TEMPLATES / m["id"] / "template.html.j2").read_text(encoding="utf-8")
         markers = {s["id"]: marker(s) for s in m["slots"]}
         words = {s["id"]: sample_text(s, k) for k, s in enumerate(m["slots"])}
@@ -265,8 +282,9 @@ def run():
     attach_synthdoc({it["id"]: it for it in items})
     items += ocrsmith_items()
     count = lambda source, has: sum(it["source"] == source and bool(has(it)) for it in items)
-    menu = [(label, [(f"{key}:{version}", f"{label} · {name}", n) for version, name, has in VERSIONS
-                     if (n := count(key, has))]) for key, label in SOURCES]
+    menu = [(label, [(f"{key}:{version}", f"{label} · {name}" + (f" (of {totals[key]:,} in the bank)"
+                                                                 if version == "empty" and totals[key] > n else ""), n)
+                     for version, name, has in VERSIONS if (n := count(key, has))]) for key, label in SOURCES]
     menu.append(("OCRSmith documents", [("ocrsmith-poc:documents", "OCRSmith pages → templates",
                                          count("ocrsmith-poc", bool))]))
     (GALLERY / "index.html").write_text(INDEX.render(menu=[g for g in menu if g[1] and g[1][0][2]],
@@ -274,6 +292,18 @@ def run():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")  # menu labels contain "→"
     print("gallery: " + "; ".join(f"{label} {n}" for _, opts in menu for _, label, n in opts) + " -> gallery/index.html")
+
+
+def gallery_sample(bank, per_source=PER_SOURCE):
+    """Every template of the bank's first build, plus per_source others from each source (a fixed random
+    sample): previews of tens of thousands of templates would take gigabytes."""
+    first = [m for m in bank if FIRST_BUILD.match(m["id"])]
+    rest = defaultdict(list)
+    for m in bank:
+        if not FIRST_BUILD.match(m["id"]):
+            rest[m["source"]].append(m)
+    picked = [m for ms in rest.values() for m in random.Random(0).sample(ms, min(per_source, len(ms)))]
+    return sorted(first + picked, key=lambda m: m["id"])
 
 
 def code_pages(name, code, page_href, image_href, when):

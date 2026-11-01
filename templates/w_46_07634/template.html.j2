@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+
+header {
+  background-color: #f8f9fa;
+}
+
+
+main {
+  margin: 20px;
+}
+
+
+#hero .hero-content {
+  text-align: center;
+}
+
+
+#services .service {
+  display: flex;
+  flex-direction: column;
+}
+
+
+#blog .blog-post {
+  display: flex;
+  flex-direction: column;
+}
+
+
+#success-stories .success-story {
+  display: flex;
+  flex-direction: column;
+}
+
+
+footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<div class="hero-content">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<button>{{ slot_6 }}</button>
+</div>
+</section>
+<section id="services">
+<h2>{{ slot_7 }}</h2>
+<div class="service">
+<h3>{{ slot_8 }}</h3>
+<div class="service-image ph"></div>
+<p>{{ slot_9 }}</p>
+</div>
+</section>
+<section id="blog">
+<h2>{{ slot_10 }}</h2>
+<div class="blog-post">
+<h3>{{ slot_11 }}</h3>
+<div class="blog-image ph"></div>
+<p>{{ slot_12 }}</p>
+</div>
+</section>
+<section id="success-stories">
+<h2>{{ slot_13 }}</h2>
+<div class="success-story">
+<h3>{{ slot_14 }}</h3>
+<div class="success-image ph"></div>
+<p>{{ slot_15 }}</p>
+</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

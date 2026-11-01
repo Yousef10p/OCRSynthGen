@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #fff;
+}
+
+header {
+    background-color: #faa;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+.hero {
+    text-align: center;
+    background-color: #afa;
+    padding: 50px 0;
+}
+
+.hero h1 {
+    font-size: 2em;
+}
+
+.hero button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+}
+
+.feature img {
+    width: 100px;
+    height: 100px;
+    background-color: #333;
+}
+
+.contact form {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact label {
+    display: block;
+    margin-top: 20px;
+}
+
+.contact input, .contact textarea {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="hero">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<button>{{ slot_6 }}</button>
+</section>
+<section class="features">
+<div class="feature">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="feature">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="feature">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</section>
+<section class="contact">
+<h2>{{ slot_13 }}</h2>
+<form>
+<label>{{ slot_14 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span><br>
+<label>{{ slot_16 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span><br>
+<label>{{ slot_18 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_19 }}</span><br>
+<span class="">{{ slot_20 }}</span>
+</form>
+</section>
+</main>
+</body>
+</html>

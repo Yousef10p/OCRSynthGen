@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header, footer {
+  background-color: #eee;
+  text-align: center;
+}
+
+nav {
+  padding: 10px 0;
+}
+
+h1, h2 {
+  color: #444;
+}
+
+.image {
+  width: 80%;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ddd;
+}
+
+.testimonial {
+  display: flex;
+  margin: 20px 0;
+}
+
+.fake-image {
+  margin-left: 20px;
+}
+
+.option {
+  margin: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a> {{ slot_2 }}
+      <a>{{ slot_3 }}</a> {{ slot_4 }}
+      <a>{{ slot_5 }}</a>
+</nav>
+</header>
+<section id="slider">
+<div class="image fake-image">{{ slot_6 }}</div>
+<div class="filter">
+<div class="option">{{ slot_7 }}</div>
+<div class="option">{{ slot_8 }}</div>
+</div>
+</section>
+<section id="testimonials">
+<div class="testimonial">
+<div class="fake-image feedback">{{ slot_9 }}</div>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="testimonial">
+<div class="fake-image feedback">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+</div>
+</section>
+<section id="values">
+<h2>{{ slot_13 }}</h2>
+<ul>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+<li>{{ slot_16 }}</li>
+</ul>
+</section>
+<footer>{{ slot_17 }}</footer>
+</body>
+</html>

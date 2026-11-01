@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.header, .navbar, .content, .footer {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+}
+
+.header-content {
+  margin-bottom: 15px;
+}
+
+.cta-button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: #ddd;
+}
+
+.nav-logo {
+  margin-bottom: 15px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+
+.services, .case-studies, .blog {
+  background-color: #eee;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  flex-grow: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="header">
+<div class="header-content">{{ slot_0 }}</div>
+<button class="cta-button">{{ slot_1 }}</button>
+</header>
+<nav class="navbar">
+<div class="nav-logo">{{ slot_2 }}</div>
+<ul>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+<div class="content">
+<section class="services">
+<h2 id="services">{{ slot_7 }}</h2>
+<p id="services-description">{{ slot_8 }}</p>
+</section>
+<section class="case-studies">
+<h2 id="case-studies">{{ slot_9 }}</h2>
+<p id="case-studies-desc">{{ slot_10 }}</p>
+</section>
+<section class="blog">
+<h2 id="blog">{{ slot_11 }}</h2>
+<p id="blog-desc">{{ slot_12 }}</p>
+</section>
+</div>
+<footer class="footer">
+<div class="social-links">{{ slot_13 }}</div>
+<div class="contact-info">{{ slot_14 }}</div>
+<div class="privacy-policy">{{ slot_15 }}</div>
+</footer>
+</body>
+</html>

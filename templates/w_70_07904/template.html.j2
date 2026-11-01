@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#nav {
+    position: fixed;
+    height: 100%;
+    width: 200px;
+    background-color: #eee;
+    top: 0;
+    right: 0;
+}
+
+#logo {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+#menu {
+    margin-top: 50px;
+}
+
+#menu ul li {
+    padding: 10px;
+    list-style: none;
+}
+
+#menu ul ul {
+    padding-right: 20px;
+    display: none;
+    position: absolute;
+    right: 100%;
+    top: -25px;
+}
+
+#menu ul li:hover ul {
+    display: block;
+}
+
+.product {
+    width: 300px;
+    margin: auto;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="nav">
+<div id="logo">{{ slot_0 }}</div>
+<div id="menu">
+<ul>
+<li> {{ slot_1 }}
+                    <ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</li>
+<li>{{ slot_5 }}
+                    <ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</li>
+<li>{{ slot_9 }}
+                    <ul>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="main">
+<p class="product">{{ slot_13 }}</p>
+<p class="product">{{ slot_14 }}</p>
+<p class="product">{{ slot_15 }}</p>
+<p class="product">{{ slot_16 }}</p>
+<p class="product">{{ slot_17 }}</p>
+<p class="product">{{ slot_18 }}</p>
+<p class="product">{{ slot_19 }}</p>
+<p class="product">{{ slot_20 }}</p>
+<p class="product">{{ slot_21 }}</p>
+</div>
+</body>
+</html>

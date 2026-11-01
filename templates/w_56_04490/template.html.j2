@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #eee;
+}
+
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+
+#menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+#menu li {
+  display: inline;
+  margin: 0 10px;
+}
+
+#menu a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+main {
+  margin: 20px;
+}
+
+.news-item {
+  margin-bottom: 20px;
+}
+
+.fake-img {
+  width: 100%;
+  height: 200px;
+  background-color: #fff;
+}
+
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#social a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo">{{ slot_0 }}</div>
+<nav>
+<ul id="menu">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<form id="search-form">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+</form>
+</header>
+<main>
+<article class="news-item">
+<h2>{{ slot_5 }}</h2>
+<div class="fake-img ph"></div>
+<p>{{ slot_6 }}</p>
+</article>
+<article class="news-item">
+<h2>{{ slot_7 }}</h2>
+<div class="fake-img ph"></div>
+<p>{{ slot_8 }}</p>
+</article>
+</main>
+<footer>
+<div id="social">
+<a>{{ slot_9 }}</a> {{ slot_10 }} 
+        <a>{{ slot_11 }}</a> {{ slot_12 }} 
+        <a>{{ slot_13 }}</a>
+</div>
+<div id="contact">
+<p>{{ slot_14 }} <a>{{ slot_15 }}</a></p>
+</div>
+<div id="newsletter">
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+<span class="">{{ slot_17 }}</span>
+</form>
+</div>
+</footer>
+</body>
+</html>

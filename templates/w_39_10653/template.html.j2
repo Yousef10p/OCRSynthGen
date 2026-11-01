@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.content {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.column {
+    flex: 1;
+    height: 200px;
+    background-color: #ccc;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.logo {
+    width: 30%;
+    background-color: #aaa;
+}
+
+.contact-info {
+    width: 40%;
+    background-color: #bbb;
+}
+
+.social-media a {
+    margin-left: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<div class="content">
+<div class="row">
+<div class="column">{{ slot_3 }}</div>
+<div class="column">{{ slot_4 }}</div>
+<div class="column">{{ slot_5 }}</div>
+</div>
+<div class="row reverse">
+<div class="column">{{ slot_6 }}</div>
+<div class="column">{{ slot_7 }}</div>
+<div class="column">{{ slot_8 }}</div>
+</div>
+</div>
+</main>
+<footer>
+<div class="footer-content">
+<div class="logo">{{ slot_9 }}</div>
+<div class="contact-info">
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="social-media">
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

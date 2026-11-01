@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 10px;
+}
+
+#slideshow .rectangle {
+    background-color: #ddd;
+    width: 100px;
+    height: 100px;
+    margin: 5px auto;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+}
+
+footer form {
+    padding: 10px;
+}
+
+footer form input[type="text"] {
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<div id="slideshow">
+<div class="slides">
+<div class="numberText">{{ slot_4 }}</div>
+<div class="rectangle"></div>
+<div class="caption">{{ slot_5 }}</div>
+</div>
+<div class="slides">
+<div class="numberText">{{ slot_6 }}</div>
+<div class="rectangle"></div>
+<div class="caption">{{ slot_7 }}</div>
+</div>
+<div class="slides">
+<div class="numberText">{{ slot_8 }}</div>
+<div class="rectangle"></div>
+<div class="caption">{{ slot_9 }}</div>
+</div>
+</div>
+<footer>
+<h2>{{ slot_10 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="">{{ slot_14 }}</span>
+</form>
+</footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); }
+header, footer { background-color: #f8f8f8; padding: 10px 0; text-align: center; }
+aside, main { float: right; padding: 15px; }
+.left-sidebar { width: 20%; }
+.right-sidebar { width: 20%; }
+main { width: 60%; }
+h2 { margin-bottom: 10px; }
+article { margin-bottom: 20px; }
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>{{ slot_0 }}
+    
+    {{ slot_1 }}<header>{{ slot_2 }}
+        
+        {{ slot_3 }}<aside class="left-sidebar">{{ slot_4 }}
+            {{ slot_5 }}<h2>{{ slot_6 }}</h2>{{ slot_7 }}<ul>{{ slot_8 }}<li>{{ slot_9 }}</li>
+                {{ slot_10 }}<li>{{ slot_11 }}</li>
+                {{ slot_12 }}<li>{{ slot_13 }}</li>
+                {{ slot_14 }}<li>{{ slot_15 }}</li>{{ slot_16 }}
+            </ul>{{ slot_17 }}
+            {{ slot_18 }}<h2>{{ slot_19 }}</h2>{{ slot_20 }}<p>{{ slot_21 }}</p>{{ slot_22 }}
+        </aside>{{ slot_23 }}
+        {{ slot_24 }}<main>{{ slot_25 }}<h1>{{ slot_26 }}</h1>{{ slot_27 }}<p>{{ slot_28 }}</p>{{ slot_29 }}
+            
+            {{ slot_30 }}<section class="articles">{{ slot_31 }}<h2>{{ slot_32 }}</h2>{{ slot_33 }}<article>{{ slot_34 }}<h3>{{ slot_35 }}</h3>{{ slot_36 }}<p>{{ slot_37 }}</p>{{ slot_38 }}
+                </article>{{ slot_39 }}<article>{{ slot_40 }}<h3>{{ slot_41 }}</h3>{{ slot_42 }}<p>{{ slot_43 }}</p>{{ slot_44 }}
+                </article>{{ slot_45 }}
+            </section>{{ slot_46 }}
+        </main>{{ slot_47 }}
+        {{ slot_48 }}<aside class="right-sidebar">{{ slot_49 }}
+            {{ slot_50 }}<h2>{{ slot_51 }}</h2>{{ slot_52 }}<p>{{ slot_53 }}</p>{{ slot_54 }}
+            {{ slot_55 }}<h2>{{ slot_56 }}</h2>{{ slot_57 }}<ul>{{ slot_58 }}<li><a>{{ slot_59 }}</a>{{ slot_60 }}</li><li><a>{{ slot_61 }}</a>{{ slot_62 }}</li><li><a>{{ slot_63 }}</a>{{ slot_64 }}
+            </li></ul>{{ slot_65 }}
+        </aside>{{ slot_66 }}
+</header></body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+nav {
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+#logo {
+    text-align: center;
+    font-size: 2em;
+    padding: 20px;
+    background-color: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+#content {
+    display: flex;
+}
+
+.col-left, .col-right {
+    flex: 1;
+}
+
+.image-placeholder {
+    height: 200px;
+    background-color: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+}
+
+footer a {
+    margin-left: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<div id="logo">
+        {{ slot_3 }}
+    </div>
+<section id="content">
+<div class="col-left">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<div class="image-placeholder ph"></div>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="image-placeholder ph"></div>
+</div>
+<div class="col-right">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="image-placeholder ph"></div>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<div class="image-placeholder ph"></div>
+</div>
+</section>
+<footer>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</footer>
+</body>
+</html>

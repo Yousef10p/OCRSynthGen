@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logo img {
+    width: 200px;
+    height: 100px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 20px 0;
+    background-color: #ccc;
+}
+
+#content {
+    display: flex;
+    width: 80%;
+}
+
+#content div {
+    width: 33.33%;
+    padding: 20px;
+}
+
+#sidebar {
+    background-color: #ebebeb;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+h1 {
+    color: #007BFF;
+    text-align: center;
+}
+
+input[type="text"], input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="ph"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<div id="content">
+<div id="investment-options">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+</div>
+<div id="loans">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</div>
+<div id="insurance">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+</div>
+</div>
+<div id="sidebar">
+<h1>{{ slot_9 }}</h1>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<span class="">{{ slot_11 }}</span>
+</form>
+<h1>{{ slot_12 }}</h1>
+<ul>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+</ul>
+</div>
+</body>
+</html>

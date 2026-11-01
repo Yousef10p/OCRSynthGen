@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-image {
+    width: 500px;
+    height: 300px;
+    background-color: grey; 
+}
+
+.table-container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.table-container table {
+    width: 100%;
+}
+
+.table-container table, th, td {
+    border: 1px solid black;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<h1>{{ slot_0 }}</h1>
+<div class="main-container">
+<div class="ph"></div>
+<div>
+<p>{{ slot_1 }}</p>
+<p>{{ slot_2 }}</p>
+<p>{{ slot_3 }}</p>
+<p>{{ slot_4 }}</p>
+<p>{{ slot_5 }}</p>
+</div>
+</div>
+<div class="table-container">
+<table>
+<tr>
+<td>{{ slot_6 }}</td>
+<td>{{ slot_7 }}</td>
+<td>{{ slot_8 }}</td>
+</tr>
+<tr>
+<td>{{ slot_9 }}</td>
+<td>{{ slot_10 }}</td>
+<td>{{ slot_11 }}</td>
+</tr>
+<tr>
+<td>{{ slot_12 }}</td>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

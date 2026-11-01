@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header, footer {
+    background-color: #222;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    padding: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#hero {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+#hero .hero-text, #calculator {
+    flex: 1;
+    padding: 10px;
+}
+
+.placeholder-img, #calculator {
+    background-color: #ddd;
+    height: 200px;
+    margin: 10px 0;
+}
+
+.calculator-input input, .calculator-input button {
+    margin: 10px 0;
+}
+
+#savings, #investment-estimate {
+    font-weight: bold;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<div class="hero-text">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<a class="call-to-action">{{ slot_7 }}</a>
+</div>
+<div class="placeholder-img">{{ slot_8 }}</div>
+</section>
+<section id="calculator">
+<h2>{{ slot_9 }}</h2>
+<div class="calculator-input">
+<label>{{ slot_10 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<label>{{ slot_12 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<label>{{ slot_14 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<button id="calculate">{{ slot_16 }}</button>
+</div>
+<div id="calculator-output">
+<p>{{ slot_17 }}</p>
+<p id="savings"></p>
+<p>{{ slot_18 }}</p>
+<p id="investment-estimate"></p>
+</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_19 }}</p>
+</footer>
+</body>
+</html>

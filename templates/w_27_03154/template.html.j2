@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+header, footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 20px 0;
+}
+#home, #athletes, #news, #contact {
+    margin: 20px;
+}
+.athlete {
+    display: flex;
+    margin: 20px 0;
+}
+.athlete-image {
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+}
+.news-item {
+    background-color: lightgray;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<h1>{{ slot_4 }}</h1>
+</header>
+<main id="home">
+
+<div id="athletes">
+<h2>{{ slot_5 }}</h2>
+<div class="athlete">
+<div class="athlete-image">{{ slot_6 }}</div>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="athlete">
+<div class="athlete-image">{{ slot_8 }}</div>
+<p>{{ slot_9 }}</p>
+</div>
+</div>
+<div id="news">
+<h2>{{ slot_10 }}</h2>
+<div class="news-item">
+<p>{{ slot_11 }}</p>
+</div>
+<div class="news-item">
+<p>{{ slot_12 }}</p>
+</div>
+</div>
+<div id="contact">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</div>
+</main>
+<footer>{{ slot_15 }}</footer>
+</body>
+</html>

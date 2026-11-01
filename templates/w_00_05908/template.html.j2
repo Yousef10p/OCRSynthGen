@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+font-family: var(--font-body);
+background-color: #f0f0f0;
+margin: 0;
+padding: 0;
+}
+
+header {
+background-color: #333;
+color: #fff;
+padding: 10px 0;
+}
+header form {
+display: flex;
+justify-content: center;
+}
+header input[type="text"] {
+width: 70%;
+padding: 10px;
+border: none;
+}
+header input[type="submit"] {
+background-color: #666;
+color: #fff;
+padding: 10px;
+border: none;
+}
+main {
+margin: 20px 10px;
+}
+section {
+margin-bottom: 30px;
+}
+section h2 {
+color: #333;
+}
+section p {
+line-height: 1.6;
+}
+
+section .trip_rectangle,
+section .hotel_rectangle {
+width: 100%;
+height: 200px;
+background-color: #666;
+margin: 20px 0;
+}
+footer {
+background-color: #333;
+color: #fff;
+padding: 10px 0;
+text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<div class="search_bar">
+<span class="">{{ slot_1 }}</span>
+</div>
+</form></header>
+<main>
+<section>
+<h1>{{ slot_2 }}</h1>
+<p>{{ slot_3 }}</p>
+</section>
+<section>
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+
+<div class="trip_rectangle"></div>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+
+</ul>
+</section>
+<section>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+
+<div class="hotel_rectangle"></div>
+<ul>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+
+</ul>
+</section>
+</main>
+<footer>
+
+
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

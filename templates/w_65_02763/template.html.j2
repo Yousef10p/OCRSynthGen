@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    color: #444;
+}
+
+a {
+    color: #906;
+    text-decoration: none;
+}
+
+
+#logo {
+    background-color: #f99;
+    text-align: center;
+    padding: 20px 0;
+}
+
+nav {
+    background-color: #969;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+nav form input[type="text"] {
+    padding: 5px;
+}
+
+
+.column {
+    float: right;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#slideshow {
+    background-color: #fcc;
+    text-align: center;
+}
+
+.slideshow-image {
+    background-color: #666;
+    color: white;
+    height: 200px;
+    line-height: 200px;
+    margin-bottom: 20px;
+}
+
+
+#social-links a {
+    margin-left: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo">{{ slot_0 }}</div>
+<nav>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+</form>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<div id="main">
+<div class="column" id="slideshow">
+<div class="slideshow-image">{{ slot_6 }}</div>
+<div class="slideshow-image">{{ slot_7 }}</div>
+<div class="slideshow-image">{{ slot_8 }}</div>
+</div>
+<div class="column" id="content">
+<div id="blog">
+<h2>{{ slot_9 }}</h2>
+<article>{{ slot_10 }}</article>
+<article>{{ slot_11 }}</article>
+<article>{{ slot_12 }}</article>
+</div>
+<div id="reviews">
+<h2>{{ slot_13 }}</h2>
+<article>{{ slot_14 }}</article>
+<article>{{ slot_15 }}</article>
+<article>{{ slot_16 }}</article>
+</div>
+</div>
+</div>
+<footer>
+<div id="social-links">
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+</div>
+</footer>
+</body>
+</html>

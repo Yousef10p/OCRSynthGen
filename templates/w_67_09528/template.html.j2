@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#navigation {
+    float: right;
+    width: 20%;
+}
+
+#content {
+    margin-right: 20%;
+}
+
+.product {
+    width: 100px;
+    height: 100px;
+    background-color: #bbb;
+    margin: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="navigation">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</div>
+<div id="content">
+<p><a>{{ slot_3 }}</a> {{ slot_4 }}</p>
+<div class="product" id="product1">{{ slot_5 }}</div>
+<div class="product" id="product2">{{ slot_6 }}</div>
+
+<p><a>{{ slot_7 }}</a> {{ slot_8 }}</p>
+<div class="product" id="product3">{{ slot_9 }}</div>
+<div class="product" id="product4">{{ slot_10 }}</div>
+
+<p><a>{{ slot_11 }}</a> {{ slot_12 }}</p>
+<div class="product" id="product5">{{ slot_13 }}</div>
+<div class="product" id="product6">{{ slot_14 }}</div>
+
+</div>
+</body>
+</html>

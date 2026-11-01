@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 2fr 1fr auto;
+    grid-template-areas:
+        "header header"
+        "nav    main"
+        "footer footer";
+}
+
+header {
+    background: #fffff;
+    border-bottom: 1px solid #333;
+    padding-top: 12px;
+    grid-area: header;
+}
+
+nav {
+    background: skyblue;
+    border-left: 1px solid #333;
+    grid-area: nav;
+}
+
+main {
+    padding: 20px;
+    grid-area: main;
+}
+
+footer {
+    background: #f8f8f8;
+    grid-area: footer;
+    padding: 10px 0;
+    text-align: center;
+}
+
+#logo {
+    display: block;
+    margin: auto;
+}
+
+.colourd-box {
+    background: white;
+    padding: 25px;
+    margin-bottom: 15px;
+}
+
+.left {
+    grid-area: left;
+}
+
+.main-content {
+    grid-area: main;
+}
+
+.right {
+    grid-area: right;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</header>
+<nav>
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+<main>
+<article class="coloured-box">
+<h1>{{ slot_4 }}</h1>
+<p>
+            {{ slot_5 }}
+           </p>
+</article>
+<div class="sidebar left">
+<h2>{{ slot_6 }}</h2>
+<p>
+                {{ slot_7 }}
+            </p>
+</div>
+<div class="main-content">
+<h2>{{ slot_8 }}</h2>
+<p>
+                {{ slot_9 }}
+            </p>
+</div>
+<div class="sidebar right">
+<h2>{{ slot_10 }}</h2>
+<p>
+                {{ slot_11 }}
+            </p>
+</div>
+</main>
+<footer>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

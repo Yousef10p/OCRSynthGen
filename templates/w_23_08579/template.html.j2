@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f4f4f4;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    color: #333;
+}
+
+nav a:hover {
+    background-color: #ddd;
+    color: #000;
+}
+
+.menu-item {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="section1">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+</section>
+<section id="section2">
+<h1>{{ slot_5 }}</h1>
+<div class="menu-item ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_6 }}</p>
+<div class="menu-item ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_7 }}</p>
+<div class="menu-item ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_8 }}</p>
+</section>
+<section id="section3">
+<h1>{{ slot_9 }}</h1>
+<p><strong>{{ slot_10 }} </strong>{{ slot_11 }}</p>
+<p><strong>{{ slot_12 }} </strong>{{ slot_13 }}</p>
+<p><strong>{{ slot_14 }} </strong>{{ slot_15 }}</p>
+</section>
+</body>
+</html>

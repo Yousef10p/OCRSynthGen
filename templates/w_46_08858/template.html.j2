@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  background-color: #f9f9f9;
+  font-family: var(--font-body);
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+header {
+  text-align: center;
+  padding: 1em;
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+}
+.red-rect {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+}
+.yellow-rect {
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+}
+.green-rect {
+  width: 200px;
+  height: 200px;
+  background-color: green;
+}
+.blue-rect {
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+}
+.pink-rect {
+  width: 200px;
+  height: 200px;
+  background-color: pink;
+}
+p {
+  text-align: center;
+}
+ul {
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+}
+li {
+  list-style-type: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<span class="">{{ slot_1 }}</span>
+</form>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<main>
+<div class="center">
+<h2>{{ slot_6 }}</h2>
+<div class="red-rect"></div>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="center">
+<h2>{{ slot_8 }}</h2>
+<div class="yellow-rect"></div>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="center">
+<h2>{{ slot_10 }}</h2>
+<div class="green-rect"></div>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="center">
+<h2>{{ slot_12 }}</h2>
+<div class="blue-rect"></div>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="center">
+<h2>{{ slot_14 }}</h2>
+<div class="pink-rect"></div>
+<p>{{ slot_15 }}</p>
+</div>
+</main>
+</div>
+</body>
+</html>

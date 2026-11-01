@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.container {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.left-column {
+    flex-basis: 30%;
+    padding: 10px;
+}
+
+.left-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.left-column a {
+    display: block;
+    padding: 10px 0;
+}
+
+.main-column {
+    flex-basis: 70%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post {
+    flex-basis: 45%;
+    margin: 10px;
+    border: 1px solid lightgray;
+}
+
+.post-image {
+    background-color: lightgray;
+    height: 200px;
+}
+
+.post-text h2 {
+    padding: 10px;
+}
+
+.post-text p {
+    padding: 10px;
+}
+
+.search-bar {
+    width: 70%;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="left-column">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div class="main-column">
+<div class="post" id="post-1">
+<div class="post-image ph"></div>
+<div class="post-text">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</div>
+</div>
+<div class="post" id="post-2">
+<div class="post-image ph"></div>
+<div class="post-text">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</div>
+</div>
+<div class="post" id="post-3">
+<div class="post-image ph"></div>
+<div class="post-text">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+<div class="post" id="post-4">
+<div class="post-image ph"></div>
+<div class="post-text">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</div>
+</div>
+<div class="post" id="post-5">
+<div class="post-image ph"></div>
+<div class="post-text">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</div>
+<div class="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+</div>
+</div>
+</body>
+</html>

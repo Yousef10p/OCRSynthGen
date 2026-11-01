@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+.slider {
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slide {
+    height: 100%;
+    width: 25%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.destination {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+.destination-image {
+    height: 80%;
+    width: 80%;
+    background-color: lightgray;
+}
+
+.destination-description {
+    text-align: center;
+}
+
+.intro-text {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav ul li {
+    float: right;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    min-width: 150px;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+
+nav ul li ul li {
+    position: relative;
+}
+
+nav ul li ul li ul {
+    left: 150px;
+    top: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="slider">
+<div class="slide">{{ slot_0 }}</div>
+<div class="slide">{{ slot_1 }}</div>
+<div class="slide">{{ slot_2 }}</div>
+<div class="slide">{{ slot_3 }}</div>
+</div>
+<nav>
+<ul>
+<li><a>{{ slot_4 }}</a>
+<ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+</ul>
+</nav>
+<p class="intro-text">{{ slot_13 }}</p>
+<div class="destination">
+<div class="destination-name">{{ slot_14 }}</div>
+<div class="destination-image">{{ slot_15 }}</div>
+<p class="destination-description">{{ slot_16 }}</p>
+</div>
+<div class="destination">
+<div class="destination-name">{{ slot_17 }}</div>
+<div class="destination-image">{{ slot_18 }}</div>
+<p class="destination-description">{{ slot_19 }}</p>
+</div>
+<div class="destination">
+<div class="destination-name">{{ slot_20 }}</div>
+<div class="destination-image">{{ slot_21 }}</div>
+<p class="destination-description">{{ slot_22 }}</p>
+</div>
+<div class="destination">
+<div class="destination-name">{{ slot_23 }}</div>
+<div class="destination-image">{{ slot_24 }}</div>
+<p class="destination-description">{{ slot_25 }}</p>
+</div>
+<div class="destination">
+<div class="destination-name">{{ slot_26 }}</div>
+<div class="destination-image">{{ slot_27 }}</div>
+<p class="destination-description">{{ slot_28 }}</p>
+</div>
+</body>
+</html>

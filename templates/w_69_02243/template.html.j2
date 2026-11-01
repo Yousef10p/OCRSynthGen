@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    color: #333;
+    font-family: var(--font-body);
+}
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+.navbar ul {
+    display: flex;
+    justify-content: space-around;
+}
+.navbar li a {
+    color: #fff;
+    text-decoration: none;
+}
+.jumbotron {
+    height: 200px;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.columns {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+}
+.column {
+    flex: 1;
+}
+.rectangle {
+    height: 100px;
+    width: 100%;
+    background: #333;
+}
+.apply-btn, .send-msg-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+footer {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+.social-icons img {
+    height: 20px;
+}         
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<navbar>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</navbar>
+</header>
+<section class="jumbotron">
+<p>{{ slot_5 }}</p>
+<a class="btn">{{ slot_6 }}</a>
+</section>
+<section class="columns">
+<div class="column">
+<h2>{{ slot_7 }}</h2>
+<div class="rectangle"></div>
+<p>{{ slot_8 }}</p>
+<button class="apply-btn">{{ slot_9 }}</button>
+</div>
+<div class="column">
+<h2>{{ slot_10 }}</h2>
+<div class="rectangle"></div>
+<p>{{ slot_11 }}</p>
+<button class="apply-btn">{{ slot_12 }}</button>
+</div>
+<div class="column">
+<h2>{{ slot_13 }}</h2>
+<div class="rectangle"></div>
+<p>{{ slot_14 }}</p>
+<button class="apply-btn">{{ slot_15 }}</button>
+</div>
+</section>
+<section class="jumbotron learn-create-earn">
+<p>{{ slot_16 }}</p>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<button class="send-msg-btn">{{ slot_18 }}</button>
+</section>
+<footer>
+<p>{{ slot_19 }}</p>
+<div class="social-icons">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</footer>
+</body>
+</html>

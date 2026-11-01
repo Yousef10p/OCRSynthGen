@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+#hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sports {
+  font-size: 2em;
+  color: blue;
+}
+
+.sports-subheading {
+  color: green;
+}
+
+#hero .privacy {
+  color: grey;
+}
+
+#content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.short-sentence {
+  align-self: flex-start;
+  text-align: center;
+  max-width: 300px;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+footer a {
+  color: black;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1 class="logo primary">{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<div class="sports">{{ slot_4 }}</div>
+<div class="sports-subheading">{{ slot_5 }}</div>
+<div class="privacy">
+<a>{{ slot_6 }}</a> {{ slot_7 }} <a>{{ slot_8 }}</a> {{ slot_9 }} <a>{{ slot_10 }}</a>
+</div>
+</section>
+<div id="content">
+<div class="image ph"></div>
+<p class="short-sentence">{{ slot_11 }}</p>
+<div class="image ph"></div>
+<p class="short-sentence">{{ slot_12 }}</p>
+</div>
+</main>
+<footer>
+<div>
+<a>{{ slot_13 }}</a> {{ slot_14 }} <a>{{ slot_15 }}</a>
+</div>
+</footer>
+</body>
+</html>

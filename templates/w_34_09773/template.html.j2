@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+.logo, .search, .contact {
+  flex: 1;
+  text-align: center;
+}
+
+
+.sidebar {
+  float: right;
+  width: 20%;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+
+.main-content {
+  float: left;
+  width: 80%;
+  padding: 20px;
+}
+
+.destination {
+  height: 200px;
+  margin: 10px 0;
+  background-color: #ddd;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="banner">
+<div class="logo">{{ slot_0 }}</div>
+<div class="search">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+</div>
+<div class="contact">
+<p>{{ slot_2 }}</p>
+<p>{{ slot_3 }}</p>
+<p>{{ slot_4 }}</p>
+</div>
+</div>
+<div class="sidebar">
+<h2>{{ slot_5 }}</h2>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</div>
+<div class="main-content">
+<h1>{{ slot_10 }}</h1>
+<div class="destination" id="beaches">{{ slot_11 }}</div>
+<div class="destination" id="mountains">{{ slot_12 }}</div>
+<div class="destination" id="cities">{{ slot_13 }}</div>
+<div class="destination" id="nature-walks">{{ slot_14 }}</div>
+</div>
+</body>
+</html>

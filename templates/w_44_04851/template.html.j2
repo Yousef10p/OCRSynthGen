@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    background-color: #f2f2f2;
+}
+#container {
+    display: flex;
+    justify-content: space-between;
+}
+#leftcolumn {
+    width: 70%;
+}
+#rightcolumn {
+    width: 30%;
+}
+#models, #coloroptions, #customization {
+    display: flex;
+    flex-wrap: wrap;
+}
+.color {
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+#footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="container">
+<div id="leftcolumn">
+<h1>{{ slot_0 }}</h1>
+<ul id="models">
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+<h1>{{ slot_5 }}</h1>
+<div id="coloroptions">
+<div class="color">{{ slot_6 }}</div>
+<div class="color">{{ slot_7 }}</div>
+<div class="color">{{ slot_8 }}</div>
+<div class="color">{{ slot_9 }}</div>
+</div>
+<h1>{{ slot_10 }}</h1>
+<div id="customization">
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+<div id="rightcolumn">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</div>
+<div id="footer">
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+</div>
+</body>
+</html>

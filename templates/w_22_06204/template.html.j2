@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.box {
+    width: 30%;
+}
+
+.rectangle {
+    background-color: darkgray;
+    height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero">
+
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<button>{{ slot_7 }}</button>
+</section>
+<section id="properties">
+
+<h2>{{ slot_8 }}</h2>
+<div class="container">
+<div class="box">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+
+<div class="rectangle"></div>
+</div>
+<div class="box">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+
+<div class="rectangle"></div>
+</div>
+<div class="box">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+
+<div class="rectangle"></div>
+</div>
+</div>
+</section>
+<section id="reviews">
+
+<h2>{{ slot_15 }}</h2>
+<div class="container">
+<div class="box">
+<div class="rectangle"></div>
+<p>{{ slot_16 }}</p>
+<p>{{ slot_17 }}</p>
+</div>
+<div class="box">
+<div class="rectangle"></div>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+</div>
+</div>
+</section>
+<section id="privacy">
+
+<h2>{{ slot_20 }}</h2>
+<p>{{ slot_21 }}</p>
+</section>
+<section id="questions">
+
+<h2>{{ slot_22 }}</h2>
+<div class="container">
+<div class="box">
+<h3>{{ slot_23 }}</h3>
+<p>{{ slot_24 }}</p>
+</div>
+<div class="box">
+<h3>{{ slot_25 }}</h3>
+<p>{{ slot_26 }}</p>
+</div>
+</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    grid-gap: 20px; 
+    padding: 20px;
+}
+
+.left-column, .right-column, .privacy-policy, .footer {
+    padding: 20px;
+    border: 2px solid #000;
+}
+
+.products, .categories, .reviews, .promotions {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-gap: 20px;
+}
+
+.product, .category, .review, .promotion {
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.product-img, .category-img, .product-img {
+    width: 100%;
+    height: 200px;
+    background-color: blue;
+}
+
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="left-column">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<hr>
+<h2>{{ slot_2 }}</h2>
+<div class="products">
+
+<div class="product">
+<p class="product-name">{{ slot_3 }}</p>
+<div class="product-img ph"></div> 
+<p class="product-description">{{ slot_4 }}</p>
+<p class="product-price">{{ slot_5 }}</p>
+</div>
+
+</div>
+</div>
+<div class="right-column">
+<h2>{{ slot_6 }}</h2>
+<div class="categories">
+
+<div class="category">
+<p class="category-name">{{ slot_7 }}</p>
+<div class="category-img ph"></div> 
+</div>
+
+</div>
+</div>
+<div class="privacy-policy">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="footer">
+<h2>{{ slot_10 }}</h2>
+<div class="reviews">
+
+<div class="review">
+<p class="review-text">{{ slot_11 }}</p>
+<p class="review-author">{{ slot_12 }}</p>
+</div>
+
+</div>
+<h2>{{ slot_13 }}</h2>
+<div class="promotions">
+
+<div class="promotion">
+<p class="promotion-name">{{ slot_14 }}</p>
+<p class="promotion-description">{{ slot_15 }}</p>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

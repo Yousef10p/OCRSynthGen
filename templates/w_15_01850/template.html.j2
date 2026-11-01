@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0px;
+    background-color: #F5F5F5;
+    color: #333;
+    font-family: var(--font-body);
+}
+
+.category-product, .recent-posts, .social-media {
+    float: right;
+    padding: 15px;
+    margin: 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.10);
+}
+
+.recent-posts, .social-media {
+    clear: both;
+}
+
+.post, .feed {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #F5F5F5;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="category-product">
+<h1>{{ slot_0 }}</h1>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+<h1>{{ slot_4 }}</h1>
+<ul>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+<h1>{{ slot_8 }}</h1>
+<ul>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+</ul>
+</div>
+<div class="recent-posts">
+<h2>{{ slot_12 }}</h2>
+<div class="post">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="post">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+<div class="post">
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+</div>
+</div>
+<div class="social-media">
+<h2>{{ slot_19 }}</h2>
+<div class="feed">
+<p>{{ slot_20 }}</p>
+</div>
+<div class="feed">
+<p>{{ slot_21 }}</p>
+</div>
+<div class="feed">
+<p>{{ slot_22 }}</p>
+</div>
+</div>
+</body>
+</html>

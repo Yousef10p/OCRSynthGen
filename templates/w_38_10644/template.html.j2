@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 20px;
+}
+
+#rooms {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.room {
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#amenities {
+  margin: 20px;
+}
+
+#amenities ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#amenities ul li {
+  background-color: #f8f8f8;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+footer {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<section id="rooms">
+<h2>{{ slot_1 }}</h2>
+<div class="room">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div> 
+<p>{{ slot_2 }}</p>
+</div>
+<div class="room">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div> 
+<p>{{ slot_3 }}</p>
+</div>
+<div class="room">
+            {{ slot_4 }}<div class="ph" style="inline-size: 100%; block-size: 150px"></div> 
+<p>{{ slot_5 }}</p>
+</div>
+</section>
+<section id="amenities">
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+</section>
+<section id="contact">
+<h2>{{ slot_11 }}</h2>
+<form>
+<label>{{ slot_12 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span><br>
+<label>{{ slot_14 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span><br>
+<label>{{ slot_16 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_17 }}</span><br>
+<span class="">{{ slot_18 }}</span>
+</form>
+</section>
+<footer>
+<a>{{ slot_19 }}</a>
+<form>
+<label>{{ slot_20 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_21 }}</span><br>
+<span class="">{{ slot_22 }}</span>
+</form>
+<a>{{ slot_23 }}</a>
+</footer>
+</body>
+</html>

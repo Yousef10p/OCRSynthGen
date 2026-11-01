@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f8f8f8;
+}
+
+nav, aside, main, footer {
+  border: 1px solid #999;
+  padding: 10px;
+  margin: 10px;
+}
+
+nav {
+  grid-area: nav;
+}
+
+aside {
+  grid-area: side;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: foot;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-areas: 
+    "nav nav nav"
+    "side main main"
+    "foot foot foot";
+}
+
+
+.feature, .opportunity, .donate {
+  height: 200px;
+  width: 100%;
+  background: #ccc;
+  margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</nav>
+<aside>
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</aside>
+<main>
+<h1>{{ slot_11 }}</h1>
+<h2>{{ slot_12 }}</h2>
+<div class="feature">{{ slot_13 }}</div>
+<h2>{{ slot_14 }}</h2>
+<div class="opportunity">{{ slot_15 }}</div>
+<div class="donate">
+<h2>{{ slot_16 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
+<button>{{ slot_20 }}</button>
+</form>
+</div>
+</main>
+<footer>
+<a>{{ slot_21 }}</a>
+<a>{{ slot_22 }}</a>
+<a>{{ slot_23 }}</a>
+</footer>
+</body>
+</html>

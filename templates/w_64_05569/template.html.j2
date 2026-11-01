@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li {
+    margin-left: 10px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#banner {
+    background-color: #666;
+    height: 300px;
+}
+
+.category {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category_item {
+    background-color: #ddd;
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer div {
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="ph"></div>
+<main>
+<div class="category">
+<h2>{{ slot_5 }}</h2>
+<hr>
+<div class="category_item" id="service1">{{ slot_6 }}</div>
+<div class="category_item" id="service2">{{ slot_7 }}</div>
+<div class="category_item" id="service3">{{ slot_8 }}</div>
+</div>
+<div class="category">
+<h2>{{ slot_9 }}</h2>
+<hr>
+<div class="category_item" id="product1">{{ slot_10 }}</div>
+<div class="category_item" id="product2">{{ slot_11 }}</div>
+<div class="category_item" id="product3">{{ slot_12 }}</div>
+</div>
+</main>
+<footer>
+<div id="contact">{{ slot_13 }}</div>
+<div id="careers"><a>{{ slot_14 }}</a></div>
+</footer>
+</body>
+</html>

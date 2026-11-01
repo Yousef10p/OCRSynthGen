@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #ffcc00;
+  color: #cc6600;
+  text-align: center;
+}
+header {
+  padding: 20px;
+  background-color: #cc6600;
+  color: #ffcc00;
+  position: fixed;
+  width: 100%;
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+nav ul li a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+main {
+  margin-top: 80px;
+}
+section {
+  margin: 20px 0;
+}
+.blog-post, .course-item, .test-result {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #ffcc00;
+  color: #cc6600;
+}
+.blog-posts, .course-list, .test-area {
+  display: flex;
+  justify-content: space-between;
+}
+.blog-posts > .blog-post, .course-list > .course-item, .test-area > .test-result {
+  width: calc(33.33% - 40px);
+  margin: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo">{{ slot_0 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="blog">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<div class="blog-posts">
+<div class="blog-post">
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</div>
+</div>
+</section>
+<section id="courses">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="course-list">
+<div class="course-item">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+
+</div>
+</section>
+<section id="testing">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="test-area">
+
+<div class="test-result">
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</section>
+</main>
+</body>
+</html>

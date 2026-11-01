@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+.header {
+  background-color: #4286f4;
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+.menu li {
+  float: right;
+}
+.menu a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+.banner {
+  padding: 10px;
+}
+.banner-item {
+  padding: 20px;
+  margin: 10px;
+  color: white;
+}
+.red-bg {
+  background-color: red;
+}
+.blue-bg {
+  background-color: blue;
+}
+.green-bg {
+  background-color: green;
+}
+.category-section {
+  padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="menu">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</div>
+<div class="banner">
+<scroll-banner>
+<image-slider>
+<banner-item class="red-bg">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</banner-item>
+<banner-item class="blue-bg">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</banner-item>
+<banner-item class="green-bg">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</banner-item>
+</image-slider>
+</scroll-banner>
+</div>
+<div class="category-section" id="skincare">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="category-section" id="makeup">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="category-section" id="hair">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</div>
+</body>
+</html>

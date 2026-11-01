@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+:root {
+  font-size: 16px;
+}
+
+header, main, footer {
+  padding: 1rem;
+}
+
+header {
+  background-color: #f0f0f0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-button {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.gallery div {
+  background-color: red;
+  height: 400px;
+  width: 30%;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    flex-direction: column;
+  }
+  
+  .gallery div {
+    width: 100%;
+  }
+  
+  aside {
+    order: -1;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<a>{{ slot_0 }}</a>
+<div class="dropdown">
+<button class="dropdown-button">{{ slot_1 }}</button>
+<div class="dropdown-content">
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+<a>{{ slot_5 }}</a>
+<a>{{ slot_6 }}</a>
+</div>
+</div>
+<a>{{ slot_7 }}</a>
+</nav>
+</header>
+<main>
+<article>
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+<h2>{{ slot_10 }}</h2>
+<ul>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+</ul>
+<div class="gallery">
+          {{ slot_16 }}
+        </div>
+</article>
+<aside>
+<table>
+<thead>
+<tr>
+<th colspan="2">{{ slot_17 }}</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span></td>
+</tr>
+<tr>
+<td><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span></td>
+</tr>
+<tr>
+<td>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_20 }}</span>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td><button>{{ slot_21 }}</button></td>
+</tr>
+</tfoot>
+</table>
+</aside>
+</main>
+</body>
+</html>

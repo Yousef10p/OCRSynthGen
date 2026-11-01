@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 20px;
+    display: block;
+}
+
+article {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+article section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+article section h1,
+article section h2 {
+    margin-left: 10px;
+}
+
+footer {
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+footer nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer nav ul {
+    display: flex;
+    list-style: none;
+}
+
+footer nav li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 20px;
+    display: block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<article>
+<section>
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</section>
+<section>
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<aside style="background-color: gray; width: 200px; height: 200px"></aside>
+</section>
+<section>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<aside style="background-color: gray; width: 200px; height: 200px"></aside>
+</section>
+</article>
+<footer>
+<nav>
+<ul>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+</nav>
+</footer>
+</body>
+</html>

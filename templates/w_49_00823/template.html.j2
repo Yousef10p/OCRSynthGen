@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero {
+    background-image: none;
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero-text {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.hero-text h2, .hero-text button {
+    margin: 10px 0;
+}
+
+.hero-text button {
+    border: 0;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.hero-text button:hover {
+    background-color: #0056b3;
+}
+
+section {
+    padding: 50px;
+    text-align: center;
+}
+
+.products, .services, .banking {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    width: 80%;
+    margin: auto;
+}
+
+.contact-us form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+}
+
+.contact-us form input, .contact-us form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.contact-us form button {
+    border: 0;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.contact-us form button:hover {
+    background-color: #0056b3;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1 class="logo">{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<section class="hero">
+<div class="hero-text">
+<h2>{{ slot_6 }}</h2>
+<button>{{ slot_7 }}</button>
+</div>
+</section>
+<section class="products">
+<h3>{{ slot_8 }}</h3>
+
+<p>{{ slot_9 }}</p>
+
+<p>{{ slot_10 }}</p>
+</section>
+<section class="services">
+<h3>{{ slot_11 }}</h3>
+
+<p>{{ slot_12 }}</p>
+
+<p>{{ slot_13 }}</p>
+</section>
+<section class="banking">
+<h3>{{ slot_14 }}</h3>
+
+<p>{{ slot_15 }}</p>
+</section>
+<section class="contact-us">
+<h3>{{ slot_16 }}</h3>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_19 }}</span>
+<button>{{ slot_20 }}</button>
+</form>
+</section>
+</body>
+</html>

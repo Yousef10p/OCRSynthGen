@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: var(--font-body);
+}
+
+video#myVideo {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.content {
+	position: fixed;
+	bottom: 0;
+	color: white;
+	padding: 20px;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+}
+
+nav ul li {
+	position: relative;
+}
+
+nav ul li ul {
+	position: absolute;
+	top: 30px;
+	display: none;
+}
+
+nav ul li:hover ul {
+	display: block;
+}
+
+nav ul li ul li {
+	display: block;
+	width: 120px;
+	padding: 10px;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+.service-color {
+	height: 100px;
+	width: 100px;
+	background: white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="content">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_4 }}</a>
+<ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</nav>
+<p>{{ slot_9 }}</p>
+<section>
+<h2>{{ slot_10 }}</h2>
+<div class="services">
+<div class="service">
+<div class="service-color"></div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="service">
+<div class="service-color"></div>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="service">
+<div class="service-color"></div>
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+</div>
+</section>
+</div>
+</body>
+</html>

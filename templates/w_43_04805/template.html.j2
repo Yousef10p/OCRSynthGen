@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.red-rectangle {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    margin: 10px 0;
+}
+
+#top-navbar {
+    background-color: lightgray;
+    padding: 10px;
+}
+
+#top-navbar ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+footer {
+    background-color: lightgray;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav id="top-navbar">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+</ul>
+</nav>
+</header>
+<div id="destinations">
+<h1>{{ slot_2 }}</h1>
+<div class="red-rectangle"></div>
+<p>{{ slot_3 }}</p>
+</div>
+<div id="categories">
+<h1>{{ slot_4 }}</h1>
+<div class="red-rectangle"></div>
+<p>{{ slot_5 }}</p>
+</div>
+<footer>
+<div class="map">
+<div class="red-rectangle"></div>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="social">
+<p>{{ slot_7 }}</p>
+<ul>
+<li><a><div class="red-rectangle"></div> {{ slot_8 }}</a></li>
+<li><a><div class="red-rectangle"></div> {{ slot_9 }}</a></li>
+<li><a><div class="red-rectangle"></div> {{ slot_10 }}</a></li>
+</ul>
+</div>
+<div class="contact">
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</div>
+</footer>
+</body>
+</html>

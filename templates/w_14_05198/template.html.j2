@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    background-color: #f2f2f2;
+}
+
+#sidebar, #social-media {
+    width: 20%;
+    padding: 20px;
+}
+
+#main-content {
+    width: 80%;
+    padding: 20px;
+}
+
+.product {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.product-image, .product-video {
+    height: 200px;
+    background: #ccc;
+    margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="sidebar">
+<h3>{{ slot_0 }}</h3>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</div>
+<div id="social-media">
+<h3>{{ slot_4 }}</h3>
+<a>{{ slot_5 }}</a>
+<a>{{ slot_6 }}</a>
+<a>{{ slot_7 }}</a>
+</div>
+<div id="main-content">
+<h1>{{ slot_8 }}</h1>
+<div class="product">
+<h2>{{ slot_9 }}</h2>
+<div class="product-image ph"></div>
+<p>{{ slot_10 }}</p>
+<h3>{{ slot_11 }}</h3>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+</ul>
+<div class="product-video ph"></div>
+</div>
+<div class="product">
+<h2>{{ slot_14 }}</h2>
+<div class="product-image ph"></div>
+<p>{{ slot_15 }}</p>
+<h3>{{ slot_16 }}</h3>
+<ul>
+<li>{{ slot_17 }}</li>
+<li>{{ slot_18 }}</li>
+</ul>
+<div class="product-video ph"></div>
+</div>
+
+</div>
+</body>
+</html>

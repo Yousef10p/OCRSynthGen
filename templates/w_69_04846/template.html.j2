@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+
+nav {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+nav ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+nav ul li:last-child {
+  margin-left: 0;
+}
+
+
+.slider {
+  background: #444;
+  height: 400px;
+}
+
+
+#destinations {
+  margin-top: 500px;
+}
+.destination {
+  background: #666;
+  color: #fff;
+  height: 300px;
+  margin-bottom: 10px;
+}
+
+
+#packages {
+  margin-top: 10px;
+}
+
+
+footer {
+  background: #333;
+  color: #fff;
+  margin-top: 30px;
+  padding: 20px;
+}
+.partner, .testimonial {
+  background: #666;
+  color: #fff;
+  margin-bottom: 10px;
+  height: 100px;
+}
+.partner:last-child, .testimonial:last-child {
+  margin-bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+<nav class="sticky">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_3 }}</span></li>
+<li><a class="fa fa-facebook"></a></li>
+</ul>
+</nav>
+</header>
+
+<div class="slider">
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+</div>
+
+<section id="destinations">
+<h1>{{ slot_4 }}</h1>
+<div class="destination">
+<h2>{{ slot_5 }}</h2>
+</div>
+<div class="destination">
+<h2>{{ slot_6 }}</h2>
+</div>
+<div class="destination">
+<h2>{{ slot_7 }}</h2>
+</div>
+</section>
+
+<section id="packages">
+<h1>{{ slot_8 }}</h1>
+<article>
+<h2>{{ slot_9 }}</h2>
+</article>
+<article>
+<h2>{{ slot_10 }}</h2>
+</article>
+<article>
+<h2>{{ slot_11 }}</h2>
+</article>
+</section>
+
+<footer>
+<h1>{{ slot_12 }}</h1>
+<div class="partner">{{ slot_13 }}</div>
+<div class="partner">{{ slot_14 }}</div>
+<div class="partner">{{ slot_15 }}</div>
+<h1>{{ slot_16 }}</h1>
+<div class="testimonial">{{ slot_17 }}</div>
+<div class="testimonial">{{ slot_18 }}</div>
+<div class="testimonial">{{ slot_19 }}</div>
+</footer>
+</body>
+</html>

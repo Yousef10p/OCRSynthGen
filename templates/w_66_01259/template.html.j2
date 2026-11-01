@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "left center right";
+    height: 100vh;
+}
+
+.left-column, .center-column, .right-column {
+    margin: 5px;
+    padding: 10px;
+    color: white;
+    line-height: 1.5;
+}
+
+.left-column {
+    grid-area: left;
+    background: #333;
+}
+
+.center-column {
+    grid-area: center;
+    background: #666;
+}
+
+.right-column {
+    grid-area: right;
+    background: #999;
+}
+
+.project, .product, .social {
+    margin-top: 20px;
+    height: 200px;
+    background: #666;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="left-column">
+<h2>{{ slot_0 }}</h2>
+<div class="project">{{ slot_1 }}</div>
+<div class="project">{{ slot_2 }}</div>
+</div>
+<div class="center-column">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+<div class="product">{{ slot_5 }}</div>
+<div class="product">{{ slot_6 }}</div>
+</div>
+<div class="right-column">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+<h2>{{ slot_11 }}</h2>
+<div class="social">{{ slot_12 }}</div>
+<div class="social">{{ slot_13 }}</div>
+<div class="social">{{ slot_14 }}</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.menu-section, .testimonial, .offer {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.menu-section h2, .offer h1 {
+    margin-top: 0;
+}
+
+.menu-item, .customer-photo, .offer-photo {
+    background-color: #ccc;
+    height: 200px;
+}
+
+.menu-section p, .testimonial p, .offer p {
+    margin: 0;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="menu">
+<h1>{{ slot_3 }}</h1>
+<div class="grid">
+<div class="menu-section">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}<br>{{ slot_6 }}</p>
+<div class="menu-item"></div>
+<p>{{ slot_7 }}<br>{{ slot_8 }}</p>
+<div class="menu-item"></div>
+</div>
+<div class="menu-section">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}<br>{{ slot_11 }}</p>
+<div class="menu-item"></div>
+<p>{{ slot_12 }}<br>{{ slot_13 }}</p>
+<div class="menu-item"></div>
+</div>
+</div>
+</section>
+<section id="testimonials">
+<h1>{{ slot_14 }}</h1>
+<p>{{ slot_15 }}<br>{{ slot_16 }}</p>
+<div class="customer-photo ph"></div>
+<p>{{ slot_17 }}<br>{{ slot_18 }}</p>
+<div class="customer-photo ph"></div>
+</section>
+<section id="offers">
+<h1>{{ slot_19 }}</h1>
+<p>{{ slot_20 }}<br>{{ slot_21 }}</p>
+<p>{{ slot_22 }}<br>{{ slot_23 }}</p>
+</section>
+</main>
+<footer>
+<p>{{ slot_24 }}</p>
+</footer>
+</body>
+</html>

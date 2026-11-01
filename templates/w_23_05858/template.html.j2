@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-body);
+    line-height: 1.5;
+}
+header {
+    background-color: #0066cc;
+    color: white;
+    padding: 10px;
+}
+header h1 {
+    font-size: 2em;
+    margin: 0;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+main {
+    padding: 20px;
+}
+section {
+    margin-bottom: 20px;
+}
+section h2 {
+    font-size: 1.5em;
+}
+.service, .case-study {
+    height: 200px;
+    width: 200px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    border: 1px solid #0066cc;
+}
+footer {
+    background-color: #0066cc;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="intro">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</section>
+<section id="services">
+<h2>{{ slot_8 }}</h2>
+<div class="service" id="service-1">{{ slot_9 }}</div>
+<div class="service" id="service-2">{{ slot_10 }}</div>
+<div class="service" id="service-3">{{ slot_11 }}</div>
+</section>
+<section id="case-studies">
+<h2>{{ slot_12 }}</h2>
+<div class="case-study" id="case-study-1">{{ slot_13 }}</div>
+<div class="case-study" id="case-study-2">{{ slot_14 }}</div>
+<div class="case-study" id="case-study-3">{{ slot_15 }}</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: gray;
+    padding: 10px;
+}
+
+#menu {
+    margin: 10px 0;
+}
+
+#services .service_container {
+    padding: 10px 0;
+}
+
+footer {
+    clear: both;
+    background-color: gray;
+    padding: 10px;
+}
+
+footer .footer_part {
+    float: right;
+    width: 50%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<div id="menu">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</div>
+</header>
+<section id="services">
+<h2>{{ slot_4 }}</h2>
+<div class="service_container">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<div class="service-img ph"></div>
+</div>
+<div class="service_container">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<div class="service-img ph"></div>
+</div>
+<div class="service_container">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="service-img ph"></div>
+</div>
+</section>
+<footer>
+<div class="footer_part" id="useful_links">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+</div>
+<div class="footer_part" id="contact_us">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</div>
+</footer>
+</body>
+</html>

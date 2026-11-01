@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+  body {
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+  }
+  
+  h1, h2, p {
+    margin-bottom: 20px;
+  }
+  
+  #player {
+    width: 100%;
+    height: 100px;
+    background-color: rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+  }
+  
+  #player .control {
+    cursor: pointer;
+  }
+  
+  .track-image, .genre-image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .track-image, .genre-image {
+      width: 30px;
+      height: 30px;
+    } 
+  }
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<div id="now-playing">{{ slot_2 }} </div>
+<div id="seek-bar"></div>
+<div class="control" id="play-pause">{{ slot_3 }}</div>
+<div class="control" id="volume">{{ slot_4 }}</div>
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<ul id="track-list">
+<li><div class="track-image ph"></div>{{ slot_7 }}</li>
+<li><div class="track-image ph"></div>{{ slot_8 }}</li>
+<li><div class="track-image ph"></div>{{ slot_9 }}</li>
+</ul>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<ul id="genre-list">
+<li><div class="genre-image ph"></div>{{ slot_12 }}</li>
+<li><div class="genre-image ph"></div>{{ slot_13 }}</li>
+<li><div class="genre-image ph"></div>{{ slot_14 }}</li>
+</ul>
+</body>
+</html>

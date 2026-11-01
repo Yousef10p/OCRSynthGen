@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    color: #1c1c1c;
+    margin: 0;
+    padding: 0;
+    background-color: #ff4500;
+}
+
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background-image: none;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 1em 0;
+}
+
+
+.nav-menu li a {
+    color: #1c1c1c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #ff4500;
+}
+
+
+.search-section {
+    text-align: center;
+    padding: 2em 0;
+}
+
+.search-form input {
+    padding: 1em;
+    border: none;
+    border-radius: 2em;
+    font-size: 1em;
+    margin: 1em 0;
+}
+
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1em;
+}
+
+
+.property-grid div {
+    background-color: #1c1c1c;
+    height: 200px;
+}
+
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1em;
+}
+
+.feature-grid div {
+    background-color: #1c1c1c;
+    height: 200px;
+}
+
+
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #1c1c1c;
+}
+
+.social-media-links a {
+    color: #ff4500;
+    margin: 0 0.5em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav class="navbar">
+<ul class="nav-menu">
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<div class="section" id="search-section">
+<h2>{{ slot_5 }}</h2>
+<form class="search-form">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>
+</form>
+</div>
+<div class="section" id="properties">
+<h2>{{ slot_7 }}</h2>
+<div class="property-grid">
+</div>
+</div>
+<div class="section" id="features">
+<h2>{{ slot_8 }}</h2>
+<div class="feature-grid">
+</div>
+</div>
+<footer class="footer">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+<div class="social-media-links">
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+</div>
+<p>{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

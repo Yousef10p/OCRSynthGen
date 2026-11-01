@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  background-color: #f3f3f3;
+  font-family: var(--font-body);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.header nav ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.header nav li {
+  margin: 0 10px;
+}
+
+.contact {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.contact:hover {
+  background-color: #008CBA;
+}
+
+.social {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+.product, .blog-content, .resource-content {
+  display: flex;
+  align-items: center;
+}
+
+.img, .product, .blog-content, .resource-content {
+  background-color: #bbb; 
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_3 }}</span>
+</form>
+</div>
+<main>
+<section id="products">
+<h1>{{ slot_4 }}</h1>
+<div class="product">
+<div class="img">{{ slot_5 }}</div>
+<p>{{ slot_6 }}</p>
+</div>
+
+</section>
+<section id="blog">
+<h1>{{ slot_7 }}</h1>
+<h2>{{ slot_8 }}</h2>
+<div class="blog-content">{{ slot_9 }}</div>
+
+</section>
+<section id="resources">
+<h1>{{ slot_10 }}</h1>
+<h2>{{ slot_11 }}</h2>
+<div class="resource-content">{{ slot_12 }}</div>
+
+</section>
+</main>
+<footer>
+<button class="contact">{{ slot_13 }}</button>
+<div class="social">
+        {{ slot_14 }}
+        <a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+</div>
+</footer>
+</body>
+</html>

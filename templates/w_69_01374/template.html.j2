@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color: #f2f2f2;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.main-feature {
+  grid-column: 2 / span 6;
+  background-color: #ddd;
+  padding: 20px;
+}
+
+.article {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 10px;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.rectangle {
+  background-color: lightgreen;
+  width: 100px;
+  height: 100px;
+}
+
+.article:nth-child(odd) .rectangle {
+  background-color: darkgreen;
+}
+
+@media only screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: auto;
+  }
+  .main-feature {
+    grid-column: 1 / span 6;
+  }
+  .article {
+    grid-template-columns: auto;
+  }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="grid-container">
+<div class="grid-item">{{ slot_0 }}</div>
+<div class="grid-item">{{ slot_1 }}</div>
+<div class="grid-item">{{ slot_2 }}</div>
+<div class="grid-item">{{ slot_3 }}</div>
+<div class="grid-item">{{ slot_4 }}</div>
+<div class="grid-item">{{ slot_5 }}</div>
+<div class="main-feature">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+<div class="rectangle"></div>
+</div>
+<div class="article">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="rectangle"></div>
+</div>
+<div class="article">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<div class="rectangle"></div>
+</div>
+<div class="article">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="rectangle"></div>
+</div>
+<div class="article">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<div class="rectangle"></div>
+</div>
+</div>
+</body>
+</html>

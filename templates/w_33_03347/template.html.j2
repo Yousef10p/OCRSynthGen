@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+    color: white;
+    background-color: white;
+    overflow-x: hidden;
+}
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: black;
+}
+.logo {
+    width: 100px;
+    height: 50px;
+    background-color: gray;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+}
+nav ul li {
+    margin-left: 20px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    color: black;
+}
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: black;
+}
+.hero a {
+    text-decoration: none;
+    color: black;
+}
+.product {
+    width: 30%;
+    margin-bottom: 20px;
+}
+.product-image {
+    width: 100%;
+    padding-bottom: 50%;
+    background-color: blue;
+}
+.product h3 {
+    margin: 10px 0;
+    color: black;
+}
+.product p {
+    margin-bottom: 10px;
+    color: black;
+}
+.product a {
+    text-decoration: none;
+    color: black;
+}
+.newsletter {
+    padding: 50px;
+    text-align: center;
+    background-color: gray;
+    color: white;
+}
+.newsletter h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+.newsletter input[type="submit"] {
+    background-color: white;
+    color: black;
+}
+form {
+    margin-top: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="logo ph"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</div>
+<div class="hero">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<a class="cta">{{ slot_7 }}</a>
+</div>
+<div class="featured">
+<h2>{{ slot_8 }}</h2>
+<div class="product product1">
+<div class="product-image ph"></div>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<a class="cta">{{ slot_11 }}</a>
+</div>
+<div class="product product2">
+<div class="product-image ph"></div>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<a class="cta">{{ slot_14 }}</a>
+</div>
+<div class="product product3">
+<div class="product-image ph"></div>
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+<a class="cta">{{ slot_17 }}</a>
+</div>
+</div>
+<div class="newsletter">
+<h2>{{ slot_18 }}</h2>
+<p>{{ slot_19 }}</p>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_20 }}</span>
+<span class="">{{ slot_21 }}</span>
+</form>
+</div>
+</body>
+</html>

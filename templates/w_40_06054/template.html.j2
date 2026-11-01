@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: #f2f2f2;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+main {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+section {
+  width: 45%;
+}
+
+section > h2 {
+  margin-bottom: 20px;
+}
+
+section > p {
+  margin-bottom: 20px;
+}
+
+.videos, .products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.video, .product {
+  width: 30%;
+  height: 100px;
+  margin-bottom: 20px;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-now-button {
+  display: block;
+  width: 100px;
+  height: 30px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="tutorials">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+<div class="videos">
+<div class="video">{{ slot_5 }}</div>
+<div class="video">{{ slot_6 }}</div>
+<div class="video">{{ slot_7 }}</div>
+</div>
+<a class="shop-now-button">{{ slot_8 }}</a>
+</section>
+<section id="products">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="products">
+<div class="product">{{ slot_11 }}</div>
+<div class="product">{{ slot_12 }}</div>
+<div class="product">{{ slot_13 }}</div>
+</div>
+<a class="shop-now-button">{{ slot_14 }}</a>
+</section>
+</main>
+</body>
+</html>

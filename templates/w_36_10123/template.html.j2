@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    background-color: #F1F1F1;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #236B5C;
+    padding: 1rem;
+    color: white;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin-left: 1rem;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+.destination, .package {
+    display: inline-block;
+    width: 20rem;
+    margin: 1rem;
+}
+.destination div, .package div {
+    background-color: blue;
+    width: 20rem;
+    height: 10rem;
+    margin-bottom: 1rem;
+}
+.search-field {
+    margin: 1rem 0;
+}
+.search-field input[type="text"] {
+    padding: 0.5rem;
+    width: 100%;
+}
+.search-field button[type="submit"] {
+    padding: 0.5rem;
+    background-color: green;
+    color: white;
+    border: none;
+}
+.map-placeholder, .image-placeholder {
+    background-color: green;
+    width: 20rem;
+    height: 10rem;
+    margin-bottom: 1rem;
+}
+h1, h2, h3 {
+    color: #236B5C;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="map">
+<div class="map-placeholder ph"></div>
+<p>{{ slot_5 }}</p>
+</section>
+<section id="destinations">
+<h2>{{ slot_6 }}</h2>
+<div class="destination">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<div class="image-placeholder ph"></div>
+</div>
+<div class="destination">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="image-placeholder ph"></div>
+</div>
+
+</section>
+<section id="packages">
+<h2>{{ slot_11 }}</h2>
+
+<div class="package">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="image-placeholder ph"></div>
+</div>
+
+</section>
+<section id="search">
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<button>{{ slot_15 }}</button>
+</form>
+</section>
+</main>
+</body>
+</html>

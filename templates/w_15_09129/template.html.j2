@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 20px;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    top: 60px;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li {
+    display: block;
+    padding: 10px;
+}
+
+article {
+    margin: 20px;
+}
+
+footer {
+    background-color: #212529;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_4 }}</a>
+<ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</li>
+<li><a>{{ slot_8 }}</a>
+<ul>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</header>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<article id="freshSalads">
+<header>{{ slot_14 }}</header>
+<section id="greenSalad">{{ slot_15 }}</section>
+<p>{{ slot_16 }}</p>
+<section id="caesarSalad">{{ slot_17 }}</section>
+<p>{{ slot_18 }}</p>
+<section id="capreseSalad">{{ slot_19 }}</section>
+<p>{{ slot_20 }}</p>
+</article>
+<div id="freshSoups">{{ slot_21 }}</div>
+<div id="minestroneSoup">{{ slot_22 }}</div>
+<p>{{ slot_23 }}</p>
+<div id="pumpkinSoup">{{ slot_24 }}</div>
+<p>{{ slot_25 }}</p>
+<div id="chickenNoodleSoup">{{ slot_26 }}</div>
+<p>{{ slot_27 }}</p>
+<div id="freshBurger">{{ slot_28 }}</div>
+<div id="cheeseburger">{{ slot_29 }}</div>
+<p>{{ slot_30 }}</p>
+<div id="hamburger">{{ slot_31 }}</div>
+<p>{{ slot_32 }}</p>
+<div id="BBQBurger">{{ slot_33 }}</div>
+<p>{{ slot_34 }}</p>
+<footer>{{ slot_35 }}</footer>
+</body>
+</html>

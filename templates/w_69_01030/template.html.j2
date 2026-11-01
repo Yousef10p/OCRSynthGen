@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+    background-color: #DDD;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 10px;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+#booking {
+    margin: 20px;
+    padding: 20px;
+    background-color: #B0E0E6;
+    text-align: center;
+}
+
+#booking form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#booking form label {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#booking form input[type="date"] {
+    margin-bottom: 20px;
+    font-size: 16px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFF;
+}
+
+#booking form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#blog {
+    margin: 20px;
+    text-align: center;
+}
+
+#blog article {
+    margin-bottom: 40px;
+}
+
+#blog h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.rect {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.color1 {
+    background-color: #9ACD32;
+}
+
+.color2 {
+    background-color: #FFD700;
+}
+
+footer {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+<section id="booking">
+<form>
+<label>{{ slot_7 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span>
+<label>{{ slot_9 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<button>{{ slot_11 }}</button>
+</form>
+</section>
+<section id="blog">
+<article>
+<h2>{{ slot_12 }}</h2>
+<div class="rect color1"></div>
+<p>{{ slot_13 }}</p>
+</article>
+<article>
+<h2>{{ slot_14 }}</h2>
+<div class="rect color2"></div>
+<p>{{ slot_15 }}</p>
+</article>
+</section>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

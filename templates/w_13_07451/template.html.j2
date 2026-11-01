@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+#navbar {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+.section {
+  margin: 50px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.column {
+  flex: 1;
+  margin-left: 50px;
+}
+.report, .analysis {
+  background-color: #ced4da;
+  height: 150px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+input, textarea {
+  margin-bottom: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="navbar">
+
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+<a>{{ slot_3 }}</a>
+</div>
+<div class="section" id="home">
+<p class="paragraph">{{ slot_4 }}</p>
+</div>
+<div class="section" id="portfolio">
+
+<h2>{{ slot_5 }}</h2>
+<div class="container">
+<div class="column">
+
+<h3>{{ slot_6 }}</h3>
+<div class="report"></div>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="column">
+
+<h3>{{ slot_8 }}</h3>
+<div class="analysis"></div>
+<p>{{ slot_9 }}</p>
+</div>
+</div>
+</div>
+<div class="section" id="contact">
+
+<h2>{{ slot_10 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_14 }}</span>
+<span class="">{{ slot_15 }}</span>
+</form>
+<p>{{ slot_16 }}</p>
+</div>
+</body>
+</html>

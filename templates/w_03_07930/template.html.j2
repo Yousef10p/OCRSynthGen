@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	font-family: var(--font-body);
+}
+
+header {
+	background-color: #f4f4f4;
+	text-align: center;
+	padding: 10px;
+}
+
+nav {
+	background-color: #333;
+	color: #fff;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+nav ul {
+	padding: 0;
+}
+
+nav ul li {
+	display: inline;
+	list-style: none;
+	margin-left: 10px;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+section {
+	display: flex;
+}
+
+section h2 {
+	text-align: center;
+}
+
+.class, .membership, .testimonial-item {
+	border: 1px solid #f4f4f4;
+	margin: 10px;
+	padding: 10px;
+}
+
+div[class$='-img'], div[class$='-img']:before {
+	display: block;
+	width: 100px;
+	height: 100px;
+	background: #f4f4f4;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<section id="classes">
+<h2>{{ slot_4 }}</h2>
+<div class="class-container">
+<div class="class">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<div class="class-img">{{ slot_7 }}</div>
+</div>
+<div class="class">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<div class="class-img">{{ slot_10 }}</div>
+</div>
+
+</div>
+</section>
+<section id="memberships">
+<h2>{{ slot_11 }}</h2>
+<div class="membership-container">
+<div class="membership">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="membership-img">{{ slot_14 }}</div>
+</div>
+<div class="membership">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+<div class="membership-img">{{ slot_17 }}</div>
+</div>
+
+</div>
+</section>
+<section id="testimonials">
+<h2>{{ slot_18 }}</h2>
+<div class="testimonial-container">
+<div class="testimonial-item">
+<p>{{ slot_19 }}</p>
+<div class="testimonial-img">{{ slot_20 }}</div>
+</div>
+<div class="testimonial-item">
+<p>{{ slot_21 }}</p>
+<div class="testimonial-img">{{ slot_22 }}</div>
+</div>
+
+</div>
+</section>
+</body>
+</html>

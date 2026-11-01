@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.header,
+.main,
+.footer {
+  padding: 1rem;
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+}
+
+.header__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.header__navbar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.header__navbar ul li {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.header__navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.main__video-content,
+.main__social-media,
+.main__tickets,
+.main__events {
+  margin-bottom: 2rem;
+}
+
+.main__video-content,
+.main__social-media,
+.main__tickets,
+.main__events,
+.footer {
+  border-top: 1px solid #333;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="header">
+<div class="header__title">
+<h1>{{ slot_0 }}</h1>
+</div>
+<nav class="header__navbar">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<main class="main">
+<section class="main__video-content">
+<h2>{{ slot_6 }}</h2>
+<div class="video">{{ slot_7 }}</div>
+<p>{{ slot_8 }}</p>
+</section>
+<section class="main__social-media">
+<h2>{{ slot_9 }}</h2>
+<div class="social-media">{{ slot_10 }}</div>
+<p>{{ slot_11 }}</p>
+</section>
+<section class="main__tickets">
+<h2>{{ slot_12 }}</h2>
+<div class="tickets">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+</section>
+<section class="main__events">
+<h2>{{ slot_15 }}</h2>
+<div class="events">{{ slot_16 }}</div>
+<p>{{ slot_17 }}</p>
+</section>
+</main>
+<footer class="footer">
+      {{ slot_18 }}
+    </footer>
+</body>
+</html>

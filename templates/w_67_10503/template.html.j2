@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  width: 80%;
+  margin: auto;
+  font-family: var(--font-body);
+}
+
+#header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#main {
+  display: flex;
+}
+
+
+#left-column {
+  width: 20%;
+}
+
+#left-column ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#left-column li {
+  margin-bottom: 5px;
+}
+
+
+#center-column {
+  width: 80%;
+}
+
+.recipe {
+  background-color: #f2f2f2;
+  color: #000;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+
+#footer {
+  clear: both;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div id="main">
+<div id="left-column">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div id="center-column">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="recipe">{{ slot_7 }}</div>
+<div class="recipe">{{ slot_8 }}</div>
+<div class="recipe">{{ slot_9 }}</div>
+</div>
+<div class="clearfix"></div>
+</div>
+<div id="footer">
+<a>{{ slot_10 }}</a> {{ slot_11 }} <a>{{ slot_12 }}</a> {{ slot_13 }} <a>{{ slot_14 }}</a>
+</div>
+</body>
+</html>

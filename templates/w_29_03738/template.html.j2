@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #f8f8f8;
+    padding: 10px 0;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav li {
+    display: inline-block;
+    position: relative;
+}
+nav li:hover .dropdown-content {
+    display: block;
+}
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+.banner {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 100px 0;
+}
+.products {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
+.product {
+    text-align: center;
+    width: 25%;
+    padding: 20px;
+}
+.product-image {
+    width: 100%;
+    height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li class="dropdown">
+<a>{{ slot_0 }}</a>
+<ul class="dropdown-content">
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a>{{ slot_4 }}</a>
+<ul class="dropdown-content">
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a>{{ slot_8 }}</a>
+<ul class="dropdown-content">
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="banner">
+<h1>{{ slot_12 }}</h1>
+<p>{{ slot_13 }}</p>
+</section>
+<section class="products">
+<article class="product">
+<h2>{{ slot_14 }}</h2>
+<div class="product-image ph"></div>
+<p>{{ slot_15 }}</p>
+</article>
+<article class="product">
+<h2>{{ slot_16 }}</h2>
+<div class="product-image ph"></div>
+<p>{{ slot_17 }}</p>
+</article>
+<article class="product">
+<h2>{{ slot_18 }}</h2>
+<div class="product-image ph"></div>
+<p>{{ slot_19 }}</p>
+</article>
+</section>
+</main>
+</body>
+</html>

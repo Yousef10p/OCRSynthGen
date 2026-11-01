@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+header {
+    background-color: #a6120d;
+    color: #ffff4d;
+    padding: 20px;
+    text-align: center;
+}
+.row {
+    display: flex;
+    margin: 50px;
+}
+.left-column {
+    background-color: #000000;
+    color: #ffffff;
+    width: 30%;
+    padding: 20px;
+}
+.right-column {
+    background-color: #cc1144;
+    color: #000000;
+    width: 70%;
+    padding: 20px;
+}
+.logo {
+    height: 100px;
+    width: 100px;
+    background-color: #f00;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.models, .promotions, .links {
+    margin-bottom: 50px;
+}
+ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+a {
+    color: #ffff4d;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</header>
+<div class="row">
+<div class="left-column">
+<div class="logo ph"></div>
+<div class="models">
+<h2>{{ slot_2 }}</h2>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</div>
+<div class="promotions">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="links">
+<h2>{{ slot_8 }}</h2>
+<ul>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+</ul>
+</div>
+</div>
+<div class="right-column">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+#sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+#main-content {
+    margin-right: 220px;
+    padding: 20px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+.product {
+    margin-bottom: 20px;
+}
+
+.product img {
+    width: 50px;
+    height: 50px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<section id="sidebar">
+<h2>{{ slot_0 }}</h2>
+<ul>
+<li><a>{{ slot_1 }}</a> <div class="ph" style="inline-size: 100%; block-size: 150px"></div></li>
+<li><a>{{ slot_2 }}</a> <div class="ph" style="inline-size: 100%; block-size: 150px"></div></li>
+<li><a>{{ slot_3 }}</a> <div class="ph" style="inline-size: 100%; block-size: 150px"></div></li>
+</ul>
+</section>
+<section id="main-content">
+<h2>{{ slot_4 }}</h2>
+<div class="product" id="product1">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="product" id="product2">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="product" id="product3">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</section>
+<footer>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }} <a>{{ slot_14 }}</a></p>
+</footer>
+</body>
+</html>

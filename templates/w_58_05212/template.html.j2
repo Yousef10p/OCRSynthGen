@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+
+header {
+  background: #032624;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 10px;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.placeholder-img {
+  background: #ddd;
+  height: 200px;
+  margin-top: 20px;
+}
+
+main {
+  margin: 20px;
+}
+
+footer {
+  background: #032624;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+  {{ slot_0 }}<header>
+    {{ slot_1 }}<h1>{{ slot_2 }}</h1>
+    {{ slot_3 }}<nav>
+      {{ slot_4 }}<ul>
+        {{ slot_5 }}<li><a>{{ slot_6 }}</a></li>
+        {{ slot_7 }}<li><a>{{ slot_8 }}</a></li>
+        {{ slot_9 }}<li><a>{{ slot_10 }}</a></li>
+        {{ slot_11 }}<li><a>{{ slot_12 }}</a></li>
+        {{ slot_13 }}<li><a>{{ slot_14 }}</a></li>
+      {{ slot_15 }}</ul>
+    {{ slot_16 }}</nav>
+  {{ slot_17 }}</header>
+  {{ slot_18 }}<main>
+    {{ slot_19 }}<section id="home">
+      {{ slot_20 }}<h2>{{ slot_21 }}</h2>
+      {{ slot_22 }}<p class="placeholder-img">{{ slot_23 }}</p>
+      {{ slot_24 }}<p>{{ slot_25 }}</p>
+    {{ slot_26 }}</section>
+    {{ slot_27 }}<section id="about">
+      {{ slot_28 }}<h2>{{ slot_29 }}</h2>
+      {{ slot_30 }}<p class="placeholder-img">{{ slot_31 }}</p>
+      {{ slot_32 }}<p>{{ slot_33 }}</p>
+    {{ slot_34 }}</section>
+    {{ slot_35 }}<section id="services">
+      {{ slot_36 }}<h2>{{ slot_37 }}</h2>
+      {{ slot_38 }}<p class="placeholder-img">{{ slot_39 }}</p>
+      {{ slot_40 }}<p>{{ slot_41 }}</p>
+    {{ slot_42 }}</section>
+    {{ slot_43 }}<section id="providers">
+      {{ slot_44 }}<h2>{{ slot_45 }}</h2>
+      {{ slot_46 }}<p class="placeholder-img">{{ slot_47 }}</p>
+      {{ slot_48 }}<p>{{ slot_49 }}</p>
+    {{ slot_50 }}</section>
+    {{ slot_51 }}<section id="contact">
+      {{ slot_52 }}<h2>{{ slot_53 }}</h2>
+      {{ slot_54 }}<p class="placeholder-img">{{ slot_55 }}</p>
+      {{ slot_56 }}<p>{{ slot_57 }}</p>
+    {{ slot_58 }}</section>
+  {{ slot_59 }}</main>
+  {{ slot_60 }}<footer>
+    {{ slot_61 }}<p>{{ slot_62 }}</p>
+  {{ slot_63 }}</footer>
+ {{ slot_64 }}</body>
+</html>

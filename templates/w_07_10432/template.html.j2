@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: lightblue;
+    font-family: var(--font-body); 
+    padding: 15px;
+}
+
+.logo {
+    height: 100px;
+    background-color: blue; 
+    margin: auto;
+}
+
+.services, .testimonials, .locations, .insurance {
+    margin-top: 50px;
+    color: white;
+}
+
+.service, .insurance-option {
+    border: 1px solid white;
+    padding: 20px;
+    margin: 10px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo ph"></div>
+</header>
+<section class="services">
+<h1>{{ slot_0 }}</h1>
+<div class="service-list">
+<div class="service">{{ slot_1 }}</div>
+<div class="service">{{ slot_2 }}</div>
+<div class="service">{{ slot_3 }}</div>
+</div>
+</section>
+<section class="testimonials">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<p>{{ slot_6 }}</p>
+<p>{{ slot_7 }}</p>
+</section>
+<section class="locations">
+<h1>{{ slot_8 }}</h1>
+<ul>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+</ul>
+</section>
+<section class="insurance">
+<h1>{{ slot_12 }}</h1>
+<div class="insurance-option">{{ slot_13 }}</div>
+<div class="insurance-option">{{ slot_14 }}</div>
+<div class="insurance-option">{{ slot_15 }}</div>
+</section>
+</body>
+</html>

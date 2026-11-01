@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    height: 100%;
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), none;
+    background-size: cover;
+    color: white;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 1em 0;
+    list-style: none;
+}
+
+.full-width {
+    width: 100vw;
+    text-align: center;
+    font-size: 3em;
+    padding: 4em 0;
+}
+
+main {
+    padding: 1em;
+}
+
+#menu, #hours-and-location {
+    margin: 2em 0;
+}
+
+footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 2em 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+<div class="full-width">
+            {{ slot_4 }}
+        </div>
+</header>
+<main>
+<section id="menu">
+<h2>{{ slot_5 }}</h2>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</section>
+<section id="reviews">
+<h2>{{ slot_10 }}</h2>
+<div class="review">
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="review">
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="review">
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</div>
+</section>
+<section id="hours-and-location">
+<h2>{{ slot_17 }}</h2>
+<div class="address">{{ slot_18 }}</div>
+<div class="hours">{{ slot_19 }}</div>
+<div class="map">{{ slot_20 }}</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_21 }}</p>
+</footer>
+</body>
+</html>

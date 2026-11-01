@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: #ADD8E6;
+  color: #000000;
+}
+
+.hero-image {
+  height: 500px;
+  background-color: #00008B;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 500px;
+  font-size: 2em;
+}
+
+.container {
+  display: flex;
+}
+
+.nav {
+  width: 20%;
+  background-color: #0000FF;
+  color: #FFFFFF;
+  padding: 20px;
+}
+
+.nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.content {
+  width: 80%;
+  padding: 20px;
+}
+
+.vehicle {
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.vehicle-image {
+  height: 100px;
+  width: 200px;
+  background-color: #B0C4DE;
+  margin-left: 1em;
+}
+
+.vehicle h3 {
+  margin: 0;
+  color: #8B0000;
+}
+
+.vehicle p {
+  margin: 0 0 1em 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero-image">{{ slot_0 }}</div>
+<div class="container">
+<div class="nav">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div class="content">
+<h2>{{ slot_5 }}</h2>
+<div class="vehicle">
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+<div class="vehicle-image">{{ slot_8 }}</div>
+</div>
+<div class="vehicle">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="vehicle-image">{{ slot_11 }}</div>
+</div>
+<div class="vehicle">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="vehicle-image">{{ slot_14 }}</div>
+</div>
+</div>
+</div>
+</body>
+</html>

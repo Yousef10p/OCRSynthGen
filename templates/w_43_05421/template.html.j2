@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+.left-sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: #111;
+    color: #fff;
+}
+.left-sidebar h1 {
+    margin-top: 0;
+}
+.left-sidebar ul {
+    padding-right: 1em;
+}
+.portfolio {
+    margin-right: 210px;
+    padding: 1em;
+}
+.project {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+    margin-bottom: 1em;
+}
+.portfolio p {
+    margin-right: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<aside id="left-sidebar">
+<h1>{{ slot_0 }}</h1>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+<h1>{{ slot_5 }}</h1>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</aside>
+<main>
+<h1>{{ slot_10 }}</h1>
+<div id="portfolio">
+<div class="project">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+<div class="project">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+<div class="project">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+</div>
+</main>
+</body>
+</html>

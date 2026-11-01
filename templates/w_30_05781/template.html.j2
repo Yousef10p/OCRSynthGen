@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#slide-show {
+  width: 100%;
+  height: 400px;
+  background-color: #eee;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+    {{ slot_0 }}<header>{{ slot_1 }}<nav>
+            {{ slot_2 }}<ul>
+                {{ slot_3 }}<li><a>{{ slot_4 }}</a></li>{{ slot_5 }}<li><a>{{ slot_6 }}</a></li>{{ slot_7 }}<li><a>{{ slot_8 }}</a></li>{{ slot_9 }}<li><a>{{ slot_10 }}</a></li>{{ slot_11 }}
+            </ul>{{ slot_12 }}
+        </nav>{{ slot_13 }}
+    </header>{{ slot_14 }}<main>
+        {{ slot_15 }}<section>
+            {{ slot_16 }}<div id="slide-show">
+                {{ slot_17 }}{{ slot_18 }}
+            </div>{{ slot_19 }}
+        </section>{{ slot_20 }}<section>
+            {{ slot_21 }}{{ slot_22 }}
+        </section>{{ slot_23 }}
+    </main>{{ slot_24 }}
+</body>
+</html>

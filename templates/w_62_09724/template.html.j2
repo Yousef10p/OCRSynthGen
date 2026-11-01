@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 10px;
+}
+
+.slider {
+  height: 200px;
+  display: flex;
+}
+
+.slider div {
+  flex: 1;
+  background-color: #ccc;
+}
+
+.reservation, .about-us, .contact-us {
+  padding: 20px;
+}
+
+.social-media {
+  position: fixed;
+  left: 0;
+  top: 50%;
+}
+
+.social-media ul {
+  list-style-type: none;
+}
+
+.social-media ul li {
+  background-color: #ccc;
+  padding: 5px;
+  width: 30px;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="logo">
+<a>{{ slot_0 }}</a>
+</div>
+<div class="slider">
+<div>{{ slot_1 }}</div>
+<div>{{ slot_2 }}</div>
+<div>{{ slot_3 }}</div>
+</div>
+<div class="reservation">
+<h2>{{ slot_4 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_5 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<span class="">{{ slot_8 }}</span>
+</form>
+</div>
+<div class="about-us">
+<h2>{{ slot_9 }}</h2>
+<p>
+      {{ slot_10 }}
+    </p>
+</div>
+<div class="contact-us">
+<h2>{{ slot_11 }}</h2>
+<p>
+      {{ slot_12 }}
+    </p>
+</div>
+<div class="social-media">
+<ul>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+</ul>
+</div>
+</body>
+</html>

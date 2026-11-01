@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+.article-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.article-container > div {
+    height: 200px;
+    color: #fff;
+}
+
+#review-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+#review-container p {
+    height: 200px;
+}
+
+#sign-up-container {
+    width: 20%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<h2>{{ slot_0 }}</h2>
+<div class="article-container">
+
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_1 }}</figcaption>
+</div>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_2 }}</figcaption>
+</div>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_3 }}</figcaption>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_4 }}</figcaption>
+</div>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_5 }}</figcaption>
+</div>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_6 }}</figcaption>
+</div>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_7 }}</figcaption>
+</div>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_8 }}</figcaption>
+</div>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_9 }}</figcaption>
+</div>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_10 }}</figcaption>
+</div>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_11 }}</figcaption>
+</div>
+<div style="background: none no-repeat center center;">
+<figcaption>{{ slot_12 }}</figcaption>
+</div>
+</div>
+<h2>{{ slot_13 }}</h2>
+<div id="review-container">
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+</div>
+<div id="sign-up-container">
+<form>
+<label>{{ slot_20 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_21 }}</span>
+<label>{{ slot_22 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_23 }}</span>
+<label>{{ slot_24 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_25 }}</span>
+<label>{{ slot_26 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_27 }}</span>
+<span class="">{{ slot_28 }}</span>
+</form>
+</div>
+</div></body>
+</html>

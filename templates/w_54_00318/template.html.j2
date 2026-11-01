@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    display: flex;
+    align-items: baseline;
+}
+
+header img {
+    height: 50px;
+    width: 50px;
+}
+
+header ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header li {
+    margin-left: 10px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.genre, .album, .instrument, .accessory {
+    height: 100px;
+    width: 100px;
+    background-color: grey;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</header>
+<section id="genres">
+<h1>{{ slot_4 }}</h1>
+<div class="genre">{{ slot_5 }}</div>
+<div class="genre">{{ slot_6 }}</div>
+<div class="genre">{{ slot_7 }}</div>
+<div class="genre">{{ slot_8 }}</div>
+</section>
+<section id="albums">
+<h1>{{ slot_9 }}</h1>
+<div class="album">{{ slot_10 }}</div>
+<div class="album">{{ slot_11 }}</div>
+<div class="album">{{ slot_12 }}</div>
+<div class="album">{{ slot_13 }}</div>
+</section>
+<section id="instruments">
+<h1>{{ slot_14 }}</h1>
+<div class="instrument">{{ slot_15 }}</div>
+<div class="instrument">{{ slot_16 }}</div>
+<div class="instrument">{{ slot_17 }}</div>
+</section>
+<section id="accessories">
+<h1>{{ slot_18 }}</h1>
+<div class="accessory">{{ slot_19 }}</div>
+<div class="accessory">{{ slot_20 }}</div>
+<div class="accessory">{{ slot_21 }}</div>
+<div class="accessory">{{ slot_22 }}</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#left-menu {
+    float: right;
+    width: 20%;
+    height: 100vh;
+    border-left: 1px solid black;
+    padding: 20px;
+}
+
+#hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.property, .service, .neighborhood {
+    width: 300px;
+    height: 200px;
+    margin: 20px;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#properties, #services, #neighborhoods {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="left-menu">
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+<div id="hero-section">
+<p>{{ slot_5 }}</p>
+<p>{{ slot_6 }} </p>
+<p>{{ slot_7 }}</p>
+</div>
+<div id="properties">
+<div class="property"><p>{{ slot_8 }}</p></div>
+<div class="property"><p>{{ slot_9 }}</p></div>
+<div class="property"><p>{{ slot_10 }}</p></div>
+</div>
+<div id="services">
+<div class="service"><p>{{ slot_11 }}</p></div>
+<div class="service"><p>{{ slot_12 }}</p></div>
+</div>
+<div id="neighborhoods">
+<div class="neighborhood"><p>{{ slot_13 }}</p></div>
+<div class="neighborhood"><p>{{ slot_14 }}</p></div>
+</div>
+</body>
+</html>

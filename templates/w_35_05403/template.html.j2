@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.left {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.center {
+    grid-column: 2;
+    grid-row: 1;
+    grid-row-end: span 2;
+}
+
+.footer {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.instructor {
+    background-color: #EFEFEF;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: black;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+footer a {
+    color: white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="left">
+<h2>{{ slot_0 }}</h2>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<h2>{{ slot_4 }}</h2>
+<a>{{ slot_5 }}</a>
+<a>{{ slot_6 }}</a>
+<a>{{ slot_7 }}</a>
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="center">
+<h2>{{ slot_12 }}</h2>
+<div class="instructor">{{ slot_13 }}</div>
+<div class="instructor">{{ slot_14 }}</div>
+<div class="instructor">{{ slot_15 }}</div>
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+</div>
+<div class="footer">
+<h2>{{ slot_20 }}</h2>
+<p>{{ slot_21 }}</p>
+<h2>{{ slot_22 }}</h2>
+<a>{{ slot_23 }}</a>
+<a>{{ slot_24 }}</a>
+<a>{{ slot_25 }}</a>
+</div>
+</div>
+</body>
+</html>

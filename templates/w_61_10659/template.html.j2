@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+   box-sizing: border-box;
+}
+body {
+   display: flex;
+   margin: 0;
+   padding: 0;
+   font-family: var(--font-body);
+   color: #333;
+}
+.left-panel, .right-panel {
+  width: 50%;
+  padding: 20px;
+}
+.left-panel {
+  background-color: #f0f0f0;
+}
+.right-panel {
+  background-color: #e0e0e0;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.product, .review, .testimonial {
+  background-color: #ccc;
+  padding: 20px;
+  margin-bottom: 10px;
+  height: 200px; 
+  width: 100%; 
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+{{ slot_0 }}<div class="left-panel">
+{{ slot_1 }}<h1>{{ slot_2 }}</h1>
+{{ slot_3 }}<nav>
+{{ slot_4 }}<ul>
+{{ slot_5 }}<li><a>{{ slot_6 }}</a></li>
+{{ slot_7 }}<li><a>{{ slot_8 }}</a></li>
+
+</ul>
+</nav>
+<h1>{{ slot_9 }}</h1>
+<div class="product">{{ slot_10 }}</div>
+<div class="product">{{ slot_11 }}</div>
+
+</div>
+<div class="right-panel">
+<h1>{{ slot_12 }}</h1>
+<p class="review">{{ slot_13 }}</p>
+<p class="review">{{ slot_14 }}</p>
+
+<h1>{{ slot_15 }}</h1>
+<p class="testimonial">{{ slot_16 }}</p>
+<p class="testimonial">{{ slot_17 }}</p>
+
+</div>
+</body>
+</html>

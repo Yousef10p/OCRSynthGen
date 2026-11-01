@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.left-column {
+    width: 70%;
+}
+
+.right-column {
+    width: 25%;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer {
+    background: lightgray;
+    padding: 20px;
+    text-align: center;
+}
+
+.social-icons a {
+    margin: 0 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="left-column">
+<h1>{{ slot_0 }}</h1>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+<h1>{{ slot_4 }}</h1>
+<ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+<h1>{{ slot_8 }}</h1>
+<ul>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+</ul>
+</div>
+<div class="right-column">
+<h1>{{ slot_12 }}</h1>
+<div style="background: gray; height: 150px; width: 150px;"></div>
+<div style="background: gray; height: 150px; width: 150px; margin-top: 20px;"></div>
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }} <br>{{ slot_15 }}</p>
+<p>{{ slot_16 }} <br>{{ slot_17 }}</p>
+<div class="footer">
+<h2>{{ slot_18 }}</h2>
+<p>{{ slot_19 }} <br> {{ slot_20 }} <br> {{ slot_21 }}</p>
+<div class="social-icons">
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

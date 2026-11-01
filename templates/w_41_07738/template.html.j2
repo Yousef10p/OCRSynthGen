@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #222;
+    background-color: #efefef;
+}
+
+header, section {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+.animatedNav {
+    transition: all 0.5s ease-in-out;
+}
+.animatedNav:hover {
+    color: #777;
+}
+
+
+.animatedHeadline {
+    animation: headline 2s infinite;
+    animation-direction: alternate;
+}
+@keyframes headline {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+}
+
+
+.animatedParagraph {
+    animation: paragraph 2s infinite;
+    animation-direction: alternate;
+}
+@keyframes paragraph {
+    0% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+
+.servicesContainer .serviceBox {
+    animation: serviceBox 2s infinite;
+    animation-direction: alternate;
+}
+@keyframes serviceBox {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.03); }
+}
+
+
+.contactInfo {
+    animation: contactInfo 3s infinite;
+    animation-direction: alternate;
+}
+@keyframes contactInfo {
+    0% { color: #222; }
+    100% { color: #777; }
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+
+<nav>
+<ul>
+<li><a class="animatedNav">{{ slot_1 }}</a></li>
+<li><a class="animatedNav">{{ slot_2 }}</a></li>
+<li><a class="animatedNav">{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+
+<section id="home">
+<div class="animatedBox">
+<h2>{{ slot_4 }}</h2>
+<p class="animatedParagraph">
+                    {{ slot_5 }}
+                </p>
+</div>
+
+<div class="animatedRect"></div>
+</section>
+
+<section id="services">
+<h2 class="animatedHeadline">{{ slot_6 }}</h2>
+<div class="servicesContainer">
+<div class="serviceBox">
+<h3>{{ slot_7 }}</h3>
+<p>
+                        {{ slot_8 }}
+                    </p>
+</div>
+<div class="serviceBox">
+<h3>{{ slot_9 }}</h3>
+<p>
+                        {{ slot_10 }}
+                    </p>
+</div>
+<div class="serviceBox">
+<h3>{{ slot_11 }}</h3>
+<p>
+                        {{ slot_12 }}
+                    </p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>{{ slot_13 }}</h2>
+<p>
+                {{ slot_14 }}
+            </p>
+<p class="contactInfo">{{ slot_15 }}</p>
+<p class="contactInfo">{{ slot_16 }}</p>
+<p class="contactInfo">{{ slot_17 }}</p>
+</section>
+</body>
+</html>

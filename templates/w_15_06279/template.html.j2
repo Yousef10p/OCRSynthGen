@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+#banner {
+    display: flex;
+    overflow-x: scroll;
+    padding: 10px 0;
+}
+
+.banner-element {
+    background-color: #eee;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+#logo {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    font-size: 2em;
+    animation: color-change 2s infinite;
+}
+
+@keyframes color-change {
+    0% { color: red; }
+    50% { color: blue; }
+    100% { color: green; }
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    color: white;
+    margin: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    margin-top: 150px;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<p>{{ slot_0 }}</p>
+</header>
+<section id="banner">
+<div class="banner-element">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+</div>
+<div class="banner-element">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+</div>
+
+</section>
+<nav>
+
+<ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+</ul>
+</nav>
+<div id="logo">
+
+<p>{{ slot_10 }}</p>
+</div>
+<main>
+
+<div>
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+</div>
+<div>
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+</div>
+</main>
+</body>
+</html>

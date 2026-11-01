@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  text-align: center;
+  padding: 50px;
+  background-color: #f4f4f4;
+}
+
+nav a {
+  margin-left: 10px;
+}
+
+#workouts, #schedule, #blog, #membership {
+  margin: 0 auto;
+  width: 80%;
+  padding: 30px;
+}
+
+.workout, .article {
+  margin-bottom: 30px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+
+.workout-image, .article-image {
+  height: 200px;
+  background-color: #999;
+  margin-bottom: 20px;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</nav>
+</header>
+<section id="workouts">
+<h2>{{ slot_5 }}</h2>
+
+<div class="workout">
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+<div class="workout-image ph"></div>
+</div>
+
+</section>
+<section id="schedule">
+<h2>{{ slot_8 }}</h2>
+<table>
+<tr>
+<th>{{ slot_9 }}</th>
+<th>{{ slot_10 }}</th>
+</tr>
+
+</table>
+</section>
+<section id="blog">
+<h2>{{ slot_11 }}</h2>
+<article>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="article-image ph"></div>
+</article>
+
+</section>
+<section id="membership">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+
+</section>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

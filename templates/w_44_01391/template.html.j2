@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+header {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ddd;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+}
+
+header ul li {
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.service, .review, .testimonial {
+    flex: 1 1 300px;
+    padding: 20px;
+    margin: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+}
+
+.service-image, .reviewer-image, .patient-image {
+    width: 100%;
+    height: 200px;
+    margin: 10px 0;
+    background-color: #ddd;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="navbar">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</header>
+<section class="container" id="services">
+<div class="service">
+<h3>{{ slot_4 }}</h3>
+<div class="service-image ph"></div>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_6 }}</h3>
+<div class="service-image ph"></div>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_8 }}</h3>
+<div class="service-image ph"></div>
+<p>{{ slot_9 }}</p>
+</div>
+</section>
+<section class="container" id="reviews">
+<h2>{{ slot_10 }}</h2>
+<div class="review">
+<h3>{{ slot_11 }}</h3>
+<div class="reviewer-image ph"></div>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="review">
+<h3>{{ slot_13 }}</h3>
+<div class="reviewer-image ph"></div>
+<p>{{ slot_14 }}</p>
+</div>
+</section>
+<section class="container" id="testimonials">
+<h2>{{ slot_15 }}</h2>
+<div class="testimonial">
+<h3>{{ slot_16 }}</h3>
+<div class="patient-image ph"></div>
+<p>{{ slot_17 }}</p>
+</div>
+<div class="testimonial">
+<h3>{{ slot_18 }}</h3>
+<div class="patient-image ph"></div>
+<p>{{ slot_19 }}</p>
+</div>
+</section>
+</body>
+</html>

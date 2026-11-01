@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+.search-bar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+}
+
+navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+navigation ul li {
+    display: inline-block;
+    margin-left: 10px;
+    background-color: #ddd;
+    padding: 6px 12px;
+    border-radius: 3px;
+}
+
+main section {
+    margin: 20px;
+}
+
+main section button {
+    display: block;
+    margin-top: 10px;
+    background-color: blue;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+</div>
+<navigation>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</navigation>
+</header>
+<main>
+<section class="top">
+<h2>{{ slot_6 }}</h2>
+<p>
+                {{ slot_7 }}
+            </p>
+<button>{{ slot_8 }}</button>
+</section>
+</main>
+<footer>
+<address>
+            {{ slot_9 }} <br>
+            {{ slot_10 }} <br>
+            {{ slot_11 }} <br>
+            {{ slot_12 }}
+        </address>
+<section class="faq">
+<h2>{{ slot_13 }}</h2>
+<p>
+                {{ slot_14 }} <br>
+                {{ slot_15 }}
+            </p>
+</section>
+<section class="glossary">
+<h2>{{ slot_16 }}</h2>
+<p>
+                {{ slot_17 }}
+            </p>
+</section>
+</footer>
+</body>
+</html>

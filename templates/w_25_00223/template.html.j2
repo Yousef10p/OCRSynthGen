@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.header {
+    padding: 20px;
+    background-color: #c87521;
+    color: #fff;
+    position: relative;
+}
+
+.logo {
+    margin: 0;
+    font-size: 2em;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px;
+}
+
+.menu-column {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.menu-column h2 {
+    color: #c87521;
+}
+
+.menu-column ul {
+    padding-right: 20px;
+}
+
+.menu-column ul li {
+    margin: 20px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1 class="logo">{{ slot_0 }}</h1>
+</div>
+<div class="menu">
+<div class="menu-column">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }} <p>{{ slot_3 }}</p></li>
+<li>{{ slot_4 }} <p>{{ slot_5 }}</p></li>
+</ul>
+</div>
+<div class="menu-column">
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li>{{ slot_7 }} <p>{{ slot_8 }}</p></li>
+<li>{{ slot_9 }} <p>{{ slot_10 }}</p></li>
+</ul>
+</div>
+<div class="menu-column">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li>{{ slot_12 }} <p>{{ slot_13 }}</p></li>
+<li>{{ slot_14 }} <p>{{ slot_15 }}</p></li>
+</ul>
+</div>
+</div>
+</body>
+</html>

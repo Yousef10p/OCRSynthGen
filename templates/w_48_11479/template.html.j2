@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #F0F0F0;
+}
+
+h1, h2, h3, h4 {
+    color: #00A2E8;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background: #FF5722;
+    color: white;
+}
+
+main {
+    padding: 20px;
+}
+
+.fitness-class, .membership, .blog {
+    margin-bottom: 40px;
+}
+
+.class-info h4 {
+    color: #2196F3;
+}
+
+.schedule, .membership, .blog {
+    border: 1px solid #DDD;
+    padding: 20px;
+}
+
+.blog h3 {
+    color: #4CAF50;
+}
+
+.class-info p, .membership p, .blog p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<div class="fitness-class">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<div class="schedule">
+<h3>{{ slot_3 }}</h3>
+<div class="class-info">
+<h4>{{ slot_4 }}</h4>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="class-info">
+<h4>{{ slot_6 }}</h4>
+<p>{{ slot_7 }}</p>
+</div>
+</div>
+</div>
+<div class="membership">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<ul>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+</ul>
+</div>
+<div class="blog">
+<h2>{{ slot_12 }}</h2>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</main>
+</body>
+</html>

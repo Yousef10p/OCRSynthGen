@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+   font-family: var(--font-body);
+   color: white;
+}
+
+header {
+   position: relative;
+   background-color: grey;
+   padding: 20px 0;
+   text-align: center;
+}
+
+#headerHover {
+   display: none;
+}
+
+header:hover #headerHover {
+   display: block;
+}
+
+#mainMenu {
+   display: none;
+}
+
+header:hover #mainMenu {
+   display: block;
+}
+
+#slider {
+   width: 100%;
+   height: 600px;
+}
+
+.slide {
+   height: 600px;
+   width: 100%;
+}
+
+#categories {
+   float: right;
+   width: 20%;
+}
+
+.category {
+   height: 200px;
+   margin: 10px 0;
+   line-height: 200px;
+   text-align: center;
+}
+
+#blog {
+   margin-right: 20%;
+}
+
+article {
+   margin: 20px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1 id="headerHover">{{ slot_0 }}</h1>
+<nav id="mainMenu">
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</nav>
+</header>
+<main>
+<div id="slider">
+<div class="slide" style="background-color: grey;">{{ slot_5 }}</div>
+<div class="slide" style="background-color: grey;">{{ slot_6 }}</div>
+<div class="slide" style="background-color: grey;">{{ slot_7 }}</div>
+</div>
+<div id="categories">
+<div class="category" style="background-color: white;">{{ slot_8 }}</div>
+<div class="category" style="background-color: white;">{{ slot_9 }}</div>
+<div class="category" style="background-color: white;">{{ slot_10 }}</div>
+<div class="category" style="background-color: white;">{{ slot_11 }}</div>
+</div>
+<div id="blog">
+<h2>{{ slot_12 }}</h2>
+<article>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</article>
+<article>
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</article>
+</div>
+</main>
+</body>
+</html>

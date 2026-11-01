@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: #333;
+}
+
+nav {
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.menu > li {
+  margin-left: 10px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f8f8f8;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.search {
+  margin-right: auto;
+}
+
+.search input {
+  height: 30px;
+}
+
+.search button {
+  height: 30px;
+  background-color: #f8f8f8;
+  border: none;
+  cursor: pointer;
+}
+
+.artist, .album {
+  margin-bottom: 10px;
+  height: 100px;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul class="menu">
+<li><a>{{ slot_0 }}</a></li>
+<li class="dropdown">
+<a>{{ slot_1 }}</a>
+<div class="dropdown-content">
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</div>
+</li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li class="search">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<button>{{ slot_8 }}</button>
+</li>
+</ul>
+</nav>
+<section class="featured-artists">
+<h2>{{ slot_9 }}</h2>
+<div class="artist">{{ slot_10 }}</div>
+<div class="artist">{{ slot_11 }}</div>
+<div class="artist">{{ slot_12 }}</div>
+</section>
+<section class="featured-albums">
+<h2>{{ slot_13 }}</h2>
+<div class="album">{{ slot_14 }}</div>
+<div class="album">{{ slot_15 }}</div>
+<div class="album">{{ slot_16 }}</div>
+</section>
+</body>
+</html>

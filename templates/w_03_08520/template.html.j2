@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #f8f8f8;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-image {
+  height: 200px;
+  background: grey;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pricing-col {
+  width: 30%;
+  margin: 20px;
+  text-align: center;
+}
+
+section {
+  margin: 20px 0;
+}
+
+footer {
+  background: #f8f8f8;
+  text-align: center;
+  padding: 20px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero"><div class="hero-image"><h1>{{ slot_3 }}</h1></div></section>
+<section id="pricing">
+<div class="pricing-col">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<a class="btn">{{ slot_6 }}</a>
+</div>
+<div class="pricing-col">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<a class="btn">{{ slot_9 }}</a>
+</div>
+<div class="pricing-col">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<a class="btn">{{ slot_12 }}</a>
+</div>
+</section>
+<section id="about">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</section>
+<section id="contact">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</section>
+</main>
+<footer>
+<p>{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

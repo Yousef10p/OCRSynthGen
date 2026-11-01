@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #97C4BB;
+    color: #2B303A;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li a {
+    color: #2B303A;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.hero {
+    background-color: #2B303A;
+    color: #97C4BB;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-text button {
+    background-color: #97C4BB;
+    border: none;
+    color: #2B303A;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.hero-text button:hover {
+    background-color: #2B303A;
+    color: #97C4BB;
+}
+
+section {
+    padding: 20px;
+}
+
+footer {
+    background-color: #2B303A;
+    color: #97C4BB;
+    padding: 20px;
+    text-align: center;
+}
+
+footer form input, footer form textarea, footer form button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+footer form button {
+    background-color: #97C4BB;
+    border: none;
+    color: #2B303A;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+footer form button:hover {
+    background-color: #2B303A;
+    color: #97C4BB;
+}
+
+
+.hotel-image, .resort-image {
+    height: 200px;
+    width: 100%;
+    background-color: #2B303A;
+    color: #97C4BB;
+    text-align: center;
+    line-height: 200px;
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="hero">
+<div class="hero-text">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<button>{{ slot_6 }}</button>
+</div>
+</div>
+<section id="hotels">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="hotel-card">
+<div class="hotel-image">{{ slot_9 }}</div>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+</section>
+<section id="resorts">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="resort-card">
+<div class="resort-image">{{ slot_14 }}</div>
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+</section>
+<footer id="contact">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_20 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_21 }}</span>
+<button>{{ slot_22 }}</button>
+</form>
+</footer>
+</body>
+</html>

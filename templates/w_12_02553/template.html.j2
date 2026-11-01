@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  color: #333;
+  background-color: #f5f5f5;
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #003366;
+}
+
+#cases article {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+#testimonials blockquote {
+  border-right: 3px solid #cc0000;
+  padding-right: 5px;
+}
+
+#header, #services, #testimonials, #blog {
+  background-color: #004F8A;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li a {
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #cc0000;
+}
+
+#logo, #services, #cases article, #testimonials blockquote, #blog article {
+  background-color: #e1e1e1;
+  width: 50px;
+  height: 50px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<section id="header">
+<div class="ph"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</section>
+<section id="services">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+</section>
+<section id="cases">
+<h1>{{ slot_6 }}</h1>
+<article>
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</article>
+<article>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</article>
+</section>
+<section id="testimonials">
+<h1>{{ slot_11 }}</h1>
+<blockquote>
+<p>{{ slot_12 }}</p>
+<footer>{{ slot_13 }}</footer>
+</blockquote>
+<blockquote>
+<p>{{ slot_14 }}</p>
+<footer>{{ slot_15 }}</footer>
+</blockquote>
+</section>
+<section id="blog">
+<h1>{{ slot_16 }}</h1>
+<article>
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+</article>
+<article>
+<h2>{{ slot_19 }}</h2>
+<p>{{ slot_20 }}</p>
+</article>
+</section>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+}
+
+.navigation {
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.navigation__list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation__item {
+    display: inline;
+    margin-left: 10px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.content__title {
+    color: #000;
+}
+
+.content__collection, .content__product, .content__post {
+    height: 200px;
+    margin-bottom: 20px;
+    background-color: #000;
+    color: #fff;
+}
+
+.aside {
+    float: left;
+    width: 30%;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.aside__title {
+    color: #000;
+}
+
+.aside__tool {
+    height: 100px;
+    margin-bottom: 20px;
+    background-color: #000;
+    color: #fff;
+}
+
+.footer {
+    background-color: #f9f9f9;
+    padding: 10px;
+    text-align: center;
+    clear: both;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header class="header">
+<h1 class="header__title">{{ slot_0 }}</h1>
+</header>
+<nav class="navigation">
+<ul class="navigation__list">
+<li class="navigation__item"><a>{{ slot_1 }}</a></li>
+<li class="navigation__item"><a>{{ slot_2 }}</a></li>
+<li class="navigation__item"><a>{{ slot_3 }}</a></li>
+<li class="navigation__item"><a>{{ slot_4 }}</a></li>
+<li class="navigation__item"><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<section class="content">
+<h2 class="content__title">{{ slot_6 }}</h2>
+<div class="content__collection">{{ slot_7 }}</div>
+<div class="content__collection">{{ slot_8 }}</div>
+<div class="content__collection">{{ slot_9 }}</div>
+<h2 class="content__title">{{ slot_10 }}</h2>
+<div class="content__product">{{ slot_11 }}</div>
+<div class="content__product">{{ slot_12 }}</div>
+<div class="content__product">{{ slot_13 }}</div>
+<h2 class="content__title">{{ slot_14 }}</h2>
+<div class="content__post">{{ slot_15 }}</div>
+<div class="content__post">{{ slot_16 }}</div>
+<div class="content__post">{{ slot_17 }}</div>
+</section>
+<aside class="aside">
+<h2 class="aside__title">{{ slot_18 }}</h2>
+<div class="aside__tool">{{ slot_19 }}</div>
+<div class="aside__tool">{{ slot_20 }}</div>
+<div class="aside__tool">{{ slot_21 }}</div>
+</aside>
+<footer class="footer">
+<p class="footer__text">{{ slot_22 }}</p>
+</footer>
+</body>
+</html>

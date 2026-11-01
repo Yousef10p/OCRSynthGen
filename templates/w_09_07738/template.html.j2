@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.portfolio-item, .service, .testimonial {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.blog-post {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<section id="services">
+<h1>{{ slot_4 }}</h1>
+<article class="service">{{ slot_5 }}</article>
+<article class="service">{{ slot_6 }}</article>
+<article class="service">{{ slot_7 }}</article>
+</section>
+<section id="portfolio">
+<h1>{{ slot_8 }}</h1>
+
+<div class="portfolio-item">{{ slot_9 }}</div>
+<div class="portfolio-item">{{ slot_10 }}</div>
+<div class="portfolio-item">{{ slot_11 }}</div>
+</section>
+<section id="testimonials">
+<h1>{{ slot_12 }}</h1>
+
+<article class="testimonial">{{ slot_13 }}</article>
+<article class="testimonial">{{ slot_14 }}</article>
+<article class="testimonial">{{ slot_15 }}</article>
+</section>
+<section id="blog">
+<h1>{{ slot_16 }}</h1>
+
+<article class="blog-post">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+</article>
+<article class="blog-post">
+<h2>{{ slot_19 }}</h2>
+<p>{{ slot_20 }}</p>
+</article>
+<article class="blog-post">
+<h2>{{ slot_21 }}</h2>
+<p>{{ slot_22 }}</p>
+</article>
+</section>
+</main>
+<footer>
+<p>{{ slot_23 }}</p>
+</footer>
+</body>
+</html>

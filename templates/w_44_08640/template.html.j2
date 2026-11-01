@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+header {
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 10px;
+}
+
+aside {
+  padding: 20px;
+  background-color: #eaeaea;
+}
+
+.listings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.grid-item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.color-box {
+  height: 200px;
+  background-color: #aaa;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 10px;
+  text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="content-wrapper">
+<aside>
+<form>
+<h3>{{ slot_3 }}</h3>
+
+</form>
+</aside>
+<div class="listings">
+<h1>{{ slot_4 }}</h1>
+
+<div class="grid-item"><div class="color-box"></div><p>{{ slot_5 }}</p><p>{{ slot_6 }}</p></div>
+<div class="grid-item"><div class="color-box"></div><p>{{ slot_7 }}</p><p>{{ slot_8 }}</p></div>
+<div class="grid-item"><div class="color-box"></div><p>{{ slot_9 }}</p><p>{{ slot_10 }}</p></div>
+<div class="grid-item"><div class="color-box"></div><p>{{ slot_11 }}</p><p>{{ slot_12 }}</p></div>
+<div class="grid-item"><div class="color-box"></div><p>{{ slot_13 }}</p><p>{{ slot_14 }}</p></div>
+<div class="grid-item"><div class="color-box"></div><p>{{ slot_15 }}</p><p>{{ slot_16 }}</p></div>
+</div>
+</div>
+<footer>
+<p>{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

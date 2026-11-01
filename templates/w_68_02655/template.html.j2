@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-color: RGB(200,200,200);
+    color: RGB(0,0,0);
+    text-align: center;
+    font-family: var(--font-body);
+}
+
+h2 {
+    font-size: 24px;
+}
+
+p, ul, li {
+    font-size: 16px;
+}
+
+a:link, a:visited { 
+    color: RGB(0,0,255); 
+}
+
+a:hover, a:active {
+    color: RGB(0,0,200);
+}
+
+h3 {
+    font-size: 24px;
+}
+
+.card {
+    border: 1px solid #000000;
+    padding: 20px;
+    margin: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav>
+<a>{{ slot_0 }}</a> {{ slot_1 }}
+                    <a>{{ slot_2 }}</a> {{ slot_3 }}
+                    <a>{{ slot_4 }}</a> {{ slot_5 }}
+                    <a>{{ slot_6 }}</a> {{ slot_7 }}
+                    <a>{{ slot_8 }}</a>
+</nav>
+</h1></header>
+<main>
+<section>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</section>
+<section>
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+<li>{{ slot_16 }}</li>
+</ul>
+</section>
+<section>
+<h2>{{ slot_17 }}</h2>
+<div class="card">
+<h3>{{ slot_18 }}</h3>
+<p>{{ slot_19 }}</p>
+</div>
+<div class="card">
+<h3>{{ slot_20 }}</h3>
+<p>{{ slot_21 }}</p>
+</div>
+</section>
+</main>
+<footer>
+<p>{{ slot_22 }}</p>
+</footer>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</body>
+</html>

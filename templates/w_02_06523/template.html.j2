@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+p {
+  text-align: right;
+  margin: 0 2em;
+}
+
+#slideshow {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-self: stretch;
+  width: 100%;
+  height: 50vh;
+}
+
+.slide {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid white;
+}
+
+#gallery {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, 100px);
+  width: 100%;
+  height: 20vh;
+  overflow-y: auto;
+}
+
+.photo-item {
+  border: 1px solid white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<h1>{{ slot_0 }}</h1>
+<div id="slideshow">
+<div class="slide" style="background-color: red;">{{ slot_1 }}</div>
+<div class="slide" style="background-color: orange;">{{ slot_2 }}</div>
+<div class="slide" style="background-color: yellow;">{{ slot_3 }}</div>
+<div class="slide" style="background-color: green;">{{ slot_4 }}</div>
+<div class="slide" style="background-color: blue;">{{ slot_5 }}</div>
+</div>
+<div id="gallery">
+<div class="photo-item" style="background-color: purple;">{{ slot_6 }}</div>
+<div class="photo-item" style="background-color: teal;">{{ slot_7 }}</div>
+<div class="photo-item" style="background-color: magenta;">{{ slot_8 }}</div>
+<div class="photo-item" style="background-color: cyan;">{{ slot_9 }}</div>
+<div class="photo-item" style="background-color: gray;">{{ slot_10 }}</div>
+<div class="photo-item" style="background-color: brown;">{{ slot_11 }}</div>
+<div class="photo-item" style="background-color: silver;">{{ slot_12 }}</div>
+<div class="photo-item" style="background-color: gold;">{{ slot_13 }}</div>
+<div class="photo-item" style="background-color: violet;">{{ slot_14 }}</div>
+</div>
+</body>
+</html>

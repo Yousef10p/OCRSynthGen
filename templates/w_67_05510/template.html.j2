@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#container {
+    width: 80%;
+    height: 80%;
+    display: flex;
+}
+#left {
+    width: 20%;
+    height: 100%;
+    padding: 10px;
+    background-color: lightgray;
+}
+#main {
+    width: 60%;
+    height: 100%;
+    padding: 10px;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+}
+#footer {
+    width: 80%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+}
+.image {
+    width: 30%;
+    height: 100px;
+    margin: 10px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.review {
+    margin-bottom: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="container">
+<div id="left">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<h1>{{ slot_2 }}</h1>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+<h1>{{ slot_6 }}</h1>
+<div class="review">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="review">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+<div id="main">
+<h1>{{ slot_11 }}</h1>
+
+<div class="image">{{ slot_12 }}</div>
+<div class="image">{{ slot_13 }}</div>
+<div class="image">{{ slot_14 }}</div>
+</div>
+<div id="footer">
+<div id="logo">
+                {{ slot_15 }}
+            </div>
+<div id="contact">
+                {{ slot_16 }}
+            </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 1em;
+    background-color: #333;
+    color: #fff;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#carousel {
+    display: flex;
+    height: 100vh;
+    justify-content: space-around;
+}
+
+#carousel article {
+    background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+#carousel article div {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    margin-bottom: 2em;
+}
+
+#events, #news {
+    margin: 2em;
+}
+
+#events article, #news article {
+    border-bottom: 1px solid #333;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+
+#events h2, #news h2 {
+    margin-bottom: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<section id="carousel">
+<article>
+<div id="art1"></div>
+<p>{{ slot_4 }}</p>
+</article>
+<article>
+<div id="art2"></div>
+<p>{{ slot_5 }}</p>
+</article>
+<article>
+<div id="art3"></div>
+<p>{{ slot_6 }}</p>
+</article>
+</section>
+<section id="events">
+<h2>{{ slot_7 }}</h2>
+<article>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</article>
+<article>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</article>
+</section>
+<section id="news">
+<h2>{{ slot_12 }}</h2>
+<article>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+<time>{{ slot_15 }}</time>
+</article>
+<article>
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+<time>{{ slot_18 }}</time>
+</article>
+</section>
+</body>
+</html>

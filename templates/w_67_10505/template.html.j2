@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-body);
+}
+
+header, footer {
+  background-color: #f7f7f7;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+#main-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+#shop-by-category, 
+#shop-by-brand, 
+#customer-reviews, 
+#beauty-tips, 
+#social-media {
+  flex: 1;
+  padding: 20px;
+}
+
+#latest-products {
+  flex: 2;
+  padding: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header><h1>{{ slot_0 }}</h1></header>
+<div id="main-content">
+<div id="shop-by-category">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</div>
+<div id="shop-by-brand">
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+</ul>
+</div>
+<div id="latest-products">
+<h2>{{ slot_10 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_11 }}</p>
+</div>
+</div>
+<footer>
+<div id="customer-reviews">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+</div>
+<div id="beauty-tips">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</div>
+<div id="social-media">
+<h2>{{ slot_16 }}</h2>
+<ul>
+<li><a>{{ slot_17 }}</a></li>
+<li><a>{{ slot_18 }}</a></li>
+<li><a>{{ slot_19 }}</a></li>
+</ul>
+</div>
+</footer>
+</body>
+</html>

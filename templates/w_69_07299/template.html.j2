@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#header, #footer {
+    background-color: lightgray;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#categories {
+    float: right;
+    width: 20%;
+}
+
+#products {
+    float: left;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product {
+    width: 33%;
+    text-align: center;
+}
+
+.image {
+    background-color: lightblue;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</nav>
+</div>
+<div id="content">
+<div id="categories">
+<p>{{ slot_5 }}</p>
+<ul>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+</div>
+<div id="products">
+<div class="product">
+<p>{{ slot_9 }}</p>
+<div class="image">{{ slot_10 }}</div>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="product">
+<p>{{ slot_12 }}</p>
+<div class="image">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="product">
+<p>{{ slot_15 }}</p>
+<div class="image">{{ slot_16 }}</div>
+<p>{{ slot_17 }}</p>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="logo">{{ slot_18 }}</div>
+<nav>
+<a>{{ slot_19 }}</a>
+<a>{{ slot_20 }}</a>
+<a>{{ slot_21 }}</a>
+<a>{{ slot_22 }}</a>
+<a>{{ slot_23 }}</a>
+</nav>
+</div>
+</body>
+</html>

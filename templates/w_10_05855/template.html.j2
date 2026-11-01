@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    height: 100%;
+}
+  
+body {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+
+    justify-content: center;
+
+    background-color: #d295bf;
+    color: #FFF;
+
+    font-family: var(--font-body);
+  
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #FFF;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="row">
+<div class="column">
+<h2>{{ slot_1 }}</h2>
+<ul class="services-list">
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+<p class="description">{{ slot_5 }}</p>
+</div>
+<div class="column">
+<h2>{{ slot_6 }}</h2>
+<ul class="services-list">
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+<p class="description">{{ slot_9 }}</p>
+</div>
+<div class="column">
+<h2>{{ slot_10 }}</h2>
+<ul class="services-list">
+<li>{{ slot_11 }}</li>
+</ul>
+<p class="description">{{ slot_12 }}</p>
+</div>
+<div class="column">
+<h2>{{ slot_13 }}</h2>
+<ul class="services-list">
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+<li>{{ slot_16 }}</li>
+</ul>
+<p class="description">{{ slot_17 }}</p>
+</div>
+</div>
+</body>
+</html>

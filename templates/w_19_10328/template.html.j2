@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 20%;
+  padding: 10px;
+}
+
+#search {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.filters li {
+  background-color: #f2f2f2;
+  padding: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.content {
+  width: 80%;
+  padding: 10px;
+}
+
+.content .menu .image {
+  background-color: #f2f2f2;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.content .menu h2 {
+  margin-bottom: 5px;
+}
+
+.content .menu p {
+  margin-top: 0;
+}
+
+.content .order li {
+  margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="sidebar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<div class="filters">
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</div>
+</div>
+<div class="content">
+<div class="restaurant">
+<div class="menu">
+<ul>
+<li>
+<div class="image">{{ slot_4 }}</div>
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</li>
+<li>
+<div class="image">{{ slot_7 }}</div>
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</li>
+<li>
+<div class="image">{{ slot_10 }}</div>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</li>
+</ul>
+</div>
+<div class="order">
+<h2>{{ slot_13 }}</h2>
+<ol>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+<li>{{ slot_16 }}</li>
+<li>{{ slot_17 }}</li>
+<li>{{ slot_18 }}</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

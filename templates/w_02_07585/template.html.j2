@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: red;
+}
+
+.hero {
+    height: 50vh;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar {
+    height: 2em;
+    border: none;
+    border-radius: 1em;
+    width: 20em;
+}
+
+.main-content {
+    display: flex;
+}
+
+.left-sidebar, .content, .right-sidebar {
+    border: 1px solid red;
+    margin: 1em;
+    padding: 1em;
+}
+
+.left-sidebar {
+    width: 20%;
+}
+
+.content {
+    width: 60%;
+}
+
+.right-sidebar {
+    width: 20%;
+}
+
+.hero:hover, .content:hover, .left-sidebar:hover, .right-sidebar:hover, .search-bar:hover {
+    box-shadow: -5px 5px 15px rgba(0,0,0,0.4);
+}
+
+.social-media {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.social-media, .social-media a {
+    color: red;
+}
+
+.feature-image {
+    height: 5em;
+    width: 5em;
+    background: red;
+}
+
+.feature-box {
+    display: inline-block;
+}
+
+.feature-box:hover {
+    transform: rotate(-10deg);
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<div class="hero">
+<span class="search-bar" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+</div>
+
+<div class="main-content">
+
+<div class="left-sidebar">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+
+<div class="content">
+
+<p>{{ slot_5 }}</p>
+
+<div class="feature-box">
+<div class="feature-image ph"></div> 
+<p>{{ slot_6 }}</p>
+</div>
+</div>
+
+<div class="right-sidebar">
+<h2>{{ slot_7 }}</h2>
+<ul>
+<li><a>{{ slot_8 }}</a></li>
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+</ul>
+</div>
+</div>
+
+<div class="social-media">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+</div>
+</body>
+</html>

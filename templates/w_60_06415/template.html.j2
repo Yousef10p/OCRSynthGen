@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.nav {
+  background-color: #333;
+}
+.nav__list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.nav__item {
+  margin: 0 10px;
+}
+.nav__link {
+  color: white;
+  text-decoration: none;
+}
+.hero {
+  min-height: 500px;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero__title {
+  font-size: 48px;
+}
+.hero__description {
+  font-size: 24px;
+}
+.hero__button {
+  background-color: white;
+  color: #333;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.section {
+  margin-top: 50px;
+}
+.section__title {
+  font-size: 36px;
+}
+.section__description {
+  font-size: 24px;
+}
+.section__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.section__item {
+  background-color: #333;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.section__image {
+  background-color: white;
+  width: 100%;
+  height: 200px;
+}
+.section__about {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.footer {
+  background-color: #333;
+  margin-top: 50px;
+  padding: 20px;
+  text-align: center;
+}
+.footer__copyright {
+  margin: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav class="nav">
+<ul class="nav__list">
+<li class="nav__item"><a class="nav__link">{{ slot_0 }}</a></li>
+<li class="nav__item"><a class="nav__link">{{ slot_1 }}</a></li>
+<li class="nav__item"><a class="nav__link">{{ slot_2 }}</a></li>
+<li class="nav__item"><a class="nav__link">{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main class="hero">
+<h1 class="hero__title">{{ slot_4 }}</h1>
+<p class="hero__description">{{ slot_5 }}</p>
+<a class="hero__button">{{ slot_6 }}</a>
+</main>
+<section class="section">
+<h2 class="section__title">{{ slot_7 }}</h2>
+<p class="section__description">{{ slot_8 }}</p>
+<div class="section__grid">
+<div class="section__item"><div class="section__image ph"></div><p>{{ slot_9 }}</p></div>
+<div class="section__item">{{ slot_10 }}</div><p>{{ slot_11 }}</p></div>
+<div class="section__item">{{ slot_12 }}</div><p>{{ slot_13 }}
+    
+  </p></section>
+<section class="section">
+<h2 class="section__title">{{ slot_14 }}</h2>
+<p class="section__description">{{ slot_15 }}</p>
+<p class="section__about">{{ slot_16 }}</p>
+</section>
+<footer class="footer">
+<p class="footer__copyright">{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

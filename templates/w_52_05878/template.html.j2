@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.header, .instructor-info, .schedule, .membership, .newsletter, .social {
+    margin: 10px;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.header {
+    text-align: center;
+}
+
+.instructor-info, .schedule, .membership {
+    float: right;
+    width: 30%;
+}
+
+.instructor-rectangle, .schedule-rectangle, .member-rectangle {
+    height: 200px;
+    background-color: #a0a0a0;
+}
+
+.newsletter, .social {
+    clear: both;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+<div class="main">
+<div class="instructor-info">
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }}</p>
+<div class="instructor-rectangle"></div>
+</div>
+<div class="schedule">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<div class="schedule-rectangle"></div>
+</div>
+<div class="membership">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="member-rectangle"></div>
+</div>
+</div>
+<div class="newsletter">
+<h2>{{ slot_8 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_9 }}</span>
+<span class="">{{ slot_10 }}</span>
+</form>
+</div>
+<div class="social">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+header {
+    height: 80px;
+    background: lightblue;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+#shop-banner {
+    height: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#shop-banner .image {
+    width: 300px;
+    height: 200px;
+    background: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+#reviews .review {
+    padding: 20px;
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+#reviews .review img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: lightgray;
+}
+
+#reviews .review p {
+    margin-top: 10px;
+}
+
+footer {
+    background: lightblue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0;
+}
+
+#social-media img {
+    width: 40px;
+    height: 40px;
+    background: lightgray;
+}
+
+#newsletter form {
+    display: flex;
+}
+
+#newsletter form input {
+    padding: 10px;
+    border: 1px solid #333;
+    margin-left: 10px;
+}
+
+#newsletter form button {
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    border: none;
+}
+
+#newsletter form button:hover {
+    background: #555;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="shop-banner">
+<div class="image">{{ slot_4 }}</div>
+<div class="image">{{ slot_5 }}</div>
+<div class="image">{{ slot_6 }}</div>
+<button>{{ slot_7 }}</button>
+<button>{{ slot_8 }}</button>
+</section>
+<section id="reviews">
+<h2>{{ slot_9 }}</h2>
+<div class="review">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="review">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+
+</section>
+<footer>
+<div id="social-media">
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+</div>
+<div id="newsletter">
+<h3>{{ slot_14 }}</h3>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<button>{{ slot_16 }}</button>
+</form>
+</div>
+</footer>
+</body>
+</html>

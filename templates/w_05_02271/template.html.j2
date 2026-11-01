@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+section, .cta {
+  display: flex;
+  justify-content: space-around;
+}
+
+.column {
+  flex: 1;
+  margin: 5px;
+  padding: 5px;
+}
+
+.browse-box, .portfolio-box, .review-box {
+  height: 100px;
+  background-color: lightgrey;
+}
+
+.cta {
+  text-align: center;
+}
+
+.button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="browse">
+<h2>{{ slot_5 }}</h2>
+<div class="column"><div class="browse-box"></div>{{ slot_6 }}</div>
+<div class="column"><div class="browse-box"></div>{{ slot_7 }}</div>
+<div class="column"><div class="browse-box"></div>{{ slot_8 }}</div>
+</section>
+<section id="portfolio">
+<h2>{{ slot_9 }}</h2>
+<div class="column"><div class="portfolio-box"></div>{{ slot_10 }}<p>{{ slot_11 }}</p></div>
+<div class="column"><div class="portfolio-box"></div>{{ slot_12 }}<p>{{ slot_13 }}</p></div>
+<div class="column"><div class="portfolio-box"></div>{{ slot_14 }}<p>{{ slot_15 }}</p></div>
+</section>
+<section id="reviews">
+<h2>{{ slot_16 }}</h2>
+<div class="column"><div class="review-box"></div>{{ slot_17 }}<p>{{ slot_18 }}</p></div>
+<div class="column"><div class="review-box"></div>{{ slot_19 }}<p>{{ slot_20 }}</p></div>
+<div class="column"><div class="review-box"></div>{{ slot_21 }}<p>{{ slot_22 }}</p></div>
+</section>
+<section id="schedule">
+<div class="cta">
+<h2>{{ slot_23 }}</h2>
+<a class="button">{{ slot_24 }}</a>
+</div>
+</section>
+</main>
+</body>
+</html>

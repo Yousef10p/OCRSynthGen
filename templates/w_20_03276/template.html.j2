@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #000;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 1em;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #FFF;
+}
+
+#carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  background-color: #000;
+  color: #FFF;
+}
+
+#reviews, #consultation, #promotions {
+  margin: 1em;
+  padding: 1em;
+  background-color: #FFF;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+{{ slot_0 }}<nav>
+{{ slot_1 }}<ul>
+{{ slot_2 }}<li><a>{{ slot_3 }}</a></li>
+{{ slot_4 }}<li><a>{{ slot_5 }}</a></li>
+{{ slot_6 }}<li><a>{{ slot_7 }}</a></li>
+{{ slot_8 }}<li><a>{{ slot_9 }}</a></li>
+{{ slot_10 }}</ul>
+{{ slot_11 }}</nav>
+{{ slot_12 }}<div id="carousel">
+{{ slot_13 }}
+{{ slot_14 }}<div id="reviews">
+{{ slot_15 }}
+{{ slot_16 }}<div id="consultation">
+{{ slot_17 }}
+{{ slot_18 }}<div id="promotions">
+{{ slot_19 }}
+{{ slot_20 }}</div></div></div></div></body>
+</html>

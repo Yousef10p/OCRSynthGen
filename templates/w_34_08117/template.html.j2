@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+#header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+#menu ul {
+    list-style-type: none;
+}
+
+#menu li {
+    display: inline;
+    margin-left: 10px;
+}
+
+#menu a {
+    color: white;
+    text-decoration: none;
+}
+
+#sidebar {
+    float: left;
+    width: 30%;
+    background-color: #efefef;
+    padding: 10px;
+    margin: 10px;
+}
+
+#featured {
+    margin-bottom: 20px;
+}
+
+.featured-post {
+    margin-bottom: 10px;
+}
+
+#content {
+    margin: 10px;
+}
+
+.read-more {
+    display: block;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    margin-top: 10px;
+    width: 60px;
+}
+
+#recent h2 {
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<div id="menu">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</div>
+</div>
+<div id="sidebar">
+<div id="featured">
+<h2>{{ slot_3 }}</h2>
+<div class="featured-post">
+<h3><a>{{ slot_4 }}</a></h3>
+<p>{{ slot_5 }}</p>
+<a class="read-more">{{ slot_6 }}</a>
+</div>
+<div class="featured-post">
+<h3><a>{{ slot_7 }}</a></h3>
+<p>{{ slot_8 }}</p>
+<a class="read-more">{{ slot_9 }}</a>
+</div>
+</div>
+<div id="recent">
+<h2>{{ slot_10 }}</h2>
+<ul>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1>{{ slot_13 }} </h1>
+<p>{{ slot_14 }}</p>
+</div>
+</body>
+</html>

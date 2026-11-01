@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 60vh;
+    padding: 0;
+}
+
+.hero-image {
+    width: 100%;
+    height: 60vh;
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8F8;
+}
+
+.cta-button {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #3498DB;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.sidebar {
+    flex: 1;
+    padding: 20px;
+}
+
+#left-sidebar {
+    background-color: #34495E;
+    color: white;
+}
+
+#right-sidebar {
+    background-color: #1ABC9C;
+    color: white;
+}
+
+.listing, .blog-post, .social-media-feed {
+    width: 100%;
+    height: 10vh;
+    margin: 10px 0;
+    background-color: #F8F8F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="hero-image ph" style="inline-size: 100%; block-size: 150px"></div>
+<button class="cta-button">{{ slot_0 }}</button>
+</header>
+<aside class="sidebar" id="left-sidebar">
+<form class="search-form">
+<label>{{ slot_1 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_2 }}</span>
+<button>{{ slot_3 }}</button>
+</form>
+<nav>
+<ul>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+</aside>
+<main>
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="listing">{{ slot_9 }}</div>
+<div class="listing">{{ slot_10 }}</div>
+<div class="listing">{{ slot_11 }}</div>
+
+</main>
+<aside class="sidebar" id="right-sidebar">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="blog-post">{{ slot_14 }}</div>
+<div class="blog-post">{{ slot_15 }}</div>
+<div class="blog-post">{{ slot_16 }}</div>
+
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+<div class="social-media-feed">{{ slot_19 }}</div>
+</aside>
+</body>
+</html>

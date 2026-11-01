@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+* {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#header, #footer {
+  background-color: #2a2a2a;
+  color: white;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+#content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+#left-content, #right-content {
+  background-color: #f2f2f2;
+  padding: 20px;
+  box-shadow: -1px 1px 2px rgba(0,0,0,0.2);
+}
+
+h1, h2, h3, p, footer {
+  padding: 20px;
+  text-align: center;
+}
+
+button {
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 2px;
+  cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+<div id="content">
+<div id="left-content">
+<h2>{{ slot_2 }}</h2>
+<h3>{{ slot_3 }}</h3>
+<p>{{ slot_4 }}</p>
+<button>{{ slot_5 }}</button>
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+<button>{{ slot_8 }}</button>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<button>{{ slot_11 }}</button>
+</div>
+<div id="right-content">
+<h2>{{ slot_12 }}</h2>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+<button>{{ slot_15 }}</button>
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+<button>{{ slot_18 }}</button>
+<h3>{{ slot_19 }}</h3>
+<p>{{ slot_20 }}</p>
+<button>{{ slot_21 }}</button>
+</div>
+<div id="footer">
+<p>{{ slot_22 }}</p>
+</div>
+</div>
+</body>
+</html>

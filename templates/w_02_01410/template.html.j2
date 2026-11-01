@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background-color: #e91e63;
+  padding: 20px 0;
+  color: #fff;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 40px;
+}
+
+nav {
+  background-color: #efefef;
+  text-align: center;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 20px;
+}
+
+section {
+  padding: 40px;
+  background-color: #f2f2f2;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+footer {
+  background-color: #e91e63;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="food">
+<h2>{{ slot_5 }}</h2>
+
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+</section>
+<section id="fitness">
+<h2>{{ slot_8 }}</h2>
+
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</section>
+<section id="mental-health">
+<h2>{{ slot_11 }}</h2>
+
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</section>
+<section id="about">
+<h2>{{ slot_14 }}</h2>
+
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</section>
+<footer>
+      {{ slot_17 }}
+    </footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-body);
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	background-color: #f8f8f8;
+}
+
+#logo {
+	width: 100px;
+	height: 100px;
+	background-color: #333;
+	margin: 0;
+}
+
+nav ul {
+	display: flex;
+	list-style: none;
+}
+
+nav li {
+	margin: 0 20px;
+}
+
+section {
+	margin: 50px;
+	text-align: center;
+}
+
+section img {
+	width: 100%;
+	height: 200px;
+	background-color: #333;
+	margin: 20px 0;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+form input[type="text"],
+form input[type="email"] {
+	margin-bottom: 20px;
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+}
+
+form input[type="submit"] {
+	background-color: #333;
+	color: #fff;
+	cursor: pointer;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 20px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+	{{ slot_0 }}<header>
+		{{ slot_1 }}<div id="logo">{{ slot_2 }}<nav>
+			{{ slot_3 }}<ul>
+				{{ slot_4 }}<li><a>{{ slot_5 }}</a>{{ slot_6 }}</li><li><a>{{ slot_7 }}</a>{{ slot_8 }}</li><li><a>{{ slot_9 }}</a>{{ slot_10 }}<a>{{ slot_11 }}</a>{{ slot_12 }}</li></ul></nav>
+	{{ slot_13 }}<main>
+		{{ slot_14 }}<section id="workouts">
+			{{ slot_15 }}<h2>{{ slot_16 }}<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+		{{ slot_17 }}</h2></section>
+		{{ slot_18 }}<section id="nutrition">
+			{{ slot_19 }}<h2>{{ slot_20 }}<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+		{{ slot_21 }}</h2></section>
+		{{ slot_22 }}<section id="membership">
+			{{ slot_23 }}<h2>{{ slot_24 }}<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+		{{ slot_25 }}</h2></section>
+		{{ slot_26 }}<section id="getstarted">
+			{{ slot_27 }}<h2>{{ slot_28 }}</h2><form>
+				{{ slot_29 }}<label>{{ slot_30 }}<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_31 }}</span>
+				{{ slot_32 }}<label>{{ slot_33 }}<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_34 }}</span>
+				{{ slot_35 }}<span class="">{{ slot_36 }}</span>
+			{{ slot_37 }}<section>
+	{{ slot_38 }}</section></label></label></form></section></main>
+	{{ slot_39 }}<footer>
+		{{ slot_40 }}<p>{{ slot_41 }}</p></footer>
+{{ slot_42 }}</div></header></body>
+</html>

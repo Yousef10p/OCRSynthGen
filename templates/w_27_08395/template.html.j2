@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  background-color: #f2f2f2;
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+nav {
+  background-color: #ddd;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  margin-left: 10px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+section {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.photo {
+  width: 30%;
+  height: 200px;
+  background-color: lightgray;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+form {
+  
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<section id="destinations">
+<h2>{{ slot_5 }}</h2>
+<div class="content">
+<div class="photo">{{ slot_6 }}</div>
+<div class="photo">{{ slot_7 }}</div>
+<div class="photo">{{ slot_8 }}</div>
+<div class="photo">{{ slot_9 }}</div>
+
+</div>
+</section>
+<section id="guides">
+<h2>{{ slot_10 }}</h2>
+<div class="content">
+<div class="photo">{{ slot_11 }}</div>
+<div class="photo">{{ slot_12 }}</div>
+<div class="photo">{{ slot_13 }}</div>
+<div class="photo">{{ slot_14 }}</div>
+
+</div>
+</section>
+<section id="book">
+<h2>{{ slot_15 }}</h2>
+<div class="content">
+<form>  </form>
+</div>
+</section>
+<section id="privacy">
+<h2>{{ slot_16 }}</h2>
+<div class="content">
+
+</div>
+</section>
+<footer>
+
+</footer>
+</body>
+</html>

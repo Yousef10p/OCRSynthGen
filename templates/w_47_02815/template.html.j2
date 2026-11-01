@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+body {
+  background: #f2f2f2;
+  color: #333;
+}
+
+.logo {
+  color: #007bff;
+  text-align: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 2em;
+}
+
+nav ul li {
+  margin: 0 1em;
+}
+
+nav ul li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section {
+  padding: 2em;
+}
+
+.product, .service {
+  display: inline-block;
+  margin: 1em;
+  width: 25%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.product img, .service img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  background: #f2f2f2;
+}
+
+.product p, .service p {
+  padding: 1em;
+}
+
+
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1em 0;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1 class="logo">{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="home">
+<h2>{{ slot_6 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</section>
+<section id="products">
+<h2>{{ slot_7 }}</h2>
+<div class="product">
+<h3>{{ slot_8 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="product">
+<h3>{{ slot_10 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_11 }}</p>
+</div>
+
+</section>
+<section id="services">
+<h2>{{ slot_12 }}</h2>
+<div class="service">
+<h3>{{ slot_13 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_15 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_16 }}</p>
+</div>
+
+</section>
+
+</main>
+<footer>
+<p>{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

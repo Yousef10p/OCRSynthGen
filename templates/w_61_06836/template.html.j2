@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+.hero-image {
+    background: #ddd;
+    padding: 50px;
+    text-align: center;
+}
+
+section, aside {
+    float: right;
+    width: 50%;
+}
+
+aside {
+    float: left;
+    width: 25%;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    padding: 20px;
+    background: #ddd;
+}
+
+.service-image {
+    background: #ddd;
+    height: 200px;
+    margin: 20px;
+    text-align: center;
+    line-height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+<div class="hero-image">{{ slot_3 }}</div>
+</header>
+<main>
+<section>
+<div class="service-image">{{ slot_4 }}</div>
+<h2>{{ slot_5 }}</h2>
+<button>{{ slot_6 }}</button>
+</section>
+<section>
+<div class="service-image">{{ slot_7 }}</div>
+<h2>{{ slot_8 }}</h2>
+<button>{{ slot_9 }}</button>
+</section>
+<aside>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+</aside>
+</main>
+<footer>
+<form>
+<label>{{ slot_16 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<span class="">{{ slot_18 }}</span>
+</form>
+<div>
+<a>{{ slot_19 }}</a>
+<a>{{ slot_20 }}</a>
+<a>{{ slot_21 }}</a>
+</div>
+<p>{{ slot_22 }}</p>
+</footer>
+</body>
+</html>

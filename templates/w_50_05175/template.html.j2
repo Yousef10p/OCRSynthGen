@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+.slider, .call-to-action, .categories, .featured, .blog, .tips {
+    width: 50%;
+    float: right;
+    padding: 20px;
+}
+.slider-item {
+    height: 200px;
+    background-color: #f00;
+}
+.call-to-action {
+    text-align: center;
+}
+.categories ul {
+    list-style-type: disc;
+}
+button {
+    background-color: #00f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="slider">
+<div class="slider-item">{{ slot_0 }}</div>
+<div class="slider-item">{{ slot_1 }}</div>
+<div class="slider-item">{{ slot_2 }}</div>
+</div>
+<div class="call-to-action">
+<button>{{ slot_3 }}</button>
+</div>
+<div class="row">
+<div class="categories">
+<h2>{{ slot_4 }}</h2>
+<ul>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+</div>
+<div class="featured">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="blog">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="tips">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</body>
+</html>

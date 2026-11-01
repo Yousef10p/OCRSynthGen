@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header#hero {
+    background: none;
+    height: 500px;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header#hero nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header#hero nav ul li {
+    display: inline;
+    padding: 10px;
+}
+
+header#hero h1 {
+    font-size: 3em;
+}
+
+.social-links a {
+    margin: 10px;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #eee;
+    padding: 20px;
+    width: 300px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#sidebar h2 {
+    font-size: 1.5em;
+}
+
+.event, .volunteer {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.event h4, .volunteer h4 {
+    font-size: 1.2em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header id="hero">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<h1>{{ slot_6 }}</h1>
+<button>{{ slot_7 }}</button>
+<div class="social-links">
+<a>{{ slot_8 }}</a>
+<a>{{ slot_9 }}</a>
+<a>{{ slot_10 }}</a>
+</div>
+</header>
+<aside id="sidebar">
+<h2>{{ slot_11 }}</h2>
+<div class="event">
+<h4>{{ slot_12 }}</h4>
+<p>{{ slot_13 }}</p>
+</div>
+<h2>{{ slot_14 }}</h2>
+<div class="volunteer">
+<h4>{{ slot_15 }}</h4>
+<p>{{ slot_16 }}</p>
+</div>
+</aside>
+</body>
+</html>

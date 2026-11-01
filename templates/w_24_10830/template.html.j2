@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+#page {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "left_menu main"
+        "footer footer";
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-columns: 150px 1fr;
+}
+
+#header {
+    grid-area: header;
+    background-color: #f64a4a;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#left_menu {
+    grid-area: left_menu;
+    background-color: #ff751a;
+}
+
+#main {
+    grid-area: main;
+    background-color: #ffd130;
+}
+
+#footer {
+    grid-area: footer;
+    background-color: #3d3d3d;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#logo, #company_name, #item {
+    background-color: white;
+    padding: 5px;
+}
+
+#offer_image {
+    background-color: white;
+    height: 200px;
+    margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="page">
+<div id="header">
+<span id="logo">{{ slot_0 }}</span>
+<span id="company_name">{{ slot_1 }}</span>
+</div>
+<div id="left_menu">
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+<div id="search_bar">
+<form><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_5 }}</span></form>
+</div>
+</div>
+<div id="main">
+<h1>{{ slot_6 }}</h1>
+<div id="offer_image">{{ slot_7 }}</div>
+<h2>{{ slot_8 }}</h2>
+<div class="item" id="popular1">{{ slot_9 }}</div>
+<div class="item" id="popular2">{{ slot_10 }}</div>
+<div class="item" id="popular3">{{ slot_11 }}</div>
+</div>
+<div id="footer">
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    background-color: #f8f9fa;
+    padding: 15px;
+    text-align: center;
+}
+
+
+#hero {
+    background-color: #000;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+#hero button {
+    background-color: #ff0000;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 15px 25px;
+}
+
+
+section {
+    padding: 30px 0;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+section .article, section .workout, section .recipe, section .product {
+    display: inline-block;
+    margin: 0 15px;
+    text-align: right;
+    width: 25%;
+}
+
+section .article img, section .workout img, section .recipe img, section .product img {
+    background-color: #ccc; 
+    height: 200px;
+    width: 100%;
+}
+
+section .article h3, section .workout h3, section .recipe h3, section .product h3 {
+    margin: 10px 0;
+}
+
+section .article p, section .workout p, section .recipe p, section .product p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<button>{{ slot_6 }}</button>
+</section>
+<section id="articles">
+<h2>{{ slot_7 }}</h2>
+<div class="article">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+
+</section>
+<section id="workouts">
+<h2>{{ slot_10 }}</h2>
+<div class="workout">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+
+</section>
+<section id="recipes">
+<h2>{{ slot_13 }}</h2>
+<div class="recipe">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+
+</section>
+<section id="products">
+<h2>{{ slot_16 }}</h2>
+<div class="product">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+</div>
+
+</section>
+</body>
+</html>

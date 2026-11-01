@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+}
+.logo {
+    font-weight: bold;
+    font-size: 24px;
+}
+.navigation ul {
+    list-style: none;
+}
+.navigation ul li {
+    display: inline;
+    margin-left: 10px;
+}
+.navigation ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+.search-bar input {
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+}
+.content {
+    margin: 50px;
+    text-align: center;
+}
+.fashion-image, .shop-image {
+    display: block;
+    width: 50%;
+    height: 200px;
+    background-color: blue;
+    margin: 20px auto;
+}
+.social-media {
+    display: flex;
+    justify-content: center;
+}
+.social-media a {
+    margin: 0 10px;
+}
+.social-media img {
+    width: 24px;
+    height: 24px;
+}
+.footer {
+    background-color: #000;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="logo">{{ slot_0 }}</div>
+<div class="navigation">
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+<div class="search-bar">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_5 }}</span>
+</div>
+</div>
+<div class="content">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+<div class="fashion-image ph"></div>
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<div class="shop-image ph"></div>
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<form>
+<label>{{ slot_12 }}</label><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span><br>
+<label>{{ slot_14 }}</label><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span><br>
+<label>{{ slot_16 }}</label><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_17 }}</span><br>
+<button>{{ slot_18 }}</button>
+</form>
+</div>
+<div class="social-media">
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+<a><div class="ph" style="inline-size: 100%; block-size: 150px"></div></a>
+</div>
+<div class="footer">
+<p>{{ slot_19 }}</p>
+</div>
+</body>
+</html>

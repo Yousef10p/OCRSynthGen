@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.fullscreen-image {
+    position: relative;
+    height: 100vh;
+    background-color: #999;
+}
+
+.fullscreen-image h1, .fullscreen-image p {
+    position: absolute;
+    bottom: 2em;
+    right: 2em;
+}
+
+.fullscreen-image h1 {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+button {
+    position: absolute;
+    bottom: 1em;
+    left: 2em;
+    padding: 1em;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+}
+
+.social-icons a {
+    margin: 1em;
+    color: #fff;
+    text-decoration: none;
+}
+
+footer form {
+    display: flex;
+    flex-direction: column;
+}
+
+footer form label {
+    margin: 1em 0;
+}
+
+footer form input, footer form textarea {
+    margin: 0.5em 0;
+}
+
+footer form button {
+    align-self: flex-end;
+    padding: 1em;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="fullscreen-image">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<button>{{ slot_6 }}</button>
+</section>
+</main>
+<footer>
+<div class="social-icons">
+<a>{{ slot_7 }}</a>
+<a>{{ slot_8 }}</a>
+<a>{{ slot_9 }}</a>
+<a>{{ slot_10 }}</a>
+</div>
+<form>
+<label>
+                {{ slot_11 }}
+                <span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+</label>
+<label>
+                {{ slot_13 }}
+                <span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+</label>
+<label>
+                {{ slot_15 }}
+                <span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_16 }}</span>
+</label>
+<button>{{ slot_17 }}</button>
+</form>
+</footer>
+</body>
+</html>

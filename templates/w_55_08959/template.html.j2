@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+header, footer {
+  background-color: #f7f7f7;
+  text-align: center;
+  padding: 20px 0;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.song {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  background-color: #ddd; 
+}
+footer p {
+  font-size: 12px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="popular">
+<h2>{{ slot_4 }}</h2>
+<div class="song">{{ slot_5 }}</div>
+<div class="song">{{ slot_6 }}</div>
+<div class="song">{{ slot_7 }}</div>
+
+</section>
+<section id="genres">
+<h2>{{ slot_8 }}</h2>
+<a>{{ slot_9 }}</a>
+<a>{{ slot_10 }}</a>
+<a>{{ slot_11 }}</a>
+
+</section>
+<section id="playlists">
+<h2>{{ slot_12 }}</h2>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+
+</section>
+</main>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

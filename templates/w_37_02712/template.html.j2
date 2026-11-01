@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+}
+
+.sidebar, .middle, .blog, .company-info {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+}
+
+.middle .product {
+    height: 50px;
+    margin: 10px 0;
+}
+
+.blog {
+    display: flex;
+    flex-direction: column;
+    background-color: #e0e0e0;
+}
+
+.company-info {
+    background-color: #d0d0d0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="sidebar">
+<p>{{ slot_0 }}</p>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</div>
+<div class="middle">
+<p>{{ slot_4 }}</p>
+<div class="product" style="background-color: red;">{{ slot_5 }}</div>
+<div class="product" style="background-color: green;">{{ slot_6 }}</div>
+<div class="product" style="background-color: blue;">{{ slot_7 }}</div>
+</div>
+<div class="blog">
+<p>{{ slot_8 }}</p>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+<div class="company-info">
+<p>{{ slot_13 }}</p>
+<ul>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

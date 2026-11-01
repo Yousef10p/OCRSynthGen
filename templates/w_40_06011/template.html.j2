@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+#product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px;
+}
+
+#product-grid div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+#product-grid p:first-child {
+    border: 1px solid #333;
+    background-color: #fff;
+    height: 200px;
+    width: 200px;
+}
+
+#customer-reviews {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</nav>
+</header>
+<main>
+<div id="product-grid">
+<div>
+<p>{{ slot_5 }}</p>
+<p>{{ slot_6 }}</p>
+</div>
+<div>
+<p>{{ slot_7 }}</p>
+<p>{{ slot_8 }}</p>
+</div>
+<div>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+</div>
+<div>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</div>
+<div>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</div>
+<div>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</div>
+<div>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+</div>
+<div>
+<p>{{ slot_19 }}</p>
+<p>{{ slot_20 }}</p>
+</div>
+</div>
+<div id="customer-reviews">
+<p>{{ slot_21 }}</p>
+<p>{{ slot_22 }}</p>
+</div>
+</main>
+</body>
+</html>

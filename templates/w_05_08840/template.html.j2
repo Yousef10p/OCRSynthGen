@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+.header, .footer {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 20px;
+}
+.col-nav {
+    float: right;
+    width: 20%;
+}
+.col-content {
+    float: left;
+    width: 80%;
+}
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+}
+.nav-list li {
+    margin-bottom: 5px;
+}
+.img-placeholder {
+    background-color: #ccc;
+    height: 200px;
+    margin-bottom: 10px;
+}
+.logo, .footer-logo {
+    width: 50px;
+    height: 50px;
+}
+.social-links a {
+    margin-left: 5px;
+}
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="logo ph" style="inline-size: 100%; block-size: 150px"></div>
+<span class="social-links">
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+</span>
+</div>
+<div class="row">
+<div class="col-nav">
+<h3>{{ slot_3 }}</h3>
+<ul class="nav-list">
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</div>
+<div class="col-content">
+<div class="img-placeholder">{{ slot_7 }}</div>
+<p>{{ slot_8 }}</p>
+<div class="img-placeholder">{{ slot_9 }}</div>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+<div class="footer">
+<div class="footer-logo">{{ slot_11 }}</div>
+<span class="social-links">
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</span>
+</div>
+</body>
+</html>

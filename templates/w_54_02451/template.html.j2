@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.header {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    padding: 20px;
+}
+
+.left-column {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.right-column {
+    flex: 3;
+}
+
+.bg-image {
+    height: 200px;
+    width: 100%;
+    background-color: #cccccc;
+}
+
+.footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    display: flex;
+}
+
+.social-media, .blog, .scheduler {
+    flex: 1;
+}
+
+form input[type="submit"] {
+    background-color: #008CBA;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="content">
+<div class="left-column">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+<div class="right-column">
+<div class="bg-image ph"></div>
+<p>{{ slot_5 }}</p>
+</div>
+</div>
+<div class="footer">
+<div class="social-media">
+<a>{{ slot_6 }}</a>
+<a>{{ slot_7 }}</a>
+<a>{{ slot_8 }}</a>
+</div>
+<div class="blog">
+<h2>{{ slot_9 }}</h2>
+<a>{{ slot_10 }}</a>
+</div>
+<div class="scheduler">
+<h2>{{ slot_11 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="">{{ slot_15 }}</span>
+</form>
+</div>
+</div>
+</body>
+</html>

@@ -55,6 +55,7 @@ if "cut_x:" not in synthdoc_arabic.WORDS_JS:
 
 from pipeline.img_pool import ImagePool  # noqa: E402
 from pipeline.text_pool import TextPool  # noqa: E402
+from src.bank import TEMPLATES  # noqa: E402
 from src.dedup import load_bank  # noqa: E402
 from src.markdown import to_markdown  # noqa: E402
 
@@ -64,6 +65,26 @@ EFFECTS = {"clean": 0.15, "ocrsmith": 0.5, "augraphy": 0.1, "scan-simulator": 0.
 SOURCES = {"grammar": 1, "websight": 1, "doclaynet": 1}
 ROLE = {prop: role for role, prop in ROLE_PROPERTY.items()}  # doco:sectionTitle -> heading
 TRIES = 4  # attempts with new seeds when an effect leaves the text too faint
+# Runs at the end of the page body, so before Paged.js copies the page (Paged.js starts as soon as parsing
+# ends, before DOMContentLoaded): an element with no text in it, at least 30 x 30 px, with a plain grey
+# background (the look of an image placeholder) gets one of PHOTOS, covering it. Text on grey (a grey section
+# or banner) is design and stays; table cells and form fields are left alone.
+GREY_BOXES_JS = """(() => {
+  const photos = PHOTOS; let k = 0;
+  for (const el of document.body.querySelectorAll("*")) {
+    if (k >= photos.length) break;
+    if (/^(TD|TH|TR|TABLE|INPUT|SELECT|TEXTAREA|BUTTON|HR|BR|IMG|SVG|SCRIPT|STYLE)$/.test(el.tagName)) continue;
+    if (el.textContent.trim() || el.querySelector("img") || el.dataset.img) continue;
+    const r = el.getBoundingClientRect();
+    if (r.width < 30 || r.height < 30) continue;
+    const m = getComputedStyle(el).backgroundColor.match(/\\d+(\\.\\d+)?/g);
+    if (!m || (m[3] !== undefined && +m[3] === 0)) continue;
+    const [R, G, B] = m.map(Number), mean = (R + G + B) / 3;
+    if (Math.max(R, G, B) - Math.min(R, G, B) > 16 || mean < 110 || mean > 238) continue;
+    el.style.setProperty("background", `url("${photos[k++]}") center / cover no-repeat`, "important");
+    el.dataset.img = "grey-box";
+  }
+})();"""
 # The opening tag of a grey picture box: any element whose class list has "ph"
 PICTURE_BOX = re.compile(r'<(\w+)\b([^>]*\bclass="(?:[^"]*\s)?ph(?:\s[^"]*)?"[^>]*)>')
 _cache = {}
@@ -73,6 +94,20 @@ def bank():
     if "bank" not in _cache:
         _cache["bank"] = load_bank()
     return _cache["bank"]
+
+
+def bank_ids():
+    """{source: [template ids]} from bank_index.jsonl: a sample loads only its own template.json, so a bank
+    of 100,000 templates doesn't slow every worker's start."""
+    if "ids" not in _cache:
+        ids = {}
+        for line in (ROOT / "bank_index.jsonl").read_text(encoding="utf-8").splitlines():
+            entry = json.loads(line)
+            ids.setdefault(entry["source"], []).append(entry["id"])
+        if not ids:
+            raise RuntimeError("bank_index.jsonl is empty: run python -m src.dedup")
+        _cache["ids"] = ids
+    return _cache["ids"]
 
 
 def arabic_fonts():
@@ -100,13 +135,16 @@ class DocPipeline:
     text is "wikipedia" (text_pool/, the default once it is built) or "demo" (a few built-in sentences)."""
 
     def __init__(self, out_dir, languages=None, effects=None, sources=None, templates="bank", llm=None,
-                 pictures=None, text=None):
+                 pictures=None, text=None, extras=True):
         self.out = Path(out_dir).resolve()
         self.out.mkdir(parents=True, exist_ok=True)
         self.languages, self.effects = languages or LANGUAGES, effects or EFFECTS
         self.sources, self.templates, self.llm = sources or SOURCES, templates, llm
         self.pictures = ImagePool() if pictures is None else pictures
         self.text = text or ("wikipedia" if TextPool.exists("ar") and TextPool.exists("en") else "demo")
+        # extras: the clean render and the drawn word and slot boxes, for looking at a sample (the generator
+        # page); a training set (pipeline/dataset.py) leaves them out
+        self.extras = extras
         synthdoc_arabic.install()  # SynthDoc then also measures every word (the Arabic extension)
         self._synthdoc = None
 
@@ -130,7 +168,8 @@ class DocPipeline:
             else:
                 note = f"{self.llm.problem if self.llm else 'no LLM'}; bank template used"
         source = pick(rng, self.sources)
-        meta = rng.choice([m for m in bank() if m["source"] == source])
+        tid = rng.choice(bank_ids()[source])
+        meta = json.loads((TEMPLATES / tid / "template.json").read_text(encoding="utf-8"))
         return meta, None, None, note
 
     def fill(self, meta, text, folder, rng, lang):
@@ -166,7 +205,13 @@ class DocPipeline:
             attrs = m.group(2)
             attrs = attrs.replace(' style="', f' style="{bg} ', 1) if ' style="' in attrs else f'{attrs} style="{bg}"'
             return f'<{m.group(1)}{attrs} data-img="img_pool/{photo.name}">'
-        return PICTURE_BOX.sub(put, page), used
+        page = PICTURE_BOX.sub(put, page)
+        # Web pages also have grey picture areas the converter could not name as such (a ".logo" square, a
+        # hero image area): find them in the browser, before SynthDoc lays the page out, and fill them too
+        spare = [self.pictures.pick(rng).as_uri() for _ in range(12)]
+        script = GREY_BOXES_JS.replace("PHOTOS", json.dumps(spare))
+        end = page.rfind("</body>")
+        return page[:end] + f"<script>{script}</script>\n" + page[end:], used
 
     def render(self, page, values, name):
         """3. SynthDoc renders page 1 and labels it: (image, word/line labels, slot boxes)."""
@@ -181,7 +226,13 @@ class DocPipeline:
         for word, measured in zip(ocr["words"], raw["page"]["words"]):  # same order: lines are runs of words
             word["cut_x"] = measured.get("cut_x", False)
         slots = json.loads(Path(first["label_path"]).read_text(encoding="utf-8"))["annotations"]
-        return Image.open(first["image_path"]).convert("RGB"), ocr, slots, result.get("total_pages", 1)
+        image = Image.open(first["image_path"]).convert("RGB")
+        # SynthDoc's own copies are no longer needed (they would double the size of a large set)
+        for page in result.get("pages", [result]):
+            for key in ("image_path", "label_path"):
+                Path(page[key]).unlink(missing_ok=True)
+        (synthdoc_arabic._raw_dir / f"{raw_name}.json").unlink(missing_ok=True)
+        return image, ocr, slots, result.get("total_pages", 1)
 
     def degrade(self, image, words, rng, effect):
         """4. One effect library, retried with new seeds while the text is too faint.
@@ -270,12 +321,13 @@ class DocPipeline:
 
         out = self.out
         image.save(out / f"{name}.jpg", quality=88)
-        clean.save(out / f"{name}_clean.jpg", quality=88)
         (out / f"{name}.html").write_text(filled, encoding="utf-8")
         (out / f"{name}.md").write_text(md, encoding="utf-8")
         (out / f"{name}.json").write_text(json.dumps(label, ensure_ascii=False), encoding="utf-8")
-        draw(image, [w["box"] for w in label["words"]], (40, 170, 60), out / f"{name}_words.jpg")
-        draw(image, [sl["box"] for sl in label["slots"]], (210, 50, 50), out / f"{name}_slots.jpg")
+        if self.extras:
+            clean.save(out / f"{name}_clean.jpg", quality=88)
+            draw(image, [w["box"] for w in label["words"]], (40, 170, 60), out / f"{name}_words.jpg")
+            draw(image, [sl["box"] for sl in label["slots"]], (210, 50, 50), out / f"{name}_slots.jpg")
         times = {k: round(t[k], 2) for k in ("template", "fill", "render", "effects", "markdown")}
         return {"name": name, "seed": seed, "template": meta["id"], "source": meta["source"], "lang": lang,
                 "effect": effect, "attacks": attacks, "font": s["font"], "size_pt": s["size_pt"],

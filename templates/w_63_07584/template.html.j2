@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.hero {
+  background-color: #7D451B; 
+  text-align: center;
+  padding: 100px 0;
+}
+
+.hero h1 {
+  margin-bottom: 0;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+nav ul {
+  background-color: #6495ED; 
+  list-style: none;
+  padding: 20px 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav ul li:hover {
+  background-color: #DC143C; 
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+section {
+  padding: 50px 0;
+  text-align: center;
+}
+
+section h2 {
+  margin-bottom: 50px;
+}
+
+
+.service, .plan, .testimonial {
+  display: inline-block;
+  width: 30%;
+  margin: 1%;
+  padding: 20px;
+}
+
+.blog, .social-links {
+  width: 50%;
+  margin: 2% auto;
+}
+
+.service, .plan {
+  background-color: #F0E68C; 
+  color: #8B4513;
+}
+
+.testimonial {
+  background-color: #F5F5DC; 
+  color: #8B4513;
+}
+
+.blog {
+  padding: 30px;
+  border: 2px solid #8B4513;
+}
+
+social-link {
+  display: inline-block;
+}
+
+footer {
+  background-color: #DC143C; 
+  color: #A7AD00; 
+  text-align: center;
+  padding: 50px 0;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header class="hero">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</header>
+
+
+<section id="services">
+<h2>{{ slot_7 }}</h2>
+<div class="services-container">
+
+<div class="service">
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+
+</div>
+</section>
+
+
+<section id="plans">
+<h2>{{ slot_12 }}</h2>
+<div class="plans-container">
+
+<div class="plan">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="plan">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+
+</div>
+</section>
+
+
+<section id="blog">
+<h2>{{ slot_17 }}</h2>
+<article>
+<h3>{{ slot_18 }}</h3>
+<p>{{ slot_19 }}</p>
+</article>
+
+</section>
+
+
+<section id="testimonials">
+<h2>{{ slot_20 }}</h2>
+<div class="testimonial">
+<p>{{ slot_21 }}</p>
+<p>{{ slot_22 }}</p>
+</div>
+
+</section>
+
+
+<section id="social">
+<h2>{{ slot_23 }}</h2>
+<div class="social-links">
+<a>{{ slot_24 }}</a>
+<a>{{ slot_25 }}</a>
+<a>{{ slot_26 }}</a>
+</div>
+</section>
+
+
+<footer>
+<p>{{ slot_27 }}</p>
+</footer>
+
+</body>
+</html>

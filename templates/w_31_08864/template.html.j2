@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: #f5f5f5;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav a {
+  color: #000;
+  text-decoration: none;
+}
+
+.menu-item {
+  background-color: #ccc;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.review {
+  background-color: #f5f5f5;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.contact-form {
+  width: 300px;
+  margin: 10px;
+}
+
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<section id="menu">
+<h2>{{ slot_6 }}</h2>
+
+<div class="menu-item">
+<h3>{{ slot_7 }}</h3>
+<p class="ingredients">{{ slot_8 }}</p>
+<p class="price">{{ slot_9 }}</p>
+</div>
+
+</section>
+<section id="reviews">
+<h2>{{ slot_10 }}</h2>
+
+<div class="review">
+<h3>{{ slot_11 }}</h3>
+<p class="review-text">{{ slot_12 }}</p>
+<p class="rating">{{ slot_13 }}</p>
+</div>
+
+</section>
+<section id="loyalty">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+</section>
+<section id="special">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+</section>
+<section id="contact">
+<h2>{{ slot_18 }}</h2>
+
+</section>
+</body>
+</html>

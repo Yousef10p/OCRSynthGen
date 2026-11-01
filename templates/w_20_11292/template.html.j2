@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo img {
+    width: 100px;
+    height: 50px;
+    background: red;
+}
+
+.navigation a {
+    margin: 0 10px;
+}
+
+.hero img {
+    width: 100%;
+    height: 300px;
+    background: blue;
+}
+
+.team img {
+    width: 100px;
+    height: 100px;
+    background: green;
+}
+
+.services ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.consultation button {
+    background: orange;
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+footer {
+    background: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+<div class="logo ph"></div>
+<div class="navigation">
+
+<nav>
+<a>{{ slot_0 }}</a> {{ slot_1 }}
+                <a>{{ slot_2 }}</a> {{ slot_3 }}
+                <a>{{ slot_4 }}</a> {{ slot_5 }}
+                <a>{{ slot_6 }}</a>
+</nav>
+</div>
+</header>
+
+<main>
+<div class="hero">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="team">
+
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="services">
+<h2>{{ slot_7 }}</h2>
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+</div>
+<div class="consultation">
+<button>{{ slot_11 }}</button>
+</div>
+</main>
+
+<footer>
+
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

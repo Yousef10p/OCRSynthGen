@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background: lightgray;
+    padding: 10px;
+}
+
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+section {
+    margin-top: 20px;
+}
+
+.stream, .news, .highlight, .game {
+    width: 200px;
+    height: 200px;
+    background: lightblue;
+    margin: 10px;
+    display: inline-block;
+    text-align: center;
+    line-height: 200px;
+    color: white;
+    font-weight: bold;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="live">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<div class="stream">{{ slot_6 }}</div>
+<div class="stream">{{ slot_7 }}</div>
+<div class="stream">{{ slot_8 }}</div>
+</section>
+<section id="news">
+<h1>{{ slot_9 }}</h1>
+<p>{{ slot_10 }}</p>
+<div class="news">{{ slot_11 }}</div>
+<div class="news">{{ slot_12 }}</div>
+<div class="news">{{ slot_13 }}</div>
+</section>
+<section id="highlights">
+<h1>{{ slot_14 }}</h1>
+<p>{{ slot_15 }}</p>
+<div class="highlight">{{ slot_16 }}</div>
+<div class="highlight">{{ slot_17 }}</div>
+<div class="highlight">{{ slot_18 }}</div>
+</section>
+<section id="schedule">
+<h1>{{ slot_19 }}</h1>
+<p>{{ slot_20 }}</p>
+<div class="game">{{ slot_21 }}</div>
+<div class="game">{{ slot_22 }}</div>
+<div class="game">{{ slot_23 }}</div>
+</section>
+</main>
+</body>
+</html>

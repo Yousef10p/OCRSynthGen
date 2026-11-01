@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+
+header {
+    position: fixed;
+    width: 100%;
+    padding: 20px 0;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+header ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+header a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+section {
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+section h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+section p {
+    line-height: 1.5;
+    max-width: 600px;
+}
+
+
+#hero {
+    color: #fff;
+    background: #333;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="hero">
+<div style="height: 300px; width: 100%; background: #f0f0f0;">{{ slot_5 }}</div>
+</section>
+<section id="programs">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }} </p>
+</section>
+<section id="wellness">
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+</section>
+<section id="about">
+<h1>{{ slot_10 }}</h1>
+<p>{{ slot_11 }}</p>
+</section>
+<section id="contact">
+<h1>{{ slot_12 }}</h1>
+<p>{{ slot_13 }}</p>
+</section>
+<footer>
+<p>{{ slot_14 }}</p>
+</footer>
+</body>
+</html>

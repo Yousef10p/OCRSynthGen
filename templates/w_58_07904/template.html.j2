@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.navigation {
+    width: 200px;
+    float: right;
+    background-color: #e8e8e8;
+    padding: 20px;
+    margin-left: 20px;
+}
+
+.navigation ul li {
+    list-style-type: none;
+    line-height: 2em;
+}
+
+.content {
+    margin-right: 240px;
+}
+
+.gallery-item, .blog-post {
+    width: 300px;
+    height: 200px;
+    background-color: #e8e8e8;
+    margin: 10px;
+    text-align: center;
+    line-height: 200px;
+}
+
+.footer {
+    clear: both;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f8f8;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<h2>{{ slot_1 }}</h2>
+</div>
+<div class="navigation">
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</div>
+<div class="content">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="gallery">
+<div class="gallery-item">{{ slot_9 }}</div>
+<div class="gallery-item">{{ slot_10 }}</div>
+<div class="gallery-item">{{ slot_11 }}</div>
+</div>
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<div class="blog-post">{{ slot_14 }}</div>
+<div class="blog-post">{{ slot_15 }}</div>
+<div class="blog-post">{{ slot_16 }}</div>
+</div>
+<div class="footer">
+<p>{{ slot_17 }}</p>
+</div>
+</body>
+</html>

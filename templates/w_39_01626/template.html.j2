@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+nav {
+    padding: 1em 0;
+}
+
+nav a {
+    color: white;
+    margin: 0 2em;
+}
+
+div.video {
+    background-color: grey;
+    width: 100%;
+    height: 200px;
+    margin: 1em 0;
+}
+
+#customerTestimonials p {
+    background-color: lightgrey;
+    margin: 1em 0;
+    padding: 1em;
+}
+
+table {
+    width: 100%;
+    text-align: right;
+}
+
+th, td {
+    padding: 0.5em;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+</header>
+<div id="videoSection">
+<h2>{{ slot_4 }}</h2>
+<div class="video ph"></div>
+<div class="video ph"></div>
+<div class="video ph"></div>
+</div>
+<div id="customerTestimonials">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<p>{{ slot_7 }}</p>
+<p>{{ slot_8 }}</p>
+</div>
+<div id="pricing">
+<h2>{{ slot_9 }}</h2>
+<table>
+<tr>
+<th>{{ slot_10 }}</th>
+<th>{{ slot_11 }}</th>
+<th>{{ slot_12 }}</th>
+</tr>
+<tr>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+<td>
+<li>{{ slot_15 }}</li>
+<li>{{ slot_16 }}</li>
+<li>{{ slot_17 }}</li>
+</td>
+</tr>
+<tr>
+<td>{{ slot_18 }}</td>
+<td>{{ slot_19 }}</td>
+<td>
+<li>{{ slot_20 }}</li>
+<li>{{ slot_21 }}</li>
+<li>{{ slot_22 }}</li>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

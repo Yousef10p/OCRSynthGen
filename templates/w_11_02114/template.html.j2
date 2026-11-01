@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.navbar {
+  background-color: #f8f9fa;
+}
+.navbar a {
+  color: #333;
+  text-decoration: none;
+}
+.navbar ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navbar ul li {
+  margin-right: 1.5em;
+}
+
+
+.hero {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 5em 0;
+}
+.hero h1 {
+  font-size: 2.5em;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+
+.services {
+  padding: 5em 0;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+.services h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1em;
+}
+.service {
+  border: 1px solid #ddd;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+
+.cta {
+  padding: 5em 0;
+  text-align: center;
+  background-color: #007bff;
+  color: #fff;
+}
+.cta h2 {
+  font-size: 2em;
+}
+.cta a {
+  margin-top: 2em;
+  background-color: #fff;
+  color: #007bff;
+}
+
+
+footer {
+  text-align: center;
+  padding: 2em 0;
+  background-color: #f8f9fa;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header class="navbar">
+<div class="container">
+<a class="logo">{{ slot_0 }}</a>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<a class="cta-btn">{{ slot_7 }}</a>
+</div>
+</section>
+
+<section class="services">
+<div class="container">
+<h2>{{ slot_8 }}</h2>
+<div class="services-grid">
+<div class="service">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="service">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="container">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+<a class="cta-btn">{{ slot_17 }}</a>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>{{ slot_18 }}</p>
+</div>
+</footer>
+</body>
+</html>

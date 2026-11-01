@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+font-family: var(--font-body);
+margin: 0;
+padding: 0;
+}
+
+header {
+background-color: lightgray;
+text-align: center;
+padding: 20px;
+}
+
+nav {
+background-color: darkgray;
+padding: 10px;
+}
+
+nav ul {
+list-style-type: none;
+padding: 0;
+}
+
+nav li {
+display: inline;
+margin-left: 10px;
+}
+
+main {
+padding: 20px;
+}
+
+footer {
+background-color: lightgray;
+text-align: center;
+padding: 10px;
+}
+
+
+#image {
+    width: 300px;
+    height: 200px;
+    background-color: lightgray;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1> 
+</header>
+<nav>
+<ul> 
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<main>
+<p><b>{{ slot_4 }}</b>{{ slot_5 }} <i>{{ slot_6 }}</i>{{ slot_7 }}</p> 
+<p><b>{{ slot_8 }}</b>{{ slot_9 }} <i>{{ slot_10 }}</i>{{ slot_11 }}</p>
+<ul> 
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</main>
+<div class="ph"></div>
+<footer> 
+
+<p><i>{{ slot_15 }}</i> {{ slot_16 }}</p> 
+<p><i>{{ slot_17 }}</i> {{ slot_18 }}</p>
+</footer>
+</body>
+</html>

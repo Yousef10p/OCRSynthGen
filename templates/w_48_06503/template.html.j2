@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-body);
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    background-color: lightgray;
+    width: 100px;
+    height: 50px;
+}
+
+.searchBar {
+    width: 200px;
+    height: 25px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li {
+    float: right;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+section {
+    width: 50%;
+    margin-top: 30px;
+}
+
+.placeholderImage {
+    background-color: lightblue;
+    width: 100%;
+    height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo">{{ slot_0 }}</div>
+<span class="searchBar" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_1 }}</span>
+<nav>
+<ul>
+<li class="dropdown">
+<a>{{ slot_2 }}</a>
+<ul class="dropdown-content">
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</header>
+<main>
+<section>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</section>
+<section>
+<h2>{{ slot_8 }}</h2>
+<div id="appointments">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="placeholderImage">{{ slot_11 }}</div>
+</div>
+<div id="insurance">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="placeholderImage">{{ slot_14 }}</div>
+</div>
+<div id="education">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+<div class="placeholderImage">{{ slot_17 }}</div>
+</div>
+</section>
+</main>
+</body>
+</html>

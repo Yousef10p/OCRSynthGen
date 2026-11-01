@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: black;
+    background-color: white;
+    text-align: center;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    background-color: black;
+}
+
+.cta {
+    padding: 1em 2em;
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+.content {
+    display: flex;
+}
+
+.menu {
+    flex-basis: 30%;
+    background: #eee;
+}
+
+.menu p {
+    color: black;
+}
+
+.products {
+    flex-basis: 70%;
+}
+
+.product {
+    margin: 1em;
+    padding: 1em;
+    background: #ddd;
+}
+
+.product:nth-child(odd) {
+    background: #ccc;
+}
+
+.img-placeholder {
+    height: 100px;
+    margin: 1em 0;
+    background: #bbb;
+}
+
+.cart {
+    flex-basis: 30%;
+    background: #ddd;
+}
+
+.cart ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart p {
+    color: black;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero">
+<button class="cta">{{ slot_0 }}</button>
+</div>
+<div class="content">
+<div class="menu">
+<p>{{ slot_1 }}</p>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</div>
+<div class="products">
+<div class="product">
+<p>{{ slot_5 }}</p>
+<div class="img-placeholder">{{ slot_6 }}</div>
+<button>{{ slot_7 }}</button>
+</div>
+<div class="product">
+<p>{{ slot_8 }}</p>
+<div class="img-placeholder">{{ slot_9 }}</div>
+<button>{{ slot_10 }}</button>
+</div>
+
+</div>
+<div class="cart">
+<p>{{ slot_11 }}</p>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+
+</ul>
+<button>{{ slot_14 }}</button>
+</div>
+</div>
+</body>
+</html>

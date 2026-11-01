@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.news-item, .product-item {
+    border: 1px solid #bbb;
+    padding: 10px;
+}
+
+.product-image {
+    height: 200px;
+}
+
+.footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #bbb;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="left-column">
+<h1>{{ slot_0 }}</h1>
+<div class="news-item">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+</div>
+<div class="news-item">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+</div>
+</div>
+<div class="main-column">
+<h1>{{ slot_5 }}</h1>
+<div class="product-item">
+<h2>{{ slot_6 }}</h2>
+<div class="product-image" style="background-color: lightblue;">{{ slot_7 }}</div>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="product-item">
+<h2>{{ slot_9 }}</h2>
+<div class="product-image" style="background-color: lightgreen;">{{ slot_10 }}</div>
+<p>{{ slot_11 }}</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<div class="social-links">
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</div>
+<div class="support-info">
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</body>
+</html>

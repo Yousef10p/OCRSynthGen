@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+header {
+    background: linear-gradient(to left, #f7931e, #ff4e50);
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav li {
+    display: inline;
+    margin: 0 0.5em;
+}
+main {
+    margin: 0 auto;
+    width: 80%;
+}
+section {
+    margin-bottom: 2em;
+}
+.student, .course, .schedule {
+    border: 1px solid #ddd;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 0.5em;
+    border: 1px solid #ddd;
+}
+footer {
+    background: linear-gradient(to left, #f7931e, #ff4e50);
+    color: white;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="students">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="student">
+<div class="student-photo">{{ slot_7 }}</div>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</div>
+
+</section>
+<section id="courses">
+<h2>{{ slot_10 }}</h2>
+<div class="course">
+<div class="course-photo">{{ slot_11 }}</div>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+
+</section>
+<section id="schedules">
+<h2>{{ slot_14 }}</h2>
+<div class="schedule">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+
+</section>
+<section id="grades">
+<h2>{{ slot_17 }}</h2>
+<table>
+<tr>
+<th>{{ slot_18 }}</th>
+<th>{{ slot_19 }}</th>
+<th>{{ slot_20 }}</th>
+</tr>
+
+</table>
+</section>
+</main>
+<footer>
+<p>{{ slot_21 }}</p>
+</footer>
+</body>
+</html>

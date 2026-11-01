@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: lightblue;
+    padding: 20px;
+}
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+nav ul li {
+    margin: 0 10px;
+}
+.banner {
+    background-color: lightgreen; 
+    width: 100%;
+    height: 300px;
+    color: white;
+    text-align: center;
+    padding-top: 120px;
+}
+.deal {
+    background-color: lightsalmon;  
+    width: 28%;
+    height: 200px;
+    margin: 15px;
+    display: inline-block;
+}
+.review {
+    background-color: lightyellow;  
+    width: 45%;
+    height: 150px;
+    margin: 15px;
+}
+.sign-up {
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+}
+footer {
+    background: lightgray;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<div class="banner">{{ slot_4 }}</div> 
+</header>
+<main>
+<section>
+<h2>{{ slot_5 }}</h2>
+<div class="deal">{{ slot_6 }}</div> 
+
+</section>
+<section>
+<h2>{{ slot_7 }}</h2>
+<div class="review">{{ slot_8 }}</div>
+
+</section>
+<section class="sign-up">
+<h2>{{ slot_9 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<button>{{ slot_11 }}</button>
+</form>
+</section>
+</main>
+<footer>
+<div>
+<p>{{ slot_12 }}</p>
+<ul>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+</ul>
+</div>
+<div class="contact">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+</div>
+</footer>
+</body>
+</html>

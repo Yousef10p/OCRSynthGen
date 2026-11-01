@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-body);
+}
+
+.parallax {
+    background-image: none;
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.caption {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 3em;
+}
+
+.border {
+    background-color: #111;
+    color: white;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+}
+
+.text-section, .services-section {
+    padding: 50px 80px;
+}
+
+.portfolio-section {
+    padding: 50px 80px;
+}
+
+.portfolio-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.portfolio-col {
+    float: right;
+    width: 33.3%;
+    padding: 5px;
+}
+
+.portfolio-img {
+    background-color: #aaa;
+    width: 100%;
+    height: 200px;
+}
+
+.footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f8f8;
+    color: black;
+    text-align: center;
+    padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="parallax">
+<div class="caption">
+<span class="border">{{ slot_0 }}</span>
+</div>
+</div>
+<div class="text-section">
+<h3>{{ slot_1 }}</h3>
+<p>{{ slot_2 }}</p>
+</div>
+<div class="services-section">
+<h3>{{ slot_3 }}</h3>
+<ul>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+</div>
+<div class="portfolio-section">
+<h3>{{ slot_8 }}</h3>
+<div class="portfolio-row">
+<div class="portfolio-col">
+<div class="portfolio-img">{{ slot_9 }}</div>
+</div>
+<div class="portfolio-col">
+<div class="portfolio-img">{{ slot_10 }}</div>
+</div>
+<div class="portfolio-col">
+<div class="portfolio-img">{{ slot_11 }}</div>
+</div>
+
+</div>
+</div>
+<div class="footer">
+<p><a>{{ slot_12 }}</a> {{ slot_13 }} <a>{{ slot_14 }}</a> {{ slot_15 }} <a>{{ slot_16 }}</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+}
+
+.header {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+}
+
+.menu a {
+  margin-left: 20px;
+}
+
+.main {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.services .grid, .team .grid, .portfolio .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.service, .team-member, .work {
+  padding: 20px;
+  box-shadow: 0px 0px 10px #000;
+  border-radius: 6px;
+}
+
+.image {
+  height: 200px;
+  background: #ccc; 
+  margin-bottom: 10px;
+}
+
+.introduction {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="menu"> 
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+</div>
+</div>
+<div class="main">
+<h1>{{ slot_3 }}</h1>
+<p class="introduction">{{ slot_4 }}</p>
+<div class="services" id="services">
+<h2>{{ slot_5 }}</h2>
+<div class="grid">
+<div class="service">
+<div class="image">{{ slot_6 }}</div>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="service">
+<div class="image">{{ slot_8 }}</div>
+<p>{{ slot_9 }}</p>
+</div>
+
+</div>
+</div>
+<div class="team" id="team">
+<h2>{{ slot_10 }}</h2>
+<div class="grid">
+<div class="team-member">
+<div class="image">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="team-member">
+<div class="image">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="team-member">
+<div class="image">{{ slot_15 }}</div>
+<p>{{ slot_16 }}</p>
+</div>
+
+</div>
+</div>
+<div class="portfolio">
+<h2>{{ slot_17 }}</h2>
+<div class="grid">
+<div class="work">
+<div class="image">{{ slot_18 }}</div>
+<p>{{ slot_19 }}</p>
+</div>
+<div class="work">
+<div class="image">{{ slot_20 }}</div>
+<p>{{ slot_21 }}</p>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

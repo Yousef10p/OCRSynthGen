@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f4f4f4;
+}
+
+nav ul li {
+    padding: 10px 20px;
+}
+
+.program, .opportunity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.image-container {
+    width: 80px;
+    height: 80px;
+    background-color: #f4f4f4;
+    margin-left: 15px;
+}
+
+p {
+    margin: 0;
+}
+
+section {
+    margin: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+<div class="hero">
+<p>{{ slot_0 }} <br> {{ slot_1 }} <br> {{ slot_2 }} <br> {{ slot_3 }}</p>
+<button>{{ slot_4 }}</button>
+</div>
+</header>
+
+<nav>
+<ul>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+
+<section id="programs">
+<h2>{{ slot_7 }}</h2>
+
+<div class="program">
+<h3>{{ slot_8 }}</h3>
+<div class="image-container ph"></div>
+<p>{{ slot_9 }}</p>
+</div>
+
+<div class="program">
+<h3>{{ slot_10 }}</h3>
+<div class="image-container ph"></div>
+<p>{{ slot_11 }}</p>
+</div>
+
+<div class="program">
+<h3>{{ slot_12 }}</h3>
+<div class="image-container ph"></div>
+<p>{{ slot_13 }}</p>
+</div>
+</section>
+
+<section id="volunteer">
+<h2>{{ slot_14 }}</h2>
+
+<div class="opportunity">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+
+<div class="opportunity">
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+</div>
+
+<div class="opportunity">
+<h3>{{ slot_19 }}</h3>
+<p>{{ slot_20 }}</p>
+</div>
+</section>
+</body>
+</html>

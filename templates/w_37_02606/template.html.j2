@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+header, footer {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 10px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.menu-item, .social-item {
+    height: 200px;
+    width: 200px;
+    margin: 20px;
+    display: inline-block;
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<main>
+<section id="about">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="menu">
+<h2>{{ slot_7 }}</h2>
+<div class="menu-item" style="background-color: red;">{{ slot_8 }}</div>
+<div class="menu-item" style="background-color: blue;">{{ slot_9 }}</div>
+
+</section>
+<section id="reserve">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+
+</section>
+<section id="social">
+<h2>{{ slot_12 }}</h2>
+<div class="social-item" style="background-color: green;">{{ slot_13 }}</div>
+<div class="social-item" style="background-color: yellow;">{{ slot_14 }}</div>
+
+</section>
+</main>
+<footer>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

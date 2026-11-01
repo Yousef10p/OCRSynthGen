@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	margin: 0;
+	font-family: var(--font-body);
+}
+
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-image: linear-gradient(to left, #83a4d4, #b6fb15);
+	color: white;
+	text-align: center;
+}
+
+header .logo {
+	font-size: 2em;
+	margin-bottom: 20px;
+}
+
+nav.navbar {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 20px;
+}
+
+nav.navbar ul {
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+	width: 50%;
+}
+
+nav.navbar li {
+	font-size: 1.2em;
+	text-align: center;
+}
+
+section.intro,
+section.products,
+section.services,
+section.about,
+section.contact {
+	padding: 50px 0;
+	text-align: center;
+}
+
+section.products .products-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 1em;
+}
+
+section.products .product-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+section.products .product-img {
+	width: 100px;
+	height: 100px;
+	background-color: lightgray;
+}
+
+footer {
+	background: #222;
+	color: white;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo ph" style="inline-size: 100%; block-size: 150px"></div>
+<nav class="navbar">
+<ul>
+<li><span class="navbar-icon">{{ slot_0 }}</span> {{ slot_1 }}</li>
+<li><span class="navbar-icon">{{ slot_2 }}</span> {{ slot_3 }}</li>
+<li><span class="navbar-icon">{{ slot_4 }}</span> {{ slot_5 }}</li>
+<li><span class="navbar-icon">{{ slot_6 }}</span> {{ slot_7 }}</li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="intro">
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+</section>
+<section class="products">
+<h2>{{ slot_10 }}</h2>
+<div class="products-grid">
+<div class="product-item">
+<h3>{{ slot_11 }}</h3>
+<div class="product-img ph"></div>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="product-item">
+<h3>{{ slot_13 }}</h3>
+<div class="product-img ph"></div>
+<p>{{ slot_14 }}</p>
+</div>
+<div class="product-item">
+<h3>{{ slot_15 }}</h3>
+<div class="product-img ph"></div>
+<p>{{ slot_16 }}</p>
+</div>
+</div>
+</section>
+<section class="services">
+<h2>{{ slot_17 }}</h2>
+<p>{{ slot_18 }}</p>
+</section>
+<section class="about">
+<h2>{{ slot_19 }}</h2>
+<p>{{ slot_20 }}</p>
+</section>
+<section class="contact">
+<h2>{{ slot_21 }}</h2>
+<p>{{ slot_22 }} <a>{{ slot_23 }}</a> {{ slot_24 }}</p>
+</section>
+</main>
+<footer>
+<p>{{ slot_25 }}</p>
+</footer>
+</body>
+</html>

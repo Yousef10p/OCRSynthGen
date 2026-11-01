@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+.logo {
+    background-color: #f45;
+    color: white;
+    padding: 10px;
+}
+
+.menu {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+    background-color: #ddd;
+}
+
+.menu-item a {
+    color: #000;
+    text-decoration: none;
+    padding: 1em 0;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.hero h1 {
+    font-size: 40px;
+}
+
+.hero h2 {
+    font-size: 24px;
+}
+
+.mortgage-calculator {
+    margin: 40px;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mortgage-calculator input {
+    margin: 10px 0;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<div class="logo"><p>{{ slot_0 }}</p></div>
+<ul class="menu">
+<li class="menu-item"><a>{{ slot_1 }}</a></li>
+<li class="menu-item"><a>{{ slot_2 }}</a></li>
+<li class="menu-item"><a>{{ slot_3 }}</a></li>
+<li class="menu-item"><a>{{ slot_4 }}</a></li>
+<li class="menu-item"><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+<section class="hero">
+<h1>{{ slot_6 }}</h1>
+<h2>{{ slot_7 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</section>
+<section class="mortgage-calculator">
+<h2>{{ slot_8 }}</h2>
+<label>{{ slot_9 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<label>{{ slot_11 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<label>{{ slot_13 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<button>{{ slot_15 }}</button>
+<p id="monthly-payment"></p>
+</section>
+</body>
+</html>

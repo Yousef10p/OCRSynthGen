@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+header {
+
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    width: 100px;
+    height: 50px;
+    background-color: #333;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+
+main {
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.service-list, .publications {
+     
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cta {
+    
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="logo ph"></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="services">
+<h2>{{ slot_4 }}</h2>
+<div class="service-list">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<button class="cta">{{ slot_7 }}</button>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+<button class="cta">{{ slot_10 }}</button>
+</div>
+</section>
+<section class="resources">
+<h2>{{ slot_11 }}</h2>
+<div class="publications">
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<h3>{{ slot_14 }}</h3>
+<p>{{ slot_15 }}</p>
+</div>
+</section>
+</main>
+<footer>
+<div class="social-links">
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+</div>
+<div class="contact-info">
+<p>{{ slot_19 }}</p>
+<p>{{ slot_20 }}</p>
+<p>{{ slot_21 }}</p>
+</div>
+</footer>
+</body>
+</html>

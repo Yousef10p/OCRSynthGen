@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    background-image: none;
+    background-size: cover;
+    font-family: var(--font-body);
+    color: #fff;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 0;
+}
+
+#header ul {
+    list-style: none;
+    text-align: center;
+}
+
+#header li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+#header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#blog {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 300px;
+    padding: 20px;
+    background: rgba(0,0,0,0.7);
+}
+
+#blog_posts .blog_post {
+    margin-bottom: 20px;
+}
+
+#blog_posts .blog_post h3 {
+    color: #ff0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+    {{ slot_0 }}<div id="header">
+        {{ slot_1 }}<ul>
+            {{ slot_2 }}<li><a>{{ slot_3 }}</a></li>
+            {{ slot_4 }}<li><a>{{ slot_5 }}</a></li>
+            {{ slot_6 }}<li><a>{{ slot_7 }}</a></li>
+            {{ slot_8 }}<li><a>{{ slot_9 }}</a></li>
+        {{ slot_10 }}</ul>
+    {{ slot_11 }}</div>
+    {{ slot_12 }}<div id="blog">
+        {{ slot_13 }}<h2>{{ slot_14 }}</h2>
+        {{ slot_15 }}<p>{{ slot_16 }}</p>
+        {{ slot_17 }}<p>{{ slot_18 }}</p>
+        {{ slot_19 }}<div id="blog_posts">
+            {{ slot_20 }}<div class="blog_post">
+                {{ slot_21 }}<h3>{{ slot_22 }}</h3>
+                {{ slot_23 }}<p>{{ slot_24 }}</p>
+            {{ slot_25 }}</div>
+            {{ slot_26 }}<div class="blog_post">
+                {{ slot_27 }}<h3>{{ slot_28 }}</h3>
+                {{ slot_29 }}<p>{{ slot_30 }}</p>
+            {{ slot_31 }}</div>
+        {{ slot_32 }}</div>
+    {{ slot_33 }}</div>
+{{ slot_34 }}</body>
+</html>

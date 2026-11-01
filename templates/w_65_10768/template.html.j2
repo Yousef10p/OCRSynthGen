@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+nav ul {
+  background-color: #333;
+  color: white;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+header {
+  padding: 50px;
+}
+
+header h1 {
+  font-size: 3em;
+}
+
+header p {
+  font-size: 1.2em;
+}
+
+header a.cta {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+section h2 {
+  font-size: 2em;
+}
+
+section p {
+  font-size: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+{{ slot_0 }}<nav>
+{{ slot_1 }}<ul>
+{{ slot_2 }}<li><a>{{ slot_3 }}</a></li>
+{{ slot_4 }}<li><a>{{ slot_5 }}</a></li>
+{{ slot_6 }}<li><a>{{ slot_7 }}</a></li>
+{{ slot_8 }}</ul>
+{{ slot_9 }}</nav>
+{{ slot_10 }}<header>
+{{ slot_11 }}<h1>{{ slot_12 }}</h1>
+{{ slot_13 }}<p>{{ slot_14 }}</p>
+{{ slot_15 }}<a class="cta">{{ slot_16 }}</a>
+{{ slot_17 }}</header>
+{{ slot_18 }}<section id="accounts">
+{{ slot_19 }}<h2>{{ slot_20 }}</h2>
+{{ slot_21 }}<p>{{ slot_22 }}</p>
+{{ slot_23 }}</section>
+{{ slot_24 }}<section id="services">
+{{ slot_25 }}<h2>{{ slot_26 }}</h2>
+{{ slot_27 }}<p>{{ slot_28 }}</p>
+{{ slot_29 }}</section>
+{{ slot_30 }}<section id="contact">
+{{ slot_31 }}<h2>{{ slot_32 }}</h2>
+{{ slot_33 }}<p>{{ slot_34 }}</p>
+{{ slot_35 }}</section>
+{{ slot_36 }}</body>
+</html>

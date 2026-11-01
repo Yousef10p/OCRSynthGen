@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #ffffff;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+}
+
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+        {{ slot_0 }}<header>
+            {{ slot_1 }}<h1>{{ slot_2 }}</h1>
+            {{ slot_3 }}<nav>
+                {{ slot_4 }}<ul>
+                    {{ slot_5 }}<li><a>{{ slot_6 }}</a></li>
+                    {{ slot_7 }}<li><a>{{ slot_8 }}</a></li>
+                    {{ slot_9 }}<li><a>{{ slot_10 }}</a></li>
+                    {{ slot_11 }}<li><a>{{ slot_12 }}</a>{{ slot_13 }}</li><li>
+                    {{ slot_14 }}</li><li><a>{{ slot_15 }}</a>{{ slot_16 }}</li>
+                {{ slot_17 }}</ul>
+            {{ slot_18 }}</nav>
+        {{ slot_19 }}</header>
+
+        {{ slot_20 }}<main>
+            {{ slot_21 }}<section id="donation">
+                {{ slot_22 }}<h2>{{ slot_23 }}</h2>
+                {{ slot_24 }}<button>{{ slot_25 }}</button>
+            {{ slot_26 }}</section>
+
+            {{ slot_27 }}<section id="projects">
+                {{ slot_28 }}<h2>{{ slot_29 }}</h2>
+                {{ slot_30 }}<div class="gallery">
+                    {{ slot_31 }}<div class="gallery_item"><div class="gallery_item_content"></div>{{ slot_32 }}</div>
+                    {{ slot_33 }}<div class="gallery_item"><div class="gallery_item_content"></div>{{ slot_34 }}</div>
+                    {{ slot_35 }}<div class="gallery_item"><div class="gallery_item_content"></div>{{ slot_36 }}</div>
+                {{ slot_37 }}</div>
+            {{ slot_38 }}</section>
+
+            {{ slot_39 }}<section id="volunteer">
+                {{ slot_40 }}<h2>{{ slot_41 }}</h2>
+                {{ slot_42 }}<form>
+                    {{ slot_43 }}<label>{{ slot_44 }}<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_45 }}</span>
+                    {{ slot_46 }}<label>{{ slot_47 }}<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_48 }}</span>
+                    {{ slot_49 }}<button>{{ slot_50 }}</button></label></label></form>
+            {{ slot_51 }}</section>
+        {{ slot_52 }}</main>
+
+        {{ slot_53 }}<footer>
+            {{ slot_54 }}<p>{{ slot_55 }}</p>
+        {{ slot_56 }}</footer>
+    {{ slot_57 }}</body>
+</html>

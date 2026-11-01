@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+header,main {
+  padding: 10px;
+}
+
+header h1,
+section h2 {
+  text-align: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+ 
+.product,
+.tutorial {
+  height: 200px;
+  width: 300px;
+  border: 1px solid black;
+  margin: 10px auto;
+  text-align: center;
+  line-height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="products">
+<h2>{{ slot_5 }}</h2>
+
+<div class="product">{{ slot_6 }}</div>
+<div class="product">{{ slot_7 }}</div>
+<div class="product">{{ slot_8 }}</div>
+</section>
+<section id="testimonials">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+</section>
+<section id="tutorials">
+<h2>{{ slot_12 }}</h2>
+
+<div class="tutorial">{{ slot_13 }}</div>
+<div class="tutorial">{{ slot_14 }}</div>
+<div class="tutorial">{{ slot_15 }}</div>
+</section>
+</main>
+</body>
+</html>

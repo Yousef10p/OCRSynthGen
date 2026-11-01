@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#slider {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    overflow-x: auto;
+}
+
+.slide {
+    flex-shrink: 0;
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.slide button {
+    margin-top: 1em;
+}
+
+
+#sidebar {
+    width: 20%;
+    margin-top: 2em;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+#footer {
+    width: 100%;
+    height: 100px;
+    background: grey;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    margin-top: 2em;
+}
+
+#footer form {
+    display: flex;
+    flex-direction: column;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="slider">
+<div class="slide" style="background: red;">
+<h2>{{ slot_0 }}</h2>
+<p>{{ slot_1 }}</p>
+<button>{{ slot_2 }}</button>
+</div>
+<div class="slide" style="background: green;">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+<button>{{ slot_5 }}</button>
+</div>
+<div class="slide" style="background: blue;">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<button>{{ slot_8 }}</button>
+</div>
+</div>
+<div id="sidebar">
+<h2>{{ slot_9 }}</h2>
+<ul>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+</ul>
+</div>
+<div id="footer">
+<a>{{ slot_13 }}</a> {{ slot_14 }} <a>{{ slot_15 }}</a> {{ slot_16 }} <a>{{ slot_17 }}</a>
+<form id="contact-form">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_20 }}</span>
+<span class="">{{ slot_21 }}</span>
+</form>
+</div>
+</body>
+</html>

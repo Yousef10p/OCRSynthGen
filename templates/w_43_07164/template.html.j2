@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+}
+
+#navigation ul {
+    display: flex;
+    list-style: none;
+}
+
+#navigation ul li {
+    margin-right: 20px;
+}
+
+
+#hero {
+    text-align: center;
+    padding: 50px;
+    background-color: #f90;
+}
+
+
+#games, #news, #community, #sponsors, #footer {
+    text-align: center;
+    padding: 50px;
+}
+
+.game-thumbnail, .news-thumbnail, .community-thumbnail, .sponsor-thumbnail {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    margin: 0 auto;
+}
+
+#social-media ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+#social-media ul li {
+    margin: 0 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<div id="header">
+<div class="ph"></div>
+<div id="navigation">
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</div>
+</div>
+
+<div id="hero">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<button>{{ slot_6 }}</button>
+</div>
+
+<div id="games">
+<h2>{{ slot_7 }}</h2>
+<div class="game-thumbnail ph"></div>
+<p>{{ slot_8 }}</p>
+<button>{{ slot_9 }}</button>
+</div>
+
+<div id="news">
+<h2>{{ slot_10 }}</h2>
+<div class="news-thumbnail ph"></div>
+<p>{{ slot_11 }}</p>
+<button>{{ slot_12 }}</button>
+</div>
+
+<div id="community">
+<h2>{{ slot_13 }}</h2>
+<div class="community-thumbnail ph"></div>
+<p>{{ slot_14 }}</p>
+<button>{{ slot_15 }}</button>
+</div>
+
+<div id="sponsors">
+<h2>{{ slot_16 }}</h2>
+<div class="sponsor-thumbnail ph"></div>
+<p>{{ slot_17 }}</p>
+</div>
+
+<div id="footer">
+<div id="social-media">
+<ul>
+<li>{{ slot_18 }}</li>
+<li>{{ slot_19 }}</li>
+<li>{{ slot_20 }}</li>
+</ul>
+</div>
+<p>{{ slot_21 }}</p>
+</div>
+</body>
+</html>

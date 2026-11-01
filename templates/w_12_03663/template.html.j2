@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+  background-color: #eee;
+}
+
+.hero-image {
+  height: 400px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+}
+
+.hover-effect:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+.recipe, .ingredients, .instructions, .social-feed {
+  margin-bottom: 2em;
+}
+
+.recipe h2 {
+  margin-bottom: 1em;
+}
+
+.recipe p, .instructions p, .social-feed p {
+  margin: 1em 0;
+}
+
+.ingredients ul, .instructions ol {
+  margin-right: 2em;
+}
+
+.social-feed h2 {
+  margin-bottom: 1em;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="content">
+<div class="hero-image">
+<p class="hover-effect">{{ slot_4 }}</p>
+</div>
+<div class="recipe">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="ingredients">
+<h3>{{ slot_7 }}</h3>
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+</div>
+<div class="instructions">
+<h3>{{ slot_11 }}</h3>
+<ol>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ol>
+</div>
+</div>
+<div class="social-feed">
+<h2>{{ slot_15 }}</h2>
+
+</div>
+</div>
+</body>
+</html>

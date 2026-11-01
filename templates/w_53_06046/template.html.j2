@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+header {
+    background: #eee;
+    padding: 1rem;
+}
+nav ul {
+    list-style-type: none;
+}
+nav ul li {
+    display: inline;
+    margin-left: 1rem;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: #eee;
+    padding: 1rem;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+main {
+    padding: 1rem;
+}
+section {
+    margin-top: 2rem;
+}
+.product, .member {
+    width: 100px;
+    height: 100px;
+    background: #333;
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li class="dropdown">
+<a>{{ slot_0 }}</a>
+<div class="dropdown-content">
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</div>
+</li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="products">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+<div class="product"></div>
+<div class="product"></div>
+<div class="product"></div>
+</section>
+<section id="team">
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+<div class="member">{{ slot_10 }}</div>
+<div class="member">{{ slot_11 }}</div>
+<div class="member">{{ slot_12 }}</div>
+</section>
+<section id="industry-expertise">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+</section>
+</main>
+</body>
+</html>

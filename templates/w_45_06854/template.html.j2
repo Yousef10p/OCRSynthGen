@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    max-width: 1000px;
+    margin: auto;
+}
+
+header {
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+section {
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+#title-sect {
+    height: 400px;
+    background: linear-gradient(to left, red , yellow);
+}
+
+#info-sect1, #info-sect2, #info-sect3 {
+    background-color: lightgrey;
+}
+
+#cta-sect {
+    background-color: lightblue;
+}
+
+#pic-sect1, #pic-sect2 {
+    background-color: lightgreen;
+}
+
+footer {
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+
+<section id="title-sect">
+<h1 id="title">{{ slot_0 }}</h1>
+<h2 id="subtitle">{{ slot_1 }}</h2>
+<button id="cta-btn">{{ slot_2 }}</button>
+</section>
+
+<nav>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+</nav>
+<div style="clear: both;"></div>
+</header>
+
+<section id="info-sect1">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</section>
+
+<section id="info-sect2">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</section>
+
+<section id="info-sect3">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</section>
+
+<section id="cta-sect">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+<button>{{ slot_13 }}</button>
+</section>
+
+<section id="pic-sect1">
+<h3>{{ slot_14 }}</h3>
+<div id="img-placeholder1">
+
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<button>{{ slot_15 }}</button>
+</div>
+</section>
+
+<section id="pic-sect2">
+<h3>{{ slot_16 }}</h3>
+<div id="img-placeholder2">
+
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<button>{{ slot_17 }}</button>
+</div>
+</section>
+<footer>
+<p>{{ slot_18 }}</p>
+</footer>
+</body>
+</html>

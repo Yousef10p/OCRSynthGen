@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #666;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background: #eee;
+    position: fixed;
+    top: 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    cursor: pointer;
+}
+
+.service-box, .caseStudy-box, .testimonial-box {
+    width: 300px;
+    height: 200px;
+    background: #ddd;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+main {
+    margin-top: 70px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 30px 0;
+}
+
+p {
+    margin: 0 0 50px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.services-container, .caseStudy-container, .testimonials-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="services">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+<div class="services-container">
+
+<div class="service-box">{{ slot_5 }}</div>
+<div class="service-box">{{ slot_6 }}</div>
+<div class="service-box">{{ slot_7 }}</div>
+</div>
+</section>
+<section id="caseStudies">
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+<div class="caseStudy-container">
+
+<div class="caseStudy-box">{{ slot_10 }}</div>
+<div class="caseStudy-box">{{ slot_11 }}</div>
+<div class="caseStudy-box">{{ slot_12 }}</div>
+</div>
+</section>
+<section id="testimonials">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+<div class="testimonials-container">
+
+<div class="testimonial-box">{{ slot_15 }}</div>
+<div class="testimonial-box">{{ slot_16 }}</div>
+<div class="testimonial-box">{{ slot_17 }}</div>
+</div>
+</section>
+</main>
+</body>
+</html>

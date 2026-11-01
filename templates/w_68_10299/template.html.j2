@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-size: 16px;
+    color: #333;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+.destination__package {
+    display: flex;
+}
+.destination__package--figure {
+    width: 150px;
+    height: 150px;
+    background-color: #ff6347;
+    margin-left: 1.5em;
+}
+.destination__package--title {
+    font-size: 2em;
+    color: #ff6347;
+}
+.destination__package--description {
+    width: 50%;
+}
+.destination__package--button {
+    display: block;
+    margin-top: 1em;
+    padding: 0.5em 1em;
+    background-color: #ff6347;
+    color: #fff;
+    text-decoration: none;
+}
+.travel-info__post--title {
+    font-size: 2em;
+    color: #1e90ff;
+}
+.travel-info__post--content {
+    width: 50%;
+}
+.reviews__post--title {
+    font-size: 2em;
+    color: #008000;
+}
+.reviews__post--content {
+    width: 50%;
+}
+.destination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.travel-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.reviews {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<section class="destination">
+<article class="destination__package">
+<figure class="destination__package--figure"></figure>
+<h2 class="destination__package--title">{{ slot_4 }}</h2>
+<p class="destination__package--description">{{ slot_5 }}</p>
+<a class="destination__package--button">{{ slot_6 }}</a>
+</article>
+<article class="destination__package">
+<figure class="destination__package--figure"></figure>
+<h2 class="destination__package--title">{{ slot_7 }}</h2>
+<p class="destination__package--description">{{ slot_8 }}</p>
+<a class="destination__package--button">{{ slot_9 }}</a>
+</article>
+</section>
+<section class="travel-info">
+<article class="travel-info__post">
+<h2 class="travel-info__post--title">{{ slot_10 }}</h2>
+<p class="travel-info__post--content">{{ slot_11 }}</p>
+</article>
+<article class="travel-info__post">
+<h2 class="travel-info__post--title">{{ slot_12 }}</h2>
+<p class="travel-info__post--content">{{ slot_13 }}</p>
+</article>
+</section>
+<section class="reviews">
+<article class="reviews__post">
+<h2 class="reviews__post--title">{{ slot_14 }}</h2>
+<p class="reviews__post--content">{{ slot_15 }}</p>
+</article>
+<article class="reviews__post">
+<h2 class="reviews__post--title">{{ slot_16 }}</h2>
+<p class="reviews__post--content">{{ slot_17 }}</p>
+</article>
+</section>
+</body>
+</html>

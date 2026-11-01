@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	font-family: var(--font-body);
+}
+
+a {
+	text-decoration: none;
+}
+
+header, main {
+	padding: 20px;
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+nav ul {
+	display: flex;
+	justify-content: space-around;
+}
+
+.color-rectangle {
+	width: 200px;
+	height: 200px;
+}
+
+#rect1 {
+	background-color: #FFA500;
+}
+
+#rect2 {
+	background-color: #FF00FF;
+}
+
+#rect3 {
+	background-color: #008000;
+}
+
+#product-gallery, #tutorials, #community {
+	display: flex;
+	justify-content: space-around;
+}
+
+video {
+	width: 400px;
+	height: 300px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+input, button {
+	margin-top: 10px;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="hero">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="color-rectangle" id="rect1"></div>
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="color-rectangle" id="rect2"></div>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="color-rectangle" id="rect3"></div>
+</section>
+<section id="products">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div id="product-gallery">
+<div class="color-rectangle" id="rect4"></div>
+<div class="color-rectangle" id="rect5"></div>
+<div class="color-rectangle" id="rect6"></div>
+</div>
+</section>
+<section id="tutorials">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</section>
+<section id="community">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<button>{{ slot_18 }}</button>
+</form>
+</section>
+</main>
+</body>
+</html>

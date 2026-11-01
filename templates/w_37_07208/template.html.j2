@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 50px;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-items {
+    list-style: none;
+    display: flex;
+}
+
+.menu-items li {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+#portfolio .portfolio-item {
+    width: 300px;
+    height: 300px;
+    background-color: #999;
+    margin: 20px;
+}
+
+#testimonials .testimonial {
+    margin: 20px;
+}
+
+#testimonials .testimonial q {
+    display: block;
+}
+
+#testimonials .testimonial .client {
+    text-align: left;
+    display: block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav id="menu">
+<ul class="menu-items">
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="home">
+<h1>{{ slot_6 }}</h1>
+<p>{{ slot_7 }}</p>
+</section>
+<section id="portfolio">
+<h1>{{ slot_8 }}</h1>
+<p>{{ slot_9 }}</p>
+<div class="portfolio-item"></div>
+<div class="portfolio-item"></div>
+<div class="portfolio-item"></div>
+</section>
+<section id="testimonials">
+<h1>{{ slot_10 }}</h1>
+<div class="testimonial">
+<q>{{ slot_11 }}</q>
+<div class="client">{{ slot_12 }}</div>
+</div>
+<div class="testimonial">
+<q>{{ slot_13 }}</q>
+<div class="client">{{ slot_14 }}</div>
+</div>
+</section>
+</main>
+</body>
+</html>

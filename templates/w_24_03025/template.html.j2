@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    font-family: var(--font-body);
+}
+
+#header {
+    background: #f0f0f0;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    font-size: 24px;
+}
+
+#sidebar {
+    background: #e0e0e0;
+    width: 25%;
+    padding: 20px;
+}
+
+#blog {
+    width: 75%;
+}
+
+.post {
+    display: flex;
+    margin: 20px 0;
+}
+
+.image-placeholder {
+    background: #ccc;
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+}
+
+.social-icons a{
+    display: block;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header"><h1>{{ slot_0 }}</h1></div>
+<div id="sidebar">
+<h3>{{ slot_1 }}</h3>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_2 }}</span>
+<span class="">{{ slot_3 }}</span>
+</form>
+<h3>{{ slot_4 }}</h3>
+<div class="social-icons">
+<a class="icon">{{ slot_5 }}</a>
+<a class="icon">{{ slot_6 }}</a>
+<a class="icon">{{ slot_7 }}</a>
+</div>
+<h3>{{ slot_8 }}</h3>
+<ul class="recent-posts">
+<li><a>{{ slot_9 }}</a></li>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+</ul>
+</div>
+<div id="blog">
+<div class="post">
+<div class="image-placeholder ph"></div>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="post">
+<div class="image-placeholder ph"></div>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="post">
+<div class="image-placeholder ph"></div>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</body>
+</html>

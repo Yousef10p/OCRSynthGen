@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-body);
+}
+nav, aside {
+  flex: 1;
+  height: 100vh;
+  overflow: auto;
+}
+#content {
+  flex: 3;
+  height: 100vh;
+  overflow: auto;
+}
+.team, .fixture, .news, .stats, .rank {
+  margin: 20px;
+  height: 50px;
+  background-color: grey;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<div id="content">
+<section id="teams">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<div class="team">{{ slot_6 }}</div>
+<div class="team">{{ slot_7 }}</div>
+<div class="team">{{ slot_8 }}</div>
+</section>
+<section id="fixtures">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="fixture">{{ slot_11 }}</div>
+<div class="fixture">{{ slot_12 }}</div>
+<div class="fixture">{{ slot_13 }}</div>
+</section>
+<section id="news">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<div class="news">{{ slot_16 }}</div>
+<div class="news">{{ slot_17 }}</div>
+<div class="news">{{ slot_18 }}</div>
+</section>
+</div>
+<aside>
+<section id="stats">
+<h2>{{ slot_19 }}</h2>
+<div class="stats">{{ slot_20 }}</div>
+<div class="stats">{{ slot_21 }}</div>
+<div class="stats">{{ slot_22 }}</div>
+</section>
+<section id="rankings">
+<h2>{{ slot_23 }}</h2>
+<div class="rank">{{ slot_24 }}</div>
+<div class="rank">{{ slot_25 }}</div>
+<div class="rank">{{ slot_26 }}</div>
+</section>
+</aside>
+</body>
+</html>

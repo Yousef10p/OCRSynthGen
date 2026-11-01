@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+header {
+  background-color: #f8f8f8;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+main {
+  margin: 20px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+button {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.event, .volunteer-opportunity {
+  background-color: #ddd;
+  height: 100px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="mission">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+</section>
+<section id="events">
+<h2>{{ slot_5 }}</h2>
+<div class="event">{{ slot_6 }}</div>
+<div class="event">{{ slot_7 }}</div>
+</section>
+<section id="volunteer">
+<h2>{{ slot_8 }}</h2>
+<div class="volunteer-opportunity">{{ slot_9 }}</div>
+<div class="volunteer-opportunity">{{ slot_10 }}</div>
+</section>
+<section id="donate">
+<h2>{{ slot_11 }}</h2>
+<button>{{ slot_12 }}</button>
+</section>
+</main>
+<footer>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+</footer>
+</body>
+</html>

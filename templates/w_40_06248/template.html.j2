@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+#wrapper {
+  background-color: #DDDDDD;
+  width: 800px;
+  margin: 0px auto;
+}
+
+#header {
+  background-color: #7B68EE;
+  padding: 20px;
+  color: #fff;
+}
+
+#logo {
+  font-size: 2em;
+}
+
+#social_media {
+  background-color: #AAAAAA;
+  color: #fff;
+}
+
+#content_box_1, #content_box_2, #related_links_section, #sidebar {
+  background-color: #E0FFFF;
+  padding: 20px;
+}
+
+.title {
+  font-size: 1.5em;
+  color: #191970;
+}
+
+.paragraph {
+  font-size: 1em;
+  color: #000;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  background-color: #f0f0f0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="wrapper">
+<div id="header">
+<h1 id="logo">{{ slot_0 }}</h1>
+</div>
+<div id="social_media">
+<a id="facebook">{{ slot_1 }}</a>
+<a id="twitter">{{ slot_2 }}</a>
+<a id="youtube">{{ slot_3 }}</a>
+<a id="instagram">{{ slot_4 }}</a>
+</div>
+<div id="content_box_1">
+<h2 class="title">{{ slot_5 }}</h2>
+<p class="paragraph">{{ slot_6 }}</p>
+<div class="image ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div id="content_box_2">
+<h2 class="title">{{ slot_7 }}</h2>
+<p class="paragraph">{{ slot_8 }}</p>
+<div class="image ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div id="related_links_section">
+<h2 class="title">{{ slot_9 }}</h2>
+<p class="paragraph">{{ slot_10 }}</p>
+<div class="image ph" style="inline-size: 100%; block-size: 150px"></div>
+<ul>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+</ul>
+</div>
+<div id="sidebar">
+<h2 class="title">{{ slot_16 }}</h2>
+<p class="paragraph">{{ slot_17 }}</p>
+<div class="image ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</div>
+</body>
+</html>

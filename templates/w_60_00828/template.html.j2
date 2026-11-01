@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    color: #222a2a;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#aboutus, #volunteer, #events {
+    background-color: #c0c0c0;
+    width: 100%;
+    padding: 20px;
+}
+
+.jumbotron {
+    background-color: #38afcd;
+}
+
+
+button:hover {
+    transform: scale(1.1);
+}
+
+
+body {
+    background: linear-gradient(to left, #38afcd, #c0c0c0);
+}
+
+
+.modal .modal-body form {
+    display: flex;
+    flex-direction: column;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<a class="navbar-brand text-white">{{ slot_0 }}</a>
+<div class="collapse navbar-collapse">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a class="nav-link text-white">{{ slot_1 }}</a>
+</li>
+<li class="nav-item">
+<a class="nav-link text-white">{{ slot_2 }}</a>
+</li>
+<li class="nav-item">
+<a class="nav-link text-white">{{ slot_3 }}</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="jumbotron" id="aboutus">
+<h1 class="display-4">{{ slot_4 }}</h1>
+<p class="lead">{{ slot_5 }}</p>
+<hr class="my-4">
+<p>{{ slot_6 }}</p>
+</div>
+<button class="btn btn-lg btn-warning" id="donate">{{ slot_7 }}</button>
+<div class="container" id="volunteer">
+<h1>{{ slot_8 }}</h1>
+<button class="btn btn-secondary">{{ slot_9 }}</button>
+<div class="modal fade" id="signupModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">{{ slot_10 }}</h5>
+<button class="close">
+<span>{{ slot_11 }}</span>
+</button>
+</div>
+<div class="modal-body">
+<form>
+<div class="form-group">
+<label>{{ slot_12 }}</label>
+<span class="form-control" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+</div>
+<div class="form-group">
+<label>{{ slot_14 }}</label>
+<span class="form-control" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+</div>
+<button class="btn btn-primary">{{ slot_16 }}</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container" id="events">
+<h1>{{ slot_17 }}</h1>
+<p>{{ slot_18 }}</p>
+<p>{{ slot_19 }}</p>
+<p>{{ slot_20 }}</p>
+</div>
+
+
+</body>
+</html>

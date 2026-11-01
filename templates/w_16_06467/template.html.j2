@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+}
+
+header, footer {
+    background-color: #004d00;
+    color: #ffff66;
+}
+
+nav a {
+    color: #ffff66;
+    text-decoration: none;
+    padding: 10px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-section, .information-section {
+    width: 50%;
+}
+
+.image-box {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+    color: #ffff66;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.image-1 { background-color: #0066ff; }
+.image-2 { background-color: #00cc00; }
+.image-3 { background-color: #cc0000; }
+.image-4 { background-color: #ffff00; }
+
+.packages, .guides, .reviews {
+    padding: 10px;
+}
+
+.footer-links a {
+    padding: 10px;
+    color: #ffff66;
+    text-decoration: none;
+}
+
+.social-icons span {
+    color: #ffff66;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="main-content">
+<div class="image-section">
+<div class="image-box image-1">{{ slot_5 }}</div>
+<div class="image-box image-2">{{ slot_6 }}</div>
+<div class="image-box image-3">{{ slot_7 }}</div>
+<div class="image-box image-4">{{ slot_8 }}</div>
+</div>
+<div class="information-section">
+<div class="packages">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="guides">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="reviews">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</div>
+<footer>
+<div class="footer-links">
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+</div>
+<div class="social-icons">
+<span>{{ slot_19 }}</span>
+</div>
+</footer>
+</body>
+</html>

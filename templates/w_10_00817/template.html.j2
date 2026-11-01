@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-color: #ff6347;
+}
+
+nav ul {
+    display: flex;
+    gap: 15px;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+}
+
+
+#food-slider {
+    width: 70%;
+    height: 300px;
+    background-color: #ffe4b5;
+}
+
+.food-image {
+    width: 200px;
+    height: 200px;
+    background-color: #4682b4;
+}
+
+.promotion {
+    padding: 10px;
+    font-size: 14px;
+    background-color: #f0e68c;
+}
+
+
+aside {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+#product-categories {
+    width: 30%;
+    background-color: #98fb98;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #fff;
+    border: none;
+}
+
+#additional-info {
+    width: 70%;
+    background-color: #add8e6;
+}
+
+.recipe,
+.blog-post {
+    margin-bottom: 20px;
+}
+
+.recipe-image,
+.blog-image {
+    width: 100%;
+    height: 200px;
+    background-color: #483d8b;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+
+<div class="logo ph"></div>
+
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section>
+
+<div id="food-slider">
+
+<div class="food-image ph"></div>
+<div class="food-image ph"></div>
+<div class="food-image ph"></div>
+
+<div class="promotion">{{ slot_4 }}</div>
+<div class="promotion">{{ slot_5 }}</div>
+</div>
+</section>
+<aside>
+
+<div id="product-categories">
+<h2>{{ slot_6 }}</h2>
+<button>{{ slot_7 }}</button>
+<button>{{ slot_8 }}</button>
+<button>{{ slot_9 }}</button>
+<button>{{ slot_10 }}</button>
+</div>
+
+<div id="additional-info">
+<h2>{{ slot_11 }}</h2>
+
+<div class="recipe">
+<h3>{{ slot_12 }}</h3>
+
+<div class="recipe-image ph"></div>
+<p>{{ slot_13 }}</p>
+</div>
+
+<div class="blog-post">
+<h3>{{ slot_14 }}</h3>
+
+<div class="blog-image ph"></div>
+<p>{{ slot_15 }}</p>
+</div>
+</div>
+</aside>
+</main>
+<footer>
+<p>{{ slot_16 }}</p>
+</footer>
+</body>
+</html>

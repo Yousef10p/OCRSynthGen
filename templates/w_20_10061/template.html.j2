@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	margin: 0;
+	font-family: var(--font-body);
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+.featured, main {
+	display: flex;
+	justify-content: space-around;
+}
+
+article {
+	flex: 1;
+	margin: 20px;
+	border: 1px solid #000;
+	border-radius: 10px;
+	padding: 20px;
+	text-align: center;
+}
+
+.placeholder {
+	height: 200px;
+	background-color: #c9c9c9;
+}
+
+nav {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+}
+
+nav ul {
+	display: flex;
+	justify-content: center;
+	list-style: none;
+}
+
+nav ul li {
+	margin: 0 10px;
+}
+
+nav ul li a {
+	color: #fff;
+	text-decoration: none;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+<h1>{{ slot_5 }}</h1>
+<div class="featured">
+<article>{{ slot_6 }}</article>
+<article>{{ slot_7 }}</article>
+<article>{{ slot_8 }}</article>
+</div>
+</header>
+<main>
+<article>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="placeholder ph"></div>
+</article>
+<article>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<div class="placeholder ph"></div>
+</article>
+<article>
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<div class="placeholder ph"></div>
+</article>
+</main>
+<footer>
+<div>
+<h3>{{ slot_15 }}</h3>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+</div>
+</footer>
+</body>
+</html>

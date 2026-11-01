@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.5s ease;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+#search-bar {
+    height: 30px;
+    width: 50%;
+    padding: 0 10px;
+}
+
+#category-menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.category-item {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.book-img {
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+<div id="cart-indicator">{{ slot_1 }}</div>
+</header>
+<nav id="category-menu">
+<ul>
+<li><div class="category-item">{{ slot_2 }}</div></li>
+<li><div class="category-item">{{ slot_3 }}</div></li>
+<li><div class="category-item">{{ slot_4 }}</div></li>
+<li><div class="category-item">{{ slot_5 }}</div></li>
+
+</ul>
+</nav>
+<main>
+<p>{{ slot_6 }}</p>
+<div class="book-img" id="book1">{{ slot_7 }}</div>
+<p>{{ slot_8 }}</p>
+<div class="book-img" id="book2">{{ slot_9 }}</div>
+<p>{{ slot_10 }}</p>
+<div class="book-img" id="book3">{{ slot_11 }}</div>
+<p>{{ slot_12 }}</p>
+<div class="book-img" id="book4">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+</main>
+</body>
+</html>

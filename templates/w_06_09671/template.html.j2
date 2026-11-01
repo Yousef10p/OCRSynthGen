@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+}
+
+#logo {
+    float: right;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: right;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#dashboard, #challenges, #sharing, #mealplans {
+    margin: 20px;
+}
+
+.rectangle {
+    height: 200px;
+    margin: 20px;
+    background-color: #B1B1B1;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div id="logo">{{ slot_0 }}</div>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+</ul>
+</nav>
+</header>
+<div id="dashboard">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+<div class="rectangle" id="progress"></div>
+<div class="rectangle" id="goals"></div>
+<div class="rectangle" id="achievements"></div>
+</div>
+<div id="challenges">
+<h1>{{ slot_9 }}</h1>
+<p>{{ slot_10 }}</p>
+<div class="rectangle" id="challenge1"></div>
+<div class="rectangle" id="challenge2"></div>
+<div class="rectangle" id="challenge3"></div>
+</div>
+<div id="sharing">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+<div class="rectangle" id="platform1"></div>
+<div class="rectangle" id="platform2"></div>
+</div>
+<div id="mealplans">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+<div class="rectangle" id="mealplan1"></div>
+<div class="rectangle" id="mealplan2"></div>
+</div>
+</body>
+</html>

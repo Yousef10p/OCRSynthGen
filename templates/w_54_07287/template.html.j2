@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+        "header header"
+        "main sidebar"
+        "scrolling-news sidebar";
+}
+.header {
+    grid-area: header;
+    text-align:center;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+.scrolling-news {
+    grid-area: scrolling-news;
+    background-color: #dcdcdc;
+    padding: 20px;
+    overflow: auto;
+}
+.main {
+    grid-area: main;
+    background-color: white;
+    padding: 20px;
+}
+.article {
+    margin-bottom: 20px;
+}
+.sidebar {
+    grid-area: sidebar;
+    background-color: #e6e6e6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.related-content {
+    flex: 1;
+}
+.ads {
+    flex: 1;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<h2>{{ slot_1 }}</h2>
+</div>
+<div class="scrolling-news">
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</div>
+<div class="main">
+<div class="article">
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="article">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+<div class="article">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</div>
+<div class="sidebar">
+<div class="related-content">
+<h3>{{ slot_11 }}</h3>
+<a>{{ slot_12 }}</a>
+<a>{{ slot_13 }}</a>
+<a>{{ slot_14 }}</a>
+</div>
+<div class="ads">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+</div>
+</div>
+</body>
+</html>

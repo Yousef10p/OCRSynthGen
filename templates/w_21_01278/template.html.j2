@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    border:0;
+}
+
+html, body {
+    height:100%;
+    width:100%;
+}
+
+header {
+    background-color: #f8f9fa;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+main {
+    margin-top: 100px; 
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    height: 80%;
+}
+
+section {
+    padding:20px;
+    width:20%;
+}
+
+.clothing-picture {
+    height: 200px;
+    margin-bottom: 20px;
+    background-color: #007bff;
+}
+
+footer {
+    background-color: #f8f9fa;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li id="mens">{{ slot_0 }}</li>
+<li id="womens">{{ slot_1 }}</li>
+<li id="kids">{{ slot_2 }}</li>
+<li id="accessories">{{ slot_3 }}</li>
+<li id="sale">{{ slot_4 }}</li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="mens-section">
+<p>{{ slot_5 }} </p>
+<div class="clothing-picture" id="mens-picture">{{ slot_6 }}</div>
+</section>
+<section id="womens-section">
+<p>{{ slot_7 }} </p>
+<div class="clothing-picture" id="womens-picture">{{ slot_8 }}</div>
+</section>
+<section id="kids-section">
+<p>{{ slot_9 }}</p>
+<div class="clothing-picture" id="kids-picture">{{ slot_10 }}</div>
+</section>
+<section id="accessories-section">
+<p>{{ slot_11 }}</p>
+<div class="clothing-picture" id="accessories-picture">{{ slot_12 }}</div>
+</section>
+<section id="sale-section">
+<p>{{ slot_13 }}</p>
+<div class="clothing-picture" id="sale-picture">{{ slot_14 }}</div>
+</section>
+</main>
+<footer>
+<div id="footer-logo">{{ slot_15 }}</div>
+</footer>
+</body>
+</html>

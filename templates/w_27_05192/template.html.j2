@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+}
+
+.hero-banner {
+    position: relative;
+    height: 100vh; 
+    overflow: hidden;
+}
+
+.hero-banner video {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.menu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.img-placeholder {
+    height: 200px;
+    width: 100%;
+    background-color: #ccc; 
+    margin: 20px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero-banner ph"></div>
+<aside class="menu">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</aside>
+<div class="content">
+<h2 id="desserts">{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+<div class="img-placeholder ph"></div>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<h2 id="maincourses">{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<div class="img-placeholder ph"></div>
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+<h2 id="drinks">{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+<div class="img-placeholder ph"></div>
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+<h3>{{ slot_19 }}</h3>
+<p>{{ slot_20 }}</p>
+</div>
+</body>
+</html>

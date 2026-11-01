@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    height: 100vh;
+}
+
+nav {
+    grid-column: 1 / span 2;
+}
+
+nav a {
+    color: #000;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.lineup p, .events p, .tickets p {
+    color: #000;
+}
+
+
+.lineup p, .events p, .tickets p {
+    height: 100px;
+    width: 200px;
+    background: #f00; 
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.tickets {
+    grid-column: 1 / span 2;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+<div class="lineup">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<p>{{ slot_6 }}</p>
+<p>{{ slot_7 }}</p>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="events">
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="tickets">
+<h2>{{ slot_13 }} </h2>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</body>
+</html>

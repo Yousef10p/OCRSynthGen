@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+
+.jumbotron {
+  background: #358CCE;
+  color: #FFF;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+form {
+  padding: 15px 30px;
+  background: #ebebeb;
+  border-radius: 5px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand">{{ slot_0 }}</a>
+<button class="navbar-toggler">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+<ul class="navbar-nav">
+<li class="nav-item">
+<a class="nav-link active">{{ slot_1 }}</a>
+</li>
+<li class="nav-item">
+<a class="nav-link active">{{ slot_2 }}</a>
+</li>
+<li class="nav-item">
+<a class="nav-link active">{{ slot_3 }}</a>
+</li>
+<li class="nav-item">
+<a class="nav-link active">{{ slot_4 }}</a>
+</li>
+</ul>
+</div>
+</nav>
+
+<div class="jumbotron">
+<h1 class="display-4">{{ slot_5 }}</h1>
+<p class="lead">{{ slot_6 }}</p>
+<hr class="my-4">
+<p>{{ slot_7 }}</p>
+<a class="btn btn-primary btn-lg">{{ slot_8 }}</a>
+</div>
+
+<div class="container" id="services">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</div>
+
+<div class="container" id="attorneys">
+<h2>{{ slot_11 }}</h2>
+<div class="row">
+<div class="col-sm">
+<p>{{ slot_12 }}</p>
+</div>
+<div class="col-sm">
+<p>{{ slot_13 }}</p>
+</div>
+</div>
+</div>
+
+<div class="container" id="contact">
+<h2>{{ slot_14 }}</h2>
+<form>
+<div class="form-group">
+<label>{{ slot_15 }}</label>
+<span class="form-control" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+</div>
+<div class="form-group">
+<label>{{ slot_17 }}</label>
+<span class="form-control" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_18 }}</span>
+</div>
+<button class="btn btn-primary">{{ slot_19 }}</button>
+</form>
+</div>
+</body>
+</html>

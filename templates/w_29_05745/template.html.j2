@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html {
+  font-family: var(--font-body);
+  background-color: #F8F8F8;
+  color: #333;
+}
+
+header {
+  background-color: #333;
+  color: #F8F8F8;
+  padding: 20px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: darkgreen;
+}
+
+section, aside {
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+#recommendation-1, #promotion-1, #item-1 {
+  width: 100px;
+  height: 100px;
+  background-color: grey; 
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #333;
+  padding: 5px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: #F8F8F8;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="menu">
+<h2>{{ slot_5 }}</h2>
+<div id="item-1"></div> 
+<p>{{ slot_6 }}</p>
+<button>{{ slot_7 }}</button>
+</section>
+<section id="order-history">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<table>
+<tr>
+<th>{{ slot_10 }}</th>
+<th>{{ slot_11 }}</th>
+<th>{{ slot_12 }}</th>
+</tr>
+<tr>
+<td>{{ slot_13 }}</td>
+<td>{{ slot_14 }}</td>
+<td>{{ slot_15 }}</td>
+</tr>
+</table>
+</section>
+<aside id="recommendations">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+<div id="recommendation-1"></div> 
+</aside>
+<aside id="promotions">
+<h2>{{ slot_18 }}</h2>
+<p>{{ slot_19 }}</p>
+<div id="promotion-1"></div> 
+</aside>
+</main>
+<footer>
+<p>{{ slot_20 }}</p>
+</footer>
+</body>
+</html>

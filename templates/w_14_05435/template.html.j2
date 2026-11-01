@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #474E5D;
+    overflow: auto;
+}
+
+header input[type="text"] {
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-left: 16px;
+    font-size: 17px;
+}
+
+aside {
+    width: 200px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #474E5D;
+    height: 100vh;
+    color: white;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+aside li a {
+    display: block;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+
+aside li a:hover {
+    background-color: #2C3E50;
+}
+
+main {
+    margin-right: 210px;
+    padding: 15px;
+}
+
+main article {
+    margin-bottom: 20px;
+}
+
+main img {
+    width: 800px;
+    height: 400px;
+    background-color: #C0392B;
+}
+
+footer {
+    position:fixed;
+    right:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    background:#2C3E50;
+    color:white;
+    text-align:center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span>
+</form>
+</header>
+<aside>
+<h3>{{ slot_1 }}</h3>
+<ul>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+<h3>{{ slot_5 }}</h3>
+<ul>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+<li><a>{{ slot_8 }}</a></li>
+</ul>
+<h3>{{ slot_9 }}</h3>
+<ul>
+<li><a>{{ slot_10 }}</a></li>
+<li><a>{{ slot_11 }}</a></li>
+<li><a>{{ slot_12 }}</a></li>
+</ul>
+</aside>
+<main>
+<article>
+<h1>{{ slot_13 }}</h1>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_14 }}</p>
+</article>
+<article>
+<h1>{{ slot_15 }}</h1>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_16 }}</p>
+</article>
+<article>
+<h1>{{ slot_17 }}</h1>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_18 }}</p>
+</article>
+</main>
+<footer>
+<p>{{ slot_19 }}</p>
+</footer>
+</body>
+</html>

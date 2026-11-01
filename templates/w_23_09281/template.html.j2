@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.header {
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-form {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+}
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contact-form input[type="text"], .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+}
+
+.services {
+    display: flex;
+    justify-content: space-around;
+}
+
+.service {
+    width: 30%;
+    border: 1px solid #f4f4f4;
+    padding: 20px;
+}
+
+.pricing {
+    width: 50%;
+    margin: 20px auto;
+}
+
+.pricing th, .pricing td {
+    padding: 20px;
+    border: 1px solid #f4f4f4;
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<form class="contact-form">
+<label>{{ slot_1 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_2 }}</span>
+<label>{{ slot_3 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+<label>{{ slot_5 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_6 }}</span>
+<span class="">{{ slot_7 }}</span>
+</form>
+</div>
+<h2>{{ slot_8 }}</h2>
+<div class="services">
+<div class="service">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="rating">{{ slot_11 }}</div>
+<div class="review">{{ slot_12 }}</div>
+</div>
+<div class="service">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+<div class="rating">{{ slot_15 }}</div>
+<div class="review">{{ slot_16 }}</div>
+</div>
+<div class="service">
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+<div class="rating">{{ slot_19 }}</div>
+<div class="review">{{ slot_20 }}</div>
+</div>
+</div>
+<h2>{{ slot_21 }}</h2>
+<table class="pricing">
+<tr>
+<th>{{ slot_22 }}</th>
+<th>{{ slot_23 }}</th>
+</tr>
+<tr>
+<td>{{ slot_24 }}</td>
+<td>{{ slot_25 }}</td>
+</tr>
+<tr>
+<td>{{ slot_26 }}</td>
+<td>{{ slot_27 }}</td>
+</tr>
+<tr>
+<td>{{ slot_28 }}</td>
+<td>{{ slot_29 }}</td>
+</tr>
+</table>
+</body>
+</html>

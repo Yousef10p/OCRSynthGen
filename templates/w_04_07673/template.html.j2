@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+.service {
+    border: 1px solid #333;
+    padding: 20px;
+    text-align: center;
+}
+#testimonial {
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="services">
+<h1>{{ slot_0 }}</h1>
+<div>
+<div class="service">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<button>{{ slot_3 }}</button>
+</div>
+<div class="service">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+<button>{{ slot_6 }}</button>
+</div>
+<div class="service">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<button>{{ slot_9 }}</button>
+</div>
+</div>
+<div class="service">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<button>{{ slot_12 }}</button>
+</div>
+<div class="service">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<button>{{ slot_15 }}</button>
+</div>
+<div class="service">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+<button>{{ slot_18 }}</button>
+</div>
+</div>
+<div id="testimonial">
+<h1>{{ slot_19 }}</h1>
+<p>{{ slot_20 }}</p>
+</div>
+</body>
+</html>

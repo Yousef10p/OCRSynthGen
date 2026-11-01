@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+#left-column {
+    width: 20%;
+    float: right;
+}
+
+#main {
+    width: 80%;
+    float: left;
+}
+
+.artist {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background-color: blue;
+    display: inline-block;
+}
+
+button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#footer {
+    clear: both;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#footer a {
+    margin: 0 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="left-column">
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+</ul>
+</nav>
+</div>
+<div id="main">
+<h1>{{ slot_3 }}</h1>
+<p>{{ slot_4 }}</p>
+<div id="artists">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="artist">{{ slot_7 }}</div>
+<div class="artist">{{ slot_8 }}</div>
+<div class="artist">{{ slot_9 }}</div>
+</div>
+<div id="tickets">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<button>{{ slot_12 }}</button>
+</div>
+<div id="merchandise">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+<button>{{ slot_15 }}</button>
+</div>
+</div>
+<div id="footer">
+<p>{{ slot_16 }}</p>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+</div>
+</body>
+</html>

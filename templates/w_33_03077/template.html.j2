@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+.header-image-container {
+  width: 100%;
+  height: 300px;
+}
+
+.header-image {
+  width: 100%;
+  height: 100%;
+  background-color: lightgrey;
+}
+
+.section-destinations,
+.section-blog,
+.section-deals {
+  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.destination,
+.blog-post {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+  padding: 20px;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: lightgrey;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+<div class="header-image-container ph"></div>
+</header>
+<main>
+<section class="section-destinations">
+<h2>{{ slot_4 }}</h2>
+<div class="destination">
+<div class="image-placeholder ph"></div>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="destination">
+<div class="image-placeholder ph"></div>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="destination">
+<div class="image-placeholder ph"></div>
+<p>{{ slot_7 }}</p>
+</div>
+</section>
+<section class="section-blog">
+<h2>{{ slot_8 }}</h2>
+<div class="blog-post">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+<div class="blog-post">
+<h3>{{ slot_11 }}</h3>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="blog-post">
+<h3>{{ slot_13 }}</h3>
+<p>{{ slot_14 }}</p>
+</div>
+</section>
+<section class="section-deals">
+<h2>{{ slot_15 }}</h2>
+<p>{{ slot_16 }}</p>
+</section>
+</main>
+<footer>
+<a>{{ slot_17 }}</a>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+<a>{{ slot_20 }}</a>
+</footer>
+</body>
+</html>

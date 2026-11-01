@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+section {
+    margin: 50px;
+    text-align: right;
+}
+h1 {
+    font-size: 2em;
+}
+section > div {
+    display: inline-block;
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: #ccc;
+}
+.portfolio-grid div, .clients-grid div, .team-grid div {
+    flex: 1 1 200px;
+}
+.portfolio-grid, .clients-grid, .team-grid, .testimonials-grid {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="home">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="portfolio">
+<h1>{{ slot_7 }}</h1>
+<div class="portfolio-grid">
+<div>{{ slot_8 }}</div>
+<div>{{ slot_9 }}</div>
+<div>{{ slot_10 }}</div>
+<div>{{ slot_11 }}</div>
+</div>
+</section>
+<section id="clients">
+<h1>{{ slot_12 }}</h1>
+<div class="clients-grid">
+<div>{{ slot_13 }}</div>
+<div>{{ slot_14 }}</div>
+<div>{{ slot_15 }}</div>
+<div>{{ slot_16 }}</div>
+</div>
+</section>
+<section id="team">
+<h1>{{ slot_17 }}</h1>
+<div class="team-grid">
+<div>{{ slot_18 }}</div>
+<div>{{ slot_19 }}</div>
+<div>{{ slot_20 }}</div>
+<div>{{ slot_21 }}</div>
+</div>
+</section>
+<section id="testimonials">
+<h1>{{ slot_22 }}</h1>
+<div class="testimonials-grid">
+<div>{{ slot_23 }}</div>
+<div>{{ slot_24 }}</div>
+<div>{{ slot_25 }}</div>
+</div>
+</section>
+<footer>
+<a>{{ slot_26 }}</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    color: #474747;
+}
+.header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #6610f2;
+    color: white;
+    padding: 10px 0;
+}
+.header a {
+    color: white;
+    text-decoration: none;
+}
+.introduction, .services {
+    margin: 20px;
+}
+
+.introduction {
+    text-align: center;
+    background-color: #cc92f2;
+    padding: 20px;
+    border-radius: 15px;
+}
+.projects {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.projects div {
+    width: 30%;
+    height: 200px;
+    margin: 10px;
+    background-color: #f992f2;
+    color: transparent;
+    border: 1px solid #6610f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    border-radius: 15px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .projects div {
+        width: 100%;
+    } 
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header class="header">
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</header>
+<section class="introduction">
+<h1>{{ slot_5 }}</h1>
+<p>
+          {{ slot_6 }}
+        </p>
+</section>
+<section class="projects">
+<h2>{{ slot_7 }}</h2>
+<div class="project">{{ slot_8 }}</div> 
+<div class="project">{{ slot_9 }}</div> 
+<div class="project">{{ slot_10 }}</div> 
+</section>
+<section class="services">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+<li>{{ slot_16 }}</li>
+<li>{{ slot_17 }}</li>
+</ul>
+</section>
+</body>
+</html>

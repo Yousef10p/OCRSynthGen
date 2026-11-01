@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
+nav {
+    background-color: #e9ecef;
+    padding: 10px 0;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+section {
+    margin: 20px;
+}
+aside {
+    background-color: #e9ecef;
+    padding: 20px;
+    margin: 20px;
+    float: left;
+    width: 30%;
+}
+footer {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
+    clear: both;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<h1>{{ slot_4 }}</h1>
+</header>
+<main>
+<section>
+<h2>{{ slot_5 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_6 }}</p>
+</section>
+<section>
+<h2>{{ slot_7 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_8 }}</p>
+</section>
+<section>
+<h2>{{ slot_9 }}</h2>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_10 }}</p>
+</section>
+</main>
+<aside>
+<h3>{{ slot_11 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_12 }}</p>
+</aside>
+<aside>
+<h3>{{ slot_13 }}</h3>
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div>
+<p>{{ slot_14 }}</p>
+</aside>
+<footer>
+<p>{{ slot_15 }}</p>
+</footer>
+</body>
+</html>

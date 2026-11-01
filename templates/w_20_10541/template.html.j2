@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+nav, aside, footer {
+    background: #f5f5f5;
+    padding: 1em;
+}
+
+nav ul, aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+.playlist, .artist {
+    width: 200px;
+    height: 200px;
+    background: #cccccc; 
+    margin-bottom: 1em;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li>{{ slot_0 }}</li>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</nav>
+</header>
+<section class="hero">
+<div class="featured-playlists">
+<h2>{{ slot_4 }}</h2>
+<div class="playlist">{{ slot_5 }}</div>
+<div class="playlist">{{ slot_6 }}</div>
+<div class="playlist">{{ slot_7 }}</div>
+</div>
+<div class="featured-artists">
+<h2>{{ slot_8 }}</h2>
+<div class="artist">{{ slot_9 }}</div>
+<div class="artist">{{ slot_10 }}</div>
+<div class="artist">{{ slot_11 }}</div>
+</div>
+</section>
+<aside>
+<h2>{{ slot_12 }}</h2>
+<ul>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+</ul>
+<h2>{{ slot_16 }}</h2>
+<ul>
+<li>{{ slot_17 }}</li>
+<li>{{ slot_18 }}</li>
+<li>{{ slot_19 }}</li>
+</ul>
+</aside>
+<footer>
+<h2>{{ slot_20 }}</h2>
+<p>{{ slot_21 }}</p>
+<h2>{{ slot_22 }}</h2>
+<p>{{ slot_23 }}</p>
+</footer>
+</body>
+</html>

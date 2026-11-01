@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: #333;
+}
+
+.menu {
+    position: fixed;
+    top: 50px;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.page-content {
+    text-align: center;
+    margin-top: 200px;
+}
+
+.cta {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.testimonials {
+    margin: 50px 0;
+}
+
+.testimonial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.testimonial img {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    background-color: #f3f3f3;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.blog-link, .social-links {
+    margin: 10px 0;
+}
+
+.blog-link a, .social-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<div class="menu">
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</div>
+
+<div class="page-content">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+<a class="cta">{{ slot_7 }}</a>
+</div>
+
+<div class="testimonials">
+<h2>{{ slot_8 }}</h2>
+<div class="testimonial">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div> 
+<p>{{ slot_9 }}</p>
+</div>
+<div class="testimonial">
+<div class="ph" style="inline-size: 100%; block-size: 150px"></div> 
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+
+<footer>
+<div class="blog-link"><a>{{ slot_11 }}</a></div>
+<div class="social-links">
+<a>{{ slot_12 }}</a> {{ slot_13 }}
+            <a>{{ slot_14 }}</a> {{ slot_15 }}
+            <a>{{ slot_16 }}</a>
+</div>
+</footer>
+</body>
+</html>
