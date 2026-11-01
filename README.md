@@ -20,7 +20,7 @@ cd D:\code\OCR\arabic-template-bank
 
 Each sample: a page from a random template, filled with Wikipedia text (80% Arabic, 20% English) in a random
 font and size, pictures from `img_pool/`, rendered by SynthDoc, then left clean (15%) or degraded with
-OCRSmith, Augraphy and/or scan-simulator (85%); every box moves with the page.
+OCRSmith, Augraphy or scan-simulator (about 28% each); every box moves with the page.
 
 | In `--out` | What |
 |---|---|
@@ -444,7 +444,7 @@ presets scan 244, photo 207, archive 70, fax 50; median contrast 122; 6 pages `l
 flowchart LR
     T["1. Template<br/>bank (or a local LLM)"] --> F["2. Text + style<br/>80% Arabic, 20% English"]
     F --> R["3. SynthDoc render<br/>word, line, slot boxes"]
-    R --> E["4. Effects<br/>15% none (clean), 50% OCRSmith,<br/>35% Augraphy and/or scan-simulator"]
+    R --> E["4. Effects<br/>15% none (clean), then OCRSmith,<br/>Augraphy, scan-simulator ~28% each"]
     E --> M["5. Markdown<br/>boxes at the very top"]
 ```
 
@@ -455,7 +455,8 @@ flowchart LR
    Arabic fonts.
 3. **Render:** SynthDoc renders the page and measures every word, line and slot (page 1 only).
 4. **Effects:** none at all (15%: a clean, sharp page exactly as SynthDoc rendered it, like a born-digital
-   document), OCRSmith (50%), Augraphy alone (10%), scan-simulator alone (5%), or both (20%). Every box moves
+   document), else OCRSmith, Augraphy or scan-simulator, equally often (about 28% each; Augraphy followed
+   by scan-simulator is still available with `--effect augraphy+scan-simulator`). Every box moves
    with the page, as in the attack sections above; faint pages are retried with a new seed.
 5. **Markdown:** the filled page as Markdown, with a header at the very top that lists every text block
    (type, box, text) and every line (box, text). Word boxes are in the sample's `.json`.
