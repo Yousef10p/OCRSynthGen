@@ -1,0 +1,150 @@
+{
+ "id": "b_1287",
+ "source": "websight2",
+ "source_ref": "v0.2:s578_r00043",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "ar",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "heading",
+   "words": [
+    4,
+    9
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "paragraph",
+   "words": [
+    43,
+    82
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "paragraph",
+   "words": [
+    6,
+    13
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "paragraph",
+   "words": [
+    6,
+    13
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "footer",
+   "words": [
+    5,
+    12
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 2,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 0,
+  "asides": 0,
+  "has_header": false,
+  "has_footer": true,
+  "slot_count": 12
+ },
+ "structure_hash": "2a3c3218a10e60399d4849c9bf7c72781d5a42508fbecb18dd5bc9a0bf42bbcd",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "logo logo"
+  },
+  {
+   "id": "pic_1",
+   "hint": "chair chair"
+  },
+  {
+   "id": "pic_2",
+   "hint": "sofa sofa"
+  }
+ ],
+ "source_template": "w2_s578_r00043"
+}

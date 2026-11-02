@@ -1,0 +1,146 @@
+{
+ "id": "b_1056",
+ "source": "websight2",
+ "source_ref": "v0.2:s430_r00453",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "en",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "paragraph",
+   "words": [
+    28,
+    55
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "heading",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "heading",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    7,
+    14
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "paragraph",
+   "words": [
+    7,
+    16
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "paragraph",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "paragraph",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "paragraph",
+   "words": [
+    4,
+    11
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 2,
+  "tables": 0,
+  "lists": 0,
+  "list_depth": 0,
+  "forms": 0,
+  "asides": 0,
+  "has_header": false,
+  "has_footer": false,
+  "slot_count": 12
+ },
+ "structure_hash": "184a61b2f2109c46424f9cf9508899d08fadf36c972aec00592656a00c92ea31",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "art art piece full object cover"
+  },
+  {
+   "id": "pic_1",
+   "hint": "person artist rounded full object cover"
+  }
+ ],
+ "source_template": "w2_s430_r00453"
+}

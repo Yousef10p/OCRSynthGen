@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+*,::after,::before{box-sizing:border-box}
+html{-moz-tab-size:4;tab-size:4}
+html{line-height:1.15;-webkit-text-size-adjust:100%}
+body{margin:0}
+body{font-family: var(--font-body)}
+hr{height:0;color:inherit}
+abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}
+b,strong{font-weight:bolder}
+code,kbd,pre,samp{font-family: var(--font-body);font-size:1em}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sub{bottom:-.25em}
+sup{top:-.5em}
+table{text-indent:0;border-color:inherit}
+button,input,optgroup,select,textarea{font-family: var(--font-body);font-size:100%;line-height:1.15;margin:0}
+button,select{text-transform:none}
+[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}
+::-moz-focus-inner{border-style:none;padding:0}
+:-moz-focusring{outline:1px dotted ButtonText}
+:-moz-ui-invalid{box-shadow:none}
+legend{padding:0}
+progress{vertical-align:baseline}
+::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}
+[type=search]{-webkit-appearance:textfield;outline-offset:-2px}
+::-webkit-search-decoration{-webkit-appearance:none}
+::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+summary{display:list-item}
+blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}
+button{background-color:transparent;background-image:none}
+fieldset{margin:0;padding:0}
+ol,ul{list-style:none;margin:0;padding:0}
+html{font-family: var(--font-body);line-height:1.5}
+body{font-family: var(--font-body);line-height:inherit}
+*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor}
+hr{border-top-width:1px}
+img{border-style:solid}
+textarea{resize:vertical}
+input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}
+[role=button],button{cursor:pointer}
+:-moz-focusring{outline:auto}
+table{border-collapse:collapse}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}
+a{color:inherit;text-decoration:inherit}
+button,input,optgroup,select,textarea{padding:0;line-height:inherit;color:inherit}
+code,kbd,pre,samp{font-family: var(--font-body)}
+audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}
+img,video{max-width:100%;height:auto}
+[hidden]{display:none}
+*,::after,::before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}
+.mx-auto{margin-left:auto;margin-right:auto}
+.my-10{margin-top:2.5rem;margin-bottom:2.5rem}
+.mb-6{margin-bottom:1.5rem}
+.flex{display:flex}
+.max-w-4xl{max-width:56rem}
+.flex-col{flex-direction:column}
+.justify-center{justify-content:center}
+.space-x-6>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}
+.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.5rem * var(--tw-space-y-reverse))}
+.rounded{border-radius:.25rem}
+.rounded-lg{border-radius:.5rem}
+.bg-white{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}
+.bg-gray-100{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}
+.bg-red-500{--tw-bg-opacity:1;background-color:rgba(239,68,68,var(--tw-bg-opacity))}
+.p-2{padding:.5rem}
+.p-6{padding:1.5rem}
+.px-6{padding-left:1.5rem;padding-right:1.5rem}
+.text-center{text-align:center}
+.text-2xl{font-size:1.5rem;line-height:2rem}
+.text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}
+.text-gray-700{--tw-text-opacity:1;color:rgba(55,65,81,var(--tw-text-opacity))}
+.text-gray-800{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}
+*,::after,::before{--tw-shadow:0 0 #0000}
+*,::after,::before{--tw-ring-inset:var(--tw-empty, );--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59, 130, 246, 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body class="bg-gray-100">
+<nav class="bg-white p-6">
+<ul class="flex space-x-6 justify-center">
+<li><a class="text-gray-800">{{ slot_0 }}</a></li>
+<li><a class="text-gray-800">{{ slot_1 }}</a></li>
+<li><a class="text-gray-800">{{ slot_2 }}</a></li>
+<li><a class="text-gray-800">{{ slot_3 }}</a></li>
+</ul>
+</nav>
+<div class="flex justify-center my-10">
+<div style="inline-size: 100%; block-size: 150px" class="rounded-lg pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+</div>
+<div class="max-w-4xl mx-auto my-10 px-6">
+<h2 class="text-2xl text-center mb-6">{{ slot_4 }}</h2>
+<p class="text-gray-700 mb-6">
+            {{ slot_5 }}
+        </p>
+</div>
+<footer class="bg-white p-6">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-2xl text-center mb-6">{{ slot_6 }}</h2>
+<p class="text-gray-700 mb-6">
+                {{ slot_7 }}<br>
+                {{ slot_8 }}<br>
+                {{ slot_9 }}
+            </p>
+<h2 class="text-2xl text-center mb-6">{{ slot_10 }}</h2>
+<p class="text-gray-700 mb-6">
+                {{ slot_11 }}
+            </p>
+<h2 class="text-2xl text-center mb-6">{{ slot_12 }}</h2>
+<form class="flex flex-col space-y-2">
+<span class="p-2 rounded" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<button class="bg-red-500 text-white p-2 rounded">{{ slot_14 }}</button>
+</form>
+</div>
+</footer>
+</body>
+</html>

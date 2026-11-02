@@ -1,0 +1,172 @@
+{
+ "id": "b_1130",
+ "source": "websight2",
+ "source_ref": "v0.2:s443_r00341",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "ar",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "paragraph",
+   "words": [
+    56,
+    107
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_13",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 2,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 1,
+  "asides": 0,
+  "has_header": false,
+  "has_footer": false,
+  "slot_count": 14
+ },
+ "structure_hash": "48146fa6b1b265e99ae8e1a52d78284d904462b6d20fd188a0a7f3d832f52b53",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "nature nature rounded"
+  },
+  {
+   "id": "pic_1",
+   "hint": "architecture architecture rounded"
+  },
+  {
+   "id": "pic_2",
+   "hint": "city city rounded"
+  },
+  {
+   "id": "pic_3",
+   "hint": "people people rounded"
+  }
+ ],
+ "source_template": "w2_s443_r00341"
+}

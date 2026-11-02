@@ -1,0 +1,226 @@
+{
+ "id": "b_0172",
+ "source": "grammar",
+ "source_ref": "seed=7000348",
+ "license": "own-generated",
+ "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+ "positioning": "flow",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "header",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "title",
+   "words": [
+    3,
+    10
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "subtitle",
+   "words": [
+    4,
+    12
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    25,
+    60
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "caption",
+   "words": [
+    5,
+    15
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "sidebar",
+   "words": [
+    10,
+    50
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "sidebar",
+   "words": [
+    10,
+    50
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_13",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_14",
+   "role": "paragraph",
+   "words": [
+    20,
+    60
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_15",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_16",
+   "role": "paragraph",
+   "words": [
+    8,
+    25
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_17",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_18",
+   "role": "paragraph",
+   "words": [
+    8,
+    25
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_19",
+   "role": "footer",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 2,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 2,
+  "forms": 0,
+  "asides": 1,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 20
+ },
+ "structure_hash": "5276da77e01f702b15b7b1aa864519e874ff79e6922473bfaa22fc854f340249",
+ "lang": "ar",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": ""
+  },
+  {
+   "id": "pic_1",
+   "hint": "team"
+  },
+  {
+   "id": "pic_2",
+   "hint": "car"
+  },
+  {
+   "id": "pic_3",
+   "hint": "event"
+  }
+ ],
+ "source_template": "gr_00348"
+}

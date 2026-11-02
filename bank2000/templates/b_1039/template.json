@@ -1,0 +1,142 @@
+{
+ "id": "b_1039",
+ "source": "websight2",
+ "source_ref": "v0.2:s086_r00122",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "en",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "footer",
+   "words": [
+    22,
+    43
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "footer",
+   "words": [
+    10,
+    21
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 0,
+  "list_depth": 0,
+  "forms": 1,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 12
+ },
+ "structure_hash": "2f6fff1710beace323a9c583c656c28e4aa35888655a4349f6ded9c261b42998",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "real estate real estate logo"
+  }
+ ],
+ "source_template": "w2_s086_r00122"
+}

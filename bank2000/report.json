@@ -1,0 +1,81 @@
+{
+ "sources": {
+  "grammar": {
+   "candidates": 3000,
+   "adapted": 3000,
+   "screened": 850,
+   "passed": 798,
+   "kept": 500,
+   "rejected_for": {
+    "hidden": 28,
+    "mismeasured": 17,
+    "cut": 21,
+    "offpage": 21,
+    "overlap": 2
+   }
+  },
+  "websight": {
+   "candidates": 4000,
+   "adapted": 4000,
+   "screened": 765,
+   "passed": 609,
+   "kept": 450,
+   "rejected_for": {
+    "mismeasured": 25,
+    "cut": 22,
+    "offpage": 11,
+    "generated": 1,
+    "hidden": 52,
+    "picture": 54,
+    "error": 1,
+    "overlap": 35,
+    "empty": 4,
+    "contrast": 1
+   }
+  },
+  "websight2": {
+   "candidates": 3298,
+   "adapted": 2319,
+   "screened": 765,
+   "passed": 664,
+   "kept": 450,
+   "rejected_for": {
+    "hidden": 30,
+    "picture": 63,
+    "overlap": 5,
+    "cut": 7,
+    "mismeasured": 6,
+    "offpage": 6
+   }
+  },
+  "doclaynet": {
+   "candidates": 4000,
+   "adapted": 4000,
+   "screened": 1020,
+   "passed": 952,
+   "kept": 600,
+   "rejected_for": {
+    "picture": 43,
+    "mismeasured": 14,
+    "overlap": 4,
+    "cut": 6,
+    "empty": 3
+   }
+  }
+ },
+ "seconds": 1411,
+ "templates": 2000,
+ "languages": {
+  "en": 1044,
+  "ar": 956
+ },
+ "by_source": {
+  "grammar": 500,
+  "websight": 450,
+  "websight2": 450,
+  "doclaynet": 600
+ },
+ "with_pictures": 1191,
+ "invalid": {},
+ "duplicate_structures": 0
+}

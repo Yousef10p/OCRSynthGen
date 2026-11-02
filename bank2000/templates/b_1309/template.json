@@ -1,0 +1,146 @@
+{
+ "id": "b_1309",
+ "source": "websight2",
+ "source_ref": "v0.2:s554_r00398",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "ar",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "paragraph",
+   "words": [
+    19,
+    38
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    9,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "paragraph",
+   "words": [
+    7,
+    14
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "paragraph",
+   "words": [
+    9,
+    18
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "footer",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 0,
+  "list_depth": 0,
+  "forms": 1,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 12
+ },
+ "structure_hash": "7c5ada6d3a732f8619d96def4907665da8a14a67449f0cd36dbf6a5dc6c9c14f",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "finance finance company logo auto"
+  },
+  {
+   "id": "pic_1",
+   "hint": "certification certification auto"
+  }
+ ],
+ "source_template": "w2_s554_r00398"
+}

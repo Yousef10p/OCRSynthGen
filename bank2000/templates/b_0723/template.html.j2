@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+h1, h2, p, li {
+  margin: 0;
+  padding: 10px;
+}
+
+.video-section, .schedule-section, .pricing-section {
+  margin: 20px;
+}
+
+.schedule-section table {
+  width: 100%;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</div>
+<div class="video-section">
+<div  style="inline-size: 320px; block-size: 240px" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<p>{{ slot_2 }}</p>
+</div>
+<div class="schedule-section">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+<table>
+<tr>
+<th>{{ slot_5 }}</th>
+<th>{{ slot_6 }}</th>
+</tr>
+<tr>
+<td>{{ slot_7 }}</td>
+<td>{{ slot_8 }}</td>
+</tr>
+<tr>
+<td>{{ slot_9 }}</td>
+<td>{{ slot_10 }}</td>
+</tr>
+</table>
+</div>
+<div class="pricing-section">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<ul>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</div>
+<div class="footer">
+<p>{{ slot_15 }}</p>
+</div>
+</body>
+</html>

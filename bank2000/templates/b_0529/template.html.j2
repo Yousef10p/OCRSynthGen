@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+.header {
+  display: flex;
+}
+
+.left-column {
+  width: 200px;
+  border: 1px solid black;
+}
+
+.main-menu {
+  width: calc(100% - 200px);
+  border: 1px solid black;
+}
+
+.main-content {
+  border: 1px solid black;
+}
+
+.product {
+  width: 100px;
+  height: 100px;
+  background-color: grey;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer {
+  display: flex;
+}
+
+.social-links {
+  width: 30%;
+  border: 1px solid black;
+}
+
+.shipping-info {
+  width: 40%;
+  border: 1px solid black;
+}
+
+.contact-form {
+  width: 30%;
+  border: 1px solid black;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<div class="left-column">
+<h2>{{ slot_0 }}</h2>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+</div>
+<div class="main-menu">
+<ul>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+</div>
+</div>
+<div class="main-content">
+<h2>{{ slot_8 }}</h2>
+<div class="filters">
+<span>{{ slot_9 }}</span>
+<span>{{ slot_10 }}</span>
+<span>{{ slot_11 }}</span>
+</div>
+<div class="products">
+<div class="product"></div>
+<div class="product"></div>
+<div class="product"></div>
+
+</div>
+</div>
+<div class="footer">
+<div class="social-links">
+<span>{{ slot_12 }}</span>
+<span>{{ slot_13 }}</span>
+<span>{{ slot_14 }}</span>
+</div>
+<div class="shipping-info">{{ slot_15 }}</div>
+<div class="contact-form">
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_16 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_18 }}</span>
+<button>{{ slot_19 }}</button>
+</div>
+</div>
+</body>
+</html>

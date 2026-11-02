@@ -1,0 +1,178 @@
+{
+ "id": "b_0316",
+ "source": "grammar",
+ "source_ref": "seed=7002629",
+ "license": "own-generated",
+ "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+ "positioning": "flow",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    3,
+    10
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "subtitle",
+   "words": [
+    4,
+    12
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "paragraph",
+   "words": [
+    60,
+    120
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "quote",
+   "words": [
+    10,
+    40
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "sidebar",
+   "words": [
+    10,
+    50
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "sidebar",
+   "words": [
+    10,
+    50
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "sidebar",
+   "words": [
+    10,
+    50
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "paragraph",
+   "words": [
+    20,
+    60
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_13",
+   "role": "footnote",
+   "words": [
+    8,
+    30
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_14",
+   "role": "footnote",
+   "words": [
+    8,
+    30
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_15",
+   "role": "footnote",
+   "words": [
+    8,
+    30
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 0,
+  "asides": 2,
+  "has_header": false,
+  "has_footer": false,
+  "slot_count": 16
+ },
+ "structure_hash": "d577f57792fb7263fef3171e5db0fd8abff42b0819510aac76d65ed2c2e16e0e",
+ "lang": "en",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "nature"
+  }
+ ],
+ "source_template": "gr_02629"
+}

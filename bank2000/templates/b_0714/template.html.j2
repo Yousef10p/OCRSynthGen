@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+.container {
+  display: flex;
+}
+
+.header {
+  background: lightgrey;
+  text-align: center;
+  width: 100%;
+}
+
+.left-col, .center-col, .right-col {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+.portfolio, .testimonials, .our-team, .job-openings {
+  margin-top: 20px;
+}
+
+button {
+  margin: 5px;
+}
+
+.colored-block {
+  background: gray;
+  height: 200px;
+  width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+
+<header class="header">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<button>{{ slot_2 }}</button>
+<button>{{ slot_3 }}</button>
+</header>
+
+<nav class="left-col">
+
+<ul>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+<li><a>{{ slot_6 }}</a></li>
+<li><a>{{ slot_7 }}</a></li>
+</ul>
+
+<div class="portfolio">
+
+<div class="colored-block"></div>
+<p>{{ slot_8 }}</p>
+</div>
+</nav>
+
+<section class="center-col">
+
+<div class="portfolio-placeholder">
+<div class="colored-block"></div>
+<p>{{ slot_9 }}</p>
+</div>
+
+<div class="testimonials">
+
+<div class="colored-block"></div>
+<p>{{ slot_10 }}</p>
+</div>
+</section>
+
+<aside class="right-col">
+
+<div class="our-team">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+
+<div class="colored-block"></div>
+</div>
+
+<div class="job-openings">
+<h2>{{ slot_13 }}</h2>
+<p>{{ slot_14 }}</p>
+
+<div class="colored-block"></div>
+</div>
+</aside>
+</div>
+</body>
+</html>

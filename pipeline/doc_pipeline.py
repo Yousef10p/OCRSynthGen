@@ -1,19 +1,24 @@
 """DocPipeline: one class for the whole path from an empty template to a labelled, scan-like page.
 
-    1. template  an empty template from the bank (or, optionally, one written by a small local LLM)
-    2. text      filled with Arabic or English (picked at random, mostly Arabic) and a random typography
-    3. render    SynthDoc renders the page and measures every word, line and slot (the labels)
-    4. effects   none (a clean page, 15%), or OCRSmith, Augraphy or scan-simulator (equally often);
-                 every box is moved with the page
-    5. markdown  the filled page as Markdown, with the bounding boxes at the very top
-
-Grey picture boxes in a template get a random photo from img_pool/ (see img_pool.py) in step 2, and the
-words come from Wikipedia (text_pool/, see text_pool.py) unless text="demo".
+    1. template  a template from the 2,000-template bank (bank2000/, each Arabic or English), or one written
+                 by an LLM (Groq) when asked
+    2. fill      a random typography and visual theme (pipeline/themes.py), text from Wikipedia that follows
+                 one article per page (pipeline/text_pool.py), a photo from img_pool/ for every picture slot
+                 (by the slot's hint: food, people, city...)
+    3. render    SynthDoc lays the page out in Chromium (at 2x, about 192 dpi) and measures every word; a
+                 script in the page fits text to its boxes and fixes contrast first; the page is checked
+                 (pipeline/qa.py) and made again until no text is hidden, cut, overlapping or covered
+    4. effects   clean (15%), or OCRSmith, Augraphy or scan-simulator at a chosen strength
+                 (pipeline/degrade.py); every box moves with the page; checked word by word for lost,
+                 faint or blurred-away text, retried with new seeds and then less strength
+    5. outputs   the image; the slot-level ground truth (<text>... <bbox>x1, y1, x2, y2</bbox></text>, one
+                 line per filled slot, pipeline/groundtruth.py); labels JSON (words, lines, slots); Markdown;
+                 the filled HTML
 
 Each sample writes, in out_dir:
-    <name>.jpg            final page                   <name>_clean.jpg   SynthDoc's page before effects
-    <name>.html           filled page (HTML)           <name>.md          Markdown with the boxes on top
-    <name>.json           labels: words, lines, slots  <name>_words.jpg / <name>_slots.jpg   boxes drawn
+    <name>.jpg        final page                     <name>.gt.txt   slot-level ground truth (tagged)
+    <name>.json       labels: words, lines, slots    <name>.md       Markdown with the boxes on top
+    <name>.html       filled page                    <name>_clean.jpg, _words.jpg, _slots.jpg (extras)
 
 Runs in .venv-pipeline (SynthDoc, OCRSmith, Augraphy and scan-simulator in one environment):
 
@@ -35,66 +40,158 @@ for p in (ROOT, ROOT / "demo", ROOT / "synthdoc_adapter"):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 
-import attack  # noqa: E402  (Augraphy + scan-simulator, synthdoc_adapter/attack.py)
-import attack_ocrsmith  # noqa: E402  (OCRSmith paper + capture presets)
-import cv2  # noqa: E402
+import attack  # noqa: E402  (Augraphy warm-up, word mask; synthdoc_adapter/attack.py)
 import numpy as np  # noqa: E402
 from export import ROLE_PROPERTY, synthdoc_html  # noqa: E402
 from fill_style import fill, font_families, style, style_latin  # noqa: E402
-from labels import MIN_CONTRAST, build_label, contrast, split_words  # noqa: E402
+from labels import build_label, contrast, split_words  # noqa: E402
+from playwright.sync_api import Browser  # noqa: E402
 from synthdoc.ner_data_generator import NERDataGenerator  # noqa: E402
 from synthdoc_arabic import pipeline as synthdoc_arabic  # noqa: E402
 from synthdoc_arabic.ocr_gt import build_page_gt  # noqa: E402
 
-# The Arabic extension's word measuring script only says whether a word is clipped at all. A word partly
-# hidden by a box edge must be dropped from the labels, so the script is extended here, in memory, to say how
-# (nothing in the SynthDoc folder is changed): cut_x, cut on its left or right (a long English word in a narrow
-# table cell); cut_y, the share of its height hidden above or below (a line that doesn't fit its box); slot,
-# the template slot the word is in (so the HTML and Markdown can be rebuilt from what is on the page).
-# cut_y is measured on the letters, not on the word's box: the box is the font's whole line slot, taller than
-# the letters (Arabic fonts leave room for marks), and a tight box often clips only its empty top or bottom.
-# Canvas metrics give the baseline (box top + font ascent) and the letters' own extent around it; the share
-# of that extent beyond the clipping box's top or bottom edge (clip) is what is hidden.
+# -- rendering at a higher resolution -----------------------------------------------------------------------
+# SynthDoc's browser page has no resolution setting: a page is screenshot at 1 pixel per CSS pixel (96 dpi;
+# 9 pt text is 12 px tall), too small for OCR training. Playwright pages are opened here with a device scale
+# factor of RENDER_SCALE (2 = about 192 dpi); the measured boxes are in CSS pixels and are scaled to match.
+RENDER_SCALE = 2
+_new_page = Browser.new_page
+
+
+def _scaled_new_page(self, *args, **kwargs):
+    kwargs.setdefault("device_scale_factor", RENDER_SCALE)
+    return _new_page(self, *args, **kwargs)
+
+
+Browser.new_page = _scaled_new_page
+
+# -- what the Arabic extension's word script measures, extended (in memory; the SynthDoc folder is unchanged)
+# Per word: cut_x, cut on its left or right; cut_y, the share of its letters' height hidden above or below
+# (measured on the letters with canvas metrics, against the clipping edge, not on the font's taller line slot);
+# slot, the template slot it is in. Per page (qa): every slot's full text (to find words that are hidden), the
+# rectangles of pictures, and every slot's text contrast against what is behind it.
 CUT_Y_JS = ("(() => { const m = ctx.measureText(shown); const base = b.t + m.fontBoundingBoxAscent;"
             " const top = base - m.actualBoundingBoxAscent, bottom = base + m.actualBoundingBoxDescent;"
             " return (Math.max(0, clip.t - top) + Math.max(0, bottom - clip.b)) / Math.max(1, bottom - top); })()")
+CONTRAST_JS = """
+  const rgb = (c) => { const m = (c || '').match(/[\\d.]+/g); return m ? m.map(Number) : [0, 0, 0, 0]; };
+  const lum = ([r, g, b]) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+                               return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
+  // an element's own paint: null for a picture, its colour if opaque, undefined if see-through
+  const paint = (e) => { const s = getComputedStyle(e);
+    if (s.backgroundImage && s.backgroundImage !== 'none') return null;
+    const c = rgb(s.backgroundColor); return c.length < 4 || c[3] > 0.5 ? c.slice(0, 3) : undefined; };
+  // what is painted under a point of the text: the elements stacked there, from the text down, so another
+  // element's dark band under the text counts (not only the text's own boxes); undefined if not visible there
+  const under = (el, x, y) => { if (x < 0 || y < 0 || x >= innerWidth || y >= innerHeight) return undefined;
+    const stack = document.elementsFromPoint(x, y), i = stack.findIndex((e) => e === el || el.contains(e));
+    if (i < 0) return undefined;
+    for (const e of stack.slice(i)) { const p = paint(e); if (p !== undefined) return p; }
+    return [255, 255, 255]; };
+  // otherwise: the nearest ancestor whose box covers the text (text overflowing a dark band stands on the
+  // page, not on the band)
+  const behind = (el) => { const r = el.getBoundingClientRect();
+    for (let e = el; e; e = e.parentElement) { const b = e.getBoundingClientRect();
+      if (e !== el && e !== document.documentElement && e !== document.body && (r.top < b.top - 1 || r.bottom > b.bottom + 1
+          || r.left < b.left - 1 || r.right > b.right + 1)) continue;
+      const p = paint(e); if (p !== undefined) return p; }
+    return [255, 255, 255]; };
+  const pair = (fg, bg) => { const a = lum(fg), b = lum(bg); return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05); };
+  // the worst contrast over the text's lines; the colour behind it is that of its worst line (null: a picture)
+  const look = (el) => { const fg = rgb(getComputedStyle(el).color).slice(0, 3);
+    let worst = 21, bg = null;
+    const rects = [...el.getClientRects()].filter((r) => r.width > 0 && r.height > 0).slice(0, 8);
+    for (const r of rects.length ? rects : [el.getBoundingClientRect()]) {
+      let c = under(el, r.left + r.width / 2, r.top + r.height / 2);
+      if (c === undefined) c = behind(el);
+      if (c && pair(fg, c) < worst) { worst = pair(fg, c); bg = c; }
+    }
+    return {ratio: worst, bg}; };
+  const ratio = (el) => look(el).ratio;
+"""
+QA_JS = """(() => {""" + CONTRAST_JS + """
+  const slots = {}, pictures = [], contrast = [];
+  for (const s of content.querySelectorAll('[data-slot]')) {
+    slots[s.dataset.slot] = ((slots[s.dataset.slot] || '') + ' ' + s.textContent).trim();
+    if (s.textContent.trim()) contrast.push({slot: s.dataset.slot, ratio: Math.round(ratio(s) * 100) / 100});
+  }
+  for (const im of content.querySelectorAll('img, .ph, .pic-frame, [data-img]')) {
+    const r = im.getBoundingClientRect();
+    if (r.width >= 2 && r.height >= 2) pictures.push({x: r.left - pr.left, y: r.top - pr.top, width: r.width, height: r.height});
+  }
+  return {slots, pictures, contrast};
+})()"""
+# glyph_y: the top and bottom of the word's letters on the page (canvas metrics around the baseline). Word boxes
+# are the font's whole line slot, taller than the letters: on closely set lines the slots of two lines overlap
+# while the letters don't, so overlap is checked on the letters.
+GLYPH_JS = ("(() => { const m = ctx.measureText(shown); const base = b.t + m.fontBoundingBoxAscent;"
+            " return [base - m.actualBoundingBoxAscent - pr.top, base + m.actualBoundingBoxDescent - pr.top]; })()")
 if "cut_x:" not in synthdoc_arabic.WORDS_JS:
     synthdoc_arabic.WORDS_JS = synthdoc_arabic.WORDS_JS.replace(
-        "split_word:", "cut_x: (l > b.l + 1 || r < b.r - 1), cut_y: " + CUT_Y_JS
+        "split_word:", "cut_x: (l > b.l + 1 || r < b.r - 1), cut_y: " + CUT_Y_JS + ", glyph_y: " + GLYPH_JS
                        + ", slot: (el.closest('[data-slot]') || {dataset: {}}).dataset.slot || null, split_word:", 1)
+    synthdoc_arabic.WORDS_JS = synthdoc_arabic.WORDS_JS.replace(
+        "generated_text: generated};", "generated_text: generated, qa: " + QA_JS + "};", 1)
 
+from pipeline import degrade as D  # noqa: E402
+from pipeline import groundtruth as GT  # noqa: E402
 from pipeline.img_pool import ImagePool  # noqa: E402
+from pipeline.qa import render_issues  # noqa: E402
 from pipeline.text_pool import TextPool  # noqa: E402
+from pipeline.themes import theme  # noqa: E402
 from src.bank import TEMPLATES  # noqa: E402
 from src.dedup import load_bank  # noqa: E402
 from src.markdown import to_markdown  # noqa: E402
 
-LANGUAGES = {"ar": 0.8, "en": 0.2}
-# "clean": some pages stay exactly as SynthDoc rendered them, sharp and noise-free (born-digital documents)
-# The rest are split evenly between the three effect libraries (Augraphy followed by scan-simulator, the
-# "augraphy+scan-simulator" effect, is still there when asked for)
+BANK2000 = ROOT / "bank2000"
+LANGUAGES = {"ar": 0.5, "en": 0.5}
+# "clean": some pages stay exactly as SynthDoc rendered them (born-digital documents); the rest are split evenly
+# between the three tools ("augraphy+scan-simulator" is there when asked for)
 EFFECTS = {"clean": 0.15, "ocrsmith": 0.85 / 3, "augraphy": 0.85 / 3, "scan-simulator": 0.85 / 3}
-SOURCES = {"grammar": 1, "websight": 1, "doclaynet": 1}
-ROLE = {prop: role for role, prop in ROLE_PROPERTY.items()}  # doco:sectionTitle -> heading
-TRIES = 4  # attempts with new seeds when an effect leaves the text too faint
-# Runs in Paged.js's "before" hook, once the page's fonts have loaded and before Paged.js lays the page out:
-#  1. text that doesn't fit its box: a template box sized for its source's text (a DocLayNet box sized for
-#     the original PDF line) is often too small for the words a slot gets in our fonts and line spacing, and
-#     its overflow:hidden then cuts letters (about 1 word in 6 on DocLayNet pages). Such a box gets
-#     line-height 1.2, then a smaller font down to 80% of its size, then loses words from the end of its last
-#     slot until its text fits. The labels are measured after this, so they match the page, and the HTML and
-#     Markdown are rebuilt from the words on the page (what still can't fit is dropped: cut_x/cut_y);
-#     a row wider than its column (a form row: a no-wrap label and a 5em value in a narrow column) would
-#     spill over the next column, text on text: such a row may wrap, and its children lose nowrap/min-width;
-#     the same for the page itself: a page is one sheet with overflow:hidden, so a slot running into the
-#     bottom margin (or off a side) loses words from its end, and a slot left empty hides its paragraph;
-#  2. grey picture areas a web page's converter could not name as such (a ".logo" square, a hero image area):
-#     an element with no text in it, at least 30 x 30 px, with a plain grey background gets one of PHOTOS.
-#     Text on grey (a grey section or banner) is design and stays; table cells and form fields are left alone.
-# window.PagedConfig must exist before Paged.js loads, so this goes at the end of <head>, before SynthDoc's
-# Paged.js script.
+STRENGTHS = {tool: D.DEFAULT_STRENGTH for tool in D.TOOLS}
+ROLE = {prop: role for role, prop in ROLE_PROPERTY.items()}  # doco:sectionTitle -> heading (old Markdown)
+ATTEMPTS = 8         # renders per sample until one passes the checks (a new template every second one)
+EFFECT_TRIES = 3     # seeds per strength level before the strength is lowered
+
+# Runs in Paged.js's "before" hook, once the page's fonts and pictures have loaded and before Paged.js lays the
+# page out (window.PagedConfig must exist before Paged.js loads: this goes at the end of <head>, before
+# SynthDoc's Paged.js script):
+#  1. colours: a web design's colours are turned around the colour wheel (themes.py: hue only, so contrast
+#     stays);
+#  2. text that doesn't fit its box (a template box sized for its source's text is often too small for the
+#     words a slot gets in our fonts): line-height 1.2, then a smaller font down to 80%, then words removed
+#     from the end of its last slot until it fits;
+#  3. a row wider than its column (a form row: a no-wrap label and a 5em value in a narrow column) may wrap;
+#  4. the page itself is one sheet with overflow:hidden: a slot running into the bottom margin or off a side
+#     loses words from its end; a slot left empty hides its paragraph;
+#  5. contrast: a slot whose text has less than 4.5:1 contrast with what is behind it gets near-black or white
+#     text, whichever reads better;
+#  6. empty boxes of a solid colour, at least 30 x 30 px (a web page's image placeholder the converter couldn't
+#     name: a grey or coloured square or banner with nothing in it) get a photo.
 PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
+  const cfg = SYNTH_CONFIG;
   await document.fonts.ready;
+  await Promise.all([...document.images].map((i) => i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; })));""" \
+  + CONTRAST_JS + """
+  if (cfg.hue || cfg.saturate !== 1) {
+    const turn = (c) => { const m = (c || '').match(/[\\d.]+/g); if (!m || m.length < 3) return null;
+      let [r, g, b] = m.slice(0, 3).map((v) => v / 255); const a = m[3] === undefined ? 1 : +m[3];
+      const mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2; let h = 0, s = 0;
+      if (mx !== mn) { const d = mx - mn; s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
+        h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h *= 60; }
+      if (s < 0.08) return null;
+      h = (h + cfg.hue) % 360; s = Math.min(1, s * cfg.saturate);
+      return `hsla(${h.toFixed(1)}, ${(s * 100).toFixed(1)}%, ${(l * 100).toFixed(1)}%, ${a})`; };
+    for (const el of document.body.querySelectorAll('*')) {
+      if (el.tagName === 'IMG') continue;
+      const cs = getComputedStyle(el);
+      for (const [prop, val] of [['color', cs.color], ['background-color', cs.backgroundColor],
+          ['border-top-color', cs.borderTopColor], ['border-bottom-color', cs.borderBottomColor],
+          ['border-left-color', cs.borderLeftColor], ['border-right-color', cs.borderRightColor]]) {
+        const t = turn(val); if (t) el.style.setProperty(prop, t);
+      }
+    }
+  }
   for (const el of document.body.querySelectorAll("*")) {
     if (el.classList.contains("page") || !el.textContent.trim()) continue;
     const cs = getComputedStyle(el);
@@ -118,6 +215,17 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
       }
       spans[i].textContent = words.slice(0, lo).join(" ");
     }
+  }
+  // a box whose text fits can still clip the tops and tails of letters (hamza, accents and descenders reach
+  // past the line box, and DocLayNet boxes are tight): it lets their ink show; a box framing a picture keeps
+  // clipping it
+  for (const el of document.body.querySelectorAll("*")) {
+    if (el.classList.contains("page") || el.classList.contains("pic-frame") || !el.textContent.trim()) continue;
+    if (el.querySelector("img, .pic-frame, [data-img]")) continue;
+    const cs = getComputedStyle(el);
+    if (!/hidden|clip/.test(cs.overflowX + " " + cs.overflowY)) continue;
+    if (el.scrollHeight <= el.clientHeight + 1 && el.scrollWidth <= el.clientWidth + 1)
+      el.style.setProperty("overflow", "visible", "important");
   }
   for (const el of document.body.querySelectorAll("*")) {
     if (el.classList.contains("page") || !el.textContent.trim() || el.scrollWidth <= el.clientWidth + 1) continue;
@@ -149,7 +257,13 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
       if (!lo && block && !block.textContent.trim()) block.style.display = "none";
     }
   }
-  const photos = PHOTOS; let k = 0;
+  for (const s of document.querySelectorAll("[data-slot]")) {
+    if (!s.textContent.trim()) continue;
+    const {ratio: r, bg} = look(s);
+    if (r >= 4.5) continue;
+    s.style.setProperty("color", lum(bg || [255, 255, 255]) > 0.18 ? "#111111" : "#ffffff", "important");
+  }
+  const photos = cfg.photos; let k = 0;
   for (const el of document.body.querySelectorAll("*")) {
     if (k >= photos.length) break;
     if (/^(TD|TH|TR|TABLE|INPUT|SELECT|TEXTAREA|BUTTON|HR|BR|IMG|SVG|SCRIPT|STYLE)$/.test(el.tagName)) continue;
@@ -159,12 +273,12 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
     const m = getComputedStyle(el).backgroundColor.match(/\\d+(\\.\\d+)?/g);
     if (!m || (m[3] !== undefined && +m[3] === 0)) continue;
     const [R, G, B] = m.map(Number), mean = (R + G + B) / 3;
-    if (Math.max(R, G, B) - Math.min(R, G, B) > 16 || mean < 110 || mean > 238) continue;
+    if (mean > 238) continue;  // a white or near-white box is page, not a picture placeholder
     el.style.setProperty("background", `url("${photos[k++]}") center / cover no-repeat`, "important");
     el.dataset.img = "grey-box";
   }
 }};"""
-# The opening tag of a grey picture box: any element whose class list has "ph"
+# The opening tag of a grey picture box (old bank): any element whose class list has "ph"
 PICTURE_BOX = re.compile(r'<(\w+)\b([^>]*\bclass="(?:[^"]*\s)?ph(?:\s[^"]*)?"[^>]*)>')
 _cache = {}
 
@@ -175,18 +289,24 @@ def bank():
     return _cache["bank"]
 
 
+def bank_entries(bank_dir):
+    """The bank's index: [{"id", "source", "lang", ...}]. bank_dir None: the old 113,077-template bank."""
+    key = ("index", str(bank_dir))
+    if key not in _cache:
+        path = (bank_dir / "index.jsonl") if bank_dir else ROOT / "bank_index.jsonl"
+        entries = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+        if not entries:
+            raise RuntimeError(f"{path} is empty")
+        _cache[key] = entries
+    return _cache[key]
+
+
 def bank_ids():
-    """{source: [template ids]} from bank_index.jsonl: a sample loads only its own template.json, so a bank
-    of 100,000 templates doesn't slow every worker's start."""
-    if "ids" not in _cache:
-        ids = {}
-        for line in (ROOT / "bank_index.jsonl").read_text(encoding="utf-8").splitlines():
-            entry = json.loads(line)
-            ids.setdefault(entry["source"], []).append(entry["id"])
-        if not ids:
-            raise RuntimeError("bank_index.jsonl is empty: run python -m src.dedup")
-        _cache["ids"] = ids
-    return _cache["ids"]
+    """{source: [template ids]} of the old bank (kept for older callers)."""
+    ids = {}
+    for e in bank_entries(None):
+        ids.setdefault(e["source"], []).append(e["id"])
+    return ids
 
 
 def arabic_fonts():
@@ -206,93 +326,114 @@ def pick(rng, weights):
 
 
 class DocPipeline:
-    """Template -> Arabic/English text -> SynthDoc render + labels -> effects -> Markdown with boxes.
+    """Template -> fill (style, theme, text, pictures) -> SynthDoc render + checks -> effects -> ground truth.
 
-    languages, effects and sources are {choice: weight}; templates is "bank" or "llm" (an LLMTemplates,
-    passed as llm, writes them; if it can't, the sample falls back to the bank and says so).
-    pictures is the ImagePool for grey picture boxes (default img_pool/; False keeps them grey).
-    text is "wikipedia" (text_pool/, the default once it is built) or "demo" (a few built-in sentences)."""
+    bank: the template bank folder (default bank2000/; "old" for the 113,077-template bank).
+    languages, effects, sources: {choice: weight}. In bank2000 every template is Arabic or English, so the
+    language picks the template; sources are grammar, websight, websight2, doclaynet (equal by default).
+    strengths: {"ocrsmith"|"augraphy"|"scan-simulator": 0..1} (0.5 = the tool's own settings).
+    templates "bank" or "llm" (an LLMTemplates, passed as llm, writes them).
+    pictures: an ImagePool (default img_pool/; False leaves picture boxes grey).
+    text: "wikipedia" (text_pool/) or "demo". extras: also write the clean render and the drawn boxes."""
 
     def __init__(self, out_dir, languages=None, effects=None, sources=None, templates="bank", llm=None,
-                 pictures=None, text=None, extras=True):
+                 pictures=None, text=None, extras=True, bank=None, strengths=None, check=True):
         self.out = Path(out_dir).resolve()
         self.out.mkdir(parents=True, exist_ok=True)
+        if bank == "old":
+            self.bank = None
+        else:
+            self.bank = Path(bank) if bank else (BANK2000 if (BANK2000 / "index.jsonl").exists() else None)
         self.languages, self.effects = languages or LANGUAGES, effects or EFFECTS
-        self.sources, self.templates, self.llm = sources or SOURCES, templates, llm
+        self.sources, self.templates, self.llm = sources, templates, llm
+        self.strengths = {**STRENGTHS, **(strengths or {})}
         self.pictures = ImagePool() if pictures is None else pictures
         self.text = text or ("wikipedia" if TextPool.exists("ar") and TextPool.exists("en") else "demo")
-        # extras: the clean render and the drawn word and slot boxes, for looking at a sample (the generator
-        # page); a training set (pipeline/dataset.py) leaves them out
-        self.extras = extras
+        self.extras, self.check = extras, check
         synthdoc_arabic.install()  # SynthDoc then also measures every word (the Arabic extension)
         self._synthdoc = None
 
-    # -- the five steps -------------------------------------------------------------------------------
+    # -- 1. template --------------------------------------------------------------------------------------
 
-    def template(self, rng, name):
-        """1. An empty template: (meta, template text, folder with its pictures, note)."""
+    def template(self, rng, name, lang):
+        """(meta, template text or None, folder with its files, note)."""
         note = ""
         if self.templates == "llm":
             if self.llm is not None and self.llm.available():
+                from src.bank2000 import adapt  # same form as the bank: language, <img> picture slots
                 try:
                     made = self.llm.template(rng, f"llm_{name}")
                 except Exception as e:  # e.g. still rate-limited after waiting: reuse an earlier LLM template
                     made, note = None, f"LLM call failed ({type(e).__name__}: {e})"
                     made = self.llm.saved(rng)
-                    if made:
+                    if made and (made := adapt(*made, lang)):
                         return (*made, self.out, note + "; an earlier LLM template reused")
-                if made:
+                if made and (made := adapt(*made, lang)):
                     return (*made, self.out, "")
                 note = (note or "LLM page had too little text") + "; bank template used"
             else:
                 note = f"{self.llm.problem if self.llm else 'no LLM'}; bank template used"
-        source = pick(rng, self.sources)
-        tid = rng.choice(bank_ids()[source])
-        meta = json.loads((TEMPLATES / tid / "template.json").read_text(encoding="utf-8"))
-        return meta, None, None, note
+        entries = bank_entries(self.bank)
+        if self.bank:
+            entries = [e for e in entries if e.get("lang", lang) == lang] or entries
+        present = sorted({e["source"] for e in entries})
+        weights = {s: w for s, w in (self.sources or {s: 1 for s in present}).items() if s in present}
+        source = pick(rng, weights or {s: 1 for s in present})
+        tid = rng.choice([e["id"] for e in entries if e["source"] == source])
+        folder = (self.bank / "templates" / tid) if self.bank else (TEMPLATES / tid)
+        meta = json.loads((folder / "template.json").read_text(encoding="utf-8"))
+        return meta, None, folder, note
+
+    # -- 2. fill --------------------------------------------------------------------------------------------
 
     def fill(self, meta, text, folder, rng, lang):
-        """2. SynthDoc's template HTML plus the values for its slots and style."""
+        """(page for SynthDoc, values for its slots, pictures and style, record of everything picked)."""
         if lang == "ar":
             s, css = style(rng, arabic_fonts(), transparent=False)
         else:
             s, css = style_latin(rng, transparent=False)
+        look, theme_css, theme_js = theme(rng, meta["source"])
         words = text_pool(lang) if self.text == "wikipedia" else None
         if words:
-            words.used.clear()
+            words.begin(rng)  # one article per page
         values = {slot["id"]: Markup(fill(slot, rng, s["digits"], lang, words)) for slot in meta["slots"]}
-        page, used = self.fill_pictures(synthdoc_html(meta, text, lang, folder), rng)
-        # Where the words came from: the Wikipedia articles used (CC BY-SA asks for attribution)
-        s = {**s, "pictures": used, "text": self.text, "text_sources": words.sources() if words else []}
+        used = []
+        for pic in meta.get("pictures", []):  # <img src="{{ pic_N }}"> slots: a photo of the hinted kind
+            photo = self.pictures.pick(rng, pic.get("hint")) if self.pictures else None
+            values[pic["id"]] = Markup(photo.as_uri() if photo else "")
+            if photo:
+                used.append(photo.name)
+        page, more = self.fill_pictures(synthdoc_html(meta, text, lang, folder), rng, theme_js)
+        s = {**s, "theme": look, "pictures": used + more, "text": self.text,
+             "text_sources": words.sources() if words else []}
         # The style travels with the page, so SynthDoc's word labels record it (the Arabic extension reads this)
         variant = {"template": meta["id"], "source": meta["source"], "lang": lang, **s}
         tag = Markup.escape(json.dumps(variant, ensure_ascii=False))
         page = page.replace("</head>", f'<meta name="synthdoc-ar-variant" content="{tag}">\n</head>', 1)
-        return page, {**values, "style": Markup(css)}, s
+        return page, {**values, "style": Markup(css + theme_css)}, s
 
-    def fill_pictures(self, page, rng):
-        """Each grey picture box gets a random photo from the pool, covering the box (its size is unchanged)."""
+    def fill_pictures(self, page, rng, theme_js=None):
+        """Grey picture boxes of the old bank get a photo as background; the page script is added."""
         used = []
-        if not self.pictures:
-            return page, used
-
-        def put(m):
-            photo = self.pictures.pick(rng)
-            used.append(photo.name)
-            # !important: WebSight templates force their boxes grey with !important rules
-            bg = f"background: url({photo.as_uri()}) center / cover no-repeat !important;"
-            attrs = m.group(2)
-            attrs = attrs.replace(' style="', f' style="{bg} ', 1) if ' style="' in attrs else f'{attrs} style="{bg}"'
-            return f'<{m.group(1)}{attrs} data-img="img_pool/{photo.name}">'
-        page = PICTURE_BOX.sub(put, page)
-        # Web pages also have grey picture areas the converter could not name as such (a ".logo" square, a
-        # hero image area): find them in the browser, before SynthDoc lays the page out, and fill them too
-        spare = [self.pictures.pick(rng).as_uri() for _ in range(12)]
-        script = PAGE_JS.replace("PHOTOS", json.dumps(spare))
+        if self.pictures:
+            def put(m):
+                photo = self.pictures.pick(rng, re.search(r'data-hint="([^"]*)"', m.group(2)) and
+                                        re.search(r'data-hint="([^"]*)"', m.group(2)).group(1))
+                used.append(photo.name)
+                bg = f"background: url({photo.as_uri()}) center / cover no-repeat !important;"
+                attrs = m.group(2)
+                attrs = attrs.replace(' style="', f' style="{bg} ', 1) if ' style="' in attrs else f'{attrs} style="{bg}"'
+                return f'<{m.group(1)}{attrs} data-img="img_pool/{photo.name}">'
+            page = PICTURE_BOX.sub(put, page)
+        config = {"photos": [self.pictures.pick(rng).as_uri() for _ in range(12)] if self.pictures else [],
+                  "hue": 0, "saturate": 1.0, **(theme_js or {})}
+        script = PAGE_JS.replace("SYNTH_CONFIG", json.dumps(config))
         return page.replace("</head>", f"<script>{script}</script>\n</head>", 1), used
 
+    # -- 3. render --------------------------------------------------------------------------------------------
+
     def render(self, page, values, name):
-        """3. SynthDoc renders page 1 and labels it: (image, word/line labels, slot boxes)."""
+        """SynthDoc renders page 1 and measures it: (image, words and lines, slot boxes, pages, qa)."""
         if self._synthdoc is None:
             self._synthdoc = NERDataGenerator(output_dir=str(self.out / "_synthdoc"), create_overlays=False,
                                               output_formats=["json"])
@@ -304,124 +445,130 @@ class DocPipeline:
         for word, measured in zip(ocr["words"], raw["page"]["words"]):  # same order: lines are runs of words
             word["cut_x"], word["cut_y"] = measured.get("cut_x", False), measured.get("cut_y", 0)
             word["slot"] = measured.get("slot")
+            top, bottom = measured.get("glyph_y") or (word["y"], word["y"] + word["height"])
+            word["glyph_box"] = [word["x"], top, word["width"], max(1.0, bottom - top)]
         slots = json.loads(Path(first["label_path"]).read_text(encoding="utf-8"))["annotations"]
+        qa = raw["page"].get("qa") or {}
         image = Image.open(first["image_path"]).convert("RGB")
-        # SynthDoc's own copies are no longer needed (they would double the size of a large set)
-        for page in result.get("pages", [result]):
+        for page_result in result.get("pages", [result]):  # SynthDoc's own copies are no longer needed
             for key in ("image_path", "label_path"):
-                Path(page[key]).unlink(missing_ok=True)
+                Path(page_result[key]).unlink(missing_ok=True)
         (synthdoc_arabic._raw_dir / f"{raw_name}.json").unlink(missing_ok=True)
-        return image, ocr, slots, result.get("total_pages", 1)
+        scale_measurements(ocr, slots, qa, image.width / max(1, ocr["width"]))
+        return image, ocr, slots, result.get("total_pages", 1), qa
 
-    def degrade(self, image, words, rng, effect):
-        """4. One effect library, retried with new seeds while the text is too faint.
+    # -- 4. effects -------------------------------------------------------------------------------------------
 
-        Returns (image, word boxes, attacks, contrast, seed); word boxes are [x, y, w, h] or None if lost.
-        effect "clean" keeps SynthDoc's page exactly as rendered: no paper, blur, noise or warp."""
+    def degrade(self, clean, words, rng, effect):
+        """The effect at the configured strength, checked word by word: up to EFFECT_TRIES seeds, then 60% and
+        30% of the strength; a page that never reads well stays clean.
+        Returns (image, boxes, attacks, strength used, legibility check)."""
+        exact = [[round(w["x"]), round(w["y"]), round(w["width"]), round(w["height"])] for w in words]
         if effect == "clean":
-            boxes = [[round(w["x"]), round(w["y"]), round(w["width"]), round(w["height"])] for w in words]
-            return image, boxes, ["clean"], contrast(np.asarray(image.convert("L")), boxes), None
-        best = None
-        for _ in range(TRIES):
-            seed = rng.randrange(2**31)
-            if effect == "ocrsmith":
-                out, boxes, attacks = attack_ocrsmith.degrade(image, words, seed)
-            else:
-                bgr = cv2.cvtColor(np.asarray(image), cv2.COLOR_RGB2BGR)
-                if effect == "augraphy":  # ink and paper only: nothing moves
-                    out, used = attack.run_augraphy(bgr, seed)
-                    out = cv2.cvtColor(out, cv2.COLOR_GRAY2BGR) if out.ndim == 2 else out
-                    boxes = [[round(w["x"]), round(w["y"]), round(w["width"]), round(w["height"])] for w in words]
-                    attacks = ["augraphy"] if used is not None else []
-                else:  # scan-simulator, with or without Augraphy first: boxes ride along in a word-id mask
-                    out, mask, attacks = attack.degrade(bgr, attack.word_mask(bgr.shape[:2], words), seed,
-                                                        use_augraphy=effect.startswith("augraphy"))
-                    boxes = attack.mask_boxes(mask, len(words))
-                out = Image.fromarray(cv2.cvtColor(out, cv2.COLOR_BGR2RGB))
-            c = contrast(np.asarray(out.convert("L")), [b for b in boxes if b])
-            if best is None or c > best[3]:
-                best = (out, boxes, attacks, c, seed)
-            if c >= MIN_CONTRAST or not any(boxes):
-                break
-        return best
+            return clean, exact, ["clean"], 0.0, {"lost": 0, "faint": 0.0, "sharpness": 1.0}
+        tool = "augraphy" if effect == "augraphy" else ("ocrsmith" if effect == "ocrsmith" else "scan-simulator")
+        base = self.strengths[tool]
+        for level in (1.0, 0.6, 0.3):
+            for _ in range(EFFECT_TRIES):
+                strength = round(base * level, 3)
+                out, boxes, attacks = D.degrade(clean, words, rng.randrange(2**31), effect, strength)
+                check = D.legibility(clean, out, words, boxes)
+                if D.readable(check):
+                    return out, boxes, attacks, strength, check
+        return clean, exact, ["clean (effect left text unreadable)"], 0.0, {"lost": 0, "faint": 0.0, "sharpness": 1.0}
+
+    # -- 5. outputs -------------------------------------------------------------------------------------------
 
     def markdown(self, filled, label, name):
-        """5. Markdown of the filled page, with every box (after effects) in a header at the very top."""
+        """Markdown of the filled page, with every slot and line box (after effects) at the very top."""
         def row(item):
             return json.dumps(item, ensure_ascii=False)
-        side = -1 if label["lang"] == "ar" else 1  # reading order: top to bottom, then right to left for Arabic
-        regions = [{"type": ROLE.get(s["property"], "text"), "box": s["box"], "text": s["text"]}
-                   for s in sorted(label["slots"], key=lambda s: (s["box"][1] // 12, side * s["box"][0]))]
+        regions = [{"type": r.get("role") or ROLE.get(r.get("property"), "text"), "box": r["box"], "text": r["text"]}
+                   for r in label["slots"]]
         lines = [{"box": ln["box"], "text": ln["text"]} for ln in label["lines"]]
         head = ["---", f"image: {name}.jpg", f"width: {label['width']}", f"height: {label['height']}",
                 f"language: {label['lang']}", f"template: {label['template']}",
                 f"effects: {row(label['attacks'])}",
                 f"text: {'Wikipedia, CC BY-SA 4.0 (articles listed in ' + name + '.json)' if label['style']['text'] == 'wikipedia' else 'demo sentences'}",
                 "boxes: [x, y, width, height] in image pixels, after the effects",
-                f"regions:  # {len(regions)} text blocks (template slots)"]
+                f"regions:  # {len(regions)} text blocks (template slots), in reading order"]
         head += [f"  - {row(r)}" for r in regions]
         head += [f"lines:  # {len(lines)} lines; word boxes are in {name}.json"]
         head += [f"  - {row(ln)}" for ln in lines]
         return "\n".join(head + ["---", "", to_markdown(filled)])
 
-    # -- one sample, many samples ---------------------------------------------------------------------
+    # -- one sample, many samples ---------------------------------------------------------------------------
 
     def sample(self, seed, name=None, language=None, effect=None):
-        """Run the five steps once; returns a summary dict (files are written to out_dir)."""
+        """Run the steps once; returns a summary dict (files are written to out_dir)."""
         name = name or f"s{seed}"
         rng = random.Random(seed)
         lang, effect = language or pick(rng, self.languages), effect or pick(rng, self.effects)
-        t = {}
-
-        t.update(template=0, fill=0, render=0)
-        for _ in range(3):  # a template that ends up with no readable text (all pictures) is swapped for another
-            mark = time.perf_counter()
-            meta, text, folder, note = self.template(rng, name)
-            t["template"] += time.perf_counter() - mark
+        t = {"template": 0, "fill": 0, "render": 0}
+        rejected, attempts = {}, 0
+        for attempts in range(1, ATTEMPTS + 1):  # until the rendered page passes every check
+            if attempts % 2 == 1:  # a new template every second attempt
+                mark = time.perf_counter()
+                meta, text, folder, note = self.template(rng, name, lang)
+                lang = meta.get("lang", lang)
+                t["template"] += time.perf_counter() - mark
             mark = time.perf_counter()
             page, values, s = self.fill(meta, text, folder, rng, lang)
-            filled = Template(page).render(**values)
             t["fill"] += time.perf_counter() - mark
             mark = time.perf_counter()
-            clean, ocr, slots, pages = self.render(page, values, name)
+            clean, ocr, slots, pages, qa = self.render(page, values, name)
             t["render"] += time.perf_counter() - mark
-            words, cut = split_words(ocr)
-            if words:
+            issues = render_issues(ocr, qa) if self.check else ({} if ocr["words"] else {"empty": 1})
+            if not issues:
                 break
+            for k, v in issues.items():
+                rejected[k] = rejected.get(k, 0) + v
+        else:
+            raise RuntimeError(f"no page without hidden, cut or overlapping text after {ATTEMPTS} attempts: {rejected}")
+        words, cut = split_words(ocr)  # (the checks passed, so nothing is dropped here)
+        for w in words:  # boxes hug the letters, not the line's leading: big text doesn't reach into its neighbours
+            top, h = w["glyph_box"][1], w["glyph_box"][3]
+            pad = max(2.0, 0.12 * h)
+            y0, y1 = max(w["y"], top - pad), min(w["y"] + w["height"], top + h + pad)
+            if y1 - y0 >= 0.5 * h:
+                w["y"], w["height"] = y0, y1 - y0
         mark = time.perf_counter()
-        image, boxes, attacks, c, used_seed = self.degrade(clean, words, rng, effect)
-        label = build_label(name, image.size, used_seed, attacks, c, ocr, slots, words, boxes, cut)
-        label.update({"template": meta["id"], "source": meta["source"], "lang": lang, "effect": effect,
-                      "style": s, "pages_rendered": pages})
+        image, boxes, attacks, strength, check = self.degrade(clean, words, rng, effect)
+        label = build_label(name, image.size, None, attacks, contrast(np.asarray(image.convert("L")), [b for b in boxes if b]),
+                            ocr, slots, words, boxes, cut)
+        regions = GT.regions(meta["slots"], words, boxes, lang, meta.get("positioning", "flow"))
+        label.update({"slots": regions, "template": meta["id"], "source": meta["source"], "lang": lang,
+                      "effect": effect, "strength": strength, "legibility": check, "style": s,
+                      "pages_rendered": pages, "attempts": attempts, "rejected": rejected,
+                      "render_scale": RENDER_SCALE})
         t["effects"] = time.perf_counter() - mark
         mark = time.perf_counter()
-        # The HTML and Markdown say what is on the page: each slot holds exactly its labelled words (words cut
-        # to fit a box, hidden or dropped are not there)
-        shown = {sl["id"]: [] for sl in meta["slots"]}
-        for w, box in zip(words, boxes):
-            if box and w.get("slot") in shown:
-                shown[w["slot"]].append(w["text"])
-        filled = Template(page).render(**{k: Markup.escape(" ".join(v)) for k, v in shown.items()},
+        # The HTML and Markdown say exactly what is on the page: each slot holds its labelled words
+        shown = {sl["id"]: "" for sl in meta["slots"]}
+        shown.update({r["id"]: r["text"] for r in regions})
+        filled = Template(page).render(**{k: Markup.escape(v) for k, v in shown.items()},
+                                       **{p["id"]: values[p["id"]] for p in meta.get("pictures", [])},
                                        style=values["style"])
         md = self.markdown(filled, label, name)
         t["markdown"] = time.perf_counter() - mark
 
         out = self.out
-        image.save(out / f"{name}.jpg", quality=88)
+        image.save(out / f"{name}.jpg", quality=90)
+        (out / f"{name}.gt.txt").write_text(GT.to_text(regions), encoding="utf-8")
         (out / f"{name}.html").write_text(filled, encoding="utf-8")
         (out / f"{name}.md").write_text(md, encoding="utf-8")
         (out / f"{name}.json").write_text(json.dumps(label, ensure_ascii=False), encoding="utf-8")
         if self.extras:
             clean.save(out / f"{name}_clean.jpg", quality=88)
             draw(image, [w["box"] for w in label["words"]], (40, 170, 60), out / f"{name}_words.jpg")
-            draw(image, [sl["box"] for sl in label["slots"]], (210, 50, 50), out / f"{name}_slots.jpg")
+            draw(image, [r["box"] for r in regions], (210, 50, 50), out / f"{name}_slots.jpg")
         times = {k: round(t[k], 2) for k in ("template", "fill", "render", "effects", "markdown")}
         return {"name": name, "seed": seed, "template": meta["id"], "source": meta["source"], "lang": lang,
-                "effect": effect, "attacks": attacks, "font": s["font"], "size_pt": s["size_pt"],
-                "contrast": label["contrast"], "low_contrast": label["low_contrast"], "words": len(label["words"]),
-                "lost_words": label["lost_words"], "pages_rendered": pages, "note": note,
-                "pictures": len(s["pictures"]), "text": s["text"], "text_sources": len(s["text_sources"]),
-                "seconds": {**times, "total": round(sum(times.values()), 2)}}
+                "effect": effect, "strength": strength, "attacks": attacks, "font": s["font"], "size_pt": s["size_pt"],
+                "theme": s["theme"], "contrast": label["contrast"], "legibility": check, "words": len(label["words"]),
+                "regions": len(regions), "lost_words": label["lost_words"], "pages_rendered": pages, "note": note,
+                "attempts": attempts, "rejected": rejected, "pictures": len(s["pictures"]), "text": s["text"],
+                "text_sources": len(s["text_sources"]), "seconds": {**times, "total": round(sum(times.values()), 2)}}
 
     def run(self, n=16, seed=None, on_sample=None):
         """n samples one after another; on_sample(summary) is called as each one is done."""
@@ -432,6 +579,31 @@ class DocPipeline:
             if on_sample:
                 on_sample(done[-1])
         return done
+
+
+def scale_measurements(ocr, slots, qa, k):
+    """Measurements are in CSS pixels; the image has k image pixels per CSS pixel (RENDER_SCALE)."""
+    if abs(k - 1) < 0.01:
+        return
+    for item in ocr["words"] + ocr["lines"]:
+        for key in ("x", "y", "width", "height"):
+            item[key] *= k
+        for key in ("ink_box", "glyph_box"):
+            if key in item:
+                item[key] = [v * k for v in item[key]]
+        if "font_size_px" in item:
+            item["font_size_px"] *= k
+    ocr["width"], ocr["height"] = round(ocr["width"] * k), round(ocr["height"] * k)
+    for a in slots:
+        for key in ("x", "y", "width", "height"):
+            a[key] *= k
+    for p in qa.get("pictures", []):
+        for key in ("x", "y", "width", "height"):
+            p[key] *= k
+    for g in ocr.get("untracked_generated_text", []):
+        for key in ("x", "y", "width", "height"):
+            if key in g:
+                g[key] *= k
 
 
 def warm_up():

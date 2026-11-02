@@ -51,7 +51,7 @@ multidict==7.2.1
 multiprocess==0.70.19
 narwhals==2.28.0
 networkx==3.7
-numba==0.68.1
+numba==0.68.0  # not 0.68.1: Windows Smart App Control blocks its _devicearray.pyd
 numpy==2.5.4
 onnxruntime==1.31.1
 opencv-python==5.0.0.93

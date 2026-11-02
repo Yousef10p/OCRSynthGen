@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+}
+.banner {
+  width: 100%;
+  height: 200px;
+  background-color: blue;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+.cta {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+button {
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.left-column, .right-column {
+  float: left;
+  width: 50%;
+  height: auto;
+}
+.left-column {
+  background-color: blue;
+  padding: 20px;
+}
+.right-column {
+  background-color: white;
+  padding: 40px;
+}
+.blog-image, .testimonial {
+  width: 100%;
+  height: 200px;
+  background-color: green;
+  margin: 20px 0;
+}
+.testimonial {
+  background-color: white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="banner">{{ slot_0 }}</div>
+<div class="cta">
+<button>{{ slot_1 }}</button>
+</div>
+</header>
+<main>
+<div class="left-column">
+<h2>{{ slot_2 }}</h2>
+<ul>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+</div>
+<div class="right-column">
+<h2>{{ slot_7 }}</h2>
+<h4>{{ slot_8 }}</h4>
+<p>{{ slot_9 }}</p>
+<div class="blog-image pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<h4>{{ slot_10 }}</h4>
+<p>{{ slot_11 }}</p>
+<div class="blog-image pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<h2>{{ slot_12 }}</h2>
+<div class="testimonial">
+<p>{{ slot_13 }}</p>
+</div>
+<div class="testimonial">
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</main>
+</body>
+</html>

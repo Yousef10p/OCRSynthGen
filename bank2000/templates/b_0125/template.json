@@ -1,0 +1,672 @@
+{
+ "id": "b_0125",
+ "source": "grammar",
+ "source_ref": "seed=7000086",
+ "license": "own-generated",
+ "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+ "positioning": "flow",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "header",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "caption",
+   "words": [
+    5,
+    15
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "caption",
+   "words": [
+    5,
+    15
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_13",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_14",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_15",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_16",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_17",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_18",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_19",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_20",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_21",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_22",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_23",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_24",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_25",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_26",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_27",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_28",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_29",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_30",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_31",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_32",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_33",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_34",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_35",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_36",
+   "role": "sidebar",
+   "words": [
+    10,
+    50
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_37",
+   "role": "sidebar",
+   "words": [
+    10,
+    50
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_38",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_39",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_40",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_41",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_42",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_43",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_44",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_45",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_46",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_47",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_48",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_49",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_50",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_51",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_52",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_53",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_54",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_55",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_56",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_57",
+   "role": "paragraph",
+   "words": [
+    20,
+    60
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_58",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_59",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_60",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_61",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_62",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_63",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_64",
+   "role": "paragraph",
+   "words": [
+    8,
+    25
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_65",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_66",
+   "role": "paragraph",
+   "words": [
+    8,
+    25
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_67",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_68",
+   "role": "paragraph",
+   "words": [
+    8,
+    25
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_69",
+   "role": "paragraph",
+   "words": [
+    8,
+    25
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 3,
+  "tables": 0,
+  "lists": 3,
+  "list_depth": 2,
+  "forms": 3,
+  "asides": 1,
+  "has_header": true,
+  "has_footer": false,
+  "slot_count": 70
+ },
+ "structure_hash": "ff535dc00444fed13491005fbf31dbbcd0a7d8125ea35accce5c5bd27bdf4094",
+ "lang": "ar",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": ""
+  },
+  {
+   "id": "pic_1",
+   "hint": ""
+  },
+  {
+   "id": "pic_2",
+   "hint": "sport"
+  }
+ ],
+ "source_template": "gr_00086"
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    
+    display: block;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #ff6347;
+}
+
+#services, #links {
+    
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+h2 {
+    
+    font-weight: bold;
+}
+
+a {
+    
+    text-decoration: none;
+    color: black;
+}
+
+.service {
+    
+    height: 200px;
+    width: 100px;
+    border: 1px solid black;
+    margin: 20px;
+}
+
+.link {
+    
+    text-align: center;
+    margin: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+</header>
+<main>
+
+<div id="services">
+
+<div class="service">
+<h2>{{ slot_0 }}</h2>
+<p>{{ slot_1 }}</p>
+</div>
+<div class="service">
+<h2>{{ slot_2 }}</h2>
+<p>{{ slot_3 }}</p>
+</div>
+<div class="service">
+<h2>{{ slot_4 }}</h2>
+<p>{{ slot_5 }}</p>
+</div>
+<div class="service">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+</div>
+<div class="service">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+</div>
+</div>
+</main>
+<footer>
+
+<div id="links">
+<div class="link">
+<a>{{ slot_10 }}</a>
+</div>
+<div class="link">
+<a>{{ slot_11 }}</a>
+</div>
+<div class="link">
+<a>{{ slot_12 }}</a>
+</div>
+<div class="link">
+<a>{{ slot_13 }}</a>
+</div>
+<div class="link">
+<a>{{ slot_14 }}</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

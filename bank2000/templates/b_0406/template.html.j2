@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>@page { size: Legal portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 12pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 355.6mm; --page-margin: 22mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+@counter-style arabic-letters { system: alphabetic; symbols: "\0623" "\0628" "\062C" "\062F" "\0647" "\0648" "\0632" "\062D" "\0637" "\064A"; suffix: ") "; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style>
+<style>{{ style }}</style>
+</head>
+<body><div class="page">
+<h1 style="font-size: calc(var(--base-size) * 1.8); text-align: center; margin-block: 0.3em 0.5em">{{ slot_0 }}</h1>
+<p style="font-size: 1.2em; text-align: center; margin-block: 0 1em">{{ slot_1 }}</p>
+<main style="display: grid; column-gap: 7mm; grid-template-columns: 2.4fr 1fr"><div>
+<figure style="margin-block: 0.8em; margin-inline: 0; break-inside: avoid"><div  style="block-size: 45mm; margin-inline: auto; inline-size: 75%" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<figcaption style="font-size: 0.85em; text-align: center; margin-block-start: 0.3em">{{ slot_2 }}</figcaption></figure><h2 style="font-size: calc(var(--base-size) * 1.5); text-align: center; margin-block: 1.4em 0.4em">{{ slot_3 }}</h2>
+<figure style="margin-block: 0.8em; margin-inline: 0; break-inside: avoid"><div  style="block-size: 35mm; margin-inline: auto; inline-size: 75%" class="pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<figcaption style="font-size: 0.85em; text-align: center; margin-block-start: 0.3em">{{ slot_4 }}</figcaption></figure><dl style="margin-block: 0.6em">
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_5 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_6 }}</dd>
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_7 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_8 }}</dd>
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_9 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_10 }}</dd>
+</dl>
+<div style="margin-block: 0.8em; border-inline-start: 2px solid #666; padding-inline-start: 0.9em">
+<div style="margin-block: 0.5em">
+<div style="font-weight: bold; font-size: 0.9em">{{ slot_11 }}</div>
+<div>{{ slot_12 }}</div>
+</div>
+<div style="margin-block: 0.5em">
+<div style="font-weight: bold; font-size: 0.9em">{{ slot_13 }}</div>
+<div>{{ slot_14 }}</div>
+</div>
+<div style="margin-block: 0.5em">
+<div style="font-weight: bold; font-size: 0.9em">{{ slot_15 }}</div>
+<div>{{ slot_16 }}</div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 2fr; gap: 0.3em 1em; margin-block: 0.6em; break-inside: avoid">
+<div style="font-weight: bold">{{ slot_17 }}</div>
+<div>{{ slot_18 }}</div>
+<div style="font-weight: bold">{{ slot_19 }}</div>
+<div>{{ slot_20 }}</div>
+<div style="font-weight: bold">{{ slot_21 }}</div>
+<div>{{ slot_22 }}</div>
+<div style="font-weight: bold">{{ slot_23 }}</div>
+<div>{{ slot_24 }}</div>
+</div>
+<h3 style="font-size: calc(var(--base-size) * 1.15); text-align: center; margin-block: 0.6em 0.4em">{{ slot_25 }}</h3>
+</div>
+<aside style="background: transparent; padding: 0.6em; border-inline-start: none"><h3>{{ slot_26 }}</h3>
+<p style="font-size: 0.9em; margin-block: 0 0.6em">{{ slot_27 }}</p>
+<p style="font-size: 0.9em; margin-block: 0 0.6em">{{ slot_28 }}</p>
+<p style="font-size: 0.9em; margin-block: 0 0.6em">{{ slot_29 }}</p>
+<p style="font-size: 0.9em; margin-block: 0 0.6em">{{ slot_30 }}</p></aside></main>
+</div></body>
+</html>

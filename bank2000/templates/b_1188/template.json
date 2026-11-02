@@ -1,0 +1,163 @@
+{
+ "id": "b_1188",
+ "source": "websight2",
+ "source_ref": "v0.2:s578_r00201",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "ar",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "header",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "header",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "paragraph",
+   "words": [
+    5,
+    12
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "paragraph",
+   "words": [
+    6,
+    13
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "paragraph",
+   "words": [
+    2,
+    7
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "footer",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 0,
+  "list_depth": 0,
+  "forms": 1,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 13
+ },
+ "structure_hash": "d573cece6cee6fc18c452d87876b7a161f80a88aeaf9f855f1afe0cc2b524a37",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "logo logo"
+  },
+  {
+   "id": "pic_1",
+   "hint": "facebook facebook"
+  },
+  {
+   "id": "pic_2",
+   "hint": "twitter twitter"
+  },
+  {
+   "id": "pic_3",
+   "hint": "instagram instagram"
+  }
+ ],
+ "source_template": "w2_s578_r00201"
+}

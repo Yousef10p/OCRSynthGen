@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body { padding: 10px; }
+.jumbotron { margin-bottom: 20px; }
+.social-media { margin-top: 20px; }
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand">{{ slot_0 }}</a>
+<div class="collapse navbar-collapse">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item active">
+<a class="nav-link">{{ slot_1 }}</a>
+</li>
+<li class="nav-item">
+<a class="nav-link">{{ slot_2 }}</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="jumbotron">
+<h1 class="display-4">{{ slot_3 }}</h1>
+<p class="lead">{{ slot_4 }}</p>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+<h2>{{ slot_5 }}</h2>
+<ul class="list-group">
+<li class="list-group-item">{{ slot_6 }}</li>
+<li class="list-group-item">{{ slot_7 }}</li>
+</ul>
+</div>
+<div class="col-md-4">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<a>{{ slot_10 }}</a> {{ slot_11 }} <a>{{ slot_12 }}</a> {{ slot_13 }} <a>{{ slot_14 }}</a>
+</div>
+</div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+{
+ "id": "b_1380",
+ "source": "websight2",
+ "source_ref": "v0.2:s590_r00373",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "ar",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "paragraph",
+   "words": [
+    15,
+    30
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "paragraph",
+   "words": [
+    13,
+    26
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_13",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_14",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 1,
+  "asides": 1,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 15
+ },
+ "structure_hash": "3d588c1df734c7aaf0a1cd850c7255561b04a2fa65a133a7e981afd8e066ff2e",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "bakery bakery banner full"
+  }
+ ],
+ "source_template": "w2_s590_r00373"
+}

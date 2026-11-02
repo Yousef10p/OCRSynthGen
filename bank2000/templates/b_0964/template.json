@@ -1,0 +1,151 @@
+{
+ "id": "b_0964",
+ "source": "websight2",
+ "source_ref": "v0.2:s258_r00331",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "ar",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "heading",
+   "words": [
+    4,
+    9
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "paragraph",
+   "words": [
+    65,
+    122
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "footer",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "footer",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "footer",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 1,
+  "asides": 0,
+  "has_header": false,
+  "has_footer": true,
+  "slot_count": 13
+ },
+ "structure_hash": "b90ca0c2d00ee721d21cdafae900c8a4d059f91e6129299447e562cf0272e7eb",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "food food none full object cover auto rounded none rounded"
+  }
+ ],
+ "source_template": "w2_s258_r00331"
+}

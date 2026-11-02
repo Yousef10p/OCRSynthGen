@@ -1,0 +1,402 @@
+{
+ "id": "b_0398",
+ "source": "grammar",
+ "source_ref": "seed=7000322",
+ "license": "own-generated",
+ "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+ "positioning": "flow",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "header",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "title",
+   "words": [
+    3,
+    10
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "subtitle",
+   "words": [
+    4,
+    12
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "caption",
+   "words": [
+    5,
+    15
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    20,
+    60
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "caption",
+   "words": [
+    5,
+    15
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "cell",
+   "words": [
+    1,
+    1
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "cell",
+   "words": [
+    1,
+    1
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "cell",
+   "words": [
+    1,
+    1
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "cell",
+   "words": [
+    1,
+    1
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_13",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_14",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_15",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_16",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_17",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_18",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_19",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_20",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_21",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_22",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_23",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_24",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_25",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_26",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_27",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_28",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_29",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_30",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_31",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_32",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_33",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_34",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_35",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_36",
+   "role": "paragraph",
+   "words": [
+    25,
+    60
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_37",
+   "role": "paragraph",
+   "words": [
+    8,
+    25
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_38",
+   "role": "footer",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_39",
+   "role": "footer",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 2,
+  "list_depth": 1,
+  "forms": 1,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 40
+ },
+ "structure_hash": "bb5487f573cdc8dfcf98528e152183146f8682ffbd1b7a8a70e6dbe25b5bf57a",
+ "lang": "ar",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": ""
+  },
+  {
+   "id": "pic_1",
+   "hint": "sport"
+  },
+  {
+   "id": "pic_2",
+   "hint": ""
+  }
+ ],
+ "source_template": "gr_00322"
+}

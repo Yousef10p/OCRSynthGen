@@ -1,0 +1,389 @@
+{
+ "id": "b_0642",
+ "source": "websight",
+ "source_ref": "v0.1:shard66:row6351",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight (HuggingFaceM4)",
+ "positioning": "flow",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    4,
+    11
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "header",
+   "words": [
+    7,
+    14
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "header",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    9,
+    18
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "paragraph",
+   "words": [
+    6,
+    13
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "paragraph",
+   "words": [
+    6,
+    13
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "paragraph",
+   "words": [
+    2,
+    7
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_13",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_14",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_15",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_16",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_17",
+   "role": "paragraph",
+   "words": [
+    2,
+    7
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_18",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_19",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_20",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_21",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_22",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_23",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_24",
+   "role": "paragraph",
+   "words": [
+    2,
+    7
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_25",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_26",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_27",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_28",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_29",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_30",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_31",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_32",
+   "role": "paragraph",
+   "words": [
+    11,
+    24
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_33",
+   "role": "paragraph",
+   "words": [
+    10,
+    21
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_34",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_35",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_36",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_37",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_38",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 3,
+  "list_depth": 1,
+  "forms": 1,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": false,
+  "slot_count": 39
+ },
+ "structure_hash": "9339b7d2c2d0aaa2cd051c61eb3e3c7d590e1c685c7fe8fcc06c5f166c70630a",
+ "lang": "en",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": ""
+  },
+  {
+   "id": "pic_1",
+   "hint": ""
+  }
+ ],
+ "source_template": "w_66_06351"
+}

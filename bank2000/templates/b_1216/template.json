@@ -1,0 +1,167 @@
+{
+ "id": "b_1216",
+ "source": "websight2",
+ "source_ref": "v0.2:s492_r00388",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "ar",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "heading",
+   "words": [
+    4,
+    11
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "paragraph",
+   "words": [
+    16,
+    33
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 2,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 13
+ },
+ "structure_hash": "1ded4adbd07d92cac2e2b07cd95873f228b56e0096cc082e13364cdba026fd62",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "logo logo"
+  },
+  {
+   "id": "pic_1",
+   "hint": "food food full"
+  },
+  {
+   "id": "pic_2",
+   "hint": "facebook facebook"
+  },
+  {
+   "id": "pic_3",
+   "hint": "twitter twitter"
+  },
+  {
+   "id": "pic_4",
+   "hint": "instagram instagram"
+  }
+ ],
+ "source_template": "w2_s492_r00388"
+}

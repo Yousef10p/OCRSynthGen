@@ -1,0 +1,173 @@
+{
+ "id": "b_0715",
+ "source": "websight",
+ "source_ref": "v0.1:shard47:row8243",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight (HuggingFaceM4)",
+ "positioning": "flow",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "header",
+   "words": [
+    7,
+    16
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "header",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "header",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "header",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "paragraph",
+   "words": [
+    8,
+    17
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "paragraph",
+   "words": [
+    5,
+    12
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "paragraph",
+   "words": [
+    7,
+    14
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "footer",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_13",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_14",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_15",
+   "role": "footer",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 0,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 16
+ },
+ "structure_hash": "16b6b7d63d04f2b87898194cc05325f0ea63bd96e3189110b516f545f6fcdef1",
+ "lang": "ar",
+ "pictures": [],
+ "source_template": "w_47_08243"
+}

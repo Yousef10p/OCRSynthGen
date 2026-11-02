@@ -1,0 +1,142 @@
+{
+ "id": "b_1341",
+ "source": "websight2",
+ "source_ref": "v0.2:s184_r00264",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "ar",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "header",
+   "words": [
+    11,
+    24
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "paragraph",
+   "words": [
+    13,
+    26
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "paragraph",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "paragraph",
+   "words": [
+    10,
+    21
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "paragraph",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 0,
+  "asides": 1,
+  "has_header": true,
+  "has_footer": false,
+  "slot_count": 12
+ },
+ "structure_hash": "3e25dfaeb4f5893d31067f4d31ac9f011309874f6b73408d71b0e825fd179732",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "logo logo auto"
+  }
+ ],
+ "source_template": "w2_s184_r00264"
+}

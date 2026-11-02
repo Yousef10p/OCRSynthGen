@@ -1,0 +1,160 @@
+{
+ "id": "b_1362",
+ "source": "websight2",
+ "source_ref": "v0.2:s529_r00476",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "en",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "header",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "footer",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_13",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 0,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 14
+ },
+ "structure_hash": "dc2d2ed41b75d78d7f240d94305f8aaf031cb6dd931970b9931745f04afc8e85",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "art artwork full object cover"
+  }
+ ],
+ "source_template": "w2_s529_r00476"
+}

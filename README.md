@@ -8,44 +8,116 @@ A template is a page layout with no text. Every place where text should go is a 
 stage fills the placeholders with Arabic text and renders the pages to images. This project builds the
 templates; a [demo](#demo-from-empty-template-to-varied-scan-like-pages) shows that later stage.
 
-**Result:** 113,077 unique templates from 3 sources (77,159 DocLayNet, 35,618 WebSight, 300 Grammar), all
-checked and valid, and a pipeline that fills, renders, labels and degrades them.
+**Result:** a bank of **2,000 diverse, checked templates** (`bank2000/`, half Arabic, half English) that the
+generator uses by default, a pipeline that fills, styles, renders, labels and degrades them, and checks at
+every step that no text is hidden, cut, covered or mislabelled. (The full bank of 113,077 templates from the
+earlier builds is still in `templates/` and can be picked with `bank="old"`.)
+
+For a detailed, step-by-step explanation of how a page is made (template storage, text injection, the exact
+SynthDoc and OCRSmith arguments, the Wikipedia text format, the label formats), see
+[OCRREADME.md](OCRREADME.md); [section 0](OCRREADME.md#0-the-final-version-in-short) covers the final version.
+
+## The final pipeline in one picture
+
+```mermaid
+flowchart LR
+    B["bank2000/<br/>2,000 templates<br/>grammar · WebSight v0.1 ·<br/>WebSight v0.2 · DocLayNet"] --> F
+    L["Groq LLM<br/>(on demand)"] -.-> F
+    F["1. pick + fill<br/>Wikipedia text (ar/en),<br/>photos from img_pool/"] --> S
+    S["2. style<br/>fonts, sizes, theme colours,<br/>heading/table/box styles"] --> R
+    R["3. SynthDoc render (2x)<br/>slot boxes measured,<br/>page checked (QA)"] --> D
+    D["4. degrade<br/>clean · OCRSmith · Augraphy ·<br/>scan-simulator, strength 0–100,<br/>readability checked"] --> G
+    G["5. outputs<br/>image · .gt.txt · labels · md · html"]
+```
+
+1. **Templates** ([src/bank2000.py](src/bank2000.py)): 2,000 templates chosen for diversity (farthest-first on
+   layout features; no two share 75% of their features, no two have the same structure) from four sources:
+   500 from the grammar (random combinations of headings, paragraphs, lists, tables, forms, card grids,
+   key/value lists, stat boxes, timelines, picture rows, callouts, in single/columns/grid/sidebar/letter/report
+   layouts), 450 WebSight v0.1, 450 WebSight v0.2 (Tailwind pages, the CSS they use inlined) and 600 DocLayNet
+   layouts. Every one was rendered once and kept only if the page passed every check. If fewer than 2,000
+   passed, the bank is topped up with more candidates, then with Groq LLM templates. Picture places are real
+   `<img>` tags (`<img data-pic="pic_0" src="{{ pic_0 }}">`) with a hint of what they show.
+2. **Text** ([pipeline/text_pool.py](pipeline/text_pool.py)): Wikipedia (Arabic or English, as the template
+   says), one article per page, so a page reads as one document: its title in the title slot, its sentences
+   in paragraphs, short sentences in list items, words and numbers in cells and fields.
+3. **Pictures** ([pipeline/img_pool.py](pipeline/img_pool.py)): `img_pool/` holds 3,193 photos (Picsum and
+   Wikimedia Commons quality images: animals, landscapes, nature, architecture, people, food, sports,
+   transport, patterns); a picture slot gets one that matches its hint (a "team" slot gets people).
+4. **Style** ([demo/fill_style.py](demo/fill_style.py), [pipeline/themes.py](pipeline/themes.py)): font family,
+   size, weights, line height, alignment, margins, ink, digits, plus a theme: accent colour, heading style
+   (plain, accent, underline, side bar, band, rule above), table style (grid, striped, tinted header, rules,
+   boxed), box style and page tint. WebSight pages keep their own design with its colours turned around the
+   colour wheel. Hundreds of different-looking pages come from one template.
+5. **Render + checks** ([pipeline/doc_pipeline.py](pipeline/doc_pipeline.py), [pipeline/qa.py](pipeline/qa.py)):
+   SynthDoc renders at 2x. Before layout, text that doesn't fit its box is fitted (tighter lines, smaller
+   font down to 80%, then whole words dropped) and low-contrast text is darkened. After layout every word is checked: hidden, cut, outside the page, overlapping
+   another slot's text, covered by a picture, low contrast, CSS-generated text. A page with any of these is
+   made again (another style, then another template).
+6. **Degradation** ([pipeline/degrade.py](pipeline/degrade.py)): clean 15%, else OCRSmith, Augraphy or
+   scan-simulator (about 28% each), at a strength from 0 to 100 (50 = each tool's own settings), set per tool
+   on the generator page or on the command line. After the effect every word is checked again (still there
+   and inside the picture, not under a streak or blot,
+   not faded, sharp enough, standing out from the noise); if not, the effect is retried lighter.
+7. **Ground truth** ([pipeline/groundtruth.py](pipeline/groundtruth.py)): one line per slot (text block), in
+   reading order, text first and box last, in image pixels:
+
+   ```
+   <text>المملكة العربية السعودية <bbox>50, 20, 450, 65</bbox></text>
+   <text>KINGDOM OF SAUDI ARABIA <bbox>50, 20, 450, 65</bbox></text>
+   ```
+
+   The box hugs the letters (from the font's glyph measurements, not the line height), and moves with the
+   page through every effect.
 
 ## Quick start: make a training set
-
-For a detailed, step-by-step explanation of how a page is made (template storage, text injection,
-the exact SynthDoc and OCRSmith arguments, the Wikipedia text format, the label formats), see
-[OCRREADME.md](OCRREADME.md).
 
 ```bash
 cd D:\code\OCR\arabic-template-bank
 .venv-pipeline\Scripts\python -m pipeline.dataset --n 10000 --out datasets\ocr_v1 --workers 6
 ```
 
-Each sample: a page from a random template, filled with Wikipedia text (80% Arabic, 20% English) in a random
-font and size, pictures from `img_pool/`, rendered by SynthDoc, then left clean (15%) or degraded with
-OCRSmith, Augraphy or scan-simulator (about 28% each); every box moves with the page.
-
 | In `--out` | What |
 |---|---|
 | `images/<id>.jpg` | the page |
-| `labels/<id>.json` | words, lines and slots (blocks), each with its box `[x, y, w, h]` in image pixels and its text; how the page was made; the Wikipedia articles used |
+| `gt/<id>.gt.txt` | the ground truth: `<text>… <bbox>x1, y1, x2, y2</bbox></text>`, one line per text block |
+| `labels/<id>.json` | words, lines and slots (blocks), each with its box in image pixels and its text; how the page was made (template, style, theme, effect, strength, readability); the Wikipedia articles used |
 | `markdown/<id>.md` | the page as Markdown, with every block and line box in a header at the top |
 | `html/<id>.html` | the filled page |
 | `manifest.jsonl` | one line per sample: id, `split` (train/val, 5% val), files, language, template, effects… |
 | `dataset.json` | counts and the options, sources and licences of the set |
 
-Options: `--language ar|en`, `--effect clean|ocrsmith|augraphy|scan-simulator|augraphy+scan-simulator`,
-`--val 0.05`, `--seed 0` (the same seed makes the same set). An interrupted run continues where it stopped
-when run again. Speed: about 2–4 s per sample per worker; each worker needs about 1.5 GB of memory.
+Options: `--language ar|en`, `--source grammar|websight|websight2|doclaynet`,
+`--effect clean|ocrsmith|augraphy|scan-simulator|augraphy+scan-simulator`,
+`--strength-ocrsmith 0.5`, `--strength-augraphy 0.5`, `--strength-scan-simulator 0.5` (0 lightest, 1
+strongest), `--val 0.05`, `--seed 0` (the same seed makes the same set). An interrupted run continues where
+it stopped when run again. Speed: about 3–6 s per sample per worker; each worker needs about 1.5 GB of memory.
 
-To look at samples one by one instead: `.venv-pipeline\Scripts\python pipeline\server.py`, then open
-http://localhost:8765 (**Generate 16 samples**, with previews). Setup of `.venv-pipeline`, `text_pool/` and
-`img_pool/`: see [the sample generator](#the-sample-generator-the-whole-pipeline-in-one-class).
+To look at samples one by one: `.venv-pipeline\Scripts\python pipeline\server.py`, then open
+http://localhost:8765. Menus pick the language, template source (or **Template maker: LLM** for a new Groq
+template), effect and text; three sliders set the strength of OCRSmith, Augraphy and scan-simulator. Each card
+opens a preview with the final page, the ground truth, the slot and word boxes, the clean render, HTML,
+Markdown, labels and details (theme, strength, readability, rejected renders).
+
+To check finished samples independently (ground truth = labels = page text, boxes on the image, ink in every
+box, no overlapping text), and to draw the ground-truth boxes on every page with contact sheets:
+
+```bash
+.venv-pipeline\Scripts\python -m pipeline.qa --n 40                 :: make 40 samples, report what the checks caught
+.venv-pipeline\Scripts\python -m pipeline.audit pipeline_out\qa     :: audit them, draw the boxes
+```
+
+To build the 2,000-template bank again (about 30 minutes with 6 workers):
+
+```bash
+.venv-pipeline\Scripts\python -m src.bank2000 --workers 6
+.venv-pipeline\Scripts\python -m src.bank2000 --top-up --workers 6   :: only fill it up to 2,000
+```
 
 **Licences of a generated set:** the text is Wikipedia (CC BY-SA 4.0), so a set you share must keep
-CC BY-SA and the attribution (each label lists its articles); photos are Unsplash (Unsplash License);
-templates come from WebSight (CC BY 4.0), DocLayNet (CDLA-Permissive-1.0) and our own grammar.
+CC BY-SA and the attribution (each label lists its articles); photos are from Picsum (Unsplash License) and
+Wikimedia Commons (each photo's licence and author in `img_pool/sources.json`); templates come from WebSight
+(CC BY 4.0), DocLayNet (CDLA-Permissive-1.0) and our own grammar.
 
 ---
 
@@ -446,15 +518,15 @@ presets scan 244, photo 207, archive 70, fax 50; median contrast 122; 6 pages `l
 
 ```mermaid
 flowchart LR
-    T["1. Template<br/>bank (or a local LLM)"] --> F["2. Text + style<br/>80% Arabic, 20% English"]
+    T["1. Template<br/>bank2000 (or a Groq LLM)"] --> F["2. Text + style<br/>50% Arabic, 50% English"]
     F --> R["3. SynthDoc render<br/>word, line, slot boxes"]
     R --> E["4. Effects<br/>15% none (clean), then OCRSmith,<br/>Augraphy, scan-simulator ~28% each"]
     E --> M["5. Markdown<br/>boxes at the very top"]
 ```
 
-1. **Template:** a random bank template (Grammar, WebSight and DocLayNet equally often). If a page ends up
+1. **Template:** a random bank2000 template (grammar, WebSight v0.1, WebSight v0.2 and DocLayNet equally often). If a page ends up
    with no readable text (a template that is all pictures), another template is picked.
-2. **Text:** Arabic (80%) or English (20%), taken from Wikipedia (see below). English pages are switched to
+2. **Text:** Arabic or English (the template's language, 50/50), taken from Wikipedia (see below). English pages are switched to
    left-to-right and use installed Latin fonts (Georgia, Calibri, Cambria…); Arabic pages use OCRSmith's 13
    Arabic fonts.
 3. **Render:** SynthDoc renders the page and measures every word, line and slot (page 1 only).
@@ -493,16 +565,18 @@ Real words are longer than the demo ones, and English words longer still, so in 
 are cut at the cell edge. Those are left out of the labels: the pipeline extends SynthDoc's word measuring (in
 memory, nothing in the SynthDoc folder changes) to report a word cut on its left or right side.
 
-**Pictures:** every grey picture box in a template (418 boxes in 228 templates) gets a random photo from
-`img_pool/`, scaled to cover the box, so the layout and the text boxes don't change. The Markdown names the
-photo (`![figure](img_pool/picsum_481.jpg)`) and the labels list the photos used. `img_pool/` holds 500
-photos from [Lorem Picsum](https://picsum.photos): Unsplash photos, free to use under the Unsplash licence;
-each one's author and page are in `img_pool/sources.json`. They are photos rather than document figures,
-because a picture with text in it would put words on the page that the labels don't know about (a few street
-photos do show signs). To download again, or more:
+**Pictures:** every picture slot of a bank2000 template (`<img data-pic="pic_N" src="{{ pic_N }}">`) gets a
+photo from `img_pool/` that matches the slot's hint (people for "team", food for "menu"…), scaled to cover
+its frame, so the layout and the text boxes don't change. The Markdown names the photo and the labels list
+the photos used. `img_pool/` holds 3,193 photos: 993 from [Lorem Picsum](https://picsum.photos) (Unsplash
+licence) and 2,200 "quality images" from Wikimedia Commons in nine categories (animals, landscapes, nature,
+architecture, people, food, sports, transport, patterns); each one's author, licence and page are in
+`img_pool/sources.json`. They are photos rather than document figures, and titles that suggest text (signs,
+posters, maps, logos, packaging, shop fronts) are skipped, because a picture with text in it would put words
+on the page that the labels don't know about. To download again (about 500 MB):
 
 ```bash
-.venv-pipeline\Scripts\python -m pipeline.img_pool --n 500
+.venv-pipeline\Scripts\python -m pipeline.img_pool
 ```
 
 Each sample writes `<name>.jpg` (final), `<name>_clean.jpg`, `<name>.html`, `<name>.md`, `<name>.json`
@@ -725,7 +799,8 @@ pipeline/llm_templates.py     optional: templates written by an LLM (Groq or loc
 pipeline/img_pool.py          downloads img_pool/ and picks its photos
 pipeline/text_pool.py         builds text_pool/ (Wikipedia, ar + en) and cuts text to fit each slot
 text_pool/                    Wikipedia text for the slots (ar.json, en.json; built, not in git)
-img_pool/                     500 photos for the templates' picture boxes (+ sources.json)
+img_pool/                     3,193 photos for the templates' picture slots (+ sources.json)
+bank2000/                     the 2,000-template bank the generator uses (templates/, index.jsonl, report.json)
 pipeline_out/                 generated samples, one folder per run
 requirements-pipeline.txt     packages for .venv-pipeline (everything in one environment)
 templates/                    the bank (one folder per template)

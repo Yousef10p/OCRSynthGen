@@ -1,0 +1,214 @@
+{
+ "id": "b_0278",
+ "source": "grammar",
+ "source_ref": "seed=7001803",
+ "license": "own-generated",
+ "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+ "positioning": "flow",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "header",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "header",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "title",
+   "words": [
+    3,
+    10
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "paragraph",
+   "words": [
+    8,
+    25
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "paragraph",
+   "words": [
+    12,
+    40
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "caption",
+   "words": [
+    5,
+    15
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "paragraph",
+   "words": [
+    12,
+    40
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "sidebar",
+   "words": [
+    10,
+    50
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "sidebar",
+   "words": [
+    10,
+    50
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_13",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_14",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_15",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_16",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_17",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_18",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_19",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 2,
+  "forms": 0,
+  "asides": 3,
+  "has_header": true,
+  "has_footer": false,
+  "slot_count": 20
+ },
+ "structure_hash": "665fdddb17836a7a17bbddaa1f64219ffc655040b031e3ea60329c81932ada65",
+ "lang": "en",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": ""
+  }
+ ],
+ "source_template": "gr_01803"
+}

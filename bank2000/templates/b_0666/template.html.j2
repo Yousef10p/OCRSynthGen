@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+header, footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px;
+}
+.hero-image {
+    background-color: #ccc;
+    height: 200px;
+    margin-bottom: 20px;
+}
+h1, h2, h3 {
+    color: #333;
+}
+article {
+    margin-bottom: 20px;
+}
+
+
+#featured-articles, #product-reviews, #blog {
+    padding: 20px;
+}
+#blog #category-list {
+    margin-top: 20px;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="hero-image pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<h1>{{ slot_0 }}</h1>
+</header>
+<section id="featured-articles">
+<h2>{{ slot_1 }}</h2>
+<article>
+<h3>{{ slot_2 }}</h3>
+<p>{{ slot_3 }}</p>
+</article>
+</section>
+<section id="product-reviews">
+<h2>{{ slot_4 }}</h2>
+<article>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+</article>
+</section>
+<section id="blog">
+<h2>{{ slot_7 }}</h2>
+<article>
+<h3>{{ slot_8 }}</h3>
+<p>{{ slot_9 }}</p>
+</article>
+<div id="category-list">
+<h3>{{ slot_10 }}</h3>
+<ul>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+</ul>
+</div>
+</section>
+<footer>
+<p>{{ slot_13 }}</p>
+<div class="contact-info">
+<p>{{ slot_14 }}</p>
+</div>
+<div class="social-links">
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+</div>
+</footer>
+</body>
+</html>

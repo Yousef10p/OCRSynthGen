@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: repeat(3, 1fr);
+}
+header, nav, footer {
+    background-color: #f7f7f7;
+    padding: 20px;
+    text-align: center;
+}
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 20px;
+}
+main {
+    padding: 20px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+section {
+    padding: 20px;
+}
+article {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+}
+.image-placeholder {
+    background-color: #ddd;
+    width: 100%;
+    height: 200px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+<main>
+<section id="skincare">
+<h2>{{ slot_4 }}</h2>
+<article>
+<h3>{{ slot_5 }}</h3>
+<p>{{ slot_6 }}</p>
+<div class="image-placeholder pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+</article>
+<article>
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+<div class="image-placeholder pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+</article>
+</section>
+<section id="makeup">
+<h2>{{ slot_9 }}</h2>
+<article>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+<div class="image-placeholder pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
+</article>
+<article>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<div class="image-placeholder pic-frame"><img data-pic="pic_3" src="{{ pic_3 }}" alt=""></div>
+</article>
+</section>
+<section id="haircare">
+<h2>{{ slot_14 }}</h2>
+<article>
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+<div class="image-placeholder pic-frame"><img data-pic="pic_4" src="{{ pic_4 }}" alt=""></div>
+</article>
+<article>
+<h3>{{ slot_17 }}</h3>
+<p>{{ slot_18 }}</p>
+<div class="image-placeholder pic-frame"><img data-pic="pic_5" src="{{ pic_5 }}" alt=""></div>
+</article>
+</section>
+</main>
+</body>
+</html>

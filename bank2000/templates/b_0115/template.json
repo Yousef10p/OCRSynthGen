@@ -1,0 +1,155 @@
+{
+ "id": "b_0115",
+ "source": "grammar",
+ "source_ref": "seed=7001161",
+ "license": "own-generated",
+ "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+ "positioning": "flow",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    3,
+    10
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "paragraph",
+   "words": [
+    12,
+    40
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "paragraph",
+   "words": [
+    20,
+    60
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "paragraph",
+   "words": [
+    20,
+    60
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "sidebar",
+   "words": [
+    10,
+    50
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "footer",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 2,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 0,
+  "asides": 2,
+  "has_header": false,
+  "has_footer": true,
+  "slot_count": 13
+ },
+ "structure_hash": "b6a2a07e7c1b2ced448150cc3cb5f4efe7733a0d74f5b6a557ddc407d2d03aaa",
+ "lang": "en",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "team"
+  },
+  {
+   "id": "pic_1",
+   "hint": "food"
+  }
+ ],
+ "source_template": "gr_01161"
+}

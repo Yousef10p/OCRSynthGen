@@ -1,0 +1,204 @@
+{
+ "id": "b_1003",
+ "source": "websight2",
+ "source_ref": "v0.2:s344_r00021",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "en",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "paragraph",
+   "words": [
+    18,
+    35
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "paragraph",
+   "words": [
+    18,
+    35
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "paragraph",
+   "words": [
+    17,
+    34
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "list_item",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_13",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_14",
+   "role": "footer",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_15",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_16",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_17",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 1,
+  "asides": 1,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 18
+ },
+ "structure_hash": "126c010e85a73a3609c1f42024eaf0ee8ac795b96f50523fd25d5704016f6e0e",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "chair chair full"
+  },
+  {
+   "id": "pic_1",
+   "hint": "table table full"
+  },
+  {
+   "id": "pic_2",
+   "hint": "sofa sofa full"
+  }
+ ],
+ "source_template": "w2_s344_r00021"
+}

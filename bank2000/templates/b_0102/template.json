@@ -1,0 +1,191 @@
+{
+ "id": "b_0102",
+ "source": "grammar",
+ "source_ref": "seed=7000941",
+ "license": "own-generated",
+ "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+ "positioning": "flow",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "header",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "title",
+   "words": [
+    3,
+    10
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "quote",
+   "words": [
+    10,
+    40
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "paragraph",
+   "words": [
+    8,
+    25
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_13",
+   "role": "paragraph",
+   "words": [
+    60,
+    120
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_14",
+   "role": "paragraph",
+   "words": [
+    25,
+    60
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_15",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_16",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_17",
+   "role": "paragraph",
+   "words": [
+    12,
+    40
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 3,
+  "tables": 0,
+  "lists": 2,
+  "list_depth": 2,
+  "forms": 0,
+  "asides": 1,
+  "has_header": true,
+  "has_footer": false,
+  "slot_count": 18
+ },
+ "structure_hash": "8634fe6e7810b09996a4cd4572a389b0e23d921877aeb3110772f2f998484b30",
+ "lang": "en",
+ "pictures": [],
+ "source_template": "gr_00941"
+}

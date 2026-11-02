@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 12pt; --line-height: 1.4; --align: start; --page-width: 210mm; --page-height: 297mm; --page-margin: 14mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+@counter-style arabic-letters { system: alphabetic; symbols: "\0623" "\0628" "\062C" "\062F" "\0647" "\0648" "\0632" "\062D" "\0637" "\064A"; suffix: ") "; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style>
+<style>{{ style }}</style>
+</head>
+<body><div class="page">
+<header style="display: flex; justify-content: space-between; gap: 1em; font-size: 0.85em; padding-block: 0.3em; margin-block: 0.8em; border-block-end: 1px solid #444"><span>{{ slot_0 }}</span></header><h1 style="font-size: calc(var(--base-size) * 2.2); text-align: center; margin-block: 0.3em 0.5em">{{ slot_1 }}</h1>
+<p style="font-size: 1.2em; text-align: center; margin-block: 0 1em">{{ slot_2 }}</p>
+<main style="display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 8mm"><div>
+<h3 style="font-size: calc(var(--base-size) * 1.5); text-align: start; margin-block: 1.4em 0.4em">{{ slot_3 }}</h3>
+<p style="margin-block: 0 0.4em; text-indent: 0; text-align: var(--align); font-size: 0.95em">{{ slot_4 }}</p>
+<figure style="margin-block: 0.8em; margin-inline: 0; break-inside: avoid"><div  style="block-size: 55mm; margin-inline: auto; inline-size: 100%" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<figcaption style="font-size: 0.85em; text-align: center; margin-block-start: 0.3em">{{ slot_5 }}</figcaption></figure><aside style="border: 1px dashed #444; background: transparent; padding: 0.6em 0.9em; margin-block: 0.8em; border-radius: 6px; break-inside: avoid"><h4>{{ slot_6 }}</h4>
+<p style="margin-block: 0.2em">{{ slot_7 }}</p>
+<p style="margin-block: 0.2em">{{ slot_8 }}</p></aside>
+</div>
+<div>
+<ul style="list-style-type: disc; margin-block: 0.3em; padding-inline-start: 1.8em">
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+<li>{{ slot_11 }}<ul style="list-style-type: disc; margin-block: 0.3em; padding-inline-start: 1.8em">
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+</ul>
+</li>
+</ul>
+<div style="display: flex; gap: 5mm; align-items: flex-start; margin-block: 0.8em; break-inside: avoid">
+<div style="flex: 1"><p style="margin-block: 0">{{ slot_14 }}</p></div>
+<div style="flex: 0 0 40%; block-size: 34mm" class="pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6mm; margin-block: 0.8em; break-inside: avoid">
+<div style="border: 1px solid #999; padding: 0; border-radius: 6px">
+<div style="block-size: 22mm; margin-block-end: 0.4em" class="pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
+<h4 style="margin-block: 0.2em">{{ slot_15 }}</h4>
+<p style="margin-block: 0.2em; font-size: 0.92em">{{ slot_16 }}</p>
+</div>
+<div style="border: none; padding: 0.6em; border-radius: 6px">
+<div style="block-size: 20mm; margin-block-end: 0.4em" class="pic-frame"><img data-pic="pic_3" src="{{ pic_3 }}" alt=""></div>
+<h4 style="margin-block: 0.2em">{{ slot_17 }}</h4>
+<p style="margin-block: 0.2em; font-size: 0.92em">{{ slot_18 }}</p>
+</div>
+</div>
+</div></main><footer style="display: flex; justify-content: space-between; gap: 1em; font-size: 0.85em; padding-block: 0.3em; margin-block: 0.8em; border-block-start: 1px solid #444"><span>{{ slot_19 }}</span></footer>
+</div></body>
+</html>

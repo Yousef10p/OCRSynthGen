@@ -4,6 +4,7 @@
 
 Writes to --out:
     images/<id>.jpg      the page (after effects, or clean)
+    gt/<id>.gt.txt       the ground truth: one <text>... <bbox>x1, y1, x2, y2</bbox></text> line per text block
     labels/<id>.json     word, line and slot boxes [x, y, w, h] in image pixels, text, and how the page was made
     markdown/<id>.md     the page as Markdown, with the boxes in a header at the top
     html/<id>.html       the filled page
@@ -28,7 +29,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-FOLDERS = {".jpg": "images", ".json": "labels", ".md": "markdown", ".html": "html"}
+FOLDERS = {".jpg": "images", ".gt.txt": "gt", ".json": "labels", ".md": "markdown", ".html": "html"}
 _pipe = None
 
 
@@ -59,7 +60,12 @@ def main():
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--val", type=float, default=0.05, help="share of samples in the val split")
-    ap.add_argument("--language", choices=["ar", "en"], help="only this language (default: 80%% Arabic)")
+    ap.add_argument("--language", choices=["ar", "en"], help="only templates of this language (default: both)")
+    ap.add_argument("--source", choices=["grammar", "websight", "websight2", "doclaynet"],
+                    help="only templates from this source (default: all four equally)")
+    for tool in ("ocrsmith", "augraphy", "scan-simulator"):
+        ap.add_argument(f"--strength-{tool}", type=float, default=0.5,
+                        help=f"{tool} strength, 0 (lightest) to 1 (strongest); 0.5 = the tool's own settings")
     ap.add_argument("--effect", choices=["clean", "ocrsmith", "augraphy", "scan-simulator",
                                          "augraphy+scan-simulator"], help="only this effect (default: the mix)")
     ap.add_argument("--text", choices=["wikipedia", "demo"], default=None)
@@ -68,7 +74,8 @@ def main():
     out = Path(a.out).resolve()
     for folder in FOLDERS.values():
         (out / folder).mkdir(parents=True, exist_ok=True)
-    options = {"languages": {a.language: 1} if a.language else None,
+    options = {"languages": {a.language: 1} if a.language else None, "sources": {a.source: 1} if a.source else None,
+               "strengths": {t: getattr(a, f"strength_{t.replace('-', '_')}") for t in ("ocrsmith", "augraphy", "scan-simulator")},
                "effects": {a.effect: 1} if a.effect else None, "text": a.text}
 
     manifest = out / "manifest.jsonl"
@@ -101,8 +108,9 @@ def main():
         "template_sources": count("source"), "options": vars(a),
         "text": "Wikipedia (ar, en), CC BY-SA 4.0: each label lists its articles; a shared set must keep "
                 "CC BY-SA and the attribution",
-        "pictures": "Unsplash photos via picsum.photos (Unsplash License)",
-        "templates": "Grammar (own), WebSight v0.1 (CC BY 4.0), DocLayNet v1.1 (CDLA-Permissive-1.0)",
+        "pictures": "img_pool/: Unsplash photos via picsum.photos (Unsplash License) and Wikimedia Commons quality "
+                    "images (each file's licence and author in img_pool/sources.json)",
+        "templates": "bank2000/: Grammar (own), WebSight v0.1 and v0.2 (CC BY 4.0), DocLayNet v1.1 (CDLA-Permissive-1.0)",
     }, indent=1), encoding="utf-8")
     print(f"done: {len(rows)} samples in {out} ({failed} failed this run; run again to make them)")
 

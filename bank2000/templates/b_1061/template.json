@@ -1,0 +1,163 @@
+{
+ "id": "b_1061",
+ "source": "websight2",
+ "source_ref": "v0.2:s049_r00333",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "ar",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "header",
+   "words": [
+    11,
+    24
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    4,
+    11
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "paragraph",
+   "words": [
+    14,
+    29
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "paragraph",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 0,
+  "list_depth": 0,
+  "forms": 1,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 13
+ },
+ "structure_hash": "b0fdcb1e6d02776a4f09b1811b50570b4ee9571be4b2d816b0c83c696e0158c3",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "teacher teacher"
+  },
+  {
+   "id": "pic_1",
+   "hint": "facebook facebook"
+  },
+  {
+   "id": "pic_2",
+   "hint": "twitter twitter"
+  },
+  {
+   "id": "pic_3",
+   "hint": "instagram instagram"
+  }
+ ],
+ "source_template": "w2_s049_r00333"
+}

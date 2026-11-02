@@ -1,0 +1,167 @@
+{
+ "id": "b_1094",
+ "source": "websight2",
+ "source_ref": "v0.2:s517_r00377",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "ar",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_1",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_2",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_3",
+   "role": "title",
+   "words": [
+    2,
+    7
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    39,
+    74
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "label",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "heading",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_9",
+   "role": "footer",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_10",
+   "role": "footer",
+   "words": [
+    4,
+    9
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_11",
+   "role": "footer",
+   "words": [
+    4,
+    9
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_12",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 0,
+  "list_depth": 0,
+  "forms": 1,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 13
+ },
+ "structure_hash": "50fc6d910a48a5148e119c661a2e59dba9cf3f2afef8e637545bca01cb0c7863",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "logo logo"
+  },
+  {
+   "id": "pic_1",
+   "hint": "food food full object cover"
+  },
+  {
+   "id": "pic_2",
+   "hint": "food food"
+  },
+  {
+   "id": "pic_3",
+   "hint": "restaurant restaurant"
+  },
+  {
+   "id": "pic_4",
+   "hint": "interiordesign interior design"
+  }
+ ],
+ "source_template": "w2_s517_r00377"
+}

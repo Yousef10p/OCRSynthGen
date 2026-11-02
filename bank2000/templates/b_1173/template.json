@@ -1,0 +1,146 @@
+{
+ "id": "b_1173",
+ "source": "websight2",
+ "source_ref": "v0.2:s172_r00242",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "en",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "heading",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "footer",
+   "words": [
+    40,
+    77
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "footer",
+   "words": [
+    27,
+    52
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "footer",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "footer",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "footer",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "footer",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 0,
+  "list_depth": 0,
+  "forms": 1,
+  "asides": 1,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 13
+ },
+ "structure_hash": "00fa6f3284e94f42ebec27a088a942f168ebe651bc7dcbcecd1b336dd11e50f3",
+ "pictures": [],
+ "source_template": "w2_s172_r00242"
+}

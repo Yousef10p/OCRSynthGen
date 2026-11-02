@@ -66,8 +66,22 @@ def css_columns(css):
     return max([n] + [int(c) for c in re.findall(r"column-count\s*:\s*(\d+)", css)])
 
 
+def picture_hint(el):
+    """Words that say what a picture shows: its link's keywords (WebSight v0.2 links such as
+    https://source.unsplash.com/random/300x200/?food), alt text, class names and id."""
+    src = str(el.get("src", ""))
+    words = re.findall(r"[a-zA-Z]{3,}", src.split("?", 1)[1]) if "?" in src else []
+    words += re.findall(r"[a-zA-Z]{3,}", " ".join([str(el.get("alt", "")), " ".join(el.get("class", [])),
+                                                    str(el.get("id", ""))]))
+    return " ".join(w.lower() for w in words if w.lower() not in ("random", "http", "https", "source", "unsplash",
+                                                                   "img", "image", "rounded", "full", "object",
+                                                                   "cover", "auto", "mx", "my"))[:80]
+
+
 def to_placeholder(soup, el):
     ph = soup.new_tag("div", attrs={"class": " ".join(el.get("class", []) + ["ph"])})
+    if hint := picture_hint(el):
+        ph["data-hint"] = hint
     size = [f"inline-size: {el['width']}px" if str(el.get("width", "")).isdigit() else "",
             f"block-size: {el['height']}px" if str(el.get("height", "")).isdigit() else ""]
     if el.name != "div" and not any(size):
@@ -154,7 +168,7 @@ def strip_page(text):
     for el in body.find_all(["input", "select", "textarea"]):
         convert_field(soup, el)
     for el in body.find_all(True):
-        el.attrs = {k: el.attrs[k] for k in KEEP_ATTRS + ("data-slot-role", "data-n") if k in el.attrs}
+        el.attrs = {k: el.attrs[k] for k in KEEP_ATTRS + ("data-slot-role", "data-n", "data-hint") if k in el.attrs}
         if "style" in el.attrs:
             el["style"] = clean_css(el["style"])
     slots = add_slots(body)

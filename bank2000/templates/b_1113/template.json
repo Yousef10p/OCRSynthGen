@@ -1,0 +1,159 @@
+{
+ "id": "b_1113",
+ "source": "websight2",
+ "source_ref": "v0.2:s049_r00488",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "en",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "header",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "heading",
+   "words": [
+    4,
+    9
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "paragraph",
+   "words": [
+    17,
+    34
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "paragraph",
+   "words": [
+    12,
+    25
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "heading",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "footer",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 0,
+  "asides": 0,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 13
+ },
+ "structure_hash": "9b1c3c0318eab04dda62596a0af8786ca45f45058347c7bc1a29094654f8d5c5",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "facebook facebook"
+  },
+  {
+   "id": "pic_1",
+   "hint": "twitter twitter"
+  },
+  {
+   "id": "pic_2",
+   "hint": "instagram instagram"
+  }
+ ],
+ "source_template": "w2_s049_r00488"
+}

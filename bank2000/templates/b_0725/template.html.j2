@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+header, footer {
+  grid-column: 1 / 3;
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+}
+
+section, aside {
+  flex: 1;
+  margin: 20px;
+  padding: 20px;
+  background-color: #e8e8e8;
+}
+
+.image-placeholder, .social-media-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: #d8d8d8;
+}
+
+a {
+  display: block;
+  color: blue;
+  margin: 10px 0;
+}
+
+input, textarea, button {
+  display: block;
+  margin: 10px 0;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header id="top-header">
+<h1>{{ slot_0 }}</h1>
+<nav>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
+</nav>
+</header>
+<main>
+<section id="workout">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+<div class="image-placeholder pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+</section>
+<section id="nutrition">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<div class="image-placeholder pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+</section>
+<aside>
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<a>{{ slot_11 }}</a>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+<a>{{ slot_14 }}</a>
+</aside>
+</main>
+<footer>
+<h4>{{ slot_15 }}</h4>
+<div class="social-media-placeholder pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
+<h4>{{ slot_16 }}</h4>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_19 }}</span>
+<button>{{ slot_20 }}</button>
+</form>
+</footer>
+</body>
+</html>

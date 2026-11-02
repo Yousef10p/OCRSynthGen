@@ -1,0 +1,160 @@
+{
+ "id": "b_0997",
+ "source": "websight2",
+ "source_ref": "v0.2:s000_r00023",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "en",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "paragraph",
+   "words": [
+    56,
+    107
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "paragraph",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "paragraph",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "paragraph",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "paragraph",
+   "words": [
+    6,
+    13
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "list_item",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_13",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 0,
+  "asides": 0,
+  "has_header": false,
+  "has_footer": false,
+  "slot_count": 14
+ },
+ "structure_hash": "70a2859f3bf947c0efb0a36705239f4d785db7699396629b851a11f5f6abd8f2",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "law law firm logo"
+  }
+ ],
+ "source_template": "w2_s000_r00023"
+}

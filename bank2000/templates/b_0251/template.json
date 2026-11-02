@@ -1,0 +1,340 @@
+{
+ "id": "b_0251",
+ "source": "grammar",
+ "source_ref": "seed=7001125",
+ "license": "own-generated",
+ "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+ "positioning": "flow",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "title",
+   "words": [
+    3,
+    10
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "subtitle",
+   "words": [
+    4,
+    12
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "quote",
+   "words": [
+    10,
+    40
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_13",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_14",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_15",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_16",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_17",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_18",
+   "role": "list_item",
+   "words": [
+    3,
+    20
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_19",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_20",
+   "role": "paragraph",
+   "words": [
+    12,
+    40
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_21",
+   "role": "paragraph",
+   "words": [
+    20,
+    60
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_22",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_23",
+   "role": "paragraph",
+   "words": [
+    8,
+    30
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_24",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_25",
+   "role": "paragraph",
+   "words": [
+    8,
+    30
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_26",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_27",
+   "role": "paragraph",
+   "words": [
+    8,
+    30
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_28",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_29",
+   "role": "paragraph",
+   "words": [
+    8,
+    30
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_30",
+   "role": "paragraph",
+   "words": [
+    60,
+    120
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_31",
+   "role": "footnote",
+   "words": [
+    8,
+    30
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_32",
+   "role": "footnote",
+   "words": [
+    8,
+    30
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_33",
+   "role": "footnote",
+   "words": [
+    8,
+    30
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 2,
+  "list_depth": 2,
+  "forms": 1,
+  "asides": 1,
+  "has_header": false,
+  "has_footer": false,
+  "slot_count": 34
+ },
+ "structure_hash": "2473a62be8f2ca9a3929c1b42ddc96169e3a7c4174f173dbcf9d8b77619fac46",
+ "lang": "en",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "event"
+  }
+ ],
+ "source_template": "gr_01125"
+}

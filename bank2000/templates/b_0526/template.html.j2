@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+#left-column {
+    float: left;
+    width: 20%;
+    background-color: #F5F5F5;
+    padding: 15px;
+}
+
+#main-section {
+    float: right;
+    width: 80%;
+    padding: 15px;
+}
+
+
+.car-image {
+    height: 200px;
+    width: 300px;
+    background-color: #C0C0C0;
+    margin-bottom: 10px;
+}
+
+
+form {
+    margin-top: 20px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #CCC;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45A049;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="left-column">
+<h2>{{ slot_0 }}</h2>
+
+<ul>
+<li><h3>{{ slot_1 }}</h3><p>{{ slot_2 }}</p></li>
+<li><h3>{{ slot_3 }}</h3><p>{{ slot_4 }}</p></li>
+<li><h3>{{ slot_5 }}</h3><p>{{ slot_6 }}</p></li>
+</ul>
+</div>
+<div id="main-section">
+<h2>{{ slot_7 }}</h2>
+
+<div class="car-image pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<div class="car-image pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<div class="car-image pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
+<h2>{{ slot_8 }}</h2>
+
+<ul>
+<li><h3>{{ slot_9 }}</h3><p>{{ slot_10 }}</p></li>
+<li><h3>{{ slot_11 }}</h3><p>{{ slot_12 }}</p></li>
+<li><h3>{{ slot_13 }}</h3><p>{{ slot_14 }}</p></li>
+</ul>
+<h2>{{ slot_15 }}</h2>
+
+<form>
+<label>{{ slot_16 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span><br>
+<label>{{ slot_18 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span><br>
+<label>{{ slot_20 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_21 }}</span>
+<span class="">{{ slot_22 }}</span>
+</form>
+</div>
+</body>
+</html>

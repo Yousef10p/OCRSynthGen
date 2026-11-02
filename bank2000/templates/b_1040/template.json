@@ -1,0 +1,200 @@
+{
+ "id": "b_1040",
+ "source": "websight2",
+ "source_ref": "v0.2:s627_r00465",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "en",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "header",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "header",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "header",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "title",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    14,
+    29
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "paragraph",
+   "words": [
+    13,
+    26
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "list_item",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "footer",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_13",
+   "role": "label",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_14",
+   "role": "field_value",
+   "words": [
+    1,
+    6
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_15",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_16",
+   "role": "footer",
+   "words": [
+    2,
+    7
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_17",
+   "role": "footer",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 1,
+  "asides": 1,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 18
+ },
+ "structure_hash": "5cfbb162ee443195e189a33dd24a46b19c3a876ca767f4e193547e0e53aa6a71",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "logo logo"
+  },
+  {
+   "id": "pic_1",
+   "hint": "article featured article"
+  }
+ ],
+ "source_template": "w2_s627_r00465"
+}

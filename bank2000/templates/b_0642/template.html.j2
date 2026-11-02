@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header, section, footer {
+    width: 100%;
+    padding: 50px;
+}
+
+header {
+    background-color: black;
+    color: white;
+}
+
+#hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#features {
+    display: flex;
+    justify-content: space-around;
+}
+
+.feature {
+    width: 30%;
+}
+
+#pricing {
+    display: flex;
+    justify-content: space-around;
+}
+
+.price {
+    width: 30%;
+}
+
+#testimonials, #contact {
+    display: flex;
+    justify-content: space-around;
+}
+
+.testimonial, #contact form {
+    width: 30%;
+}
+
+.btn {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<section id="hero">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<a class="btn">{{ slot_2 }}</a>
+</section>
+</header>
+<section id="features">
+<div class="feature">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
+</div>
+<div class="feature">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="feature">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</div>
+</section>
+<section id="pricing">
+<h2>{{ slot_9 }}</h2>
+<div class="price">
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+<span>{{ slot_12 }}</span>
+<ul>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+<a class="btn">{{ slot_15 }}</a>
+</div>
+<div class="price">
+<h3>{{ slot_16 }}</h3>
+<p>{{ slot_17 }}</p>
+<span>{{ slot_18 }}</span>
+<ul>
+<li>{{ slot_19 }}</li>
+<li>{{ slot_20 }}</li>
+<li>{{ slot_21 }}</li>
+</ul>
+<a class="btn">{{ slot_22 }}</a>
+</div>
+<div class="price">
+<h3>{{ slot_23 }}</h3>
+<p>{{ slot_24 }}</p>
+<span>{{ slot_25 }}</span>
+<ul>
+<li>{{ slot_26 }}</li>
+<li>{{ slot_27 }}</li>
+<li>{{ slot_28 }}</li>
+<li>{{ slot_29 }}</li>
+</ul>
+<a class="btn">{{ slot_30 }}</a>
+</div>
+</section>
+<section id="testimonials">
+<h2>{{ slot_31 }}</h2>
+<div class="testimonial">
+<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<p>{{ slot_32 }}</p>
+</div>
+<div class="testimonial">
+<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<p>{{ slot_33 }}</p>
+</div>
+</section>
+<section id="contact">
+<h2>{{ slot_34 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_35 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_36 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_37 }}</span>
+<button class="btn">{{ slot_38 }}</button>
+</form>
+</section>
+</body>
+</html>

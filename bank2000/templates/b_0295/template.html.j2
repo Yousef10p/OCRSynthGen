@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 12pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 22mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+@counter-style arabic-letters { system: alphabetic; symbols: "\0623" "\0628" "\062C" "\062F" "\0647" "\0648" "\0632" "\062D" "\0637" "\064A"; suffix: ") "; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style>
+<style>{{ style }}</style>
+</head>
+<body><div class="page">
+<h1 style="font-size: calc(var(--base-size) * 2.6); text-align: center; margin-block: 0.3em 0.5em">{{ slot_0 }}</h1>
+<main style="display: grid; column-gap: 7mm; grid-template-columns: 2.4fr 1fr"><div>
+<aside style="border: 1px solid #444; background: transparent; padding: 0.6em 0.9em; margin-block: 0.8em; border-radius: 0; break-inside: avoid"><h4>{{ slot_1 }}</h4>
+<p style="margin-block: 0.2em">{{ slot_2 }}</p></aside><div style="border-block: 2px solid #333; padding: 0.5em 0; margin-block: 0.8em; break-inside: avoid">
+<strong style="display: block; margin-block-end: 0.2em">{{ slot_3 }}</strong><p style="margin-block: 0">{{ slot_4 }}</p>
+</div>
+<table style="border-collapse: collapse; inline-size: 100%; margin-block: 0.6em; font-size: 0.85em; break-inside: avoid">
+<thead><tr>
+<th style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center; background: transparent; font-weight: bold">{{ slot_5 }}</th>
+<th style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center; background: transparent; font-weight: bold">{{ slot_6 }}</th>
+<th style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center; background: transparent; font-weight: bold">{{ slot_7 }}</th>
+<th style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center; background: transparent; font-weight: bold">{{ slot_8 }}</th>
+<th style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center; background: transparent; font-weight: bold">{{ slot_9 }}</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_10 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_11 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_12 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_13 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_14 }}</td>
+</tr>
+<tr>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_15 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_16 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_17 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_18 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_19 }}</td>
+</tr>
+<tr>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_20 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_21 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_22 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_23 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_24 }}</td>
+</tr>
+<tr>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_25 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_26 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_27 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_28 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_29 }}</td>
+</tr>
+<tr>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_30 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_31 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_32 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_33 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_34 }}</td>
+</tr>
+<tr>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_35 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_36 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_37 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_38 }}</td>
+<td style="border: 1px solid #000; padding: 0.2em 0.3em; text-align: center">{{ slot_39 }}</td>
+</tr>
+</tbody>
+</table>
+<ul style="list-style-type: disc; margin-block: 0.3em; padding-inline-start: 1.2em">
+<li>{{ slot_40 }}</li>
+<li>{{ slot_41 }}</li>
+<li>{{ slot_42 }}</li>
+<li>{{ slot_43 }}</li>
+<li>{{ slot_44 }}<ul style="list-style-type: disc; margin-block: 0.3em; padding-inline-start: 2.4em">
+<li>{{ slot_45 }}<ol style="list-style-type: decimal; margin-block: 0.3em; padding-inline-start: 2.4em">
+<li>{{ slot_46 }}</li>
+<li>{{ slot_47 }}</li>
+<li>{{ slot_48 }}</li>
+</ol>
+</li>
+<li>{{ slot_49 }}</li>
+</ul>
+</li>
+</ul>
+<p style="margin-block: 0 0.7em; text-indent: 1.5em; text-align: justify; font-size: 1em">{{ slot_50 }}</p>
+<h2 style="font-size: calc(var(--base-size) * 1.5); text-align: start; margin-block: 1em 0.4em">{{ slot_51 }}</h2>
+<div style="display: flex; gap: 5mm; align-items: flex-start; margin-block: 0.8em; break-inside: avoid">
+<div style="flex: 0 0 30%; block-size: 25mm" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<div style="flex: 1">
+<h3 style="margin-block: 0 0.3em">{{ slot_52 }}</h3>
+<p style="margin-block: 0">{{ slot_53 }}</p>
+</div>
+</div>
+<h2 style="font-size: calc(var(--base-size) * 1.5); text-align: start; margin-block: 0.6em 0.4em">{{ slot_54 }}</h2>
+<blockquote style="border-inline-start: 2px solid #888; padding-inline-start: 0.9em; margin-inline: 1.5em 0.5em; margin-block: 0.8em; font-size: 1.05em">{{ slot_55 }}</blockquote>
+</div>
+<aside style="background: #f2f2f2; padding: 0.6em; border-inline-start: none"><h3>{{ slot_56 }}</h3>
+<p style="font-size: 0.9em; margin-block: 0 0.6em">{{ slot_57 }}</p>
+<p style="font-size: 0.9em; margin-block: 0 0.6em">{{ slot_58 }}</p>
+<ul style="list-style-type: disc; margin-block: 0.3em; padding-inline-start: 2.4em">
+<li>{{ slot_59 }}</li>
+<li>{{ slot_60 }}</li>
+<li>{{ slot_61 }}</li>
+</ul></aside></main><footer style="display: flex; justify-content: space-between; gap: 1em; font-size: 0.85em; padding-block: 0.3em; margin-block: 0.8em; border-block-start: 1px solid #444"><span>{{ slot_62 }}</span><span>{{ slot_63 }}</span></footer>
+</div></body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<style>@page { size: Legal landscape; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 355.6mm; --page-height: 215.9mm; --page-margin: 0mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+.page { position: relative; block-size: var(--page-height); padding: 0; overflow: hidden; }
+.box { position: absolute; margin: 0; padding: 0; overflow: hidden; box-sizing: border-box; }
+h1.box, h2.box { font-weight: bold; }
+ul.box { list-style-position: inside; }
+.box table { inline-size: 100%; block-size: 100%; border-collapse: collapse; table-layout: fixed; }
+.box th, .box td { border: 1px solid #888; padding: 0 0.2em; overflow: hidden; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style>
+<style>{{ style }}</style>
+</head>
+<body><div class="page">
+<p class="box" style="inset-inline-start: 66.2mm; inset-block-start: 5.7mm; inline-size: 87.7mm; block-size: 23.8mm; font-size: 22.4pt">{{ slot_0 }}</p>
+<h2 class="box" style="inset-inline-start: 277.2mm; inset-block-start: 11.0mm; inline-size: 54.1mm; block-size: 25.1mm; font-size: 17.8pt">{{ slot_1 }}</h2>
+<p class="box" style="inset-inline-start: 264.0mm; inset-block-start: 12.2mm; inline-size: 7.5mm; block-size: 35.6mm; font-size: 40.0pt">{{ slot_2 }}</p>
+<p class="box" style="inset-inline-start: 189.8mm; inset-block-start: 34.6mm; inline-size: 7.5mm; block-size: 35.6mm; font-size: 40.0pt">{{ slot_3 }}</p>
+<h2 class="box" style="inset-inline-start: 202.4mm; inset-block-start: 33.2mm; inline-size: 49.5mm; block-size: 30.7mm; font-size: 17.4pt">{{ slot_4 }}</h2>
+<div  style="inset-inline-start: 276.1mm; inset-block-start: 38.0mm; inline-size: 55.3mm; block-size: 35.6mm; font-size: 14.4pt" class="box pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<h2 class="box" style="inset-inline-start: 94.6mm; inset-block-start: 53.7mm; inline-size: 65.7mm; block-size: 25.1mm; font-size: 17.8pt">{{ slot_5 }}</h2>
+<div  style="inset-inline-start: 201.8mm; inset-block-start: 66.0mm; inline-size: 53.3mm; block-size: 37.0mm; font-size: 15.0pt" class="box pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<h2 class="box" style="inset-inline-start: 29.1mm; inset-block-start: 76.2mm; inline-size: 50.8mm; block-size: 19.5mm; font-size: 18.4pt">{{ slot_6 }}</h2>
+<div  style="inset-inline-start: 94.0mm; inset-block-start: 81.3mm; inline-size: 51.9mm; block-size: 43.9mm; font-size: 15.6pt" class="box pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
+<div  style="inset-inline-start: 28.2mm; inset-block-start: 98.0mm; inline-size: 43.5mm; block-size: 34.4mm; font-size: 16.2pt" class="box pic-frame"><img data-pic="pic_3" src="{{ pic_3 }}" alt=""></div>
+<p class="box" style="inset-inline-start: 271.0mm; inset-block-start: 101.5mm; inline-size: 62.7mm; block-size: 40.1mm; font-size: 12.6pt">{{ slot_7 }}</p>
+<p class="box" style="inset-inline-start: 196.3mm; inset-block-start: 117.6mm; inline-size: 62.9mm; block-size: 26.8mm; font-size: 12.6pt">{{ slot_8 }}</p>
+<p class="box" style="inset-inline-start: 89.0mm; inset-block-start: 139.5mm; inline-size: 62.6mm; block-size: 31.2mm; font-size: 12.6pt">{{ slot_9 }}</p>
+<p class="box" style="inset-inline-start: 23.2mm; inset-block-start: 153.5mm; inline-size: 56.6mm; block-size: 17.8mm; font-size: 12.6pt">{{ slot_10 }}</p>
+<p class="box" style="inset-inline-start: 201.9mm; inset-block-start: 177.4mm; inline-size: 117.1mm; block-size: 29.7mm; font-size: 28.1pt">{{ slot_11 }}</p>
+</div></body>
+</html>

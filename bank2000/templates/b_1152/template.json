@@ -1,0 +1,167 @@
+{
+ "id": "b_1152",
+ "source": "websight2",
+ "source_ref": "v0.2:s283_r00049",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "positioning": "flow",
+ "lang": "en",
+ "page": {
+  "size": "Letter",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "label",
+   "words": [
+    1,
+    3
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "paragraph",
+   "words": [
+    16,
+    33
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "paragraph",
+   "words": [
+    3,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "paragraph",
+   "words": [
+    2,
+    5
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "paragraph",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "title",
+   "words": [
+    2,
+    7
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "paragraph",
+   "words": [
+    23,
+    46
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "footer",
+   "words": [
+    4,
+    11
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 1,
+  "list_depth": 1,
+  "forms": 0,
+  "asides": 1,
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 13
+ },
+ "structure_hash": "df77c58680cde0cf78cafedcc20ef081ba6a39048b02b4252ed9621401febc0d",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "tech header full"
+  },
+  {
+   "id": "pic_1",
+   "hint": "tech sidebar"
+  },
+  {
+   "id": "pic_2",
+   "hint": "facebook facebook"
+  },
+  {
+   "id": "pic_3",
+   "hint": "twitter twitter"
+  },
+  {
+   "id": "pic_4",
+   "hint": "instagram instagram"
+  }
+ ],
+ "source_template": "w2_s283_r00049"
+}

@@ -1,0 +1,195 @@
+{
+ "id": "b_0019",
+ "source": "grammar",
+ "source_ref": "seed=7000061",
+ "license": "own-generated",
+ "attribution": "arabic-template-bank grammar generator (src/grammar.py)",
+ "positioning": "flow",
+ "page": {
+  "size": "A4",
+  "orientation": "portrait"
+ },
+ "slots": [
+  {
+   "id": "slot_0",
+   "role": "header",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "title",
+   "words": [
+    3,
+    10
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_2",
+   "role": "subtitle",
+   "words": [
+    4,
+    12
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_3",
+   "role": "paragraph",
+   "words": [
+    60,
+    120
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    60,
+    120
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_6",
+   "role": "paragraph",
+   "words": [
+    20,
+    60
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_7",
+   "role": "paragraph",
+   "words": [
+    8,
+    25
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_8",
+   "role": "caption",
+   "words": [
+    5,
+    15
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_9",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_10",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_11",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_12",
+   "role": "paragraph",
+   "words": [
+    20,
+    60
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_13",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_14",
+   "role": "heading",
+   "words": [
+    2,
+    8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_15",
+   "role": "paragraph",
+   "words": [
+    12,
+    40
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_16",
+   "role": "paragraph",
+   "words": [
+    25,
+    60
+   ],
+   "dir": "ltr"
+  }
+ ],
+ "features": {
+  "columns": 1,
+  "tables": 0,
+  "lists": 0,
+  "list_depth": 0,
+  "forms": 0,
+  "asides": 1,
+  "has_header": true,
+  "has_footer": false,
+  "slot_count": 17
+ },
+ "structure_hash": "042d3d14aed48f3f5a4251bb773e143d94543ef01e4b081071588e759cd732b1",
+ "lang": "en",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "animal"
+  },
+  {
+   "id": "pic_1",
+   "hint": ""
+  },
+  {
+   "id": "pic_2",
+   "hint": "office"
+  }
+ ],
+ "source_template": "gr_00061"
+}

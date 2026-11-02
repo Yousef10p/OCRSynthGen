@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-left: 10px;
+}
+
+.about, .services, .testimonies, .pricing {
+  margin-top: 20px;
+}
+
+.placeholder {
+  background-color: #ccc;
+  height: 200px;
+  width: 100%;
+}
+
+.service-item, .testimonial-item {
+  display: flex;
+  align-items: center;
+}
+
+
+.about .placeholder, .services .placeholder, .testimonies .placeholder {
+  background-color: #888;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="placeholder pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<section class="about">
+<h1>{{ slot_5 }}</h1>
+<p>{{ slot_6 }}</p>
+</section>
+<section class="services">
+<h1>{{ slot_7 }}</h1>
+<div class="service-item">
+<div class="placeholder pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="service-item">
+<div class="placeholder pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="service-item">
+<div class="placeholder pic-frame"><img data-pic="pic_3" src="{{ pic_3 }}" alt=""></div>
+<p>{{ slot_10 }}</p>
+</div>
+</section>
+<section class="testimonies">
+<h1>{{ slot_11 }}</h1>
+<div class="testimonial-item">
+<div class="placeholder pic-frame"><img data-pic="pic_4" src="{{ pic_4 }}" alt=""></div>
+<p>{{ slot_12 }}</p>
+</div>
+<div class="testimonial-item">
+<div class="placeholder pic-frame"><img data-pic="pic_5" src="{{ pic_5 }}" alt=""></div>
+<p>{{ slot_13 }}</p>
+</div>
+</section>
+<section class="pricing">
+<h1>{{ slot_14 }}</h1>
+<table>
+<tr>
+<th>{{ slot_15 }}</th>
+<th>{{ slot_16 }}</th>
+</tr>
+<tr>
+<td>{{ slot_17 }}</td>
+<td>{{ slot_18 }}</td>
+</tr>
+<tr>
+<td>{{ slot_19 }}</td>
+<td>{{ slot_20 }}</td>
+</tr>
+<tr>
+<td>{{ slot_21 }}</td>
+<td>{{ slot_22 }}</td>
+</tr>
+</table>
+</section>
+</body>
+</html>

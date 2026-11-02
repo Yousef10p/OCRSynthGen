@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 0mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+.page { position: relative; block-size: var(--page-height); padding: 0; overflow: hidden; }
+.box { position: absolute; margin: 0; padding: 0; overflow: hidden; box-sizing: border-box; }
+h1.box, h2.box { font-weight: bold; }
+ul.box { list-style-position: inside; }
+.box table { inline-size: 100%; block-size: 100%; border-collapse: collapse; table-layout: fixed; }
+.box th, .box td { border: 1px solid #888; padding: 0 0.2em; overflow: hidden; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style>
+<style>{{ style }}</style>
+</head>
+<body><div class="page">
+<header class="box" style="inset-inline-start: 17.5mm; inset-block-start: 21.0mm; inline-size: 27.7mm; block-size: 1.9mm; font-size: 5.4pt">{{ slot_0 }}</header><h2 class="box" style="inset-inline-start: 17.5mm; inset-block-start: 30.2mm; inline-size: 172.7mm; block-size: 5.7mm; font-size: 16.3pt">{{ slot_1 }}</h2>
+<p class="box" style="inset-inline-start: 17.5mm; inset-block-start: 38.8mm; inline-size: 180.6mm; block-size: 15.1mm; font-size: 14.3pt">{{ slot_2 }}</p>
+<div  style="inset-inline-start: 0.0mm; inset-block-start: 68.3mm; inline-size: 104.8mm; block-size: 83.5mm; font-size: 14.8pt" class="box pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<h2 class="box" style="inset-inline-start: 109.7mm; inset-block-start: 68.9mm; inline-size: 79.0mm; block-size: 11.2mm; font-size: 10.5pt">{{ slot_3 }}</h2>
+<h2 class="box" style="inset-inline-start: 109.7mm; inset-block-start: 84.4mm; inline-size: 19.2mm; block-size: 2.7mm; font-size: 7.7pt">{{ slot_4 }}</h2>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 89.2mm; inline-size: 80.6mm; block-size: 2.9mm; font-size: 8.1pt"><li>{{ slot_5 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 94.2mm; inline-size: 76.9mm; block-size: 12.8mm; font-size: 12.0pt"><li>{{ slot_6 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 109.0mm; inline-size: 82.8mm; block-size: 2.9mm; font-size: 8.1pt"><li>{{ slot_7 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 113.9mm; inline-size: 76.6mm; block-size: 7.8mm; font-size: 11.1pt"><li>{{ slot_8 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 123.8mm; inline-size: 74.1mm; block-size: 2.9mm; font-size: 8.1pt"><li>{{ slot_9 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 128.8mm; inline-size: 50.7mm; block-size: 2.9mm; font-size: 8.1pt"><li>{{ slot_10 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 133.7mm; inline-size: 78.0mm; block-size: 2.9mm; font-size: 8.1pt"><li>{{ slot_11 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 138.6mm; inline-size: 54.2mm; block-size: 2.9mm; font-size: 8.1pt"><li>{{ slot_12 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 143.6mm; inline-size: 85.1mm; block-size: 7.8mm; font-size: 11.1pt"><li>{{ slot_13 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 153.4mm; inline-size: 70.3mm; block-size: 2.9mm; font-size: 8.1pt"><li>{{ slot_14 }}</li></ul>
+<p class="box" style="inset-inline-start: 17.6mm; inset-block-start: 160.3mm; inline-size: 77.7mm; block-size: 32.5mm; font-size: 11.5pt">{{ slot_15 }}</p>
+<h2 class="box" style="inset-inline-start: 109.7mm; inset-block-start: 160.6mm; inline-size: 26.9mm; block-size: 2.7mm; font-size: 7.7pt">{{ slot_16 }}</h2>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 165.4mm; inline-size: 83.7mm; block-size: 2.9mm; font-size: 8.1pt"><li>{{ slot_17 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 170.4mm; inline-size: 64.8mm; block-size: 2.9mm; font-size: 8.1pt"><li>{{ slot_18 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 175.3mm; inline-size: 82.2mm; block-size: 2.9mm; font-size: 8.1pt"><li>{{ slot_19 }}</li></ul>
+<ul class="box" style="inset-inline-start: 109.7mm; inset-block-start: 180.3mm; inline-size: 74.2mm; block-size: 7.8mm; font-size: 11.1pt"><li>{{ slot_20 }}</li></ul>
+<h2 class="box" style="inset-inline-start: 109.7mm; inset-block-start: 192.4mm; inline-size: 79.9mm; block-size: 7.7mm; font-size: 10.8pt">{{ slot_21 }}</h2>
+<ul class="box" style="inset-inline-start: 17.6mm; inset-block-start: 199.2mm; inline-size: 77.8mm; block-size: 5.1mm; font-size: 7.2pt"><li>{{ slot_22 }}</li></ul>
+<h2 class="box" style="inset-inline-start: 109.7mm; inset-block-start: 204.4mm; inline-size: 73.1mm; block-size: 7.7mm; font-size: 10.8pt">{{ slot_23 }}</h2>
+<ul class="box" style="inset-inline-start: 17.6mm; inset-block-start: 205.2mm; inline-size: 81.2mm; block-size: 2.2mm; font-size: 6.3pt"><li>{{ slot_24 }}</li></ul>
+<ul class="box" style="inset-inline-start: 17.6mm; inset-block-start: 208.4mm; inline-size: 75.9mm; block-size: 5.4mm; font-size: 7.7pt"><li>{{ slot_25 }}</li></ul>
+<p class="box" style="inset-inline-start: 109.7mm; inset-block-start: 216.2mm; inline-size: 82.8mm; block-size: 12.8mm; font-size: 12.0pt">{{ slot_26 }}</p>
+</div></body>
+</html>

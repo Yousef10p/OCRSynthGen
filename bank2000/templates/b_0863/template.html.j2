@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-color: #f2f2f2;
+}
+.search-bar input {
+    width: 300px;
+    height: 30px;
+}
+
+
+.left-sidebar {
+    float: right;
+    width: 200px;
+    background-color: #f2f2f2;
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f2f2f2;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="main">
+<header class="hero">
+<div class="search-bar"><span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_0 }}</span></div>
+</header>
+<div class="left-sidebar">
+<h2>{{ slot_1 }}</h2>
+<ul class="categories"><li>{{ slot_2 }}</li><li>{{ slot_3 }}</li></ul>
+<h2>{{ slot_4 }}</h2>
+<ul class="collections"><li>{{ slot_5 }}</li><li>{{ slot_6 }}</li></ul>
+<h2>{{ slot_7 }}</h2>
+<div class="promotions">{{ slot_8 }}</div>
+</div>
+<footer>
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<h2>{{ slot_13 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_16 }}</span>
+<span class="">{{ slot_17 }}</span>
+</form>
+</footer>
+</div>
+</body>
+</html>

@@ -60,11 +60,16 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
 <body>
 <header>
   <h1>Sample Generator</h1>
-  <label>Language <select id="language"><option value="mix">mixed (80% Arabic)</option><option value="ar">Arabic</option><option value="en">English</option></select></label>
+  <label>Language <select id="language"><option value="mix">mixed (Arabic and English)</option><option value="ar">Arabic</option><option value="en">English</option></select></label>
   <label>Effects <select id="effect"><option value="mix">mixed (15% clean, rest even)</option><option value="clean">clean (no effects)</option><option value="ocrsmith">OCRSmith</option><option value="augraphy">Augraphy</option><option value="scan-simulator">scan-simulator</option><option value="augraphy+scan-simulator">Augraphy + scan-simulator</option></select></label>
-  <label>Templates <select id="source"><option value="mix">bank: all sources</option><option value="grammar">bank: Grammar</option><option value="websight">bank: WebSight</option><option value="doclaynet">bank: DocLayNet</option></select></label>
+  <label>Templates <select id="source"><option value="mix">bank: all sources</option><option value="grammar">bank: Grammar</option><option value="websight">bank: WebSight v0.1</option><option value="websight2">bank: WebSight v0.2</option><option value="doclaynet">bank: DocLayNet</option></select></label>
   <label>Text <select id="text"><option value="wikipedia">Wikipedia (ar + en)</option><option value="demo">demo sentences</option></select></label>
   <label>Template maker <select id="templates"><option value="bank">bank</option><option value="llm" id="llm-opt">LLM</option></select></label>
+  <span class="strength">Strength
+    <label title="OCRSmith: 50 = its own settings">OCRSmith <input type="range" id="s-ocrsmith" min="0" max="100" value="50"><b id="v-ocrsmith">50</b></label>
+    <label title="Augraphy: 50 = its own settings">Augraphy <input type="range" id="s-augraphy" min="0" max="100" value="50"><b id="v-augraphy">50</b></label>
+    <label title="scan-simulator: 50 = its own settings">scan-sim <input type="range" id="s-scan-simulator" min="0" max="100" value="50"><b id="v-scan-simulator">50</b></label>
+  </span>
   <button id="go">Generate 16 samples</button>
   <div class="bar"><i id="bar"></i></div>
   <span id="status"></span>
@@ -83,9 +88,10 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
 let job = null, samples = [], timer = null, current = -1, tab = "final";
-const TABS = [["final", "Final page"], ["words", "Word boxes"], ["slots", "Slot boxes"], ["clean", "Clean render"],
+const TABS = [["final", "Final page"], ["gt", "Ground truth"], ["slots", "Slot boxes"], ["words", "Word boxes"], ["clean", "Clean render"],
               ["html", "HTML code"], ["md", "Markdown"], ["json", "Labels JSON"], ["info", "Details"]];
-const FILE = {final: ".jpg", words: "_words.jpg", slots: "_slots.jpg", clean: "_clean.jpg", html: ".html", md: ".md", json: ".json"};
+const FILE = {final: ".jpg", gt: ".gt.txt", words: "_words.jpg", slots: "_slots.jpg", clean: "_clean.jpg", html: ".html", md: ".md", json: ".json"};
+for (const t of ["ocrsmith", "augraphy", "scan-simulator"]) $("s-" + t).oninput = (e) => { $("v-" + t).textContent = e.target.value; };
 const url = (s, kind) => `/out/${job.id}/${s.name}${FILE[kind]}`;
 
 fetch("/api/info").then((r) => r.json()).then((info) => {
@@ -95,7 +101,8 @@ fetch("/api/info").then((r) => r.json()).then((info) => {
 
 $("go").onclick = async () => {
   const body = {n: 16, language: $("language").value, effect: $("effect").value, source: $("source").value,
-                templates: $("templates").value, text: $("text").value};
+                templates: $("templates").value, text: $("text").value,
+                strengths: Object.fromEntries(["ocrsmith", "augraphy", "scan-simulator"].map((t) => [t, +$("s-" + t).value]))};
   $("go").disabled = true;
   const r = await (await fetch("/api/generate", {method: "POST", body: JSON.stringify(body)})).json();
   job = {id: r.id, n: r.n}; samples = new Array(r.n).fill(null);
@@ -124,7 +131,7 @@ function card(s, i) {
       <div class="row"><span class="chip ${s.lang}">${s.lang === "ar" ? "Arabic" : "English"}</span><span class="chip">${esc(effectName(s))}</span>${warn}</div>
       <div class="small">${s.name} · ${s.template} (${s.source}) · ${esc(s.font)} ${s.size_pt}pt · ${s.words} words${s.pictures ? ` · ${s.pictures} picture${s.pictures > 1 ? "s" : ""}` : ""} · ${s.seconds.total} s</div>
       <div class="row"><button class="open" onclick="openPreview(${i}, 'final')">Preview</button>
-        <button class="open" onclick="openPreview(${i}, 'words')">Boxes</button><button class="open" onclick="openPreview(${i}, 'md')">Markdown</button></div>
+        <button class="open" onclick="openPreview(${i}, 'gt')">Ground truth</button><button class="open" onclick="openPreview(${i}, 'slots')">Boxes</button></div>
     </div></div>`;
 }
 
@@ -148,7 +155,12 @@ async function show() {
   const body = $("pv-body");
   if (tab === "info") {
     const rows = [["Template", `${s.template} (${s.source})`], ["Language", s.lang], ["Font", `${s.font}, ${s.size_pt}pt`],
-      ["Effect", s.effect], ["Applied", s.attacks.join(", ")], ["Words labelled", `${s.words} (lost: ${s.lost_words})`], ["Pictures from img_pool", s.pictures], ["Text", s.text === "wikipedia" ? `Wikipedia, ${s.text_sources} articles (listed in the labels JSON)` : "demo sentences"],
+      ["Effect", `${s.effect}${s.effect === "clean" ? "" : " at strength " + Math.round(s.strength * 100)}`],
+      ["Applied", s.attacks.join(", ")],
+      ["Readability after the effect", Object.entries(s.legibility || {}).map(([k, v]) => `${k} ${v}`).join(" · ")],
+      ["Text regions (ground truth lines)", s.regions],
+      ["Renders rejected before this one", s.attempts > 1 ? `${s.attempts - 1} (${Object.entries(s.rejected || {}).map(([k, v]) => `${k}: ${v} words`).join(", ")})` : "none"],
+      ["Theme", Object.entries(s.theme || {}).map(([k, v]) => `${k} ${v}`).join(" · ")], ["Words labelled", `${s.words} (lost: ${s.lost_words})`], ["Pictures from img_pool", s.pictures], ["Text", s.text === "wikipedia" ? `Wikipedia, ${s.text_sources} articles (listed in the labels JSON)` : "demo sentences"],
       ["Contrast", `${s.contrast}${s.low_contrast ? " (faint)" : ""}`], ["Pages rendered", s.pages_rendered],
       ["Seconds", Object.entries(s.seconds).map(([k, v]) => `${k} ${v}`).join(" · ")], ["Seed", s.seed], ["Note", s.note || "–"]];
     body.innerHTML = `<div class="facts"><table>${rows.map(([k, v]) => `<tr><td>${k}</td><td>${esc(v)}</td></tr>`).join("")}</table></div>`;
@@ -157,7 +169,14 @@ async function show() {
   } else {
     let text = await (await fetch(url(s, tab))).text();
     if (tab === "json") text = JSON.stringify(JSON.parse(text), null, 1);
-    body.innerHTML = `<pre>${esc(text)}</pre>`;
+    if (tab === "gt") {  // each line as in the file, the text isolated so Arabic doesn't reorder the tags around it
+      body.innerHTML = `<pre dir="ltr">${text.split("\n").filter(Boolean).map((line) => {
+        const m = line.match(/^<text>(.*) (<bbox>.*<\/bbox>)<\/text>$/);
+        return m ? `&lt;text&gt;<bdi>${esc(m[1])}</bdi> ${esc(m[2])}&lt;/text&gt;` : esc(line);
+      }).join("\n")}</pre>`;
+    } else {
+      body.innerHTML = `<pre>${esc(text)}</pre>`;
+    }
   }
   body.scrollTop = 0;
 }

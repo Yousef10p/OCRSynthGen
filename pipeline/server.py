@@ -28,7 +28,8 @@ CHOICES = {
     "language": {"mix": None, "ar": {"ar": 1}, "en": {"en": 1}},
     "effect": {"mix": None, "clean": {"clean": 1}, "ocrsmith": {"ocrsmith": 1}, "augraphy": {"augraphy": 1},
                "scan-simulator": {"scan-simulator": 1}, "augraphy+scan-simulator": {"augraphy+scan-simulator": 1}},
-    "source": {"mix": None, "grammar": {"grammar": 1}, "websight": {"websight": 1}, "doclaynet": {"doclaynet": 1}},
+    "source": {"mix": None, "grammar": {"grammar": 1}, "websight": {"websight": 1}, "websight2": {"websight2": 1},
+               "doclaynet": {"doclaynet": 1}},
     "text": {"wikipedia": "wikipedia", "demo": "demo"},
 }
 JOBS, LOCK = {}, threading.Lock()
@@ -46,14 +47,20 @@ def make_sample(out_dir, seed, name, options):
     pipe = DocPipeline(out_dir, languages=CHOICES["language"][options["language"]],
                        effects=CHOICES["effect"][options["effect"]], sources=CHOICES["source"][options["source"]],
                        templates=options["templates"], llm=LLMTemplates.from_env() if options["templates"] == "llm" else None,
-                       text=CHOICES["text"][options["text"]])
+                       text=CHOICES["text"][options["text"]], strengths=options["strengths"])
     return pipe.sample(seed, name)
 
 
 def start_job(options):
     n = max(1, min(int(options.get("n", 16)), 64))
+    strengths = {}
+    for tool in ("ocrsmith", "augraphy", "scan-simulator"):  # 0-100 on the page, 0-1 for the pipeline
+        try:
+            strengths[tool] = min(1.0, max(0.0, float((options.get("strengths") or {}).get(tool, 50)) / 100))
+        except (TypeError, ValueError):
+            strengths[tool] = 0.5
     options = {k: options.get(k) if options.get(k) in CHOICES[k] else next(iter(CHOICES[k])) for k in CHOICES} | \
-              {"templates": "llm" if options.get("templates") == "llm" else "bank"}
+              {"templates": "llm" if options.get("templates") == "llm" else "bank", "strengths": strengths}
     run = time.strftime("run_%Y%m%d_%H%M%S")
     out_dir, seed = OUT / run, random.randrange(10**6)
     job = {"id": run, "n": n, "options": options, "started": time.time(), "samples": [None] * n, "errors": []}
@@ -80,6 +87,11 @@ class Handler(SimpleHTTPRequestHandler):
 
     def log_message(self, *args):
         pass
+
+    def end_headers(self):
+        if not self.path.startswith("/api/"):  # the page itself: always the current version after an update
+            self.send_header("Cache-Control", "no-cache")
+        super().end_headers()
 
     def send_json(self, data, code=200):
         body = json.dumps(data, ensure_ascii=False).encode("utf-8")
@@ -108,7 +120,7 @@ class Handler(SimpleHTTPRequestHandler):
             if OUT.resolve() not in path.parents or not path.is_file():
                 return self.send_error(404)
             data = path.read_bytes()
-            kind = {".jpg": "image/jpeg", ".json": "application/json", ".md": "text/plain",
+            kind = {".jpg": "image/jpeg", ".json": "application/json", ".md": "text/plain", ".txt": "text/plain",
                     ".html": "text/plain"}.get(path.suffix, "application/octet-stream")
             self.send_response(200)
             self.send_header("Content-Type", kind + ("; charset=utf-8" if kind.startswith(("text", "application/json")) else ""))

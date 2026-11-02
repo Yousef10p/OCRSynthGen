@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header {
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#menu, #specialties, #reservations, #contact, #loyalty {
+    display: block;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+#specialties .image, #map {
+    background-color: lightgray;
+    height: 100px;
+    margin: 10px 0;
+}
+
+button {
+    background-color: darkblue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+footer {
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer a {
+    color: white;
+    margin: 0 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+
+<section id="menu">
+<h2>{{ slot_1 }}</h2>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
+</section>
+
+<section id="specialties">
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<div class="image pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<div class="image pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<div class="image pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
+</section>
+
+<section id="reservations">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<button>{{ slot_10 }}</button>
+</section>
+
+<section id="contact">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<button>{{ slot_13 }}</button>
+</section>
+
+<section id="loyalty">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<button>{{ slot_16 }}</button>
+</section>
+
+<footer>
+<p>{{ slot_17 }}</p>
+<div class="image pic-frame"><img data-pic="pic_3" src="{{ pic_3 }}" alt=""></div>
+<a>{{ slot_18 }}</a>
+<a>{{ slot_19 }}</a>
+<a>{{ slot_20 }}</a>
+</footer>
+</body>
+</html>

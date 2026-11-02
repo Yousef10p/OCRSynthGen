@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-body);
+}
+
+
+.header {
+    width: 100%;
+    text-align: center;
+    background-color: lightblue;
+    padding: 10px 0;
+}
+
+
+.filters {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: lightgrey;
+    padding: 10px 0;
+}
+
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.product {
+    height: 200px;
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.footer {
+    width: 100%;
+    background-color: lightpink;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.footer div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.logo {
+    width: 30%;
+    height: 50px;
+    background-color: lightgray;
+}
+
+
+.store-locations {
+    width: 30%;
+    background-color: lightgray;
+}
+
+
+.social-media {
+    width: 30%;
+    background-color: lightgray;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+</div>
+<div class="filters">
+<p>{{ slot_1 }}</p>
+<button>{{ slot_2 }}</button>
+<button>{{ slot_3 }}</button>
+<button>{{ slot_4 }}</button>
+</div>
+<div class="main">
+<div class="product">{{ slot_5 }}</div>
+<div class="product">{{ slot_6 }}</div>
+<div class="product">{{ slot_7 }}</div>
+</div>
+<div class="footer">
+<div class="logo">
+<p>{{ slot_8 }}</p>
+</div>
+<div class="store-locations">
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="social-media">
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</div>
+</div>
+</body>
+</html>

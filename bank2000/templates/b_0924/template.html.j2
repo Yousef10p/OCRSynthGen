@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+    background-color: #f0e68c; 
+}
+
+header, footer {
+    background-color: #a52a2a; 
+    color: white;
+    padding: 10px;
+}
+
+#content, #sidebar {
+    margin: 10px;
+}
+
+#content {
+    background-color: #90ee90; 
+    padding: 10px;
+}
+
+#sidebar {
+    background-color: #dda0dd; 
+}
+
+a.cta, a.social {
+    color: white;
+    background-color: #00bfff; 
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<main>
+<section id="content">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
+<a class="cta">{{ slot_3 }}</a>
+</section>
+<aside id="sidebar">
+<h3>{{ slot_4 }}</h3>
+<ul>
+<li>{{ slot_5 }}</li>
+<li>{{ slot_6 }}</li>
+</ul>
+<h3>{{ slot_7 }}</h3>
+<ul>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+<h3>{{ slot_10 }}</h3>
+<a class="social">{{ slot_11 }}</a>
+<a class="social">{{ slot_12 }}</a>
+</aside>
+</main>
+<footer>
+<ul>
+<li><a>{{ slot_13 }}</a></li>
+<li><a>{{ slot_14 }}</a></li>
+<li><a>{{ slot_15 }}</a></li>
+</ul>
+</footer>
+</body>
+</html>

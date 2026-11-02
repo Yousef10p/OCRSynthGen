@@ -9,6 +9,7 @@ from template `g_0003` with seed 42 (Arabic, OCRSmith effects), unless a section
 
 **Contents**
 
+0. [The final version in short](#0-the-final-version-in-short) (read this first: what changed, and where)
 1. [The whole path in one picture](#1-the-whole-path-in-one-picture)
 2. [Which program runs where (environments)](#2-which-program-runs-where-environments)
 3. [Step 1: templates, and how they are stored](#3-step-1-templates-and-how-they-are-stored)
@@ -26,18 +27,186 @@ from template `g_0003` with seed 42 (Arabic, OCRSmith effects), unless a section
 
 ---
 
+## 0. The final version in short
+
+Sections 1–14 explain each step in depth. Several steps were extended for the final version; this section
+says what each one does now. Where it disagrees with a later section, this one is current.
+
+### 0.1 The template bank: `bank2000/`
+
+```
+bank2000/
+  templates/b_0001/template.html.j2    the page, {{ slot_N }} and {{ pic_N }} placeholders
+  templates/b_0001/template.json       slots, pictures (id + hint), lang, source, source_template, features
+  index.jsonl                          one line per template: id, source, lang, slots, pictures, structure_hash
+  report.json                          how the bank was built: candidates, screened, passed, kept, rejections
+```
+
+Built by [src/bank2000.py](src/bank2000.py) (`python -m src.bank2000 --workers 6`):
+
+| Step | What happens |
+|---|---|
+| candidates | grammar: 3,000 new rich-grammar templates; WebSight v0.1 and DocLayNet: 4,000 each from the full bank; WebSight v0.2: 3,298 converted Tailwind pages ([src/from_websight2.py](src/from_websight2.py)) |
+| adapt | language alternates ar/en (grammar and DocLayNet use logical CSS, so only `<html lang dir>` changes; WebSight v0.1 CSS is flipped back to left-to-right by rtlcss for English; WebSight v0.2 pages got their language when converted). Every grey picture box becomes `<div class="pic-frame"><img data-pic="pic_N" src="{{ pic_N }}" alt=""></div>`, with a hint (`"team photo"`, `"food"`) taken from the original page. A page with a web address in it (a background photo loaded from the internet) is left out |
+| diversity | farthest-first on layout features (page skeleton and layout CSS for flowing pages, box positions for DocLayNet, slot roles, picture count): each next template is the one least like everything taken; anything sharing 75% or more of its features with a taken one (Jaccard) is never taken; equal structure hashes are dropped |
+| screening | each candidate is rendered once by the real generator (random style, theme, text, pictures) and kept only if the page passes every check of [pipeline/qa.py](pipeline/qa.py) |
+| quotas | the first passing ones per source: grammar 500, WebSight v0.1 450, WebSight v0.2 450, DocLayNet 600 |
+| top-up | if fewer than 2,000 passed: more candidates of each source (unlike every template already taken), then LLM templates (saved ones, then new ones from Groq), screened the same way (`--top-up` runs only this) |
+| validation | every template: `lang` and `<html lang dir>` agree; slot and picture ids are `slot_0…`, `pic_0…`; the Jinja variables are exactly the slots, pictures and `style`; no `http` or `<script>`; it renders |
+
+The build (`bank2000/report.json`, 24 minutes with 6 workers):
+
+| Source | Candidates | Screened (most diverse) | Passed | Kept | Arabic / English |
+|---|---|---|---|---|---|
+| grammar | 3,000 | 850 | 798 | 500 | 259 / 241 |
+| WebSight v0.1 | 4,000 | 765 | 609 | 450 | 200 / 250 |
+| WebSight v0.2 | 3,298 (2,360 usable) | 765 | 664 | 450 | 217 / 233 |
+| DocLayNet | 4,000 | 1,020 | 952 | 600 | 280 / 320 |
+| **total** | | | | **2,000** | **956 / 1,044** |
+
+No template is invalid, no two share a structure hash, and the most alike pair of all 2,000 shares 41% of
+its layout features (the limit was 75%). 1,191 templates have `<img>` picture slots. The top-up was not
+needed. Most rejections were words hidden by the template's CSS, covered by a picture, or (DocLayNet,
+before the ink-overflow fix of 0.5) letters clipped by tight boxes.
+
+`DocPipeline` uses `bank2000/` by default. `DocPipeline(..., bank="old")` uses the 113,077-template bank in
+`templates/`; `bank=<folder>` any folder with `index.jsonl` and `templates/`.
+
+### 0.2 Picking a template
+
+`DocPipeline.template(rng, name, lang)` keeps the templates of the wanted language (50% Arabic, 50% English
+by default), picks a source (all four equally often, or as `sources=` says), then a template of it. With
+`templates="llm"` (the generator page's **Template maker: LLM**) Groq writes a new page; it is converted like
+a WebSight page and then adapted like a bank template (language, `<img>` picture slots).
+
+### 0.3 Filling: text and pictures
+
+- **Text** comes from one Wikipedia article per page (document mode of `TextPool`): the article's title goes
+  in the first title slot, then its sentences in order; a slot that wants a short text gets a whole short
+  sentence or the start of one; when an article runs out the next one starts with its title. Cells and form
+  fields still get numbers, dates, phone numbers and amounts some of the time.
+- **Pictures:** each `{{ pic_N }}` gets a `file:///` address of a photo from `img_pool/` whose category
+  matches the slot's hint (`ImagePool.pick(rng, hint)`; a hint like "chef", "pizza" → food, "team",
+  "doctor" → people, "office", "building" → architecture; no match → any photo). Solid-colour boxes the
+  converters could not name as pictures (a blue `.logo` square) get a photo in the browser.
+
+### 0.4 Styling
+
+The typography of section 4.2 plus a **theme** ([pipeline/themes.py](pipeline/themes.py)), recorded in the
+label's `theme`:
+
+| Choice | Values |
+|---|---|
+| accent colour | 13 dark, readable colours |
+| headings | plain, accent colour, underline, side bar, tinted band, rule above |
+| tables | grid, striped rows, tinted header, rules only, boxed |
+| boxes (side boxes, callouts, cards) | tint, side bar, outline, plain |
+| page | white, off-white, light tint of the accent |
+| lists | disc, square or circle bullets |
+| spacing | paragraph and heading gaps |
+
+DocLayNet layouts get colours only (their boxes have fixed sizes). WebSight pages keep their own design; in
+the browser every colour is turned around the colour wheel by a random angle and saturation, so one page
+comes in many colour schemes. Any text that ends up with contrast below 4.5:1 against its background is
+set to near-black or white, whichever reads. "Its background" is what is actually painted under each line of
+the text (`document.elementsFromPoint` at the line's centre, from the text down to the first opaque colour or
+picture), so a dark band of another element that the text runs over counts, and a dark band the text has
+overflowed out of does not.
+
+### 0.5 Rendering, and what is checked
+
+SynthDoc renders at **2x** (Chromium `device_scale_factor=2`), so small text is sharp; all measurements are
+scaled to image pixels. Inside the browser, before layout (`PagedConfig.before`): fonts and photos are
+loaded (the exported page already turns off `text-transform` and `letter-spacing` everywhere, so the text
+is drawn exactly as the labels spell it); boxes whose text overflows are fitted (line height 1.2, font down to 80%, then
+whole words dropped from the end); a clipping box whose text fits lets the ink of its letters show (hamza,
+accents and descenders reach past the line box, and DocLayNet boxes are tight: they were the main reason
+DocLayNet pages failed); rows too wide for the page wrap; slots past the bottom margin are emptied.
+
+After layout, [pipeline/qa.py](pipeline/qa.py) `render_issues` checks every word, using the letters' real
+extent (canvas glyph metrics around the baseline), not the line box:
+
+| Check | A word is rejected when |
+|---|---|
+| hidden | it is in the slot's DOM text but was not measured (`display:none`, `visibility`, zero size…) |
+| cut | a box edge cuts its letters left/right, or more than 3% of their height |
+| mismeasured | its box is far wider than its letters could be |
+| off page | its letters are outside the page |
+| overlap | its letters overlap letters of another slot by more than 20% |
+| picture | a picture covers more than 15% of it |
+| generated | the page shows text the template didn't write (CSS `content:`, numbered markers other than bullets) |
+| contrast | its contrast against what is painted under it (on any of its lines) is under 3:1 |
+| empty | the page has no text at all |
+
+A page with any issue is made again: another style, and every second attempt another template (up to 8).
+The label records `attempts` and what was `rejected`.
+
+### 0.6 Degradation and its strength
+
+[pipeline/degrade.py](pipeline/degrade.py) `degrade(image, words, seed, effect, strength)`; one tool per page:
+clean 15%, OCRSmith, Augraphy, scan-simulator about 28% each. `strength` is 0–1 (the page's sliders: 0–100);
+0.5 is each tool's own settings:
+
+| Tool | What strength changes |
+|---|---|
+| OCRSmith | noise, blur, JPEG quality, rotation, contrast and ink-erosion amounts are scaled around their neutral values (`toward(value, neutral, 2·strength)`: 0 → no change from neutral, 0.5 → as set, 1 → twice as far); the paper texture is always applied |
+| Augraphy | every augmentation's numeric ranges are scaled the same way, and its probability multiplied by 0.5 + strength |
+| scan-simulator | blur, noise, shadows, perspective, JPEG and lighting of its config scaled the same way (with Augraphy before it for `augraphy+scan-simulator`). The page first gets a border of its own edge colour (4% of its longer side at strength 0.5, 6% at 1), so rotation and perspective turn the page inside the picture instead of pushing words out of the frame |
+
+Augraphy's DirtyDrum intensity is capped at 0.6: above that it draws solid black bands across lines of text.
+
+After the effect, `legibility(clean, out, words, boxes)` measures every word: lost (no box), edge (its box
+touches the image border: cut by the frame), faint (ink contrast gone, or under 40 grey levels between letters and background: washed out by lighting), sharpness (Laplacian energy compared
+with the clean page), drowned (noise as dark as the ink, by Otsu) and blotted (`covered()`: how much more of
+the word's box is dark than before; a streak or blot over a word scores 0.33 or more, blur and ink bleed
+much less; the limit is 0.30). If the page fails (`readable()`: no lost, edge or blotted word, at most 1%
+faint or drowned, sharpness ≥ 0.10), the effect is tried again with another seed, then at 60% and 30% of the
+strength; if nothing passes, the clean page is used and the label says so.
+
+### 0.7 Ground truth
+
+[pipeline/groundtruth.py](pipeline/groundtruth.py): one region per slot, its words in DOM order (absolute
+DocLayNet layouts: top to bottom, then right to left for Arabic or left to right for English). Each word's
+box hugs its letters (glyph top and bottom plus 12% padding, never more than the line box), and moves with
+the page through every effect; the region's box is the union of its words' boxes. Written as
+`<name>.gt.txt`:
+
+```
+<text>نشأتها: <bbox>1457, 27, 1531, 68</bbox></text>
+<text>KINGDOM OF SAUDI ARABIA <bbox>50, 20, 450, 65</bbox></text>
+```
+
+`x1, y1` top-left and `x2, y2` bottom-right, in pixels of the final image; only `<` and `>` in the text are
+escaped (`&lt;`, `&gt;`). The same regions are in the label JSON as `slots` (`text`, `box` `[x, y, w, h]`,
+`bbox` `[x1, y1, x2, y2]`, `role`), and the saved `.html` holds exactly these texts.
+
+### 0.8 Checking finished samples
+
+`python -m pipeline.audit <folder>` re-checks samples without trusting the generator's own checks: the
+ground truth parses and equals the label's slots; boxes lie on the image and have a size; every labelled
+word lies in a region; each region's text is the page's text for that slot; every region has ink in the
+clean render and still stands out after the effect; no two regions' words overlap. It draws the boxes on
+every page (`audit/<name>_gt.jpg`) and makes contact sheets (`audit/sheet_NN.jpg`).
+
+### 0.9 One environment note
+
+Windows Smart App Control blocks numba 0.68.1's `_devicearray.pyd`; without it Augraphy silently does
+nothing. `requirements-pipeline.txt` pins `numba==0.68.0`, whose files are allowed.
+
+---
+
 ## 1. The whole path in one picture
 
 ```mermaid
 flowchart TD
-    T["templates/&lt;id&gt;/<br/>template.html.j2 + template.json<br/>(113,077 empty templates)"] --> F
+    T["bank2000/templates/&lt;id&gt;/<br/>template.html.j2 + template.json<br/>(2,000 templates, ar + en)"] --> F
     W["text_pool/ar.json, en.json<br/>(Wikipedia text)"] --> F
-    P["img_pool/*.jpg<br/>(500 photos)"] --> F
+    P["img_pool/*.jpg<br/>(3,193 photos, by category)"] --> F
     O["OCRSmith fonts<br/>(13 Arabic families)"] --> F
     F["Step 2 · fill<br/>random style CSS + slot texts + photos<br/>(DocPipeline.fill)"] --> S
     S["Step 3 · SynthDoc<br/>Jinja fills the slots, Chromium + Paged.js<br/>lays out and screenshots the page,<br/>every word, line and slot is measured"] --> E
-    E["Step 4 · effects<br/>clean 15% · OCRSmith · Augraphy · scan-simulator<br/>(~28% each), boxes moved with the page"] --> M
-    M["Step 5 · outputs<br/>image · labels JSON · Markdown (boxes on top) · HTML"]
+    E["Step 4 · effects<br/>clean 15% · OCRSmith · Augraphy · scan-simulator<br/>(~28% each, strength 0-100), boxes moved with the page"] --> M
+    M["Step 5 · outputs<br/>image · ground truth .gt.txt · labels JSON · Markdown · HTML"]
 ```
 
 One sample is one call: `DocPipeline.sample(seed)` in [pipeline/doc_pipeline.py](pipeline/doc_pipeline.py).
@@ -279,7 +448,7 @@ fills them with the values (section 6). That is how SynthDoc is designed to work
 
 ### 4.1 Language
 
-`lang` is `"ar"` (80% of samples) or `"en"` (20%). For English, `synthdoc_html` turns the page around:
+`lang` is the template's language (bank2000: half the templates `"ar"`, half `"en"`; samples 50/50 by default). For English, `synthdoc_html` turns the page around:
 `<html lang="ar" dir="rtl">` becomes `<html lang="en" dir="ltr">`, and the Paged.js fix CSS (4.5) says
 `direction: ltr`. Because the templates use logical CSS (start/end, not left/right), the layout mirrors
 correctly. (WebSight CSS was flipped by rtlcss into physical right/left, so a few WebSight layouts stay
@@ -949,7 +1118,9 @@ All commands run from `D:\code\OCR\arabic-template-bank`.
 | `--workers` | 4 | parallel processes; each needs about 1.5 GB of memory |
 | `--seed` | 0 | sample `i` gets seed `seed × 1,000,000 + i`; the same seed makes the same set |
 | `--val` | 0.05 | share of samples in the `val` split |
-| `--language` | mix (80% ar) | `ar` or `en` only |
+| `--language` | mix (50/50) | `ar` or `en` only |
+| `--source` | all four | `grammar`, `websight`, `websight2` or `doclaynet` only |
+| `--strength-ocrsmith`, `--strength-augraphy`, `--strength-scan-simulator` | 0.5 | effect strength, 0 (lightest) to 1 (strongest) |
 | `--effect` | mix | `clean`, `ocrsmith`, `augraphy`, `scan-simulator` or `augraphy+scan-simulator` only |
 | `--text` | `wikipedia` | `demo` for the built-in sentences |
 
@@ -1162,6 +1333,12 @@ And:
 | [pipeline/doc_pipeline.py](pipeline/doc_pipeline.py) | `DocPipeline`: the five steps; the page script (section 7); the word measuring additions |
 | [pipeline/dataset.py](pipeline/dataset.py) | the training-set command |
 | [pipeline/server.py](pipeline/server.py), [pipeline/static/index.html](pipeline/static/index.html) | the generator page |
+| [pipeline/themes.py](pipeline/themes.py) | themes: accent colour, heading/table/box/page styles, WebSight hue turn |
+| [pipeline/degrade.py](pipeline/degrade.py) | the three tools at a strength; the after-effect readability checks |
+| [pipeline/qa.py](pipeline/qa.py) | the render checks (`render_issues`); `python -m pipeline.qa` makes and reports samples |
+| [pipeline/groundtruth.py](pipeline/groundtruth.py) | slot regions in reading order; the `.gt.txt` format |
+| [pipeline/audit.py](pipeline/audit.py) | independent check of finished samples, boxes drawn, contact sheets |
+| [src/bank2000.py](src/bank2000.py), [src/from_websight2.py](src/from_websight2.py) | the 2,000-template bank; WebSight v0.2 conversion |
 | [pipeline/text_pool.py](pipeline/text_pool.py) | Wikipedia download, `TextPool` |
 | [pipeline/img_pool.py](pipeline/img_pool.py) | photo download, `ImagePool` |
 | [pipeline/llm_templates.py](pipeline/llm_templates.py) | LLM-written templates (Groq or Ollama) |

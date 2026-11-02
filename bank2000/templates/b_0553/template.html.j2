@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header, footer {
+    background-color: lightgrey;
+    padding: 10px;
+    text-align: center;
+}
+
+.hero, .courses, .reviews, .live-chat {
+    padding: 20px;
+}
+
+.hero h2, .courses h2, .reviews h2, .live-chat h2 {
+    margin-bottom: 10px;
+}
+
+.course-image {
+    height: 200px;
+    width: 200px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
+<section class="hero">
+<h2>{{ slot_1 }}</h2>
+<a><button>{{ slot_2 }}</button></a>
+</section>
+<section class="courses" id="courses">
+<h2>{{ slot_3 }}</h2>
+<ul>
+<li>
+<h3>{{ slot_4 }}</h3>
+<div class="course-image pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<p>{{ slot_5 }}</p>
+</li>
+<li>
+<h3>{{ slot_6 }}</h3>
+<div class="course-image pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<p>{{ slot_7 }}</p>
+</li>
+<li>
+<h3>{{ slot_8 }}</h3>
+<div class="course-image pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
+<p>{{ slot_9 }}</p>
+</li>
+</ul>
+</section>
+<section class="reviews" id="reviews">
+<h2>{{ slot_10 }}</h2>
+<ul>
+<li>
+<p>{{ slot_11 }}</p>
+<p>{{ slot_12 }}</p>
+</li>
+<li>
+<p>{{ slot_13 }}</p>
+<p>{{ slot_14 }}</p>
+</li>
+</ul>
+</section>
+<section class="live-chat" id="live-chat">
+<h2>{{ slot_15 }}</h2>
+<div style="background-color: lightgrey; height: 200px; width: 200px;"></div>
+<p>{{ slot_16 }}</p>
+</section>
+<footer>
+<p>{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

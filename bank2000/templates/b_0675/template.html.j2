@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 20px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.header ul {
+  list-style: none;
+  padding: 0;
+}
+
+.header li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.gallery h2,
+.offer h2,
+.menu h2,
+.order h2 {
+  color: #333;
+}
+
+.image, .dish {
+  height: 200px;
+  margin: 20px;
+  background-color: #ccc;
+}
+
+.order form {
+  margin: 20px;
+}
+
+.order label {
+  display: block;
+  margin: 10px 0;
+}
+
+.order button {
+  display: block;
+  margin-top: 10px;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="header">
+<h1>{{ slot_0 }}</h1>
+<nav>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+</ul>
+{{ slot_5 }} </nav>
+<div class="gallery">
+<h2>{{ slot_6 }}</h2>
+<div class="image">{{ slot_7 }}</div>
+<div class="image">{{ slot_8 }}</div>
+<div class="image">{{ slot_9 }}</div>
+{{ slot_10 }} </div>
+<div class="offer">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+{{ slot_13 }} </div>
+<div class="menu" id="menu">
+<h2>{{ slot_14 }}</h2>
+<div class="menu-filters">
+<button class="active">{{ slot_15 }}</button>
+<button>{{ slot_16 }}</button>
+<button>{{ slot_17 }}</button>
+{{ slot_18 }} </div>
+<div class="menu-dishes">
+<div class="dish">{{ slot_19 }}</div>
+<div class="dish">{{ slot_20 }}</div>
+<div class="dish">{{ slot_21 }}</div>
+<div class="dish">{{ slot_22 }}</div>
+<div class="dish">{{ slot_23 }}</div>
+<div class="dish">{{ slot_24 }}</div>
+<div class="dish">{{ slot_25 }}</div>
+<div class="dish">{{ slot_26 }}</div>
+<div class="dish">{{ slot_27 }}</div>
+{{ slot_28 }} </div>
+<div class="order" id="order">
+<h2>{{ slot_29 }}</h2>
+<p>{{ slot_30 }}</p>
+<form>
+<label>{{ slot_31 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_32 }}</span>
+<label>{{ slot_33 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_34 }}</span>
+<label>{{ slot_35 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_36 }}</span>
+<button>{{ slot_37 }}</button>
+{{ slot_38 }} </form>
+{{ slot_39 }} </div>
+<div class="footer">
+<p>{{ slot_40 }}</p>
+{{ slot_41 }} </div>
+{{ slot_42 }} </div></div></body>
+</html>

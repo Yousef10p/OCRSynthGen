@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: #f7e8d1;
+  color: #444;
+}
+
+.rectangle {
+  height: 200px;
+  background-color: #666;
+  color: #fff;
+  line-height: 200px;
+  text-align: center;
+  margin: 10px;
+}
+
+
+header {
+  background-color: #ffcdd2;
+  padding: 20px;
+  text-align: center;
+  color: #b00;
+}
+
+
+.carousel {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.cta {
+  text-align: center;
+  margin: 20px 0;
+}
+
+button {
+  background-color: #b00;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.col {
+  display: flex;
+}
+
+.col div {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffcdd2;
+  margin: 10px;
+}
+
+
+footer {
+  background-color: #ddd;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer a {
+  color: #444;
+  margin: 0 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+</header>
+<main>
+<section class="carousel">
+<div class="rectangle carousel-item">{{ slot_2 }}</div>
+<div class="rectangle carousel-item">{{ slot_3 }}</div>
+<div class="rectangle carousel-item">{{ slot_4 }}</div>
+</section>
+<section class="cta">
+<button>{{ slot_5 }}</button>
+</section>
+<section class="col">
+<div class="category">
+<h2>{{ slot_6 }}</h2>
+<ul>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+<li>{{ slot_9 }}</li>
+</ul>
+</div>
+<div class="bestsellers">
+<h2>{{ slot_10 }}</h2>
+<div class="rectangle bestseller-item">{{ slot_11 }}</div>
+<div class="rectangle bestseller-item">{{ slot_12 }}</div>
+<div class="rectangle bestseller-item">{{ slot_13 }}</div>
+</div>
+</section>
+</main>
+<footer>
+<div>
+<a>{{ slot_14 }}</a>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+</div>
+</footer>
+</body>
+</html>

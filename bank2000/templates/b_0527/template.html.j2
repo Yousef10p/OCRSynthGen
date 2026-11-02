@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+.hero {
+    background-color: #ccc;
+    height: 200px;
+    text-align: center;
+    padding: 50px;
+}
+
+.hero-text {
+    font-size: 30px;
+    color: white;
+}
+
+.menu {
+    background-color: #f0f0f0;
+    width: 200px;
+    float: left;
+    padding: 10px;
+}
+
+.menu-title {
+    font-weight: bold;
+}
+
+.featured-image, .promotions, .events {
+    background-color: #ddd;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.content-area {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="hero">
+<span class="hero-text">{{ slot_0 }}</span>
+</div>
+<div class="menu" style="float: left;">
+<div class="menu-title">{{ slot_1 }}</div>
+<ul>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+</ul>
+<div class="menu-title">{{ slot_5 }}</div>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+</ul>
+<div class="menu-title">{{ slot_8 }}</div>
+<ul>
+<li>{{ slot_9 }}</li>
+<li>{{ slot_10 }}</li>
+</ul>
+</div>
+<div class="content-area" style="margin-left: 250px;">
+<h1>{{ slot_11 }}</h1>
+<p>{{ slot_12 }}</p>
+<div class="featured-image pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+<div class="promotions"></div>
+<h1>{{ slot_15 }}</h1>
+<p>{{ slot_16 }}</p>
+<div class="events"></div>
+<h1>{{ slot_17 }}</h1>
+<p>{{ slot_18 }}</p>
+</div>
+</body>
+</html>

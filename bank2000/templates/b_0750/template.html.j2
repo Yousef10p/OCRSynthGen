@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-column {
+    flex: 1;
+    background-color: #f0f0f0;
+    
+}
+
+.right-column {
+    flex: 1;
+    background-color: #e0e0e0;
+    
+}
+
+.news-updates {
+    
+}
+
+.registration {
+    
+}
+
+.course-info {
+    
+}
+
+.image-placeholder {
+    
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="left-column">
+<div class="news-updates">
+<p>{{ slot_0 }}</p>
+<ul>
+<li>{{ slot_1 }}</li>
+<li>{{ slot_2 }}</li>
+<li>{{ slot_3 }}</li>
+</ul>
+</div>
+<div class="registration">
+<form>
+<h2>{{ slot_4 }}</h2>
+<label>{{ slot_5 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_6 }}</span><br>
+<label>{{ slot_7 }}</label><br>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_8 }}</span><br>
+<span class="">{{ slot_9 }}</span>
+</form>
+</div>
+</div>
+<div class="right-column">
+<div class="course-info">
+<p>{{ slot_10 }}</p>
+<ul>
+<li>{{ slot_11 }}</li>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</div>
+<div class="image-placeholder pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+</div>
+</div>
+</body>
+</html>

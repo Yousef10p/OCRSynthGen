@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  font-family: var(--font-body);
+}
+
+header, footer {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.banner {
+  position: relative;
+  height: 400px;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+}
+
+.slide {
+  margin: 20px;
+  padding: 20px;
+  background: #333;
+  color: #fff;
+}
+
+.product, .service {
+  margin: 20px;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  background: #999;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<div class="banner">
+<div class="text-overlay">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+<div class="carousel">
+<div class="slide">{{ slot_6 }}</div>
+<div class="slide">{{ slot_7 }}</div>
+<div class="slide">{{ slot_8 }}</div>
+</div>
+</div>
+</div>
+<section>
+<h2>{{ slot_9 }}</h2>
+<div class="product">
+<div class="image pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<h3>{{ slot_10 }}</h3>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="product">
+<div class="image pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<h3>{{ slot_12 }}</h3>
+<p>{{ slot_13 }}</p>
+</div>
+</section>
+<section>
+<h2>{{ slot_14 }}</h2>
+<div class="service">
+<h3>{{ slot_15 }}</h3>
+<p>{{ slot_16 }}</p>
+</div>
+</section>
+<footer>
+<p>{{ slot_17 }}</p>
+</footer>
+</body>
+</html>

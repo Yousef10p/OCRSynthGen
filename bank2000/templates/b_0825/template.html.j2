@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+header {
+    position: relative;
+}
+.banner {
+    height: 400px;
+    width: 100%;
+    background-color: #f2f2f2;
+}
+.content {
+    margin: 20px;
+}
+#bookingSection {
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+form {
+    margin-top: 20px;
+}
+form input[type='text'], form input[type='submit'] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+form input[type='submit'] {
+    background-color: #1a53ff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.review {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<div class="banner pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+</header>
+<section>
+<div class="content">
+<h2>{{ slot_0 }}</h2>
+<p>{{ slot_1 }}</p>
+<h2>{{ slot_2 }}</h2>
+<ul>
+<li><span>{{ slot_3 }}</span></li>
+<li><span>{{ slot_4 }}</span></li>
+<li><span>{{ slot_5 }}</span></li>
+<li><span>{{ slot_6 }}</span></li>
+</ul>
+<h2>{{ slot_7 }}</h2>
+<div class="review">
+<p>{{ slot_8 }}</p>
+<p>{{ slot_9 }}</p>
+</div>
+<div class="review">
+<p>{{ slot_10 }}</p>
+<p>{{ slot_11 }}</p>
+</div>
+</div>
+</section>
+<section id="bookingSection">
+<h2>{{ slot_12 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_15 }}</span>
+<span class="">{{ slot_16 }}</span>
+</form>
+</section>
+</body>
+</html>

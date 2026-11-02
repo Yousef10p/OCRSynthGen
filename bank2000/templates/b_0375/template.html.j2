@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 12pt; --line-height: 1.4; --align: start; --page-width: 210mm; --page-height: 297mm; --page-margin: 24mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+@counter-style arabic-letters { system: alphabetic; symbols: "\0623" "\0628" "\062C" "\062F" "\0647" "\0648" "\0632" "\062D" "\0637" "\064A"; suffix: ") "; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style>
+<style>{{ style }}</style>
+</head>
+<body><div class="page">
+<main><p style="margin-block: 0 0.7em; text-indent: 1.5em; text-align: justify; font-size: 1em">{{ slot_0 }}</p>
+<h2 style="font-size: calc(var(--base-size) * 1.5); text-align: start; margin-block: 1em 0.4em">{{ slot_1 }}</h2>
+<div style="margin-block: 0.6em">
+<div style="display: flex; gap: 0.8em; align-items: baseline; margin-block: 0.35em">
+<span style="font-weight: bold; white-space: nowrap">{{ slot_2 }}</span><span style="border: 1px solid #555; padding-inline: 0.4em; flex: 1; min-inline-size: 5em">{{ slot_3 }}</span><span style="font-weight: bold; white-space: nowrap">{{ slot_4 }}</span><span style="border: 1px solid #555; padding-inline: 0.4em; flex: 1; min-inline-size: 5em">{{ slot_5 }}</span>
+</div>
+<div style="display: flex; gap: 0.8em; align-items: baseline; margin-block: 0.35em">
+<span style="font-weight: bold; white-space: nowrap">{{ slot_6 }}</span><span style="border: 1px solid #555; padding-inline: 0.4em; flex: 1; min-inline-size: 5em">{{ slot_7 }}</span><span style="font-weight: bold; white-space: nowrap">{{ slot_8 }}</span><span style="border: 1px solid #555; padding-inline: 0.4em; flex: 1; min-inline-size: 5em">{{ slot_9 }}</span>
+</div>
+<div style="display: flex; gap: 0.8em; align-items: baseline; margin-block: 0.35em">
+<span style="font-weight: bold; white-space: nowrap">{{ slot_10 }}</span><span style="border: 1px solid #555; padding-inline: 0.4em; flex: 1; min-inline-size: 5em">{{ slot_11 }}</span><span style="font-weight: bold; white-space: nowrap">{{ slot_12 }}</span><span style="border: 1px solid #555; padding-inline: 0.4em; flex: 1; min-inline-size: 5em">{{ slot_13 }}</span>
+</div>
+<div style="display: flex; gap: 0.8em; align-items: baseline; margin-block: 0.35em">
+<span style="font-weight: bold; white-space: nowrap">{{ slot_14 }}</span><span style="border: 1px solid #555; padding-inline: 0.4em; flex: 1; min-inline-size: 5em">{{ slot_15 }}</span><span style="font-weight: bold; white-space: nowrap">{{ slot_16 }}</span><span style="border: 1px solid #555; padding-inline: 0.4em; flex: 1; min-inline-size: 5em">{{ slot_17 }}</span>
+</div>
+<div style="display: flex; gap: 0.8em; align-items: baseline; margin-block: 0.35em">
+<span style="font-weight: bold; white-space: nowrap">{{ slot_18 }}</span><span style="border: 1px solid #555; padding-inline: 0.4em; flex: 1; min-inline-size: 5em">{{ slot_19 }}</span><span style="font-weight: bold; white-space: nowrap">{{ slot_20 }}</span><span style="border: 1px solid #555; padding-inline: 0.4em; flex: 1; min-inline-size: 5em">{{ slot_21 }}</span>
+</div>
+</div>
+<div style="margin-block: 0.6em">
+<div style="display: flex; gap: 0.8em; align-items: baseline; margin-block: 0.35em">
+<span style="font-weight: bold; white-space: nowrap">{{ slot_22 }}</span><span style="border-block-end: 1px solid #000; flex: 1; min-inline-size: 5em">{{ slot_23 }}</span>
+</div>
+<div style="display: flex; gap: 0.8em; align-items: baseline; margin-block: 0.35em">
+<span style="font-weight: bold; white-space: nowrap">{{ slot_24 }}</span><span style="border-block-end: 1px solid #000; flex: 1; min-inline-size: 5em">{{ slot_25 }}</span>
+</div>
+<div style="display: flex; gap: 0.8em; align-items: baseline; margin-block: 0.35em">
+<span style="font-weight: bold; white-space: nowrap">{{ slot_26 }}</span><span style="border-block-end: 1px solid #000; flex: 1; min-inline-size: 5em">{{ slot_27 }}</span>
+</div>
+<div style="display: flex; gap: 0.8em; align-items: baseline; margin-block: 0.35em">
+<span style="font-weight: bold; white-space: nowrap">{{ slot_28 }}</span><span style="border-block-end: 1px solid #000; flex: 1; min-inline-size: 5em">{{ slot_29 }}</span>
+</div>
+</div>
+<ol style="list-style-type: arabic-indic; margin-block: 0.3em; padding-inline-start: 1.8em">
+<li>{{ slot_30 }}</li>
+<li>{{ slot_31 }}</li>
+<li>{{ slot_32 }}</li>
+<li>{{ slot_33 }}</li>
+</ol>
+<table style="border-collapse: collapse; inline-size: 100%; margin-block: 0.6em; font-size: 1em; break-inside: avoid">
+<thead><tr>
+<th style="padding: 0.2em 0.8em; text-align: start; background: transparent; font-weight: bold">{{ slot_34 }}</th>
+<th style="padding: 0.2em 0.8em; text-align: start; background: transparent; font-weight: bold">{{ slot_35 }}</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_36 }}</td>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_37 }}</td>
+</tr>
+<tr>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_38 }}</td>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_39 }}</td>
+</tr>
+<tr><td style="padding: 0.2em 0.8em; text-align: start" colspan="2">{{ slot_40 }}</td></tr>
+<tr>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_41 }}</td>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_42 }}</td>
+</tr>
+<tr>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_43 }}</td>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_44 }}</td>
+</tr>
+<tr>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_45 }}</td>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_46 }}</td>
+</tr>
+<tr>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_47 }}</td>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_48 }}</td>
+</tr>
+<tr>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_49 }}</td>
+<td style="padding: 0.2em 0.8em; text-align: start">{{ slot_50 }}</td>
+</tr>
+</tbody>
+</table>
+<ul style="list-style-type: disc; margin-block: 0.3em; padding-inline-start: 1.2em">
+<li>{{ slot_51 }}</li>
+<li>{{ slot_52 }}</li>
+<li>{{ slot_53 }}</li>
+<li>{{ slot_54 }}<ul style="list-style-type: disc; margin-block: 0.3em; padding-inline-start: 1.8em">
+<li>{{ slot_55 }}</li>
+<li>{{ slot_56 }}</li>
+<li>{{ slot_57 }}</li>
+</ul>
+</li>
+<li>{{ slot_58 }}</li>
+</ul>
+<aside style="border: 2px dashed #444; background: transparent; padding: 0.6em 0.9em; margin-block: 0.8em; border-radius: 6px; break-inside: avoid"><h4>{{ slot_59 }}</h4>
+<p style="margin-block: 0.2em">{{ slot_60 }}</p>
+<p style="margin-block: 0.2em">{{ slot_61 }}</p></aside><table style="border-collapse: collapse; inline-size: 100%; margin-block: 0.6em; font-size: 1em; break-inside: avoid"><tbody>
+<tr>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_62 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_63 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_64 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_65 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_66 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_67 }}</td>
+</tr>
+<tr>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_68 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_69 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_70 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_71 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_72 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_73 }}</td>
+</tr>
+<tr>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_74 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_75 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_76 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_77 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_78 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_79 }}</td>
+</tr>
+<tr>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_80 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_81 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_82 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_83 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_84 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_85 }}</td>
+</tr>
+<tr>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_86 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_87 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_88 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_89 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_90 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_91 }}</td>
+</tr>
+<tr>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_92 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_93 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_94 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_95 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_96 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_97 }}</td>
+</tr>
+<tr>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_98 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_99 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_100 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_101 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_102 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_103 }}</td>
+</tr>
+<tr>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_104 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_105 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_106 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_107 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_108 }}</td>
+<td style="border-block-end: 1px solid #666; padding: 0.2em 0.3em; text-align: start">{{ slot_109 }}</td>
+</tr>
+</tbody></table>
+<figure style="margin-block: 0.8em; margin-inline: 0; break-inside: avoid"><div  style="block-size: 51mm; margin-inline: auto; inline-size: 100%" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<figcaption style="font-size: 0.85em; text-align: center; margin-block-start: 0.3em">{{ slot_110 }}</figcaption></figure><div style="border-block-start: 1px solid #000; margin-block-start: 1.2em; padding-block-start: 0.4em; font-size: 0.8em">
+<p style="margin-block: 0.15em">{{ slot_111 }}</p>
+<p style="margin-block: 0.15em">{{ slot_112 }}</p>
+</div></main><footer style="display: flex; justify-content: space-between; gap: 1em; font-size: 0.85em; padding-block: 0.3em; margin-block: 0.8em; border-block-start: 1px solid #444"><span>{{ slot_113 }}</span><span>{{ slot_114 }}</span></footer>
+</div></body>
+</html>

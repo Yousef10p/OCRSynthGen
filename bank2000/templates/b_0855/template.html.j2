@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background: #f1f1f1;
+    height: 100vh;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1em;
+}
+
+.hero h1 {
+    font-size: 3em;
+}
+
+.project {
+    width: 50%;
+}
+
+.project-images {
+    height: 200px;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+
+<header>
+
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+</ul>
+</nav>
+
+<div class="hero">
+<h1>{{ slot_2 }}</h1>
+<p>{{ slot_3 }}</p>
+<button>{{ slot_4 }}</button>
+</div>
+</header>
+<main>
+
+<section id="portfolio">
+<h2>{{ slot_5 }}</h2>
+
+<div class="project">
+<h3>{{ slot_6 }}</h3>
+<p>{{ slot_7 }}</p>
+<div class="project-images">{{ slot_8 }}</div>
+</div>
+
+<div class="project">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+<div class="project-images">{{ slot_11 }}</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
+<button>{{ slot_14 }}</button>
+</section>
+</main>
+</body>
+</html>

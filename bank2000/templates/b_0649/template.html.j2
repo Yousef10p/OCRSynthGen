@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  background-color: #F0F0F0;
+  font-family: var(--font-body);
+}
+
+#wrapper {
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+
+#left-column {
+  flex: 2;
+  background-color: #CCC;
+  padding: 20px;
+}
+
+#main-content {
+  flex: 5;
+  background-color: #FCF;
+  padding: 20px;
+}
+
+#reviews-column {
+  flex: 3;
+  background-color: #CFCCF;
+  padding: 20px;
+}
+
+.product {
+  margin-bottom: 20px;
+}
+
+.product-img {
+  width: 200px;
+  height: 100px;
+  background-color: #666;
+  margin-bottom: 10px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="wrapper">
+<div id="left-column">
+<h1>{{ slot_0 }}</h1>
+<p>{{ slot_1 }}</p>
+<p>{{ slot_2 }}</p>
+<p>{{ slot_3 }}</p>
+</div>
+<div id="main-content">
+<p>{{ slot_4 }}</p>
+<div class="product">
+
+<div class="product-img">{{ slot_5 }}</div>
+<p>{{ slot_6 }}</p>
+</div>
+<div class="product">
+
+<div class="product-img">{{ slot_7 }}</div>
+<p>{{ slot_8 }}</p>
+</div>
+<div class="product">
+
+<div class="product-img">{{ slot_9 }}</div>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+<div id="reviews-column">
+<p>{{ slot_11 }}</p>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+<p>
+<a>{{ slot_15 }}</a>
+<a>{{ slot_16 }}</a>
+<a>{{ slot_17 }}</a>
+</p>
+</div>
+</div>
+</body>
+</html>

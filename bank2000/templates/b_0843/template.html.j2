@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	font-family: var(--font-body);
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+header {
+	background-color: #333;
+	color: white;
+	padding: 15px;
+}
+nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+nav ul li {
+	display: inline;
+	margin-right: 15px;
+}
+nav ul li a {
+	text-decoration: none;
+	color: white;
+}
+
+
+.product-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.product-card {
+	margin: 15px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.25);
+	border-radius: 7px;
+	max-width: 200px;
+	text-align: center;
+	padding: 10px;
+}
+.product-card > p {
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+
+.customer-review {
+	max-width: 500px;
+	margin: auto;
+}
+.review-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.review-card {
+	border: 1px solid black;
+	border-radius: 7px;
+	max-width: 200px;
+	text-align: center;
+	padding: 10px;
+	margin: 15px;
+}
+.review-card > p {
+	margin-top: 0;
+}
+.review-author, .review-stars {
+	font-weight: bold;
+	margin:0;
+}
+
+
+.contact-us {
+	max-width: 400px;
+	margin: auto;
+}
+.contact-us form label {
+	font-weight: bold;
+}
+.contact-us form input, .contact-us form textarea, .contact-us form button {
+	display: block;
+	margin-bottom: 10px;
+}
+.contact-us form textarea {
+	resize: vertical;
+}
+.contact-us form button {
+	background-color: #333;
+	color: white;
+	padding: 10px;
+	border: none;
+	border-radius: 7px;
+}
+
+
+footer {
+	background-color: #333;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<div class="product-container">
+<div class="product-card">
+<div class="product-image pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<p>{{ slot_4 }}</p>
+<div class="rating">{{ slot_5 }}</div>
+</div>
+<div class="product-card">
+<div class="product-image pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<p>{{ slot_6 }}</p>
+<div class="rating">{{ slot_7 }}</div>
+</div>
+
+</div>
+<section class="customer-review">
+<h2>{{ slot_8 }}</h2>
+<div class="review-container">
+<div class="review-card">
+<div class="review-author">{{ slot_9 }}</div>
+<div class="review-stars">{{ slot_10 }}</div>
+<p>{{ slot_11 }}</p>
+</div>
+<div class="review-card">
+<div class="review-author">{{ slot_12 }}</div>
+<div class="review-stars">{{ slot_13 }}</div>
+<p>{{ slot_14 }}</p>
+</div>
+
+</div>
+</section>
+<section class="contact-us">
+<h2>{{ slot_15 }}</h2>
+<form>
+<label>{{ slot_16 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_17 }}</span>
+<label>{{ slot_18 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
+<label>{{ slot_20 }}</label>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_21 }}</span>
+<button>{{ slot_22 }}</button>
+</form>
+</section>
+</main>
+<footer>
+<p>{{ slot_23 }}</p>
+</footer>
+</body>
+</html>

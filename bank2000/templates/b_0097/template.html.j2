@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.8; --align: start; --page-width: 210mm; --page-height: 297mm; --page-margin: 24mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+@counter-style arabic-letters { system: alphabetic; symbols: "\0623" "\0628" "\062C" "\062F" "\0647" "\0648" "\0632" "\062D" "\0637" "\064A"; suffix: ") "; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style>
+<style>{{ style }}</style>
+</head>
+<body><div class="page">
+<header style="display: flex; justify-content: space-between; gap: 1em; font-size: 0.85em; padding-block: 0.3em; margin-block: 0.8em; border-block-end: 1px solid #444"><span>{{ slot_0 }}</span><span>{{ slot_1 }}</span><span>{{ slot_2 }}</span></header><main><dl style="margin-block: 0.6em">
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_3 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_4 }}</dd>
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_5 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_6 }}</dd>
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_7 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_8 }}</dd>
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_9 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_10 }}</dd>
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_11 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_12 }}</dd>
+</dl>
+<figure style="margin-block: 0.8em; margin-inline: 0; break-inside: avoid"><div  style="block-size: 29mm; margin-inline: auto; inline-size: 100%" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<figcaption style="font-size: 0.85em; text-align: center; margin-block-start: 0.3em">{{ slot_13 }}</figcaption></figure><aside style="border: 2px solid #444; background: transparent; padding: 0.6em 0.9em; margin-block: 0.8em; border-radius: 0; break-inside: avoid"><h4>{{ slot_14 }}</h4>
+<p style="margin-block: 0.2em">{{ slot_15 }}</p></aside><dl style="margin-block: 0.6em">
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_16 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_17 }}</dd>
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_18 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_19 }}</dd>
+<dt style="font-weight: bold; margin-block-start: 0.4em">{{ slot_20 }}</dt>
+<dd style="margin-inline-start: 1.5em">{{ slot_21 }}</dd>
+</dl>
+<ol style="list-style-type: arabic-letters; margin-block: 0.3em; padding-inline-start: 2.4em">
+<li>{{ slot_22 }}</li>
+<li>{{ slot_23 }}</li>
+</ol>
+<div style="margin-block: 0.8em; border-inline-start: 2px solid #666; padding-inline-start: 0.9em">
+<div style="margin-block: 0.5em">
+<div style="font-weight: bold; font-size: 0.9em">{{ slot_24 }}</div>
+<div>{{ slot_25 }}</div>
+</div>
+<div style="margin-block: 0.5em">
+<div style="font-weight: bold; font-size: 0.9em">{{ slot_26 }}</div>
+<div>{{ slot_27 }}</div>
+</div>
+<div style="margin-block: 0.5em">
+<div style="font-weight: bold; font-size: 0.9em">{{ slot_28 }}</div>
+<div>{{ slot_29 }}</div>
+</div>
+<div style="margin-block: 0.5em">
+<div style="font-weight: bold; font-size: 0.9em">{{ slot_30 }}</div>
+<div>{{ slot_31 }}</div>
+</div>
+</div>
+<p style="margin-block: 0 0.7em; text-indent: 0; text-align: var(--align); font-size: 0.95em">{{ slot_32 }}</p>
+<div style="border-block: 2px solid #333; padding: 0.5em 0; margin-block: 0.8em; break-inside: avoid">
+<strong style="display: block; margin-block-end: 0.2em">{{ slot_33 }}</strong><p style="margin-block: 0">{{ slot_34 }}</p>
+</div>
+<div style="border-block-start: 1px solid #000; margin-block-start: 1.2em; padding-block-start: 0.4em; font-size: 0.8em">
+<p style="margin-block: 0.15em">{{ slot_35 }}</p>
+<p style="margin-block: 0.15em">{{ slot_36 }}</p>
+<p style="margin-block: 0.15em">{{ slot_37 }}</p>
+</div></main>
+</div></body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.banner {
+    background-color: #ffaacc;
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+    flex-grow: 1;
+    font-size: 2em;
+}
+.main-content, .contact {
+    flex-grow: 1;
+}
+footer {
+    text-align: center;
+}
+footer a {
+    color: white;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="banner">
+<div class="banner-text">{{ slot_0 }}</div>
+</div>
+<div class="main-content">
+<div class="services">
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}<br>{{ slot_3 }}<br>{{ slot_4 }}</p>
+</div>
+<div class="hours">
+<h2>{{ slot_5 }}</h2>
+<ul>
+<li>{{ slot_6 }}</li>
+<li>{{ slot_7 }}</li>
+<li>{{ slot_8 }}</li>
+</ul>
+</div>
+<div class="contact">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}<br>{{ slot_11 }}</p>
+<ul class="social-media">
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+</div>
+</div>
+</div>
+<footer>
+<div class="footer-text">
+<p>{{ slot_15 }}</p>
+<ul class="social-media">
+<li>{{ slot_16 }}</li>
+<li>{{ slot_17 }}</li>
+</ul>
+<h2>{{ slot_18 }} <a>{{ slot_19 }}</a></h2>
+</div>
+</footer>
+</body>
+</html>

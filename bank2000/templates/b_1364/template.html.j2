@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+*,::after,::before{box-sizing:border-box}
+html{-moz-tab-size:4;tab-size:4}
+html{line-height:1.15;-webkit-text-size-adjust:100%}
+body{margin:0}
+body{font-family: var(--font-body)}
+hr{height:0;color:inherit}
+abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}
+b,strong{font-weight:bolder}
+code,kbd,pre,samp{font-family: var(--font-body);font-size:1em}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sub{bottom:-.25em}
+sup{top:-.5em}
+table{text-indent:0;border-color:inherit}
+button,input,optgroup,select,textarea{font-family: var(--font-body);font-size:100%;line-height:1.15;margin:0}
+button,select{text-transform:none}
+[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}
+::-moz-focus-inner{border-style:none;padding:0}
+:-moz-focusring{outline:1px dotted ButtonText}
+:-moz-ui-invalid{box-shadow:none}
+legend{padding:0}
+progress{vertical-align:baseline}
+::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}
+[type=search]{-webkit-appearance:textfield;outline-offset:-2px}
+::-webkit-search-decoration{-webkit-appearance:none}
+::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+summary{display:list-item}
+blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}
+button{background-color:transparent;background-image:none}
+fieldset{margin:0;padding:0}
+ol,ul{list-style:none;margin:0;padding:0}
+html{font-family: var(--font-body);line-height:1.5}
+body{font-family: var(--font-body);line-height:inherit}
+*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor}
+hr{border-top-width:1px}
+img{border-style:solid}
+textarea{resize:vertical}
+input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}
+[role=button],button{cursor:pointer}
+:-moz-focusring{outline:auto}
+table{border-collapse:collapse}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}
+a{color:inherit;text-decoration:inherit}
+button,input,optgroup,select,textarea{padding:0;line-height:inherit;color:inherit}
+code,kbd,pre,samp{font-family: var(--font-body)}
+audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}
+img,video{max-width:100%;height:auto}
+[hidden]{display:none}
+*,::after,::before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}
+.container{width:100%}
+@media (min-width:640px){.container{max-width:640px}}
+@media (min-width:768px){.container{max-width:768px}}
+@media (min-width:1024px){.container{max-width:1024px}}
+@media (min-width:1280px){.container{max-width:1280px}}
+@media (min-width:1536px){.container{max-width:1536px}}
+.mx-auto{margin-left:auto;margin-right:auto}
+.mt-4{margin-top:1rem}
+.mb-2{margin-bottom:.5rem}
+.mb-4{margin-bottom:1rem}
+.block{display:block}
+.flex{display:flex}
+.w-full{width:100%}
+.appearance-none{-webkit-appearance:none;appearance:none}
+.flex-wrap{flex-wrap:wrap}
+.items-center{align-items:center}
+.justify-center{justify-content:center}
+.rounded{border-radius:.25rem}
+.rounded-full{border-radius:9999px}
+.border{border-width:1px}
+.bg-white{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}
+.bg-gray-100{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}
+.bg-red-700{--tw-bg-opacity:1;background-color:rgba(185,28,28,var(--tw-bg-opacity))}
+.p-4{padding:1rem}
+.px-3{padding-left:.75rem;padding-right:.75rem}
+.px-4{padding-left:1rem;padding-right:1rem}
+.px-8{padding-left:2rem;padding-right:2rem}
+.py-2{padding-top:.5rem;padding-bottom:.5rem}
+.pt-6{padding-top:1.5rem}
+.pb-8{padding-bottom:2rem}
+.text-center{text-align:center}
+.font-sans{font-family: var(--font-body)}
+.text-sm{font-size:.875rem;line-height:1.25rem}
+.text-xl{font-size:1.25rem;line-height:1.75rem}
+.font-bold{font-weight:700}
+.leading-tight{line-height:1.25}
+.leading-normal{line-height:1.5}
+.tracking-normal{letter-spacing:0}
+.text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}
+.text-gray-700{--tw-text-opacity:1;color:rgba(55,65,81,var(--tw-text-opacity))}
+.text-red-700{--tw-text-opacity:1;color:rgba(185,28,28,var(--tw-text-opacity))}
+*,::after,::before{--tw-shadow:0 0 #0000}
+.shadow{--tw-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
+.shadow-md{--tw-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
+*,::after,::before{--tw-ring-inset:var(--tw-empty, );--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59, 130, 246, 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}
+@media (min-width:768px){.md\:w-1\/2{width:50%}}
+@media (min-width:768px){.md\:justify-start{justify-content:flex-start}}
+@media (min-width:768px){.md\:text-left{text-align:left}}
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<header class="bg-red-700 text-white p-4">
+<div class="container mx-auto flex flex-wrap items-center">
+<div class="w-full md:w-1/2 justify-center md:justify-start text-center md:text-left">
+<h1 class="font-bold text-xl">{{ slot_0 }}</h1>
+<p class="leading-normal mt-4">
+                    {{ slot_1 }}
+                </p>
+<button class="bg-white text-red-700 font-bold rounded-full mt-4 py-2 px-4">
+                    {{ slot_2 }}
+                </button>
+</div>
+<div class="w-full md:w-1/2">
+<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<div class="mb-4">
+<label class="block text-gray-700 text-sm font-bold mb-2">
+                            {{ slot_3 }}
+                        </label>
+<span class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_4 }}</span>
+</div>
+</form>
+</div>
+</div>
+</header>
+<footer class="bg-red-700 text-white p-4">
+<div class="container mx-auto flex flex-wrap items-center">
+<div class="w-full md:w-1/2">
+<h2 class="font-bold text-xl">{{ slot_5 }}</h2>
+<p class="leading-normal mt-4">
+                    {{ slot_6 }}
+                    <br>
+                    {{ slot_7 }}
+                </p>
+</div>
+<div class="w-full md:w-1/2">
+<h2 class="font-bold text-xl">{{ slot_8 }}</h2>
+<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<div class="mb-4">
+<label class="block text-gray-700 text-sm font-bold mb-2">
+                            {{ slot_9 }}
+                        </label>
+<span class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+</div>
+<div class="mb-4">
+<label class="block text-gray-700 text-sm font-bold mb-2">
+                            {{ slot_11 }}
+                        </label>
+<span class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+</div>
+<button class="bg-red-700 text-white font-bold rounded-full mt-4 py-2 px-4">
+                        {{ slot_13 }}
+                    </button>
+</form>
+</div>
+</div>
+</footer>
+</body>
+</html>

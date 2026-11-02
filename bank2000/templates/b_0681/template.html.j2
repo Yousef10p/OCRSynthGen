@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+	margin: 0;
+	padding: 0;
+	color: #333;
+	background: #f4f4f4;
+	font-family: var(--font-body);
+	line-height: 1.6em;
+}
+
+#logo {
+	float: left;
+	color: #eee;
+	font-weight: bold;
+	font-size: 1.4em;
+}
+
+nav {
+	background: #071a52;
+	color: #ffffff;
+	overflow: auto;
+}
+
+nav ul {
+	list-style: none;
+	float: right;
+	margin-right: 20px;
+}
+
+nav li {
+	float: left;
+	display: inline-block;
+	padding: 20px;
+}
+
+nav a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+nav a:hover{
+	color: #ff87a2;
+}
+
+header {
+	background: #042b5f;
+	color: #ffffff;
+	padding: 20px;
+	text-align: center;
+	border-bottom: 4px solid #ff87a2;
+}
+
+#carousel {
+	height: 200px;
+	background: #ff87a2;
+	color: #fff;
+	text-align: center;
+	padding-top: 80px;
+}
+
+#carousel p {
+	margin: 10px 0;
+}
+
+#services {
+	background: #ff87a2;
+	color: #ffffff;
+	padding: 20px;
+	text-align: center;
+}
+
+.feature {
+	float: left;
+	width: 30%;
+	margin: 20px;
+	padding: 20px;
+	text-align: center;
+	border: 1px solid #ff87a2;
+}
+
+#about, #contact {
+	background: #d7385e;
+	color: #ffffff;
+	padding: 20px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.button {
+	background: #ff87a2;
+	color: #fff;
+	padding: 10px 20px;
+	text-decoration: none;
+	border-radius: 10px;
+}
+
+.button:hover {
+	background: #ff87a2;
+}
+
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<a id="logo">{{ slot_0 }}</a>
+<ul>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+</ul>
+</nav>
+</header>
+<section id="carousel">
+
+<article>
+			{{ slot_4 }}
+			<a class="button">{{ slot_5 }}</a>
+</article>
+</section>
+<section id="services">
+<h1>{{ slot_6 }}</h1>
+<div class="feature">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+<a class="button">{{ slot_9 }}</a>
+</div>
+<div class="feature">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<a class="button">{{ slot_12 }}</a>
+</div>
+
+</section>
+<section id="about">
+<h1>{{ slot_13 }}</h1>
+<p>{{ slot_14 }}</p>
+<a class="button">{{ slot_15 }}</a>
+</section>
+<footer id="contact">
+<h1>{{ slot_16 }}</h1>
+<p>{{ slot_17 }}</p>
+<a class="button">{{ slot_18 }}</a>
+</footer>
+</body>
+</html>

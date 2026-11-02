@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-color: #a6d1f5;
+    padding: 20px;
+    text-align: center;
+}
+
+#hero-img {
+    height: 200px;
+    margin: 20px 0;
+}
+
+#sidebar {
+    background-color: #d9d9d9;
+    width: 20%;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+#sidebar nav ul {
+    margin: 20px;
+}
+
+.blog-post {
+    margin: 20px;
+}
+
+.blog-img, .services-img, .social-img {
+    height: 200px;
+    margin: 20px 0;
+}
+
+.blog-post, .blog-img, .services-img, .social-img {
+    background-color: #ffe4b5;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div id="header">
+<div id="hero">
+
+<div id="hero-img" style="background-color: #79d279;">{{ slot_0 }}</div>
+<h1>{{ slot_1 }}</h1>
+<p>{{ slot_2 }}</p>
+</div>
+</div>
+<div id="sidebar">
+<nav>
+<ul>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
+<li><a>{{ slot_5 }}</a></li>
+</ul>
+</nav>
+</div>
+<section id="blog">
+<h2>{{ slot_6 }}</h2>
+<div class="blog-post">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+
+<div class="blog-img" style="background-color: #ff6666;">{{ slot_9 }}</div>
+</div>
+</section>
+<section id="services">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+</ul>
+
+<div class="services-img" style="background-color: #87cefa;">{{ slot_15 }}</div>
+</section>
+<section id="social">
+<h2>{{ slot_16 }}</h2>
+<p>{{ slot_17 }}</p>
+<nav>
+<ul>
+<li><a>{{ slot_18 }}</a></li>
+<li><a>{{ slot_19 }}</a></li>
+<li><a>{{ slot_20 }}</a></li>
+</ul>
+</nav>
+
+<div class="social-img" style="background-color: #ff66ff;">{{ slot_21 }}</div>
+</section>
+</body>
+</html>

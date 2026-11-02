@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font-body);
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: #eee;
+  padding: 20px;
+}
+.item {
+  margin-bottom: 10px;
+}
+.hero {
+  background: #ccc;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: 20vw;
+}
+.hero-content {
+  padding: 20px;
+}
+.testimonials {
+  margin: 20px 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.testimonials .testimonial {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+}
+.testimonial-image {
+  background: #999;
+  width: 100px;
+  height: 100px;
+}
+.services ul {
+  list-style-type: none;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.services li {
+  background: #ddd;
+  margin: 8px;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<nav>
+<div class="item">{{ slot_0 }}</div>
+<div class="item">{{ slot_1 }}</div>
+<div class="item">{{ slot_2 }}</div>
+<div class="item">{{ slot_3 }}</div>
+</nav>
+<section class="hero">
+<div class="hero-content">
+<h1>{{ slot_4 }}</h1>
+<p>{{ slot_5 }}</p>
+</div>
+</section>
+<section class="testimonials">
+<h2>{{ slot_6 }}</h2>
+<div class="testimonial">
+<div class="testimonial-image pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<div class="testimonial-text">
+<h3>{{ slot_7 }}</h3>
+<p>{{ slot_8 }}</p>
+</div>
+</div>
+<div class="testimonial">
+<div class="testimonial-image pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<div class="testimonial-text">
+<h3>{{ slot_9 }}</h3>
+<p>{{ slot_10 }}</p>
+</div>
+</div>
+</section>
+<section class="services">
+<h2>{{ slot_11 }}</h2>
+<ul>
+<li>{{ slot_12 }}</li>
+<li>{{ slot_13 }}</li>
+<li>{{ slot_14 }}</li>
+<li>{{ slot_15 }}</li>
+<li>{{ slot_16 }}</li>
+</ul>
+</section>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-body);
+}
+
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr 1fr;
+    height: 100%;
+}
+
+.logo, .top-banner {
+    background-color: #FFA500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.top-banner > div {
+    margin: 0 1em;
+    cursor: pointer;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+    background-color: #eee;
+    padding: 1em;
+}
+
+.menu-item {
+    background-color: #FFA500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservations form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+}
+
+.reservations form input[type="text"], 
+.reservations form input[type="number"] {
+    padding: 0.5em;
+}
+
+.reservations form input[type="submit"] {
+    background-color: #FFA500;
+    border: none;
+    color: white;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+.calendar {
+    background-color: #FFA500;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<div class="container">
+<div class="logo pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<div class="top-banner">
+<div>{{ slot_0 }}</div>
+<div>{{ slot_1 }}</div>
+<div>{{ slot_2 }}</div>
+<div>{{ slot_3 }}</div>
+</div>
+<div class="menu-grid">
+<div class="menu-item">{{ slot_4 }}</div>
+<div class="menu-item">{{ slot_5 }}</div>
+<div class="menu-item">{{ slot_6 }}</div>
+<div class="menu-item">{{ slot_7 }}</div>
+<div class="menu-item">{{ slot_8 }}</div>
+<div class="menu-item">{{ slot_9 }}</div>
+</div>
+<div class="reservations">
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_10 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_11 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_12 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="">{{ slot_14 }}</span>
+</form>
+<div class="calendar"></div>
+</div>
+</div>
+</body>
+</html>

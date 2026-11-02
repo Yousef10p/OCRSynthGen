@@ -36,6 +36,12 @@ STOP = {"ar": ("المراجع", "مراجع", "المصادر", "مصادر", "
                "هوامش", "ملاحظات", "قراءات إضافية", "المراجع والمصادر"),
         "en": ("References", "See also", "External links", "Notes", "Further reading", "Bibliography",
                "Sources", "Citations", "Footnotes")}
+# words a short text (a table cell, a field value) should not end on: it would read as cut off
+FUNCTION_WORDS = dict.fromkeys(
+    "a an the of in on at to for by with from into and or but as that which who whose than is are was were be been "
+    "being has have had it its this these those his her their our we they he she there not also such only most more very "
+    "في من على إلى الى عن مع أن ان إن التي الذي الذين و أو ثم بين عند حتى منذ هو هي هذا هذه ذلك تلك كان كانت قد "
+    "لم لن ما لا كما بعد قبل حيث لكن ولكن".split(), True)
 ARABIC = re.compile(r"[؀-ۿ]")
 LATIN = re.compile(r"[A-Za-z]")
 SENTENCE_END = {"ar": re.compile(r"(?<=[.!؟])\s+"), "en": re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9\"'(])")}
@@ -178,8 +184,109 @@ class TextPool:
         fits = [i for i in rng.sample(self.items, min(40, len(self.items))) if len(i[0].split()) <= max(n, 3) + 3]
         return self._take(rng.choice(fits)) if fits else self.prose(rng, n)
 
+    # -- document mode: one page follows one article ----------------------------------------------------------
+    # begin(rng) picks an article for the page; then the title is its title, headings its section headings in
+    # order, running text continues its paragraphs sentence by sentence, list items come from its lists. Only
+    # when it runs out does the page move on to another article, so a page reads as one document on one
+    # subject instead of sentences from many.
+
+    def _index(self):
+        if not hasattr(self, "_by_article"):
+            self._by_article = {}
+            for kind in ("paragraphs", "headings", "items", "titles"):
+                for entry in getattr(self, kind):
+                    self._by_article.setdefault(entry[1], {}).setdefault(kind, []).append(entry[0])
+            self._rich = [a for a, d in self._by_article.items() if len(d.get("paragraphs", [])) >= 3]
+        return self._by_article
+
+    def begin(self, rng):
+        """Start a page: pick its article."""
+        self._index()
+        self.used.clear()
+        self._doc = True
+        self._title_used = False
+        self._switch(rng)
+
+    def _switch(self, rng):
+        self._cur = rng.choice(self._rich)
+        d = self._by_article[self._cur]
+        self._sentences = [s for p in d.get("paragraphs", []) for s in SENTENCE_END[self.lang].split(p) if s.strip()]
+        self._s = 0
+        self._headings = list(d.get("headings", []))
+        self._items = list(d.get("items", []))
+        self.used.add(self._cur)
+
+    def _next_sentence(self, rng):
+        if self._s >= len(self._sentences):
+            self._switch(rng)
+        self._s += 1
+        return self._sentences[self._s - 1]
+
+    def doc_prose(self, rng, n):
+        """n words continuing the page's article; ends on a whole sentence when one ends at 60-100% of n."""
+        words = []
+        while len(words) < n:
+            s = self._next_sentence(rng).split()
+            if words and len(words) >= 0.6 * n and len(words) + len(s) > n:
+                self._s -= 1  # this sentence starts the next slot instead
+                return " ".join(words)
+            words += s
+        words = words[:n]
+        words[-1] = words[-1].rstrip(".،,؛;:") + "."
+        return " ".join(words)
+
+    def doc_short(self, rng, n, kind="heading"):
+        """A heading of about n words from the page's article (its title first, for the page title)."""
+        title = self.articles[self._cur]["title"]
+        if kind == "title" and not self._title_used and len(title.split()) <= n + 4:
+            self._title_used = True
+            return title
+        for i, h in enumerate(self._headings):
+            if len(h.split()) <= n + 2:
+                return self._headings.pop(i)
+        # This article has no more headings that fit: the page moves on to another article (a new section on
+        # a new subject), headed by that article's title, so heading and text stay on the same subject
+        for _ in range(5):
+            self._switch(rng)
+            title = self.articles[self._cur]["title"]
+            if len(title.split()) <= n + 2:
+                return title
+        return " ".join(title.split()[:n + 2])
+
+    def doc_item(self, rng, n):
+        for i, it in enumerate(self._items):
+            if len(it.split()) <= max(n, 3) + 3:
+                return self._items.pop(i)
+        limit = max(n, 3) + 3
+        for _ in range(4):  # a whole sentence that fits, if one of the next few does
+            sentence = self._next_sentence(rng).split()
+            if len(sentence) <= limit:
+                return " ".join(sentence)
+        return " ".join(sentence[:limit]).rstrip(".،,؛;:") + "."
+
+    def doc_words(self, rng, n):
+        """The start of the next sentence, about n words, not ending on a word like "of" or "is" ("Zeus is an"
+        becomes "Zeus"); a start made only of such words ("It is") is skipped for the next sentence."""
+        for _ in range(4):
+            words = [w.rstrip(".،,؛;:") for w in self._next_sentence(rng).split()[:n]]
+            while words and FUNCTION_WORDS.get(words[-1].lower()):
+                words.pop()
+            if words and not all(FUNCTION_WORDS.get(w.lower()) for w in words):
+                return " ".join(words)
+        return " ".join(words) if words else self.doc_short(rng, n)
+
     def text(self, role, n, rng):
-        """Text for a slot of this role and about n words."""
+        """Text for a slot of this role and about n words (from the page's article after begin())."""
+        if getattr(self, "_doc", False):
+            if role in ("title", "subtitle", "heading", "table_header", "header", "footer"):
+                return self.doc_short(rng, n, role)
+            if role == "label":
+                return " ".join(self.doc_short(rng, min(n, 3)).split()[:3]).rstrip(".،,؛;:") + ":"
+            if role == "list_item":
+                return self.doc_item(rng, n)
+            if role in ("paragraph", "quote", "sidebar", "footnote", "caption"):
+                return self.doc_prose(rng, n)
+            return self.doc_words(rng, n)
         if role in ("title", "subtitle", "heading", "table_header", "header", "footer"):
             return self.short(rng, n)
         if role == "label":

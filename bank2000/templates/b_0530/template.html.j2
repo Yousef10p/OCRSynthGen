@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+
+body {
+    font-family: var(--font-body);
+}
+
+header, footer {
+    background-color: #A3D1A1;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+section {
+    min-height: 100vh;
+    padding: 60px 20px;
+}
+
+.image img{
+    width: 30%;
+}
+
+#products {
+    background-color: #C2E812;
+}
+
+#products table {
+    width: 100%;
+    margin-top: 40px;
+    border-collapse: collapse;
+}
+
+#products tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+#product-detail {
+    background-color: #B5BFA1;
+    display: none;
+}
+
+#product-detail.detail {
+    display: block;
+}
+
+#about-us {
+    background-color: #B7B5A9;
+}
+
+#contact-us {
+    background-color: #98AFC7;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #63D471;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+}
+
+footer {
+    text-align: center;
+}
+
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body>
+<header>
+<nav>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+</nav>
+</header>
+<section id="home">
+
+<div class="image pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+</section>
+<section id="products">
+<h2>{{ slot_4 }}</h2>
+<table>
+<tr>
+<td><div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div></td>
+<td>{{ slot_5 }}</td>
+<td>{{ slot_6 }}</td>
+</tr>
+
+</table>
+</section>
+<a>
+<section class="detail" id="product-detail">
+<div class="detail-inner">
+<h1>{{ slot_7 }}</h1>
+<p>{{ slot_8 }}</p>
+<button class="btn">{{ slot_9 }}</button>
+</div>
+</section>
+</a>
+<section id="about-us">
+<h2>{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
+</section>
+<section id="contact-us">
+<h2>{{ slot_12 }}</h2>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_13 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em; display: block; min-block-size: 4em">{{ slot_15 }}</span>
+<button>{{ slot_16 }}</button>
+</form>
+</section>
+<footer>
+<p>{{ slot_17 }}</p>
+<form>
+<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_18 }}</span>
+<button>{{ slot_19 }}</button>
+</form>
+</footer>
+</body>
+</html>

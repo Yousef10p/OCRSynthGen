@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
+body { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
+.page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
+.ph { background: #d0d0d0; }
+*,::after,::before{box-sizing:border-box}
+html{-moz-tab-size:4;tab-size:4}
+html{line-height:1.15;-webkit-text-size-adjust:100%}
+body{margin:0}
+body{font-family: var(--font-body)}
+hr{height:0;color:inherit}
+abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}
+b,strong{font-weight:bolder}
+code,kbd,pre,samp{font-family: var(--font-body);font-size:1em}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sub{bottom:-.25em}
+sup{top:-.5em}
+table{text-indent:0;border-color:inherit}
+button,input,optgroup,select,textarea{font-family: var(--font-body);font-size:100%;line-height:1.15;margin:0}
+button,select{text-transform:none}
+[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}
+::-moz-focus-inner{border-style:none;padding:0}
+:-moz-focusring{outline:1px dotted ButtonText}
+:-moz-ui-invalid{box-shadow:none}
+legend{padding:0}
+progress{vertical-align:baseline}
+::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}
+[type=search]{-webkit-appearance:textfield;outline-offset:-2px}
+::-webkit-search-decoration{-webkit-appearance:none}
+::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+summary{display:list-item}
+blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}
+button{background-color:transparent;background-image:none}
+fieldset{margin:0;padding:0}
+ol,ul{list-style:none;margin:0;padding:0}
+html{font-family: var(--font-body);line-height:1.5}
+body{font-family: var(--font-body);line-height:inherit}
+*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor}
+hr{border-top-width:1px}
+img{border-style:solid}
+textarea{resize:vertical}
+input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}
+[role=button],button{cursor:pointer}
+:-moz-focusring{outline:auto}
+table{border-collapse:collapse}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}
+a{color:inherit;text-decoration:inherit}
+button,input,optgroup,select,textarea{padding:0;line-height:inherit;color:inherit}
+code,kbd,pre,samp{font-family: var(--font-body)}
+audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}
+img,video{max-width:100%;height:auto}
+[hidden]{display:none}
+*,::after,::before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}
+.container{width:100%}
+@media (min-width:640px){.container{max-width:640px}}
+@media (min-width:768px){.container{max-width:768px}}
+@media (min-width:1024px){.container{max-width:1024px}}
+@media (min-width:1280px){.container{max-width:1280px}}
+@media (min-width:1536px){.container{max-width:1536px}}
+.mx-auto{margin-right:auto;margin-left:auto}
+.mt-10{margin-top:2.5rem}
+.mr-3{margin-left:.75rem}
+.mr-4{margin-left:1rem}
+.flex{display:flex}
+.w-full{width:100%}
+.flex-wrap{flex-wrap:wrap}
+.rounded-full{border-radius:9999px}
+.rounded-r{border-top-left-radius:.25rem;border-bottom-left-radius:.25rem}
+.rounded-l{border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}
+.border{border-width:1px}
+.bg-white{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}
+.bg-gray-100{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}
+.bg-gray-800{--tw-bg-opacity:1;background-color:rgba(31,41,55,var(--tw-bg-opacity))}
+.bg-cover{background-size:cover}
+.bg-center{background-position:center}
+.p-6{padding:1.5rem}
+.px-3{padding-right:.75rem;padding-left:.75rem}
+.px-4{padding-right:1rem;padding-left:1rem}
+.px-6{padding-right:1.5rem;padding-left:1.5rem}
+.py-3{padding-top:.75rem;padding-bottom:.75rem}
+.py-4{padding-top:1rem;padding-bottom:1rem}
+.py-10{padding-top:2.5rem;padding-bottom:2.5rem}
+.pt-10{padding-top:2.5rem}
+.pt-20{padding-top:5rem}
+.text-center{text-align:center}
+.font-sans{font-family: var(--font-body)}
+.text-lg{font-size:1.125rem;line-height:1.75rem}
+.text-xl{font-size:1.25rem;line-height:1.75rem}
+.text-4xl{font-size:2.25rem;line-height:2.5rem}
+.text-5xl{font-size:3rem;line-height:1}
+.font-bold{font-weight:700}
+.uppercase{text-transform:uppercase}
+.leading-normal{line-height:1.5}
+.leading-loose{line-height:2}
+.tracking-normal{letter-spacing:0}
+.text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}
+.text-gray-800{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}
+*,::after,::before{--tw-shadow:0 0 #0000}
+*,::after,::before{--tw-ring-inset:var(--tw-empty, );--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59, 130, 246, 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}
+@media (min-width:768px){.md\:flex{display:flex}}
+@media (min-width:768px){.md\:w-1\/2{width:50%}}
+@media (min-width:768px){.md\:w-1\/4{width:25%}}
+@media (min-width:768px){.md\:w-3\/4{width:75%}}
+@media (min-width:768px){.md\:items-center{align-items:center}}
+@media (min-width:768px){.md\:justify-between{justify-content:space-between}}
+@media (min-width:768px){.md\:pt-0{padding-top:0}}
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
+.pic-frame { overflow: hidden; min-block-size: 2em; }
+.pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
+</style><style>{{ style }}</style></head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<header class="bg-cover bg-center" style="background-image: none">
+<div class="container mx-auto px-6 md:flex md:items-center md:justify-between py-4">
+<div class="text-center text-white">
+<h1 class="font-bold uppercase text-5xl pt-20 md:pt-0">{{ slot_0 }}</h1>
+<p class="text-xl pt-10">{{ slot_1 }}</p>
+<button class="bg-white text-gray-800 font-bold rounded-full mt-10 px-4 py-3 mr-3">{{ slot_2 }}</button>
+</div>
+</div>
+</header>
+<section class="container mx-auto px-6 py-10">
+<div class="flex flex-wrap">
+<div class="w-full md:w-1/2 p-6">
+<h2 class="text-4xl font-bold text-center">{{ slot_3 }}</h2>
+<p class="text-lg leading-loose">{{ slot_4 }}</p>
+</div>
+<div class="w-full md:w-1/2 p-6">
+<h2 class="text-4xl font-bold text-center">{{ slot_5 }}</h2>
+<p class="text-lg leading-loose">{{ slot_6 }}</p>
+</div>
+</div>
+</section>
+<footer class="bg-gray-800 text-white py-10">
+<div class="container mx-auto px-6">
+<h2 class="text-4xl font-bold text-center">{{ slot_7 }}</h2>
+<p class="text-lg leading-loose text-center">{{ slot_8 }}</p>
+<form class="mt-10">
+<div class="flex flex-wrap">
+<span class="w-full md:w-3/4 px-3 py-3 border rounded-l" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_9 }}</span>
+<button class="w-full md:w-1/4 bg-white text-gray-800 font-bold rounded-r">{{ slot_10 }}</button>
+</div>
+</form>
+<div class="mt-10 text-center">
+<a class="text-white mr-4">{{ slot_11 }}</a>
+<a class="text-white mr-4">{{ slot_12 }}</a>
+<a class="text-white">{{ slot_13 }}</a>
+</div>
+</div>
+</footer>
+</body>
+</html>
