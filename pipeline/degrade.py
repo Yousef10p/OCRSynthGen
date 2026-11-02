@@ -39,6 +39,48 @@ from ocrsmith.core.degradations import build_preset  # noqa: E402
 from scan_simulator import ScanSimulator  # noqa: E402
 from scan_simulator.config import PipelineConfig  # noqa: E402
 from scan_simulator.presets import PRESETS as SCAN_PRESETS  # noqa: E402
+from scan_simulator.transforms import damage as _scan_damage, paper as _scan_paper, scanner as _scan_scanner  # noqa: E402
+from scipy import fft as _fft  # noqa: E402
+from scipy.ndimage import gaussian_filter as _gaussian_filter  # noqa: E402
+
+
+# scan-simulator blurs whole pages with scipy's gaussian_filter at radii up to a fifth of the page (paper colour,
+# ink fading, wear patches). On our 2x pages that costs 3-30 s per transform. The same blur, faster and with
+# the same result (within 0.05 of a grey level): large radii through an FFT (its cost doesn't grow with the
+# radius), and a mostly empty mask (a scuff, a stain) blurred only around what is in it. Replaced in memory, for
+# scan-simulator's transforms only; its folder is not changed.
+def _fft_blur(padded, sigma, pad):
+    """Gaussian blur of an array already padded by pad on every side; the unpadded middle."""
+    h, w = padded.shape
+    fy, fx = _fft.fftfreq(h)[:, None], _fft.rfftfreq(w)[None, :]
+    kernel = np.exp(-2 * (np.pi * sigma) ** 2 * (fx ** 2 + fy ** 2))
+    out = _fft.irfft2(_fft.rfft2(padded, workers=-1) * kernel, s=padded.shape, workers=-1)
+    return out[pad:h - pad, pad:w - pad]
+
+
+def fast_gaussian_filter(input, sigma, order=0, output=None, mode="reflect", cval=0.0, truncate=4.0, **kwargs):
+    a = np.asarray(input)
+    if (order or output is not None or mode != "reflect" or truncate != 4.0 or kwargs or a.ndim != 2
+            or np.ndim(sigma) or not np.issubdtype(a.dtype, np.floating) or sigma < 16):
+        return _gaussian_filter(input, sigma, order=order, output=output, mode=mode, cval=cval, truncate=truncate,
+                                **kwargs)
+    r = int(truncate * sigma + 0.5)  # scipy's kernel radius
+    rows, cols = np.flatnonzero(a.any(axis=1)), np.flatnonzero(a.any(axis=0))
+    if not rows.size:
+        return np.zeros_like(a)
+    h, w = a.shape
+    y0, y1, x0, x1 = max(0, rows[0] - r), min(h, rows[-1] + 1 + r), max(0, cols[0] - r), min(w, cols[-1] + 1 + r)
+    # beyond the window the input is zero up to the kernel's reach: zeros there, scipy's mirror at the image's edges
+    win = a[y0:y1, x0:x1]
+    win = np.pad(win, ((r if y0 == 0 else 0, r if y1 == h else 0), (r if x0 == 0 else 0, r if x1 == w else 0)), mode="symmetric")
+    win = np.pad(win, ((0 if y0 == 0 else r, 0 if y1 == h else r), (0 if x0 == 0 else r, 0 if x1 == w else r)))
+    out = np.zeros_like(a)
+    out[y0:y1, x0:x1] = _fft_blur(win, sigma, r)
+    return out
+
+
+for _module in (_scan_damage, _scan_paper, _scan_scanner):
+    _module.gaussian_filter = fast_gaussian_filter
 
 TOOLS = ("ocrsmith", "augraphy", "scan-simulator")
 DEFAULT_STRENGTH = 0.5
@@ -261,7 +303,18 @@ def legibility(clean, out, words, boxes, sample=250):
     frame (a photo preset that crops the page leaves part of a word outside the picture)}."""
     lost = sum(b is None for b in boxes)
     width, height = out.size
-    edge = sum(1 for b in boxes if b and (b[0] <= 1 or b[1] <= 1 or b[0] + b[2] >= width - 1 or b[1] + b[3] >= height - 1))
+    scale = width * height / (clean.width * clean.height)
+
+    def at_border(b, w, h):
+        return b[0] <= 1 or b[1] <= 1 or b[0] + b[2] >= w - 1 or b[1] + b[3] >= h - 1
+    # cut by the frame: at the border after the effect, and either not at the border before it (text running
+    # to the page's edge is whole) or its box shrank (part of it went out of the picture)
+    edge = 0
+    for w, b in zip(words, boxes):
+        if b and at_border(b, width, height):
+            c = (w["x"], w["y"], w["width"], w["height"])
+            if not at_border(c, clean.width, clean.height) or b[2] * b[3] < 0.8 * c[2] * c[3] * scale:
+                edge += 1
     g0 = np.asarray(clean.convert("L"), np.float32)
     g1 = np.asarray(out.convert("L"), np.float32)
     idx = [i for i, b in enumerate(boxes) if b]
