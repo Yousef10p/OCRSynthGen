@@ -190,7 +190,34 @@ word lies in a region; each region's text is the page's text for that slot; ever
 clean render and still stands out after the effect; no two regions' words overlap. It draws the boxes on
 every page (`audit/<name>_gt.jpg`) and makes contact sheets (`audit/sheet_NN.jpg`).
 
-### 0.9 One environment note
+### 0.9 Tashkeel (Arabic diacritics), on the `tashkeel` branch
+
+[pipeline/tashkeel.py](pipeline/tashkeel.py): each Arabic page gets one level, drawn per page (`tashkeel=`
+on `DocPipeline`, the page's **Tashkeel** menu, `--tashkeel` on the dataset command):
+
+| Level | Share (default) | What the page shows |
+|---|---|---|
+| none | 40% | the Wikipedia text as it is |
+| partial | 30% | shadda everywhere, all marks on about 35% of the words |
+| full | 30% | every letter marked |
+
+The marks come from [text2tashkeel](https://github.com/TigreGotico/text2tashkeel) 0.1.0 (Apache 2.0), its
+default `rawi-ensemble` model: BiLSTM models in ONNX run by onnxruntime, offline, bundled in the package
+(about 5 MB), about 2% diacritic error rate as its authors report, about 0.3 s for 300 words. The text
+itself never changes: a word takes the model's marks only if its letters are exactly the same as before
+(the model also restores hamza, sometimes wrongly: لامائي would become لَأَمَائِيٍّ), and words that
+already had marks keep them. On 1,394 Wikipedia words no letter changed and 96% of the words got marks.
+Pages with marks get a line height of at least 1.6 (partial) or 1.75 (full), so marks above one line and
+below the next have room. The labels and the Markdown always hold what is drawn, marks included:
+
+```
+<text>الْحَرْبُ الْبَيْلُوبُونِيزِيَّةُ الْأَولَى <bbox>225, 204, 898, 311</bbox></text>
+```
+
+Tested on 24 fully marked, 8 partly marked and 48 mixed pages (all sources and effects): no audit problems.
+The level is in the label (`style.tashkeel`) and on the generator's cards.
+
+### 0.10 One environment note
 
 Windows Smart App Control blocks numba 0.68.1's `_devicearray.pyd`; without it Augraphy silently does
 nothing. `requirements-pipeline.txt` pins `numba==0.68.0`, whose files are allowed.

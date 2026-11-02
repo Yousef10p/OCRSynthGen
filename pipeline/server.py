@@ -31,6 +31,7 @@ CHOICES = {
     "source": {"mix": None, "grammar": {"grammar": 1}, "websight": {"websight": 1}, "websight2": {"websight2": 1},
                "doclaynet": {"doclaynet": 1}},
     "text": {"wikipedia": "wikipedia", "demo": "demo"},
+    "tashkeel": {"mix": None, "none": {"none": 1}, "partial": {"partial": 1}, "full": {"full": 1}},
 }
 JOBS, LOCK = {}, threading.Lock()
 
@@ -47,7 +48,8 @@ def make_sample(out_dir, seed, name, options):
     pipe = DocPipeline(out_dir, languages=CHOICES["language"][options["language"]],
                        effects=CHOICES["effect"][options["effect"]], sources=CHOICES["source"][options["source"]],
                        templates=options["templates"], llm=LLMTemplates.from_env() if options["templates"] == "llm" else None,
-                       text=CHOICES["text"][options["text"]], strengths=options["strengths"])
+                       text=CHOICES["text"][options["text"]], strengths=options["strengths"],
+                       tashkeel=CHOICES["tashkeel"][options["tashkeel"]])
     return pipe.sample(seed, name)
 
 

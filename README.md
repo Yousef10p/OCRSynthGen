@@ -87,7 +87,8 @@ cd D:\code\OCR\arabic-template-bank
 | `manifest.jsonl` | one line per sample: id, `split` (train/val, 5% val), files, language, template, effects… |
 | `dataset.json` | counts and the options, sources and licences of the set |
 
-Options: `--language ar|en`, `--source grammar|websight|websight2|doclaynet`,
+Options: `--language ar|en`, `--source grammar|websight|websight2|doclaynet`, `--tashkeel none|partial|full`
+(Arabic diacritics; default 40% none, 30% partial, 30% full),
 `--effect clean|ocrsmith|augraphy|scan-simulator|augraphy+scan-simulator`,
 `--strength-ocrsmith 0.5`, `--strength-augraphy 0.5`, `--strength-scan-simulator 0.5` (0 lightest, 1
 strongest), `--val 0.05`, `--seed 0` (the same seed makes the same set). An interrupted run continues where

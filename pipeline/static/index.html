@@ -76,6 +76,7 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
   <label>Language <select id="language"><option value="mix">mixed (Arabic and English)</option><option value="ar">Arabic</option><option value="en">English</option></select></label>
   <label>Effects <select id="effect"><option value="mix">mixed (15% clean, rest even)</option><option value="clean">clean (no effects)</option><option value="ocrsmith">OCRSmith</option><option value="augraphy">Augraphy</option><option value="scan-simulator">scan-simulator</option><option value="augraphy+scan-simulator">Augraphy + scan-simulator</option></select></label>
   <label>Templates <select id="source"><option value="mix">bank: all sources</option><option value="grammar">bank: Grammar</option><option value="websight">bank: WebSight v0.1</option><option value="websight2">bank: WebSight v0.2</option><option value="doclaynet">bank: DocLayNet</option></select></label>
+  <label title="Arabic diacritics (harakat), added by a diacritization model">Tashkeel <select id="tashkeel"><option value="mix">mixed (40% none, 30% partial, 30% full)</option><option value="none">none</option><option value="partial">partial (some words)</option><option value="full">full (every letter)</option></select></label>
   <label>Text <select id="text"><option value="wikipedia">Wikipedia (ar + en)</option><option value="demo">demo sentences</option></select></label>
   <label>Template maker <select id="templates"><option value="bank">bank</option><option value="llm" id="llm-opt">LLM</option></select></label>
   <span class="strength">Strength
@@ -120,7 +121,7 @@ fetch("/api/info").then((r) => r.json()).then((info) => {
 
 $("go").onclick = async () => {
   const body = {n: 16, language: $("language").value, effect: $("effect").value, source: $("source").value,
-                templates: $("templates").value, text: $("text").value,
+                templates: $("templates").value, text: $("text").value, tashkeel: $("tashkeel").value,
                 strengths: Object.fromEntries(["ocrsmith", "augraphy", "scan-simulator"].map((t) => [t, +$("s-" + t).value]))};
   $("go").disabled = true;
   const r = await (await fetch("/api/generate", {method: "POST", body: JSON.stringify(body)})).json();
@@ -147,7 +148,7 @@ function card(s, i) {
   return `<div class="card" id="c${i}">
     <div class="thumb" onclick="openPreview(${i}, 'both')"><img src="${url(s, "final")}" alt="${s.name}"></div>
     <div class="meta">
-      <div class="row"><span class="chip ${s.lang}">${s.lang === "ar" ? "Arabic" : "English"}</span><span class="chip">${esc(effectName(s))}</span>${warn}</div>
+      <div class="row"><span class="chip ${s.lang}">${s.lang === "ar" ? "Arabic" : "English"}</span><span class="chip">${esc(effectName(s))}</span>${s.tashkeel && s.tashkeel !== "none" ? `<span class="chip">tashkeel: ${s.tashkeel}</span>` : ""}${warn}</div>
       <div class="small">${s.name} · ${s.template} (${s.source}) · ${esc(s.font)} ${s.size_pt}pt · ${s.words} words${s.pictures ? ` · ${s.pictures} picture${s.pictures > 1 ? "s" : ""}` : ""} · ${s.seconds.total} s</div>
       <div class="row"><button class="open" onclick="openPreview(${i}, 'both')">Image + Markdown</button>
         <button class="open" onclick="openPreview(${i}, 'slots')">Boxes</button></div>
@@ -173,7 +174,7 @@ async function show() {
     + `<a class="small" style="margin-inline-start:auto;align-self:center" href="${url(s, tab === "info" ? "json" : tab)}" target="_blank">open file ↗</a>`;
   const body = $("pv-body");
   if (tab === "info") {
-    const rows = [["Template", `${s.template} (${s.source})`], ["Language", s.lang], ["Font", `${s.font}, ${s.size_pt}pt`],
+    const rows = [["Template", `${s.template} (${s.source})`], ["Language", s.lang], ["Tashkeel", s.tashkeel || "none"], ["Font", `${s.font}, ${s.size_pt}pt`],
       ["Effect", `${s.effect}${s.effect === "clean" ? "" : " at strength " + Math.round(s.strength * 100)}`],
       ["Applied", s.attacks.join(", ")],
       ["Readability after the effect", Object.entries(s.legibility || {}).map(([k, v]) => `${k} ${v}`).join(" · ")],
