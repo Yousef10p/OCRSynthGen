@@ -52,7 +52,8 @@ flowchart LR
 5. **Render + checks** ([pipeline/doc_pipeline.py](pipeline/doc_pipeline.py), [pipeline/qa.py](pipeline/qa.py)):
    SynthDoc renders at 2x. Before layout, text that doesn't fit its box is fitted (tighter lines, smaller
    font down to 80%, then whole words dropped) and low-contrast text is darkened. After layout every word is checked: hidden, cut, outside the page, overlapping
-   another slot's text, covered by a picture, low contrast, CSS-generated text. A page with any of these is
+   another slot's text, covered by a picture or anything opaque, low contrast, CSS-generated text, and
+   whether it has ink in the rendered image at all. A page with any of these is
    made again (another style, then another template).
 6. **Degradation** ([pipeline/degrade.py](pipeline/degrade.py)): clean 15%, else OCRSmith, Augraphy or
    scan-simulator (about 28% each), at a strength from 0 to 100 (50 = each tool's own settings), set per tool

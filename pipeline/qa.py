@@ -27,6 +27,8 @@ import sys
 import time
 from collections import Counter, defaultdict
 
+import numpy as np
+
 BULLETS = {"disc", "circle", "square", "none", "disclosure-closed", "disclosure-open"}
 
 
@@ -38,6 +40,27 @@ def _inter(a, b):
     ix = min(a[0] + a[2], b[0] + b[2]) - max(a[0], b[0])
     iy = min(a[1] + a[3], b[1] + b[3]) - max(a[1], b[1])
     return max(0.0, ix) * max(0.0, iy)
+
+
+INK_MIN = 0.01  # share of a word's letter box that must differ from its background
+
+
+def ink_issues(image, words):
+    """{"invisible": n}: words measured as shown whose letter box has (almost) no ink in the rendered image.
+    Whatever hides them (Paged.js moving a line to the next page, a clip the measuring can't see), the
+    pixels say whether they are there. Words of punctuation only are skipped (too little ink to judge)."""
+    gray = np.asarray(image.convert("L"), np.int16)
+    n = 0
+    for w in words:
+        if not re.search(r"[^\W_]", w["text"]):
+            continue
+        x, y, bw, bh = (int(round(v)) for v in (w.get("glyph_box") or w["ink_box"]))
+        crop = gray[max(0, y):max(0, y + bh), max(0, x):max(0, x + bw)]
+        if crop.size < 20:
+            continue
+        if (np.abs(crop - np.median(crop)) > 40).mean() < INK_MIN:
+            n += 1
+    return {"invisible": n} if n else {}
 
 
 def render_issues(ocr, qa):
@@ -81,6 +104,7 @@ def render_issues(ocr, qa):
         elif re.search(r"[^\W_]", g["content"].strip("\"'")):
             issues["generated"] += 1
     issues["contrast"] += sum(1 for c in (qa or {}).get("contrast", []) if c["ratio"] < 3.0)
+    issues["covered"] += sum(c["points"] for c in (qa or {}).get("covered", []))
     return {k: v for k, v in issues.items() if v}
 
 

@@ -110,16 +110,30 @@ CONTRAST_JS = """
   const ratio = (el) => look(el).ratio;
 """
 QA_JS = """(() => {""" + CONTRAST_JS + """
-  const slots = {}, pictures = [], contrast = [];
+  const slots = {}, pictures = [], contrast = [], covered = [];
   for (const s of content.querySelectorAll('[data-slot]')) {
     slots[s.dataset.slot] = ((slots[s.dataset.slot] || '') + ' ' + s.textContent).trim();
     if (s.textContent.trim()) contrast.push({slot: s.dataset.slot, ratio: Math.round(ratio(s) * 100) / 100});
+    // anything opaque painted over the text (a band, a box, a picture positioned on top of it): three points
+    // across the middle of each of its lines
+    let hits = 0;
+    for (const r of [...s.getClientRects()].filter((r) => r.width > 0 && r.height > 0)) {
+      for (const f of [0.2, 0.5, 0.8]) {
+        const x = r.left + r.width * f, y = r.top + r.height / 2;
+        if (x < 0 || y < 0 || x >= innerWidth || y >= innerHeight) continue;
+        const stack = document.elementsFromPoint(x, y);
+        const i = stack.findIndex((e) => e === s || s.contains(e));
+        const above = i < 0 ? stack.slice(0, 1) : stack.slice(0, i);
+        if (above.some((e) => !e.contains(s) && paint(e) !== undefined)) hits++;
+      }
+    }
+    if (hits) covered.push({slot: s.dataset.slot, points: hits});
   }
   for (const im of content.querySelectorAll('img, .ph, .pic-frame, [data-img]')) {
     const r = im.getBoundingClientRect();
     if (r.width >= 2 && r.height >= 2) pictures.push({x: r.left - pr.left, y: r.top - pr.top, width: r.width, height: r.height});
   }
-  return {slots, pictures, contrast};
+  return {slots, pictures, contrast, covered};
 })()"""
 # glyph_y: the top and bottom of the word's letters on the page (canvas metrics around the baseline). Word boxes
 # are the font's whole line slot, taller than the letters: on closely set lines the slots of two lines overlap
@@ -136,7 +150,7 @@ if "cut_x:" not in synthdoc_arabic.WORDS_JS:
 from pipeline import degrade as D  # noqa: E402
 from pipeline import groundtruth as GT  # noqa: E402
 from pipeline.img_pool import ImagePool  # noqa: E402
-from pipeline.qa import render_issues  # noqa: E402
+from pipeline.qa import ink_issues, render_issues  # noqa: E402
 from pipeline.text_pool import TextPool  # noqa: E402
 from pipeline.themes import theme  # noqa: E402
 from src.bank import TEMPLATES  # noqa: E402
@@ -498,7 +512,8 @@ class DocPipeline:
             mark = time.perf_counter()
             clean, ocr, slots, pages, qa = self.render(page, values, name)
             t["render"] += time.perf_counter() - mark
-            issues = render_issues(ocr, qa) if self.check else ({} if ocr["words"] else {"empty": 1})
+            issues = ({**render_issues(ocr, qa), **ink_issues(clean, ocr["words"])} if self.check
+                      else ({} if ocr["words"] else {"empty": 1}))
             if not issues:
                 break
             for k, v in issues.items():

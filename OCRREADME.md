@@ -136,6 +136,8 @@ extent (canvas glyph metrics around the baseline), not the line box:
 | picture | a picture covers more than 15% of it |
 | generated | the page shows text the template didn't write (CSS `content:`, numbered markers other than bullets) |
 | contrast | its contrast against what is painted under it (on any of its lines) is under 3:1 |
+| covered | something opaque (a band, a box, a picture) is painted over it: `elementsFromPoint` at three points across each of its lines finds an element above the text with a colour or picture |
+| invisible | its letter box in the rendered image has (almost) no ink: under 1% of the box differs from its background. This catches text hidden in ways the measuring can't see (Paged.js moving a line at the page bottom to the next page while the page still reports it) |
 | empty | the page has no text at all |
 
 A page with any issue is made again: another style, and every second attempt another template (up to 8).
