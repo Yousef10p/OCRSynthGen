@@ -57,7 +57,7 @@ def ink(gray, box):
 def audit_one(jpg):
     stem = jpg.with_suffix("")
     label = json.loads(stem.with_suffix(".json").read_text(encoding="utf-8"))
-    gt, bad = parse_gt(Path(f"{stem}.gt.txt").read_text(encoding="utf-8"))
+    gt, bad = parse_gt(Path(f"{stem}.md").read_text(encoding="utf-8"))
     problems = Counter()
     if bad:
         problems["gt lines that don't parse"] += bad
@@ -162,7 +162,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     jpgs = sorted(p for p in images.glob("*.jpg") if not re.search(r"_(clean|words|slots|gt)$", p.stem))
     if images != folder:  # a dataset: labels/ and gt/ live beside images/
-        raise SystemExit("point the audit at a generator or QA folder (with .json, .gt.txt and .html beside the .jpg)")
+        raise SystemExit("point the audit at a generator or QA folder (with .json, .md and .html beside the .jpg)")
     total, thumbs, rows = Counter(), [], []
     for jpg in jpgs:
         label, gt, problems = audit_one(jpg)

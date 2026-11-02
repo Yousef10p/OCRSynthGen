@@ -4,9 +4,8 @@
 
 Writes to --out:
     images/<id>.jpg      the page (after effects, or clean)
-    gt/<id>.gt.txt       the ground truth: one <text>... <bbox>x1, y1, x2, y2</bbox></text> line per text block
     labels/<id>.json     word, line and slot boxes [x, y, w, h] in image pixels, text, and how the page was made
-    markdown/<id>.md     the page as Markdown, with the boxes in a header at the top
+    markdown/<id>.md     the ground truth: one <text>... <bbox>x1, y1, x2, y2</bbox></text> line per text block
     html/<id>.html       the filled page
     manifest.jsonl       one line per sample: id, split, files, language, template, effects, word count, ...
     dataset.json         how the set was made (options, counts, sources and licences)
@@ -29,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-FOLDERS = {".jpg": "images", ".gt.txt": "gt", ".json": "labels", ".md": "markdown", ".html": "html"}
+FOLDERS = {".jpg": "images", ".json": "labels", ".md": "markdown", ".html": "html"}
 _pipe = None
 
 

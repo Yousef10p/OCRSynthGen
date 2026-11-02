@@ -27,7 +27,7 @@ flowchart LR
     S["2. style<br/>fonts, sizes, theme colours,<br/>heading/table/box styles"] --> R
     R["3. SynthDoc render (2x)<br/>slot boxes measured,<br/>page checked (QA)"] --> D
     D["4. degrade<br/>clean · OCRSmith · Augraphy ·<br/>scan-simulator, strength 0–100,<br/>readability checked"] --> G
-    G["5. outputs<br/>image · .gt.txt · labels · md · html"]
+    G["5. outputs<br/>image · Markdown (ground truth) · labels · html"]
 ```
 
 1. **Templates** ([src/bank2000.py](src/bank2000.py)): 2,000 templates chosen for diversity (farthest-first on
@@ -59,8 +59,8 @@ flowchart LR
    on the generator page or on the command line. After the effect every word is checked again (still there
    and inside the picture, not under a streak or blot,
    not faded, sharp enough, standing out from the noise); if not, the effect is retried lighter.
-7. **Ground truth** ([pipeline/groundtruth.py](pipeline/groundtruth.py)): one line per slot (text block), in
-   reading order, text first and box last, in image pixels:
+7. **Ground truth = the Markdown** ([pipeline/groundtruth.py](pipeline/groundtruth.py)): `<name>.md` holds only
+   this, one line per slot (text block), in reading order, text first and box last, in image pixels:
 
    ```
    <text>المملكة العربية السعودية <bbox>50, 20, 450, 65</bbox></text>
@@ -80,9 +80,8 @@ cd D:\code\OCR\arabic-template-bank
 | In `--out` | What |
 |---|---|
 | `images/<id>.jpg` | the page |
-| `gt/<id>.gt.txt` | the ground truth: `<text>… <bbox>x1, y1, x2, y2</bbox></text>`, one line per text block |
 | `labels/<id>.json` | words, lines and slots (blocks), each with its box in image pixels and its text; how the page was made (template, style, theme, effect, strength, readability); the Wikipedia articles used |
-| `markdown/<id>.md` | the page as Markdown, with every block and line box in a header at the top |
+| `markdown/<id>.md` | the ground truth: `<text>… <bbox>x1, y1, x2, y2</bbox></text>`, one line per text block, nothing else |
 | `html/<id>.html` | the filled page |
 | `manifest.jsonl` | one line per sample: id, `split` (train/val, 5% val), files, language, template, effects… |
 | `dataset.json` | counts and the options, sources and licences of the set |
@@ -96,8 +95,9 @@ it stopped when run again. Speed: about 3–6 s per sample per worker; each work
 To look at samples one by one: `.venv-pipeline\Scripts\python pipeline\server.py`, then open
 http://localhost:8765. Menus pick the language, template source (or **Template maker: LLM** for a new Groq
 template), effect and text; three sliders set the strength of OCRSmith, Augraphy and scan-simulator. Each card
-opens a preview with the final page, the ground truth, the slot and word boxes, the clean render, HTML,
-Markdown, labels and details (theme, strength, readability, rejected renders).
+opens a preview that shows the page and its Markdown side by side (pointing at a Markdown line marks its box on
+the page), plus tabs for the slot and word boxes, the clean render, HTML, labels and details (theme, strength,
+readability, rejected renders).
 
 To check finished samples independently (ground truth = labels = page text, boxes on the image, ink in every
 box, no overlapping text), and to draw the ground-truth boxes on every page with contact sheets:
@@ -521,7 +521,7 @@ flowchart LR
     T["1. Template<br/>bank2000 (or a Groq LLM)"] --> F["2. Text + style<br/>50% Arabic, 50% English"]
     F --> R["3. SynthDoc render<br/>word, line, slot boxes"]
     R --> E["4. Effects<br/>15% none (clean), then OCRSmith,<br/>Augraphy, scan-simulator ~28% each"]
-    E --> M["5. Markdown<br/>boxes at the very top"]
+    E --> M["5. Markdown<br/>one tagged line per block"]
 ```
 
 1. **Template:** a random bank2000 template (grammar, WebSight v0.1, WebSight v0.2 and DocLayNet equally often). If a page ends up
@@ -534,8 +534,8 @@ flowchart LR
    document), else OCRSmith, Augraphy or scan-simulator, equally often (about 28% each; Augraphy followed
    by scan-simulator is still available with `--effect augraphy+scan-simulator`). Every box moves
    with the page, as in the attack sections above; faint pages are retried with a new seed.
-5. **Markdown:** the filled page as Markdown, with a header at the very top that lists every text block
-   (type, box, text) and every line (box, text). Word boxes are in the sample's `.json`.
+5. **Markdown:** the ground truth only, one `<text>… <bbox>x1, y1, x2, y2</bbox></text>` line per text block
+   in reading order. Word and line boxes are in the sample's `.json`.
 
 **Text, from Wikipedia:** the words come from Arabic and English Wikipedia (the `wikimedia/wikipedia` dataset,
 dump of 2023-11-01, through Hugging Face's dataset server): edited and cited text, openly licensed
@@ -552,8 +552,7 @@ of text a document has, and each kind fills the matching slots:
 | a few words from a sentence | table cells and form values (when they aren't a random number, date or phone) |
 
 Reference sections are skipped, and lines with much text in the other script are dropped, so a page stays in
-one language. Each sample's `.json` lists the articles its text came from, and its Markdown header names the
-source and licence; CC BY-SA asks for that attribution, and a shared dataset made from it should keep the same
+one language. Each sample's `.json` lists the articles its text came from, with their source and licence; CC BY-SA asks for that attribution, and a shared dataset made from it should keep the same
 licence. The old demo sentences are still there (`text="demo"`, or **Text: demo sentences** on the page). To
 build the pool again, or bigger:
 
@@ -598,7 +597,7 @@ pipe.run(n=16)                                          # sixteen
 The page has menus to force the language, the effect or the template source, and a preview window with
 tabs: final page, word boxes, slot boxes, clean render, HTML code, Markdown, labels and details (timings,
 seed). With 4 worker processes, 16 samples take about 10–15 seconds; one sample takes 2–7 seconds, most of it
-SynthDoc's render. Every run is kept in `pipeline_out/run_<time>/`.
+SynthDoc's render. Every run is kept in `pipeline_out/run_<time>_<port>/`.
 
 **One environment for everything:** `.venv-pipeline` holds the packages of the SynthDoc, OCRSmith and
 attacks environments (same versions, `requirements-pipeline.txt`). SynthDoc, its Arabic extension, OCRSmith
@@ -781,7 +780,7 @@ src/from_doclaynet.py         source 3: real document layouts
 src/dedup.py                  removes exact copies
 src/validate.py               checks + statistics
 src/gallery.py                builds the preview pages
-src/markdown.py               converts a filled page to Markdown (for the gallery's Markdown button)
+src/markdown.py               converts a filled page to Markdown (the older gallery sets only)
 assets/fonts/                 Noto Naskh Arabic + Amiri, used by the sample-text previews
 docs/make_examples.py         remakes the before/after images in this README
 demo/render_demo.py           demo of the next stage: varied fonts, papers and scan effects

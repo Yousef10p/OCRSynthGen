@@ -168,8 +168,8 @@ strength; if nothing passes, the clean page is used and the label says so.
 [pipeline/groundtruth.py](pipeline/groundtruth.py): one region per slot, its words in DOM order (absolute
 DocLayNet layouts: top to bottom, then right to left for Arabic or left to right for English). Each word's
 box hugs its letters (glyph top and bottom plus 12% padding, never more than the line box), and moves with
-the page through every effect; the region's box is the union of its words' boxes. Written as
-`<name>.gt.txt`:
+the page through every effect; the region's box is the union of its words' boxes. Written as the
+Markdown, `<name>.md`, and nothing else in it:
 
 ```
 <text>نشأتها: <bbox>1457, 27, 1531, 68</bbox></text>
@@ -206,7 +206,7 @@ flowchart TD
     F["Step 2 · fill<br/>random style CSS + slot texts + photos<br/>(DocPipeline.fill)"] --> S
     S["Step 3 · SynthDoc<br/>Jinja fills the slots, Chromium + Paged.js<br/>lays out and screenshots the page,<br/>every word, line and slot is measured"] --> E
     E["Step 4 · effects<br/>clean 15% · OCRSmith · Augraphy · scan-simulator<br/>(~28% each, strength 0-100), boxes moved with the page"] --> M
-    M["Step 5 · outputs<br/>image · ground truth .gt.txt · labels JSON · Markdown · HTML"]
+    M["Step 5 · outputs<br/>image · Markdown (ground truth) · labels JSON · HTML"]
 ```
 
 One sample is one call: `DocPipeline.sample(seed)` in [pipeline/doc_pipeline.py](pipeline/doc_pipeline.py).
@@ -989,7 +989,7 @@ From `DocPipeline.sample` (in its `out_dir`) or from `python -m pipeline.dataset
 |---|---|---|
 | `<name>.jpg` | `images/<id>.jpg` | the final page |
 | `<name>.json` | `labels/<id>.json` | the labels |
-| `<name>.md` | `markdown/<id>.md` | the page as Markdown, with the boxes on top |
+| `<name>.md` | `markdown/<id>.md` | the ground truth: `<text>… <bbox>x1, y1, x2, y2</bbox></text>`, one line per text block |
 | `<name>.html` | `html/<id>.html` | the filled page (only the words that are on the image) |
 | `<name>_clean.jpg`, `_words.jpg`, `_slots.jpg` | — | SynthDoc's page before effects, and the boxes drawn (only with `extras=True`, the generator page) |
 | — | `manifest.jsonl`, `dataset.json` | the index of the set, and how it was made |
@@ -1041,48 +1041,30 @@ From `DocPipeline.sample` (in its `out_dir`) or from `python -m pipeline.dataset
 
 ### 9.3 The Markdown: `<name>.md`
 
-The page in reading order as Markdown, with a YAML header at the very top that has every text block and
-every line with its box:
+The Markdown is the ground truth and nothing else: one line per text block (template slot), in reading
+order, the text first and its box at the very end of the tag, in pixels of the final image
+(`x1, y1` top-left, `x2, y2` bottom-right). Arabic:
 
-```markdown
----
-image: trace.jpg
-width: 800
-height: 1127
-language: ar
-template: g_0003
-effects: ["ocrsmith-paper:gradient", "ocrsmith:scan", "Rotation", "PaperGrain", ...]
-text: Wikipedia, CC BY-SA 4.0 (articles listed in trace.json)
-boxes: [x, y, width, height] in image pixels, after the effects
-regions:  # 17 text blocks (template slots)
-  - {"type": "title", "box": [260, 61, 483, 77], "text": "عبد الله بن متعب بن عبد الله آل سعود"}
-  - {"type": "text", "box": [80, 142, 663, 82], "text": "يتميز الطبخ بأسلوب «سو-ڤي» بالحرارة المنخفضة، ..."}
-  - {"type": "sidebar", "box": [379, 241, 349, 30], "text": "من المحتمل أن تكون البنية السرية المشتركة ..."}
-  - {"type": "heading", "box": [60, 356, 105, 38], "text": "الدهون: ٠.٦ غرام"}
-  ...
-lines:  # 24 lines; word boxes are in trace.json
-  - {"box": [260, 61, 483, 77], "text": "عبد الله بن متعب بن عبد الله آل سعود"}
-  ...
----
-
-# عبد الله بن متعب بن عبد الله آل سعود
-
-يتميز الطبخ بأسلوب «سو-ڤي» بالحرارة المنخفضة، ...
-
-## الدهون: ٠.٦ غرام
-
-> ينتمي الدوّار لمشيخة تورار التي تضم ٨ دواوير. ...
-
-![figure](img_pool/picsum_2.jpg)
+```
+<text>المملكة العربية السعودية <bbox>50, 20, 450, 65</bbox></text>
+<text>وزارة الداخلية <bbox>50, 100, 300, 140</bbox></text>
+<text>رقم الهوية <bbox>50, 180, 200, 220</bbox></text>
+<text>١٠٢٣٤٥٦٧٨٩ <bbox>220, 180, 450, 220</bbox></text>
 ```
 
-- **Regions** are sorted in reading order: top to bottom, then right to left for Arabic (left to right
-  for English). `type` is the slot role from its property (`text` for a paragraph).
-- **The body** is made by [src/markdown.py](src/markdown.py) from the filled page, in document order:
-  headings `#`, lists `-` / `1.`, tables as pipe tables, quotes `>`, pictures
-  `![figure](img_pool/…)`, everything else a paragraph.
-- The filled page is rebuilt from the **labelled** words before this, so the Markdown, the labels and the
-  image have the same words (only Markdown syntax is extra).
+English:
+
+```
+<text>KINGDOM OF SAUDI ARABIA <bbox>50, 20, 450, 65</bbox></text>
+<text>MINISTRY OF INTERIOR <bbox>50, 100, 350, 140</bbox></text>
+<text>ID NUMBER <bbox>50, 180, 200, 220</bbox></text>
+<text>1023456789 <bbox>220, 180, 450, 220</bbox></text>
+```
+
+- A block's text is its labelled words only (a word cut, hidden or lost is in no text), so the Markdown, the
+  labels JSON (`slots`) and the image have the same words.
+- Only `<` and `>` inside the text are escaped (`&lt;`, `&gt;`), so a line always parses.
+- Word and line boxes are in `<name>.json`.
 
 ### 9.4 A manifest line (dataset command)
 
@@ -1336,7 +1318,7 @@ And:
 | [pipeline/themes.py](pipeline/themes.py) | themes: accent colour, heading/table/box/page styles, WebSight hue turn |
 | [pipeline/degrade.py](pipeline/degrade.py) | the three tools at a strength; the after-effect readability checks |
 | [pipeline/qa.py](pipeline/qa.py) | the render checks (`render_issues`); `python -m pipeline.qa` makes and reports samples |
-| [pipeline/groundtruth.py](pipeline/groundtruth.py) | slot regions in reading order; the `.gt.txt` format |
+| [pipeline/groundtruth.py](pipeline/groundtruth.py) | slot regions in reading order; the Markdown (`<text>… <bbox>…</bbox></text>`) format |
 | [pipeline/audit.py](pipeline/audit.py) | independent check of finished samples, boxes drawn, contact sheets |
 | [src/bank2000.py](src/bank2000.py), [src/from_websight2.py](src/from_websight2.py) | the 2,000-template bank; WebSight v0.2 conversion |
 | [pipeline/text_pool.py](pipeline/text_pool.py) | Wikipedia download, `TextPool` |
@@ -1351,5 +1333,5 @@ And:
 | [synthdoc_adapter/bank_template.py](synthdoc_adapter/bank_template.py), [generate.py](synthdoc_adapter/generate.py) | SynthDoc batch mode (gallery sets) |
 | [src/grammar.py](src/grammar.py), [from_websight.py](src/from_websight.py), [from_doclaynet.py](src/from_doclaynet.py), [full_sources.py](src/full_sources.py) | building templates from each source |
 | [src/dedup.py](src/dedup.py), [near_dedup.py](src/near_dedup.py), [validate.py](src/validate.py) | duplicates, the index, checks |
-| [src/markdown.py](src/markdown.py) | filled page → Markdown body |
+| [src/markdown.py](src/markdown.py) | filled page → Markdown body (older gallery sets only; the generator's Markdown is the ground truth) |
 | [src/bank.py](src/bank.py) | shared template helpers (page sizes, CSS defaults, slot regex) |

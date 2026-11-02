@@ -3,7 +3,7 @@
     .venv-pipeline\\Scripts\\python pipeline\\server.py      then open http://localhost:8765
 
 Samples are made in parallel worker processes (each keeps its own SynthDoc browser and warmed-up Augraphy)
-and appear on the page one by one as they finish. Every run is kept in pipeline_out/run_<time>/.
+and appear on the page one by one as they finish. Every run is kept in pipeline_out/run_<time>_<port>/.
 """
 import argparse
 import json
@@ -61,7 +61,7 @@ def start_job(options):
             strengths[tool] = 0.5
     options = {k: options.get(k) if options.get(k) in CHOICES[k] else next(iter(CHOICES[k])) for k in CHOICES} | \
               {"templates": "llm" if options.get("templates") == "llm" else "bank", "strengths": strengths}
-    run = time.strftime("run_%Y%m%d_%H%M%S")
+    run = time.strftime("run_%Y%m%d_%H%M%S") + f"_{PORT}"  # two generators started in the same second don't mix
     out_dir, seed = OUT / run, random.randrange(10**6)
     job = {"id": run, "n": n, "options": options, "started": time.time(), "samples": [None] * n, "errors": []}
     with LOCK:

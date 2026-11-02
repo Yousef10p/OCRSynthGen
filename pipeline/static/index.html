@@ -53,6 +53,19 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
 .pv-body pre { margin: 0; padding: 14px 16px; white-space: pre-wrap; word-break: break-word; unicode-bidi: plaintext; font: 12.5px/1.55 Consolas, monospace; background: #fff; min-block-size: 100%; }
 .nav { border: 1px solid var(--line); background: #fff; padding: 3px 10px; }
 .facts { padding: 14px 16px; background: #fff; min-block-size: 100%; }
+.split { display: grid; grid-template-columns: 1fr 1fr; block-size: 100%; }
+.split > div { overflow: auto; min-block-size: 0; }
+.split .page { padding: 10px; }
+.split .frame { position: relative; }
+.split .frame img { inline-size: 100%; cursor: default; }
+.split svg { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; pointer-events: none; }
+.split rect { fill: none; stroke: rgba(210, 50, 50, .35); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.split rect.on { fill: rgba(255, 200, 0, .3); stroke: #d23232; stroke-width: 3; }
+.split .md { background: #fff; border-inline-start: 1px solid #e3e6e9; }
+.split .md pre { min-block-size: auto; }
+.pv-body .ln { display: block; border-radius: 4px; }
+.pv-body .ln:hover { background: #fff3c4; }
+@media (max-width: 800px) { .split { grid-template-columns: 1fr; block-size: auto; } .split > div { overflow: visible; } }
 .facts table { border-collapse: collapse; font-size: 13px; }
 .facts td { padding: 4px 14px 4px 0; vertical-align: top; } .facts td:first-child { color: var(--muted); }
 </style>
@@ -74,7 +87,7 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
   <div class="bar"><i id="bar"></i></div>
   <span id="status"></span>
 </header>
-<div class="steps"><b>Pipeline:</b> template → Arabic/English text from Wikipedia + random style + photos from img_pool in picture boxes → SynthDoc render (labels) → clean, or OCRSmith / Augraphy / scan-simulator (boxes moved) → Markdown with boxes on top</div>
+<div class="steps"><b>Pipeline:</b> template → Arabic/English text from Wikipedia + random style + photos from img_pool in picture boxes → SynthDoc render (labels) → clean, or OCRSmith / Augraphy / scan-simulator (boxes moved) → Markdown: one &lt;text&gt;… &lt;bbox&gt;x1, y1, x2, y2&lt;/bbox&gt;&lt;/text&gt; line per text block</div>
 <main id="grid"><div class="empty">Press <b>Generate 16 samples</b>. Pages appear here one by one as they are made.</div></main>
 
 <dialog id="pv"><div class="pv">
@@ -87,10 +100,16 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
 <script>
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
-let job = null, samples = [], timer = null, current = -1, tab = "final";
-const TABS = [["final", "Final page"], ["gt", "Ground truth"], ["slots", "Slot boxes"], ["words", "Word boxes"], ["clean", "Clean render"],
-              ["html", "HTML code"], ["md", "Markdown"], ["json", "Labels JSON"], ["info", "Details"]];
-const FILE = {final: ".jpg", gt: ".gt.txt", words: "_words.jpg", slots: "_slots.jpg", clean: "_clean.jpg", html: ".html", md: ".md", json: ".json"};
+let job = null, samples = [], timer = null, current = -1, tab = "both";
+const TABS = [["both", "Image + Markdown"], ["final", "Final page"], ["md", "Markdown"], ["slots", "Slot boxes"], ["words", "Word boxes"],
+              ["clean", "Clean render"], ["html", "HTML code"], ["json", "Labels JSON"], ["info", "Details"]];
+const FILE = {both: ".md", final: ".jpg", words: "_words.jpg", slots: "_slots.jpg", clean: "_clean.jpg", html: ".html", md: ".md", json: ".json"};
+const GT_LINE = /^<text>(.*) <bbox>(-?\d+), (-?\d+), (-?\d+), (-?\d+)<\/bbox><\/text>$/;
+// the Markdown as in the file, each line's text isolated so Arabic doesn't reorder the tags around it
+const mdLines = (text) => text.split(/\r?\n/).filter(Boolean).map((line, i) => {
+  const m = line.match(GT_LINE);
+  return `<span class="ln" data-i="${i}">${m ? `&lt;text&gt;<bdi>${esc(m[1])}</bdi> &lt;bbox&gt;${m.slice(2).join(", ")}&lt;/bbox&gt;&lt;/text&gt;` : esc(line)}</span>`;
+}).join("");
 for (const t of ["ocrsmith", "augraphy", "scan-simulator"]) $("s-" + t).oninput = (e) => { $("v-" + t).textContent = e.target.value; };
 const url = (s, kind) => `/out/${job.id}/${s.name}${FILE[kind]}`;
 
@@ -126,12 +145,12 @@ function card(s, i) {
   if (s.error) return `<div class="card" id="c${i}"><div class="err"><b>${s.name}</b> failed<br>${esc(s.error)}</div></div>`;
   const warn = (s.low_contrast ? `<span class="chip warn">faint</span>` : "") + (s.note ? `<span class="chip warn" title="${esc(s.note)}">${s.note.includes("reused") ? "reused LLM template" : "fallback"}</span>` : "");
   return `<div class="card" id="c${i}">
-    <div class="thumb" onclick="openPreview(${i}, 'final')"><img src="${url(s, "final")}" alt="${s.name}"></div>
+    <div class="thumb" onclick="openPreview(${i}, 'both')"><img src="${url(s, "final")}" alt="${s.name}"></div>
     <div class="meta">
       <div class="row"><span class="chip ${s.lang}">${s.lang === "ar" ? "Arabic" : "English"}</span><span class="chip">${esc(effectName(s))}</span>${warn}</div>
       <div class="small">${s.name} · ${s.template} (${s.source}) · ${esc(s.font)} ${s.size_pt}pt · ${s.words} words${s.pictures ? ` · ${s.pictures} picture${s.pictures > 1 ? "s" : ""}` : ""} · ${s.seconds.total} s</div>
-      <div class="row"><button class="open" onclick="openPreview(${i}, 'final')">Preview</button>
-        <button class="open" onclick="openPreview(${i}, 'gt')">Ground truth</button><button class="open" onclick="openPreview(${i}, 'slots')">Boxes</button></div>
+      <div class="row"><button class="open" onclick="openPreview(${i}, 'both')">Image + Markdown</button>
+        <button class="open" onclick="openPreview(${i}, 'slots')">Boxes</button></div>
     </div></div>`;
 }
 
@@ -164,16 +183,27 @@ async function show() {
       ["Contrast", `${s.contrast}${s.low_contrast ? " (faint)" : ""}`], ["Pages rendered", s.pages_rendered],
       ["Seconds", Object.entries(s.seconds).map(([k, v]) => `${k} ${v}`).join(" · ")], ["Seed", s.seed], ["Note", s.note || "–"]];
     body.innerHTML = `<div class="facts"><table>${rows.map(([k, v]) => `<tr><td>${k}</td><td>${esc(v)}</td></tr>`).join("")}</table></div>`;
+  } else if (tab === "both") {  // the page and its Markdown side by side; a line lights up its box on the page
+    const text = await (await fetch(url(s, "md"))).text();
+    const boxes = text.split(/\r?\n/).filter(Boolean).map((l) => (l.match(GT_LINE) || []).slice(2).map(Number));
+    body.innerHTML = `<div class="split"><div class="page"><div class="frame"><img id="sp-img" src="${url(s, "final")}" alt="">
+      <svg id="sp-svg" preserveAspectRatio="none">${boxes.map((b, i) => b.length === 4
+        ? `<rect data-i="${i}" x="${b[0]}" y="${b[1]}" width="${b[2] - b[0]}" height="${b[3] - b[1]}"></rect>` : "").join("")}</svg></div></div>
+      <div class="md"><pre dir="ltr">${mdLines(text)}</pre></div></div>`;
+    const img = $("sp-img"), fit = () => $("sp-svg").setAttribute("viewBox", `0 0 ${img.naturalWidth} ${img.naturalHeight}`);
+    if (img.complete) fit(); else img.addEventListener("load", fit);
+    body.querySelectorAll(".ln").forEach((ln) => {
+      const rect = body.querySelector(`rect[data-i="${ln.dataset.i}"]`);
+      ln.onmouseenter = () => { if (rect) { rect.classList.add("on"); rect.scrollIntoView({block: "nearest"}); } };
+      ln.onmouseleave = () => { if (rect) rect.classList.remove("on"); };
+    });
   } else if (FILE[tab].endsWith(".jpg")) {
     body.innerHTML = `<img src="${url(s, tab)}" alt="" onclick="this.classList.toggle('full')">`;
   } else {
     let text = await (await fetch(url(s, tab))).text();
     if (tab === "json") text = JSON.stringify(JSON.parse(text), null, 1);
-    if (tab === "gt") {  // each line as in the file, the text isolated so Arabic doesn't reorder the tags around it
-      body.innerHTML = `<pre dir="ltr">${text.split("\n").filter(Boolean).map((line) => {
-        const m = line.match(/^<text>(.*) (<bbox>.*<\/bbox>)<\/text>$/);
-        return m ? `&lt;text&gt;<bdi>${esc(m[1])}</bdi> ${esc(m[2])}&lt;/text&gt;` : esc(line);
-      }).join("\n")}</pre>`;
+    if (tab === "md") {
+      body.innerHTML = `<pre dir="ltr">${mdLines(text)}</pre>`;
     } else {
       body.innerHTML = `<pre>${esc(text)}</pre>`;
     }

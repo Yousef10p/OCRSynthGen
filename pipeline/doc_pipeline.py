@@ -12,12 +12,12 @@
                  (pipeline/degrade.py); every box moves with the page; checked word by word for lost,
                  faint or blurred-away text, retried with new seeds and then less strength
     5. outputs   the image; the slot-level ground truth (<text>... <bbox>x1, y1, x2, y2</bbox></text>, one
-                 line per filled slot, pipeline/groundtruth.py); labels JSON (words, lines, slots); Markdown;
-                 the filled HTML
+                 line per filled slot, pipeline/groundtruth.py) as the Markdown; labels JSON (words, lines,
+                 slots); the filled HTML
 
 Each sample writes, in out_dir:
-    <name>.jpg        final page                     <name>.gt.txt   slot-level ground truth (tagged)
-    <name>.json       labels: words, lines, slots    <name>.md       Markdown with the boxes on top
+    <name>.jpg        final page                     <name>.md       the ground truth: one line per text block,
+    <name>.json       labels: words, lines, slots                      <text>... <bbox>x1, y1, x2, y2</bbox></text>
     <name>.html       filled page                    <name>_clean.jpg, _words.jpg, _slots.jpg (extras)
 
 Runs in .venv-pipeline (SynthDoc, OCRSmith, Augraphy and scan-simulator in one environment):
@@ -42,7 +42,7 @@ for p in (ROOT, ROOT / "demo", ROOT / "synthdoc_adapter"):
 
 import attack  # noqa: E402  (Augraphy warm-up, word mask; synthdoc_adapter/attack.py)
 import numpy as np  # noqa: E402
-from export import ROLE_PROPERTY, synthdoc_html  # noqa: E402
+from export import synthdoc_html  # noqa: E402
 from fill_style import fill, font_families, style, style_latin  # noqa: E402
 from labels import build_label, contrast, split_words  # noqa: E402
 from playwright.sync_api import Browser  # noqa: E402
@@ -141,7 +141,6 @@ from pipeline.text_pool import TextPool  # noqa: E402
 from pipeline.themes import theme  # noqa: E402
 from src.bank import TEMPLATES  # noqa: E402
 from src.dedup import load_bank  # noqa: E402
-from src.markdown import to_markdown  # noqa: E402
 
 BANK2000 = ROOT / "bank2000"
 LANGUAGES = {"ar": 0.5, "en": 0.5}
@@ -149,7 +148,6 @@ LANGUAGES = {"ar": 0.5, "en": 0.5}
 # between the three tools ("augraphy+scan-simulator" is there when asked for)
 EFFECTS = {"clean": 0.15, "ocrsmith": 0.85 / 3, "augraphy": 0.85 / 3, "scan-simulator": 0.85 / 3}
 STRENGTHS = {tool: D.DEFAULT_STRENGTH for tool in D.TOOLS}
-ROLE = {prop: role for role, prop in ROLE_PROPERTY.items()}  # doco:sectionTitle -> heading (old Markdown)
 ATTEMPTS = 8         # renders per sample until one passes the checks (a new template every second one)
 EFFECT_TRIES = 3     # seeds per strength level before the strength is lowered
 
@@ -479,24 +477,6 @@ class DocPipeline:
 
     # -- 5. outputs -------------------------------------------------------------------------------------------
 
-    def markdown(self, filled, label, name):
-        """Markdown of the filled page, with every slot and line box (after effects) at the very top."""
-        def row(item):
-            return json.dumps(item, ensure_ascii=False)
-        regions = [{"type": r.get("role") or ROLE.get(r.get("property"), "text"), "box": r["box"], "text": r["text"]}
-                   for r in label["slots"]]
-        lines = [{"box": ln["box"], "text": ln["text"]} for ln in label["lines"]]
-        head = ["---", f"image: {name}.jpg", f"width: {label['width']}", f"height: {label['height']}",
-                f"language: {label['lang']}", f"template: {label['template']}",
-                f"effects: {row(label['attacks'])}",
-                f"text: {'Wikipedia, CC BY-SA 4.0 (articles listed in ' + name + '.json)' if label['style']['text'] == 'wikipedia' else 'demo sentences'}",
-                "boxes: [x, y, width, height] in image pixels, after the effects",
-                f"regions:  # {len(regions)} text blocks (template slots), in reading order"]
-        head += [f"  - {row(r)}" for r in regions]
-        head += [f"lines:  # {len(lines)} lines; word boxes are in {name}.json"]
-        head += [f"  - {row(ln)}" for ln in lines]
-        return "\n".join(head + ["---", "", to_markdown(filled)])
-
     # -- one sample, many samples ---------------------------------------------------------------------------
 
     def sample(self, seed, name=None, language=None, effect=None):
@@ -543,20 +523,19 @@ class DocPipeline:
                       "render_scale": RENDER_SCALE})
         t["effects"] = time.perf_counter() - mark
         mark = time.perf_counter()
-        # The HTML and Markdown say exactly what is on the page: each slot holds its labelled words
+        # The HTML says exactly what is on the page: each slot holds its labelled words
         shown = {sl["id"]: "" for sl in meta["slots"]}
         shown.update({r["id"]: r["text"] for r in regions})
         filled = Template(page).render(**{k: Markup.escape(v) for k, v in shown.items()},
                                        **{p["id"]: values[p["id"]] for p in meta.get("pictures", [])},
                                        style=values["style"])
-        md = self.markdown(filled, label, name)
+        md = GT.to_text(regions)  # the Markdown is the ground truth: one <text>... <bbox>...</bbox></text> per block
         t["markdown"] = time.perf_counter() - mark
 
         out = self.out
         image.save(out / f"{name}.jpg", quality=90)
-        (out / f"{name}.gt.txt").write_text(GT.to_text(regions), encoding="utf-8")
         (out / f"{name}.html").write_text(filled, encoding="utf-8")
-        (out / f"{name}.md").write_text(md, encoding="utf-8")
+        (out / f"{name}.md").write_text(md, encoding="utf-8", newline="\n")  # \n line ends on every system
         (out / f"{name}.json").write_text(json.dumps(label, ensure_ascii=False), encoding="utf-8")
         if self.extras:
             clean.save(out / f"{name}_clean.jpg", quality=88)
