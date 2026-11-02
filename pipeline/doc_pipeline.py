@@ -133,7 +133,51 @@ QA_JS = """(() => {""" + CONTRAST_JS + """
     const r = im.getBoundingClientRect();
     if (r.width >= 2 && r.height >= 2) pictures.push({x: r.left - pr.left, y: r.top - pr.top, width: r.width, height: r.height});
   }
-  return {slots, pictures, contrast, covered};
+  // the page's structure, for block-level labels (pipeline/surya.py): tables with their rows and cells, lists
+  // with their items and marker, pictures, each slot's heading tag and weight, all in document order
+  const rel = (r) => ({x: r.left - pr.left, y: r.top - pr.top, width: r.width, height: r.height});
+  const own = (el, scope) => [...el.querySelectorAll('[data-slot]')].filter((s) => s.closest(scope) === el)
+    .map((s) => s.dataset.slot);
+  const struct = {tables: [], lists: [], images: [], styles: {}, order: {}};
+  let order = 0;
+  for (const el of content.querySelectorAll('[data-slot], table, ul, ol, .pic-frame, [data-img], img')) {
+    el.dataset.order = order++;
+  }
+  for (const t of content.querySelectorAll('table')) {
+    if (t.parentElement.closest('table')) continue;  // a table inside a cell belongs to the outer table
+    const rows = [];
+    for (const tr of t.querySelectorAll('tr')) {
+      if (tr.closest('table') !== t) continue;
+      const cells = [...tr.children].filter((c) => c.tagName === 'TD' || c.tagName === 'TH').map((c) => ({
+        tag: c.tagName.toLowerCase(), colspan: c.colSpan || 1, rect: rel(c.getBoundingClientRect()),
+        slots: [...c.querySelectorAll('[data-slot]')].map((s) => s.dataset.slot),
+        bold: +getComputedStyle(c).fontWeight >= 600}));
+      if (cells.length) rows.push({rect: rel(tr.getBoundingClientRect()), cells});
+    }
+    if (rows.length) struct.tables.push({rect: rel(t.getBoundingClientRect()), rows, order: +t.dataset.order});
+  }
+  for (const l of content.querySelectorAll('ul, ol')) {
+    if (l.parentElement.closest('ul, ol, table')) continue;  // nested lists are items of the outer one
+    const items = [...l.querySelectorAll('li')].map((li) => own(li, 'li')).filter((s) => s.length);
+    const first = l.querySelector('li');
+    const marker = first && getComputedStyle(first).display === 'list-item' ? getComputedStyle(first).listStyleType : 'none';
+    if (items.length) struct.lists.push({rect: rel(l.getBoundingClientRect()), items, marker, order: +l.dataset.order});
+  }
+  for (const im of content.querySelectorAll('.pic-frame, [data-img], img')) {
+    if (im.tagName === 'IMG' && im.closest('.pic-frame, [data-img]')) continue;
+    const r = im.getBoundingClientRect();
+    if (r.width < 8 || r.height < 8) continue;
+    const img = im.tagName === 'IMG' ? im : im.querySelector('img');
+    const src = img ? img.getAttribute('src') || '' : (getComputedStyle(im).backgroundImage.match(/url\\("?([^")]*)"?\\)/) || [])[1] || '';
+    struct.images.push({rect: rel(r), src: src.split('/').pop(), order: +im.dataset.order});
+  }
+  for (const s of content.querySelectorAll('[data-slot]')) {
+    const cs = getComputedStyle(s), h = s.closest('h1, h2, h3, h4, h5, h6');
+    struct.styles[s.dataset.slot] = {h: h ? h.tagName.toLowerCase() : null, bold: +cs.fontWeight >= 600,
+                                     italic: cs.fontStyle === 'italic'};
+    if (!(s.dataset.slot in struct.order)) struct.order[s.dataset.slot] = +s.dataset.order;
+  }
+  return {slots, pictures, contrast, covered, struct};
 })()"""
 # glyph_y: the top and bottom of the word's letters on the page (canvas metrics around the baseline). Word boxes
 # are the font's whole line slot, taller than the letters: on closely set lines the slots of two lines overlap
@@ -149,6 +193,7 @@ if "cut_x:" not in synthdoc_arabic.WORDS_JS:
 
 from pipeline import degrade as D  # noqa: E402
 from pipeline import groundtruth as GT  # noqa: E402
+from pipeline import surya as SURYA  # noqa: E402
 from pipeline import tashkeel as TASHKEEL  # noqa: E402
 from pipeline.img_pool import ImagePool  # noqa: E402
 from pipeline.qa import ink_issues, render_issues  # noqa: E402
@@ -347,10 +392,13 @@ class DocPipeline:
     strengths: {"ocrsmith"|"augraphy"|"scan-simulator": 0..1} (0.5 = the tool's own settings).
     templates "bank" or "llm" (an LLMTemplates, passed as llm, writes them).
     pictures: an ImagePool (default img_pool/; False leaves picture boxes grey).
-    text: "wikipedia" (text_pool/) or "demo". extras: also write the clean render and the drawn boxes."""
+    text: "wikipedia" (text_pool/) or "demo". extras: also write the clean render and the drawn boxes.
+    tasks: {"full_ocr"|"layout"|"block_ocr"|"table": weight}, the Surya OCR 2.5 prompt each sample is made for
+    (pipeline/surya.py; default SURYA.TASKS)."""
 
     def __init__(self, out_dir, languages=None, effects=None, sources=None, templates="bank", llm=None,
-                 pictures=None, text=None, extras=True, bank=None, strengths=None, check=True, tashkeel=None):
+                 pictures=None, text=None, extras=True, bank=None, strengths=None, check=True, tashkeel=None,
+                 tasks=None):
         self.out = Path(out_dir).resolve()
         self.out.mkdir(parents=True, exist_ok=True)
         if bank == "old":
@@ -361,7 +409,9 @@ class DocPipeline:
         self.sources, self.templates, self.llm = sources, templates, llm
         self.strengths = {**STRENGTHS, **(strengths or {})}
         self.tashkeel = tashkeel or TASHKEEL.LEVELS  # Arabic pages: none / partial / full marks
+        self.tasks = tasks or SURYA.TASKS
         self.pictures = ImagePool() if pictures is None else pictures
+        self.categories = {f.name: c for c, files in getattr(self.pictures, "by_category", {}).items() for f in files}
         self.text = text or ("wikipedia" if TextPool.exists("ar") and TextPool.exists("en") else "demo")
         self.extras, self.check = extras, check
         synthdoc_arabic.install()  # SynthDoc then also measures every word (the Arabic extension)
@@ -369,8 +419,9 @@ class DocPipeline:
 
     # -- 1. template --------------------------------------------------------------------------------------
 
-    def template(self, rng, name, lang):
-        """(meta, template text or None, folder with its files, note)."""
+    def template(self, rng, name, lang, need_table=False):
+        """(meta, template text or None, folder with its files, note). need_table: only bank templates with a
+        table (the Surya "table" task)."""
         note = ""
         if self.templates == "llm":
             if self.llm is not None and self.llm.available():
@@ -388,6 +439,8 @@ class DocPipeline:
             else:
                 note = f"{self.llm.problem if self.llm else 'no LLM'}; bank template used"
         entries = bank_entries(self.bank)
+        if need_table:
+            entries = [e for e in entries if (e.get("features") or {}).get("tables")] or entries
         if self.bank:
             entries = [e for e in entries if e.get("lang", lang) == lang] or entries
         present = sorted({e["source"] for e in entries})
@@ -479,39 +532,53 @@ class DocPipeline:
 
     # -- 4. effects -------------------------------------------------------------------------------------------
 
-    def degrade(self, clean, words, rng, effect):
+    def degrade(self, clean, words, rng, effect, points=()):
         """The effect at the configured strength, checked word by word: up to EFFECT_TRIES seeds, then 60% and
         30% of the strength; a page that never reads well stays clean.
-        Returns (image, boxes, attacks, strength used, legibility check)."""
+        points: (x, y) on the clean page (corners of tables, lists, pictures) carried through the effect as tiny
+        boxes after the words (painted last, so they never split a word's box); not part of the checks.
+        Returns (image, boxes, attacks, strength used, legibility check, the points moved, None if lost)."""
         exact = [[round(w["x"]), round(w["y"]), round(w["width"]), round(w["height"])] for w in words]
+        same = [tuple(pt) for pt in points]
         if effect == "clean":
-            return clean, exact, ["clean"], 0.0, {"lost": 0, "faint": 0.0, "sharpness": 1.0}
+            return clean, exact, ["clean"], 0.0, {"lost": 0, "faint": 0.0, "sharpness": 1.0}, same
+        # each distinct point once (a row's bottom corners are the next row's top ones: in a mask the second dot
+        # would paint over the first)
+        unique = list(dict.fromkeys((round(x), round(y)) for x, y in same))
+        where = {pt: i for i, pt in enumerate(unique)}
+        dots = [{"x": x - 1, "y": y - 1, "width": 2, "height": 2, "line_id": f"pt{i}", "text": ""}
+                for i, (x, y) in enumerate(unique)]
         tool = "augraphy" if effect == "augraphy" else ("ocrsmith" if effect == "ocrsmith" else "scan-simulator")
         base = self.strengths[tool]
+        n = len(words)
         for level in (1.0, 0.6, 0.3):
             for _ in range(EFFECT_TRIES):
                 strength = round(base * level, 3)
-                out, boxes, attacks = D.degrade(clean, words, rng.randrange(2**31), effect, strength)
+                out, boxes, attacks = D.degrade(clean, words + dots, rng.randrange(2**31), effect, strength)
+                boxes, dot = boxes[:n], [(b[0] + b[2] / 2, b[1] + b[3] / 2) if b else None for b in boxes[n:]]
+                moved = [dot[where[(round(x), round(y))]] for x, y in same]
                 check = D.legibility(clean, out, words, boxes)
                 if D.readable(check):
-                    return out, boxes, attacks, strength, check
-        return clean, exact, ["clean (effect left text unreadable)"], 0.0, {"lost": 0, "faint": 0.0, "sharpness": 1.0}
+                    return out, boxes, attacks, strength, check, moved
+        return (clean, exact, ["clean (effect left text unreadable)"], 0.0, {"lost": 0, "faint": 0.0, "sharpness": 1.0},
+                same)
 
     # -- 5. outputs -------------------------------------------------------------------------------------------
 
     # -- one sample, many samples ---------------------------------------------------------------------------
 
-    def sample(self, seed, name=None, language=None, effect=None):
+    def sample(self, seed, name=None, language=None, effect=None, task=None):
         """Run the steps once; returns a summary dict (files are written to out_dir)."""
         name = name or f"s{seed}"
         rng = random.Random(seed)
         lang, effect = language or pick(rng, self.languages), effect or pick(rng, self.effects)
+        task = task or pick(rng, self.tasks)  # the Surya prompt this sample is made for
         t = {"template": 0, "fill": 0, "render": 0}
         rejected, attempts = {}, 0
         for attempts in range(1, ATTEMPTS + 1):  # until the rendered page passes every check
             if attempts % 2 == 1:  # a new template every second attempt
                 mark = time.perf_counter()
-                meta, text, folder, note = self.template(rng, name, lang)
+                meta, text, folder, note = self.template(rng, name, lang, need_table=task == "table")
                 lang = meta.get("lang", lang)
                 t["template"] += time.perf_counter() - mark
             mark = time.perf_counter()
@@ -522,6 +589,11 @@ class DocPipeline:
             t["render"] += time.perf_counter() - mark
             issues = ({**render_issues(ocr, qa), **ink_issues(clean, ocr["words"])} if self.check
                       else ({} if ocr["words"] else {"empty": 1}))
+            if task == "table":  # the table task needs a table with text on the page (a long page may lose it)
+                shown = {w.get("slot") for w in ocr["words"]}
+                if not any(sl in shown for tb in (qa.get("struct") or {}).get("tables", [])
+                           for row in tb["rows"] for cell in row["cells"] for sl in cell["slots"]):
+                    issues["no table"] = 1
             if not issues:
                 break
             for k, v in issues.items():
@@ -536,7 +608,8 @@ class DocPipeline:
             if y1 - y0 >= 0.5 * h:
                 w["y"], w["height"] = y0, y1 - y0
         mark = time.perf_counter()
-        image, boxes, attacks, strength, check = self.degrade(clean, words, rng, effect)
+        plan = SURYA.carry(qa.get("struct") or {})  # tables, rows, columns, lists, pictures: moved with the page
+        image, boxes, attacks, strength, check, moved = self.degrade(clean, words, rng, effect, SURYA.corners(plan))
         label = build_label(name, image.size, None, attacks, contrast(np.asarray(image.convert("L")), [b for b in boxes if b]),
                             ocr, slots, words, boxes, cut)
         regions = GT.regions(meta["slots"], words, boxes, lang, meta.get("positioning", "flow"))
@@ -553,10 +626,39 @@ class DocPipeline:
                                        **{p["id"]: values[p["id"]] for p in meta.get("pictures", [])},
                                        style=values["style"])
         md = GT.to_text(regions)  # the Markdown is the ground truth: one <text>... <bbox>...</bbox></text> per block
+        # Surya: the page's blocks, then the input image and target of this sample's prompt
+        width, height = image.size
+        rects = SURYA.rebuild(plan, moved, width, height)
+        blks = SURYA.blocks(regions, {sl["id"]: sl["role"] for sl in meta["slots"]}, qa.get("struct") or {}, rects,
+                            lang, meta.get("positioning", "flow"), self.categories, height)
+        tables = [b for b in blks if b["label"] == "Table" and any(k[:2] == ("row", b["table"]) for k in rects)]
+        if task == "table" and not tables:
+            note, task = (note + "; " if note else "") + "no table on the page: full_ocr instead", "full_ocr"
+        crop, target = None, None
+        if task == "full_ocr":
+            target = SURYA.full_ocr(blks, width, height)
+        elif task == "layout":
+            target = SURYA.layout(blks, width, height)
+        elif task == "table":
+            b = rng.choice(tables)
+            crop = SURYA.crop_box(b["box"], width, height, rng)
+            target = SURYA.table(rects, b["table"], crop)
+        else:  # block_ocr: one block cut out, its content as the answer
+            b = rng.choice([b for b in blks if b["label"] != "Image"] or blks)
+            crop = SURYA.crop_box(b["box"], width, height, rng)
+            target = b["html"]
+        label["surya"] = {"task": task, "prompt": SURYA.PROMPTS[task], "target": target, "crop": crop,
+                          "page_size": [width, height], "raw": SURYA.raw(blks, width, height),
+                          "blocks": [{"label": b["label"], "box": [round(v) for v in b["box"]], "html": b["html"]}
+                                     for b in blks]}
         t["markdown"] = time.perf_counter() - mark
 
         out = self.out
-        image.save(out / f"{name}.jpg", quality=90)
+        (image.crop(crop) if crop else image).save(out / f"{name}.jpg", quality=90)  # what the model is shown
+        if crop:
+            image.save(out / f"{name}_page.jpg", quality=90)  # the whole page (the .md boxes are on it)
+        (out / f"{name}.prompt.txt").write_text(SURYA.PROMPTS[task], encoding="utf-8", newline="\n")
+        (out / f"{name}{SURYA.SUFFIX[task]}").write_text(target, encoding="utf-8", newline="\n")
         (out / f"{name}.html").write_text(filled, encoding="utf-8")
         (out / f"{name}.md").write_text(md, encoding="utf-8", newline="\n")  # \n line ends on every system
         (out / f"{name}.json").write_text(json.dumps(label, ensure_ascii=False), encoding="utf-8")
@@ -564,8 +666,11 @@ class DocPipeline:
             clean.save(out / f"{name}_clean.jpg", quality=88)
             draw(image, [w["box"] for w in label["words"]], (40, 170, 60), out / f"{name}_words.jpg")
             draw(image, [r["box"] for r in regions], (210, 50, 50), out / f"{name}_slots.jpg")
+            draw(image, [[b["box"][0], b["box"][1], b["box"][2] - b["box"][0], b["box"][3] - b["box"][1]] for b in blks],
+                 (40, 90, 220), out / f"{name}_blocks.jpg")
         times = {k: round(t[k], 2) for k in ("template", "fill", "render", "effects", "markdown")}
         return {"name": name, "seed": seed, "template": meta["id"], "source": meta["source"], "lang": lang,
+                "task": task, "target_file": f"{name}{SURYA.SUFFIX[task]}", "blocks": len(blks), "crop": crop,
                 "effect": effect, "strength": strength, "attacks": attacks, "font": s["font"], "size_pt": s["size_pt"],
                 "theme": s["theme"], "tashkeel": s["tashkeel"], "contrast": label["contrast"], "legibility": check, "words": len(label["words"]),
                 "regions": len(regions), "lost_words": label["lost_words"], "pages_rendered": pages, "note": note,
@@ -602,6 +707,13 @@ def scale_measurements(ocr, slots, qa, k):
     for p in qa.get("pictures", []):
         for key in ("x", "y", "width", "height"):
             p[key] *= k
+    st = qa.get("struct") or {}
+    rects = ([t["rect"] for t in st.get("tables", [])] + [r["rect"] for t in st.get("tables", []) for r in t["rows"]]
+             + [c["rect"] for t in st.get("tables", []) for r in t["rows"] for c in r["cells"]]
+             + [x["rect"] for x in st.get("lists", []) + st.get("images", [])])
+    for rect in rects:
+        for key in ("x", "y", "width", "height"):
+            rect[key] *= k
     for g in ocr.get("untracked_generated_text", []):
         for key in ("x", "y", "width", "height"):
             if key in g:

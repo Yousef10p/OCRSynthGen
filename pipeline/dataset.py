@@ -3,7 +3,10 @@
     .venv-pipeline\\Scripts\\python -m pipeline.dataset --n 10000 --out datasets/ocr_v1 --workers 6
 
 Writes to --out:
-    images/<id>.jpg      the page (after effects, or clean)
+    images/<id>.jpg      what the model is shown: the page (after effects, or clean), or a block or table cut out of it
+    prompts/<id>.prompt.txt   the Surya OCR 2.5 prompt the sample is made for
+    targets/<id>.target.html|.json   Surya's answer to it (see pipeline/surya.py)
+    pages/<id>_page.jpg  the whole page, for samples whose image is a cut-out
     labels/<id>.json     word, line and slot boxes [x, y, w, h] in image pixels, text, and how the page was made
     markdown/<id>.md     the ground truth: one <text>... <bbox>x1, y1, x2, y2</bbox></text> line per text block
     html/<id>.html       the filled page
@@ -28,7 +31,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-FOLDERS = {".jpg": "images", ".json": "labels", ".md": "markdown", ".html": "html"}
+FOLDERS = {".jpg": "images", ".prompt.txt": "prompts", ".target.html": "targets", ".target.json": "targets",
+           "_page.jpg": "pages", ".json": "labels", ".md": "markdown", ".html": "html"}
 _pipe = None
 
 
@@ -44,6 +48,8 @@ def make(seed, name, out, val):
     summary = _pipe.sample(seed, name)
     files = {}
     for ext, folder in FOLDERS.items():
+        if not (_pipe.out / f"{name}{ext}").exists():  # the page image only for cut-out tasks, one target kind
+            continue
         target = Path(out) / folder / f"{name}{ext}"
         shutil.move(str(_pipe.out / f"{name}{ext}"), target)
         files[folder] = f"{folder}/{name}{ext}"
@@ -68,6 +74,9 @@ def main():
     ap.add_argument("--effect", choices=["clean", "ocrsmith", "augraphy", "scan-simulator",
                                          "augraphy+scan-simulator"], help="only this effect (default: the mix)")
     ap.add_argument("--text", choices=["wikipedia", "demo"], default=None)
+    ap.add_argument("--task", choices=["full_ocr", "layout", "block_ocr", "table"],
+                    help="the Surya OCR 2.5 prompt every sample is made for (default: 40%% full_ocr, 20%% layout, "
+                         "25%% block_ocr, 15%% table)")
     ap.add_argument("--tashkeel", choices=["none", "partial", "full"],
                     help="Arabic diacritics on every Arabic page at this level (default: 40%% none, 30%% partial, 30%% full)")
     a = ap.parse_args()
@@ -78,7 +87,7 @@ def main():
     options = {"languages": {a.language: 1} if a.language else None, "sources": {a.source: 1} if a.source else None,
                "strengths": {t: getattr(a, f"strength_{t.replace('-', '_')}") for t in ("ocrsmith", "augraphy", "scan-simulator")},
                "effects": {a.effect: 1} if a.effect else None, "text": a.text,
-               "tashkeel": {a.tashkeel: 1} if a.tashkeel else None}
+               "tashkeel": {a.tashkeel: 1} if a.tashkeel else None, "tasks": {a.task: 1} if a.task else None}
 
     manifest = out / "manifest.jsonl"
     done = set()

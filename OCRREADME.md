@@ -217,7 +217,60 @@ below the next have room. The labels and the Markdown always hold what is drawn,
 Tested on 24 fully marked, 8 partly marked and 48 mixed pages (all sources and effects): no audit problems.
 The level is in the label (`style.tashkeel`) and on the generator's cards.
 
-### 0.10 One environment note
+### 0.10 Surya OCR 2.5 targets (branch `surya-format`, experimental)
+
+Each sample is made for one of Surya OCR 2.5's four prompts, drawn per page, and its label is what Surya
+answers to that prompt ([pipeline/surya.py](pipeline/surya.py)). The answer shapes come from Surya's own
+outputs on reference pages and on 12 of our pages (`suryan_outputs/` in the main checkout: input image,
+prompt, `full_ocr.html`, `layout.json`, `table.json`, `block_ocr.html` per page).
+
+| Task (share) | Image the model sees | Target (`<name>.target.html` / `.target.json`) |
+|---|---|---|
+| `full_ocr` (40%) | the page | one `<div data-bbox="x0 y0 x1 y1" data-label="Label">content</div>` per block, in reading order |
+| `layout` (20%) | the page | JSON list of `{"label", "bbox", "count"}`, the same blocks |
+| `block_ocr` (25%) | one block cut out of the page (6-24 px margin) | that block's content HTML, e.g. `<p>…</p>` |
+| `table` (15%) | a table cut out of the page | JSON list of `{"label": "Row"/"Col", "bbox"}`, rows then columns, boxes relative to the cut-out |
+
+The exact prompt is in `<name>.prompt.txt`. Boxes are integers in 0-1000 of the image's width and height.
+
+**Blocks.** The browser reports the page's structure after layout: tables (rows, cells, `th`/`td`, colspan,
+bold), lists (items, marker style), pictures (with their photo file), and each slot's heading tag,
+weight and slant, all in document order. From it:
+
+| Our slots | Surya label | Content |
+|---|---|---|
+| all cells of one `<table>` | Table | `<table><tr><th><b>…</b></th>…</tr><tr><td>…</td>…</tr></table>` (`<b>` for bold cells, empty cells kept, rows with no visible text left out) |
+| all items of one `<ul>`/`<ol>` | List-Group | `<ul><li>• item</li>…</ul>`: the marker as drawn inside the item (• ◦ ▪, or 1. / ١.) |
+| a picture | Image | `<img alt="Photo: …"/><p class="img-desc">…</p>` (a description by photo category: our photos have no captions yet) |
+| title / heading / subtitle | Section-Header | `<h1>` / `<h2>` / `<h3>` (the element's own heading tag when it has one) |
+| header, footer, page number | Page-Header, Page-Footer | `<p>…</p>`; only in the top or bottom 12% of the page (elsewhere Text); neighbours are joined into one block (space on one line, `<br/>` across lines) |
+| caption, footnote | Caption, Footnote | `<p>…</p>` |
+| a label and the value beside it | Text | `<p>Label: value</p>` |
+| paragraph, quote, sidebar, other | Text | `<p>…</p>` (`<b>`/`<i>` when the whole block is bold/italic) |
+
+Reading order: document order for flowing pages; top to bottom in bands (right to left for Arabic) for
+DocLayNet's absolutely placed boxes. Table, row, column, list and picture boxes move with the page through
+every effect: their corners ride along as tiny boxes after the words (each distinct point once; not part of
+the readability checks).
+
+**count** (layout) is Surya's estimate of a block's output length. On the reference outputs it fits
+0.345 per Latin character + 1.05 per Arabic character of the block's HTML + 3, rounded to tens (mean error
+about 13 over 122 blocks); `surya.count()` uses that.
+
+**Not in the references, so chosen here:** the `table` and `block_ocr` prompts expect a cut-out (Surya's
+answers on whole pages failed to parse, or were empty for a plain text block), so their targets follow the
+prompts' own description and Surya's JSON schema. The label JSON also keeps, under `surya`, all the page's
+blocks and `raw`: Surya's token sequence (`<|Label|><|x0|><|y0|><|x1|><|y1|>content…`, tables without
+closing row and cell tags), which its table prompt revealed on whole pages and which is likely close to how
+its training data was written.
+
+`surya.problems(task, target)` checks a target against Surya's format (div lines; the layout and table JSON
+schemas of its guided decoding). A table task only draws templates with tables, and a page that loses its
+table (cut off at the bottom) is made again. Choose tasks with `tasks={...}` on `DocPipeline`, the
+generator's **Task** menu, or `--task` on the dataset command; the generator's **Image + Target** view shows
+the input image beside the prompt and target, each block's box drawn on the image.
+
+### 0.11 One environment note
 
 Windows Smart App Control blocks numba 0.68.1's `_devicearray.pyd`; without it Augraphy silently does
 nothing. `requirements-pipeline.txt` pins `numba==0.68.0`, whose files are allowed.

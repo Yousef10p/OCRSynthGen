@@ -87,6 +87,8 @@ cd D:\code\OCR\arabic-template-bank
 | `manifest.jsonl` | one line per sample: id, `split` (train/val, 5% val), files, language, template, effects… |
 | `dataset.json` | counts and the options, sources and licences of the set |
 
+Options: `--task full_ocr|layout|block_ocr|table` (Surya OCR 2.5 prompts, branch `surya-format`; see
+[OCRREADME 0.10](OCRREADME.md#010-surya-ocr-25-targets-branch-surya-format-experimental)),
 Options: `--language ar|en`, `--source grammar|websight|websight2|doclaynet`, `--tashkeel none|partial|full`
 (Arabic diacritics; default 40% none, 30% partial, 30% full),
 `--effect clean|ocrsmith|augraphy|scan-simulator|augraphy+scan-simulator`,

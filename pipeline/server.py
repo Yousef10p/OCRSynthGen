@@ -32,6 +32,8 @@ CHOICES = {
                "doclaynet": {"doclaynet": 1}},
     "text": {"wikipedia": "wikipedia", "demo": "demo"},
     "tashkeel": {"mix": None, "none": {"none": 1}, "partial": {"partial": 1}, "full": {"full": 1}},
+    "task": {"mix": None, "full_ocr": {"full_ocr": 1}, "layout": {"layout": 1}, "block_ocr": {"block_ocr": 1},
+             "table": {"table": 1}},
 }
 JOBS, LOCK = {}, threading.Lock()
 
@@ -49,7 +51,7 @@ def make_sample(out_dir, seed, name, options):
                        effects=CHOICES["effect"][options["effect"]], sources=CHOICES["source"][options["source"]],
                        templates=options["templates"], llm=LLMTemplates.from_env() if options["templates"] == "llm" else None,
                        text=CHOICES["text"][options["text"]], strengths=options["strengths"],
-                       tashkeel=CHOICES["tashkeel"][options["tashkeel"]])
+                       tashkeel=CHOICES["tashkeel"][options["tashkeel"]], tasks=CHOICES["task"][options["task"]])
     return pipe.sample(seed, name)
 
 
