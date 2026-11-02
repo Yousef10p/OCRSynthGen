@@ -110,16 +110,30 @@ CONTRAST_JS = """
   const ratio = (el) => look(el).ratio;
 """
 QA_JS = """(() => {""" + CONTRAST_JS + """
-  const slots = {}, pictures = [], contrast = [];
+  const slots = {}, pictures = [], contrast = [], covered = [];
   for (const s of content.querySelectorAll('[data-slot]')) {
     slots[s.dataset.slot] = ((slots[s.dataset.slot] || '') + ' ' + s.textContent).trim();
     if (s.textContent.trim()) contrast.push({slot: s.dataset.slot, ratio: Math.round(ratio(s) * 100) / 100});
+    // anything opaque painted over the text (a band, a box, a picture positioned on top of it): three points
+    // across the middle of each of its lines
+    let hits = 0;
+    for (const r of [...s.getClientRects()].filter((r) => r.width > 0 && r.height > 0)) {
+      for (const f of [0.2, 0.5, 0.8]) {
+        const x = r.left + r.width * f, y = r.top + r.height / 2;
+        if (x < 0 || y < 0 || x >= innerWidth || y >= innerHeight) continue;
+        const stack = document.elementsFromPoint(x, y);
+        const i = stack.findIndex((e) => e === s || s.contains(e));
+        const above = i < 0 ? stack.slice(0, 1) : stack.slice(0, i);
+        if (above.some((e) => !e.contains(s) && paint(e) !== undefined)) hits++;
+      }
+    }
+    if (hits) covered.push({slot: s.dataset.slot, points: hits});
   }
   for (const im of content.querySelectorAll('img, .ph, .pic-frame, [data-img]')) {
     const r = im.getBoundingClientRect();
     if (r.width >= 2 && r.height >= 2) pictures.push({x: r.left - pr.left, y: r.top - pr.top, width: r.width, height: r.height});
   }
-  return {slots, pictures, contrast};
+  return {slots, pictures, contrast, covered};
 })()"""
 # glyph_y: the top and bottom of the word's letters on the page (canvas metrics around the baseline). Word boxes
 # are the font's whole line slot, taller than the letters: on closely set lines the slots of two lines overlap
@@ -135,8 +149,9 @@ if "cut_x:" not in synthdoc_arabic.WORDS_JS:
 
 from pipeline import degrade as D  # noqa: E402
 from pipeline import groundtruth as GT  # noqa: E402
+from pipeline import tashkeel as TASHKEEL  # noqa: E402
 from pipeline.img_pool import ImagePool  # noqa: E402
-from pipeline.qa import render_issues  # noqa: E402
+from pipeline.qa import ink_issues, render_issues  # noqa: E402
 from pipeline.text_pool import TextPool  # noqa: E402
 from pipeline.themes import theme  # noqa: E402
 from src.bank import TEMPLATES  # noqa: E402
@@ -335,7 +350,7 @@ class DocPipeline:
     text: "wikipedia" (text_pool/) or "demo". extras: also write the clean render and the drawn boxes."""
 
     def __init__(self, out_dir, languages=None, effects=None, sources=None, templates="bank", llm=None,
-                 pictures=None, text=None, extras=True, bank=None, strengths=None, check=True):
+                 pictures=None, text=None, extras=True, bank=None, strengths=None, check=True, tashkeel=None):
         self.out = Path(out_dir).resolve()
         self.out.mkdir(parents=True, exist_ok=True)
         if bank == "old":
@@ -345,6 +360,7 @@ class DocPipeline:
         self.languages, self.effects = languages or LANGUAGES, effects or EFFECTS
         self.sources, self.templates, self.llm = sources, templates, llm
         self.strengths = {**STRENGTHS, **(strengths or {})}
+        self.tashkeel = tashkeel or TASHKEEL.LEVELS  # Arabic pages: none / partial / full marks
         self.pictures = ImagePool() if pictures is None else pictures
         self.text = text or ("wikipedia" if TextPool.exists("ar") and TextPool.exists("en") else "demo")
         self.extras, self.check = extras, check
@@ -395,6 +411,12 @@ class DocPipeline:
         if words:
             words.begin(rng)  # one article per page
         values = {slot["id"]: Markup(fill(slot, rng, s["digits"], lang, words)) for slot in meta["slots"]}
+        level = pick(rng, self.tashkeel) if lang == "ar" else "none"  # one level per page
+        if level != "none":
+            values = {k: Markup(TASHKEEL.apply(str(v), level, rng)) for k, v in values.items()}
+            # marks above and below the letters need room between lines, as in printed marked text
+            s = {**s, "line_height": max(s["line_height"], TASHKEEL.LINE_HEIGHT[level])}
+            css += f"\n:root {{ --line-height: {s['line_height']}; }}"
         used = []
         for pic in meta.get("pictures", []):  # <img src="{{ pic_N }}"> slots: a photo of the hinted kind
             photo = self.pictures.pick(rng, pic.get("hint")) if self.pictures else None
@@ -402,7 +424,7 @@ class DocPipeline:
             if photo:
                 used.append(photo.name)
         page, more = self.fill_pictures(synthdoc_html(meta, text, lang, folder), rng, theme_js)
-        s = {**s, "theme": look, "pictures": used + more, "text": self.text,
+        s = {**s, "theme": look, "tashkeel": level, "pictures": used + more, "text": self.text,
              "text_sources": words.sources() if words else []}
         # The style travels with the page, so SynthDoc's word labels record it (the Arabic extension reads this)
         variant = {"template": meta["id"], "source": meta["source"], "lang": lang, **s}
@@ -498,7 +520,8 @@ class DocPipeline:
             mark = time.perf_counter()
             clean, ocr, slots, pages, qa = self.render(page, values, name)
             t["render"] += time.perf_counter() - mark
-            issues = render_issues(ocr, qa) if self.check else ({} if ocr["words"] else {"empty": 1})
+            issues = ({**render_issues(ocr, qa), **ink_issues(clean, ocr["words"])} if self.check
+                      else ({} if ocr["words"] else {"empty": 1}))
             if not issues:
                 break
             for k, v in issues.items():
@@ -544,7 +567,7 @@ class DocPipeline:
         times = {k: round(t[k], 2) for k in ("template", "fill", "render", "effects", "markdown")}
         return {"name": name, "seed": seed, "template": meta["id"], "source": meta["source"], "lang": lang,
                 "effect": effect, "strength": strength, "attacks": attacks, "font": s["font"], "size_pt": s["size_pt"],
-                "theme": s["theme"], "contrast": label["contrast"], "legibility": check, "words": len(label["words"]),
+                "theme": s["theme"], "tashkeel": s["tashkeel"], "contrast": label["contrast"], "legibility": check, "words": len(label["words"]),
                 "regions": len(regions), "lost_words": label["lost_words"], "pages_rendered": pages, "note": note,
                 "attempts": attempts, "rejected": rejected, "pictures": len(s["pictures"]), "text": s["text"],
                 "text_sources": len(s["text_sources"]), "seconds": {**times, "total": round(sum(times.values()), 2)}}

@@ -68,6 +68,8 @@ def main():
     ap.add_argument("--effect", choices=["clean", "ocrsmith", "augraphy", "scan-simulator",
                                          "augraphy+scan-simulator"], help="only this effect (default: the mix)")
     ap.add_argument("--text", choices=["wikipedia", "demo"], default=None)
+    ap.add_argument("--tashkeel", choices=["none", "partial", "full"],
+                    help="Arabic diacritics on every Arabic page at this level (default: 40%% none, 30%% partial, 30%% full)")
     a = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
     out = Path(a.out).resolve()
@@ -75,7 +77,8 @@ def main():
         (out / folder).mkdir(parents=True, exist_ok=True)
     options = {"languages": {a.language: 1} if a.language else None, "sources": {a.source: 1} if a.source else None,
                "strengths": {t: getattr(a, f"strength_{t.replace('-', '_')}") for t in ("ocrsmith", "augraphy", "scan-simulator")},
-               "effects": {a.effect: 1} if a.effect else None, "text": a.text}
+               "effects": {a.effect: 1} if a.effect else None, "text": a.text,
+               "tashkeel": {a.tashkeel: 1} if a.tashkeel else None}
 
     manifest = out / "manifest.jsonl"
     done = set()

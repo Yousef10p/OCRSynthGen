@@ -226,14 +226,14 @@ def screen_init(work):
 def screen(job):
     """Render a staged candidate once with a random style; returns (cid, issues or an error)."""
     cid, seed = job
-    from pipeline.qa import render_issues
+    from pipeline.qa import ink_issues, render_issues
     folder = STAGING / "templates" / cid
     meta = json.loads((folder / "template.json").read_text(encoding="utf-8"))
     try:
         rng = random.Random(seed)
         page, values, _ = _pipe.fill(meta, None, folder, rng, meta["lang"])
-        _, ocr, _, pages, qa = _pipe.render(page, values, cid)
-        issues = render_issues(ocr, qa)
+        image, ocr, _, pages, qa = _pipe.render(page, values, cid)
+        issues = {**render_issues(ocr, qa), **ink_issues(image, ocr["words"])}
         return cid, issues, len(ocr["words"])
     except Exception as e:
         return cid, {"error": f"{type(e).__name__}: {e}"[:200]}, 0
