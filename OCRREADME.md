@@ -157,8 +157,16 @@ clean 15%, OCRSmith, Augraphy, scan-simulator about 28% each. `strength` is 0–
 
 Augraphy's DirtyDrum intensity is capped at 0.6: above that it draws solid black bands across lines of text.
 
+scan-simulator blurs whole pages with scipy's `gaussian_filter` at radii up to a fifth of the page (paper
+colour, ink fading, wear patches): on 2x pages 3-30 s per transform. `degrade.py` replaces it, in memory and for
+scan-simulator only, with `fast_gaussian_filter`: radii of 16 px and more through an FFT, and a mostly empty
+mask (a scuff, a stain) blurred only around what is in it. Checked call by call on every preset at strengths
+0.5 and 1: at most 0.02% of the blurred range apart from scipy (far below one grey level), 6x less time in
+those blurs. Smaller radii still go to scipy.
+
 After the effect, `legibility(clean, out, words, boxes)` measures every word: lost (no box), edge (its box
-touches the image border: cut by the frame), faint (ink contrast gone, or under 40 grey levels between letters and background: washed out by lighting), sharpness (Laplacian energy compared
+touches the image border and was not there before the effect, or shrank to under 80% of its size: cut by the
+frame; text that runs to the page's edge on the clean page is whole), faint (ink contrast gone, or under 40 grey levels between letters and background: washed out by lighting), sharpness (Laplacian energy compared
 with the clean page), drowned (noise as dark as the ink, by Otsu) and blotted (`covered()`: how much more of
 the word's box is dark than before; a streak or blot over a word scores 0.33 or more, blur and ink bleed
 much less; the limit is 0.30). If the page fails (`readable()`: no lost, edge or blotted word, at most 1%
