@@ -92,7 +92,7 @@ def audit_one(jpg):
                 problems["text differs from the page"] += 1
     # ink in the clean render and after the effect
     clean_path = Path(f"{stem}_clean.jpg")
-    final = np.asarray(Image.open(jpg).convert("L"))
+    final = np.asarray(Image.open(page_image(jpg)).convert("L"))
     clean = np.asarray(Image.open(clean_path).convert("L")) if clean_path.exists() else None
     if clean is not None and (clean.shape != final.shape or label.get("effect") not in ("clean", "augraphy")):
         # OCRSmith and scan-simulator move the page: the boxes are for the final image only
@@ -140,8 +140,14 @@ def same_words(want, got):
     return b.replace("-", "").replace("­", "").startswith(a)
 
 
+def page_image(jpg):
+    """The whole page: for a sample whose image is a cut-out (Surya's block_ocr and table tasks), <name>_page.jpg."""
+    page = jpg.with_name(f"{jpg.stem}_page.jpg")
+    return page if page.exists() else jpg
+
+
 def draw(jpg, gt, out):
-    im = Image.open(jpg).convert("RGB")
+    im = Image.open(page_image(jpg)).convert("RGB")
     d = ImageDraw.Draw(im)
     for k, (_, (x1, y1, x2, y2)) in enumerate(gt):
         d.rectangle([x1, y1, x2, y2], outline=(230, 30, 30) if k % 2 == 0 else (30, 90, 230), width=3)
@@ -160,7 +166,7 @@ def main():
     images = folder / "images" if (folder / "images").is_dir() else folder
     out = Path(a.out) if a.out else folder / "audit"
     out.mkdir(parents=True, exist_ok=True)
-    jpgs = sorted(p for p in images.glob("*.jpg") if not re.search(r"_(clean|words|slots|gt)$", p.stem))
+    jpgs = sorted(p for p in images.glob("*.jpg") if not re.search(r"_(clean|words|slots|blocks|page|gt)$", p.stem))
     if images != folder:  # a dataset: labels/ and gt/ live beside images/
         raise SystemExit("point the audit at a generator or QA folder (with .json, .md and .html beside the .jpg)")
     total, thumbs, rows = Counter(), [], []
