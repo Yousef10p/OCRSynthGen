@@ -190,7 +190,7 @@ word lies in a region; each region's text is the page's text for that slot; ever
 clean render and still stands out after the effect; no two regions' words overlap. It draws the boxes on
 every page (`audit/<name>_gt.jpg`) and makes contact sheets (`audit/sheet_NN.jpg`).
 
-### 0.9 Tashkeel (Arabic diacritics), on the `tashkeel` branch
+### 0.9 Tashkeel (Arabic diacritics)
 
 [pipeline/tashkeel.py](pipeline/tashkeel.py): each Arabic page gets one level, drawn per page (`tashkeel=`
 on `DocPipeline`, the page's **Tashkeel** menu, `--tashkeel` on the dataset command):
