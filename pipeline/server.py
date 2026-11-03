@@ -23,6 +23,7 @@ if str(ROOT) not in sys.path:
 
 OUT = ROOT / "pipeline_out"
 STATIC = Path(__file__).resolve().parent / "static"
+PROBE = ROOT / "surya_probe"  # the Surya OCR 2.5 tests (surya_probe/probe.py), shown on probe.html
 PORT, WORKERS = 8765, 4
 CHOICES = {
     "language": {"mix": None, "ar": {"ar": 1}, "en": {"en": 1}},
@@ -85,6 +86,35 @@ def finish(job, i, future):
             job["errors"].append(i)
 
 
+def probe_answers():
+    """[{image, kind, label, lang, effect, size, ours, answers: {prompt: {status, seconds, finish_reason, tokens,
+    content}}}] from the Surya probe: per image and prompt the run with the most tokens allowed ("_schema": asked
+    with the JSON schema). ours: what our pipeline wrote for the same image (surya_probe/inputs/index.json)."""
+    path = PROBE / "results.jsonl"
+    if not path.exists():
+        return []
+    index = {}
+    if (PROBE / "inputs" / "index.json").exists():
+        index = {d["image"]: d for d in json.loads((PROBE / "inputs" / "index.json").read_text(encoding="utf-8"))}
+    images = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        r = json.loads(line)
+        name = Path(r["image"]).name
+        task = r["task"] + ("_schema" if r["schema"] else "")
+        entry = images.setdefault(name, {"image": name, "size": r["size"], "answers": {},
+                                         "kind": index.get(name, {}).get("kind", "reference"),
+                                         "label": index.get(name, {}).get("label"),
+                                         "lang": index.get(name, {}).get("lang"), "effect": index.get(name, {}).get("effect"),
+                                         "ours": {k[5:]: v for k, v in index.get(name, {}).items() if k.startswith("ours_")}})
+        old = entry["answers"].get(task)
+        if old is None or r["max_tokens"] >= old["max_tokens"]:
+            entry["answers"][task] = {"status": r["status"], "seconds": r["seconds"], "max_tokens": r["max_tokens"],
+                                      "finish_reason": r.get("finish_reason"),
+                                      "tokens": (r.get("usage") or {}).get("completion_tokens"),
+                                      "content": r.get("content") if r["status"] == 200 else r.get("error")}
+    return sorted(images.values(), key=lambda e: (e["kind"] != "reference", e["image"]))
+
+
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(STATIC), **kwargs)
@@ -119,6 +149,18 @@ class Handler(SimpleHTTPRequestHandler):
                 return self.send_json({"error": "no such job"}, 404)
             with LOCK:
                 return self.send_json({**job, "elapsed": round(time.time() - job["started"], 1)})
+        if url.path == "/api/probe":  # the Surya probe: every image and Surya's answers (surya_probe/results.jsonl)
+            return self.send_json(probe_answers())
+        if url.path.startswith("/probe/"):  # the probe's input images
+            path = (PROBE / "inputs" / url.path[len("/probe/"):]).resolve()
+            if (PROBE / "inputs").resolve() not in path.parents or not path.is_file():
+                return self.send_error(404)
+            data = path.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "image/png" if path.suffix == ".png" else "image/jpeg")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            return self.wfile.write(data)
         if url.path.startswith("/out/"):  # generated files
             path = (OUT / url.path[len("/out/"):]).resolve()
             if OUT.resolve() not in path.parents or not path.is_file():

@@ -224,3 +224,7 @@ D:\code\OCR\arabic-template-bank\.venv-pipeline\Scripts\python surya_probe\analy
 
 `probe.py` sends one request at a time and continues an interrupted run. All raw answers of these tests are in
 `surya_probe/results.jsonl` (the input images are not in git; `make_inputs.py` makes them again).
+
+To look through them: start the generator (`pipeline\server.py`) and open **Surya answers →** in its header
+(`/probe.html`): every probe image with Surya's answer per prompt, the boxes drawn on the image (hover a line to
+see its box), the status, time, finish reason and tokens.
