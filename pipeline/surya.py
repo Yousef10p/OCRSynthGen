@@ -12,8 +12,9 @@ answers to that prompt. The shapes follow Surya's own outputs on our pages and o
   layout     the page -> a JSON list of {"label", "bbox", "count"} per block, same blocks and order; count is
              Surya's estimate of the block's output length, which on the reference outputs is close to
              0.345 per Latin character + 1.05 per Arabic character of the block's HTML + 3, rounded to tens.
-  block_ocr  one block cut out of the page -> that block as a full_ocr div, its box measured on the cut-out
-             (as Surya answered for a table-only image: <div data-bbox="32 72 960 884" data-label="Table">...).
+  block_ocr  the page -> every block, as for full_ocr: on the reference pages Surya answered this prompt with
+             the same blocks, labels and order as full_ocr, header and footer text always in <p> (which ours
+             always is).
   table      a table cut out of the page, with a margin -> a JSON list with one entry {"label": "Table", "bbox",
              "count"}, the box written as tokens <|x0|><|y0|><|x1|><|y1|> on the cut-out: Surya's only valid
              answer to this prompt (on a table-only image; on whole pages it never gave valid JSON). The rows and
@@ -314,11 +315,6 @@ def on_crop(box, crop):
                 crop[2] - crop[0], crop[3] - crop[1])
 
 
-def block_ocr(block, crop):
-    """One block cut out of the page: its div, the box measured on the cut-out."""
-    return f'<div data-bbox="{on_crop(block["box"], crop)}" data-label="{block["label"]}">{block["html"]}</div>'
-
-
 def table(block, crop):
     """A table cut out of the page: one entry, as Surya answered (box as tokens, its own count)."""
     tokens = "".join(f"<|{v}|>" for v in on_crop(block["box"], crop).split())
@@ -343,7 +339,7 @@ DIV = re.compile(r'<div data-bbox="([^"]*)" data-label="([^"]*)">(.*)</div>')
 
 def problems(task, target):
     """What is wrong with a target for Surya's format (empty list: nothing): the div lines of full_ocr and
-    block_ocr (one div), the layout JSON schema of its guided decoding, the one-entry table answer."""
+    block_ocr, the layout JSON schema of its guided decoding, the one-entry table answer."""
     out = []
 
     def box_ok(b, where):
@@ -355,10 +351,7 @@ def problems(task, target):
             if x1 < x0 or y1 < y0 or max(x0, y0, x1, y1) > 1000:
                 out.append(f"{where}: bbox order/range {b}")
     if task in ("full_ocr", "block_ocr"):
-        lines = target.split("\n")
-        if task == "block_ocr" and len(lines) != 1:
-            out.append("block_ocr: not one div")
-        for k, line in enumerate(lines):
+        for k, line in enumerate(target.split("\n")):
             m = DIV.fullmatch(line)
             if not m:
                 out.append(f"line {k}: not a block div")

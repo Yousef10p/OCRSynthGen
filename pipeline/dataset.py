@@ -3,7 +3,7 @@
     .venv-pipeline\\Scripts\\python -m pipeline.dataset --n 10000 --out datasets/ocr_v1 --workers 6
 
 Writes to --out:
-    images/<id>.jpg      what the model is shown: the page (after effects, or clean), or a block or table cut out of it
+    images/<id>.jpg      what the model is shown: the page (after effects, or clean), or a table cut out of it
     prompts/<id>.prompt.txt   the Surya OCR 2.5 prompt the sample is made for
     targets/<id>.target.html|.json   Surya's answer to it (see pipeline/surya.py)
     pages/<id>_page.jpg  the whole page, for samples whose image is a cut-out

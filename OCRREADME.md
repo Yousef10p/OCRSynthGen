@@ -236,7 +236,7 @@ prompt, `full_ocr.html`, `layout.json`, `table.json`, `block_ocr.html` per page)
 |---|---|---|
 | `full_ocr` (40%) | the page | one `<div data-bbox="x0 y0 x1 y1" data-label="Label">content</div>` per block, in reading order |
 | `layout` (20%) | the page | a JSON array of `{"label", "bbox", "count"}`, the same blocks, written like Surya's `layout.json` (2-space indent) |
-| `block_ocr` (25%) | one block cut out of the page (6-24 px margin) | that block's div, `<div data-bbox="…" data-label="…">…</div>`, the box measured on the cut-out |
+| `block_ocr` (25%) | the page | every block, as for `full_ocr` (on the reference pages Surya answered this prompt with the same blocks, labels and order, header and footer text in `<p>`) |
 | `table` (15%) | a table cut out of the page (margin 3-12% of its size) | `[{"label": "Table", "bbox": "<\|x0\|><\|y0\|><\|x1\|><\|y1\|>", "count": n}]`: one entry, the box on the cut-out written as tokens |
 
 The exact prompt is in `<name>.prompt.txt`. Boxes are integers in 0-1000 of the image's width and height.
@@ -265,17 +265,17 @@ the readability checks).
 0.345 per Latin character + 1.05 per Arabic character of the block's HTML + 3, rounded to tens (mean error
 about 13 over 122 blocks); `surya.count()` uses that.
 
-**Only Surya's correct answers are followed.** For `block_ocr` and `table` there is one each, both on the
-table-only reference image (`02_invoice_table`): `block_ocr` answered with the block's div and its box on that
-image; `table` answered `[{"label": "Table", "bbox": "<|32|><|71|><|959|><|884|>", "count": 220}]`, one
-entry, the coordinates as tokens. Every other table answer (on whole pages) was invalid JSON, and `block_ocr`
-on the text-only image was empty, so those are not copied. The rows and columns the table prompt asks for
+**Only Surya's correct answers are followed.** `block_ocr` on whole pages answered with every block, the
+same blocks, labels and order as `full_ocr` (01, 02, 04), so a `block_ocr` sample is the whole page and every
+block. `table` has one valid answer, on the table-only reference image (`02_invoice_table`):
+`[{"label": "Table", "bbox": "<|32|><|71|><|959|><|884|>", "count": 220}]`, one entry, the coordinates as
+tokens. Every other table answer (on whole pages) was invalid JSON, so those are not copied. The rows and columns the table prompt asks for
 are still kept in the labels JSON (`surya.table_structure`). Header and footer blocks follow Surya's correct
 pages: a row of links is one Page-Header, titles spread over the top are separate ones; Surya calling
 mid-page headings Page-Header (one of our pages) is its mistake and not copied.
 
-**Cut-outs show only their block.** A cut-out's margin stops short of every other block on each side, so no
-part of a neighbour's text (not in the target) is in the picture; a block whose cut-out would still take in
+**Table cut-outs show only their table.** The margin stops short of every other block on each side, so no
+part of a neighbour's text (not in the target) is in the picture; a table whose cut-out would still take in
 a neighbour (on a turned page, upright boxes overlap) is not used, and with none left the sample is made for
 `full_ocr` instead (1 of 16 table samples in testing).
 
@@ -283,7 +283,7 @@ The label JSON also keeps, under `surya`, all the page's blocks and `raw`: Surya
 (`<|Label|><|x0|><|y0|><|x1|><|y1|>content…`, tables without closing row and cell tags), which its table
 prompt revealed on whole pages and which is likely close to how its training data was written.
 
-`surya.problems(task, target)` checks a target against Surya's format (div lines for full_ocr, one div for
+`surya.problems(task, target)` checks a target against Surya's format (div lines for full_ocr and
 block_ocr, the layout JSON schema of its guided decoding, the one-entry table answer with token box). A table task only draws templates with tables, and a page that loses its
 table (cut off at the bottom) is made again. Choose tasks with `tasks={...}` on `DocPipeline`, the
 generator's **Task** menu, or `--task` on the dataset command; the generator's **Image + Target** view shows

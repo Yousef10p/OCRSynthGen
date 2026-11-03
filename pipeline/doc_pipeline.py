@@ -631,21 +631,21 @@ class DocPipeline:
         rects = SURYA.rebuild(plan, moved, width, height)
         blks = SURYA.blocks(regions, {sl["id"]: sl["role"] for sl in meta["slots"]}, qa.get("struct") or {}, rects,
                             lang, meta.get("positioning", "flow"), self.categories, width, height)
-        # a cut-out (table, block_ocr) shows its block and nothing of another: blocks whose cut-out would take in
-        # part of a neighbour (a turned page's upright boxes overlap) are not used; none left: full_ocr instead
+        # a table cut-out shows its table and nothing of another block: tables whose cut-out would take in part
+        # of a neighbour (a turned page's upright boxes overlap) are not used; none left: full_ocr instead
         cuts = []
-        if task in ("table", "block_ocr"):
+        if task == "table":
             for b in blks:
-                if b["label"] == "Image" or (task == "table") != (b["label"] == "Table"):
+                if b["label"] != "Table":
                     continue
                 others = [x["box"] for x in blks if x is not b]
-                c = SURYA.crop_box(b["box"], width, height, rng, others, share=(0.03, 0.12) if task == "table" else None)
+                c = SURYA.crop_box(b["box"], width, height, rng, others, share=(0.03, 0.12))
                 if SURYA.clear(c, others):
                     cuts.append((b, c))
             if not cuts:
                 note, task = (note + "; " if note else "") + f"no {task} block that cuts out clean: full_ocr instead", "full_ocr"
         crop, target, structure = None, None, None
-        if task == "full_ocr":
+        if task in ("full_ocr", "block_ocr"):  # block_ocr: the whole page, every block, as Surya answers it
             target = SURYA.full_ocr(blks, width, height)
         elif task == "layout":
             target = SURYA.layout(blks, width, height)
@@ -653,9 +653,6 @@ class DocPipeline:
             b, crop = rng.choice(cuts)
             target = SURYA.table(b, crop)
             structure = SURYA.table_structure(rects, b["table"], crop)
-        else:  # block_ocr: one block cut out, answered as its div with the box on the cut-out
-            b, crop = rng.choice(cuts)
-            target = SURYA.block_ocr(b, crop)
         label["surya"] = {"task": task, "prompt": SURYA.PROMPTS[task], "target": target, "crop": crop,
                           "table_structure": structure,
                           "page_size": [width, height], "raw": SURYA.raw(blks, width, height),
