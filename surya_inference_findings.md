@@ -228,3 +228,46 @@ D:\code\OCR\arabic-template-bank\.venv-pipeline\Scripts\python surya_probe\analy
 To look through them: start the generator (`pipeline\server.py`) and open **Surya answers →** in its header
 (`/probe.html`): every probe image with Surya's answer per prompt, the boxes drawn on the image (hover a line to
 see its box), the status, time, finish reason and tokens.
+
+## 9. Our targets next to Surya's answers
+
+`surya_probe/check_targets.py compare-probe` puts our full_ocr target (as the current `surya.py` writes it) next to
+Surya's full_ocr answer for the same 12 pages, and our block_ocr target next to Surya's block_ocr answer for the 28
+cut-outs. Blocks are paired by box (IoU >= 0.5). Results are in `surya_probe/check_report_probe.json`.
+
+| | Result |
+|---|---|
+| Format (headers, compact tags, no newline, no `</td>`) | the same on every page and cut-out; all 40 targets pass `problems()` |
+| full_ocr blocks | ours 159, Surya 156, 131 paired; median IoU 0.78 |
+| full_ocr text | median character error 0.0 per paired block (with and without diacritics) |
+| full_ocr labels | 101 / 131 the same |
+| full_ocr tags | 88 / 131 the same |
+| block_ocr text | median character error 0.015 (0.003 without diacritics) |
+| block_ocr | Surya added a block header on 6 of 28 cut-outs (pictures, tables, a list); ours never does (`block_ocr` = content only, as in section 3) |
+
+What differs, and what was done:
+
+- **Page-Header text is bare.** On 7 of the 10 pages with a page header Surya writes its text with no `<p>`
+  (`<|Page-Header|><|69|><|56|><|146|><|67|>Biography`). **Changed:** `surya.on_page()` drops the `<p>` of a
+  Page-Header in full_ocr (and the div form). On cut-outs Surya wrote `<p>` 2 of 3 times (alone, a header can't
+  be told from a line of text), so block_ocr keeps `<p>`. Page-Footer: 1 bare, 1 `<p>`, too few to tell; kept `<p>`.
+- **Short title lines we call Text, Surya calls Section-Header** (14 of the 30 label differences). They come
+  from template slots with web roles: a "footer" or "header" link title halfway down the page ("Early life",
+  "Geography"), and bold run-in labels ("Backs:", written by Surya as `<b>Backs:</b>` with no `<h…>`). Not
+  changed yet: it needs a rule for when a short line is a heading.
+- **Heading level is the model's guess.** h1/h2/h3/h4 differ for the same heading, and on cut-outs it may write
+  a heading as `<p>`. Ours follows the page's own tag; not changed.
+- **Reading order**: same on 7 of 12 pages. Where it differs, Surya puts a side column after the main column
+  (g09) or the left of two pictures first on an Arabic page (g01); ours follows the right-to-left page.
+- **Grouping**: Surya sometimes joins two of our blocks that sit close together or splits a list into lines.
+  These are the model's reading of tight layouts, not a format rule.
+
+Fresh samples from the current pipeline (`check_targets.py make`, then `probe.py` one at a time) could not be
+sent: Surya's server answered HTTP 502 for every request on 2026-11-03. Run them again when it is back:
+
+```bash
+cd D:\code\OCR\arabic-template-bank-surya-inference
+D:\code\OCR\arabic-template-bank-surya\surya_inference\venv\Scripts\python surya_probe\probe.py (Get-Content surya_probe\_check\block.txt) --tasks block_ocr --schema off --max-tokens 4096 --out surya_probe\check.jsonl
+D:\code\OCR\arabic-template-bank-surya\surya_inference\venv\Scripts\python surya_probe\probe.py (Get-Content surya_probe\_check\full.txt) --tasks full_ocr --schema off --max-tokens 4096 --out surya_probe\check.jsonl
+D:\code\OCR\arabic-template-bank\.venv-pipeline\Scripts\python surya_probe\check_targets.py compare
+```

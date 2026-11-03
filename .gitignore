@@ -31,3 +31,6 @@ surya_probe/inputs/*.png
 surya_probe/smoke.jsonl
 surya_probe/probe*.log
 surya_probe/outputs/
+surya_probe/_check/
+surya_probe/_check_make.log
+surya_probe/check_probe.log

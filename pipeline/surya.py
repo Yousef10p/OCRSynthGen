@@ -328,15 +328,21 @@ def compact(content):
     return re.sub(r"</(td|th|tr)>", "", content)
 
 
+def on_page(b):
+    """A block's HTML as Surya writes it on a whole page: a page header's text bare, without <p> (7 of the 10
+    probe pages that have one). Cut out alone (block_ocr) the model can't tell it is a header and writes <p>."""
+    return inner(b["html"]) if b["label"] == "Page-Header" else b["html"]
+
+
 def full_ocr(blks, width, height):
     """The full_ocr answer: each block's header tokens and compact content, nothing between blocks."""
     return "".join(f"<|{b['label']}|>" + "".join(f"<|{v}|>" for v in norm(b["box"], width, height).split())
-                   + compact(b["html"]) for b in blks)
+                   + compact(on_page(b)) for b in blks)
 
 
 def divs(blks, width, height):
     """The same blocks as the div HTML Surya's decoder gives back (readable; kept in the labels JSON)."""
-    return "\n".join(f'<div data-bbox="{norm(b["box"], width, height)}" data-label="{b["label"]}">{b["html"]}</div>'
+    return "\n".join(f'<div data-bbox="{norm(b["box"], width, height)}" data-label="{b["label"]}">{on_page(b)}</div>'
                      for b in blks)
 
 

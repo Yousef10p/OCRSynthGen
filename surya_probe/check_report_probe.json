@@ -1,0 +1,2166 @@
+{
+ "g00_cut0_Table.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Table",
+  "surya_has_header": true,
+  "surya_label": "Table",
+  "surya_blocks": 1,
+  "cer": 0.28,
+  "cer_no_marks": 0.28,
+  "same_tags": false,
+  "ours_tags": "table tr th b /b th b /b tr td /table",
+  "surya_tags": "table tr th b /b th b /b /table"
+ },
+ "g00_cut1_Section-Header.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Section-Header",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": false,
+  "ours_tags": "h3 /h3",
+  "surya_tags": "h2 /h2"
+ },
+ "g00_cut2_Text.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Text",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": true,
+  "ours_tags": "p /p",
+  "surya_tags": "p /p"
+ },
+ "g01_cut0_Text.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Text",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.015,
+  "cer_no_marks": 0.015,
+  "same_tags": true,
+  "ours_tags": "p /p",
+  "surya_tags": "p /p"
+ },
+ "g01_cut1_Image.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Image",
+  "surya_has_header": true,
+  "surya_label": "Image",
+  "surya_blocks": 1,
+  "cer": 1.623,
+  "cer_no_marks": 1.623,
+  "same_tags": true,
+  "ours_tags": "img p /p",
+  "surya_tags": "img p /p"
+ },
+ "g01_cut2_Page-Header.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Page-Header",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.143,
+  "cer_no_marks": 0.143,
+  "same_tags": false,
+  "ours_tags": "p /p",
+  "surya_tags": "h2 /h2"
+ },
+ "g02_cut0_Image.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Image",
+  "surya_has_header": true,
+  "surya_label": "Image",
+  "surya_blocks": 1,
+  "cer": 2.465,
+  "cer_no_marks": 2.465,
+  "same_tags": true,
+  "ours_tags": "img p /p",
+  "surya_tags": "img p /p"
+ },
+ "g02_cut1_Page-Header.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Page-Header",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": true,
+  "ours_tags": "p /p",
+  "surya_tags": "p /p"
+ },
+ "g02_cut2_Caption.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Caption",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": true,
+  "ours_tags": "p /p",
+  "surya_tags": "p /p"
+ },
+ "g03_cut0_Table.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Table",
+  "surya_has_header": true,
+  "surya_label": "Table",
+  "surya_blocks": 1,
+  "cer": 0.005,
+  "cer_no_marks": 0.003,
+  "same_tags": false,
+  "ours_tags": "table tr th b /b th b /b th b /b th b /b",
+  "surya_tags": "table tr th th br th th br br th th br th br"
+ },
+ "g03_cut1_Text.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Text",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": true,
+  "ours_tags": "p /p",
+  "surya_tags": "p /p"
+ },
+ "g03_cut2_Section-Header.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Section-Header",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.04,
+  "cer_no_marks": 0.04,
+  "same_tags": false,
+  "ours_tags": "h2 /h2",
+  "surya_tags": "p /p"
+ },
+ "g04_cut0_Text.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Text",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": false,
+  "ours_tags": "p /p",
+  "surya_tags": "h2 /h2"
+ },
+ "g04_cut1_Section-Header.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Section-Header",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": false,
+  "ours_tags": "h2 /h2",
+  "surya_tags": "h2 b /b /h2"
+ },
+ "g04_cut2_List-Group.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "List-Group",
+  "surya_has_header": true,
+  "surya_label": "List-Group",
+  "surya_blocks": 1,
+  "cer": 0.026,
+  "cer_no_marks": 0.026,
+  "same_tags": true,
+  "ours_tags": "ul li /li li /li li /li /ul",
+  "surya_tags": "ul li /li li /li li /li /ul"
+ },
+ "g06_cut0_Table.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "ocrsmith",
+  "finish": "stop",
+  "block": "Table",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": true,
+  "ours_tags": "table tr th b /b th b /b tr td td tr td td",
+  "surya_tags": "table tr th b /b th b /b tr td td tr td td"
+ },
+ "g06_cut1_Text.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "ocrsmith",
+  "finish": "stop",
+  "block": "Text",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": false,
+  "ours_tags": "p /p",
+  "surya_tags": "h2 /h2"
+ },
+ "g06_cut2_Section-Header.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "ocrsmith",
+  "finish": "stop",
+  "block": "Section-Header",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": false,
+  "ours_tags": "h2 /h2",
+  "surya_tags": "h1 /h1"
+ },
+ "g07_cut0_Text.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "augraphy",
+  "finish": "stop",
+  "block": "Text",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.048,
+  "cer_no_marks": 0.0,
+  "same_tags": true,
+  "ours_tags": "p /p",
+  "surya_tags": "p /p"
+ },
+ "g07_cut1_Section-Header.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "augraphy",
+  "finish": "stop",
+  "block": "Section-Header",
+  "surya_has_header": true,
+  "surya_label": "Section-Header",
+  "surya_blocks": 1,
+  "cer": 0.205,
+  "cer_no_marks": 0.143,
+  "same_tags": false,
+  "ours_tags": "h1 /h1",
+  "surya_tags": "h1 sup /sup /h1"
+ },
+ "g07_cut2_Page-Header.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "augraphy",
+  "finish": "stop",
+  "block": "Page-Header",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.258,
+  "cer_no_marks": 0.222,
+  "same_tags": true,
+  "ours_tags": "p /p",
+  "surya_tags": "p /p"
+ },
+ "g08_cut0_Text.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "scan-simulator",
+  "finish": "stop",
+  "block": "Text",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": true,
+  "ours_tags": "p /p",
+  "surya_tags": "p /p"
+ },
+ "g09_cut0_Table.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "ocrsmith",
+  "finish": "stop",
+  "block": "Table",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.188,
+  "cer_no_marks": 0.09,
+  "same_tags": false,
+  "ours_tags": "table tr td td td td td td tr td td td td td",
+  "surya_tags": "table tr td td td td td td tr td td td td td"
+ },
+ "g09_cut2_Section-Header.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "ocrsmith",
+  "finish": "stop",
+  "block": "Section-Header",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.4,
+  "cer_no_marks": 0.214,
+  "same_tags": false,
+  "ours_tags": "h3 /h3",
+  "surya_tags": "p /p"
+ },
+ "g10_cut0_Text.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "augraphy",
+  "finish": "stop",
+  "block": "Text",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": false,
+  "ours_tags": "p b /b /p",
+  "surya_tags": "h2 b /b /h2"
+ },
+ "g10_cut1_Section-Header.jpg": {
+  "task": "block_ocr",
+  "lang": "en",
+  "effect": "augraphy",
+  "finish": "stop",
+  "block": "Section-Header",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.0,
+  "cer_no_marks": 0.0,
+  "same_tags": false,
+  "ours_tags": "h3 /h3",
+  "surya_tags": "p /p"
+ },
+ "g11_cut0_Image.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "scan-simulator",
+  "finish": "stop",
+  "block": "Image",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 2.5,
+  "cer_no_marks": 2.5,
+  "same_tags": true,
+  "ours_tags": "img p /p",
+  "surya_tags": "img p /p"
+ },
+ "g11_cut1_Text.jpg": {
+  "task": "block_ocr",
+  "lang": "ar",
+  "effect": "scan-simulator",
+  "finish": "stop",
+  "block": "Text",
+  "surya_has_header": false,
+  "surya_label": null,
+  "surya_blocks": 1,
+  "cer": 0.424,
+  "cer_no_marks": 0.096,
+  "same_tags": true,
+  "ours_tags": "p /p",
+  "surya_tags": "p /p"
+ },
+ "g00_page.jpg": {
+  "task": "full_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Table",
+  "ours_blocks": 19,
+  "surya_blocks": 14,
+  "matched": 12,
+  "only_ours": [
+   [
+    "Text",
+    "34"
+   ],
+   [
+    "Table",
+    "Filmography Awards 14,091"
+   ],
+   [
+    "List-Group",
+    "• 1992, Nature and Science Lyceum in Kyiv • 1998, Institute "
+   ],
+   [
+    "Text",
+    "Family: MP 6th Verkhovna Rada since November"
+   ],
+   [
+    "Text",
+    "Ancient Kymissala: 053 363 6402"
+   ],
+   [
+    "Text",
+    "Research history: The archaeological site"
+   ],
+   [
+    "Text",
+    "Scientific Committee: 72,837.84"
+   ]
+  ],
+  "only_surya": [
+   [
+    "Page-Header",
+    "34"
+   ],
+   [
+    "Table",
+    "Filmography Awards 14,091 • 1992, Nature and Science Lyceum "
+   ]
+  ],
+  "order_inversions": 0,
+  "pairs": [
+   {
+    "ours": "Page-Header",
+    "surya": "Page-Header",
+    "iou": 0.72,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "",
+    "surya_tags": ""
+   },
+   {
+    "ours": "Page-Header",
+    "surya": "Page-Header",
+    "iou": 0.713,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "",
+    "surya_tags": ""
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.904,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h1 /h1",
+    "surya_tags": "h1 /h1"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.564,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Image",
+    "surya": "Image",
+    "iou": 0.955,
+    "cer": 1.537,
+    "cer_no_marks": 1.537,
+    "same_tags": true,
+    "ours_tags": "img p /p",
+    "surya_tags": "img p /p"
+   },
+   {
+    "ours": "Caption",
+    "surya": "Text",
+    "iou": 0.726,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.618,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h2 /h2",
+    "surya_tags": "h3 b /b /h3"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.858,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.938,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Image",
+    "surya": "Image",
+    "iou": 0.956,
+    "cer": 2.725,
+    "cer_no_marks": 2.725,
+    "same_tags": false,
+    "ours_tags": "img p /p",
+    "surya_tags": "img p br /p p /p"
+   },
+   {
+    "ours": "Caption",
+    "surya": "Text",
+    "iou": 0.675,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Image",
+    "surya": "Image",
+    "iou": 0.906,
+    "cer": 1.5,
+    "cer_no_marks": 1.5,
+    "same_tags": true,
+    "ours_tags": "img p /p",
+    "surya_tags": "img p /p"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g01_page.jpg": {
+  "task": "full_ocr",
+  "lang": "ar",
+  "effect": "clean",
+  "finish": "stop",
+  "block": null,
+  "ours_blocks": 19,
+  "surya_blocks": 19,
+  "matched": 19,
+  "only_ours": [],
+  "only_surya": [],
+  "order_inversions": 9,
+  "pairs": [
+   {
+    "ours": "Page-Header",
+    "surya": "Page-Header",
+    "iou": 0.77,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "",
+    "surya_tags": ""
+   },
+   {
+    "ours": "Page-Header",
+    "surya": "Page-Header",
+    "iou": 0.793,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "",
+    "surya_tags": ""
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.856,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h1 /h1",
+    "surya_tags": "h1 /h1"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.924,
+    "cer": 0.011,
+    "cer_no_marks": 0.011,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.96,
+    "cer": 0.005,
+    "cer_no_marks": 0.005,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "List-Group",
+    "surya": "List-Group",
+    "iou": 0.947,
+    "cer": 0.002,
+    "cer_no_marks": 0.002,
+    "same_tags": true,
+    "ours_tags": "ul li /li li /li li /li li /li li /li li",
+    "surya_tags": "ul li /li li /li li /li li /li li /li li"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.728,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h2 /h2",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.919,
+    "cer": 0.009,
+    "cer_no_marks": 0.009,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.809,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.943,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.956,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.964,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.95,
+    "cer": 0.008,
+    "cer_no_marks": 0.008,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Image",
+    "surya": "Image",
+    "iou": 0.886,
+    "cer": 1.77,
+    "cer_no_marks": 1.77,
+    "same_tags": true,
+    "ours_tags": "img p /p",
+    "surya_tags": "img p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Caption",
+    "iou": 0.544,
+    "cer": 0.25,
+    "cer_no_marks": 0.25,
+    "same_tags": false,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.544,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Image",
+    "surya": "Image",
+    "iou": 0.949,
+    "cer": 1.984,
+    "cer_no_marks": 1.984,
+    "same_tags": true,
+    "ours_tags": "img p /p",
+    "surya_tags": "img p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Caption",
+    "iou": 0.747,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.674,
+    "cer": 0.067,
+    "cer_no_marks": 0.067,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g02_page.jpg": {
+  "task": "full_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": null,
+  "ours_blocks": 7,
+  "surya_blocks": 7,
+  "matched": 6,
+  "only_ours": [
+   [
+    "Caption",
+    "His."
+   ]
+  ],
+  "only_surya": [
+   [
+    "Caption",
+    "His."
+   ]
+  ],
+  "order_inversions": 2,
+  "pairs": [
+   {
+    "ours": "Page-Header",
+    "surya": "Text",
+    "iou": 0.522,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Page-Header",
+    "surya": "Text",
+    "iou": 0.555,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Page-Header",
+    "surya": "Text",
+    "iou": 0.503,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Image",
+    "surya": "Image",
+    "iou": 0.977,
+    "cer": 1.512,
+    "cer_no_marks": 1.512,
+    "same_tags": true,
+    "ours_tags": "img p /p",
+    "surya_tags": "img p /p"
+   },
+   {
+    "ours": "Caption",
+    "surya": "Caption",
+    "iou": 0.556,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Image",
+    "surya": "Image",
+    "iou": 0.97,
+    "cer": 1.593,
+    "cer_no_marks": 1.593,
+    "same_tags": true,
+    "ours_tags": "img p /p",
+    "surya_tags": "img p /p"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g03_page.jpg": {
+  "task": "full_ocr",
+  "lang": "ar",
+  "effect": "clean",
+  "finish": "stop",
+  "block": "Table",
+  "ours_blocks": 7,
+  "surya_blocks": 6,
+  "matched": 5,
+  "only_ours": [
+   [
+    "Image",
+    "A photograph of a general scene."
+   ],
+   [
+    "Text",
+    "وعلى."
+   ]
+  ],
+  "only_surya": [
+   [
+    "Page-Header",
+    "وعلى."
+   ]
+  ],
+  "order_inversions": 0,
+  "pairs": [
+   {
+    "ours": "Text",
+    "surya": "Page-Header",
+    "iou": 0.669,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p /p",
+    "surya_tags": ""
+   },
+   {
+    "ours": "Text",
+    "surya": "Page-Header",
+    "iou": 0.521,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p /p",
+    "surya_tags": ""
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Page-Header",
+    "iou": 0.725,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h2 /h2",
+    "surya_tags": ""
+   },
+   {
+    "ours": "Text",
+    "surya": "Page-Header",
+    "iou": 0.599,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p /p",
+    "surya_tags": ""
+   },
+   {
+    "ours": "Table",
+    "surya": "Table",
+    "iou": 0.973,
+    "cer": 0.01,
+    "cer_no_marks": 0.008,
+    "same_tags": false,
+    "ours_tags": "table tr th b /b th b /b th b /b th",
+    "surya_tags": "table tr th th br th th br br th th br"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g04_page.jpg": {
+  "task": "full_ocr",
+  "lang": "en",
+  "effect": "clean",
+  "finish": "stop",
+  "block": null,
+  "ours_blocks": 12,
+  "surya_blocks": 14,
+  "matched": 8,
+  "only_ours": [
+   [
+    "List-Group",
+    "Composition: Music video: Track listing:"
+   ],
+   [
+    "Text",
+    "Released on September 22, 2003, the song charted at No. 17 o"
+   ],
+   [
+    "Text",
+    "The band chose \"Will You\" as a lead single to demonstrate a "
+   ],
+   [
+    "List-Group",
+    "▪ The album is a song-oriented downbeat. ▪ Slant Magazine pl"
+   ]
+  ],
+  "only_surya": [
+   [
+    "Text",
+    "Composition: Music video: Track listing:"
+   ],
+   [
+    "Text",
+    "Released on September 22, 2003, The band chose \"Will You\" as"
+   ],
+   [
+    "List-Group",
+    "■ ■ ■"
+   ],
+   [
+    "Text",
+    "The album is a song-oriented downbeat."
+   ],
+   [
+    "Text",
+    "Slant Magazine placed \"You Belong\" at."
+   ],
+   [
+    "Text",
+    "In 2009 Ruiz formed the group."
+   ]
+  ],
+  "order_inversions": 0,
+  "pairs": [
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.636,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.924,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.686,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h2 /h2",
+    "surya_tags": "h3 /h3"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.608,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h2 /h2",
+    "surya_tags": "h3 /h3"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.629,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h2 /h2",
+    "surya_tags": "h3 /h3"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.892,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.628,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.739,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g05_page.jpg": {
+  "task": "full_ocr",
+  "lang": "ar",
+  "effect": "clean",
+  "finish": "stop",
+  "block": null,
+  "ours_blocks": 13,
+  "surya_blocks": 9,
+  "matched": 7,
+  "only_ours": [
+   [
+    "Section-Header",
+    "باسر"
+   ],
+   [
+    "Page-Header",
+    "التَّطْوِيرُ"
+   ],
+   [
+    "Text",
+    "2001 وَمَا بعده"
+   ],
+   [
+    "Text",
+    "مُسَاهَمَةَ"
+   ],
+   [
+    "Text",
+    "أَبُو الفَضْلِ (الرَّمْلَةُ)"
+   ],
+   [
+    "Text",
+    "التّسمية"
+   ]
+  ],
+  "only_surya": [
+   [
+    "Page-Header",
+    "مشروع باسر التطوير"
+   ],
+   [
+    "Text",
+    "2001 وما بعده مساهمة أبو الفضل (الرملة) التسمية"
+   ]
+  ],
+  "order_inversions": 2,
+  "pairs": [
+   {
+    "ours": "Image",
+    "surya": "Image",
+    "iou": 0.994,
+    "cer": 2.625,
+    "cer_no_marks": 2.625,
+    "same_tags": true,
+    "ours_tags": "img p /p",
+    "surya_tags": "img p /p"
+   },
+   {
+    "ours": "List-Group",
+    "surya": "Page-Header",
+    "iou": 0.759,
+    "cer": 0.27,
+    "cer_no_marks": 0.169,
+    "same_tags": false,
+    "ours_tags": "ul li /li li /li li /li li /li /ul",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Page-Header",
+    "iou": 0.634,
+    "cer": 0.231,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.768,
+    "cer": 0.226,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h2 /h2",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.876,
+    "cer": 0.266,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.766,
+    "cer": 0.125,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h2 /h2",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.764,
+    "cer": 0.296,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g06_page.jpg": {
+  "task": "full_ocr",
+  "lang": "en",
+  "effect": "ocrsmith",
+  "finish": "stop",
+  "block": "Table",
+  "ours_blocks": 8,
+  "surya_blocks": 7,
+  "matched": 7,
+  "only_ours": [
+   [
+    "List-Group",
+    "▪ Accolades: ▪ Personal life: ▪ SPA F.C: ▪ History:"
+   ]
+  ],
+  "only_surya": [],
+  "order_inversions": 0,
+  "pairs": [
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.969,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h1 /h1",
+    "surya_tags": "h1 /h1"
+   },
+   {
+    "ours": "Page-Header",
+    "surya": "Section-Header",
+    "iou": 0.813,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.758,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h2 /h2",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.78,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h2 /h2",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Table",
+    "surya": "Table",
+    "iou": 0.555,
+    "cer": 0.531,
+    "cer_no_marks": 0.531,
+    "same_tags": false,
+    "ours_tags": "table tr th b /b th b /b tr td td tr",
+    "surya_tags": "table tr td td b /b td b /b tr td td"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.825,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h2 /h2",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.801,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p /p",
+    "surya_tags": "h2 /h2"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g07_page.jpg": {
+  "task": "full_ocr",
+  "lang": "ar",
+  "effect": "augraphy",
+  "finish": "stop",
+  "block": null,
+  "ours_blocks": 10,
+  "surya_blocks": 12,
+  "matched": 6,
+  "only_ours": [
+   [
+    "List-Group",
+    "▪ عَلَى أَسَاسٍ مُعَدَّلٍ دَخَلَ الْفَرْدُ مِنْ. ▪ فَازَ الْ"
+   ],
+   [
+    "Text",
+    "أَصْلُ التَّسْمِيَةِ:"
+   ],
+   [
+    "Text",
+    "عَلَى الرَّغْمِ مِنْ أنّ الْمُخَيِّزْنَ كَانَتْ تُبْعِدُ بَع"
+   ],
+   [
+    "Text",
+    "حَيْثُ احْتَلَّتْ قُرَى الْمَمَرِّ."
+   ]
+  ],
+  "only_surya": [
+   [
+    "Text",
+    "عَلَى أَسَاسِ مُعَدَّلٍ دَخَلَ أَصْلُ التَّسْمِيَةِ: الفَرْد"
+   ],
+   [
+    "Text",
+    "فَازَ الفِيْسُوفُ پِيْرْتَرَانْدُ رَاسِلُ (18 مَايُو."
+   ],
+   [
+    "Text",
+    "فِي عَامِ 2007 ، شَارَكَ عَلَى الرَّعْمِ مِنْ أَنَّ المُخَيْ"
+   ],
+   [
+    "Text",
+    "يَصْلُ قَرْيَةُ المُخَيْزِنِ دَرَبٌ مُمهد طُولَهُ."
+   ],
+   [
+    "Text",
+    "أَمَا المُوَرَّحُ الْإِسْرَائِيلِيُ حِيْثُ اخْتَلَتْ قُرْى ا"
+   ],
+   [
+    "Text",
+    "بَنِي مُورِيس فَيَقُولُ."
+   ]
+  ],
+  "order_inversions": 0,
+  "pairs": [
+   {
+    "ours": "Page-Header",
+    "surya": "Page-Header",
+    "iou": 0.873,
+    "cer": 0.097,
+    "cer_no_marks": 0.056,
+    "same_tags": false,
+    "ours_tags": "",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.858,
+    "cer": 0.111,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h1 /h1",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.809,
+    "cer": 0.1,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h1 /h1",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.785,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.839,
+    "cer": 0.114,
+    "cer_no_marks": 0.036,
+    "same_tags": false,
+    "ours_tags": "h1 /h1",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.866,
+    "cer": 0.203,
+    "cer_no_marks": 0.024,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g08_page.jpg": {
+  "task": "full_ocr",
+  "lang": "en",
+  "effect": "scan-simulator",
+  "finish": "stop",
+  "block": null,
+  "ours_blocks": 15,
+  "surya_blocks": 15,
+  "matched": 14,
+  "only_ours": [
+   [
+    "Text",
+    "The Second Treaty of Erzurum was signed."
+   ]
+  ],
+  "only_surya": [
+   [
+    "Text",
+    "The Second Treaty of Erzurum was signed."
+   ]
+  ],
+  "order_inversions": 0,
+  "pairs": [
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.702,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p /p",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.596,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p /p",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.763,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.849,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.743,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.895,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.914,
+    "cer": 0.003,
+    "cer_no_marks": 0.003,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.85,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.922,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.768,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.851,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.792,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.83,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.876,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g09_page.jpg": {
+  "task": "full_ocr",
+  "lang": "ar",
+  "effect": "ocrsmith",
+  "finish": "stop",
+  "block": "Table",
+  "ours_blocks": 23,
+  "surya_blocks": 25,
+  "matched": 21,
+  "only_ours": [
+   [
+    "List-Group",
+    "▪ دکتر: عَبْدُ اللّه، مرسی، محمّد (الْإِمَارَاتُ العربیّة وَ"
+   ],
+   [
+    "Text",
+    "صور:"
+   ]
+  ],
+  "only_surya": [
+   [
+    "Section-Header",
+    "صور:"
+   ],
+   [
+    "Text",
+    "دكتر: عبد الله، مرسى، محمّد (الإمارات العربية وجنزانها) دار "
+   ],
+   [
+    "Text",
+    "دكتر: المجد، كمال، احمد، (دولة الإمارات الغزيبة المتحدة، رزا"
+   ],
+   [
+    "Text",
+    "دكتر: رحمه، عبد الله، بن عبد الرّحمن، “ (الإمارات فى ذاكرة ا"
+   ]
+  ],
+  "order_inversions": 42,
+  "pairs": [
+   {
+    "ours": "Page-Header",
+    "surya": "Page-Header",
+    "iou": 0.734,
+    "cer": 0.417,
+    "cer_no_marks": 0.125,
+    "same_tags": true,
+    "ours_tags": "",
+    "surya_tags": ""
+   },
+   {
+    "ours": "Page-Header",
+    "surya": "Page-Header",
+    "iou": 0.818,
+    "cer": 0.312,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "",
+    "surya_tags": ""
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.795,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h1 /h1",
+    "surya_tags": "h1 /h1"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.746,
+    "cer": 0.19,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "h2 /h2"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.797,
+    "cer": 0.208,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "h3 /h3"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.855,
+    "cer": 0.192,
+    "cer_no_marks": 0.025,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.913,
+    "cer": 0.19,
+    "cer_no_marks": 0.031,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.882,
+    "cer": 0.237,
+    "cer_no_marks": 0.075,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.783,
+    "cer": 0.381,
+    "cer_no_marks": 0.188,
+    "same_tags": true,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "h3 /h3"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.903,
+    "cer": 0.177,
+    "cer_no_marks": 0.02,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.706,
+    "cer": 0.35,
+    "cer_no_marks": 0.071,
+    "same_tags": true,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "h3 /h3"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.927,
+    "cer": 0.134,
+    "cer_no_marks": 0.022,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.525,
+    "cer": 0.091,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "h4 /h4"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.778,
+    "cer": 0.14,
+    "cer_no_marks": 0.03,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.77,
+    "cer": 0.238,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "h4 /h4"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.833,
+    "cer": 0.294,
+    "cer_no_marks": 0.029,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.797,
+    "cer": 0.237,
+    "cer_no_marks": 0.043,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.703,
+    "cer": 0.273,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "h4 /h4"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.868,
+    "cer": 0.181,
+    "cer_no_marks": 0.017,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.798,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "h3 /h3"
+   },
+   {
+    "ours": "Table",
+    "surya": "Table",
+    "iou": 0.647,
+    "cer": 0.253,
+    "cer_no_marks": 0.06,
+    "same_tags": false,
+    "ours_tags": "table tr td td td td td td tr td td td",
+    "surya_tags": "table tr th th th th th tr td td td td"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g10_page.jpg": {
+  "task": "full_ocr",
+  "lang": "en",
+  "effect": "augraphy",
+  "finish": "stop",
+  "block": null,
+  "ours_blocks": 22,
+  "surya_blocks": 24,
+  "matched": 22,
+  "only_ours": [],
+  "only_surya": [
+   [
+    "Form",
+    ""
+   ],
+   [
+    "Form",
+    ""
+   ]
+  ],
+  "order_inversions": 0,
+  "pairs": [
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.971,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.723,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "b /b"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.726,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.657,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "b /b"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.651,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.804,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "b /b"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.631,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.564,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "b /b"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.948,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.564,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "b /b"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.945,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Section-Header",
+    "surya": "Section-Header",
+    "iou": 0.605,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "h3 /h3",
+    "surya_tags": "b /b"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.878,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.68,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "b /b"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.723,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.721,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "b /b"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.609,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.644,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "b /b"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.639,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.681,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "b /b"
+   },
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.664,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Text",
+    "surya": "Section-Header",
+    "iou": 0.642,
+    "cer": 0.0,
+    "cer_no_marks": 0.0,
+    "same_tags": false,
+    "ours_tags": "p b /b /p",
+    "surya_tags": "b /b"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ },
+ "g11_page.jpg": {
+  "task": "full_ocr",
+  "lang": "ar",
+  "effect": "scan-simulator",
+  "finish": "stop",
+  "block": null,
+  "ours_blocks": 4,
+  "surya_blocks": 4,
+  "matched": 4,
+  "only_ours": [],
+  "only_surya": [],
+  "order_inversions": 0,
+  "pairs": [
+   {
+    "ours": "Text",
+    "surya": "Text",
+    "iou": 0.957,
+    "cer": 0.446,
+    "cer_no_marks": 0.13,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Footnote",
+    "surya": "Text",
+    "iou": 0.514,
+    "cer": 0.5,
+    "cer_no_marks": 0.333,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Footnote",
+    "surya": "Text",
+    "iou": 0.766,
+    "cer": 0.454,
+    "cer_no_marks": 0.139,
+    "same_tags": true,
+    "ours_tags": "p /p",
+    "surya_tags": "p /p"
+   },
+   {
+    "ours": "Image",
+    "surya": "Image",
+    "iou": 0.967,
+    "cer": 3.5,
+    "cer_no_marks": 3.5,
+    "same_tags": true,
+    "ours_tags": "img p /p",
+    "surya_tags": "img p /p"
+   }
+  ],
+  "surya_has_newline": false,
+  "surya_closes_cells": false
+ }
+}
