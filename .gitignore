@@ -30,3 +30,4 @@ surya_probe/inputs/*.jpg
 surya_probe/inputs/*.png
 surya_probe/smoke.jsonl
 surya_probe/probe*.log
+surya_probe/outputs/
