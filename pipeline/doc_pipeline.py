@@ -154,8 +154,6 @@ from pipeline.img_pool import ImagePool  # noqa: E402
 from pipeline.qa import ink_issues, render_issues  # noqa: E402
 from pipeline.text_pool import TextPool  # noqa: E402
 from pipeline.themes import theme  # noqa: E402
-from src.bank import TEMPLATES  # noqa: E402
-from src.dedup import load_bank  # noqa: E402
 
 BANK2000 = ROOT / "bank2000"
 LANGUAGES = {"ar": 0.5, "en": 0.5}
@@ -296,30 +294,16 @@ PICTURE_BOX = re.compile(r'<(\w+)\b([^>]*\bclass="(?:[^"]*\s)?ph(?:\s[^"]*)?"[^>
 _cache = {}
 
 
-def bank():
-    if "bank" not in _cache:
-        _cache["bank"] = load_bank()
-    return _cache["bank"]
-
-
 def bank_entries(bank_dir):
-    """The bank's index: [{"id", "source", "lang", ...}]. bank_dir None: the old 113,077-template bank."""
+    """The bank's index: [{"id", "source", "lang", ...}]."""
     key = ("index", str(bank_dir))
     if key not in _cache:
-        path = (bank_dir / "index.jsonl") if bank_dir else ROOT / "bank_index.jsonl"
+        path = bank_dir / "index.jsonl"
         entries = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
         if not entries:
             raise RuntimeError(f"{path} is empty")
         _cache[key] = entries
     return _cache[key]
-
-
-def bank_ids():
-    """{source: [template ids]} of the old bank (kept for older callers)."""
-    ids = {}
-    for e in bank_entries(None):
-        ids.setdefault(e["source"], []).append(e["id"])
-    return ids
 
 
 def arabic_fonts():
@@ -341,7 +325,7 @@ def pick(rng, weights):
 class DocPipeline:
     """Template -> fill (style, theme, text, pictures) -> SynthDoc render + checks -> effects -> ground truth.
 
-    bank: the template bank folder (default bank2000/; "old" for the 113,077-template bank).
+    bank: the template bank folder (default bank2000/).
     languages, effects, sources: {choice: weight}. In bank2000 every template is Arabic or English, so the
     language picks the template; sources are grammar, websight, websight2, doclaynet (equal by default).
     strengths: {"ocrsmith"|"augraphy"|"scan-simulator": 0..1} (0.5 = the tool's own settings).
@@ -353,10 +337,7 @@ class DocPipeline:
                  pictures=None, text=None, extras=True, bank=None, strengths=None, check=True, tashkeel=None):
         self.out = Path(out_dir).resolve()
         self.out.mkdir(parents=True, exist_ok=True)
-        if bank == "old":
-            self.bank = None
-        else:
-            self.bank = Path(bank) if bank else (BANK2000 if (BANK2000 / "index.jsonl").exists() else None)
+        self.bank = Path(bank) if bank else BANK2000
         self.languages, self.effects = languages or LANGUAGES, effects or EFFECTS
         self.sources, self.templates, self.llm = sources, templates, llm
         self.strengths = {**STRENGTHS, **(strengths or {})}
@@ -388,13 +369,12 @@ class DocPipeline:
             else:
                 note = f"{self.llm.problem if self.llm else 'no LLM'}; bank template used"
         entries = bank_entries(self.bank)
-        if self.bank:
-            entries = [e for e in entries if e.get("lang", lang) == lang] or entries
+        entries = [e for e in entries if e.get("lang", lang) == lang] or entries
         present = sorted({e["source"] for e in entries})
         weights = {s: w for s, w in (self.sources or {s: 1 for s in present}).items() if s in present}
         source = pick(rng, weights or {s: 1 for s in present})
         tid = rng.choice([e["id"] for e in entries if e["source"] == source])
-        folder = (self.bank / "templates" / tid) if self.bank else (TEMPLATES / tid)
+        folder = self.bank / "templates" / tid
         meta = json.loads((folder / "template.json").read_text(encoding="utf-8"))
         return meta, None, folder, note
 

@@ -1,6 +1,0 @@
-jinja2
-lxml
-beautifulsoup4
-datasets
-jsonschema
-pillow

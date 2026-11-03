@@ -23,3 +23,6 @@ text_pool/
 datasets/
 bank2000/_staging/
 bank2000/_work/
+
+# Surya answers placed here by hand (not part of the generator)
+suryan_outputs/
