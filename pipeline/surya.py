@@ -2,7 +2,7 @@
 
 Each sample is made for one of Surya's four prompts, drawn per page (TASKS), and its label is what Surya
 answers to that prompt. The shapes follow Surya's own outputs on our pages and on reference pages
-(suryan_outputs/ in the main checkout):
+(suryan_outputs/ in the main checkout), keeping only the answers Surya got right:
 
   full_ocr   the page -> one <div data-bbox="x0 y0 x1 y1" data-label="Label">content</div> per block, in reading
              order. Content is HTML: <h1>-<h3> for headers, <p> for text (with <b>/<i> when the whole block is
@@ -12,9 +12,12 @@ answers to that prompt. The shapes follow Surya's own outputs on our pages and o
   layout     the page -> a JSON list of {"label", "bbox", "count"} per block, same blocks and order; count is
              Surya's estimate of the block's output length, which on the reference outputs is close to
              0.345 per Latin character + 1.05 per Arabic character of the block's HTML + 3, rounded to tens.
-  block_ocr  one block cut out of the page -> that block's content HTML (no div, no box).
-  table      a table cut out of the page -> a JSON list of {"label": "Row"|"Col", "bbox"}, rows then columns,
-             the boxes relative to the cut-out image.
+  block_ocr  one block cut out of the page -> that block as a full_ocr div, its box measured on the cut-out
+             (as Surya answered for a table-only image: <div data-bbox="32 72 960 884" data-label="Table">...).
+  table      a table cut out of the page, with a margin -> a JSON list with one entry {"label": "Table", "bbox",
+             "count"}, the box written as tokens <|x0|><|y0|><|x1|><|y1|> on the cut-out: Surya's only valid
+             answer to this prompt (on a table-only image; on whole pages it never gave valid JSON). The rows and
+             columns the prompt asks for are kept in the labels JSON (surya.table_structure).
 
 Boxes are "x0 y0 x1 y1", integers normalized to 0-1000 of the image's width and height. Labels used: Page-Header,
 Page-Footer, Section-Header, Text, List-Group, Table, Caption, Footnote, Image (Surya's other labels, such as
@@ -133,7 +136,7 @@ def rebuild(plan, moved, width, height):
 
 # -- blocks -------------------------------------------------------------------------------------------------
 
-def blocks(regions, roles, struct, rects, lang, positioning, categories, height):
+def blocks(regions, roles, struct, rects, lang, positioning, categories, width, height):
     """The page's blocks in reading order: [{label, box [x0, y0, x1, y1] (image pixels), html}]."""
     by_slot = {r["id"]: r for r in regions}
     styles, order = struct.get("styles", {}), struct.get("order", {})
@@ -210,19 +213,22 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, height)
             out.append(text_block(label, r["text"], r["bbox"], styles.get(r["id"], {}), order.get(r["id"], 0)))
         k += 1
     out = reading_order([b for b in out if b["box"]], positioning, lang)
-    return edges(out, height)
+    return edges(out, width, height)
 
 
-def edges(out, height, band=0.12):
+def edges(out, width, height, band=0.12):
     """Page-Header and Page-Footer only where Surya uses them, at the top or bottom of the page (a web page's
-    links "footer" halfway down is Text); a run of them next to each other is one block, its parts joined
-    by a space on one line and by <br/> across lines (as Surya writes them)."""
+    links "footer" halfway down is Text). Items that touch are one block, joined by a space on one line and by
+    <br/> across lines; items far apart stay separate blocks (as Surya writes them: a row of links is one
+    header, three titles spread over the top are three)."""
     merged = []
     for b in out:
-        if b["label"] == "Page-Header" and b["box"][1] > band * height or            b["label"] == "Page-Footer" and b["box"][3] < (1 - band) * height:
+        if (b["label"] == "Page-Header" and b["box"][1] > band * height
+                or b["label"] == "Page-Footer" and b["box"][3] < (1 - band) * height):
             b = {**b, "label": "Text"}
         prev = merged[-1] if merged else None
-        if prev and b["label"] == prev["label"] and b["label"] in ("Page-Header", "Page-Footer"):
+        if (prev and b["label"] == prev["label"] and b["label"] in ("Page-Header", "Page-Footer")
+                and touching(prev["box"], b["box"], width)):
             sep = " " if same_line(prev["box"], b["box"]) else "<br/>"
             prev["html"] = f"<p>{inner(prev['html'])}{sep}{inner(b['html'])}</p>"
             prev["box"] = union([prev["box"], b["box"]])
@@ -260,6 +266,15 @@ def same_line(a, b):
     return min(a[3], b[3]) - max(a[1], b[1]) > 0.5 * min(a[3] - a[1], b[3] - b[1])
 
 
+def touching(a, b, width):
+    """Next to each other: on one line with a gap under 3% of the page width, or one under the other (sharing
+    some width) with a gap under a line's height."""
+    if same_line(a, b):
+        return max(a[0], b[0]) - min(a[2], b[2]) < 0.03 * width
+    line = min(a[3] - a[1], b[3] - b[1])
+    return min(a[2], b[2]) > max(a[0], b[0]) and max(a[1], b[1]) - min(a[3], b[3]) < line
+
+
 def reading_order(out, positioning, lang):
     """Flowing pages: document order (a block's place is that of its first labelled text, or of its element for
     pictures). Absolutely placed pages (DocLayNet): top to bottom in bands, then right to left for Arabic."""
@@ -293,39 +308,57 @@ def raw(blks, width, height):
     return "".join(parts)
 
 
-def table(rects, i, crop):
-    """Rows then columns of table i, boxes relative to the crop [x0, y0, x1, y1]."""
-    cw, ch = crop[2] - crop[0], crop[3] - crop[1]
+def on_crop(box, crop):
+    """A box on the page -> "x0 y0 x1 y1" in 0-1000 of the cut-out [x0, y0, x1, y1]."""
+    return norm([box[0] - crop[0], box[1] - crop[1], box[2] - crop[0], box[3] - crop[1]],
+                crop[2] - crop[0], crop[3] - crop[1])
 
-    def rel(b):
-        return norm([b[0] - crop[0], b[1] - crop[1], b[2] - crop[0], b[3] - crop[1]], cw, ch)
+
+def block_ocr(block, crop):
+    """One block cut out of the page: its div, the box measured on the cut-out."""
+    return f'<div data-bbox="{on_crop(block["box"], crop)}" data-label="{block["label"]}">{block["html"]}</div>'
+
+
+def table(block, crop):
+    """A table cut out of the page: one entry, as Surya answered (box as tokens, its own count)."""
+    tokens = "".join(f"<|{v}|>" for v in on_crop(block["box"], crop).split())
+    return json.dumps([{"label": "Table", "bbox": tokens, "count": count(block["html"])}], ensure_ascii=False, indent=2)
+
+
+def table_structure(rects, i, crop):
+    """Rows then columns of table i on the cut-out, as the table prompt describes them."""
     rows = [rects[k] for k in sorted(k for k in rects if k[0] == "row" and k[1] == i)]
     cols = [rects[k] for k in sorted(k for k in rects if k[0] == "col" and k[1] == i)]
-    return json.dumps([{"label": "Row", "bbox": rel(b)} for b in rows] + [{"label": "Col", "bbox": rel(b)} for b in cols],
-                      ensure_ascii=False, indent=2)
+    return ([{"label": "Row", "bbox": on_crop(b, crop)} for b in rows]
+            + [{"label": "Col", "bbox": on_crop(b, crop)} for b in cols])
 
 
 LAYOUT_LABELS = {"Caption", "Footnote", "Equation-Block", "List-Group", "Page-Header", "Page-Footer", "Image",
                  "Section-Header", "Table", "Text", "Complex-Block", "Code-Block", "Form", "Table-Of-Contents", "Figure",
                  "Chemical-Block", "Diagram", "Bibliography", "Blank-Page"}  # Surya's layout JSON schema
 BBOX = re.compile(r"^\d{1,4} \d{1,4} \d{1,4} \d{1,4}$")
+TOKEN_BBOX = re.compile(r"^<\|(\d{1,4})\|><\|(\d{1,4})\|><\|(\d{1,4})\|><\|(\d{1,4})\|>$")
 DIV = re.compile(r'<div data-bbox="([^"]*)" data-label="([^"]*)">(.*)</div>')
 
 
 def problems(task, target):
-    """What is wrong with a target for Surya's format (empty list: nothing): the JSON schemas of its guided
-    decoding for layout and table, the div lines of full_ocr."""
+    """What is wrong with a target for Surya's format (empty list: nothing): the div lines of full_ocr and
+    block_ocr (one div), the layout JSON schema of its guided decoding, the one-entry table answer."""
     out = []
 
     def box_ok(b, where):
-        if not BBOX.match(b or ""):
+        m = TOKEN_BBOX.match(b or "") if task == "table" else BBOX.match(b or "")
+        if not m:
             out.append(f"{where}: bbox {b!r}")
         else:
-            x0, y0, x1, y1 = map(int, b.split())
+            x0, y0, x1, y1 = map(int, m.groups() if task == "table" else b.split())
             if x1 < x0 or y1 < y0 or max(x0, y0, x1, y1) > 1000:
                 out.append(f"{where}: bbox order/range {b}")
-    if task == "full_ocr":
-        for k, line in enumerate(target.split("\n")):
+    if task in ("full_ocr", "block_ocr"):
+        lines = target.split("\n")
+        if task == "block_ocr" and len(lines) != 1:
+            out.append("block_ocr: not one div")
+        for k, line in enumerate(lines):
             m = DIV.fullmatch(line)
             if not m:
                 out.append(f"line {k}: not a block div")
@@ -340,26 +373,47 @@ def problems(task, target):
             return [f"JSON: {e}"]
         if not isinstance(entries, list) or len(entries) > 200:
             out.append("not a list of at most 200 entries")
-        keys = {"label", "bbox", "count"} if task == "layout" else {"label", "bbox"}
-        labels = LAYOUT_LABELS if task == "layout" else {"Row", "Col"}
+        labels = LAYOUT_LABELS if task == "layout" else {"Table"}
         for k, e in enumerate(entries):
-            if set(e) != keys:
+            if set(e) != {"label", "bbox", "count"}:
                 out.append(f"entry {k}: keys {sorted(e)}")
             if e.get("label") not in labels:
                 out.append(f"entry {k}: label {e.get('label')}")
             box_ok(e.get("bbox"), f"entry {k}")
-            if task == "layout" and not (isinstance(e.get("count"), int) and e["count"] % 10 == 0):
+            if not (isinstance(e.get("count"), int) and e["count"] % 10 == 0):
                 out.append(f"entry {k}: count {e.get('count')}")
-        if task == "table":
-            kinds = [e.get("label") for e in entries]
-            if kinds != sorted(kinds, key=lambda x: x != "Row") or "Row" not in kinds or "Col" not in kinds:
-                out.append("rows then columns, at least one of each")
-    elif not target.strip():
-        out.append("empty block")
+        if task == "table" and len(entries) != 1:
+            out.append("table: not one entry")
     return out
 
 
-def crop_box(box, width, height, rng, pad=(6, 24)):
-    """A cut-out around a block: its box plus a random margin, kept to the image."""
-    p = rng.randint(*pad)
-    return [max(0, int(box[0]) - p), max(0, int(box[1]) - p), min(width, int(box[2]) + p), min(height, int(box[3]) + p)]
+def clear(crop, others, slack=2):
+    """No other block reaches into the cut-out (more than slack pixels)."""
+    return not any(min(crop[2], o[2]) - max(crop[0], o[0]) > slack and min(crop[3], o[3]) - max(crop[1], o[1]) > slack
+                   for o in others)
+
+
+def crop_box(box, width, height, rng, others=(), margin=(6, 24), share=None):
+    """A cut-out around a block: its box plus a random margin in pixels or (share) a share of the box's size on
+    each side, kept to the image, and on each side short of the page's other blocks (others), so no part of a
+    neighbour's text, unlabelled in the target, is in the picture."""
+    if share:
+        mx = max(margin[0], round(rng.uniform(*share) * (box[2] - box[0])))
+        my = max(margin[0], round(rng.uniform(*share) * (box[3] - box[1])))
+    else:
+        mx = my = rng.randint(*margin)
+    x0, y0, x1, y1 = box
+    left, top, right, bottom = x0 - mx, y0 - my, x1 + mx, y1 + my
+    for o in others:
+        if o[2] <= left or o[0] >= right or o[3] <= top or o[1] >= bottom:
+            continue  # not in the cut-out
+        if o[3] <= y0:
+            top = max(top, o[3] + 1)
+        elif o[1] >= y1:
+            bottom = min(bottom, o[1] - 1)
+        elif o[2] <= x0:
+            left = max(left, o[2] + 1)
+        elif o[0] >= x1:
+            right = min(right, o[0] - 1)
+        # a block overlapping this one itself (a box drawn around it) can't be kept out
+    return [max(0, int(left)), max(0, int(top)), min(width, int(right + 0.999)), min(height, int(bottom + 0.999))]

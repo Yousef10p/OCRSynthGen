@@ -66,6 +66,7 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
 .split .prompt { padding: 10px 16px; font-size: 12.5px; color: var(--muted); border-block-end: 1px solid #e3e6e9; }
 .pv-body .ln { display: block; border-radius: 4px; }
 .pv-body .ln:hover { background: #fff3c4; }
+.pv-body .ln.inl { display: inline; }
 @media (max-width: 800px) { .split { grid-template-columns: 1fr; block-size: auto; } .split > div { overflow: visible; } }
 .facts table { border-collapse: collapse; font-size: 13px; }
 .facts td { padding: 4px 14px 4px 0; vertical-align: top; } .facts td:first-child { color: var(--muted); }
@@ -189,16 +190,21 @@ async function show() {
     body.innerHTML = `<div class="facts"><table>${rows.map(([k, v]) => `<tr><td>${k}</td><td>${esc(v)}</td></tr>`).join("")}</table></div>`;
   } else if (tab === "both") {  // the model's input and its target side by side; a line lights up its box
     const text = await (await fetch(`/out/${job.id}/${s.target_file}`)).text();
-    // one line per block (full_ocr) or entry (layout, table); boxes are Surya's 0-1000 of the image
-    const entries = s.task === "layout" || s.task === "table" ? JSON.parse(text).map((e) => JSON.stringify(e))
-                                                              : text.split(/\r?\n/).filter(Boolean);
-    const boxes = entries.map((l) => ((l.match(/(?:data-bbox=|"bbox": ?)"(\d+) (\d+) (\d+) (\d+)"/) || []).slice(1).map(Number)));
+    // the target as written: one line per block (full_ocr, block_ocr), or the JSON array with each entry marked
+    // (layout, table); boxes are Surya's 0-1000 of the image, as numbers or as <|n|> tokens
+    const json = s.task === "layout" || s.task === "table";
+    const entries = json ? text.match(/ {2}\{[\s\S]*?\n {2}\}/g) || [] : text.split(/\r?\n/).filter(Boolean);
+    const BOX = /(?:data-bbox=|"bbox": ?)"(?:<\|)?(\d+)(?:\|>| )(?:<\|)?(\d+)(?:\|>| )(?:<\|)?(\d+)(?:\|>| )(?:<\|)?(\d+)(?:\|>)?"/;
+    const boxes = entries.map((l) => ((l.match(BOX) || []).slice(1).map(Number)));
     const shown = (line) => line.split(/(<[^>]+>)/).map((part, k) => k % 2 ? esc(part) : part ? `<bdi>${esc(part)}</bdi>` : "").join("");
+    let n = 0;  // JSON: the file's text, each entry wrapped where it stands
+    const listing = json ? esc(text).replace(/ {2}\{[\s\S]*?\n {2}\}/g, (m) => `<span class="ln inl" data-i="${n++}">${m}</span>`)
+                         : entries.map((l, i) => `<span class="ln" data-i="${i}">${shown(l)}</span>`).join("");
     body.innerHTML = `<div class="split"><div class="page"><div class="frame"><img src="${url(s, "final")}" alt="">
       <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">${boxes.map((b, i) => b.length === 4
         ? `<rect data-i="${i}" x="${b[0]}" y="${b[1]}" width="${b[2] - b[0]}" height="${b[3] - b[1]}"></rect>` : "").join("")}</svg></div></div>
       <div class="md"><div class="prompt"><b>${esc(s.task)}</b> · ${esc(SURYA_PROMPTS[s.task] || "")}</div>
-      <pre dir="ltr">${entries.map((l, i) => `<span class="ln" data-i="${i}">${shown(l)}</span>`).join("")}</pre></div></div>`;
+      <pre dir="ltr">${listing}</pre></div></div>`;
     body.querySelectorAll(".ln").forEach((ln) => {
       const rect = body.querySelector(`rect[data-i="${ln.dataset.i}"]`);
       ln.onmouseenter = () => { if (rect) { rect.classList.add("on"); rect.scrollIntoView({block: "nearest"}); } };

@@ -235,9 +235,9 @@ prompt, `full_ocr.html`, `layout.json`, `table.json`, `block_ocr.html` per page)
 | Task (share) | Image the model sees | Target (`<name>.target.html` / `.target.json`) |
 |---|---|---|
 | `full_ocr` (40%) | the page | one `<div data-bbox="x0 y0 x1 y1" data-label="Label">content</div>` per block, in reading order |
-| `layout` (20%) | the page | JSON list of `{"label", "bbox", "count"}`, the same blocks |
-| `block_ocr` (25%) | one block cut out of the page (6-24 px margin) | that block's content HTML, e.g. `<p>…</p>` |
-| `table` (15%) | a table cut out of the page | JSON list of `{"label": "Row"/"Col", "bbox"}`, rows then columns, boxes relative to the cut-out |
+| `layout` (20%) | the page | a JSON array of `{"label", "bbox", "count"}`, the same blocks, written like Surya's `layout.json` (2-space indent) |
+| `block_ocr` (25%) | one block cut out of the page (6-24 px margin) | that block's div, `<div data-bbox="…" data-label="…">…</div>`, the box measured on the cut-out |
+| `table` (15%) | a table cut out of the page (margin 3-12% of its size) | `[{"label": "Table", "bbox": "<\|x0\|><\|y0\|><\|x1\|><\|y1\|>", "count": n}]`: one entry, the box on the cut-out written as tokens |
 
 The exact prompt is in `<name>.prompt.txt`. Boxes are integers in 0-1000 of the image's width and height.
 
@@ -251,7 +251,7 @@ weight and slant, all in document order. From it:
 | all items of one `<ul>`/`<ol>` | List-Group | `<ul><li>• item</li>…</ul>`: the marker as drawn inside the item (• ◦ ▪, or 1. / ١.) |
 | a picture | Image | `<img alt="Photo: …"/><p class="img-desc">…</p>` (a description by photo category: our photos have no captions yet) |
 | title / heading / subtitle | Section-Header | `<h1>` / `<h2>` / `<h3>` (the element's own heading tag when it has one) |
-| header, footer, page number | Page-Header, Page-Footer | `<p>…</p>`; only in the top or bottom 12% of the page (elsewhere Text); neighbours are joined into one block (space on one line, `<br/>` across lines) |
+| header, footer, page number | Page-Header, Page-Footer | `<p>…</p>`; only in the top or bottom 12% of the page (elsewhere Text); items that touch are one block (space on one line, `<br/>` across lines), items far apart stay separate |
 | caption, footnote | Caption, Footnote | `<p>…</p>` |
 | a label and the value beside it | Text | `<p>Label: value</p>` |
 | paragraph, quote, sidebar, other | Text | `<p>…</p>` (`<b>`/`<i>` when the whole block is bold/italic) |
@@ -265,15 +265,26 @@ the readability checks).
 0.345 per Latin character + 1.05 per Arabic character of the block's HTML + 3, rounded to tens (mean error
 about 13 over 122 blocks); `surya.count()` uses that.
 
-**Not in the references, so chosen here:** the `table` and `block_ocr` prompts expect a cut-out (Surya's
-answers on whole pages failed to parse, or were empty for a plain text block), so their targets follow the
-prompts' own description and Surya's JSON schema. The label JSON also keeps, under `surya`, all the page's
-blocks and `raw`: Surya's token sequence (`<|Label|><|x0|><|y0|><|x1|><|y1|>content…`, tables without
-closing row and cell tags), which its table prompt revealed on whole pages and which is likely close to how
-its training data was written.
+**Only Surya's correct answers are followed.** For `block_ocr` and `table` there is one each, both on the
+table-only reference image (`02_invoice_table`): `block_ocr` answered with the block's div and its box on that
+image; `table` answered `[{"label": "Table", "bbox": "<|32|><|71|><|959|><|884|>", "count": 220}]`, one
+entry, the coordinates as tokens. Every other table answer (on whole pages) was invalid JSON, and `block_ocr`
+on the text-only image was empty, so those are not copied. The rows and columns the table prompt asks for
+are still kept in the labels JSON (`surya.table_structure`). Header and footer blocks follow Surya's correct
+pages: a row of links is one Page-Header, titles spread over the top are separate ones; Surya calling
+mid-page headings Page-Header (one of our pages) is its mistake and not copied.
 
-`surya.problems(task, target)` checks a target against Surya's format (div lines; the layout and table JSON
-schemas of its guided decoding). A table task only draws templates with tables, and a page that loses its
+**Cut-outs show only their block.** A cut-out's margin stops short of every other block on each side, so no
+part of a neighbour's text (not in the target) is in the picture; a block whose cut-out would still take in
+a neighbour (on a turned page, upright boxes overlap) is not used, and with none left the sample is made for
+`full_ocr` instead (1 of 16 table samples in testing).
+
+The label JSON also keeps, under `surya`, all the page's blocks and `raw`: Surya's token sequence
+(`<|Label|><|x0|><|y0|><|x1|><|y1|>content…`, tables without closing row and cell tags), which its table
+prompt revealed on whole pages and which is likely close to how its training data was written.
+
+`surya.problems(task, target)` checks a target against Surya's format (div lines for full_ocr, one div for
+block_ocr, the layout JSON schema of its guided decoding, the one-entry table answer with token box). A table task only draws templates with tables, and a page that loses its
 table (cut off at the bottom) is made again. Choose tasks with `tasks={...}` on `DocPipeline`, the
 generator's **Task** menu, or `--task` on the dataset command; the generator's **Image + Target** view shows
 the input image beside the prompt and target, each block's box drawn on the image.
