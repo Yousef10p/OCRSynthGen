@@ -3,9 +3,9 @@
     .venv-pipeline\\Scripts\\python -m pipeline.dataset --n 10000 --out datasets/ocr_v1 --workers 6
 
 Writes to --out:
-    images/<id>.jpg      what the model is shown: the page (after effects, or clean), or a table cut out of it
+    images/<id>.jpg      what the model is shown: the page (after effects, or clean), or a block or table cut out of it
     prompts/<id>.prompt.txt   the Surya OCR 2.5 prompt the sample is made for
-    targets/<id>.target.html|.json   Surya's answer to it (see pipeline/surya.py)
+    targets/<id>.target.txt|.json   Surya's answer to it (see pipeline/surya.py)
     pages/<id>_page.jpg  the whole page, for samples whose image is a cut-out
     labels/<id>.json     word, line and slot boxes [x, y, w, h] in image pixels, text, and how the page was made
     markdown/<id>.md     the ground truth: one <text>... <bbox>x1, y1, x2, y2</bbox></text> line per text block
@@ -31,7 +31,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-FOLDERS = {".jpg": "images", ".prompt.txt": "prompts", ".target.html": "targets", ".target.json": "targets",
+FOLDERS = {".jpg": "images", ".prompt.txt": "prompts", ".target.txt": "targets", ".target.json": "targets",
            "_page.jpg": "pages", ".json": "labels", ".md": "markdown", ".html": "html"}
 _pipe = None
 
@@ -75,8 +75,8 @@ def main():
                                          "augraphy+scan-simulator"], help="only this effect (default: the mix)")
     ap.add_argument("--text", choices=["wikipedia", "demo"], default=None)
     ap.add_argument("--task", choices=["full_ocr", "layout", "block_ocr", "table"],
-                    help="the Surya OCR 2.5 prompt every sample is made for (default: 40%% full_ocr, 20%% layout, "
-                         "25%% block_ocr, 15%% table)")
+                    help="the Surya OCR 2.5 prompt every sample is made for (default: 40%% full_ocr, 25%% layout, "
+                         "35%% block_ocr; table only when asked)")
     ap.add_argument("--tashkeel", choices=["none", "partial", "full"],
                     help="Arabic diacritics on every Arabic page at this level (default: 40%% none, 30%% partial, 30%% full)")
     a = ap.parse_args()

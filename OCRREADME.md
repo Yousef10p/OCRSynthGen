@@ -225,21 +225,23 @@ below the next have room. The labels and the Markdown always hold what is drawn,
 Tested on 24 fully marked, 8 partly marked and 48 mixed pages (all sources and effects): no audit problems.
 The level is in the label (`style.tashkeel`) and on the generator's cards.
 
-### 0.10 Surya OCR 2.5 targets (branch `surya-format`, experimental)
+### 0.10 Surya OCR 2.5 targets (branches `surya-format` / `surya-inference`, experimental)
 
-Each sample is made for one of Surya OCR 2.5's four prompts, drawn per page, and its label is what Surya
-answers to that prompt ([pipeline/surya.py](pipeline/surya.py)). The answer shapes come from Surya's own
-outputs on reference pages and on 12 of our pages (`suryan_outputs/` in the main checkout: input image,
-prompt, `full_ocr.html`, `layout.json`, `table.json`, `block_ocr.html` per page).
+Each sample is made for one of Surya OCR 2.5's prompts, drawn per page, and its label is the answer Surya 2.5
+gives to that prompt, in the model's own compact output format ([pipeline/surya.py](pipeline/surya.py)). The
+formats were found by asking the model itself image by image and from Surya's own code: see
+[surya_inference_findings.md](surya_inference_findings.md) and, for the whole pipeline in diagrams,
+[surya-format.md](surya-format.md).
 
-| Task (share) | Image the model sees | Target (`<name>.target.html` / `.target.json`) |
+| Task (share) | Image the model sees | Target (`<name>.target.txt` / `.target.json`) |
 |---|---|---|
-| `full_ocr` (40%) | the page | one `<div data-bbox="x0 y0 x1 y1" data-label="Label">content</div>` per block, in reading order |
-| `layout` (20%) | the page | a JSON array of `{"label", "bbox", "count"}`, the same blocks, written like Surya's `layout.json` (2-space indent) |
-| `block_ocr` (25%) | the page | every block, as for `full_ocr` (on the reference pages Surya answered this prompt with the same blocks, labels and order, header and footer text in `<p>`) |
-| `table` (15%) | a table cut out of the page (margin 3-12% of its size) | `[{"label": "Table", "bbox": "<\|x0\|><\|y0\|><\|x1\|><\|y1\|>", "count": n}]`: one entry, the box on the cut-out written as tokens |
+| `full_ocr` (40%) | the page | compact blocks: `<\|Label\|><\|x0\|><\|y0\|><\|x1\|><\|y1\|>content`, one after another, no `</div>`, no newlines, no `</td>`/`</th>`/`</tr>` |
+| `layout` (25%) | the page | a JSON array on one line: `[{"label": "Text", "bbox": "x0 y0 x1 y1", "count": 120}, ...]` |
+| `block_ocr` (35%) | one block (not a picture) cut out of the page, 6-24 px margin | that block's compact content only: `<p>…</p>`, `<h2>…</h2>`, `<table>…</table>`, `<ul>…</ul>` |
+| `table` (0%, when asked) | a table cut out of the page, 3-12% margin | rows then columns, a JSON array on one line (Surya 2's format; 2.5 never answers it) |
 
-The exact prompt is in `<name>.prompt.txt`. Boxes are integers in 0-1000 of the image's width and height.
+The exact prompt is in `<name>.prompt.txt` (Surya's wording, word for word). Boxes are integers in 0-1000 of
+the image's width and height.
 
 **Blocks.** The browser reports the page's structure after layout: tables (rows, cells, `th`/`td`, colspan,
 bold), lists (items, marker style), pictures (with their photo file), and each slot's heading tag,
@@ -247,7 +249,7 @@ weight and slant, all in document order. From it:
 
 | Our slots | Surya label | Content |
 |---|---|---|
-| all cells of one `<table>` | Table | `<table><tr><th><b>…</b></th>…</tr><tr><td>…</td>…</tr></table>` (`<b>` for bold cells, empty cells kept, rows with no visible text left out) |
+| all cells of one `<table>` | Table | `<table><tr><th><b>…</b><th>…<tr><td>…<td>…</table>` (`<b>` for bold cells, empty cells kept, rows with no visible text left out, merged cells as parent + ghost cells) |
 | all items of one `<ul>`/`<ol>` | List-Group | `<ul><li>• item</li>…</ul>`: the marker as drawn inside the item (• ◦ ▪, or 1. / ١.) |
 | a picture | Image | `<img alt="Photo: …"/><p class="img-desc">…</p>` (a description by photo category: our photos have no captions yet) |
 | title / heading / subtitle | Section-Header | `<h1>` / `<h2>` / `<h3>` (the element's own heading tag when it has one) |
@@ -261,33 +263,26 @@ DocLayNet's absolutely placed boxes. Table, row, column, list and picture boxes 
 every effect: their corners ride along as tiny boxes after the words (each distinct point once; not part of
 the readability checks).
 
-**count** (layout) is Surya's estimate of a block's output length. On the reference outputs it fits
-0.345 per Latin character + 1.05 per Arabic character of the block's HTML + 3, rounded to tens (mean error
-about 13 over 122 blocks); `surya.count()` uses that.
+**count** (layout) is the model's estimate of the tokens it needs to OCR a block. On the reference outputs it
+fits 0.345 per Latin character + 1.05 per Arabic character of the block's HTML + 3, rounded to tens (mean
+error about 13 over 122 blocks); `surya.count()` uses that.
 
-**Only Surya's correct answers are followed.** `block_ocr` on whole pages answered with every block, the
-same blocks, labels and order as `full_ocr` (01, 02, 04), so a `block_ocr` sample is the whole page and every
-block. `table` has one valid answer, on the table-only reference image (`02_invoice_table`):
-`[{"label": "Table", "bbox": "<|32|><|71|><|959|><|884|>", "count": 220}]`, one entry, the coordinates as
-tokens. Every other table answer (on whole pages) was invalid JSON, so those are not copied. The rows and columns the table prompt asks for
-are still kept in the labels JSON (`surya.table_structure`). Header and footer blocks follow Surya's correct
-pages: a row of links is one Page-Header, titles spread over the top are separate ones; Surya calling
-mid-page headings Page-Header (one of our pages) is its mistake and not copied.
+**Merged table cells** are written Surya 2.5's way: the cell itself with `data-cs` (columns) or `data-rs`
+(rows) and `data-kind="parent"`, then a `data-kind="ghost"` cell for every other place it covers.
 
-**Table cut-outs show only their table.** The margin stops short of every other block on each side, so no
-part of a neighbour's text (not in the target) is in the picture; a table whose cut-out would still take in
-a neighbour (on a turned page, upright boxes overlap) is not used, and with none left the sample is made for
-`full_ocr` instead (1 of 16 table samples in testing).
+**Cut-outs show only their block.** The margin stops short of every other block on each side, so no part of
+a neighbour's text (not in the target) is in the picture; a block whose cut-out would still take in a
+neighbour (on a turned page, upright boxes overlap) is not used, and with none left the sample is made for
+`full_ocr` instead.
 
-The label JSON also keeps, under `surya`, all the page's blocks and `raw`: Surya's token sequence
-(`<|Label|><|x0|><|y0|><|x1|><|y1|>content…`, tables without closing row and cell tags), which its table
-prompt revealed on whole pages and which is likely close to how its training data was written.
+The label JSON also keeps, under `surya`, all the page's blocks and `divs`: the same blocks in the readable
+`<div data-bbox data-label>` form that Surya's decoder gives back.
 
-`surya.problems(task, target)` checks a target against Surya's format (div lines for full_ocr and
-block_ocr, the layout JSON schema of its guided decoding, the one-entry table answer with token box). A table task only draws templates with tables, and a page that loses its
-table (cut off at the bottom) is made again. Choose tasks with `tasks={...}` on `DocPipeline`, the
-generator's **Task** menu, or `--task` on the dataset command; the generator's **Image + Target** view shows
-the input image beside the prompt and target, each block's box drawn on the image.
+`surya.problems(task, target)` checks a target against the format (compact blocks for `full_ocr`, compact
+content without headers for `block_ocr`, one-line JSON for `layout` and `table`). Choose tasks with
+`tasks={...}` on `DocPipeline`, the generator's **Task** menu, or `--task` on the dataset command; the
+generator's **Image + Target** view shows the input image beside the prompt and target, each block's box drawn
+on the image.
 
 ### 0.11 One environment note
 

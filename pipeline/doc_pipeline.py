@@ -149,7 +149,7 @@ QA_JS = """(() => {""" + CONTRAST_JS + """
     for (const tr of t.querySelectorAll('tr')) {
       if (tr.closest('table') !== t) continue;
       const cells = [...tr.children].filter((c) => c.tagName === 'TD' || c.tagName === 'TH').map((c) => ({
-        tag: c.tagName.toLowerCase(), colspan: c.colSpan || 1, rect: rel(c.getBoundingClientRect()),
+        tag: c.tagName.toLowerCase(), colspan: c.colSpan || 1, rowspan: c.rowSpan || 1, rect: rel(c.getBoundingClientRect()),
         slots: [...c.querySelectorAll('[data-slot]')].map((s) => s.dataset.slot),
         bold: +getComputedStyle(c).fontWeight >= 600}));
       if (cells.length) rows.push({rect: rel(tr.getBoundingClientRect()), cells});
@@ -631,31 +631,36 @@ class DocPipeline:
         rects = SURYA.rebuild(plan, moved, width, height)
         blks = SURYA.blocks(regions, {sl["id"]: sl["role"] for sl in meta["slots"]}, qa.get("struct") or {}, rects,
                             lang, meta.get("positioning", "flow"), self.categories, width, height)
-        # a table cut-out shows its table and nothing of another block: tables whose cut-out would take in part
-        # of a neighbour (a turned page's upright boxes overlap) are not used; none left: full_ocr instead
+        # a cut-out (block_ocr: one block, not a picture; table: a table) shows its block and nothing of another:
+        # blocks whose cut-out would take in part of a neighbour (a turned page's upright boxes overlap) are not
+        # used; none left: full_ocr instead
         cuts = []
-        if task == "table":
+        if task in ("block_ocr", "table"):
             for b in blks:
-                if b["label"] != "Table":
+                if b["label"] == "Image" or (task == "table" and b["label"] != "Table"):
                     continue
                 others = [x["box"] for x in blks if x is not b]
-                c = SURYA.crop_box(b["box"], width, height, rng, others, share=(0.03, 0.12))
+                c = SURYA.crop_box(b["box"], width, height, rng, others,
+                                   share=(0.03, 0.12) if task == "table" else None)
                 if SURYA.clear(c, others):
                     cuts.append((b, c))
             if not cuts:
                 note, task = (note + "; " if note else "") + f"no {task} block that cuts out clean: full_ocr instead", "full_ocr"
         crop, target, structure = None, None, None
-        if task in ("full_ocr", "block_ocr"):  # block_ocr: the whole page, every block, as Surya answers it
+        if task == "full_ocr":
             target = SURYA.full_ocr(blks, width, height)
         elif task == "layout":
             target = SURYA.layout(blks, width, height)
-        elif task == "table":  # a table cut out with a margin like Surya's table image (3-12% of its size)
+        elif task == "block_ocr":  # one block cut out (6-24 px margin), its compact content as the answer
             b, crop = rng.choice(cuts)
-            target = SURYA.table(b, crop)
+            target = SURYA.block_ocr(b)
+        else:  # table: a table cut out with a 3-12% margin, its rows then columns
+            b, crop = rng.choice(cuts)
+            target = SURYA.table(rects, b["table"], crop)
             structure = SURYA.table_structure(rects, b["table"], crop)
         label["surya"] = {"task": task, "prompt": SURYA.PROMPTS[task], "target": target, "crop": crop,
                           "table_structure": structure,
-                          "page_size": [width, height], "raw": SURYA.raw(blks, width, height),
+                          "page_size": [width, height], "divs": SURYA.divs(blks, width, height),
                           "blocks": [{"label": b["label"], "box": [round(v) for v in b["box"]], "html": b["html"]}
                                      for b in blks]}
         t["markdown"] = time.perf_counter() - mark

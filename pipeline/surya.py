@@ -1,44 +1,45 @@
-"""Labels in the shape of Surya OCR 2.5's outputs (experimental, branch surya-format).
+"""Labels in Surya OCR 2.5's own output format (experimental, branch surya-inference).
 
-Each sample is made for one of Surya's four prompts, drawn per page (TASKS), and its label is what Surya
-answers to that prompt. The shapes follow Surya's own outputs on our pages and on reference pages
-(suryan_outputs/ in the main checkout), keeping only the answers Surya got right:
+Each sample is made for one of Surya's prompts, drawn per page (TASKS), and its label is the answer Surya 2.5
+gives to that prompt, written the way the model writes it. Found by asking the model itself, one image at a
+time (surya_probe/, surya_inference_findings.md), and by Surya's own code (datalab-to/surya: inference/prompts.py,
+compact.py, parsers.py), whose prompt texts are "the model's training-time contract":
 
-  full_ocr   the page -> one <div data-bbox="x0 y0 x1 y1" data-label="Label">content</div> per block, in reading
-             order. Content is HTML: <h1>-<h3> for headers, <p> for text (with <b>/<i> when the whole block is
-             bold or italic), <ul><li>• item</li></ul> for lists (the marker as drawn, inside the item),
-             <table><tr><th>..</th></tr><tr><td>..</td></tr></table> for tables, and
-             <img alt="Photo: ..."/><p class="img-desc">...</p> for pictures.
-  layout     the page -> a JSON list of {"label", "bbox", "count"} per block, same blocks and order; count is
-             Surya's estimate of the block's output length, which on the reference outputs is close to
+  full_ocr   the page -> compact blocks, one after another with nothing between them:
+             <|Label|><|x0|><|y0|><|x1|><|y1|>content<|Label|>... The header is one label token and four coordinate
+             tokens (0-1000); a block has no </div>; </td>, </th> and </tr> are left out (</table>, </p>, </li>,
+             </ul>, </h1> are kept); merged cells are a data-kind="parent" cell with data-cs / data-rs followed by
+             data-kind="ghost" cells. Content: <h1>-<h3>, <p> (with <b>/<i>), <ul><li>• item</li></ul> (the
+             marker as drawn, inside the item), <table>, <img alt="Photo: ..."/><p class="img-desc">...</p>.
+  layout     the page -> the JSON array on one line: [{"label": "Text", "bbox": "x0 y0 x1 y1", "count": 120}, ...]
+             (Surya's parse_layout reads this; the model writes it under JSON-schema guided decoding). count is
+             the model's estimate of the tokens it needs to OCR the block: on the reference outputs close to
              0.345 per Latin character + 1.05 per Arabic character of the block's HTML + 3, rounded to tens.
-  block_ocr  the page -> every block, as for full_ocr: on the reference pages Surya answered this prompt with
-             the same blocks, labels and order as full_ocr, header and footer text always in <p> (which ours
-             always is).
-  table      a table cut out of the page, with a margin -> a JSON list with one entry {"label": "Table", "bbox",
-             "count"}, the box written as tokens <|x0|><|y0|><|x1|><|y1|> on the cut-out: Surya's only valid
-             answer to this prompt (on a table-only image; on whole pages it never gave valid JSON). The rows and
-             columns the prompt asks for are kept in the labels JSON (surya.table_structure).
+  block_ocr  one block cut out of the page -> only that block's content, compact: <p>...</p>, <h2>...</h2>,
+             <table>..., <ul>... (no label, no box). Pictures are not OCR'd block by block (Surya skips Image).
+  table      a table cut out of the page -> rows then columns as a JSON array on one line, [{"label": "Row",
+             "bbox": "x0 y0 x1 y1"}, ..., {"label": "Col", ...}] (parse_table_rec). This is Surya 2's format: the
+             2.5 model card says row and column geometry needs a Surya 2 checkpoint, and 2.5 never answered it
+             (its tables come from block_ocr). So it is 0% of the default mix; ask for it explicitly.
 
-Boxes are "x0 y0 x1 y1", integers normalized to 0-1000 of the image's width and height. Labels used: Page-Header,
-Page-Footer, Section-Header, Text, List-Group, Table, Caption, Footnote, Image (Surya's other labels, such as
-Equation-Block or Code-Block, don't occur in our templates).
-
-full_ocr also gets Surya's raw token sequence, as its table prompt revealed it on whole pages:
-<|Label|><|x0|><|y0|><|x1|><|y1|>content..., tables with their closing </tr>, </th>, </td> left out.
+Boxes are integers normalized to 0-1000 of the image's width and height, (x0, y0) top left. Labels used:
+Page-Header, Page-Footer, Section-Header, Text, List-Group, Table, Caption, Footnote, Image.
+The model ends every answer with its end token (<|im_end|>, shown by this server as <|im_end!>); a target
+leaves it out, as the tokenizer adds it.
 """
 import html as _html
 import json
 import re
 
 PROMPTS = {
-    "full_ocr": 'OCR this image to HTML. Each block is a div with data-label and data-bbox "(x0 y0 x1 y1, normalized 0-1000).',
+    # exactly as Surya's prompts.py (HIGH_ACCURACY_BBOX_PROMPT): no quote before "(x0"
+    "full_ocr": "OCR this image to HTML. Each block is a div with data-label and data-bbox (x0 y0 x1 y1, normalized 0-1000).",
     "layout": 'Output the layout of this image as JSON. Each entry is a dict with "label", "bbox", and "count" fields. Bbox is x0 y0 x1 y1, normalized 0-1000.',
     "table": 'Output the table rows then columns as JSON. Each entry is a dict with "label" ("Row" or "Col") and "bbox" (x0 y0 x1 y1, normalized 0-1000).',
     "block_ocr": "OCR this block image to HTML.",
 }
-TASKS = {"full_ocr": 0.4, "layout": 0.2, "block_ocr": 0.25, "table": 0.15}
-SUFFIX = {"full_ocr": ".target.html", "block_ocr": ".target.html", "layout": ".target.json", "table": ".target.json"}
+TASKS = {"full_ocr": 0.4, "layout": 0.25, "block_ocr": 0.35, "table": 0.0}
+SUFFIX = {"full_ocr": ".target.txt", "block_ocr": ".target.txt", "layout": ".target.json", "table": ".target.json"}
 
 ROLE_LABEL = {"title": "Section-Header", "subtitle": "Section-Header", "heading": "Section-Header",
               "table_header": "Section-Header", "header": "Page-Header", "footer": "Page-Footer",
@@ -143,15 +144,20 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, width, 
     styles, order = struct.get("styles", {}), struct.get("order", {})
     used, out = set(), []
     for i, t in enumerate(struct.get("tables", [])):
-        rows, boxes, members = [], [], []
-        for j, row in enumerate(t["rows"]):
+        grid, boxes, members = merged_grid(t["rows"]), [], []
+        rows = []
+        for j, row in enumerate(grid):
             cells = []
-            for cell in row["cells"]:
+            for cell in row:
+                if cell.get("ghost"):
+                    cells.append((cell["tag"], ' data-kind="ghost"', "", False))
+                    continue
                 text = " ".join(by_slot[s]["text"] for s in cell["slots"] if s in by_slot)
                 members += cell["slots"]
                 inner = f"<b>{esc(text)}</b>" if text and cell["bold"] else esc(text)
-                span = f' colspan="{cell["colspan"]}"' if cell["colspan"] > 1 else ""
-                cells.append((cell["tag"], span, inner, bool(text)))
+                span = "".join(f' {k}="{v}"' for k, v in (("data-cs", cell["colspan"]), ("data-rs", cell.get("rowspan", 1)))
+                               if v > 1)
+                cells.append((cell["tag"], span + (' data-kind="parent"' if span else ""), inner, bool(text)))
             if any(c[3] for c in cells):  # a row cut off the page (no labelled text) isn't in the image
                 rows.append(cells)
                 boxes.append(rects.get(("row", i, j)))
@@ -159,7 +165,7 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, width, 
         if not rows:
             continue
         box = union(boxes) or rects.get(("table", i)) or union([by_slot[s]["bbox"] for s in members if s in by_slot])
-        body = "".join("<tr>" + "".join(f"<{tag}{span}>{inner}</{tag}>" for tag, span, inner, _ in cells) + "</tr>"
+        body = "".join("<tr>" + "".join(f"<{tag}{attrs}>{inner}</{tag}>" for tag, attrs, inner, _ in cells) + "</tr>"
                        for cells in rows)
         out.append({"label": "Table", "box": box, "html": f"<table>{body}</table>", "table": i,
                     "dom": t.get("order", 0)})
@@ -215,6 +221,33 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, width, 
         k += 1
     out = reading_order([b for b in out if b["box"]], positioning, lang)
     return edges(out, width, height)
+
+
+def merged_grid(rows):
+    """The table's rows with every merged cell written Surya 2.5's way: the cell itself (the parent, with its
+    colspan / rowspan), then a ghost cell for each other grid place it covers, to its right in its row and at
+    its column in the rows below."""
+    out, below = [], {}  # below: {(row, column): parent} still to be filled by rowspans
+    for r, row in enumerate(rows):
+        line, c = [], 0
+        cells = list(row["cells"])
+        while cells or (r, c) in below:
+            if (r, c) in below:
+                line.append({"ghost": True, "tag": below.pop((r, c))["tag"]})
+                c += 1
+                continue
+            cell = cells.pop(0)
+            line.append(cell)
+            for dr in range(cell.get("rowspan", 1)):
+                for dc in range(cell["colspan"]):
+                    if dr or dc:
+                        if dr == 0:
+                            line.append({"ghost": True, "tag": cell["tag"]})
+                        else:
+                            below[(r + dr, c + dc)] = cell
+            c += cell["colspan"]
+        out.append(line)
+    return out
 
 
 def edges(out, width, height, band=0.12):
@@ -289,24 +322,33 @@ def reading_order(out, positioning, lang):
 
 # -- the targets --------------------------------------------------------------------------------------------
 
+def compact(content):
+    """A block's HTML in Surya 2.5's spelling: </td>, </th> and </tr> left out. (In our tables every cell and
+    row is followed by another or by </table>, where Surya's encoder leaves them out too.)"""
+    return re.sub(r"</(td|th|tr)>", "", content)
+
+
 def full_ocr(blks, width, height):
+    """The full_ocr answer: each block's header tokens and compact content, nothing between blocks."""
+    return "".join(f"<|{b['label']}|>" + "".join(f"<|{v}|>" for v in norm(b["box"], width, height).split())
+                   + compact(b["html"]) for b in blks)
+
+
+def divs(blks, width, height):
+    """The same blocks as the div HTML Surya's decoder gives back (readable; kept in the labels JSON)."""
     return "\n".join(f'<div data-bbox="{norm(b["box"], width, height)}" data-label="{b["label"]}">{b["html"]}</div>'
                      for b in blks)
 
 
 def layout(blks, width, height):
+    """The layout answer: the JSON array on one line."""
     return json.dumps([{"label": b["label"], "bbox": norm(b["box"], width, height), "count": count(b["html"])}
-                       for b in blks], ensure_ascii=False, indent=2)
+                       for b in blks], ensure_ascii=False)
 
 
-def raw(blks, width, height):
-    """Surya's token sequence for the page (closing row and cell tags dropped, as it writes tables)."""
-    parts = []
-    for b in blks:
-        box = "".join(f"<|{v}|>" for v in norm(b["box"], width, height).split())
-        content = re.sub(r"</(tr|th|td)>", "", b["html"]) if b["label"] == "Table" else b["html"]
-        parts.append(f"<|{b['label']}|>{box}{content}")
-    return "".join(parts)
+def block_ocr(block):
+    """The block_ocr answer for one block cut out of the page: its compact content only."""
+    return compact(block["html"])
 
 
 def on_crop(box, crop):
@@ -315,10 +357,9 @@ def on_crop(box, crop):
                 crop[2] - crop[0], crop[3] - crop[1])
 
 
-def table(block, crop):
-    """A table cut out of the page: one entry, as Surya answered (box as tokens, its own count)."""
-    tokens = "".join(f"<|{v}|>" for v in on_crop(block["box"], crop).split())
-    return json.dumps([{"label": "Table", "bbox": tokens, "count": count(block["html"])}], ensure_ascii=False, indent=2)
+def table(rects, i, crop):
+    """The table answer for table i cut out of the page: rows then columns, a JSON array on one line."""
+    return json.dumps(table_structure(rects, i, crop), ensure_ascii=False)
 
 
 def table_structure(rects, i, crop):
@@ -333,50 +374,66 @@ LAYOUT_LABELS = {"Caption", "Footnote", "Equation-Block", "List-Group", "Page-He
                  "Section-Header", "Table", "Text", "Complex-Block", "Code-Block", "Form", "Table-Of-Contents", "Figure",
                  "Chemical-Block", "Diagram", "Bibliography", "Blank-Page"}  # Surya's layout JSON schema
 BBOX = re.compile(r"^\d{1,4} \d{1,4} \d{1,4} \d{1,4}$")
-TOKEN_BBOX = re.compile(r"^<\|(\d{1,4})\|><\|(\d{1,4})\|><\|(\d{1,4})\|><\|(\d{1,4})\|>$")
-DIV = re.compile(r'<div data-bbox="([^"]*)" data-label="([^"]*)">(.*)</div>')
+HEADER = re.compile(r"<\|([A-Za-z][A-Za-z-]*)\|><\|(\d{1,4})\|><\|(\d{1,4})\|><\|(\d{1,4})\|><\|(\d{1,4})\|>")
+CELL_END = re.compile(r"</(td|th|tr)>")
 
 
 def problems(task, target):
-    """What is wrong with a target for Surya's format (empty list: nothing): the div lines of full_ocr and
-    block_ocr, the layout JSON schema of its guided decoding, the one-entry table answer."""
+    """What is wrong with a target for Surya 2.5's format (empty list: nothing): compact blocks for full_ocr,
+    compact content without headers for block_ocr, a one-line JSON array for layout (its guided-decoding
+    schema) and table (Row / Col)."""
     out = []
 
-    def box_ok(b, where):
-        m = TOKEN_BBOX.match(b or "") if task == "table" else BBOX.match(b or "")
-        if not m:
-            out.append(f"{where}: bbox {b!r}")
-        else:
-            x0, y0, x1, y1 = map(int, m.groups() if task == "table" else b.split())
-            if x1 < x0 or y1 < y0 or max(x0, y0, x1, y1) > 1000:
-                out.append(f"{where}: bbox order/range {b}")
+    def box_ok(values, where):
+        x0, y0, x1, y1 = map(int, values)
+        if x1 < x0 or y1 < y0 or max(x0, y0, x1, y1) > 1000:
+            out.append(f"{where}: bbox order/range {' '.join(values)}")
     if task in ("full_ocr", "block_ocr"):
-        for k, line in enumerate(target.split("\n")):
-            m = DIV.fullmatch(line)
-            if not m:
-                out.append(f"line {k}: not a block div")
-                continue
-            box_ok(m.group(1), f"line {k}")
-            if m.group(2) not in LAYOUT_LABELS:
-                out.append(f"line {k}: label {m.group(2)}")
+        if "\n" in target or "</div>" in target or "<div" in target:
+            out.append("newline or div in a compact answer")
+        if CELL_END.search(target):
+            out.append("</td>, </th> or </tr> written out")
+        heads = list(HEADER.finditer(target))
+        if task == "block_ocr":
+            if heads:
+                out.append("block_ocr: a block header in the answer")
+            if not target.strip():
+                out.append("block_ocr: empty")
+        else:
+            if not heads or heads[0].start() != 0:
+                out.append("full_ocr: does not start with a block header")
+            for k, m in enumerate(heads):
+                if m.group(1) not in LAYOUT_LABELS:
+                    out.append(f"block {k}: label {m.group(1)}")
+                box_ok(m.groups()[1:], f"block {k}")
+                end = heads[k + 1].start() if k + 1 < len(heads) else len(target)
+                if m.end() == end:
+                    out.append(f"block {k}: empty")
     elif task in ("layout", "table"):
+        if "\n" in target:
+            out.append("JSON not on one line")
         try:
             entries = json.loads(target)
         except ValueError as e:
-            return [f"JSON: {e}"]
+            return out + [f"JSON: {e}"]
         if not isinstance(entries, list) or len(entries) > 200:
             out.append("not a list of at most 200 entries")
-        labels = LAYOUT_LABELS if task == "layout" else {"Table"}
+        keys, labels = ({"label", "bbox", "count"}, LAYOUT_LABELS) if task == "layout" else ({"label", "bbox"}, {"Row", "Col"})
         for k, e in enumerate(entries):
-            if set(e) != {"label", "bbox", "count"}:
+            if set(e) != keys:
                 out.append(f"entry {k}: keys {sorted(e)}")
             if e.get("label") not in labels:
                 out.append(f"entry {k}: label {e.get('label')}")
-            box_ok(e.get("bbox"), f"entry {k}")
-            if not (isinstance(e.get("count"), int) and e["count"] % 10 == 0):
+            if not BBOX.match(e.get("bbox") or ""):
+                out.append(f"entry {k}: bbox {e.get('bbox')!r}")
+            else:
+                box_ok(e["bbox"].split(), f"entry {k}")
+            if task == "layout" and not (isinstance(e.get("count"), int) and e["count"] % 10 == 0):
                 out.append(f"entry {k}: count {e.get('count')}")
-        if task == "table" and len(entries) != 1:
-            out.append("table: not one entry")
+        if task == "table":
+            kinds = [e.get("label") for e in entries]
+            if kinds != sorted(kinds, key=lambda x: x != "Row") or "Row" not in kinds or "Col" not in kinds:
+                out.append("table: rows then columns, at least one of each")
     return out
 
 

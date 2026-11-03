@@ -1,8 +1,12 @@
-# surya-format: training pages in the shape of Surya OCR 2.5's answers
+# surya-format: training pages in Surya OCR 2.5's own output format
 
-This branch (`surya-format`) changes one thing about the generator: **every page is made for one of Surya
-OCR 2.5's four prompts, and its label is the answer Surya gives to that prompt.** Everything else (templates,
-Wikipedia text, styling, SynthDoc rendering, effects, checks) is the same pipeline as on `main`.
+These branches (`surya-format`, and `surya-inference` on top of it) change one thing about the generator:
+**every page is made for one of Surya OCR 2.5's prompts, and its label is the answer Surya 2.5 gives to that
+prompt, written exactly the way the model writes it.** Everything else (templates, Wikipedia text, styling,
+SynthDoc rendering, effects, checks) is the same pipeline as on `main`.
+
+On `surya-inference` the formats come from asking the model itself, image by image, and from Surya's own
+source code; how they were found is in [surya_inference_findings.md](surya_inference_findings.md).
 
 This file explains, in simple English, what happens to one page, which function calls which, and how to run
 it. The code is in [pipeline/surya.py](pipeline/surya.py) (the Surya part) and
@@ -15,7 +19,7 @@ it. The code is in [pipeline/surya.py](pipeline/surya.py) (the Surya part) and
 3. [Function calls, in order](#3-function-calls-in-order)
 4. [How the blocks are made](#4-how-the-blocks-are-made)
 5. [How boxes survive the effects](#5-how-boxes-survive-the-effects)
-6. [The table task](#6-the-table-task)
+6. [The cut-out tasks (block_ocr, table)](#6-the-cut-out-tasks-block_ocr-table)
 7. [The files of one sample](#7-the-files-of-one-sample)
 8. [How to run it: commands and Python](#8-how-to-run-it-commands-and-python)
 9. [Where the formats come from](#9-where-the-formats-come-from)
@@ -24,63 +28,67 @@ it. The code is in [pipeline/surya.py](pipeline/surya.py) (the Surya part) and
 
 ## 1. The four prompts and their answers
 
-Surya OCR 2.5 is asked one of four questions (prompts). Each sample of this branch draws one, with these
-shares (`surya.TASKS`):
+Surya OCR 2.5 is asked one of four questions (prompts). Each sample draws one, with these shares
+(`surya.TASKS`):
 
 | Task | Share | Prompt (exact text, `surya.PROMPTS`) | The model sees | The label (target) |
 |---|---|---|---|---|
-| `full_ocr` | 40% | `OCR this image to HTML. Each block is a div with data-label and data-bbox "(x0 y0 x1 y1, normalized 0-1000).` | the page | one `<div>` per block |
-| `layout` | 20% | `Output the layout of this image as JSON. Each entry is a dict with "label", "bbox", and "count" fields. Bbox is x0 y0 x1 y1, normalized 0-1000.` | the page | a JSON array, one entry per block |
-| `block_ocr` | 25% | `OCR this block image to HTML.` | the page | one `<div>` per block (same as `full_ocr`) |
-| `table` | 15% | `Output the table rows then columns as JSON. Each entry is a dict with "label" ("Row" or "Col") and "bbox" (x0 y0 x1 y1, normalized 0-1000).` | a table cut out of the page | a JSON array with one `Table` entry |
+| `full_ocr` | 40% | `OCR this image to HTML. Each block is a div with data-label and data-bbox (x0 y0 x1 y1, normalized 0-1000).` | the page | compact blocks: `<\|Label\|><\|x0\|><\|y0\|><\|x1\|><\|y1\|>content`, one after another |
+| `layout` | 25% | `Output the layout of this image as JSON. Each entry is a dict with "label", "bbox", and "count" fields. Bbox is x0 y0 x1 y1, normalized 0-1000.` | the page | a JSON array on one line, one entry per block |
+| `block_ocr` | 35% | `OCR this block image to HTML.` | one block cut out of the page | that block's content only, compact (no label, no box) |
+| `table` | 0% (only when asked) | `Output the table rows then columns as JSON. Each entry is a dict with "label" ("Row" or "Col") and "bbox" (x0 y0 x1 y1, normalized 0-1000).` | a table cut out of the page | rows then columns as a JSON array on one line |
+
+The prompts are Surya's own wording, word for word (its code calls them "the model's training-time
+contract"). `table` is Surya 2's format: Surya 2.5 never answers it (its model card: row and column geometry
+needs a Surya 2 checkpoint; 2.5 reads tables through `block_ocr`), so it is not in the default mix.
 
 **Boxes** are four whole numbers `x0 y0 x1 y1`: the top-left and bottom-right corners, each on a 0-1000 scale
-of the image's width and height (0 = left/top edge, 1000 = right/bottom edge).
+of the image's width and height (0 = left/top edge, 1000 = right/bottom edge). In `full_ocr` they are tokens,
+`<|85|>`; in the JSON they are a string, `"85 26 401 42"`.
+
+**Compact** means Surya 2.5's own spelling: a block header is one label token and four coordinate tokens; a
+block has no `</div>`; nothing (no newline) between blocks; `</td>`, `</th>` and `</tr>` are left out (but
+`</table>`, `</p>`, `</li>`, `</ul>`, `</h1>` are written); a merged table cell is a `data-kind="parent"` cell
+with `data-cs` (columns) or `data-rs` (rows), followed by `data-kind="ghost"` cells for the places it covers.
 
 Real examples from this branch:
 
-`full_ocr` and `block_ocr` (an English DocLayNet page and an Arabic grammar page):
+`full_ocr` (an Arabic grammar page; the real file is one long line):
 
-```html
-<div data-bbox="62 43 159 74" data-label="Page-Header"><p>Career and works</p></div>
-<div data-bbox="48 131 319 183" data-label="Text"><p>Grayson Earle (born 1987) is an American contemporary artist and activist.</p></div>
-...
-<div data-bbox="367 133 898 190" data-label="Section-Header"><h1>الحلف الهابسبورغي الصفوي</h1></div>
-<div data-bbox="517 257 898 328" data-label="List-Group"><ul><li>▪ أرسل ملك إسبانيا كارلوس الأول مبعوثا لاقتراح.</li>...</ul></div>
+```text
+<|Image|><|22|><|14|><|981|><|149|><img alt="Photo: A dish of food."/><p class="img-desc">A close-up photograph of a dish of food.</p><|Section-Header|><|877|><|162|><|981|><|190|><h2>تاريخها</h2><|List-Group|><|22|><|202|><|980|><|265|><ul><li>◦ جامعة تشمران الأهوازية</li>...</ul>...
+```
+
+A table inside `full_ocr` (and the same in `block_ocr`):
+
+```text
+<|Table|><|0|><|0|><|100|><|100|><table><tr><th data-cs="2" data-kind="parent">A<th data-kind="ghost"><th>B<tr><td data-rs="2" data-kind="parent">C<td>D<td>E<tr><td data-kind="ghost"><td>F<td>G</table>
 ```
 
 `layout`:
 
 ```json
-[
-  {
-    "label": "Section-Header",
-    "bbox": "451 90 872 176",
-    "count": 30
-  },
-  {
-    "label": "Text",
-    "bbox": "744 237 887 286",
-    "count": 50
-  }
-]
+[{"label": "Section-Header", "bbox": "451 90 872 176", "count": 30}, {"label": "Text", "bbox": "744 237 887 286", "count": 50}]
 ```
 
-`table` (on a table cut out of the page; the box is written as tokens, as Surya wrote it):
+`block_ocr` (a cut-out page header):
+
+```html
+<p>الحروب العثمانية الصفوية</p>
+```
+
+`table` (on a table cut out of the page):
 
 ```json
-[
-  {
-    "label": "Table",
-    "bbox": "<|36|><|14|><|964|><|897|>",
-    "count": 460
-  }
-]
+[{"label": "Row", "bbox": "36 14 964 175"}, {"label": "Row", "bbox": "36 175 964 231"}, {"label": "Col", "bbox": "36 14 420 897"}]
 ```
 
-**count** is Surya's estimate of how long a block's text answer is. Fitted on Surya's own answers:
+**count** is the model's estimate of how many tokens it needs to OCR the block. Fitted on Surya's own answers:
 about 0.345 per Latin character + 1.05 per Arabic character of the block's HTML + 3, rounded to tens
 (`surya.count()`).
+
+The model ends every answer with its end token (`<|im_end|>`; this server shows it as `<|im_end!>`). Targets
+leave it out: the tokenizer adds it when training.
 
 ---
 
@@ -88,7 +96,7 @@ about 0.345 per Latin character + 1.05 per Arabic character of the block's HTML 
 
 ```mermaid
 flowchart TD
-    A["1. Pick a prompt<br/>full_ocr 40% · layout 20% · block_ocr 25% · table 15%"] --> B
+    A["1. Pick a prompt<br/>full_ocr 40% · layout 25% · block_ocr 35%<br/>(table only when asked)"] --> B
     B["2. Pick a template from bank2000/<br/>(table prompt: only templates with a table)"] --> C
     C["3. Fill it<br/>Wikipedia text, fonts, theme colours,<br/>tashkeel, photos from img_pool/"] --> D
     D["4. Render with SynthDoc (Chromium, 2x)<br/>measure every word, read the page's structure:<br/>tables, rows, cells, lists, pictures, headings"] --> E
@@ -98,11 +106,13 @@ flowchart TD
     F["6. Effect: clean, OCRSmith, Augraphy or scan-simulator<br/>words, tables, rows, columns, lists and pictures<br/>move with the page"] --> G
     G["7. Build Surya blocks<br/>Text, Section-Header, List-Group, Table, Image,<br/>Page-Header/Footer, Caption, Footnote"] --> H
     H{"8. Which prompt?"}
-    H -- "full_ocr / block_ocr" --> I["one div per block"]
-    H -- "layout" --> J["JSON array of label, bbox, count"]
-    H -- "table" --> K["cut the table out<br/>one Table entry"]
+    H -- "full_ocr" --> I["compact blocks:<br/>header tokens + content"]
+    H -- "layout" --> J["JSON array on one line:<br/>label, bbox, count"]
+    H -- "block_ocr" --> M["cut one block out<br/>its compact content"]
+    H -- "table" --> K["cut a table out<br/>rows then columns"]
     I --> L["9. Write the files:<br/>image · prompt · target · labels · Markdown · HTML"]
     J --> L
+    M --> L
     K --> L
 ```
 
@@ -123,7 +133,8 @@ In words:
    with the page, and so do the boxes of tables, rows, columns, lists and pictures.
 7. **Blocks.** The page is turned into Surya's blocks: a whole table is one Table block, a whole list is one
    List-Group block, each paragraph is a Text block, and so on (section 4).
-8. **The answer.** The blocks are written as the chosen prompt's answer.
+8. **The answer.** The blocks are written as the chosen prompt's answer. For `block_ocr` one block (not a
+   picture) is cut out of the page and the answer is its content; for `table` a table is cut out.
 9. **Save.** The image the model sees, the exact prompt, the answer, and the usual labels.
 
 ---
@@ -157,7 +168,7 @@ sequenceDiagram
     P->>G: regions(slots, words, boxes, lang, positioning)
     P->>Y: rebuild(plan, moved, width, height)
     P->>Y: blocks(regions, roles, struct, rects, ...)
-    P->>Y: full_ocr(...) / layout(...) / table(...)
+    P->>Y: full_ocr(...) / layout(...) / block_ocr(block) / table(...)
     P-->>U: summary dict (files written to out_dir)
 ```
 
@@ -195,16 +206,18 @@ def sample(self, seed, name, language=None, effect=None, task=None):
     blks = SURYA.blocks(regions, roles, qa["struct"], rects, lang, positioning,
                         self.categories, width, height)         # [{"label", "box", "html"}, ...]
 
-    if task in ("full_ocr", "block_ocr"):
-        target = SURYA.full_ocr(blks, width, height)
+    if task == "full_ocr":
+        target = SURYA.full_ocr(blks, width, height)            # compact blocks
     elif task == "layout":
-        target = SURYA.layout(blks, width, height)
+        target = SURYA.layout(blks, width, height)              # JSON array on one line
+    elif task == "block_ocr":
+        b, crop = rng.choice(clean_cutouts(blks))               # one block, not a picture: crop_box(...) + clear(...)
+        target = SURYA.block_ocr(b)                             # its compact content
     else:  # table
-        b, crop = rng.choice(clean_table_cutouts(blks))        # crop_box(...) + clear(...)
-        target = SURYA.table(b, crop)
-        structure = SURYA.table_structure(rects, b["table"], crop)
+        b, crop = rng.choice(clean_table_cutouts(blks))
+        target = SURYA.table(rects, b["table"], crop)           # rows then columns on the cut-out
 
-    # write <name>.jpg (or the cut-out), <name>.prompt.txt, <name>.target.html/.json, <name>.json, ...
+    # write <name>.jpg (or the cut-out), <name>.prompt.txt, <name>.target.txt/.json, <name>.json, ...
     return summary
 ```
 
@@ -222,13 +235,15 @@ def sample(self, seed, name, language=None, effect=None, task=None):
 | `groundtruth.regions(slots, words, boxes, lang, positioning)` | the words after the effect | one region per slot: `{id, role, text, box, bbox}` |
 | `surya.rebuild(plan, moved, width, height)` | the moved corners | `{key: [x0, y0, x1, y1]}` for every table, row, column, list, picture still on the image |
 | `surya.blocks(regions, roles, struct, rects, lang, positioning, categories, width, height)` | regions, structure, moved rects | Surya blocks in reading order: `[{"label", "box", "html", ...}]` |
-| `surya.full_ocr(blks, width, height)` | the blocks | the `full_ocr` / `block_ocr` answer (one div per line) |
-| `surya.layout(blks, width, height)` | the blocks | the `layout` answer (JSON text) |
-| `surya.crop_box(box, width, height, rng, others, share)` | a table's box, the other blocks | the cut-out `[x0, y0, x1, y1]`, its margin stopping short of other blocks |
+| `surya.full_ocr(blks, width, height)` | the blocks | the `full_ocr` answer (compact blocks, one line) |
+| `surya.layout(blks, width, height)` | the blocks | the `layout` answer (JSON array on one line) |
+| `surya.block_ocr(block)` | one block | the `block_ocr` answer (its compact content) |
+| `surya.compact(html)` | a block's HTML | the same in Surya 2.5's spelling (`</td>`, `</th>`, `</tr>` left out) |
+| `surya.divs(blks, width, height)` | the blocks | the readable `<div data-bbox data-label>` form (kept in the labels JSON) |
+| `surya.crop_box(box, width, height, rng, others, share)` | a block's or table's box, the other blocks | the cut-out `[x0, y0, x1, y1]`, its margin stopping short of other blocks |
 | `surya.clear(crop, others)` | a cut-out | `True` if no other block reaches into it |
-| `surya.table(block, crop)` | the table block and its cut-out | the `table` answer (JSON text, one entry) |
-| `surya.table_structure(rects, i, crop)` | the moved rows and columns | rows then columns on the cut-out (kept in the labels JSON) |
-| `surya.raw(blks, width, height)` | the blocks | Surya's token sequence for the page (kept in the labels JSON) |
+| `surya.table(rects, i, crop)` | the moved rows and columns, the cut-out | the `table` answer (JSON array on one line) |
+| `surya.table_structure(rects, i, crop)` | the same | rows then columns as a list (kept in the labels JSON) |
 | `surya.problems(task, target)` | any answer | a list of format problems; empty means it matches Surya's format |
 
 ---
@@ -255,7 +270,7 @@ flowchart LR
 
 | On our page | Surya label | What goes inside the div |
 |---|---|---|
-| all cells of one `<table>` | `Table` | `<table><tr><th><b>…</b></th>…</tr><tr><td>…</td>…</tr></table>` (`<b>` for bold cells; empty cells kept) |
+| all cells of one `<table>` | `Table` | `<table><tr><th><b>…</b><th>…<tr><td>…<td>…</table>` (`<b>` for bold cells; empty cells kept; merged cells as parent + ghost cells) |
 | all items of one `<ul>`/`<ol>` | `List-Group` | `<ul><li>• item</li>…</ul>` (the bullet as drawn: • ◦ ▪, or 1. / ١.) |
 | a picture | `Image` | `<img alt="Photo: …"/><p class="img-desc">…</p>` |
 | title / heading / subtitle | `Section-Header` | `<h1>` / `<h2>` / `<h3>` |
@@ -288,24 +303,23 @@ first.
 
 ---
 
-## 6. The table task
+## 6. The cut-out tasks (block_ocr, table)
 
 ```mermaid
 flowchart TD
-    A["task = table"] --> B["template(): only templates with a table"]
+    A["task = block_ocr or table"] --> B["template(): for table, only templates with a table"]
     B --> C["render + checks"]
-    C --> D{"table text still on the page?"}
+    C --> D{"table: table text still on the page?"}
     D -- "no (cut off at the bottom)" --> B
-    D -- yes --> E["effect, then blocks"]
-    E --> F["for each Table block:<br/>crop_box() with a 3-12% margin,<br/>stopping short of every other block"]
+    D -- "yes, or block_ocr" --> E["effect, then blocks"]
+    E --> F["for each candidate block (block_ocr: any but a picture; table: a Table):<br/>crop_box() with a margin (6-24 px; table 3-12% of its size),<br/>stopping short of every other block"]
     F --> G{"clear(): no other block<br/>inside the cut-out?"}
-    G -- "at least one table" --> H["table(): one entry,<br/>box as &lt;|x0|&gt;&lt;|y0|&gt;&lt;|x1|&gt;&lt;|y1|&gt; on the cut-out,<br/>count of the table's HTML"]
+    G -- "at least one" --> H["block_ocr(block): its compact content<br/>table(rects, i, crop): rows then columns"]
     G -- "none (turned page: boxes overlap)" --> I["made as full_ocr instead<br/>(the note says so)"]
 ```
 
-The model sees only the cut-out (`<name>.jpg`); the whole page is saved as `<name>_page.jpg`. The rows and
-columns the prompt names are also computed (`table_structure()`) and kept in the labels JSON under
-`surya.table_structure`, in case they are wanted later.
+The model sees only the cut-out (`<name>.jpg`); the whole page is saved as `<name>_page.jpg`. Pictures are
+never cut out for `block_ocr`: Surya does not OCR picture blocks one by one.
 
 ---
 
@@ -315,10 +329,10 @@ columns the prompt names are also computed (`table_structure()`) and kept in the
 |---|---|
 | `<name>.jpg` | what the model is shown: the page, or (table) the table cut out of it |
 | `<name>.prompt.txt` | the exact prompt |
-| `<name>.target.html` | the answer for `full_ocr` and `block_ocr` |
+| `<name>.target.txt` | the answer for `full_ocr` and `block_ocr` |
 | `<name>.target.json` | the answer for `layout` and `table` |
-| `<name>_page.jpg` | the whole page, only when `<name>.jpg` is a cut-out |
-| `<name>.json` | all labels: words, lines, slots, and under `surya`: `task`, `prompt`, `target`, `crop`, `table_structure`, `page_size`, `raw`, `blocks` |
+| `<name>_page.jpg` | the whole page, only when `<name>.jpg` is a cut-out (`block_ocr`, `table`) |
+| `<name>.json` | all labels: words, lines, slots, and under `surya`: `task`, `prompt`, `target`, `crop`, `table_structure`, `page_size`, `divs`, `blocks` |
 | `<name>.md` | the page-level ground truth of `main` (`<text>… <bbox>…</bbox></text>` per slot) |
 | `<name>.html` | the filled page |
 | `<name>_blocks.jpg`, `_slots.jpg`, `_words.jpg`, `_clean.jpg` | drawings for checking (the generator page) |
@@ -350,7 +364,7 @@ Then open http://localhost:8767. The **Task** menu picks the prompt (or a mix).
 D:\code\OCR\arabic-template-bank\.venv-pipeline\Scripts\python -m pipeline.dataset --n 1000 --out datasets\surya_v1 --workers 6
 ```
 
-Add `--task full_ocr` (or `layout`, `block_ocr`, `table`) for one prompt only; the other options are those of
+Add `--task full_ocr` (or `layout`, `block_ocr`, `table`) for one prompt only (`table` only this way); the other options are those of
 `main` (`--language`, `--source`, `--effect`, `--tashkeel`, `--strength-…`).
 
 **From Python, one sample:**
@@ -391,7 +405,8 @@ label = json.load(open("pipeline_out/mine/p7.json", encoding="utf-8"))
 width, height = label["surya"]["page_size"]
 blks = label["surya"]["blocks"]                            # [{"label", "box", "html"}, ...]
 
-print(surya.full_ocr(blks, width, height))                 # the full_ocr / block_ocr answer
+print(surya.full_ocr(blks, width, height))                 # the full_ocr answer
+print(surya.block_ocr(blks[0]))                            # the block_ocr answer for the first block
 print(surya.layout(blks, width, height))                   # the layout answer
 print(surya.count('<p>Hello world</p>'))                   # Surya's count for one block: 10
 print(surya.norm([159, 92, 1012, 140], width, height))     # pixels -> "x0 y0 x1 y1" on 0-1000
@@ -401,18 +416,18 @@ print(surya.norm([159, 92, 1012, 140], width, height))     # pixels -> "x0 y0 x1
 
 ## 9. Where the formats come from
 
-From Surya's own answers in `suryan_outputs/` (in the main folder): four reference pages (a report, an
-invoice table, a text block, an Arabic page) and twelve of our generated pages, each with the four prompts'
-answers. Only the answers Surya got right are copied:
+Three sources, all detailed in [surya_inference_findings.md](surya_inference_findings.md):
 
-- **full_ocr:** the div form, labels, tags and reading order of the reference pages. Header and footer items
-  are one block only when they touch (a row of links), separate when far apart (titles spread over the top).
-- **block_ocr:** on whole pages Surya answered with the same blocks, labels and order as `full_ocr` (header
-  and footer text always in `<p>`, as ours always is), so a `block_ocr` sample is the whole page.
-- **layout:** the JSON array, 2-space indent, keys `label`, `bbox`, `count`, as in `layout.json`.
-- **table:** Surya's only valid answer, on the table-only image:
-  `[{"label": "Table", "bbox": "<|32|><|71|><|959|><|884|>", "count": 220}]`. Its answers on whole pages were
-  never valid JSON, so they are not copied.
+1. **The model itself.** Hundreds of requests to the Surya 2.5 server, one at a time: our pages, single blocks
+   and tables cut out of them, and the four reference pages, each with every prompt (`surya_probe/`).
+2. **Surya's own code** (datalab-to/surya, `surya/inference/`): `prompts.py` (the exact prompts),
+   `compact.py` (the output format: how HTML becomes the compact form), `parsers.py` (how each answer is read
+   back), `merged_cells.py` (parent / ghost cells).
+3. **The model card** (datalab-to/surya-ocr-2.5): `count` is the token estimate; row and column geometry needs
+   Surya 2; tables in 2.5 come back as HTML.
 
-Surya's mistakes are not copied either (calling mid-page headings Page-Header, misread words on degraded
-pages). More detail: [OCRREADME.md, section 0.10](OCRREADME.md#010-surya-ocr-25-targets-branch-surya-format-experimental).
+What changed from the first version of this branch: the `<div>` files in `suryan_outputs/` were made by a
+converter from the model's compact answer, not by the model; `block_ocr` is meant for one block cut out of a
+page (on a whole page the model just does full OCR); the layout JSON is written on one line; the table prompt's
+only "valid" answer earlier (one `Table` entry with token coordinates) was the schema forcing the model's own
+tokens into JSON, not a real answer; and the full-page prompt had a stray quote before `(x0`.

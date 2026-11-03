@@ -78,7 +78,7 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
   <label>Language <select id="language"><option value="mix">mixed (Arabic and English)</option><option value="ar">Arabic</option><option value="en">English</option></select></label>
   <label>Effects <select id="effect"><option value="mix">mixed (15% clean, rest even)</option><option value="clean">clean (no effects)</option><option value="ocrsmith">OCRSmith</option><option value="augraphy">Augraphy</option><option value="scan-simulator">scan-simulator</option><option value="augraphy+scan-simulator">Augraphy + scan-simulator</option></select></label>
   <label>Templates <select id="source"><option value="mix">bank: all sources</option><option value="grammar">bank: Grammar</option><option value="websight">bank: WebSight v0.1</option><option value="websight2">bank: WebSight v0.2</option><option value="doclaynet">bank: DocLayNet</option></select></label>
-  <label title="The Surya OCR 2.5 prompt each sample is made for; its label is Surya's answer to it">Task <select id="task"><option value="mix">mixed (40% full OCR, 20% layout, 25% block, 15% table)</option><option value="full_ocr">full_ocr (page to HTML blocks)</option><option value="layout">layout (page to JSON)</option><option value="block_ocr">block_ocr (page to HTML blocks)</option><option value="table">table (rows and columns)</option></select></label>
+  <label title="The Surya OCR 2.5 prompt each sample is made for; its label is Surya's answer to it">Task <select id="task"><option value="mix">mixed (40% full OCR, 25% layout, 35% block)</option><option value="full_ocr">full_ocr (page to HTML blocks)</option><option value="layout">layout (page to JSON)</option><option value="block_ocr">block_ocr (one block cut out)</option><option value="table">table (rows and columns, Surya 2 only)</option></select></label>
   <label title="Arabic diacritics (harakat), added by a diacritization model">Tashkeel <select id="tashkeel"><option value="mix">mixed (40% none, 30% partial, 30% full)</option><option value="none">none</option><option value="partial">partial (some words)</option><option value="full">full (every letter)</option></select></label>
   <label>Text <select id="text"><option value="wikipedia">Wikipedia (ar + en)</option><option value="demo">demo sentences</option></select></label>
   <label>Template maker <select id="templates"><option value="bank">bank</option><option value="llm" id="llm-opt">LLM</option></select></label>
@@ -108,7 +108,7 @@ let job = null, samples = [], timer = null, current = -1, tab = "both";
 const TABS = [["both", "Image + Target"], ["final", "Input image"], ["blocks", "Block boxes"], ["md", "Markdown"], ["slots", "Slot boxes"], ["words", "Word boxes"],
               ["clean", "Clean render"], ["html", "HTML code"], ["json", "Labels JSON"], ["info", "Details"]];
 const FILE = {both: ".md", final: ".jpg", blocks: "_blocks.jpg", words: "_words.jpg", slots: "_slots.jpg", clean: "_clean.jpg", html: ".html", md: ".md", json: ".json"};
-const SURYA_PROMPTS = {"full_ocr": "OCR this image to HTML. Each block is a div with data-label and data-bbox \"(x0 y0 x1 y1, normalized 0-1000).", "layout": "Output the layout of this image as JSON. Each entry is a dict with \"label\", \"bbox\", and \"count\" fields. Bbox is x0 y0 x1 y1, normalized 0-1000.", "table": "Output the table rows then columns as JSON. Each entry is a dict with \"label\" (\"Row\" or \"Col\") and \"bbox\" (x0 y0 x1 y1, normalized 0-1000).", "block_ocr": "OCR this block image to HTML."};
+const SURYA_PROMPTS = {"full_ocr": "OCR this image to HTML. Each block is a div with data-label and data-bbox (x0 y0 x1 y1, normalized 0-1000).", "layout": "Output the layout of this image as JSON. Each entry is a dict with \"label\", \"bbox\", and \"count\" fields. Bbox is x0 y0 x1 y1, normalized 0-1000.", "table": "Output the table rows then columns as JSON. Each entry is a dict with \"label\" (\"Row\" or \"Col\") and \"bbox\" (x0 y0 x1 y1, normalized 0-1000).", "block_ocr": "OCR this block image to HTML."};
 const GT_LINE = /^<text>(.*) <bbox>(-?\d+), (-?\d+), (-?\d+), (-?\d+)<\/bbox><\/text>$/;
 // the Markdown as in the file, each line's text isolated so Arabic doesn't reorder the tags around it
 const mdLines = (text) => text.split(/\r?\n/).filter(Boolean).map((line, i) => {
@@ -190,15 +190,19 @@ async function show() {
     body.innerHTML = `<div class="facts"><table>${rows.map(([k, v]) => `<tr><td>${k}</td><td>${esc(v)}</td></tr>`).join("")}</table></div>`;
   } else if (tab === "both") {  // the model's input and its target side by side; a line lights up its box
     const text = await (await fetch(`/out/${job.id}/${s.target_file}`)).text();
-    // the target as written: one line per block (full_ocr, block_ocr), or the JSON array with each entry marked
-    // (layout, table); boxes are Surya's 0-1000 of the image, as numbers or as <|n|> tokens
+    // the target as written, each part marked: full_ocr's blocks (each from its <|Label|><|x0|>... header; the
+    // file has no line breaks, the view starts each block on a line), the JSON array's entries (layout, table),
+    // or block_ocr's one block; boxes are Surya's 0-1000 of the image
     const json = s.task === "layout" || s.task === "table";
-    const entries = json ? text.match(/ {2}\{[\s\S]*?\n {2}\}/g) || [] : text.split(/\r?\n/).filter(Boolean);
-    const BOX = /(?:data-bbox=|"bbox": ?)"(?:<\|)?(\d+)(?:\|>| )(?:<\|)?(\d+)(?:\|>| )(?:<\|)?(\d+)(?:\|>| )(?:<\|)?(\d+)(?:\|>)?"/;
-    const boxes = entries.map((l) => ((l.match(BOX) || []).slice(1).map(Number)));
+    const HEAD = /<\|[A-Za-z][A-Za-z-]*\|>(?:<\|\d{1,4}\|>){4}/g;
+    const starts = s.task === "full_ocr" ? [...text.matchAll(HEAD)].map((m) => m.index) : [];
+    const entries = json ? text.match(/\{[^{}]*\}/g) || []
+                         : s.task === "full_ocr" ? starts.map((a, i) => text.slice(a, starts[i + 1] ?? text.length)) : [text];
+    const boxes = entries.map((l) => ((l.match(/^<\|[A-Za-z-]+\|><\|(\d+)\|><\|(\d+)\|><\|(\d+)\|><\|(\d+)\|>/)
+                                      || l.match(/"bbox": ?"(\d+) (\d+) (\d+) (\d+)"/) || []).slice(1).map(Number)));
     const shown = (line) => line.split(/(<[^>]+>)/).map((part, k) => k % 2 ? esc(part) : part ? `<bdi>${esc(part)}</bdi>` : "").join("");
-    let n = 0;  // JSON: the file's text, each entry wrapped where it stands
-    const listing = json ? esc(text).replace(/ {2}\{[\s\S]*?\n {2}\}/g, (m) => `<span class="ln inl" data-i="${n++}">${m}</span>`)
+    let n = 0;  // JSON: the file's one line, each entry wrapped where it stands
+    const listing = json ? esc(text).replace(/\{[^{}]*\}/g, (m) => `<span class="ln inl" data-i="${n++}">${m}</span>`)
                          : entries.map((l, i) => `<span class="ln" data-i="${i}">${shown(l)}</span>`).join("");
     body.innerHTML = `<div class="split"><div class="page"><div class="frame"><img src="${url(s, "final")}" alt="">
       <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">${boxes.map((b, i) => b.length === 4

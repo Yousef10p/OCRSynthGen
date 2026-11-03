@@ -23,3 +23,10 @@ text_pool/
 datasets/
 bank2000/_staging/
 bank2000/_work/
+
+# surya probe: generated inputs and scratch (scripts, results and findings are kept)
+surya_probe/_work/
+surya_probe/inputs/*.jpg
+surya_probe/inputs/*.png
+surya_probe/smoke.jsonl
+surya_probe/probe*.log
