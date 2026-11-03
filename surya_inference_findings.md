@@ -240,8 +240,8 @@ cut-outs. Blocks are paired by box (IoU >= 0.5). Results are in `surya_probe/che
 | Format (headers, compact tags, no newline, no `</td>`) | the same on every page and cut-out; all 40 targets pass `problems()` |
 | full_ocr blocks | ours 159, Surya 156, 131 paired; median IoU 0.78 |
 | full_ocr text | median character error 0.0 per paired block (with and without diacritics) |
-| full_ocr labels | 101 / 131 the same |
-| full_ocr tags | 88 / 131 the same |
+| full_ocr labels | 101 / 131 the same (112 with the label rule below) |
+| full_ocr tags | 88 / 131 the same (96 with the label rule below) |
 | block_ocr text | median character error 0.015 (0.003 without diacritics) |
 | block_ocr | Surya added a block header on 6 of 28 cut-outs (pictures, tables, a list); ours never does (`block_ocr` = content only, as in section 3) |
 
@@ -251,10 +251,13 @@ What differs, and what was done:
   (`<|Page-Header|><|69|><|56|><|146|><|67|>Biography`). **Changed:** `surya.on_page()` drops the `<p>` of a
   Page-Header in full_ocr (and the div form). On cut-outs Surya wrote `<p>` 2 of 3 times (alone, a header can't
   be told from a line of text), so block_ocr keeps `<p>`. Page-Footer: 1 bare, 1 `<p>`, too few to tell; kept `<p>`.
-- **Short title lines we call Text, Surya calls Section-Header** (14 of the 30 label differences). They come
-  from template slots with web roles: a "footer" or "header" link title halfway down the page ("Early life",
-  "Geography"), and bold run-in labels ("Backs:", written by Surya as `<b>Backs:</b>` with no `<h…>`). Not
-  changed yet: it needs a rule for when a short line is a heading.
+- **Short title lines we called Text, Surya calls Section-Header** (14 of the 30 label differences).
+  - A label with no value beside it ("Backs:", "نظرة عامة:"): a heading in 11 of 11 cases, written as bare
+    `<b>Backs:</b>` (8) or `<h4>` (3). **Changed:** `surya.blocks()` makes such a label a Section-Header, `<b>`
+    when bold on the page, otherwise `<h4>`. With this rule applied to the probe pages' blocks, the same label
+    went from 101 to 112 of 131 paired blocks and the same tags from 88 to 96.
+  - A web "header" or "footer" line halfway down the page ("Geography", "Synthesis"): Surya made it a heading 3
+    times and Text 7 times. Kept as Text.
 - **Heading level is the model's guess.** h1/h2/h3/h4 differ for the same heading, and on cut-outs it may write
   a heading as `<p>`. Ours follows the page's own tag; not changed.
 - **Reading order**: same on 7 of 12 pages. Where it differs, Surya puts a side column after the main column

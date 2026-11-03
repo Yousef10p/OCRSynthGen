@@ -211,7 +211,12 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, width, 
             k += len(run)
             continue
         label = ROLE_LABEL.get(role, "Text")
-        if label == "Section-Header":
+        if role == "label":  # a label with no value beside it is a heading to Surya (11 of 11 in the probe, all
+            # bold on the page: 8 written as bare <b>, 3 as <h4>): bold as <b>, otherwise <h4>
+            tag = "b" if (styles.get(r["id"]) or {}).get("bold") else "h4"
+            out.append({"label": "Section-Header", "box": r["bbox"], "html": f"<{tag}>{esc(r['text'])}</{tag}>",
+                        "dom": order.get(r["id"], 0)})
+        elif label == "Section-Header":
             tag = (styles.get(r["id"]) or {}).get("h") or ROLE_TAG.get(role, "h2")
             tag = tag if tag in ("h1", "h2", "h3") else "h3"
             out.append({"label": label, "box": r["bbox"], "html": f"<{tag}>{esc(r['text'])}</{tag}>",

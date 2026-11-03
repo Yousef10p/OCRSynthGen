@@ -274,9 +274,11 @@ flowchart LR
 | all items of one `<ul>`/`<ol>` | `List-Group` | `<ul><li>• item</li>…</ul>` (the bullet as drawn: • ◦ ▪, or 1. / ١.) |
 | a picture | `Image` | `<img alt="Photo: …"/><p class="img-desc">…</p>` |
 | title / heading / subtitle | `Section-Header` | `<h1>` / `<h2>` / `<h3>` |
-| page header, footer, page number | `Page-Header`, `Page-Footer` | `<p>…</p>`; only near the top or bottom; items that touch are one block |
+| page header | `Page-Header` | the text bare, no `<p>` (in block_ocr `<p>…</p>`); only near the top; items that touch are one block |
+| footer, page number | `Page-Footer` | `<p>…</p>`; only near the bottom; items that touch are one block |
 | caption, footnote | `Caption`, `Footnote` | `<p>…</p>` |
 | a label with its value beside it | `Text` | `<p>Label: value</p>` |
+| a label with no value beside it | `Section-Header` | `<b>Label:</b>` when bold, otherwise `<h4>Label:</h4>` |
 | paragraph, quote, side box, other | `Text` | `<p>…</p>` (`<b>`/`<i>` if the whole block is bold/italic) |
 
 **Reading order:** the order of the page's code for normal pages; for DocLayNet pages (boxes placed at
