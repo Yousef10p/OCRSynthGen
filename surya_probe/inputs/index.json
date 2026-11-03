@@ -1,0 +1,522 @@
+[
+ {
+  "image": "g00_page.jpg",
+  "kind": "page",
+  "lang": "en",
+  "source": "grammar",
+  "effect": "clean",
+  "size": [
+   1632,
+   2688
+  ],
+  "ours_full_ocr": "<div data-bbox=\"69 56 146 67\" data-label=\"Page-Header\"><p>Biography</p></div>\n<div data-bbox=\"491 56 567 66\" data-label=\"Page-Header\"><p>Education</p></div>\n<div data-bbox=\"912 59 931 67\" data-label=\"Text\"><p>34</p></div>\n<div data-bbox=\"330 98 692 125\" data-label=\"Section-Header\"><h1>Volodymyr Ariev</h1></div>\n<div data-bbox=\"469 140 530 151\" data-label=\"Section-Header\"><h3>Career</h3></div>\n<div data-bbox=\"285 177 715 324\" data-label=\"Image\"><img alt=\"Photo: An animal in its natural surroundings.\"/><p class=\"img-desc\">A photograph of an animal in its natural surroundings.</p></div>\n<div data-bbox=\"146 329 854 340\" data-label=\"Caption\"><p>Volodymyr Ariev is a Ukrainian journalist, film director, author of the project \"Restricted Area\".</p></div>\n<div data-bbox=\"105 363 449 376\" data-label=\"Section-Header\"><h2>PACE Vice-President (2015, 2018)</h2></div>\n<div data-bbox=\"92 385 912 417\" data-label=\"Text\"><p>He also is the Member of Parliament of Ukraine since the 2007 Ukrainian parliamentary election, chairman of Ukrainian delegation in Parliamentary Assembly of the Council of.</p></div>\n<div data-bbox=\"69 439 931 507\" data-label=\"Text\"><p>He has a diplomatic rank of Extraordinary and Plenipotentiary Ambassador. March 2003 - March 2004, independent journalist and author of the program \"Non-province\"(STB), freelance writer at weekly \"Zerkalo Nedeli\" (\"Mirror Weekly\"); special correspondent at JSC Television Information Agency \"Profi TV\"</p></div>\n<div data-bbox=\"69 522 931 546\" data-label=\"Table\"><table><tr><th><b>Filmography</b></th><th><b>Awards</b></th></tr><tr><td colspan=\"2\">14,091</td></tr></table></div>\n<div data-bbox=\"69 579 931 695\" data-label=\"List-Group\"><ul><li>• 1992, Nature and Science Lyceum in Kyiv</li><li>• 1998, Institute for Journalism affiliated with Kyiv National University</li><li>• 1994, student of BBC World Service school, Kyiv</li><li>• February 1993 - October 1994, assistant reporter, stringer of Ukrainian and Russian BBC services, (Kyiv)</li><li>• 2002, journalist of , 1+1 Studio</li></ul></div>\n<div data-bbox=\"69 705 869 718\" data-label=\"Text\"><p><b>Family: MP 6th Verkhovna Rada since November</b></p></div>\n<div data-bbox=\"69 728 631 741\" data-label=\"Text\"><p><b>Ancient Kymissala: 053 363 6402</b></p></div>\n<div data-bbox=\"69 751 709 764\" data-label=\"Text\"><p><b>Research history: The archaeological site</b></p></div>\n<div data-bbox=\"69 774 597 787\" data-label=\"Text\"><p><b>Scientific Committee: 72,837.84</b></p></div>\n<div data-bbox=\"177 799 823 929\" data-label=\"Image\"><img alt=\"Photo: A dish of food.\"/><p class=\"img-desc\">A close-up photograph of a dish of food.</p></div>\n<div data-bbox=\"319 935 681 946\" data-label=\"Caption\"><p>This is one of the most important archaeological.</p></div>\n<div data-bbox=\"69 958 931 1000\" data-label=\"Image\"><img alt=\"Photo: A dish of food.\"/><p class=\"img-desc\">A close-up photograph of a dish of food.</p></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"69 56 146 67\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"491 56 567 66\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"912 59 931 67\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"330 98 692 125\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"469 140 530 151\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Image\",\n    \"bbox\": \"285 177 715 324\",\n    \"count\": 50\n  },\n  {\n    \"label\": \"Caption\",\n    \"bbox\": \"146 329 854 340\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"105 363 449 376\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"92 385 912 417\",\n    \"count\": 70\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"69 439 931 507\",\n    \"count\": 110\n  },\n  {\n    \"label\": \"Table\",\n    \"bbox\": \"69 522 931 546\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"List-Group\",\n    \"bbox\": \"69 579 931 695\",\n    \"count\": 130\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"69 705 869 718\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"69 728 631 741\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"69 751 709 764\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"69 774 597 787\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Image\",\n    \"bbox\": \"177 799 823 929\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"Caption\",\n    \"bbox\": \"319 935 681 946\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Image\",\n    \"bbox\": \"69 958 931 1000\",\n    \"count\": 40\n  }\n]"
+ },
+ {
+  "image": "g00_cut0_Table.jpg",
+  "kind": "cut",
+  "label": "Table",
+  "lang": "en",
+  "effect": "clean",
+  "size": [
+   1632,
+   77
+  ],
+  "ours_html": "<table><tr><th><b>Filmography</b></th><th><b>Awards</b></th></tr><tr><td colspan=\"2\">14,091</td></tr></table>",
+  "ours_box_on_cut": "69 78 931 922"
+ },
+ {
+  "image": "g00_cut1_Section-Header.jpg",
+  "kind": "cut",
+  "label": "Section-Header",
+  "lang": "en",
+  "effect": "clean",
+  "size": [
+   111,
+   42
+  ],
+  "ours_html": "<h3>Career</h3>",
+  "ours_box_on_cut": "54 143 946 857"
+ },
+ {
+  "image": "g00_cut2_Text.jpg",
+  "kind": "cut",
+  "label": "Text",
+  "lang": "en",
+  "effect": "clean",
+  "size": [
+   1632,
+   217
+  ],
+  "ours_html": "<p>He has a diplomatic rank of Extraordinary and Plenipotentiary Ambassador. March 2003 - March 2004, independent journalist and author of the program \"Non-province\"(STB), freelance writer at weekly \"Zerkalo Nedeli\" (\"Mirror Weekly\"); special correspondent at JSC Television Information Agency \"Profi TV\"</p>",
+  "ours_box_on_cut": "69 83 931 917"
+ },
+ {
+  "image": "g01_page.jpg",
+  "kind": "page",
+  "lang": "ar",
+  "source": "grammar",
+  "effect": "clean",
+  "size": [
+   1588,
+   2246
+  ],
+  "ours_full_ocr": "<div data-bbox=\"800 98 880 111\" data-label=\"Page-Header\"><p>تكوينات القلعة</p></div>\n<div data-bbox=\"119 98 173 111\" data-label=\"Page-Header\"><p>نوخاششي</p></div>\n<div data-bbox=\"732 133 881 168\" data-label=\"Section-Header\"><h1>نوخاششي</h1></div>\n<div data-bbox=\"519 188 880 224\" data-label=\"Text\"><p>كانت نوخاششي (أيضا نوخاششا ) منطقة في شمال غرب سوريا ازدهرت في الألفية الثانية قبل الميلاد.</p></div>\n<div data-bbox=\"519 241 881 399\" data-label=\"Text\"><p>وكانت فيدرالية يحكمها ملوك مختلفون تعاونوا ولربما كان لديهم ملك كبير. انتقل نوخاششي بين القوى المختلفة في المنطقة مثل مصر القديمة وميتاني والحثيين. تمردت المنطقة ضد الحيثيين مما أدى إلى قيام الملك الحيثي سابيليوليوما الأول بمهاجمة المنطقة وضمها. يعتبر الاسم «نوخاششي» اسما ساميا يعني «غني» أو «مزدهر». امتدت نوخاششي من وادي الفرات في الشرق إلى نهر العاصي في الغرب بين حمث في الجنوب وحلب في الشمال.</p></div>\n<div data-bbox=\"519 410 880 717\" data-label=\"List-Group\"><ul><li>• لم تشمل المنطقة مملكة إيبلا، وفصلها عن نهر الفرات كل من مدن إيمار و أشتاتا.</li><li>• في الغرب، لم تصل إلى نهر العاصي إلا إذا اشتملت على منطقة مملكة نيا، ويعتبر هذا الأمر محل نقاش بين المؤرخين.</li><li>• كانت تسمى المدينة الرئيسية «أوغولزات» (ربما تكون خان شيخون الحديثة).</li><li>• تولى أحد الملوك دور «أول النظراء» ، وعاش في «أوغولزات».</li><li>• كان غالبية السكان في النصف الثاني من الألفية الثانية قبل الميلاد من الساميين الغربيين السامي، بينما كانت الطبقات الحاكمة من الحوريين.</li><li>• تشكل العناصر الحورية حوالي خُمُس الجملة.</li><li>• تم ذكر المنطقة أيضًا في أرشيف مملكة.</li></ul></div>\n<div data-bbox=\"700 737 864 752\" data-label=\"Section-Header\"><h2>الاسم والحدود والمجتمع</h2></div>\n<div data-bbox=\"535 760 865 863\" data-label=\"Text\"><p>كانت المناطق الشمالية من نوخاششي في زمن ماري تحت سيطرة مملكة يمحاض بينما كانت المناطق الجنوبية تابعة لقطنا. ضم الفرعون المصري تحتمس الثالث المنطقة في القرن الخامس عشر قبل الميلاد، وأصبحت المنطقة بعدها تحت سيطرة مملكة ميتاني.</p></div>\n<div data-bbox=\"562 887 833 902\" data-label=\"Text\"><p>ذكرت معاهدة حيثية تعود إلى عهد الملك</p></div>\n<div data-bbox=\"137 209 463 289\" data-label=\"Text\"><p>تذكر المعاهدة أن أهالي حلب ارتكبوا مخالفة ضد ملك حيثي يدعى خاتوشيلي الثاني وقدم أهالي نوخاششي التماسا إلى الأول من أجل مناطق تابعة لحلب.</p></div>\n<div data-bbox=\"137 297 463 420\" data-label=\"Text\"><p>وافق الحثيون على طلب نوخاششي. تاريخ الخلافات الحدودية التي تدخل فيها الحيثيون مرتبط بتاريخ الملك المسمى خاتوشيلي ولكن هوية ذلك الملك غامضة ولكن كان من الممكن أن يكون ملكًا مشاركًا للملك الحيثي أرنوواندا الأول في أوائل القرن الرابع عشر قبل الميلاد.</p></div>\n<div data-bbox=\"119 447 481 599\" data-label=\"Text\"><p>يكشف أرشيف رسائل تل العمارنة أن نوخاششي كانت متورطة أيضًا في نزاعات إقليمية مع جارتها مملكة أمورو. أصبحت المنطقة تعرف باسم لواش في العصر الحديدي. ماستردون فرقة ميتال موسيقية، وقد رشحت لجائزة غرامي، الفرقة أسست سنة 1999 بمدينة أتلانتا بالولايات المتحدة الأمريكية من طرف بران ديلور، بيل كيلهير، تروي ساندرس، برنت هيندس.</p></div>\n<div data-bbox=\"119 617 481 740\" data-label=\"Text\"><p>ماستردون تأسست في أواخر سنة 1999 من طرف المغني برانديلور، والغيتاريست بيل كيليهر، والقادم من مدينة روكستر تروي ساندرس، والمغني / الغيتاريست بيرنت هيندس حيث التقوا في أحد حفلات الروك بالمدينة، ووجدوا أنهم يناسبون بعضهم البعض لصخب الروك الكبير الذي يتمتعون به.</p></div>\n<div data-bbox=\"326 762 469 869\" data-label=\"Image\"><img alt=\"Photo: A building and its surroundings.\"/><p class=\"img-desc\">A photograph of a building or structure and its surroundings.</p></div>\n<div data-bbox=\"442 878 470 892\" data-label=\"Section-Header\"><h3>نبذة</h3></div>\n<div data-bbox=\"351 900 470 915\" data-label=\"Text\"><p>ألوم ضحم صدر سنة</p></div>\n<div data-bbox=\"119 753 286 868\" data-label=\"Image\"><img alt=\"Photo: A building and its surroundings.\"/><p class=\"img-desc\">A photograph of a building or structure and its surroundings.</p></div>\n<div data-bbox=\"186 874 285 890\" data-label=\"Section-Header\"><h3>السنوات الأولى</h3></div>\n<div data-bbox=\"121 898 285 914\" data-label=\"Text\"><p>ثالت ألأبوم للفرقة أصدر بتاريخ</p></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"800 98 880 111\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"119 98 173 111\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"732 133 881 168\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"519 188 880 224\",\n    \"count\": 90\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"519 241 881 399\",\n    \"count\": 370\n  },\n  {\n    \"label\": \"List-Group\",\n    \"bbox\": \"519 410 880 717\",\n    \"count\": 500\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"700 737 864 752\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"535 760 865 863\",\n    \"count\": 210\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"562 887 833 902\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"137 209 463 289\",\n    \"count\": 130\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"137 297 463 420\",\n    \"count\": 240\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"119 447 481 599\",\n    \"count\": 300\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"119 617 481 740\",\n    \"count\": 240\n  },\n  {\n    \"label\": \"Image\",\n    \"bbox\": \"326 762 469 869\",\n    \"count\": 50\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"442 878 470 892\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"351 900 470 915\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Image\",\n    \"bbox\": \"119 753 286 868\",\n    \"count\": 50\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"186 874 285 890\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"121 898 285 914\",\n    \"count\": 30\n  }\n]"
+ },
+ {
+  "image": "g01_cut0_Text.jpg",
+  "kind": "cut",
+  "label": "Text",
+  "lang": "ar",
+  "effect": "clean",
+  "size": [
+   640,
+   217
+  ],
+  "ours_html": "<p>تذكر المعاهدة أن أهالي حلب ارتكبوا مخالفة ضد ملك حيثي يدعى خاتوشيلي الثاني وقدم أهالي نوخاششي التماسا إلى الأول من أجل مناطق تابعة لحلب.</p>",
+  "ours_box_on_cut": "95 92 905 922"
+ },
+ {
+  "image": "g01_cut1_Image.jpg",
+  "kind": "cut",
+  "label": "Image",
+  "lang": "ar",
+  "effect": "clean",
+  "size": [
+   295,
+   287
+  ],
+  "ours_html": "<img alt=\"Photo: A building and its surroundings.\"/><p class=\"img-desc\">A photograph of a building or structure and its surroundings.</p>",
+  "ours_box_on_cut": "51 56 949 951"
+ },
+ {
+  "image": "g01_cut2_Page-Header.jpg",
+  "kind": "cut",
+  "label": "Page-Header",
+  "lang": "ar",
+  "effect": "clean",
+  "size": [
+   98,
+   43
+  ],
+  "ours_html": "<p>نوخاششي</p>",
+  "ours_box_on_cut": "61 140 939 860"
+ },
+ {
+  "image": "g02_page.jpg",
+  "kind": "page",
+  "lang": "en",
+  "source": "doclaynet",
+  "effect": "clean",
+  "size": [
+   1632,
+   2112
+  ],
+  "ours_full_ocr": "<div data-bbox=\"414 71 481 83\" data-label=\"Page-Header\"><p>Honours</p></div>\n<div data-bbox=\"689 69 783 81\" data-label=\"Page-Header\"><p>Pat Thornton</p></div>\n<div data-bbox=\"127 74 179 86\" data-label=\"Page-Header\"><p>Career</p></div>\n<div data-bbox=\"164 180 811 434\" data-label=\"Image\"><img alt=\"Photo: A close view of plants and natural scenery.\"/><p class=\"img-desc\">A photograph of plants and natural scenery.</p></div>\n<div data-bbox=\"447 463 527 476\" data-label=\"Caption\"><p>Thornton.</p></div>\n<div data-bbox=\"153 590 829 838\" data-label=\"Image\"><img alt=\"Photo: A close-up of a texture.\"/><p class=\"img-desc\">A close-up photograph of a surface texture or pattern.</p></div>\n<div data-bbox=\"446 872 479 885\" data-label=\"Caption\"><p>His.</p></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"414 71 481 83\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"689 69 783 81\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"127 74 179 86\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Image\",\n    \"bbox\": \"164 180 811 434\",\n    \"count\": 50\n  },\n  {\n    \"label\": \"Caption\",\n    \"bbox\": \"447 463 527 476\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Image\",\n    \"bbox\": \"153 590 829 838\",\n    \"count\": 50\n  },\n  {\n    \"label\": \"Caption\",\n    \"bbox\": \"446 872 479 885\",\n    \"count\": 10\n  }\n]"
+ },
+ {
+  "image": "g02_cut0_Image.jpg",
+  "kind": "cut",
+  "label": "Image",
+  "lang": "en",
+  "effect": "clean",
+  "size": [
+   1132,
+   602
+  ],
+  "ours_html": "<img alt=\"Photo: A close view of plants and natural scenery.\"/><p class=\"img-desc\">A photograph of plants and natural scenery.</p>",
+  "ours_box_on_cut": "34 55 966 945"
+ },
+ {
+  "image": "g02_cut1_Page-Header.jpg",
+  "kind": "cut",
+  "label": "Page-Header",
+  "lang": "en",
+  "effect": "clean",
+  "size": [
+   172,
+   37
+  ],
+  "ours_html": "<p>Pat Thornton</p>",
+  "ours_box_on_cut": "52 162 948 838"
+ },
+ {
+  "image": "g02_cut2_Caption.jpg",
+  "kind": "cut",
+  "label": "Caption",
+  "lang": "en",
+  "effect": "clean",
+  "size": [
+   143,
+   39
+  ],
+  "ours_html": "<p>Thornton.</p>",
+  "ours_box_on_cut": "42 154 958 846"
+ },
+ {
+  "image": "g03_page.jpg",
+  "kind": "page",
+  "lang": "ar",
+  "source": "doclaynet",
+  "effect": "clean",
+  "size": [
+   1588,
+   2246
+  ],
+  "ours_full_ocr": "<div data-bbox=\"525 52 552 68\" data-label=\"Text\"><p>تاريخ</p></div>\n<div data-bbox=\"791 88 846 136\" data-label=\"Image\"><img alt=\"Photo: A general scene.\"/><p class=\"img-desc\">A photograph of a general scene.</p></div>\n<div data-bbox=\"756 92 775 100\" data-label=\"Text\"><p>وعلى.</p></div>\n<div data-bbox=\"755 108 775 119\" data-label=\"Text\"><p>هذا.</p></div>\n<div data-bbox=\"493 112 639 124\" data-label=\"Section-Header\"><h2>أولا: بسبب سهولة استخدامه</h2></div>\n<div data-bbox=\"225 124 254 135\" data-label=\"Text\"><p>الفهم.</p></div>\n<div data-bbox=\"120 162 813 868\" data-label=\"Table\"><table><tr><th><b>سيرته</b></th><th><b>حياته الشخصية</b></th><th><b>مؤلفاته</b></th><th><b>(38278) 1999 RD51</b></th><th><b>الوصف</b></th><th><b>الخصائص المدارية</b></th><th><b>الخصائص الفيزيائية</b></th></tr><tr><td>18,732</td><td>97,909</td><td>26,438</td><td>68.09</td><td>83.08</td><td>99,450</td><td>83.70</td></tr><tr><td>49%</td><td>1999</td><td>اكتُشف</td><td>28.25</td><td>966</td><td>87%</td><td>اكتُشف</td></tr><tr><td>وقد</td><td>5%</td><td>تستغرق</td><td>58%</td><td>768</td><td>69,231</td><td>39%</td></tr><tr><td>77.86</td><td>43.57</td><td>29.76</td><td>80%</td><td>95,503</td><td>يتميز</td><td>بسبب</td></tr><tr><td>يُقدر</td><td>73</td><td>استُخلصت</td><td>درب</td><td>يعد</td><td>794</td><td>المسلسل</td></tr><tr><td>48%</td><td>95,220</td><td>78.03</td><td>الدكتور</td><td>14.37</td><td>977</td><td>إشتهر</td></tr><tr><td>35,234</td><td>91.03</td><td>32,510</td><td>60%</td><td>49.66</td><td>فؤاد</td><td>94%</td></tr><tr><td>29,115</td><td>319</td><td>يصبح</td><td>فتبدأ</td><td>76%</td><td>يبدأ</td><td>81,410</td></tr><tr><td>6%</td><td>فيتم</td><td>ومن</td><td>25%</td><td>21,816</td><td>442</td><td>وبعد</td></tr><tr><td>46%</td><td>848</td><td>84%</td><td>فيصاب</td><td>فينصحه</td><td>وهناك</td><td>وهربا</td></tr><tr><td>كل</td><td>271</td><td>يقول</td><td>13.77</td><td>601</td><td>75,312</td><td>11.42</td></tr><tr><td>وتقبل</td><td>ره</td><td></td><td>ظهرت</td><td>43.44</td><td>وفي</td><td>88.21</td></tr><tr><td>غالبا</td><td>74.18</td><td>86,335</td><td>27.32</td><td>ولآلة</td><td>72.15</td><td>69%</td></tr><tr><td>والمعتاد</td><td>67%</td><td>ويوجد</td><td>كلية</td><td>19%</td><td>34,989</td><td>50,670</td></tr><tr><td>50%</td><td>97%</td><td>75%</td><td>2%</td><td>وهي</td><td>63.16</td><td>963</td></tr><tr><td>99,819</td><td>30%</td><td>10,146</td><td>45%</td><td>إلخ)</td><td>98,673</td><td>فيعتبر</td></tr><tr><td>76.87</td><td>89</td><td>65,825</td><td>52%</td><td>وكانت</td><td>38%</td><td>واستمر</td></tr><tr><td>53.16</td><td>52%</td><td>169</td><td>53,921</td><td>85.47</td><td>10.91</td><td>67.75</td></tr><tr><td>تقع</td><td>تخرج</td><td>10%</td><td>شعبة</td><td>تقيم</td><td>58.06</td><td>95.12</td></tr><tr><td>271</td><td>28%</td><td>52%</td><td>82,957</td><td>تتلمذ</td><td>820</td><td>لينكس</td></tr><tr><td>20,613</td><td>النسخة</td><td>11.48</td><td>58.44</td><td>الحزم</td><td>النسخة</td><td>النسخة</td></tr><tr><td>197</td><td>لهذا</td><td>76.57</td><td>4.97</td><td>42%</td><td>34,169</td><td>90.38</td></tr><tr><td>لينكس</td><td>مستوردة</td><td>30.16</td><td>روميو</td><td>51,911</td><td>وتستخدمه</td><td>52%</td></tr><tr><td>38.86</td><td>2,793</td><td>بمعنى</td><td>65%</td><td>997</td><td>بالإضافة</td><td>(بمعنى</td></tr><tr><td>57%</td><td>تقوم</td><td>القائمة</td><td>45%</td><td>صدر</td><td>مينت</td><td>13.89</td></tr><tr><td>88,516</td><td>96%</td><td>59,239</td><td>30%</td><td>كلية</td><td>وهي</td><td>إلخ)</td></tr><tr><td>15,750</td><td>فيعتبر</td><td>وكانت</td><td>94%</td><td>واستمر</td><td>تقع</td><td>تخرج</td></tr><tr><td>8%</td><td>32.23</td><td>شعبة</td><td>17,292</td><td>98,954</td><td>28%</td><td>54</td></tr><tr><td>49,113</td><td>15%</td><td>28.06</td><td>تقيم</td><td>60%</td><td>75%</td><td>تتلمذ</td></tr></table></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"525 52 552 68\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Image\",\n    \"bbox\": \"791 88 846 136\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"756 92 775 100\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"755 108 775 119\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"493 112 639 124\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"225 124 254 135\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Table\",\n    \"bbox\": \"120 162 813 868\",\n    \"count\": 1400\n  }\n]"
+ },
+ {
+  "image": "g03_cut0_Table.jpg",
+  "kind": "cut",
+  "label": "Table",
+  "lang": "ar",
+  "effect": "clean",
+  "size": [
+   1334,
+   1685
+  ],
+  "ours_html": "<table><tr><th><b>سيرته</b></th><th><b>حياته الشخصية</b></th><th><b>مؤلفاته</b></th><th><b>(38278) 1999 RD51</b></th><th><b>الوصف</b></th><th><b>الخصائص المدارية</b></th><th><b>الخصائص الفيزيائية</b></th></tr><tr><td>18,732</td><td>97,909</td><td>26,438</td><td>68.09</td><td>83.08</td><td>99,450</td><td>83.70</td></tr><tr><td>49%</td><td>1999</td><td>اكتُشف</td><td>28.25</td><td>966</td><td>87%</td><td>اكتُشف</td></tr><tr><td>وقد</td><td>5%</td><td>تستغرق</td><td>58%</td><td>768</td><td>69,231</td><td>39%</td></tr><tr><td>77.86</td><td>43.57</td><td>29.76</td><td>80%</td><td>95,503</td><td>يتميز</td><td>بسبب</td></tr><tr><td>يُقدر</td><td>73</td><td>استُخلصت</td><td>درب</td><td>يعد</td><td>794</td><td>المسلسل</td></tr><tr><td>48%</td><td>95,220</td><td>78.03</td><td>الدكتور</td><td>14.37</td><td>977</td><td>إشتهر</td></tr><tr><td>35,234</td><td>91.03</td><td>32,510</td><td>60%</td><td>49.66</td><td>فؤاد</td><td>94%</td></tr><tr><td>29,115</td><td>319</td><td>يصبح</td><td>فتبدأ</td><td>76%</td><td>يبدأ</td><td>81,410</td></tr><tr><td>6%</td><td>فيتم</td><td>ومن</td><td>25%</td><td>21,816</td><td>442</td><td>وبعد</td></tr><tr><td>46%</td><td>848</td><td>84%</td><td>فيصاب</td><td>فينصحه</td><td>وهناك</td><td>وهربا</td></tr><tr><td>كل</td><td>271</td><td>يقول</td><td>13.77</td><td>601</td><td>75,312</td><td>11.42</td></tr><tr><td>وتقبل</td><td>ره</td><td></td><td>ظهرت</td><td>43.44</td><td>وفي</td><td>88.21</td></tr><tr><td>غالبا</td><td>74.18</td><td>86,335</td><td>27.32</td><td>ولآلة</td><td>72.15</td><td>69%</td></tr><tr><td>والمعتاد</td><td>67%</td><td>ويوجد</td><td>كلية</td><td>19%</td><td>34,989</td><td>50,670</td></tr><tr><td>50%</td><td>97%</td><td>75%</td><td>2%</td><td>وهي</td><td>63.16</td><td>963</td></tr><tr><td>99,819</td><td>30%</td><td>10,146</td><td>45%</td><td>إلخ)</td><td>98,673</td><td>فيعتبر</td></tr><tr><td>76.87</td><td>89</td><td>65,825</td><td>52%</td><td>وكانت</td><td>38%</td><td>واستمر</td></tr><tr><td>53.16</td><td>52%</td><td>169</td><td>53,921</td><td>85.47</td><td>10.91</td><td>67.75</td></tr><tr><td>تقع</td><td>تخرج</td><td>10%</td><td>شعبة</td><td>تقيم</td><td>58.06</td><td>95.12</td></tr><tr><td>271</td><td>28%</td><td>52%</td><td>82,957</td><td>تتلمذ</td><td>820</td><td>لينكس</td></tr><tr><td>20,613</td><td>النسخة</td><td>11.48</td><td>58.44</td><td>الحزم</td><td>النسخة</td><td>النسخة</td></tr><tr><td>197</td><td>لهذا</td><td>76.57</td><td>4.97</td><td>42%</td><td>34,169</td><td>90.38</td></tr><tr><td>لينكس</td><td>مستوردة</td><td>30.16</td><td>روميو</td><td>51,911</td><td>وتستخدمه</td><td>52%</td></tr><tr><td>38.86</td><td>2,793</td><td>بمعنى</td><td>65%</td><td>997</td><td>بالإضافة</td><td>(بمعنى</td></tr><tr><td>57%</td><td>تقوم</td><td>القائمة</td><td>45%</td><td>صدر</td><td>مينت</td><td>13.89</td></tr><tr><td>88,516</td><td>96%</td><td>59,239</td><td>30%</td><td>كلية</td><td>وهي</td><td>إلخ)</td></tr><tr><td>15,750</td><td>فيعتبر</td><td>وكانت</td><td>94%</td><td>واستمر</td><td>تقع</td><td>تخرج</td></tr><tr><td>8%</td><td>32.23</td><td>شعبة</td><td>17,292</td><td>98,954</td><td>28%</td><td>54</td></tr><tr><td>49,113</td><td>15%</td><td>28.06</td><td>تقيم</td><td>60%</td><td>75%</td><td>تتلمذ</td></tr></table>",
+  "ours_box_on_cut": "88 30 912 970"
+ },
+ {
+  "image": "g03_cut1_Text.jpg",
+  "kind": "cut",
+  "label": "Text",
+  "lang": "ar",
+  "effect": "clean",
+  "size": [
+   43,
+   37
+  ],
+  "ours_html": "<p>هذا.</p>",
+  "ours_box_on_cut": "140 162 860 838"
+ },
+ {
+  "image": "g03_cut2_Section-Header.jpg",
+  "kind": "cut",
+  "label": "Section-Header",
+  "lang": "ar",
+  "effect": "clean",
+  "size": [
+   270,
+   39
+  ],
+  "ours_html": "<h2>أولا: بسبب سهولة استخدامه</h2>",
+  "ours_box_on_cut": "70 154 930 846"
+ },
+ {
+  "image": "g04_page.jpg",
+  "kind": "page",
+  "lang": "en",
+  "source": "websight",
+  "effect": "clean",
+  "size": [
+   1588,
+   2246
+  ],
+  "ours_full_ocr": "<div data-bbox=\"0 39 999 80\" data-label=\"List-Group\"><ul><li>Composition:</li><li>Music video:</li><li>Track listing:</li></ul></div>\n<div data-bbox=\"474 119 526 130\" data-label=\"Text\"><p>639086</p></div>\n<div data-bbox=\"27 221 307 304\" data-label=\"Text\"><p>\"Will You\" is a song by American Christian metal band P.O.D. and the lead single from their fifth studio album, Payable.</p></div>\n<div data-bbox=\"376 194 548 209\" data-label=\"Section-Header\"><h2>Official versions</h2></div>\n<div data-bbox=\"335 237 589 318\" data-label=\"Text\"><p>Released on September 22, 2003, the song charted at No. 17 on the Bubbling Under Hot 100 chart on December.</p></div>\n<div data-bbox=\"668 194 737 209\" data-label=\"Section-Header\"><h2>Charts</h2></div>\n<div data-bbox=\"589 237 815 320\" data-label=\"Text\"><p>The band chose \"Will You\" as a lead single to demonstrate a new side both lyrically and musically.</p></div>\n<div data-bbox=\"852 194 963 209\" data-label=\"Section-Header\"><h2>Nomi Ruiz</h2></div>\n<div data-bbox=\"832 237 982 343\" data-label=\"Text\"><p>Nomi Ruiz is an American singer, songwriter, actress, essayist, DJ and producer.</p></div>\n<div data-bbox=\"0 393 999 462\" data-label=\"List-Group\"><ul><li>▪ The album is a song-oriented downbeat.</li><li>▪ Slant Magazine placed \"You Belong\" at.</li><li>▪ In 2009 Ruiz formed the group.</li></ul></div>\n<div data-bbox=\"452 484 547 495\" data-label=\"Text\"><p>050 117 2012</p></div>\n<div data-bbox=\"465 510 535 524\" data-label=\"Text\"><p>Early life</p></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"List-Group\",\n    \"bbox\": \"0 39 999 80\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"474 119 526 130\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"27 221 307 304\",\n    \"count\": 50\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"376 194 548 209\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"335 237 589 318\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"668 194 737 209\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"589 237 815 320\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"852 194 963 209\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"832 237 982 343\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"List-Group\",\n    \"bbox\": \"0 393 999 462\",\n    \"count\": 50\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"452 484 547 495\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"465 510 535 524\",\n    \"count\": 10\n  }\n]"
+ },
+ {
+  "image": "g04_cut0_Text.jpg",
+  "kind": "cut",
+  "label": "Text",
+  "lang": "en",
+  "effect": "clean",
+  "size": [
+   135,
+   43
+  ],
+  "ours_html": "<p>Early life</p>",
+  "ours_box_on_cut": "89 140 911 860"
+ },
+ {
+  "image": "g04_cut1_Section-Header.jpg",
+  "kind": "cut",
+  "label": "Section-Header",
+  "lang": "en",
+  "effect": "clean",
+  "size": [
+   127,
+   47
+  ],
+  "ours_html": "<h2>Charts</h2>",
+  "ours_box_on_cut": "63 128 937 872"
+ },
+ {
+  "image": "g04_cut2_List-Group.jpg",
+  "kind": "cut",
+  "label": "List-Group",
+  "lang": "en",
+  "effect": "clean",
+  "size": [
+   1588,
+   175
+  ],
+  "ours_html": "<ul><li>▪ The album is a song-oriented downbeat.</li><li>▪ Slant Magazine placed \"You Belong\" at.</li><li>▪ In 2009 Ruiz formed the group.</li></ul>",
+  "ours_box_on_cut": "0 57 999 943"
+ },
+ {
+  "image": "g05_page.jpg",
+  "kind": "page",
+  "lang": "ar",
+  "source": "websight2",
+  "effect": "clean",
+  "size": [
+   1588,
+   2246
+  ],
+  "ours_full_ocr": "<div data-bbox=\"193 16 974 150\" data-label=\"Image\"><img alt=\"Photo: A general scene.\"/><p class=\"img-desc\">A photograph of a general scene.</p></div>\n<div data-bbox=\"193 150 530 169\" data-label=\"List-Group\"><ul><li>▪ نَظْرَةُ عَامَّةَ:</li><li>▪ العرب في أولمبيا:</li><li>▪ النّتائج الكاملة:</li><li>▪ مشروع باسر:</li></ul></div>\n<div data-bbox=\"75 45 144 96\" data-label=\"Section-Header\"><h1>باسر</h1></div>\n<div data-bbox=\"82 94 137 126\" data-label=\"Page-Header\"><p>التَّطْوِيرُ</p></div>\n<div data-bbox=\"81 152 139 173\" data-label=\"Text\"><p><b>أنظر أَيْضًا:</b></p></div>\n<div data-bbox=\"683 216 974 256\" data-label=\"Section-Header\"><h2>رليانس للصّناعات الْمَحْدُودَةِ</h2></div>\n<div data-bbox=\"27 254 974 301\" data-label=\"Text\"><p>رليانس للصّناعات المحدودة (رِيلْ) هِيَ شركة هِنْدِيَّةٌ مُتَعَدِّدَةُ الْجِنْسِيَّاتِ مَقَرُّهَا في مومباي، ماهاراشترا، الهند. تَمْتَلِكُ شَرِكَاتٍ في جميع أنحاء الْهِنْدِ تعمل فِي مجال الطَّاقَةِ وَالْبِتْرُوكِيمَاوِيَّاتِ وَالْمَنْسُوجَاتِ والموارد الطّبيعيّة وَتِجَارَةِ.</p></div>\n<div data-bbox=\"911 330 973 370\" data-label=\"Section-Header\"><h2>التّاريخ</h2></div>\n<div data-bbox=\"489 369 974 394\" data-label=\"Text\"><p>وَهِيَ وَاحِدَةٌ من أكثر الشَّرِكَاتِ رِبْحِيَّةً في الْهِنْدِ، أكبر شَرِكَةٍ للتّداول العامّ فِي.</p></div>\n<div data-bbox=\"884 445 974 465\" data-label=\"Text\"><p>2001 وَمَا بعده</p></div>\n<div data-bbox=\"935 463 974 480\" data-label=\"Text\"><p>مُسَاهَمَةَ</p></div>\n<div data-bbox=\"810 463 917 486\" data-label=\"Text\"><p>أَبُو الفَضْلِ (الرَّمْلَةُ)</p></div>\n<div data-bbox=\"753 463 793 482\" data-label=\"Text\"><p>التّسمية</p></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Image\",\n    \"bbox\": \"193 16 974 150\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"List-Group\",\n    \"bbox\": \"193 150 530 169\",\n    \"count\": 80\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"75 45 144 96\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"82 94 137 126\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"81 152 139 173\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"683 216 974 256\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"27 254 974 301\",\n    \"count\": 270\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"911 330 973 370\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"489 369 974 394\",\n    \"count\": 100\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"884 445 974 465\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"935 463 974 480\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"810 463 917 486\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"753 463 793 482\",\n    \"count\": 10\n  }\n]"
+ },
+ {
+  "image": "g06_page.jpg",
+  "kind": "page",
+  "lang": "en",
+  "source": "websight2",
+  "effect": "ocrsmith",
+  "size": [
+   1636,
+   2116
+  ],
+  "ours_full_ocr": "<div data-bbox=\"23 35 831 78\" data-label=\"Section-Header\"><h1>Sebastián Beltrame (presenter)</h1></div>\n<div data-bbox=\"23 101 137 121\" data-label=\"Page-Header\"><p>Biography</p></div>\n<div data-bbox=\"23 165 139 188\" data-label=\"Section-Header\"><h2>Career</h2></div>\n<div data-bbox=\"23 211 240 314\" data-label=\"List-Group\"><ul><li>▪ Accolades:</li><li>▪ Personal life:</li><li>▪ SPA F.C:</li><li>▪ History:</li></ul></div>\n<div data-bbox=\"261 165 414 188\" data-label=\"Section-Header\"><h2>Honours</h2></div>\n<div data-bbox=\"262 211 977 321\" data-label=\"Table\"><table><tr><th><b>List of head coach</b></th><th><b>Disulfur monoxide</b></th></tr><tr><td>Disulfur monoxide</td><td>45,783</td></tr><tr><td>It is a colourless</td><td>6.09</td></tr><tr><td>98.63</td><td>21,480</td></tr></table></div>\n<div data-bbox=\"23 360 432 387\" data-label=\"Section-Header\"><h2>Structure and spectrum</h2></div>\n<div data-bbox=\"23 413 128 433\" data-label=\"Text\"><p>Synthesis</p></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"23 35 831 78\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"23 101 137 121\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"23 165 139 188\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"List-Group\",\n    \"bbox\": \"23 211 240 314\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"261 165 414 188\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Table\",\n    \"bbox\": \"262 211 977 321\",\n    \"count\": 80\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"23 360 432 387\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"23 413 128 433\",\n    \"count\": 10\n  }\n]"
+ },
+ {
+  "image": "g06_cut0_Table.jpg",
+  "kind": "cut",
+  "label": "Table",
+  "lang": "en",
+  "effect": "ocrsmith",
+  "size": [
+   1243,
+   274
+  ],
+  "ours_html": "<table><tr><th><b>List of head coach</b></th><th><b>Disulfur monoxide</b></th></tr><tr><td>Disulfur monoxide</td><td>45,783</td></tr><tr><td>It is a colourless</td><td>6.09</td></tr><tr><td>98.63</td><td>21,480</td></tr></table>",
+  "ours_box_on_cut": "28 73 969 927"
+ },
+ {
+  "image": "g06_cut1_Text.jpg",
+  "kind": "cut",
+  "label": "Text",
+  "lang": "en",
+  "effect": "ocrsmith",
+  "size": [
+   210,
+   56
+  ],
+  "ours_html": "<p>Synthesis</p>",
+  "ours_box_on_cut": "90 107 910 893"
+ },
+ {
+  "image": "g06_cut2_Section-Header.jpg",
+  "kind": "cut",
+  "label": "Section-Header",
+  "lang": "en",
+  "effect": "ocrsmith",
+  "size": [
+   298,
+   60
+  ],
+  "ours_html": "<h2>Honours</h2>",
+  "ours_box_on_cut": "81 100 919 900"
+ },
+ {
+  "image": "g07_page.jpg",
+  "kind": "page",
+  "lang": "ar",
+  "source": "websight",
+  "effect": "augraphy",
+  "size": [
+   1632,
+   2112
+  ],
+  "ours_full_ocr": "<div data-bbox=\"431 22 569 52\" data-label=\"Page-Header\"><p>السَّيْرُ كَلَايِفُ غَرَانْجِرَ</p></div>\n<div data-bbox=\"800 93 1000 459\" data-label=\"List-Group\"><ul><li>▪ عَلَى أَسَاسٍ مُعَدَّلٍ دَخَلَ الْفَرْدُ مِنْ.</li><li>▪ فَازَ الْفَيْلْسُوفُ بِيرْتْرَانْدُ رَاسِلُ (18 مَايُو.</li><li>▪ فِي عَامِ 2007 ، شَارَكَ الثَّلَاثَةُ.</li><li>▪ يَصِلُ قَرْيَةُ الْمُخَيْزِنِ دَرْبٌ مُمهد طُولَهُ.</li><li>▪ أمّا الْمُؤَرِّخُ الْإِسْرَائِيلِيُّ بَنِي مُورِيس فَيَقُولُ.</li></ul></div>\n<div data-bbox=\"681 103 787 134\" data-label=\"Text\"><p>أَصْلُ التَّسْمِيَةِ:</p></div>\n<div data-bbox=\"447 159 788 225\" data-label=\"Section-Header\"><h1>المُخَيِّزِنِ (الرَّمْلَةُ)</h1></div>\n<div data-bbox=\"385 244 787 277\" data-label=\"Text\"><p>عَلَى الرَّغْمِ مِنْ أنّ الْمُخَيِّزْنَ كَانَتْ تُبْعِدُ بَعْضَ الْكِيلُومِتْرَاتِ.</p></div>\n<div data-bbox=\"525 301 788 360\" data-label=\"Section-Header\"><h1>مَوْقِعُ الْقَرْيَةِ</h1></div>\n<div data-bbox=\"616 383 788 414\" data-label=\"Text\"><p>حَيْثُ احْتَلَّتْ قُرَى الْمَمَرِّ.</p></div>\n<div data-bbox=\"685 438 787 466\" data-label=\"Text\"><p>كَمَا لَا يُذْكُرُ مَا.</p></div>\n<div data-bbox=\"137 492 788 550\" data-label=\"Section-Header\"><h1>احْتِلَالُ القَرْيَةِ وَتَطْهِيرُهَا عرقيًّا</h1></div>\n<div data-bbox=\"438 576 788 609\" data-label=\"Text\"><p>جُرفت الْقَرْيَةُ وسُويت بِالْأَرْضِ، بِحَيْثُ لَمْ يَعُدْ يُرى.</p></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"431 22 569 52\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"List-Group\",\n    \"bbox\": \"800 93 1000 459\",\n    \"count\": 260\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"681 103 787 134\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"447 159 788 225\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"385 244 787 277\",\n    \"count\": 90\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"525 301 788 360\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"616 383 788 414\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"685 438 787 466\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"137 492 788 550\",\n    \"count\": 50\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"438 576 788 609\",\n    \"count\": 70\n  }\n]"
+ },
+ {
+  "image": "g07_cut0_Text.jpg",
+  "kind": "cut",
+  "label": "Text",
+  "lang": "ar",
+  "effect": "augraphy",
+  "size": [
+   187,
+   76
+  ],
+  "ours_html": "<p>أَصْلُ التَّسْمِيَةِ:</p>",
+  "ours_box_on_cut": "37 79 963 921"
+ },
+ {
+  "image": "g07_cut1_Section-Header.jpg",
+  "kind": "cut",
+  "label": "Section-Header",
+  "lang": "ar",
+  "effect": "augraphy",
+  "size": [
+   1309,
+   145
+  ],
+  "ours_html": "<h1>احْتِلَالُ القَرْيَةِ وَتَطْهِيرُهَا عرقيًّا</h1>",
+  "ours_box_on_cut": "94 76 906 924"
+ },
+ {
+  "image": "g07_cut2_Page-Header.jpg",
+  "kind": "cut",
+  "label": "Page-Header",
+  "lang": "ar",
+  "effect": "augraphy",
+  "size": [
+   271,
+   75
+  ],
+  "ours_html": "<p>السَّيْرُ كَلَايِفُ غَرَانْجِرَ</p>",
+  "ours_box_on_cut": "85 80 915 920"
+ },
+ {
+  "image": "g08_page.jpg",
+  "kind": "page",
+  "lang": "en",
+  "source": "doclaynet",
+  "effect": "scan-simulator",
+  "size": [
+   1800,
+   2280
+  ],
+  "ours_full_ocr": "<div data-bbox=\"302 147 371 160\" data-label=\"Text\"><p>Geography</p></div>\n<div data-bbox=\"667 147 711 160\" data-label=\"Text\"><p>History</p></div>\n<div data-bbox=\"211 175 669 193\" data-label=\"Text\"><p>The Shatt al-Arab (; ) is a river of some in length that is formed at the confluence of the Euphrates and Tigris rivers in the town of al-Qurnah in.</p></div>\n<div data-bbox=\"211 202 679 227\" data-label=\"Text\"><p>The southern end of the river constitutes the Iran–Iraq border down to its mouth, where it discharges into the Persian Gulf. The Shatt al-Arab varies in width from about at Basra to at its mouth.</p></div>\n<div data-bbox=\"697 204 761 231\" data-label=\"Text\"><p>It is thought that the.</p></div>\n<div data-bbox=\"241 261 680 325\" data-label=\"Text\"><p>Kuwait's Bubiyan Island is part of the Shatt al-Arab delta. The Karun, a tributary which joins the waterway from the Iranian side, deposits large amounts of silt into the river; this necessitates continuous dredging to keep it navigable. The area used to hold the largest date palm forest in the world.</p></div>\n<div data-bbox=\"241 355 693 441\" data-label=\"Text\"><p>In the mid-1970s, the region included 17–18 million date palms: an estimated one- fifth of the world's 90 million palm trees. However, by 2002, more than 14 million of the palms had been wiped out by combined factors of war, salt and pests; this count includes around 9 million palms in Iraq and 5 million in Iran. Many of the remaining 3–4 million trees are in poor health.</p></div>\n<div data-bbox=\"241 470 688 510\" data-label=\"Text\"><p>The Shatt al-Arab is formed by the confluence of the Tigris and Euphrates rivers at Al-Qurnah, and flows into the Persian Gulf south of the city of Al-Faw. 3,000 years ago, the Persian Gulf was larger and the Shatt al-Arab had not yet formed.</p></div>\n<div data-bbox=\"241 518 689 600\" data-label=\"Text\"><p>Dispute over the river occurred during the Ottoman-Safavid era, prior to the establishment of an independent Iraq in the 20th century. In the early 16th century, the Iranian Safavids gained most of what is present-day Iraq, including Shatt al-Arab. They later lost these territories to the expanding Ottomans following the Peace of Amasya (1555).</p></div>\n<div data-bbox=\"211 610 681 632\" data-label=\"Text\"><p>In the early 17th century, the Safavids under king (shah) Abbas I (r. 1588–1629) once again regained Shatt al-Arab. Control of the river was at last permanently ceded to the Ottomans with the Treaty of Zuhab in 1639.</p></div>\n<div data-bbox=\"211 646 679 685\" data-label=\"Text\"><p>Control of the waterway was also temporarily lost by the Safavids to the Ottoma in this treaty. In general, the Treaty of Zuhab roughly re-established the common borders of the Ottoman and Safavid Empires the way they had been in 1555.</p></div>\n<div data-bbox=\"241 692 688 713\" data-label=\"Text\"><p>However, the treaty never demarcated a precise and fixed boundary regarding the frontier in the south. Later, Nader Shah (r. 1736–1747) succeeded in restoring Iranian control over Shatt al-Arab for a time.</p></div>\n<div data-bbox=\"241 729 684 770\" data-label=\"Text\"><p>With the Treaty of Kerden (1746), however, the Zuhab boundaries were restored, ceded the river to the Turks once again. The First Treaty of Erzurum (1823) concluded between Ottoman Turkey and Qajar Iran, resulted in the same.</p></div>\n<div data-bbox=\"241 782 372 790\" data-label=\"Text\"><p>The Second Treaty of Erzurum was signed.</p></div>\n<div data-bbox=\"241 795 681 838\" data-label=\"Text\"><p>Even afterwards, backtracking and disagreements continued, until British Foreign Secretary, Lord Palmerston, was moved to comment in 1851 that \"the boundary line between Turkey and Persia can never be finally settled except by an arbitrary decision on.</p></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"302 147 371 160\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"667 147 711 160\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"211 175 669 193\",\n    \"count\": 60\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"211 202 679 227\",\n    \"count\": 70\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"697 204 761 231\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"241 261 680 325\",\n    \"count\": 110\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"241 355 693 441\",\n    \"count\": 130\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"241 470 688 510\",\n    \"count\": 90\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"241 518 689 600\",\n    \"count\": 120\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"211 610 681 632\",\n    \"count\": 80\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"211 646 679 685\",\n    \"count\": 90\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"241 692 688 713\",\n    \"count\": 80\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"241 729 684 770\",\n    \"count\": 80\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"241 782 372 790\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"241 795 681 838\",\n    \"count\": 90\n  }\n]"
+ },
+ {
+  "image": "g08_cut0_Text.jpg",
+  "kind": "cut",
+  "label": "Text",
+  "lang": "en",
+  "effect": "scan-simulator",
+  "size": [
+   923,
+   61
+  ],
+  "ours_html": "<p>However, the treaty never demarcated a precise and fixed boundary regarding the frontier in the south. Later, Nader Shah (r. 1736–1747) succeeded in restoring Iranian control over Shatt al-Arab for a time.</p>",
+  "ours_box_on_cut": "64 98 936 902"
+ },
+ {
+  "image": "g09_page.jpg",
+  "kind": "page",
+  "lang": "ar",
+  "source": "grammar",
+  "effect": "ocrsmith",
+  "size": [
+   1624,
+   2272
+  ],
+  "ours_full_ocr": "<div data-bbox=\"823 83 882 103\" data-label=\"Page-Header\"><p>مَعْرِضٌ صور</p></div>\n<div data-bbox=\"99 89 164 109\" data-label=\"Page-Header\"><p>مِنْطَقَةٌ مليحة</p></div>\n<div data-bbox=\"361 125 599 174\" data-label=\"Section-Header\"><h1>منطقة مليحة</h1></div>\n<div data-bbox=\"429 194 557 221\" data-label=\"Section-Header\"><h3>تاريخ مملكة مُلِيحَةَ</h3></div>\n<div data-bbox=\"695 250 860 274\" data-label=\"Section-Header\"><h3>منطقة مَلِيحَةِ الأثريّة</h3></div>\n<div data-bbox=\"676 283 876 362\" data-label=\"Text\"><p>منطقة مليحة.. تبعد حوالي 20 كم من جنوب مدينة الذّيد، وعلى بعد 50 كم شَرْقُ مدينة الشّارقة، وَتُعْتَبَرُ مَلِيحَةً مِنَ المدن الْمُهِمَّةِ الَّتِي.</p></div>\n<div data-bbox=\"678 366 880 545\" data-label=\"Text\"><p>كشفت التّنقيبات الّتي جرت فِي مليحة منذ بداية السّبعينات مِنَ القرن الْمَاضِي وجود مَدِينَةٍ مهمّة تَضُمُّ أبنية إداريّة وحصونا كَبِيرَةً، ومدافن تَذْكَارِيَّةٍ وحارات سكنيّة ومقابر دفنت فيها الجمال والخيول إلى جانب أصحابها وسكت عُمْلَتَهَا الْمَحَلِّيَّةَ فيها، ويبدو أنّ الْمَدِينَةَ كانت مركزاً مهما فِي شبه الجزيرة الْعَرَبِيَّةِ فِي التّجارة.</p></div>\n<div data-bbox=\"682 550 888 906\" data-label=\"List-Group\"><ul><li>▪ دکتر: عَبْدُ اللّه، مرسی، محمّد (الْإِمَارَاتُ العربیّة وَجِیْرَانُهَا) دار الْقَلَمِ: کُویتْ، عام 1981 لِلْمِيلَادِ.</li><li>▪ دکتر: المجد، کمال، احمد، (دولة الإمارات الْعَرَبِیَّةِ المتّحدة، دِرَاسَةٌ مسحیّة شاملة). شرکه المصریة للطّباعة والنّشر: عَامَ 1978 لِلْمِيلَادِ.</li><li>▪ دَکتَرُ: رحمه، عبد اللّه، بْنُ عبد الرَّحْمَنِ، “ (الإمارات فی ذَاکِرَةُ ابنائها) “، عَامَ 1990 للميلاد.</li><li>▪ الْفَارِسِی، سالم، بن</li></ul></div>\n<div data-bbox=\"103 235 633 280\" data-label=\"Text\"><p>وَمُسْتَوْطَنَتٌ مملكة مليحة الّتي اكتشفت في العام،1973 عبارة عن مَدِينَةٍ صَغِيرَةٍ تَضُمُّ قصراًوحصنا وَمَبَانِي سَكَنِيَّةً ومقبرة وورش.</p></div>\n<div data-bbox=\"480 295 604 321\" data-label=\"Section-Header\"><h3>الْمَصَادِرُ والمراجع</h3></div>\n<div data-bbox=\"123 326 618 395\" data-label=\"Text\"><p>السّيّد مُحَمَّدُ بْنُ محمّد بن حسن بْنِ قاسم الحسينيّ الْعَامِلِيُّ العيناثيّ الجزينيّ. المشهور بابن قاسم العامليّ، عالم دين شِيعِي، أديب وشاعر. هناك مَجْمُوعٌ بِخَطِّ السَّيِّدِ ابن قاسم العامليّ موجود في مكتبة السّيّد الْكَلْبِيكَانِيِّ فِي مدينة قمّ.</p></div>\n<div data-bbox=\"507 421 606 443\" data-label=\"Section-Header\"><h3>ولادته وَعَائِلَتُهُ</h3></div>\n<div data-bbox=\"126 448 619 518\" data-label=\"Text\"><p>تضمّ هذه المجموعة عددا كبيراً مِنَ الرّسائل المهمّة في مجلّد واحد كتبها السَّيِّدُ محمّد بْنُ محمّد العامليّ الْمَعْرُوفُ بِابْنِ قَاسِمٍ العيناثيّ. وفرغ من كتابة بعضها في سَنَةِ (1057) وبعضها الآخر في سنة(1059)هجري.</p></div>\n<div data-bbox=\"555 540 621 555\" data-label=\"Text\"><p><b>نظرة عامّة:</b></p></div>\n<div data-bbox=\"110 560 621 602\" data-label=\"Text\"><p>قناة شمال القرم ، ؛ هِيَ قناة لتحسين الأراضي للرّيّ فِي خِيْرْسُونْ أوبلاست في جنوب أوكرانيا وَشِبْهِ جزيرة القرم.</p></div>\n<div data-bbox=\"523 606 622 628\" data-label=\"Text\"><p><b>منذ فَبْرَايِرَ 2022:</b></p></div>\n<div data-bbox=\"111 627 623 671\" data-label=\"Text\"><p>تَحْتَوِي القناة أيضًا عَلَى فروع مُتَعَدِّدَةٍ فِي جَمِيعِ أَنْحَاءِ خيرسون وَالْقِرْمِ. بدأ التّحضير لِبِنَاءِ الْقَنَاةِ في عام 1957 بَعْدَ.</p></div>\n<div data-bbox=\"592 682 624 695\" data-label=\"Text\"><p><b>صور:</b></p></div>\n<div data-bbox=\"304 695 624 721\" data-label=\"Text\"><p>تمّت أعمال الْمَشْرُوعِ الرّئيسيّة بَيْنَ عامّي 1961 و1971.</p></div>\n<div data-bbox=\"525 724 625 744\" data-label=\"Text\"><p><b>الْقَنَوَاتُ الفرعيّة:</b></p></div>\n<div data-bbox=\"114 741 626 791\" data-label=\"Text\"><p>تَوَلَّى أعمال الْبِنَاءِ أَعْضَاءَ الكمسمول الّذين أرسلتهم اتّجاه كمسمول ( كومسومولسكايا بوتيفكا) جُزْءًا من مَشْرُوعِ بناء الصّدمة وشمل.</p></div>\n<div data-bbox=\"116 812 308 845\" data-label=\"Section-Header\"><h3>خيرسون أوبلاست</h3></div>\n<div data-bbox=\"117 849 647 926\" data-label=\"Table\"><table><tr><td>28%</td><td>تَمْتَدُّ القناة</td><td>94%</td><td>تُوجَدُ سبعة</td><td>17%</td><td>يَتَدَفَّقُ الْمَاءُ عن طَرِيقِ</td></tr><tr><td colspan=\"2\">941</td><td>فِي شبه</td><td>41,287</td><td>أُثِيرَتْ فكرة بناء القناة</td><td>وَمَعَ ذَلِكَ لَمْ يتّخذّ</td></tr><tr><td>18%</td><td>415</td><td>كان القرار</td><td>تسبّب</td></tr></table></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"823 83 882 103\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Page-Header\",\n    \"bbox\": \"99 89 164 109\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"361 125 599 174\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"429 194 557 221\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"695 250 860 274\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"676 283 876 362\",\n    \"count\": 140\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"678 366 880 545\",\n    \"count\": 340\n  },\n  {\n    \"label\": \"List-Group\",\n    \"bbox\": \"682 550 888 906\",\n    \"count\": 370\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"103 235 633 280\",\n    \"count\": 140\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"480 295 604 321\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"123 326 618 395\",\n    \"count\": 250\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"507 421 606 443\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"126 448 619 518\",\n    \"count\": 200\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"555 540 621 555\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"110 560 621 602\",\n    \"count\": 110\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"523 606 622 628\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"111 627 623 671\",\n    \"count\": 140\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"592 682 624 695\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"304 695 624 721\",\n    \"count\": 60\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"525 724 625 744\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"114 741 626 791\",\n    \"count\": 140\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"116 812 308 845\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Table\",\n    \"bbox\": \"117 849 647 926\",\n    \"count\": 210\n  }\n]"
+ },
+ {
+  "image": "g09_cut0_Table.jpg",
+  "kind": "cut",
+  "label": "Table",
+  "lang": "ar",
+  "effect": "ocrsmith",
+  "size": [
+   986,
+   199
+  ],
+  "ours_html": "<table><tr><td>28%</td><td>تَمْتَدُّ القناة</td><td>94%</td><td>تُوجَدُ سبعة</td><td>17%</td><td>يَتَدَفَّقُ الْمَاءُ عن طَرِيقِ</td></tr><tr><td colspan=\"2\">941</td><td>فِي شبه</td><td>41,287</td><td>أُثِيرَتْ فكرة بناء القناة</td><td>وَمَعَ ذَلِكَ لَمْ يتّخذّ</td></tr><tr><td>18%</td><td>415</td><td>كان القرار</td><td>تسبّب</td></tr></table>",
+  "ours_box_on_cut": "70 35 942 920"
+ },
+ {
+  "image": "g09_cut2_Section-Header.jpg",
+  "kind": "cut",
+  "label": "Section-Header",
+  "lang": "ar",
+  "effect": "ocrsmith",
+  "size": [
+   198,
+   63
+  ],
+  "ours_html": "<h3>ولادته وَعَائِلَتُهُ</h3>",
+  "ours_box_on_cut": "96 95 904 905"
+ },
+ {
+  "image": "g10_page.jpg",
+  "kind": "page",
+  "lang": "en",
+  "source": "grammar",
+  "effect": "augraphy",
+  "size": [
+   1588,
+   2246
+  ],
+  "ours_full_ocr": "<div data-bbox=\"95 74 904 245\" data-label=\"Text\"><p>A rugby league team consists of 13 players on the field, with 4 substitutes on the bench. Each of the 13 players is assigned a position, normally with a standardised number, which reflects their role in attack and defence, although players can take up any position at any time. Players are divided into two general types, forwards and backs. Forwards are generally chosen for their size and strength.</p></div>\n<div data-bbox=\"102 268 351 287\" data-label=\"Text\"><p><b>Names and numbering:</b></p></div>\n<div data-bbox=\"129 298 244 315\" data-label=\"Text\"><p>12/12/2001</p></div>\n<div data-bbox=\"102 333 168 349\" data-label=\"Text\"><p><b>Backs:</b></p></div>\n<div data-bbox=\"129 362 244 379\" data-label=\"Text\"><p>06/05/2010</p></div>\n<div data-bbox=\"102 397 207 413\" data-label=\"Text\"><p><b>Forwards:</b></p></div>\n<div data-bbox=\"129 427 224 443\" data-label=\"Text\"><p>39,568.47</p></div>\n<div data-bbox=\"102 472 161 486\" data-label=\"Section-Header\"><h3>Backs</h3></div>\n<div data-bbox=\"95 502 339 570\" data-label=\"Text\"><p>They are expected to run with the ball, to attack, and to make tackles.</p></div>\n<div data-bbox=\"384 472 472 486\" data-label=\"Section-Header\"><h3>Fullback</h3></div>\n<div data-bbox=\"378 502 622 624\" data-label=\"Text\"><p>Forwards are required to improve the team's field position thus creating space and time for the backs.</p></div>\n<div data-bbox=\"667 471 820 488\" data-label=\"Section-Header\"><h3>Threequarters</h3></div>\n<div data-bbox=\"660 502 904 546\" data-label=\"Text\"><p>Backs are usually smaller and faster, though a.</p></div>\n<div data-bbox=\"102 652 165 671\" data-label=\"Text\"><p><b>Wing:</b></p></div>\n<div data-bbox=\"129 681 377 700\" data-label=\"Text\"><p>Their roles require speed</p></div>\n<div data-bbox=\"102 718 178 732\" data-label=\"Text\"><p><b>Centre:</b></p></div>\n<div data-bbox=\"129 747 244 764\" data-label=\"Text\"><p>08/02/1991</p></div>\n<div data-bbox=\"102 781 202 800\" data-label=\"Text\"><p><b>Half pair:</b></p></div>\n<div data-bbox=\"129 811 224 828\" data-label=\"Text\"><p>32,981.38</p></div>\n<div data-bbox=\"102 846 349 864\" data-label=\"Text\"><p><b>Stand-off / five-eighth:</b></p></div>\n<div data-bbox=\"129 874 359 893\" data-label=\"Text\"><p>Typically forwards tend</p></div>\n<div data-bbox=\"102 911 348 927\" data-label=\"Text\"><p><b>Scrum-half / half-back:</b></p></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"95 74 904 245\",\n    \"count\": 140\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"102 268 351 287\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"129 298 244 315\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"102 333 168 349\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"129 362 244 379\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"102 397 207 413\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"129 427 224 443\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"102 472 161 486\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"95 502 339 570\",\n    \"count\": 30\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"384 472 472 486\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"378 502 622 624\",\n    \"count\": 40\n  },\n  {\n    \"label\": \"Section-Header\",\n    \"bbox\": \"667 471 820 488\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"660 502 904 546\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"102 652 165 671\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"129 681 377 700\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"102 718 178 732\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"129 747 244 764\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"102 781 202 800\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"129 811 224 828\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"102 846 349 864\",\n    \"count\": 20\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"129 874 359 893\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"102 911 348 927\",\n    \"count\": 20\n  }\n]"
+ },
+ {
+  "image": "g10_cut0_Text.jpg",
+  "kind": "cut",
+  "label": "Text",
+  "lang": "en",
+  "effect": "augraphy",
+  "size": [
+   122,
+   54
+  ],
+  "ours_html": "<p><b>Wing:</b></p>",
+  "ours_box_on_cut": "90 111 910 889"
+ },
+ {
+  "image": "g10_cut1_Section-Header.jpg",
+  "kind": "cut",
+  "label": "Section-Header",
+  "lang": "en",
+  "effect": "augraphy",
+  "size": [
+   301,
+   50
+  ],
+  "ours_html": "<h3>Threequarters</h3>",
+  "ours_box_on_cut": "96 120 904 880"
+ },
+ {
+  "image": "g11_page.jpg",
+  "kind": "page",
+  "lang": "ar",
+  "source": "doclaynet",
+  "effect": "scan-simulator",
+  "size": [
+   1768,
+   2426
+  ],
+  "ours_full_ocr": "<div data-bbox=\"201 109 831 140\" data-label=\"Text\"><p>حَرْبُ تُورِسْتِنْسُونَ، المسمّاة أيضًا صِرَاعُ هَانِيبَالَ، أَوْ حَرْبُ هَانِيبَالَ، كَانَتْ صراعًا قَصِيرَ الْأَمَدِ بَيْنَ السُّوِيدِ وَاتِّحَادِ الدَّنْمَارْكِ-النَّرْوِيجِ.</p></div>\n<div data-bbox=\"803 176 829 185\" data-label=\"Footnote\"><p>اشتُقّت.</p></div>\n<div data-bbox=\"263 183 827 208\" data-label=\"Footnote\"><p>بِمُوجَبِ مُعَاهَدَةِ لُوبِكَ لِلْعَامِ ١٦٢٩، انْسَحَبَتِ الدِّنْمَارْكُ مِنْ حَرْبِ الثَّلَاثِينَ عامًا. عَقِبَ الِانْتِصَارَاتِ الَّتِي أَحْرَزَتْهَا السُّوَيدُ فِي الْحَرْبِ، سَادَ شُعُوَّرُ.</p></div>\n<div data-bbox=\"90 806 257 913\" data-label=\"Image\"><img alt=\"Photo: A general scene.\"/><p class=\"img-desc\">A photograph of a general scene.</p></div>",
+  "ours_layout": "[\n  {\n    \"label\": \"Text\",\n    \"bbox\": \"201 109 831 140\",\n    \"count\": 180\n  },\n  {\n    \"label\": \"Footnote\",\n    \"bbox\": \"803 176 829 185\",\n    \"count\": 10\n  },\n  {\n    \"label\": \"Footnote\",\n    \"bbox\": \"263 183 827 208\",\n    \"count\": 190\n  },\n  {\n    \"label\": \"Image\",\n    \"bbox\": \"90 806 257 913\",\n    \"count\": 30\n  }\n]"
+ },
+ {
+  "image": "g11_cut0_Image.jpg",
+  "kind": "cut",
+  "label": "Image",
+  "lang": "ar",
+  "effect": "scan-simulator",
+  "size": [
+   322,
+   292
+  ],
+  "ours_html": "<img alt=\"Photo: A general scene.\"/><p class=\"img-desc\">A photograph of a general scene.</p>",
+  "ours_box_on_cut": "43 55 957 945"
+ },
+ {
+  "image": "g11_cut1_Text.jpg",
+  "kind": "cut",
+  "label": "Text",
+  "lang": "ar",
+  "effect": "scan-simulator",
+  "size": [
+   1351,
+   87
+  ],
+  "ours_html": "<p>حَرْبُ تُورِسْتِنْسُونَ، المسمّاة أيضًا صِرَاعُ هَانِيبَالَ، أَوْ حَرْبُ هَانِيبَالَ، كَانَتْ صراعًا قَصِيرَ الْأَمَدِ بَيْنَ السُّوِيدِ وَاتِّحَادِ الدَّنْمَارْكِ-النَّرْوِيجِ.</p>",
+  "ours_box_on_cut": "88 69 912 931"
+ }
+]
