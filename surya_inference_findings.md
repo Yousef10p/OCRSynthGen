@@ -1,6 +1,7 @@
 # Surya OCR 2.5: what it really answers to each prompt
 
-Branch `surya-inference` (on top of `surya-format`). Goal: find the exact output format of Surya OCR 2.5 for
+Branch `surya` (the work was done on `surya-inference`, on top of `surya-format`; both are merged into
+`surya`). Goal: find the exact output format of Surya OCR 2.5 for
 each of its prompts, so our training labels are written the way the model writes, and apply it to the
 pipeline.
 
@@ -159,7 +160,7 @@ estimate"), block OCR per layout block, tables as `<table>…</table>`, row/colu
 
 ## 6. What changed in the pipeline
 
-| | Before (`surya-format`) | Now (`surya-inference`) |
+| | Before (first `surya-format` version) | Now (`surya`) |
 |---|---|---|
 | `full_ocr` target | `<div data-bbox data-label>` lines | compact blocks, one line: `<\|Label\|><\|x0\|>…content…` |
 | `full_ocr` prompt | with the stray quote | Surya's exact text |
@@ -216,7 +217,7 @@ cut-out headings, `block_ocr` wrote `<h2>` 6 times and `<h1>` once.
 ## 8. How to repeat the tests
 
 ```bash
-cd D:\code\OCR\arabic-template-bank-surya-inference
+cd D:\code\OCR\arabic-template-bank-surya
 D:\code\OCR\arabic-template-bank\.venv-pipeline\Scripts\python surya_probe\make_inputs.py
 D:\code\OCR\arabic-template-bank-surya\surya_inference\venv\Scripts\python surya_probe\probe.py surya_probe\inputs\g00_page.jpg --out surya_probe\my_results.jsonl --tasks full_ocr block_ocr layout table --schema off --max-tokens 4096
 D:\code\OCR\arabic-template-bank\.venv-pipeline\Scripts\python surya_probe\analyze.py surya_probe\my_results.jsonl
@@ -269,7 +270,7 @@ Fresh samples from the current pipeline (`check_targets.py make`, then `probe.py
 sent: Surya's server answered HTTP 502 for every request on 2026-11-03. Run them again when it is back:
 
 ```bash
-cd D:\code\OCR\arabic-template-bank-surya-inference
+cd D:\code\OCR\arabic-template-bank-surya
 D:\code\OCR\arabic-template-bank-surya\surya_inference\venv\Scripts\python surya_probe\probe.py (Get-Content surya_probe\_check\block.txt) --tasks block_ocr --schema off --max-tokens 4096 --out surya_probe\check.jsonl
 D:\code\OCR\arabic-template-bank-surya\surya_inference\venv\Scripts\python surya_probe\probe.py (Get-Content surya_probe\_check\full.txt) --tasks full_ocr --schema off --max-tokens 4096 --out surya_probe\check.jsonl
 D:\code\OCR\arabic-template-bank\.venv-pipeline\Scripts\python surya_probe\check_targets.py compare

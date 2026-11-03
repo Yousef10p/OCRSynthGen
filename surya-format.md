@@ -1,12 +1,12 @@
 # surya-format: training pages in Surya OCR 2.5's own output format
 
-These branches (`surya-format`, and `surya-inference` on top of it) change one thing about the generator:
+The `surya` branch changes one thing about the generator:
 **every page is made for one of Surya OCR 2.5's prompts, and its label is the answer Surya 2.5 gives to that
 prompt, written exactly the way the model writes it.** Everything else (templates, Wikipedia text, styling,
 SynthDoc rendering, effects, checks) is the same pipeline as on `main`.
 
-On `surya-inference` the formats come from asking the model itself, image by image, and from Surya's own
-source code; how they were found is in [surya_inference_findings.md](surya_inference_findings.md).
+The formats come from asking the model itself, image by image, and from Surya's own source code; how they
+were found is in [surya_inference_findings.md](surya_inference_findings.md).
 
 This file explains, in simple English, what happens to one page, which function calls which, and how to run
 it. The code is in [pipeline/surya.py](pipeline/surya.py) (the Surya part) and

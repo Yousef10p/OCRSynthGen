@@ -34,3 +34,7 @@ surya_probe/outputs/
 surya_probe/_check/
 surya_probe/_check_make.log
 surya_probe/check_probe.log
+# Surya answers placed here by hand (not part of the generator)
+suryan_outputs/
+# the Surya API client with its key and venv (surya_inference/suraya.py): never in git
+surya_inference/

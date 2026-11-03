@@ -7,6 +7,11 @@ from template `g_0003` with seed 42 (Arabic, OCRSmith effects), unless a section
 
 [README.md](README.md) is the overview. This file is the detailed explanation.
 
+> **Removed from the repository (2026-11-03):** the earlier 113,077-template bank (`templates/`,
+> `bank_index.jsonl`, `reports/`, `schema/`) and the scripts that built it and its galleries. They are in the
+> git history up to commit 2f6c254. Sections 3.2, 3.5, 6.4 and 10.8 describe them as they were; the generator
+> uses only `bank2000/`.
+
 **Contents**
 
 0. [The final version in short](#0-the-final-version-in-short) (read this first: what changed, and where)
@@ -42,11 +47,12 @@ bank2000/
   report.json                          how the bank was built: candidates, screened, passed, kept, rejections
 ```
 
-Built by [src/bank2000.py](src/bank2000.py) (`python -m src.bank2000 --workers 6`):
+Built once by [src/bank2000.py](src/bank2000.py) (`python -m src.bank2000 --workers 6`, from the earlier
+bank, which is now only in the git history):
 
 | Step | What happens |
 |---|---|
-| candidates | grammar: 3,000 new rich-grammar templates; WebSight v0.1 and DocLayNet: 4,000 each from the full bank; WebSight v0.2: 3,298 converted Tailwind pages ([src/from_websight2.py](src/from_websight2.py)) |
+| candidates | grammar: 3,000 new rich-grammar templates; WebSight v0.1 and DocLayNet: 4,000 each from the full bank; WebSight v0.2: 3,298 converted Tailwind pages (`src/from_websight2.py`, in the git history) |
 | adapt | language alternates ar/en (grammar and DocLayNet use logical CSS, so only `<html lang dir>` changes; WebSight v0.1 CSS is flipped back to left-to-right by rtlcss for English; WebSight v0.2 pages got their language when converted). Every grey picture box becomes `<div class="pic-frame"><img data-pic="pic_N" src="{{ pic_N }}" alt=""></div>`, with a hint (`"team photo"`, `"food"`) taken from the original page. A page with a web address in it (a background photo loaded from the internet) is left out |
 | diversity | farthest-first on layout features (page skeleton and layout CSS for flowing pages, box positions for DocLayNet, slot roles, picture count): each next template is the one least like everything taken; anything sharing 75% or more of its features with a taken one (Jaccard) is never taken; equal structure hashes are dropped |
 | screening | each candidate is rendered once by the real generator (random style, theme, text, pictures) and kept only if the page passes every check of [pipeline/qa.py](pipeline/qa.py) |
@@ -69,8 +75,7 @@ its layout features (the limit was 75%). 1,191 templates have `<img>` picture sl
 needed. Most rejections were words hidden by the template's CSS, covered by a picture, or (DocLayNet,
 before the ink-overflow fix of 0.5) letters clipped by tight boxes.
 
-`DocPipeline` uses `bank2000/` by default. `DocPipeline(..., bank="old")` uses the 113,077-template bank in
-`templates/`; `bank=<folder>` any folder with `index.jsonl` and `templates/`.
+`DocPipeline` uses `bank2000/` by default; `bank=<folder>` any folder with `index.jsonl` and `templates/`.
 
 ### 0.2 Picking a template
 
@@ -225,7 +230,7 @@ below the next have room. The labels and the Markdown always hold what is drawn,
 Tested on 24 fully marked, 8 partly marked and 48 mixed pages (all sources and effects): no audit problems.
 The level is in the label (`style.tashkeel`) and on the generator's cards.
 
-### 0.10 Surya OCR 2.5 targets (branches `surya-format` / `surya-inference`, experimental)
+### 0.10 Surya OCR 2.5 targets (branch `surya`)
 
 Each sample is made for one of Surya OCR 2.5's prompts, drawn per page, and its label is the answer Surya 2.5
 gives to that prompt, in the model's own compact output format ([pipeline/surya.py](pipeline/surya.py)). The
@@ -326,10 +331,10 @@ The project uses four Python environments, because the libraries come from diffe
 
 | Environment | Has | Used for |
 |---|---|---|
-| `.venv` | lxml, BeautifulSoup, jsonschema, datasets, Pillow | building the template bank (`src/`), the static gallery |
+| `.venv` | lxml, BeautifulSoup, jsonschema, datasets, Pillow | building the template bank (scripts now in the git history) |
 | `.venv-pipeline` | **everything below together**, plus SynthDoc, its Arabic extension, OCRSmith and scan-simulator through `ocr_sources.pth` | the generator: `pipeline/` (DocPipeline, dataset command, server) |
 | `.venv-attacks` | Augraphy, OpenCV, scipy | the old batch attack script `synthdoc_adapter/attack.py` |
-| `../ocrsmith/.venv` | OCRSmith | the old OCRSmith renders (`demo/render_demo.py`, `attack_ocrsmith.py` batch) |
+| `../ocrsmith/.venv` | OCRSmith | the old OCRSmith batch renders (`attack_ocrsmith.py`) |
 
 For training data you only need `.venv-pipeline`. It has no copies of SynthDoc, OCRSmith or
 scan-simulator: the file `.venv-pipeline\Lib\site-packages\ocr_sources.pth` adds their source folders to
@@ -355,7 +360,8 @@ same template can be turned to left-to-right for English.
 
 ### 3.2 How templates are stored on disk
 
-One folder per template, named by its id, under `templates/`:
+One folder per template, named by its id, under `bank2000/templates/` (the layout below is that of the
+earlier bank, `templates/` at the top level, now only in the git history; bank2000 uses the same files):
 
 ```
 templates/
@@ -497,7 +503,7 @@ The slot roles and their default word ranges (`config/roles.json`):
 | `header`, `footer` | 2–8 | `sidebar` | 10–50 |
 | `page_number` | 1 | | |
 
-Every template passes [src/validate.py](src/validate.py): the JSON Schema; slot ids exactly
+Every template passes `src/validate.py` (git history): the JSON Schema; slot ids exactly
 `slot_0 … slot_k-1`; the Jinja variables in the page are exactly the slots plus `style`; the root is
 `<html lang="ar" dir="rtl">`; no `http` and no `<script>`; `<img>` only for listed local files; no
 physical left/right in Grammar and DocLayNet CSS; the page renders.
@@ -507,8 +513,8 @@ physical left/right in Grammar and DocLayNet CSS; the page renders.
 | Source | How the page becomes a template | File |
 |---|---|---|
 | Grammar (300) | built from random blocks (heading, paragraph, list, table, form, side box, quote, figure) with random columns, borders and spacing | [src/grammar.py](src/grammar.py) |
-| WebSight v0.1 (35,618) | a real web page: scripts and links removed; every text node becomes a slot, its role taken from its tag (`h1` title, `p` paragraph, `li` list item, `td` cell, …); pictures become grey boxes; the CSS is flipped to right-to-left with rtlcss; kept only if document-like (15+ slots and a table, list or columns) | [src/from_websight.py](src/from_websight.py), [src/full_sources.py](src/full_sources.py) |
-| DocLayNet v1.1 (77,159) | a real document page's labelled boxes (title, section header, text, list item, table, caption, footer, picture…), scaled to A4/Letter/Legal and mirrored left↔right; each text box becomes a slot sized to fit its box; the original text is never used; pictures become grey boxes | [src/from_doclaynet.py](src/from_doclaynet.py), [src/full_sources.py](src/full_sources.py) |
+| WebSight v0.1 (35,618) | a real web page: scripts and links removed; every text node becomes a slot, its role taken from its tag (`h1` title, `p` paragraph, `li` list item, `td` cell, …); pictures become grey boxes; the CSS is flipped to right-to-left with rtlcss; kept only if document-like (15+ slots and a table, list or columns) | [src/from_websight.py](src/from_websight.py), `src/full_sources.py` (git history) |
+| DocLayNet v1.1 (77,159) | a real document page's labelled boxes (title, section header, text, list item, table, caption, footer, picture…), scaled to A4/Letter/Legal and mirrored left↔right; each text box becomes a slot sized to fit its box; the original text is never used; pictures become grey boxes | `src/from_doclaynet.py` (git history), `src/full_sources.py` (git history) |
 | LLM (optional) | Groq (or a local Ollama) writes an English document page; it then goes through the WebSight steps | [pipeline/llm_templates.py](pipeline/llm_templates.py) |
 
 Duplicates are removed twice: exact copies by `structure_hash` ([src/dedup.py](src/dedup.py)), then
@@ -915,7 +921,7 @@ needs each template as a SynthDoc template class:
 
 `export` writes, per template, `template.html` (the page of 4.5), `template.json`
 (`{"name": "bank_g_0003", "category": "bank_grammar", "class": "BankTemplate"}`), `slots.json` and an
-`__init__.py` whose class inherits `BankTemplateBase` ([synthdoc_adapter/bank_template.py](synthdoc_adapter/bank_template.py));
+`__init__.py` whose class inherits `BankTemplateBase` (`synthdoc_adapter/bank_template.py`, in the git history);
 its `generate_sample_data()` returns the values of 4.2–4.3 (demo sentences, seed
 `BANK_SYNTHDOC_SEED` + template + document number). `generate.py` then calls
 `synthdoc.add_template_dir(...)`, `synthdoc_arabic.pipeline.install()` and
@@ -1337,7 +1343,7 @@ The model writes an English document page (invoice, report, letter, form…), wh
 WebSight conversion. Groq's free limit (8,000 tokens a minute) allows about 3 new templates a minute;
 when it is used up the pipeline waits, then reuses a saved one from `pipeline_out/llm_templates/`.
 
-### 10.8 Rebuild the template bank
+### 10.8 Rebuild the template bank (scripts in the git history, commit 2f6c254)
 
 ```bash
 .venv\Scripts\python -m src.build                          :: the first build (523 templates)
@@ -1416,18 +1422,16 @@ And:
 | [pipeline/qa.py](pipeline/qa.py) | the render checks (`render_issues`); `python -m pipeline.qa` makes and reports samples |
 | [pipeline/groundtruth.py](pipeline/groundtruth.py) | slot regions in reading order; the Markdown (`<text>… <bbox>…</bbox></text>`) format |
 | [pipeline/audit.py](pipeline/audit.py) | independent check of finished samples, boxes drawn, contact sheets |
-| [src/bank2000.py](src/bank2000.py), [src/from_websight2.py](src/from_websight2.py) | the 2,000-template bank; WebSight v0.2 conversion |
+| [src/bank2000.py](src/bank2000.py) | how the 2,000-template bank was chosen; `adapt()` for LLM templates |
 | [pipeline/text_pool.py](pipeline/text_pool.py) | Wikipedia download, `TextPool` |
 | [pipeline/img_pool.py](pipeline/img_pool.py) | photo download, `ImagePool` |
 | [pipeline/llm_templates.py](pipeline/llm_templates.py) | LLM-written templates (Groq or Ollama) |
 | [demo/fill_style.py](demo/fill_style.py) | random typography, slot text by role, demo sentences |
-| [demo/render_demo.py](demo/render_demo.py) | OCRSmith papers (`background`); the early demo renderer |
+| [demo/render_demo.py](demo/render_demo.py) | OCRSmith papers (`background`) |
 | [synthdoc_adapter/export.py](synthdoc_adapter/export.py) | `synthdoc_html`: template → SynthDoc page (4.5); batch export |
 | [synthdoc_adapter/attack_ocrsmith.py](synthdoc_adapter/attack_ocrsmith.py) | OCRSmith paper + preset with moving boxes |
 | [synthdoc_adapter/attack.py](synthdoc_adapter/attack.py) | Augraphy pipeline, scan-simulator with the word mask |
 | [synthdoc_adapter/labels.py](synthdoc_adapter/labels.py) | which words are kept; contrast; building the labels |
-| [synthdoc_adapter/bank_template.py](synthdoc_adapter/bank_template.py), [generate.py](synthdoc_adapter/generate.py) | SynthDoc batch mode (gallery sets) |
-| [src/grammar.py](src/grammar.py), [from_websight.py](src/from_websight.py), [from_doclaynet.py](src/from_doclaynet.py), [full_sources.py](src/full_sources.py) | building templates from each source |
-| [src/dedup.py](src/dedup.py), [near_dedup.py](src/near_dedup.py), [validate.py](src/validate.py) | duplicates, the index, checks |
-| [src/markdown.py](src/markdown.py) | filled page → Markdown body (older gallery sets only; the generator's Markdown is the ground truth) |
+| [src/grammar.py](src/grammar.py), [from_websight.py](src/from_websight.py) | grammar templates; WebSight conversion (`flip`, used for LLM templates) |
+| [src/dedup.py](src/dedup.py), [near_dedup.py](src/near_dedup.py) | structure hash, layout features |
 | [src/bank.py](src/bank.py) | shared template helpers (page sizes, CSS defaults, slot regex) |
