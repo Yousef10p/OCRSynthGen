@@ -41,5 +41,6 @@ surya_inference/
 # generated training batches (pipeline.dataset --out batches/epoch_00k)
 batches/
 surya_probe/batch100/
+surya_probe/clean100/
 # clone of datalab-to/surya, read for surya_repo_findings.md (its own repository)
 surya/

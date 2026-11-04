@@ -205,8 +205,13 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, width, 
         r, role = rest[k], roles.get(rest[k]["id"], "paragraph")
         nxt = rest[k + 1] if k + 1 < len(rest) else None
         if role == "label" and nxt and roles.get(nxt["id"]) == "field_value" and same_line(r["bbox"], nxt["bbox"]):
-            out.append(text_block("Text", f"{r['text']} {nxt['text']}", union([r["bbox"], nxt["bbox"]]),
-                                  styles.get(r["id"], {}), order.get(r["id"], 0)))
+            bold = (styles.get(r["id"]) or {}).get("bold"), (styles.get(nxt["id"]) or {}).get("bold")
+            if bold[0] and not bold[1]:  # only the label bold: Surya writes <p><b>label:</b> value</p>
+                out.append({"label": "Text", "box": union([r["bbox"], nxt["bbox"]]), "dom": order.get(r["id"], 0),
+                            "html": f"<p><b>{esc(r['text'])}</b> {esc(nxt['text'])}</p>"})
+            else:
+                out.append(text_block("Text", f"{r['text']} {nxt['text']}", union([r["bbox"], nxt["bbox"]]),
+                                      styles.get(r["id"], {}), order.get(r["id"], 0)))
             k += 2
             continue
         if role == "list_item":
@@ -396,21 +401,30 @@ def on_page(b):
     return inner(b["html"]) if b["label"] == "Page-Header" else b["html"]
 
 
+def as_surya(b, width, height):
+    """A block's box as Surya draws it: its left and top edges a little further out than the text (on 1851
+    blocks in surya_probe/batch100, clean pages too, the median: 6.5 and 3.5 thousandths of the page, pictures
+    3.3 and 1.8; right and bottom edges the same)."""
+    dx, dy = (3.3, 1.8) if b["label"] == "Image" else (6.5, 3.5)
+    x0, y0, x1, y1 = b["box"]
+    return [max(0, x0 - dx * width / 1000), max(0, y0 - dy * height / 1000), x1, y1]
+
+
 def full_ocr(blks, width, height):
     """The full_ocr answer: each block's header tokens and compact content, nothing between blocks."""
-    return "".join(f"<|{b['label']}|>" + "".join(f"<|{v}|>" for v in norm(b["box"], width, height).split())
+    return "".join(f"<|{b['label']}|>" + "".join(f"<|{v}|>" for v in norm(as_surya(b, width, height), width, height).split())
                    + compact(on_page(b)) for b in blks)
 
 
 def divs(blks, width, height):
     """The same blocks as the div HTML Surya's decoder gives back (readable; kept in the labels JSON)."""
-    return "\n".join(f'<div data-bbox="{norm(b["box"], width, height)}" data-label="{b["label"]}">{on_page(b)}</div>'
+    return "\n".join(f'<div data-bbox="{norm(as_surya(b, width, height), width, height)}" data-label="{b["label"]}">{on_page(b)}</div>'
                      for b in blks)
 
 
 def layout(blks, width, height):
     """The layout answer: the JSON array on one line."""
-    return json.dumps([{"label": b["label"], "bbox": norm(b["box"], width, height), "count": count(b["html"])}
+    return json.dumps([{"label": b["label"], "bbox": norm(as_surya(b, width, height), width, height), "count": count(b["html"])}
                        for b in blks], ensure_ascii=False)
 
 

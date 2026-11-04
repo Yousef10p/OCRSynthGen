@@ -89,8 +89,20 @@ labels now follow it (`pipeline/surya.py`); where it is not, we keep our rule, s
 | `<b>` inside a heading | 78 of 285, no pattern | none |
 | Two paragraphs one under the other | joined about half the time, no pattern | kept apart |
 | Reading order elsewhere | from a trained order model (`common/order/order_ar.py`), not a rule | document order |
+| A label with a value beside it, only the label bold | `<p><b>label:</b> value</p>` | the same (was the whole line in `<b>`) |
+| Box edges | left edge 6.5, top edge 3.5 thousandths of the page further out than the text (pictures 3.3 and 1.8), on clean pages too | the same (median overlap with Surya's boxes 0.79 -> 0.90) |
+| Picture descriptions | describes each picture | ours are stock sentences, so the fine-tuning notebook leaves their words out of the loss |
+| Text characters | identical on 844 of 1013 blocks; number groups on Arabic pages reversed 8 times, kept 14 | unchanged (no consistent rule) |
 | Layout answer form | 18 of 75 switch from JSON to full_ocr blocks halfway (the server has no guided decoding) | JSON |
 
 Agreement on the same pages, before -> after: full_ocr same label 1012/1142 -> 1063/1150, same tags 716 -> 771,
 reading-order inversions 520 -> 412; layout same label 627/706 -> 657/709, same count 368 -> 442; block_ocr same
 tags 51 -> 56 of 100.
+
+## 7. The end token in training
+
+Surya's vocabulary has about 25,000 added tokens such as `.<`, `><` and `;<`, matched longest first. Tokenizing a
+whole chat as text therefore joins the answer's last character with the `<` of `<|im_end|>` on most pages (38 of 66
+checked), and the end token becomes the plain pieces `| im _ end | >`: a model trained that way learns to write
+those instead of stopping. The fine-tuning notebook builds the answer from the target's own tokens followed by the
+end token's id (2), the way the model writes it.
