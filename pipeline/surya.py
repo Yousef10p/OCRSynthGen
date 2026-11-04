@@ -13,8 +13,8 @@ compact.py, parsers.py), whose prompt texts are "the model's training-time contr
              marker as drawn, inside the item), <table>, <img alt="Photo: ..."/><p class="img-desc">...</p>.
   layout     the page -> the JSON array on one line: [{"label": "Text", "bbox": "x0 y0 x1 y1", "count": 120}, ...]
              (Surya's parse_layout reads this; the model writes it under JSON-schema guided decoding). count is
-             the model's estimate of the tokens it needs to OCR the block: on the reference outputs close to
-             0.345 per Latin character + 1.05 per Arabic character of the block's HTML + 3, rounded to tens.
+             the model's estimate of the tokens it needs to OCR the block: the block's answer in Surya's own
+             tokens, rounded up to tens.
   block_ocr  one block cut out of the page -> only that block's content, compact: <p>...</p>, <h2>...</h2>,
              <table>..., <ul>... (no label, no box). Pictures are not OCR'd block by block (Surya skips Image).
   table      a table cut out of the page -> rows then columns as a JSON array on one line, [{"label": "Row",
@@ -29,7 +29,13 @@ leaves it out, as the tokenizer adds it.
 """
 import html as _html
 import json
+import math
 import re
+
+from huggingface_hub import hf_hub_download
+from tokenizers import Tokenizer
+
+TOKENIZER = None  # Surya 2.5's tokenizer, loaded on first use
 
 PROMPTS = {
     # exactly as Surya's prompts.py (HIGH_ACCURACY_BBOX_PROMPT): no quote before "(x0"
@@ -60,7 +66,6 @@ PHOTOS = {
     "patterns": ("A close-up of a texture.", "A close-up photograph of a surface texture or pattern."),
     "general": ("A general scene.", "A photograph of a general scene."),
 }
-ARABIC = re.compile(r"[؀-ۿݐ-ݿﭐ-﷿ﹰ-﻿]")
 
 
 def esc(text):
@@ -68,9 +73,12 @@ def esc(text):
 
 
 def count(content):
-    """Surya's "count" for a block: about how long its HTML output is, in tens."""
-    arabic = len(ARABIC.findall(content))
-    return max(10, int(round((0.345 * (len(content) - arabic) + 1.05 * arabic + 3) / 10)) * 10)
+    """Surya's "count" for a block: its OCR answer's length in Surya's own tokens, rounded up to tens (as Surya
+    answers on 443 of 698 blocks in surya_probe/batch100; a character estimate: 411)."""
+    global TOKENIZER
+    if TOKENIZER is None:
+        TOKENIZER = Tokenizer.from_file(hf_hub_download("datalab-to/surya-ocr-2.5", "tokenizer.json"))
+    return max(10, math.ceil(len(TOKENIZER.encode(compact(content), add_special_tokens=False).ids) / 10) * 10)
 
 
 def norm(box, width, height):
@@ -211,11 +219,13 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, width, 
             k += len(run)
             continue
         label = ROLE_LABEL.get(role, "Text")
-        if role == "label":  # a label with no value beside it is a heading to Surya (11 of 11 in the probe, all
-            # bold on the page: 8 written as bare <b>, 3 as <h4>): bold as <b>, otherwise <h4>
-            tag = "b" if (styles.get(r["id"]) or {}).get("bold") else "h4"
-            out.append({"label": "Section-Header", "box": r["bbox"], "html": f"<{tag}>{esc(r['text'])}</{tag}>",
-                        "dom": order.get(r["id"], 0)})
+        if role == "label":  # a label with no value beside it (surya_probe/batch100): a plain one is Text to Surya
+            # (74 of 83), a bold one a Section-Header, most often <h3>
+            if (styles.get(r["id"]) or {}).get("bold"):
+                out.append({"label": "Section-Header", "box": r["bbox"], "html": f"<h3>{esc(r['text'])}</h3>",
+                            "dom": order.get(r["id"], 0)})
+            else:
+                out.append(text_block("Text", r["text"], r["bbox"], styles.get(r["id"], {}), order.get(r["id"], 0)))
         elif label == "Section-Header":
             tag = (styles.get(r["id"]) or {}).get("h") or ROLE_TAG.get(role, "h2")
             tag = tag if tag in ("h1", "h2", "h3") else "h3"
@@ -224,8 +234,31 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, width, 
         else:
             out.append(text_block(label, r["text"], r["bbox"], styles.get(r["id"], {}), order.get(r["id"], 0)))
         k += 1
-    out = reading_order([b for b in out if b["box"]], positioning, lang)
-    return edges(out, width, height)
+    out = reading_order([b for b in out if b["box"]], positioning, lang, width, height)
+    heights = sorted(r["bbox"][3] - r["bbox"][1] for r in regions)
+    line = heights[len(heights) // 4] if heights else 0.02 * height  # most short slots are one line
+    return joined(edges(out, width, height), width, line)
+
+
+def joined(out, width, line):
+    """Neighbours Surya writes as one block (surya_probe/batch100): a list right under another list (less than
+    0.8 of a line apart) is one List-Group (45 of 67), text on one line almost touching another (less than 1%
+    of the page width apart) is one Text (20 of 23)."""
+    merged = []
+    for b in out:
+        prev = merged[-1] if merged else None
+        a, c = (prev or {}).get("box"), b["box"]
+        if (prev and prev["label"] == b["label"] == "List-Group" and min(a[2], c[2]) > max(a[0], c[0])
+                and c[1] - a[3] < 0.8 * line and not same_line(a, c)):
+            prev["html"] = prev["html"][:-len("</ul>")] + b["html"][len("<ul>"):]
+        elif (prev and prev["label"] == b["label"] == "Text" and same_line(a, c)
+              and max(a[0], c[0]) - min(a[2], c[2]) < 0.01 * width):
+            prev["html"] = f"<p>{inner(prev['html'])} {inner(b['html'])}</p>"
+        else:
+            merged.append(dict(b))
+            continue
+        prev["box"] = union([a, c])
+    return merged
 
 
 def merged_grid(rows):
@@ -314,15 +347,39 @@ def touching(a, b, width):
     return min(a[2], b[2]) > max(a[0], b[0]) and max(a[1], b[1]) - min(a[3], b[3]) < line
 
 
-def reading_order(out, positioning, lang):
+def reading_order(out, positioning, lang, width, height):
     """Flowing pages: document order (a block's place is that of its first labelled text, or of its element for
-    pictures). Absolutely placed pages (DocLayNet): top to bottom in bands, then right to left for Arabic."""
+    pictures). Absolutely placed pages (DocLayNet): English column by column, as Surya reads them (half the
+    order differences of top-to-bottom bands in surya_probe/batch100); Arabic top to bottom in bands, right to
+    left (Surya doesn't read those column by column)."""
+    if positioning == "absolute" and lang != "ar":
+        return columns_first(out, 0.004 * width, 0.008 * height)
     if positioning == "absolute":
         heights = sorted(b["box"][3] - b["box"][1] for b in out)
         band = max(8, heights[len(heights) // 2] // 2) if heights else 8
         side = -1 if lang == "ar" else 1
         return sorted(out, key=lambda b: (b["box"][1] // band, side * b["box"][0]))
     return sorted(out, key=lambda b: b["dom"])
+
+
+def columns_first(out, gap_x, gap_y):
+    """Left to right in columns (an empty strip from top to bottom between them), else top to bottom in bands
+    (an empty strip across), each part ordered the same way; blocks with neither left top to bottom."""
+    if len(out) <= 1:
+        return out
+    for axis, gap in ((0, gap_x), (1, gap_y)):
+        spans = sorted((b["box"][axis], b["box"][axis + 2]) for b in out)
+        cuts, end = [], spans[0][1]
+        for start, stop in spans[1:]:
+            if start - end >= gap:
+                cuts.append((end + start) / 2)
+            end = max(end, stop)
+        if cuts:
+            parts = [[] for _ in range(len(cuts) + 1)]
+            for b in out:
+                parts[sum((b["box"][axis] + b["box"][axis + 2]) / 2 > x for x in cuts)].append(b)
+            return [b for part in parts for b in columns_first(part, gap_x, gap_y)]
+    return sorted(out, key=lambda b: (b["box"][1], b["box"][0]))
 
 
 # -- the targets --------------------------------------------------------------------------------------------

@@ -67,10 +67,30 @@ checked and encoded. The training data itself was never published.
 | | Ours now | Surya's contract | To do |
 |---|---|---|---|
 | Page label | blocks with label, box, HTML (`surya.blocks`) | the same | none |
-| Encoding | our own `compact()` (drops `</td></th></tr>`) | `compact.encode()` with canonical spelling and attribute order | write our labels as `div` HTML and run Surya's `encode()`, so the spelling is theirs exactly |
-| Layout `count` | rounded to 10 | multiple of 50 | round to 50 |
+| Encoding | our own `compact()` (drops `</td></th></tr>`) | `compact.encode()` with canonical spelling and attribute order | done: our targets equal `encode()` of our div HTML (`pipeline/surya_encode.py`) on 100 of 100 pages |
+| Layout `count` | Surya's own tokens, rounded up to 10 | a token estimate; Surya's real answers are multiples of 10 (784 of 837 not multiples of 50) | done |
 | Block crop margin | 6-24 px | 4 px | use 4 px |
 | Labels | 9 | 19 | fine (a subset) |
 
-The 100 Surya answers per prompt in `surya_probe/batch100/` (image, prompt, Surya's answer, our label for each
-page) show how close our labels already are.
+## 6. Matching Surya's real answers (surya_probe/batch100)
+
+Surya answered 100 pages per prompt (full_ocr, block_ocr; layout 75 so far). Where Surya is consistent, our
+labels now follow it (`pipeline/surya.py`); where it is not, we keep our rule, since no rule matches it better.
+
+| What | Surya's answers | Our rule now |
+|---|---|---|
+| A label line with no value, not bold | Text `<p>` on 74 of 83 | Text `<p>` (was Section-Header `<h4>`) |
+| A label line with no value, bold | Section-Header, most often `<h3>` | Section-Header `<h3>` (was bare `<b>`) |
+| A list right under another list | one List-Group on 45 of 67 | joined when less than 0.8 of a line apart |
+| Text on one line almost touching other text | one Text on 20 of 23 | joined when less than 1% of the page width apart |
+| Layout `count` | equals our tokens rounded up to 10 on 443 of 698 | Surya's tokenizer, rounded up to 10 |
+| Two-column English DocLayNet pages | read column by column | column by column (Arabic: bands, right to left) |
+| Heading level h1/h2/h3 | inconsistent: no rule above 59% | the page's own heading level |
+| `<b>` inside a heading | 78 of 285, no pattern | none |
+| Two paragraphs one under the other | joined about half the time, no pattern | kept apart |
+| Reading order elsewhere | from a trained order model (`common/order/order_ar.py`), not a rule | document order |
+| Layout answer form | 18 of 75 switch from JSON to full_ocr blocks halfway (the server has no guided decoding) | JSON |
+
+Agreement on the same pages, before -> after: full_ocr same label 1012/1142 -> 1063/1150, same tags 716 -> 771,
+reading-order inversions 520 -> 412; layout same label 627/706 -> 657/709, same count 368 -> 442; block_ocr same
+tags 51 -> 56 of 100.

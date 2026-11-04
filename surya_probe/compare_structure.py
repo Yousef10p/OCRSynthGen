@@ -17,6 +17,7 @@ def blocks(text):
     """[(label, box, content, count)] from a compact answer or a layout JSON answer."""
     text = END.sub("", text.strip())
     if text.startswith("["):
+        text = re.sub(r"<\|(\d+)\|>", r" \1", text)  # Surya sometimes writes a coordinate as a token in its JSON
         try:
             return [(e.get("label"), [int(v) for v in str(e.get("bbox", "")).split()], "", e.get("count"))
                     for e in json.loads(text)]

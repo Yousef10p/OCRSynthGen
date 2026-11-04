@@ -21,9 +21,9 @@ tokenizer = Tokenizer.from_file(hf_hub_download("datalab-to/surya-ocr-2.5", "tok
 
 
 def count(html):
-    """Surya's layout count: the block's OCR answer length in tokens, a multiple of 50."""
+    """Surya's layout count: the block's OCR answer length in tokens, a multiple of 10 (its real answers)."""
     n = len(tokenizer.encode(compact.encode(html), add_special_tokens=False).ids)
-    return max(50, round(n / 50) * 50)
+    return max(10, round(n / 10) * 10)
 
 
 def cut_block(surya):
