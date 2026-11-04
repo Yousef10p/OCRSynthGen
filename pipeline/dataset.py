@@ -74,9 +74,9 @@ def main():
     ap.add_argument("--effect", choices=["clean", "ocrsmith", "augraphy", "scan-simulator",
                                          "augraphy+scan-simulator"], help="only this effect (default: the mix)")
     ap.add_argument("--text", choices=["wikipedia", "demo"], default=None)
-    ap.add_argument("--task", choices=["full_ocr", "layout", "block_ocr", "table"],
+    ap.add_argument("--task", choices=["full_ocr", "layout", "block_ocr", "table", "full_ocr+block_ocr"],
                     help="the Surya OCR 2.5 prompt every sample is made for (default: 40%% full_ocr, 25%% layout, "
-                         "35%% block_ocr; table only when asked)")
+                         "35%% block_ocr; table only when asked); full_ocr+block_ocr: only those two, 40:35")
     ap.add_argument("--tashkeel", choices=["none", "partial", "full"],
                     help="Arabic diacritics on every Arabic page at this level (default: 40%% none, 30%% partial, 30%% full)")
     a = ap.parse_args()
@@ -87,7 +87,8 @@ def main():
     options = {"languages": {a.language: 1} if a.language else None, "sources": {a.source: 1} if a.source else None,
                "strengths": {t: getattr(a, f"strength_{t.replace('-', '_')}") for t in ("ocrsmith", "augraphy", "scan-simulator")},
                "effects": {a.effect: 1} if a.effect else None, "text": a.text,
-               "tashkeel": {a.tashkeel: 1} if a.tashkeel else None, "tasks": {a.task: 1} if a.task else None}
+               "tashkeel": {a.tashkeel: 1} if a.tashkeel else None, "tasks": ({"full_ocr": 0.4, "block_ocr": 0.35} if a.task == "full_ocr+block_ocr"
+                         else {a.task: 1} if a.task else None)}
 
     manifest = out / "manifest.jsonl"
     done = set()
