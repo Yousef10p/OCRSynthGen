@@ -1,8 +1,8 @@
-"""Our pages' labels made the way Surya's own code makes them (surya_repo_findings.md):
+"""Our pages' labels made the way Surya's own code makes them (OCRREADME.md):
 
   full_ocr   the page as <div data-bbox data-label> HTML, encoded with Surya's rules (pipeline/surya_encode.py)
   block_ocr  the cut-out block's HTML, encoded the same way
-  layout     [{"label", "bbox", "count"}], count = the encoded block's length in Surya's tokens, rounded to 50
+  layout     [{"label", "bbox", "count"}], count = the encoded block's length in Surya's tokens, rounded to 10
   table      unchanged (rows then columns)
 
     python surya_probe/surya_style_labels.py surya_probe/batch100/full_ocr   -> <folder>/surya_style/<id>.txt|.json

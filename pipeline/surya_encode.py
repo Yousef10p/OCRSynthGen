@@ -1,4 +1,4 @@
-"""Surya 2.5's training-target spelling, written from reading Surya's compact.py (surya_repo_findings.md).
+"""Surya 2.5's training-target spelling, written from reading Surya's compact.py (OCRREADME.md, section 5).
 
 A page label is HTML, one <div data-bbox="x0 y0 x1 y1" data-label="Label"> per block; encode() turns it into
 the text the model is trained to write:
