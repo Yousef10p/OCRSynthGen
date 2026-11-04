@@ -175,7 +175,7 @@ estimate"), block OCR per layout block, tables as `<table>…</table>`, row/colu
 Code: [pipeline/surya.py](pipeline/surya.py) (`compact`, `full_ocr`, `layout`, `block_ocr`, `table`,
 `merged_grid`, `problems`), [pipeline/doc_pipeline.py](pipeline/doc_pipeline.py) (`sample`: the cut-outs;
 `QA_JS`: row spans), the generator page (the **Image + Target** view reads the compact form and one-line
-JSON). Docs: [surya-format.md](surya-format.md), [OCRREADME.md](OCRREADME.md) section 0.10.
+JSON). Docs: [surya-format.md](surya-format.md), [OCRREADME.md](OCRREADME.md).
 
 ---
 

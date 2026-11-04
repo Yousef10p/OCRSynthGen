@@ -14,9 +14,9 @@ every step that no text is hidden, cut, covered or mislabelled. (bank2000 was ch
 113,077 templates; that bank and the scripts that built it are no longer in the repository, only in its git
 history, up to commit 2f6c254.)
 
-For a detailed, step-by-step explanation of how a page is made (template storage, text injection, the exact
-SynthDoc and OCRSmith arguments, the Wikipedia text format, the label formats), see
-[OCRREADME.md](OCRREADME.md); [section 0](OCRREADME.md#0-the-final-version-in-short) covers the final version.
+How the labels follow Surya OCR 2.5 (what its code and its answers show) and how to fine-tune Surya on them:
+[OCRREADME.md](OCRREADME.md). The earlier step-by-step explanation of how a page is made (template storage,
+text injection, the exact SynthDoc and OCRSmith arguments) is in that file's git history, at commit `e3ad56fc4f`.
 
 ## The final pipeline in one picture
 
@@ -89,7 +89,7 @@ cd D:\code\OCR\arabic-template-bank
 | `dataset.json` | counts and the options, sources and licences of the set |
 
 Options: `--task full_ocr|layout|block_ocr|table` (Surya OCR 2.5 prompts, this `surya` branch; see
-[OCRREADME 0.10](OCRREADME.md#010-surya-ocr-25-targets-branch-surya) and [surya-format.md](surya-format.md)),
+[OCRREADME.md](OCRREADME.md) and [surya-format.md](surya-format.md)),
 `--language ar|en`, `--source grammar|websight|websight2|doclaynet`, `--tashkeel none|partial|full`
 (Arabic diacritics; default 40% none, 30% partial, 30% full),
 `--effect clean|ocrsmith|augraphy|scan-simulator|augraphy+scan-simulator`,
