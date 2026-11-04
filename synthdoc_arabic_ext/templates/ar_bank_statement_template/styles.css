@@ -1,0 +1,38 @@
+/* RTL overrides for SynthDoc's bank_statement styles.css (loaded after it). */
+
+body { font-size: 11.5px; }
+.statement-title { font-size: 18px; font-weight: 700; color: var(--ar-accent); margin-bottom: 10px; }
+
+.grid-cell.bank-brand { background: linear-gradient(135deg, var(--ar-accent) 0%, #16213e 100%); }
+.account-type-cell { align-items: flex-start; }
+.field-value.account-num { font-family: var(--ar-font); font-size: 12px; }
+.card-value { font-family: var(--ar-font); font-size: 13px; }
+.card-prominent .card-value { font-size: 14px; }
+
+.category-row { grid-template-columns: 110px 1fr 90px 40px; }
+.category-amount, .category-percent { text-align: left; font-family: var(--ar-font); }
+
+thead { background: linear-gradient(135deg, var(--ar-accent) 0%, #16213e 100%); }
+th { text-align: right; }
+.money { text-align: left; font-family: var(--ar-font); }
+.col-date { width: 13%; }
+.col-desc { width: 33%; }
+
+.hours-label { margin-right: 0; margin-left: 4px; }
+.service-box { background: linear-gradient(135deg, var(--ar-accent) 0%, #16213e 100%); }
+.footer-grid { grid-template-columns: 1fr 120px 200px; }
+.disclaimer { font-size: 9px; }
+.footer-statement-info { font-size: 9px; }
+
+/* Category colours for the slugs the Arabic data uses */
+.category-shopping { background: #e76f51; }
+.category-healthcare { background: #2a9d8f; }
+.category-fees { background: #8d99ae; }
+.category-badge.category-shopping { background: #e76f51; }
+.category-badge.category-healthcare { background: #2a9d8f; }
+.category-badge.category-fees { background: #8d99ae; }
+
+.section-title { break-after: avoid; }
+.category-transfer, .category-badge.category-transfer { background: #0077b6; }
+.category-income, .category-badge.category-income { background: #2d6a4f; }
+.header, .summary-cards, .category-summary, .footer-grid, .footer-disclaimers { break-inside: avoid; }

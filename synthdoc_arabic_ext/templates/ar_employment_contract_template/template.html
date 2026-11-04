@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:schema="http://schema.org/"
+      xmlns:doco="http://purl.org/spar/doco/"
+      xmlns:doco-fd="http://purl.org/doco-fd/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:dc="http://purl.org/dc/terms/">
+<head>
+    <meta charset="UTF-8">
+    <title>عقد عمل</title>
+</head>
+<body vocab="https://schema.org/">
+    <div class="contract">
+        <div class="contract-head">
+            <div class="employer-head" typeof="schema:Organization">
+                <div class="employer-name" property="schema:legalName doco-fd:fieldValue">{{ employer_name }}</div>
+                <div class="employer-sub">سجل تجاري رقم: <span property="schema:identifier doco-fd:fieldValue">{{ employer_cr }}</span></div>
+            </div>
+            <div class="contract-ref" typeof="doco-fd:FormField" resource="#contract_number_field">
+                <span property="doco-fd:fieldLabel">رقم العقد:</span>
+                <span dir="ltr" property="schema:identifier doco-fd:fieldValue">{{ contract_number }}</span>
+            </div>
+        </div>
+
+        <div class="contract-title" property="doco:title dc:title">عقد عمل</div>
+
+        <p class="preamble">
+            إنه في يوم {{ sign_weekday }} الموافق <span property="doco-fd:fieldValue schema:Date">{{ sign_date }}</span>،
+            تم الاتفاق في مدينة <span property="doco-fd:fieldValue schema:addressLocality">{{ city }}</span> بين كل من:
+        </p>
+
+        <div class="parties">
+            <div class="party">
+                <div class="party-role">الطرف الأول (صاحب العمل):</div>
+                <div><span typeof="schema:Organization" property="doco-fd:fieldValue schema:name">{{ employer_name }}</span>،
+                    وعنوانها: <span property="doco-fd:fieldValue schema:address">{{ employer_address }}</span>،
+                    ويمثلها في التوقيع على هذا العقد السيد/ة
+                    <span typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ manager_name }}</span>
+                    بصفته {{ manager_title }}.</div>
+            </div>
+            <div class="party">
+                <div class="party-role">الطرف الثاني (الموظف):</div>
+                <div><span typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ employee_name }}</span>،
+                    {{ employee_nationality }} الجنسية، {{ id_label }}
+                    <span property="doco-fd:fieldValue schema:identifier">{{ employee_id }}</span>،
+                    رقم الجوال <span dir="ltr" property="doco-fd:fieldValue schema:telephone">{{ employee_phone }}</span>،
+                    وعنوانه: <span property="doco-fd:fieldValue schema:address">{{ employee_address }}</span>.</div>
+            </div>
+        </div>
+
+        <p class="preamble">
+            وحيث إن الطرف الأول يرغب في التعاقد مع الطرف الثاني، و{{ agrees }} الطرف الثاني على العمل لديه، فقد
+            اتفق الطرفان وهما بكامل أهليتهما المعتبرة شرعاً ونظاماً على ما يلي:
+        </p>
+
+        <div class="clauses">
+            {% for clause in clauses %}
+            <div class="clause">
+                <div class="clause-title" property="doco:sectionTitle">{{ clause.ordinal }}: {{ clause.title }}</div>
+                <p class="clause-text" property="doco-fd:fieldValue">{{ clause.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <p class="copies">حُرر هذا العقد من نسختين أصليتين ({{ copies }})، بيد كل طرف نسخة للعمل بموجبها.</p>
+
+        <div class="signatures">
+            <div class="sig">
+                <div class="sig-role">الطرف الأول</div>
+                <div class="sig-line"></div>
+                <div typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ manager_name }}</div>
+                <div>{{ manager_title }}</div>
+            </div>
+            <div class="sig">
+                <div class="sig-role">الطرف الثاني</div>
+                <div class="sig-line"></div>
+                <div typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ employee_name }}</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

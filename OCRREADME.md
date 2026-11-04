@@ -481,6 +481,10 @@ bitsandbytes 0.50.2): training steps, validation, saving and continuing after a 
    ..\arabic-template-bank\.venv-pipeline\Scripts\python -m pipeline.dataset --n 1000 --out batches\epoch_002 --task full_ocr+block_ocr --tashkeel none --seed 2
    ```
    About 15-25 minutes each. 5% of the pages in each folder are kept for validation.
+
+   **Or make them in Colab instead:** `notebooks/Generate_batches_Colab.ipynb` sets up the generator in Colab
+   and writes the folders straight to Drive (step 2 is then done for you). It needs a read-only GitHub token
+   in Colab's *Secrets* as `GITHUB_TOKEN`; the notebook's first cell says how.
 2. **Upload both folders to Google Drive**, whole, as `MyDrive/surya/batches/epoch_001` and `epoch_002`.
 3. **Open the notebook in Colab:** *File -> Upload notebook* -> `notebooks/Surya_finetune_Colab.ipynb`.
 4. **Choose the GPU:** *Runtime -> Change runtime type -> T4 GPU*.
@@ -515,6 +519,8 @@ prompts. The notebook's own check only uses our generated pages.
 | `pipeline/surya_encode.py` | Surya's shortening rules (section 5), written from its `compact.py` |
 | `pipeline/dataset.py` | makes a batch folder (`--task full_ocr+block_ocr`) |
 | `notebooks/Surya_finetune_Colab.ipynb` | the fine-tuning notebook |
+| `notebooks/Generate_batches_Colab.ipynb` | makes the batch folders in Colab, into Drive |
+| `synthdoc_arabic_ext/` | SynthDoc's Arabic add-on (a copy of `synthdoc-arabic-test/arabic_ext`), so Colab gets it from the repository |
 | `surya_probe/ask_batch.py` | sends a batch to the Surya server and keeps every answer |
 | `surya_probe/export_batch.py` | makes the `samples/<id>/` folders |
 | `surya_probe/compare_structure.py` | our labels vs Surya's answers: labels, boxes, order, tags |

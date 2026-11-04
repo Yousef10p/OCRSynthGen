@@ -1,0 +1,64 @@
+/* RTL overrides for SynthDoc's invoice styles.css (loaded after it). */
+
+.header-right { text-align: left; }
+.invoice-meta span:first-child { margin-right: 0; margin-left: 5px; }
+
+.logo-placeholder::after { content: none; }
+.logo-placeholder .logo-text { display: inline; font-size: 10pt; color: #999; font-weight: 600; }
+
+.company-brand-name { color: var(--ar-accent); font-size: 16pt; }
+.company-vat { font-size: 8.5pt; color: #555; margin-top: 4px; }
+.invoice-title-badge h2 { color: var(--ar-accent); font-size: 20pt; }
+.header { border-bottom-color: var(--ar-accent); }
+
+.from-section {
+    border-left: none;
+    border-right: 4px solid var(--ar-accent);
+    border-radius: 8px 0 0 8px;
+}
+.to-section {
+    border-left: none;
+    border-right: 4px solid #e67e22;
+    border-radius: 8px 0 0 8px;
+}
+.from-section h3 { color: var(--ar-accent); }
+.contact-icon { margin-right: 0; margin-left: 5px; }
+
+th { text-align: right; background-color: var(--ar-accent); }
+td { text-align: right; }
+td:last-child, th:last-child { text-align: left; }
+th:first-child { border-radius: 0 4px 0 0; }
+th:last-child { border-radius: 4px 0 0 0; }
+tfoot th { background-color: #f1f3f5; color: #333; }
+tfoot tr:first-child { border-top-color: var(--ar-accent); }
+.total-row th { color: var(--ar-accent); }
+caption { padding: 4px 0; font-weight: 600; color: #555; }
+
+.bank-details { padding-right: 0; padding-left: 20px; }
+.bank-details h4, .qr-code-section h4, .terms-section h4 { color: var(--ar-accent); }
+.bank-field:nth-child(odd) { border-right: 1px solid #e0e0e0; border-left: none; }
+.checkbox-item input[type="checkbox"] { margin-right: 0; margin-left: 5px; }
+
+.terms-list { margin: 0 20px 10px 0; }
+.payment-terms { font-size: 9pt; color: #555; margin: 0 0 12px 0; }
+
+.footer { border-top-color: var(--ar-accent); }
+.thank-you { color: var(--ar-accent); }
+
+/* Layout: keep blocks whole across pages, 2x2 bank grid so IBANs fit */
+.header, .parties-grid, .payment-section, .terms-acceptance, .signature-section { break-inside: avoid; }
+.header-right { width: 220px; }
+.payment-grid { display: flex; gap: 20px; }
+.bank-details { display: block; flex: 1 1 auto; width: auto; padding-left: 0; }
+.qr-code-section { display: block; flex: 0 0 150px; width: auto; }
+.bank-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.bank-field, .bank-field:nth-child(odd), .bank-field:nth-child(-n+2) {
+    display: block; width: auto !important; margin: 0; border: 1px solid #e0e0e0;
+}
+
+/* Numbers are written in the HTML: CSS list markers would be visible text with no label */
+.terms-list { list-style: none; margin: 0 0 10px 0; }
+.term-num { font-weight: 600; margin-left: 4px; }
+
+/* Arabic has no true italic; browsers would slant the glyphs */
+.signature-name, .signature-date { font-style: normal; }

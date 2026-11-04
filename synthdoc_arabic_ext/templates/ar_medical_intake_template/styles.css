@@ -1,0 +1,35 @@
+/* Arabic medical intake form; the field markup follows test_showcase section 9. */
+
+@page { margin: 0.55in 0.6in; }
+body { font-size: 10.5pt; line-height: 1.55; }
+
+.form-top { display: flex; justify-content: space-between; align-items: flex-end;
+            border-bottom: 3px solid var(--ar-accent); padding-bottom: 8px; margin-bottom: 10px; }
+.hospital-name { font-size: 17pt; font-weight: 700; color: var(--ar-accent); }
+.hospital-dept { font-size: 10pt; color: #555; }
+.file-meta { font-size: 9.5pt; text-align: left; }
+.file-meta span[property~="doco-fd:fieldLabel"] { color: #666; margin-left: 4px; }
+
+.form-frame { border: 2px solid var(--ar-accent); padding: 12px 18px; }
+.form-title { text-align: center; color: var(--ar-accent); margin: 0 0 6px 0; font-size: 14pt; }
+.sub-title { font-weight: 700; color: #fff; background: var(--ar-accent); padding: 2px 10px;
+             margin: 12px 0 8px 0; font-size: 10pt; border-radius: 3px; }
+
+.field-grid { display: grid; gap: 8px 16px; }
+.field-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+.field-grid.two { grid-template-columns: 1fr 1fr; }
+.span-all { grid-column: 1 / -1; }
+.f-label { font-size: 8.5pt; font-weight: 700; color: #444; }
+.f-value { border-bottom: 1px solid #000; padding: 2px 4px; min-height: 22px; }
+
+.checks .check-row { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 4px; }
+.check input { margin: 0 0 0 4px; vertical-align: middle; }
+
+.text-box { margin-top: 8px; }
+.text-box .box { border: 1px solid #aaa; padding: 6px 8px; min-height: 30px; }
+
+.consent, .text-box, .checks { break-inside: avoid; }
+.sub-title { break-after: avoid; }
+.consent p { text-align: justify; margin: 4px 0 10px 0; }
+.sign-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 16px; }
+.sign-space { height: 28px; }

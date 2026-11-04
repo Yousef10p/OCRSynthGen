@@ -1,0 +1,48 @@
+/* Shared by every Arabic template; loaded after the original template CSS. */
+
+/* Paged.js (v0.4.3, vendored by SynthDoc) paginates with CSS columns and only
+   looks for overflow to the right. With an RTL root the overflow columns grow
+   to the left: no new page is made and the rest of the document is laid out
+   off-page at negative x, where SynthDoc still labels it. So Paged.js's own
+   page boxes stay LTR and only the content inside a page is RTL.
+   (Selectors match by substring: SynthDoc skips injecting Paged.js into any
+   HTML that already contains the literal class prefix.) */
+html, body,
+[class*="djs_page"], [class*="djs_sheet"], [class*="djs_area"] {
+    direction: ltr;
+}
+body > *,
+[class*="djs_page_content"] > div {
+    direction: rtl;
+    text-align: right;
+}
+
+body,
+input, button, select, textarea, table, th, td {
+    font-family: var(--ar-font) !important;
+}
+
+/* Arabic is a cursive script: tracking breaks letter joining and case
+   transforms do not apply. Both would also make the rendered text differ
+   from the DOM text that becomes the ground truth. */
+*, *::before, *::after {
+    letter-spacing: normal !important;
+    text-transform: none !important;
+}
+
+/* Latin runs (e-mail, URLs, IBANs, references) keep their own direction */
+[dir="ltr"] {
+    direction: ltr;
+    unicode-bidi: isolate;
+    white-space: nowrap;
+}
+
+/* Arabic needs more vertical room than Latin for dots and marks */
+body {
+    line-height: 1.6;
+}
+
+/* Never truncate visible text: clipped text would not match its label */
+* {
+    text-overflow: clip !important;
+}

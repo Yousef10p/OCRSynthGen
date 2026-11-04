@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:schema="http://schema.org/"
+      xmlns:doco="http://purl.org/spar/doco/"
+      xmlns:doco-fd="http://purl.org/doco-fd/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:dc="http://purl.org/dc/terms/">
+<head>
+    <meta charset="UTF-8">
+    <title>صحيفة دعوى</title>
+</head>
+<body vocab="https://schema.org/">
+    <div class="doc">
+        <div class="legal-header">
+            <div class="court-info">
+                <div class="country">{{ country_name }}</div>
+                <div class="court-name" typeof="schema:Organization" property="doco-fd:fieldValue schema:name">{{ court_name }}</div>
+                <div class="circuit">{{ circuit }}</div>
+            </div>
+
+            <div class="case-box">
+                <div class="case-parties">
+                    <strong><span typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ plaintiff_name }}</span></strong>، بصفته الشخصية،<br>
+                    <span class="role">المدعي،</span><br>
+                    ضد<br>
+                    <strong><span typeof="schema:Organization" property="doco-fd:fieldValue schema:name">{{ defendant_name }}</span></strong>، بصفتها الاعتبارية،<br>
+                    <span class="role">المدعى عليها.</span>
+                </div>
+                <div class="case-meta">
+                    رقم القضية: <strong><span dir="ltr" property="doco-fd:fieldValue schema:identifier">{{ case_number }}</span></strong><br>
+                    <strong><span property="doco:title doco-fd:fieldValue">{{ document_type }}</span></strong><br>
+                    <strong>موضوع الدعوى:</strong><br>
+                    {% for claim in claims %}
+                    {{ claim.num }}. <span property="doco-fd:fieldValue">{{ claim.text }}</span><br>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="attorney-block">
+                <strong>{{ attorney_title }}/ <span typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ attorney_name }}</span></strong><br>
+                <span typeof="schema:Organization" property="doco-fd:fieldValue schema:name">{{ law_firm }}</span><br>
+                رقم الترخيص: <span property="doco-fd:fieldValue schema:identifier">{{ license_number }}</span><br>
+                تاريخ القيد: <span property="doco-fd:fieldValue schema:Date">{{ date_filed }}</span>
+            </div>
+        </div>
+
+        <p class="salutation">أصحاب الفضيلة رئيس وأعضاء {{ circuit }} في {{ court_name }} الموقرين،</p>
+        <p class="salutation">السلام عليكم ورحمة الله وبركاته، وبعد:</p>
+
+        {% for section in sections %}
+        <div class="legal-section">
+            <div class="legal-heading" property="doco:sectionTitle">{{ section.heading }}</div>
+            {% for para in section.paragraphs %}
+            <div class="numbered-para">
+                <span class="para-number">{{ para.num }}.</span>
+                <span property="doco-fd:fieldValue">{{ para.text }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        <div class="legal-section">
+            <div class="legal-heading" property="doco:sectionTitle">رابعاً: الطلبات</div>
+            <p class="lead">بناءً على ما تقدم، يلتمس المدعي من المحكمة الموقرة الحكم بما يلي:</p>
+            {% for req in requests %}
+            <div class="numbered-para">
+                <span class="para-number">{{ req.num }}.</span>
+                <span property="doco-fd:fieldValue">{{ req.text }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="closing">
+            <p>والله يحفظكم ويرعاكم،</p>
+            <div class="signature">
+                <div>مقدمه</div>
+                <div>وكيل المدعي</div>
+                <div class="sig-line"></div>
+                <div><span typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ attorney_title }} {{ attorney_name }}</span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
