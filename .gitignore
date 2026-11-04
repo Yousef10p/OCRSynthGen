@@ -38,3 +38,5 @@ surya_probe/check_probe.log
 suryan_outputs/
 # the Surya API client with its key and venv (surya_inference/suraya.py): never in git
 surya_inference/
+# generated training batches (pipeline.dataset --out batches/epoch_00k)
+batches/
