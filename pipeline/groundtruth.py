@@ -13,8 +13,31 @@ x1, y1, x2, y2 (top-left and bottom-right corners) in the image's pixels:
 """
 
 
-def regions(meta_slots, words, boxes, lang, positioning):
+def joined(pieces, text):
+    """The slot's words as written in its text. The browser may break a long word across two lines (CSS
+    overflow-wrap: anywhere in a narrow box), and each part is then measured as a word: "historica" "lly".
+    When the measured parts spell exactly the slot's text, the text's own spacing is used ("historically");
+    otherwise the parts are joined with spaces."""
+    tokens = (text or "").split()
+    if not tokens or "".join(pieces) != "".join(tokens):
+        return " ".join(pieces)
+    out, i = [], 0
+    for token in tokens:
+        part = ""
+        while i < len(pieces) and len(part) < len(token):
+            part += pieces[i]
+            i += 1
+        if part != token:
+            return " ".join(pieces)
+        out.append(token)
+    return " ".join(out)
+
+
+def regions(meta_slots, words, boxes, lang, positioning, texts=None):
+    """texts: each slot's text as the page holds it (the QA script's slots), to keep a word whole when the
+    browser broke it across lines."""
     roles = {s["id"]: s["role"] for s in meta_slots}
+    texts = texts or {}
     groups, order = {}, []
     for w, box in zip(words, boxes):
         slot = w.get("slot")
@@ -31,7 +54,7 @@ def regions(meta_slots, words, boxes, lang, positioning):
         y1 = min(b[1] for _, b in items)
         x2 = max(b[0] + b[2] for _, b in items)
         y2 = max(b[1] + b[3] for _, b in items)
-        out.append({"id": slot, "role": roles[slot], "text": " ".join(t for t, _ in items),
+        out.append({"id": slot, "role": roles[slot], "text": joined([t for t, _ in items], texts.get(slot)),
                     "box": [x1, y1, x2 - x1, y2 - y1], "bbox": [x1, y1, x2, y2]})
     if positioning == "absolute" and out:
         band = max(8, sorted(r["box"][3] for r in out)[len(out) // 2] // 2)

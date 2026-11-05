@@ -315,6 +315,24 @@ best of every rule we tried.
 > never:  <|Text|><|0|><|0|><|1000|><|1000|><p>...</p>
 > ```
 
+**8.9 Short one-line texts stacked with almost no gap are one block, lines split by `<br/>`** (30 of 35 when
+each is at most 6 words and less than 0.2 of a line apart; 3 of 31 when further apart, so those stay apart).
+
+> **Example: label lines one under the other**
+> ```
+> ours before:  <|Text|>...<p><b>Born:</b> 1950</p><|Text|>...<p><b>Died:</b> 2010</p>
+> Surya:        <|Text|>...<p><b>Born:</b> 1950<br/><b>Died:</b> 2010</p>
+> ours now:     <|Text|>...<p><b>Born:</b> 1950<br/><b>Died:</b> 2010</p>
+> ```
+
+**8.10 The ground truth is what the image shows, word for word.** Two fixes after checking generated pages:
+
+- A word the browser broke across two lines in a narrow box (`overflow-wrap: anywhere`) was written as two
+  words. Now the slot's own text is used when the parts spell it exactly.
+  > `historica lly` -> `historically`, `Rout e desc ripti on` -> `Route description`
+- A word flagged as clipped was left out of the label while its letters still showed (17 words on 7 of 400
+  pages). Now such a page is made again, like any page with cut text: 0 words left out on 200 new pages.
+
 ---
 
 ## 9. What Surya does not do the same way twice
@@ -413,17 +431,22 @@ Same 6 blocks, same order, same labels, same tags, boxes a few thousandths apart
 
 ## 11. How close we are now
 
-Pages made with the current code, compared with Surya's answers on the same images:
+Pages made with the current code, compared with Surya's answers on exactly the same images (pages whose image
+changed since Surya read them are left out):
 
-| Check | full_ocr (78 pages) | block_ocr (64 blocks) | layout (60 pages) |
+| Check | full_ocr (74 pages) | block_ocr (54 blocks) | layout (60 pages, earlier code) |
 |---|---|---|---|
-| Answer format correct | 100 of 100 | 100 of 100 | |
+| Answer format correct (`surya_probe/check_dataset.py`) | 100 of 100 | 100 of 100 | |
 | Same as Surya's own encoding | 100 of 100 | 100 of 100 | |
-| Same block label | 852 of 931 (92%) | | 537 of 582 (92%) |
-| Same tags in the block | 606 of 931 (65%) | 38 of 64 | |
-| Average box overlap | 0.88 (was 0.79) | | |
+| Same block label | 784 of 863 (91%) | | 537 of 582 (92%) |
+| Same tags in the block | 551 of 863 (64%) | 32 of 54 | |
+| Median box overlap | 0.90 | | |
+| Same reading order | 50 of 74 pages | | |
 | Same `count` | | | 62% |
 | Label or box added to a cut-out | | never | |
+
+Most tag differences are headings, and Surya itself is not consistent there: on its 100 answers it wrote
+`<h2>` 108 times, `<h3>` 94, `<h2><b>` 43, `<h3><b>` 34, `<h1>` 28, a bare `<b>` 20 and `<h4>` 10.
 
 Most of what is left is section 9. A perfect score is not possible: these are Surya's *answers*, with its own
 mistakes and changes of mind, not the labels it was trained on (those are private).
@@ -470,6 +493,14 @@ tags around them are.
 
 Tested on a computer without a GPU, with the same library versions as Colab (transformers 5.22.1,
 bitsandbytes 0.50.2): training steps, validation, saving and continuing after a stop. Not yet run on a T4.
+
+**The same with ms-swift: `notebooks/Surya_finetune_swift_Colab.ipynb`.** ms-swift 4.6.0 knows Qwen3.5, but
+three of its defaults are wrong for Surya, so the notebook sets them (one line each): Surya's own tokenizer
+(trap 1), Surya's image token ids (11 and 12; ms-swift has Qwen's 248056 and 248057), and the end token added
+by its number (ms-swift joins the answer and `<|im_end|>` into one text, trap 2). Checked with ms-swift itself
+on a computer without a GPU: 5 of 5 pages encoded exactly as above, 2 training steps, saving, and skipping
+training when the model is already there. Picture descriptions are trained as written there (trap 3 is not
+applied, to keep the notebook short). Then it compares the original and trained Surya on KITAB-Bench.
 
 ---
 
@@ -527,4 +558,5 @@ prompts. The notebook's own check only uses our generated pages.
 | `surya_probe/ask_batch.py` | sends a batch to the Surya server and keeps every answer |
 | `surya_probe/export_batch.py` | makes the `samples/<id>/` folders |
 | `surya_probe/compare_structure.py` | our labels vs Surya's answers: labels, boxes, order, tags |
+| `surya_probe/check_dataset.py` | is a batch folder ready for training: files paired, Surya's prompts, label format, Surya's encoder, vocabulary, length |
 | `surya_probe/source_map.py` | each text's HTML element, and what Surya made of it |

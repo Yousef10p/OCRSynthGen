@@ -569,6 +569,10 @@ class DocPipeline:
             t["render"] += time.perf_counter() - mark
             issues = ({**render_issues(ocr, qa), **ink_issues(clean, ocr["words"])} if self.check
                       else ({} if ocr["words"] else {"empty": 1}))
+            if self.check and ocr["words"]:  # a word the ground truth would leave out (split_words: clipped by
+                dropped = split_words(ocr)[1]  # its box or the page edge) is shown on the image: make the page again
+                if dropped:
+                    issues["cut"] = issues.get("cut", 0) + dropped
             if task == "table":  # the table task needs a table with text on the page (a long page may lose it)
                 shown = {w.get("slot") for w in ocr["words"]}
                 if not any(sl in shown for tb in (qa.get("struct") or {}).get("tables", [])
@@ -592,7 +596,7 @@ class DocPipeline:
         image, boxes, attacks, strength, check, moved = self.degrade(clean, words, rng, effect, SURYA.corners(plan))
         label = build_label(name, image.size, None, attacks, contrast(np.asarray(image.convert("L")), [b for b in boxes if b]),
                             ocr, slots, words, boxes, cut)
-        regions = GT.regions(meta["slots"], words, boxes, lang, meta.get("positioning", "flow"))
+        regions = GT.regions(meta["slots"], words, boxes, lang, meta.get("positioning", "flow"), qa.get("slots"))
         label.update({"slots": regions, "template": meta["id"], "source": meta["source"], "lang": lang,
                       "effect": effect, "strength": strength, "legibility": check, "style": s,
                       "pages_rendered": pages, "attempts": attempts, "rejected": rejected,

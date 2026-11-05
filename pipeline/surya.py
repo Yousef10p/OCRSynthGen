@@ -247,28 +247,46 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, width, 
     out = reading_order([b for b in out if b["box"]], positioning, lang, width, height)
     heights = sorted(r["bbox"][3] - r["bbox"][1] for r in regions)
     line = heights[len(heights) // 4] if heights else 0.02 * height  # most short slots are one line
-    return joined(edges(out, width, height), width, line)
+    return joined(edges(out, width, height), width, line, height)
 
 
-def joined(out, width, line):
+def joined(out, width, line, height=None):
     """Neighbours Surya writes as one block (surya_probe/batch100): a list right under another list (less than
     0.8 of a line apart) is one List-Group (45 of 67), text on one line almost touching another (less than 1%
-    of the page width apart) is one Text (20 of 23)."""
+    of the page width apart) is one Text (20 of 23), and short one-line texts stacked with almost no gap
+    (each at most 6 words, less than 0.2 of a line apart, in the same column: label lines, short facts) are one
+    Text, its lines split by <br/> (30 of 35; 3 of 31 when further apart)."""
+    shift = 0.0035 * height if height else 0  # Surya draws a block's top edge this much higher (as_surya)
     merged = []
     for b in out:
         prev = merged[-1] if merged else None
         a, c = (prev or {}).get("box"), b["box"]
+        last = (prev or {}).get("last_line", a)  # a stack's lowest line
         if (prev and prev["label"] == b["label"] == "List-Group" and min(a[2], c[2]) > max(a[0], c[0])
                 and c[1] - a[3] < 0.8 * line and not same_line(a, c)):
             prev["html"] = prev["html"][:-len("</ul>")] + b["html"][len("<ul>"):]
         elif (prev and prev["label"] == b["label"] == "Text" and same_line(a, c)
               and max(a[0], c[0]) - min(a[2], c[2]) < 0.01 * width):
             prev["html"] = f"<p>{inner(prev['html'])} {inner(b['html'])}</p>"
+        elif (prev and (prev.get("last_line") or short_line(prev, line)) and short_line(b, line)
+              and min(last[2], c[2]) - max(last[0], c[0]) >= 0.5 * min(last[2] - last[0], c[2] - c[0])
+              and c[1] > last[1] + 0.5 * line and c[1] - shift - last[3] < 0.2 * line):
+            prev["html"] = f"<p>{inner(prev['html'])}<br/>{inner(b['html'])}</p>"
+            prev["last_line"] = c
         else:
             merged.append(dict(b))
             continue
         prev["box"] = union([a, c])
+    for b in merged:
+        b.pop("last_line", None)
     return merged
+
+
+def short_line(b, line):
+    """A Text block of one line and at most 6 words (a single <p>)."""
+    return (b["label"] == "Text" and b["html"].startswith("<p>") and b["html"].count("<p>") == 1
+            and b["box"][3] - b["box"][1] < 1.6 * line
+            and len(_html.unescape(re.sub(r"<[^>]+>", " ", b["html"])).split()) <= 6)
 
 
 def merged_grid(rows):
