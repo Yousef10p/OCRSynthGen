@@ -160,8 +160,10 @@ attributes in a fixed order (`type, checked, value, colspan, rowspan, data-cs, d
 **Rule 5: the answer ends with the end token** `<|im_end|>` (token number 2). Writing it is how the model
 stops.
 
-Our copy of these rules is `pipeline/surya_encode.py`. Our labels are identical to its output on 100 of 100
-pages.
+We don't rewrite these rules: `pipeline/surya_compact.py` is Surya's own `compact.py`, copied unchanged
+(Apache-2.0, commit 9d5aadf), and every target is written by its `encode()`. Checks: Surya's 100 answers turned
+back into `<div>` HTML and encoded again come out unchanged (100 of 100), and our earlier targets are identical
+to what `encode()` writes (200 of 200).
 
 ---
 
@@ -516,7 +518,8 @@ prompts. The notebook's own check only uses our generated pages.
 | File | What it is |
 |---|---|
 | `pipeline/surya.py` | our labels in Surya's format, with the rules of section 8 |
-| `pipeline/surya_encode.py` | Surya's shortening rules (section 5), written from its `compact.py` |
+| `pipeline/surya_compact.py` | Surya's own `compact.py` (section 5), copied unchanged: `encode()` writes every target |
+| `notebooks/Surya_finetune_swift_Colab.ipynb` | the same fine-tuning with ms-swift |
 | `pipeline/dataset.py` | makes a batch folder (`--task full_ocr+block_ocr`) |
 | `notebooks/Surya_finetune_Colab.ipynb` | the fine-tuning notebook |
 | `notebooks/Generate_batches_Colab.ipynb` | makes the batch folders in Colab, into Drive |

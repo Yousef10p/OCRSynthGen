@@ -1,6 +1,6 @@
 """Our pages' labels made the way Surya's own code makes them (OCRREADME.md):
 
-  full_ocr   the page as <div data-bbox data-label> HTML, encoded with Surya's rules (pipeline/surya_encode.py)
+  full_ocr   the page as <div data-bbox data-label> HTML, encoded with Surya's own encode() (pipeline/surya_compact.py)
   block_ocr  the cut-out block's HTML, encoded the same way
   layout     [{"label", "bbox", "count"}], count = the encoded block's length in Surya's tokens, rounded to 10
   table      unchanged (rows then columns)
@@ -16,7 +16,7 @@ from huggingface_hub import hf_hub_download
 from tokenizers import Tokenizer
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from pipeline import surya_encode as compact  # noqa: E402  our implementation of Surya's encode rules
+from pipeline import surya_compact as compact  # noqa: E402  Surya's own compact.py (encode / decode)
 tokenizer = Tokenizer.from_file(hf_hub_download("datalab-to/surya-ocr-2.5", "tokenizer.json"))
 
 

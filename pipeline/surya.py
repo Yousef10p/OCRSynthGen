@@ -26,6 +26,9 @@ Boxes are integers normalized to 0-1000 of the image's width and height, (x0, y0
 Page-Header, Page-Footer, Section-Header, Text, List-Group, Table, Caption, Footnote, Image.
 The model ends every answer with its end token (<|im_end|>, shown by this server as <|im_end!>); a target
 leaves it out, as the tokenizer adds it.
+
+The compact text itself is written by Surya's own encode() (pipeline/surya_compact.py, its compact.py copied
+unchanged): this module decides the blocks, labels, tags, boxes and order as <div data-bbox data-label> HTML.
 """
 import html as _html
 import json
@@ -34,6 +37,8 @@ import re
 
 from huggingface_hub import hf_hub_download
 from tokenizers import Tokenizer
+
+from pipeline import surya_compact  # Surya's own compact.py: encode() / decode()
 
 TOKENIZER = None  # Surya 2.5's tokenizer, loaded on first use
 
@@ -390,9 +395,9 @@ def columns_first(out, gap_x, gap_y):
 # -- the targets --------------------------------------------------------------------------------------------
 
 def compact(content):
-    """A block's HTML in Surya 2.5's spelling: </td>, </th> and </tr> left out. (In our tables every cell and
-    row is followed by another or by </table>, where Surya's encoder leaves them out too.)"""
-    return re.sub(r"</(td|th|tr)>", "", content)
+    """A block's HTML in Surya 2.5's spelling, by Surya's own encoder: canonical tags, </td>, </th> and </tr>
+    left out where implied, formatting whitespace dropped."""
+    return surya_compact.encode(content)
 
 
 def on_page(b):
@@ -411,9 +416,9 @@ def as_surya(b, width, height):
 
 
 def full_ocr(blks, width, height):
-    """The full_ocr answer: each block's header tokens and compact content, nothing between blocks."""
-    return "".join(f"<|{b['label']}|>" + "".join(f"<|{v}|>" for v in norm(as_surya(b, width, height), width, height).split())
-                   + compact(on_page(b)) for b in blks)
+    """The full_ocr answer: the page's <div data-bbox data-label> HTML encoded by Surya's own encode() (each
+    block's header tokens and compact content, nothing between blocks)."""
+    return surya_compact.encode(divs(blks, width, height))
 
 
 def divs(blks, width, height):
