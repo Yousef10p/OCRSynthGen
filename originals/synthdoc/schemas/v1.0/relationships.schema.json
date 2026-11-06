@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "relationships.schema.json",
+  "title": "Layer 7: Relationships",
+  "description": "Links to other documents and cross-references",
+  "definitions": {
+    "Relationships": {
+      "type": "object",
+      "properties": {
+        "parent_document": {
+          "type": "string",
+          "description": "ID of parent document if this is a child/attachment"
+        },
+        "child_documents": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "IDs of attached or subordinate documents"
+        },
+        "related_documents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "document_id": { "type": "string" },
+              "relationship_type": {
+                "type": "string",
+                "enum": [
+                  "attachment", "exhibit", "schedule", "appendix",
+                  "supporting_document", "reference", "amendment",
+                  "supersedes", "superseded_by", "replaces", "replaced_by"
+                ]
+              },
+              "description": { "type": "string" }
+            }
+          }
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "reference_id": { "type": "string" },
+              "reference_type": {
+                "type": "string",
+                "enum": ["statute", "regulation", "case_law", "policy", "standard", "external_document"]
+              },
+              "citation": { "type": "string" },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        },
+        "amendments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "amendment_number": { "type": "integer" },
+              "date": { "type": "string", "format": "date" },
+              "description": { "type": "string" },
+              "affected_sections": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "version_history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "version": { "type": "string" },
+              "date": { "type": "string", "format": "date" },
+              "changes": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

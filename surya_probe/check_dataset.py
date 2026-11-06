@@ -6,7 +6,7 @@
              for the task (pipeline/surya.py PROMPTS, copied from Surya's prompts.py)
   format     a target is one line, not empty, without </div>; full_ocr starts with a block header
              <|Label|><|x0|><|y0|><|x1|><|y1|>, block_ocr has none; boxes are 0-1000 with x0 < x1, y0 < y1
-  encoder    Surya's own decode() then encode() (pipeline/compact_original.py) gives the target back unchanged
+  encoder    Surya's own decode() then encode() (originals/surya/inference/compact.py) gives the target back unchanged
   vocabulary only Surya's labels (compact.py BLOCK_LABELS), tags (prompts.py ALLOWED_TAGS) and attributes
   length     image tokens (Surya's resize limits) + prompt + answer + end token, against the training limit
 """
@@ -20,7 +20,8 @@ from pathlib import Path
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from pipeline import compact_original as compact  # noqa: E402  Surya's own compact.py
+import pipeline  # noqa: E402,F401  (puts originals/ on the path)
+from surya.inference import compact  # noqa: E402  Surya's own compact.py
 from pipeline.generator import PROMPTS  # noqa: E402
 
 # Surya's prompts.py ALLOWED_TAGS / ALLOWED_ATTRIBUTES, and compact.py's attribute order (merged table cells)

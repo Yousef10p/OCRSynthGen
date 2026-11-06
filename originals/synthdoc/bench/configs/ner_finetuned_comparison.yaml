@@ -1,0 +1,37 @@
+# NER Fine-tuned vs Baseline Comparison
+#
+# Phase 2: compare fine-tuned models against their zero-shot baselines.
+# OCR is reused from the cached qwenvl_ocr results — no re-running needed.
+#
+# Run phase 1 baseline first (caches OCR):
+#   python -m synthdoc.bench run benchmarks/ner_comparison.yaml
+#
+# Then train each engine (from sdd-finetune/):
+#   python scripts/train_sft_ner.py --data-dir ../synthetic-document-generator/data --engine qwen3
+#   python scripts/train_sft_ner.py --data-dir ../synthetic-document-generator/data --engine qwen3-small
+#   python scripts/train_sft_ner.py --data-dir ../synthetic-document-generator/data --engine gemma4
+#   python scripts/train_sft_ner.py --data-dir ../synthetic-document-generator/data --engine gemma4-small
+#
+# Then run this config:
+#   python -m synthdoc.bench run benchmarks/ner_finetuned_comparison.yaml
+#
+# Checkpoints are read from results/checkpoints/sft_ner_{engine}/final
+
+name: NER Fine-tuned Comparison
+
+data: ../data
+output: ../results/ner_finetuned_comparison
+
+ocr: qwenvl
+
+ner:
+  # Zero-shot baselines (OCR text reused from cache)
+  - qwen3
+  - qwen3-small
+  - gemma4
+  - gemma4-small
+  # Fine-tuned (checkpoint paths from engines.yaml)
+  - qwen3-ft
+  - qwen3-small-ft
+  - gemma4-ft
+  - gemma4-small-ft

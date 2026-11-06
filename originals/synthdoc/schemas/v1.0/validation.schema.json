@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "validation.schema.json",
+  "title": "Layer 6: Validation",
+  "description": "Certifications, security features, and verification mechanisms",
+  "definitions": {
+    "Validation": {
+      "type": "object",
+      "properties": {
+        "certifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["notarized", "witnessed", "sealed", "apostilled", "certified_copy"]
+              },
+              "authority": { "type": "string" },
+              "authority_id": { "type": "string" },
+              "date": { "type": "string", "format": "date" },
+              "identifier": { "type": "string", "description": "Certificate number, seal ID, etc." },
+              "seal_bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" }
+            }
+          }
+        },
+        "security_features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "watermark", "hologram", "microprinting", "uv_marking",
+                  "security_thread", "color_shifting_ink", "void_pantograph",
+                  "guilloche_pattern", "intaglio_printing"
+                ]
+              },
+              "location": {
+                "oneOf": [
+                  { "$ref": "definitions.schema.json#/definitions/BoundingBox" },
+                  { "type": "string", "enum": ["throughout", "background", "border"] }
+                ]
+              },
+              "data": { "type": "string", "description": "Content of security feature" }
+            }
+          }
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": ["qr_code", "url", "phone", "email", "hash", "blockchain"]
+            },
+            "data": { "type": "string" },
+            "instructions": { "type": "string" }
+          }
+        },
+        "digital_signature": {
+          "type": "object",
+          "properties": {
+            "algorithm": { "type": "string", "examples": ["RSA", "ECDSA", "EdDSA"] },
+            "hash": { "type": "string" },
+            "certificate": { "type": "string" },
+            "timestamp": { "type": "string", "format": "date-time" }
+          }
+        }
+      }
+    }
+  }
+}

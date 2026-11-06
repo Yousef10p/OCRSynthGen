@@ -1,0 +1,180 @@
+============================================================
+RDF GRAPH STRUCTURE
+============================================================
+
+[Invoice]
+  ID: invoice
+  Types: schema:Invoice, doco:BodyMatter
+  Contains: 5 children
+
+[Invoice Header]
+  ID: invoice_header
+  Types: doco-fd:Header
+  Properties:
+    doco:title -> INVOICE
+    dc:title -> INVOICE
+
+[Company Info Section]
+  ID: company_info_section
+  Types: doco-fd:FormSection
+  Properties:
+    doco:sectionTitle -> FROM:
+  Contains: 3 children
+
+[Company Name Field]
+  ID: company_name_field
+  Types: schema:Organization, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Company Name
+    schema:legalName -> {{ company_name }}
+    doco-fd:fieldValue -> {{ company_name }}
+
+[Company Address Field]
+  ID: company_address_field
+  Types: schema:PostalAddress, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Company Address
+    schema:streetAddress -> {{ company_address }}
+    doco-fd:fieldValue -> {{ company_address }}
+
+[Company Contact Field]
+  ID: company_contact_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Contact
+    schema:telephone -> {{ company_contact }}
+    doco-fd:fieldValue -> {{ company_contact }}
+
+[Client Info Section]
+  ID: client_info_section
+  Types: doco-fd:FormSection
+  Properties:
+    doco:sectionTitle -> TO:
+  Contains: 3 children
+
+[Client Name Field]
+  ID: client_name_field
+  Types: schema:Person, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Client Name
+    schema:name -> {{ client_name }}
+    foaf:name -> {{ client_name }}
+    doco-fd:fieldValue -> {{ client_name }}
+
+[Client Address Field]
+  ID: client_address_field
+  Types: schema:PostalAddress, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Client Address
+    schema:streetAddress -> {{ client_address }}
+    doco-fd:fieldValue -> {{ client_address }}
+
+[Client Contact Field]
+  ID: client_contact_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Contact
+    schema:telephone -> {{ client_contact }}
+    doco-fd:fieldValue -> {{ client_contact }}
+
+[Invoice Details Section]
+  ID: invoice_details_section
+  Types: doco-fd:FormSection
+  Contains: 3 children
+
+[Invoice Number Field]
+  ID: invoice_number_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Invoice #:
+    schema:identifier -> {{ invoice_number }}
+    doco-fd:fieldValue -> {{ invoice_number }}
+
+[Invoice Date Field]
+  ID: invoice_date_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Date:
+    schema:dateCreated -> {{ invoice_date }}
+    doco-fd:fieldValue -> {{ invoice_date }}
+
+[Due Date Field]
+  ID: due_date_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Due Date:
+    schema:paymentDueDate -> {{ due_date }}
+    doco-fd:fieldValue -> {{ due_date }}
+
+[Invoice Items Table]
+  ID: invoice_items_table
+  Types: doco:Table
+  Properties:
+    doco:caption -> Invoice Items
+  Contains: 1 children
+
+[Header Row]
+  ID: header_row
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:columnHeader -> Description
+    doco-fd:columnHeader -> Quantity
+    doco-fd:columnHeader -> Unit Price
+  Contains: 1 children
+
+[Invoice Item Row {{ Loop.Index }}]
+  ID: invoice_item_row_{{ loop.index }}
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> {{ item.description }}
+    doco-fd:cellValue -> {{ item.quantity }}
+    doco-fd:cellValue -> {{ item.unit_price }}
+    schema:value -> {{ item.quantity }}
+    schema:value -> {{ item.unit_price }}
+    schema:value -> {{ item.amount }}
+  Contains: 1 children
+
+[Subtotal Row]
+  ID: subtotal_row
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> Subtotal:
+    doco-fd:cellValue -> {{ subtotal }}
+    schema:value -> {{ subtotal }}
+  Contains: 1 children
+
+[Tax Row]
+  ID: tax_row
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> Tax ({{ tax_rate }}%):
+    doco-fd:cellValue -> {{ tax_amount }}
+    schema:value -> {{ tax_amount }}
+  Contains: 1 children
+
+[Total Row]
+  ID: total_row
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> Total:
+    doco-fd:cellValue -> {{ total_amount }}
+    schema:value -> {{ total_amount }}
+  Contains: 1 children
+
+[Invoice Footer]
+  ID: invoice_footer
+  Types: doco-fd:Footer
+  Properties:
+    doco:footnote -> Thank you for your business!
+  Contains: 1 children
+
+[Payment Terms Field]
+  ID: payment_terms_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Payment Terms
+    doco-fd:fieldValue -> {{ payment_terms }}
+
+============================================================
+Summary: 22 nodes
+============================================================

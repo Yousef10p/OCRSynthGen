@@ -1,0 +1,136 @@
+{
+  "metadata": {
+    "document_id": "cms1500_20240120_001",
+    "document_type": "cms_1500_medical_claim",
+    "archetype": "form",
+    "version": "02/12",
+    "status": "final",
+    "language": "en-US",
+    "page_count": 1,
+    "category": "medical",
+    "regulatory_authority": "CMS"
+  },
+  "header": {
+    "title": "Health Insurance Claim Form",
+    "document_number": "CMS-1500",
+    "issuer": {
+      "entity_type": "organization",
+      "name": "Valley Medical Center",
+      "address": {
+        "street_1": "789 Health Blvd",
+        "city": "Portland",
+        "state": "OR",
+        "postal_code": "97201",
+        "country": "US"
+      },
+      "identifiers": {
+        "tax_id": "93-1234567"
+      }
+    },
+    "recipient": {
+      "entity_type": "organization",
+      "name": "Blue Cross Blue Shield",
+      "identifiers": {
+        "business_id": "BCBS-OR-001"
+      }
+    },
+    "dates": {
+      "issue_date": "2024-01-20"
+    }
+  },
+  "content": {
+    "blocks": [
+      {
+        "block_id": "patient_name",
+        "block_type": "form_field",
+        "field_name": "patient_name",
+        "field_type": "text",
+        "label": "2. Patient's Name (Last, First, Middle)",
+        "text_content": "DOE, JANE M",
+        "required": true,
+        "bbox": { "x_min": 50, "y_min": 200, "x_max": 400, "y_max": 240 }
+      },
+      {
+        "block_id": "patient_dob",
+        "block_type": "form_field",
+        "field_name": "patient_dob",
+        "field_type": "date",
+        "label": "3. Patient's Birth Date",
+        "text_content": "03/15/1985",
+        "required": true,
+        "bbox": { "x_min": 410, "y_min": 200, "x_max": 550, "y_max": 240 }
+      },
+      {
+        "block_id": "diagnosis_codes",
+        "block_type": "table",
+        "label": "21. Diagnosis or Nature of Illness or Injury",
+        "num_rows": 4,
+        "num_cols": 2,
+        "headers": [
+          { "text": "Letter", "column_index": 0 },
+          { "text": "ICD Indicator / Diagnosis Code", "column_index": 1 }
+        ],
+        "rows": [
+          { "row_index": 0, "cells": [{ "text": "A", "column_index": 0 }, { "text": "J06.9", "column_index": 1 }] },
+          { "row_index": 1, "cells": [{ "text": "B", "column_index": 0 }, { "text": "R05.9", "column_index": 1 }] }
+        ],
+        "bbox": { "x_min": 50, "y_min": 500, "x_max": 750, "y_max": 620 }
+      },
+      {
+        "block_id": "service_lines",
+        "block_type": "table",
+        "label": "24. Procedures, Services, or Supplies",
+        "num_rows": 2,
+        "num_cols": 6,
+        "headers": [
+          { "text": "Date of Service", "column_index": 0 },
+          { "text": "Place", "column_index": 1 },
+          { "text": "CPT/HCPCS", "column_index": 2 },
+          { "text": "Modifier", "column_index": 3 },
+          { "text": "Diagnosis Pointer", "column_index": 4 },
+          { "text": "Charges", "column_index": 5 }
+        ],
+        "rows": [
+          {
+            "row_index": 0,
+            "cells": [
+              { "text": "01/20/2024", "column_index": 0, "data_type": "date" },
+              { "text": "11", "column_index": 1 },
+              { "text": "99213", "column_index": 2 },
+              { "text": "", "column_index": 3 },
+              { "text": "A", "column_index": 4 },
+              { "text": "$150.00", "column_index": 5, "data_type": "currency" }
+            ]
+          }
+        ],
+        "bbox": { "x_min": 50, "y_min": 640, "x_max": 750, "y_max": 800 }
+      }
+    ],
+    "reading_order": ["patient_name", "patient_dob", "diagnosis_codes", "service_lines"]
+  },
+  "layout": {
+    "page": {
+      "size": "letter",
+      "orientation": "portrait",
+      "margins": { "top": 24, "right": 24, "bottom": 24, "left": 24 }
+    },
+    "flow": {
+      "type": "grid",
+      "alignment": "left"
+    }
+  },
+  "footer": {
+    "totals": [
+      { "label": "Total Charge", "result": 150.00, "format": "currency", "currency_code": "USD" }
+    ],
+    "signatures": [
+      { "signer_role": "physician", "signer_name": "Dr. Smith", "signature_type": "handwritten", "date_signed": "2024-01-20" },
+      { "signer_role": "patient", "signer_name": "Jane Doe", "signature_type": "handwritten", "date_signed": "2024-01-20" }
+    ]
+  },
+  "relationships": {
+    "references": [
+      { "reference_type": "regulation", "citation": "CMS Manual System Pub. 100-04", "reference_id": "CMS-100-04" }
+    ]
+  }
+}

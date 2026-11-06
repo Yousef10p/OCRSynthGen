@@ -1,0 +1,122 @@
+{
+  "metadata": {
+    "document_id": "irs_1040_00001",
+    "document_type": "tax_form_irs_1040_2023",
+    "archetype": "form",
+    "version": "2023",
+    "status": "draft",
+    "language": "en-US",
+    "page_count": 2,
+    "category": "financial",
+    "regulatory_authority": "IRS"
+  },
+  "header": {
+    "title": "U.S. Individual Income Tax Return",
+    "document_number": "Form 1040",
+    "issuer": {
+      "entity_type": "government_agency",
+      "name": "Internal Revenue Service",
+      "address": {
+        "city": "Washington",
+        "state": "DC",
+        "country": "US"
+      }
+    },
+    "dates": {
+      "effective_date": "2023-01-01",
+      "expiration_date": "2023-12-31"
+    }
+  },
+  "content": {
+    "blocks": [
+      {
+        "block_id": "field_first_name",
+        "block_type": "form_field",
+        "field_name": "taxpayer_first_name",
+        "field_type": "text",
+        "label": "Your first name and middle initial",
+        "label_bbox": { "x_min": 145, "y_min": 485, "x_max": 680, "y_max": 510 },
+        "input_bbox": { "x_min": 145, "y_min": 520, "x_max": 420, "y_max": 555 },
+        "required": true
+      },
+      {
+        "block_id": "field_last_name",
+        "block_type": "form_field",
+        "field_name": "taxpayer_last_name",
+        "field_type": "text",
+        "label": "Last name",
+        "label_bbox": { "x_min": 430, "y_min": 485, "x_max": 720, "y_max": 510 },
+        "input_bbox": { "x_min": 430, "y_min": 520, "x_max": 720, "y_max": 555 },
+        "required": true
+      },
+      {
+        "block_id": "field_ssn",
+        "block_type": "form_field",
+        "field_name": "taxpayer_ssn",
+        "field_type": "ssn",
+        "label": "Your social security number",
+        "label_bbox": { "x_min": 1800, "y_min": 485, "x_max": 2380, "y_max": 510 },
+        "input_bbox": { "x_min": 1800, "y_min": 520, "x_max": 2380, "y_max": 555 },
+        "required": true
+      },
+      {
+        "block_id": "filing_status",
+        "block_type": "radio_group",
+        "label": "Filing Status",
+        "bbox": { "x_min": 145, "y_min": 570, "x_max": 2380, "y_max": 680 }
+      },
+      {
+        "block_id": "calc_agi",
+        "block_type": "calculation",
+        "label": "Adjusted Gross Income",
+        "formula": "line_11 - schedule_1_line_26",
+        "result": 78450,
+        "format": "currency",
+        "currency_code": "USD",
+        "bbox": { "x_min": 2200, "y_min": 1840, "x_max": 2380, "y_max": 1875 }
+      }
+    ],
+    "reading_order": ["field_first_name", "field_last_name", "field_ssn", "filing_status", "calc_agi"]
+  },
+  "layout": {
+    "page": {
+      "size": "letter",
+      "orientation": "portrait",
+      "margins": { "top": 36, "right": 36, "bottom": 36, "left": 36 }
+    },
+    "flow": {
+      "type": "grid",
+      "alignment": "left"
+    }
+  },
+  "footer": {
+    "signatures": [
+      {
+        "signer_role": "taxpayer",
+        "signature_type": "handwritten",
+        "bbox": { "x_min": 145, "y_min": 2600, "x_max": 800, "y_max": 2660 }
+      }
+    ],
+    "disclaimers": [
+      { "text": "Under penalties of perjury, I declare that I have examined this return and to the best of my knowledge and belief, it is true, correct, and complete.", "type": "legal" }
+    ]
+  },
+  "validation": {
+    "certifications": [
+      {
+        "type": "sealed",
+        "authority": "Internal Revenue Service",
+        "authority_id": "IRS"
+      }
+    ]
+  },
+  "relationships": {
+    "related_documents": [
+      { "document_id": "schedule_1_2023", "relationship_type": "attachment", "description": "Schedule 1 - Additional Income and Adjustments" },
+      { "document_id": "w2_employer_001", "relationship_type": "supporting_document", "description": "W-2 Wage Statement" }
+    ],
+    "references": [
+      { "reference_type": "regulation", "citation": "26 U.S.C. Subtitle A", "url": "https://www.law.cornell.edu/uscode/text/26/subtitle-A" }
+    ]
+  }
+}

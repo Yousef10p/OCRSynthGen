@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:schema="http://schema.org/"
+      xmlns:doco="http://purl.org/spar/doco/"
+      xmlns:doco-fd="http://purl.org/doco-fd/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:dc="http://purl.org/dc/terms/">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body typeof="schema:BankAccount doco:BodyMatter" resource="#bankStatement">
+    <div class="container">
+        <header typeof="doco-fd:Header" resource="#statement_header" class="header">
+            <div class="account-info-grid">
+                <div class="grid-cell bank-brand" typeof="schema:Organization doco-fd:FormField" resource="#bank_name_field">
+                    <div class="logo-placeholder">
+                        <span class="logo-icon">&#127974;</span>
+                    </div>
+                    <div class="bank-details">
+                        <h1 property="schema:legalName doco-fd:fieldValue">{{ bank_name }}</h1>
+                        <p property="schema:streetAddress doco-fd:fieldValue">{{ bank_address }}</p>
+                    </div>
+                </div>
+                
+                <div class="grid-cell" typeof="schema:Person doco-fd:FormField" resource="#account_holder_field">
+                    <span class="field-label" property="doco-fd:fieldLabel">Account Holder</span>
+                    <span class="field-value" property="schema:name foaf:name doco-fd:fieldValue">{{ account_holder }}</span>
+                </div>
+                
+                <div class="grid-cell" typeof="doco-fd:FormField" resource="#statement_period_field">
+                    <span class="field-label" property="doco-fd:fieldLabel">Statement Period</span>
+                    <span class="field-value" property="schema:dateRange doco-fd:fieldValue">{{ start_date }} - {{ end_date }}</span>
+                </div>
+                
+                <div class="grid-cell" typeof="doco-fd:FormField" resource="#account_number_field">
+                    <span class="field-label" property="doco-fd:fieldLabel">Account Number</span>
+                    <span class="field-value account-num" property="schema:identifier doco-fd:fieldValue">{{ account_number }}</span>
+                </div>
+                
+                <div class="grid-cell" typeof="doco-fd:FormField" resource="#routing_number_field">
+                    <span class="field-label" property="doco-fd:fieldLabel">Routing Number</span>
+                    <span class="field-value" property="schema:identifier doco-fd:fieldValue">{{ routing_number }}</span>
+                </div>
+                
+                <div class="grid-cell account-type-cell">
+                    <span class="field-label">Account Type</span>
+                    <span class="account-type-badge" property="schema:accountType doco-fd:fieldValue">{{ account_type }}</span>
+                </div>
+            </div>
+        </header>
+
+        <section typeof="doco-fd:FormSection" resource="#summary_cards_section" class="summary-cards">
+            <div typeof="schema:MonetaryAmount doco-fd:FormField" resource="#previous_balance_card" class="summary-card card-gray">
+                <div class="card-icon">&#8634;</div>
+                <div class="card-content">
+                    <span class="card-label" property="doco-fd:fieldLabel">Previous Balance</span>
+                    <span class="card-value" property="schema:value doco-fd:fieldValue">{{ beginning_balance }}</span>
+                </div>
+            </div>
+            
+            <div typeof="schema:MonetaryAmount doco-fd:FormField" resource="#total_deposits_card" class="summary-card card-green">
+                <div class="card-icon">&#8593;</div>
+                <div class="card-content">
+                    <span class="card-label" property="doco-fd:fieldLabel">Total Deposits</span>
+                    <span class="card-value" property="schema:value doco-fd:fieldValue">{{ total_deposits }}</span>
+                </div>
+            </div>
+            
+            <div typeof="schema:MonetaryAmount doco-fd:FormField" resource="#total_withdrawals_card" class="summary-card card-red">
+                <div class="card-icon">&#8595;</div>
+                <div class="card-content">
+                    <span class="card-label" property="doco-fd:fieldLabel">Total Withdrawals</span>
+                    <span class="card-value" property="schema:value doco-fd:fieldValue">{{ total_withdrawals }}</span>
+                </div>
+            </div>
+            
+            <div typeof="schema:MonetaryAmount doco-fd:FormField" resource="#ending_balance_card" class="summary-card card-blue card-prominent">
+                <div class="card-icon">&#8377;</div>
+                <div class="card-content">
+                    <span class="card-label" property="doco-fd:fieldLabel">Ending Balance</span>
+                    <span class="card-value" property="schema:value doco-fd:fieldValue">{{ ending_balance }}</span>
+                </div>
+            </div>
+        </section>
+
+        <section typeof="doco-fd:FormSection" resource="#category_summary_section" class="category-summary">
+            <h2 class="section-title" property="doco:sectionTitle">Spending by Category</h2>
+            <div class="category-chart">
+                {% for category in category_summary %}
+                <div class="category-row" typeof="doco-fd:FormField" resource="#category_{{ category.name|lower }}_field">
+                    <div class="category-label">
+                        <span class="category-dot category-{{ category.name|lower }}"></span>
+                        <span property="doco-fd:fieldLabel">{{ category.name }}</span>
+                    </div>
+                    <div class="category-bar-container">
+                        <div class="category-bar category-{{ category.name|lower }}" style="width: {{ category.percentage }}%;"></div>
+                    </div>
+                    <div class="category-amount" property="schema:value doco-fd:fieldValue">{{ category.amount }}</div>
+                    <div class="category-percent">{{ category.percentage }}%</div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section typeof="doco-fd:FormSection" resource="#transactions_section" class="transactions-section">
+            <h2 class="section-title" property="doco:sectionTitle">Transaction History</h2>
+            <table typeof="doco-fd:Table" resource="#transaction_table">
+                <thead>
+                    <tr typeof="doco-fd:TableRow" resource="#headerRow">
+                        <th typeof="doco-fd:TableHeader" class="col-date">
+                            <span property="doco-fd:columnHeader">Date</span>
+                        </th>
+                        <th typeof="doco-fd:TableHeader" class="col-desc">
+                            <span property="doco-fd:columnHeader">Description</span>
+                        </th>
+                        <th typeof="doco-fd:TableHeader" class="col-category">
+                            <span property="doco-fd:columnHeader">Category</span>
+                        </th>
+                        <th typeof="doco-fd:TableHeader" class="col-amt money">
+                            <span property="doco-fd:columnHeader">Withdrawals</span>
+                        </th>
+                        <th typeof="doco-fd:TableHeader" class="col-amt money">
+                            <span property="doco-fd:columnHeader">Deposits</span>
+                        </th>
+                        <th typeof="doco-fd:TableHeader" class="col-amt money">
+                            <span property="doco-fd:columnHeader">Balance</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
+                    <tr typeof="doco-fd:TableRow" resource="#transaction_row_{{ loop.index }}" class="{% if loop.index is even %}row-even{% else %}row-odd{% endif %}">
+                        <td typeof="doco-fd:TableCell" resource="#date_cell_{{ loop.index }}" property="doco-fd:cellValue" class="col-date">
+                            <span typeof="schema:Date" property="schema:date doco-fd:fieldValue">{{ transaction.date }}</span>
+                        </td>
+                        <td typeof="doco-fd:TableCell" resource="#description_cell_{{ loop.index }}" property="doco-fd:cellValue" class="col-desc">
+                            <div class="description-main">
+                                {% if transaction.is_merchant %}
+                                <span typeof="schema:Organization" property="schema:legalName doco-fd:fieldValue">{{ transaction.description }}</span>
+                                {% else %}
+                                <span property="schema:description doco-fd:fieldValue">{{ transaction.description }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="description-ref">
+                                Ref: <span property="schema:identifier doco-fd:fieldValue">{{ transaction.ref_code }}</span>
+                            </div>
+                        </td>
+                        <td typeof="doco-fd:TableCell" resource="#category_cell_{{ loop.index }}" property="doco-fd:cellValue" class="col-category">
+                            <span class="category-badge category-{{ transaction.category|lower }}">{{ transaction.category }}</span>
+                        </td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" resource="#withdrawal_cell_{{ loop.index }}" property="doco-fd:cellValue schema:value" class="col-amt money withdrawal">
+                            <span typeof="schema:MonetaryAmount" property="schema:value doco-fd:fieldValue">{{ transaction.debit_amt }}</span>
+                        </td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" resource="#deposit_cell_{{ loop.index }}" property="doco-fd:cellValue schema:value" class="col-amt money deposit">
+                            <span typeof="schema:MonetaryAmount" property="schema:value doco-fd:fieldValue">{{ transaction.credit_amt }}</span>
+                        </td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" resource="#balance_cell_{{ loop.index }}" property="doco-fd:cellValue schema:value" class="col-amt money running-balance">
+                            <span typeof="schema:MonetaryAmount" property="schema:value doco-fd:fieldValue"><strong>{{ transaction.running_bal }}</strong></span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <footer typeof="doco-fd:Footer" resource="#statement_footer" class="statement-footer">
+            <div class="footer-grid">
+                <div class="footer-review">
+                    <div class="review-checkbox">
+                        <div class="checkbox-container">
+                            <div class="checkbox-box"></div>
+                            <span class="checkbox-label">I have reviewed this statement and confirm all transactions are accurate.</span>
+                        </div>
+                        <div class="signature-line">
+                            <span class="signature-label">Signature:</span>
+                            <div class="signature-field"></div>
+                            <span class="date-label">Date:</span>
+                            <div class="date-field"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-qr">
+                    <div class="qr-placeholder">
+                        <div class="qr-code" typeof="schema:ImageObject" resource="#qr_code">
+                            <div class="qr-pattern">
+                                {% for i in range(1, 7) %}
+                                <div class="qr-row">
+                                    {% for j in range(1, 7) %}
+                                    <div class="qr-cell {% if (i + j) % 2 == 0 %}filled{% endif %}"></div>
+                                    {% endfor %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <span class="qr-label">Scan for Mobile Access</span>
+                    </div>
+                </div>
+                
+                <div class="footer-service">
+                    <div class="service-box">
+                        <h3 class="service-title" property="doco:sectionTitle">Customer Service</h3>
+                        <div class="service-item">
+                            <span class="service-icon">&#9742;</span>
+                            <span property="schema:telephone doco-fd:fieldValue">{{ customer_service_phone }}</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-icon">&#9993;</span>
+                            <span property="schema:email doco-fd:fieldValue">{{ customer_service_email }}</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-icon">&#127760;</span>
+                            <span property="schema:url doco-fd:fieldValue">{{ bank_website }}</span>
+                        </div>
+                        <div class="service-hours">
+                            <span class="hours-label">Hours:</span>
+                            <span property="schema:openingHours">{{ service_hours }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-disclaimers">
+                <p class="disclaimer fdic" property="doco:footnote">
+                    <strong>Member FDIC.</strong> Your deposits are insured up to $250,000 per depositor.
+                </p>
+                <p class="disclaimer" property="doco:footnote">
+                    Please review your statement carefully. Report any discrepancies within 60 days.
+                    For account terms and conditions, visit our website or contact customer service.
+                </p>
+                <p class="disclaimer" property="doco:footnote">
+                    <strong>Important:</strong> For your security, never share your account information via email or phone.
+                </p>
+            </div>
+            
+            <div class="footer-statement-info">
+                <span>Statement ID: <span property="schema:identifier">{{ statement_id }}</span></span>
+                <span>Generated: <span property="schema:dateCreated">{{ generated_date }}</span></span>
+                <span>Page 1 of 1</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

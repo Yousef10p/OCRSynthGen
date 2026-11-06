@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "header.schema.json",
+  "title": "Layer 2: Header",
+  "description": "Top-of-document identifying information appearing on each page or document start",
+  "definitions": {
+    "Header": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Primary document title" },
+        "subtitle": { "type": "string" },
+        "document_number": {
+          "type": "string",
+          "description": "Form number, case number, or reference ID"
+        },
+        "logo": {
+          "type": "object",
+          "properties": {
+            "source": { "type": "string", "format": "uri" },
+            "bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" },
+            "alt_text": { "type": "string" }
+          }
+        },
+        "issuer": { "$ref": "definitions.schema.json#/definitions/EntityBlock" },
+        "recipient": { "$ref": "definitions.schema.json#/definitions/EntityBlock" },
+        "dates": {
+          "type": "object",
+          "properties": {
+            "issue_date": { "type": "string", "format": "date" },
+            "effective_date": { "type": "string", "format": "date" },
+            "expiration_date": { "type": "string", "format": "date" },
+            "due_date": { "type": "string", "format": "date" }
+          }
+        }
+      }
+    }
+  }
+}

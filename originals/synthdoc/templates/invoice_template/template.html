@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:schema="http://schema.org/"
+      xmlns:doco="http://purl.org/spar/doco/"
+      xmlns:doco-fd="http://purl.org/doco-fd/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:dc="http://purl.org/dc/terms/">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+</head>
+<body typeof="schema:Invoice doco:BodyMatter" resource="#invoice">
+    <div class="invoice-container">
+        <header typeof="doco-fd:Header" resource="#invoice_header" class="header">
+            <div class="header-grid">
+                <div class="header-left">
+                    <div class="logo-placeholder" typeof="schema:ImageObject" resource="#company_logo">
+                        <span property="doco-fd:fieldLabel">LOGO</span>
+                        <span property="schema:width">100px</span>
+                        <span property="schema:height">60px</span>
+                    </div>
+                </div>
+                <div class="header-center">
+                    <div typeof="schema:Organization" resource="#header_company">
+                        <div class="company-brand-name" property="schema:legalName">{{ company_name }}</div>
+                        <div class="company-tagline" property="schema:description">{{ company_tagline }}</div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="invoice-title-badge">
+                        <h2 property="doco:title dc:title">INVOICE</h2>
+                        <div class="status-badge status-{{ status|lower }}" typeof="doco-fd:FormField" resource="#status_field">
+                            <span property="schema:orderStatus doco-fd:fieldValue">{{ status }}</span>
+                        </div>
+                    </div>
+                    <div class="invoice-meta">
+                        <div typeof="doco-fd:FormField" resource="#invoice_number_field">
+                            <span property="doco-fd:fieldLabel">Invoice #</span>
+                            <span property="schema:identifier doco-fd:fieldValue">{{ invoice_number }}</span>
+                        </div>
+                        <div typeof="doco-fd:FormField" resource="#invoice_date_field">
+                            <span property="doco-fd:fieldLabel">Date</span>
+                            <span property="schema:dateCreated doco-fd:fieldValue">{{ invoice_date }}</span>
+                        </div>
+                        <div typeof="doco-fd:FormField" resource="#due_date_field">
+                            <span property="doco-fd:fieldLabel">Due Date</span>
+                            <span property="schema:paymentDueDate doco-fd:fieldValue">{{ due_date }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section typeof="doco-fd:FormSection" resource="#parties_section" class="parties-grid">
+            <div class="from-section" typeof="schema:Organization doco-fd:FormField" resource="#from_section">
+                <h3 property="doco:sectionTitle">FROM</h3>
+                <div class="party-content">
+                    <div class="party-name" property="schema:legalName">{{ company_name }}</div>
+                    <div class="party-address" typeof="schema:PostalAddress" resource="#company_address">
+                        <span property="schema:streetAddress">{{ company_address }}</span>
+                    </div>
+                    <div class="party-contact">
+                        <div class="contact-item" typeof="doco-fd:FormField" resource="#company_email_field">
+                            <span class="contact-icon">&#9993;</span>
+                            <span property="schema:email doco-fd:fieldValue">{{ company_email }}</span>
+                        </div>
+                        <div class="contact-item" typeof="doco-fd:FormField" resource="#company_phone_field">
+                            <span class="contact-icon">&#9742;</span>
+                            <span property="schema:telephone doco-fd:fieldValue">{{ company_phone }}</span>
+                        </div>
+                        <div class="contact-item" typeof="doco-fd:FormField" resource="#company_website_field">
+                            <span class="contact-icon">&#127760;</span>
+                            <span property="schema:url doco-fd:fieldValue">{{ company_website }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="to-section" typeof="schema:Person doco-fd:FormField" resource="#to_section">
+                <h3 property="doco:sectionTitle">TO</h3>
+                <div class="party-content">
+                    <div class="party-name" property="schema:name foaf:name">{{ client_name }}</div>
+                    <div class="party-address" typeof="schema:PostalAddress" resource="#client_address">
+                        <span property="schema:streetAddress">{{ client_address }}</span>
+                    </div>
+                    <div class="party-contact">
+                        <div class="contact-item" typeof="doco-fd:FormField" resource="#client_email_field">
+                            <span class="contact-icon">&#9993;</span>
+                            <span property="schema:email doco-fd:fieldValue">{{ client_email }}</span>
+                        </div>
+                        <div class="contact-item" typeof="doco-fd:FormField" resource="#client_phone_field">
+                            <span class="contact-icon">&#9742;</span>
+                            <span property="schema:telephone doco-fd:fieldValue">{{ client_phone }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section typeof="doco-fd:FormSection" resource="#items_section" class="items-section">
+            <table typeof="doco-fd:Table" resource="#invoice_items_table">
+                <caption property="doco:caption">Invoice Items</caption>
+                <thead>
+                    <tr typeof="doco-fd:TableRow" resource="#header_row">
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">#</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Description</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Qty</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Unit Price</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Discount</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Tax %</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr typeof="doco-fd:TableRow" resource="#invoice_item_row_{{ loop.index }}" class="{{ 'odd' if loop.index is odd else 'even' }}">
+                        <td typeof="doco-fd:TableCell"><span property="doco-fd:cellValue">{{ loop.index }}</span></td>
+                        <td typeof="doco-fd:TableCell"><span property="doco-fd:cellValue schema:name">{{ item.description }}</span></td>
+                        <td typeof="doco-fd:TableCell"><span typeof="schema:QuantitativeValue" property="doco-fd:cellValue schema:value">{{ item.quantity }}</span></td>
+                        <td typeof="doco-fd:TableCell"><span typeof="schema:MonetaryAmount" property="doco-fd:cellValue schema:value">{{ item.unit_price }}</span></td>
+                        <td typeof="doco-fd:TableCell"><span typeof="schema:MonetaryAmount" property="doco-fd:cellValue schema:discount">{{ item.discount }}</span></td>
+                        <td typeof="doco-fd:TableCell"><span property="doco-fd:cellValue schema:taxRate">{{ item.tax_rate }}</span></td>
+                        <td typeof="doco-fd:TableCell"><span typeof="schema:MonetaryAmount" property="doco-fd:cellValue schema:value">{{ item.amount }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr typeof="doco-fd:TableRow" resource="#subtotal_row">
+                        <th typeof="doco-fd:TableHeader" colspan="6" property="doco-fd:rowHeader">Subtotal:</th>
+                        <td typeof="doco-fd:TableCell"><span typeof="schema:MonetaryAmount" property="doco-fd:cellValue schema:value">{{ subtotal }}</span></td>
+                    </tr>
+                    <tr typeof="doco-fd:TableRow" resource="#discount_total_row">
+                        <th typeof="doco-fd:TableHeader" colspan="6" property="doco-fd:rowHeader">Total Discount:</th>
+                        <td typeof="doco-fd:TableCell"><span typeof="schema:MonetaryAmount" property="doco-fd:cellValue schema:value">-{{ total_discount }}</span></td>
+                    </tr>
+                    <tr typeof="doco-fd:TableRow" resource="#tax_row">
+                        <th typeof="doco-fd:TableHeader" colspan="6" property="doco-fd:rowHeader">Tax:</th>
+                        <td typeof="doco-fd:TableCell"><span typeof="schema:MonetaryAmount" property="doco-fd:cellValue schema:value">{{ tax_amount }}</span></td>
+                    </tr>
+                    <tr typeof="doco-fd:TableRow" resource="#total_row" class="total-row">
+                        <th typeof="doco-fd:TableHeader" colspan="6" property="doco-fd:rowHeader">Total Due:</th>
+                        <td typeof="doco-fd:TableCell"><span typeof="schema:MonetaryAmount" property="doco-fd:cellValue schema:value">{{ total_amount }}</span></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <section typeof="doco-fd:FormSection" resource="#payment_section" class="payment-section">
+            <div class="payment-grid">
+                <div class="bank-details">
+                    <h4 property="doco:sectionTitle">Bank Details</h4>
+                    <div class="bank-grid">
+                        <div class="bank-field" typeof="doco-fd:FormField" resource="#account_name_field">
+                            <span class="field-label" property="doco-fd:fieldLabel">Account Name</span>
+                            <span typeof="schema:Organization" class="field-value" property="schema:name doco-fd:fieldValue">{{ account_name }}</span>
+                        </div>
+                        <div class="bank-field" typeof="doco-fd:FormField" resource="#bank_name_field">
+                            <span class="field-label" property="doco-fd:fieldLabel">Bank</span>
+                            <span class="field-value" property="schema:legalName doco-fd:fieldValue">{{ bank_name }}</span>
+                        </div>
+                        <div class="bank-field" typeof="doco-fd:FormField" resource="#account_number_field">
+                            <span class="field-label" property="doco-fd:fieldLabel">Account #</span>
+                            <span class="field-value" property="schema:identifier doco-fd:fieldValue">{{ account_number }}</span>
+                        </div>
+                        <div class="bank-field" typeof="doco-fd:FormField" resource="#routing_number_field">
+                            <span class="field-label" property="doco-fd:fieldLabel">Routing #</span>
+                            <span class="field-value" property="schema:identifier doco-fd:fieldValue">{{ routing_number }}</span>
+                        </div>
+                    </div>
+                    <div class="payment-methods">
+                        <h5>Payment Method</h5>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item" typeof="doco-fd:FormField" resource="#payment_check">
+                                <input type="checkbox" property="doco-fd:fieldValue" {% if payment_method == 'check' %}checked{% endif %}>
+                                <span>Check</span>
+                            </label>
+                            <label class="checkbox-item" typeof="doco-fd:FormField" resource="#payment_transfer">
+                                <input type="checkbox" property="doco-fd:fieldValue" {% if payment_method == 'bank_transfer' %}checked{% endif %}>
+                                <span>Bank Transfer</span>
+                            </label>
+                            <label class="checkbox-item" typeof="doco-fd:FormField" resource="#payment_credit">
+                                <input type="checkbox" property="doco-fd:fieldValue" {% if payment_method == 'credit_card' %}checked{% endif %}>
+                                <span>Credit Card</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="qr-code-section">
+                    <h4 property="doco:sectionTitle">Pay Online</h4>
+                    <div class="qr-placeholder" typeof="schema:ImageObject" resource="#qr_code">
+                        <div class="qr-inner">
+                            <span>QR Code</span>
+                        </div>
+                    </div>
+                    <p class="qr-instructions">Scan to pay online</p>
+                </div>
+            </div>
+        </section>
+
+        <section typeof="doco-fd:FormSection" resource="#terms_section" class="terms-section">
+            <h4 property="doco:sectionTitle">Terms &amp; Conditions</h4>
+            <ol class="terms-list" typeof="schema:ItemList" resource="#terms_list">
+                {% for term in terms %}
+                <li typeof="schema:ListItem doco-fd:FormField" resource="#term_{{ loop.index }}">
+                    <span property="schema:item doco-fd:fieldValue">{{ term }}</span>
+                </li>
+                {% endfor %}
+            </ol>
+            <div class="terms-acceptance" typeof="doco-fd:FormField" resource="#terms_acceptance">
+                <label class="checkbox-item acceptance-checkbox">
+                    <input type="checkbox" property="doco-fd:fieldValue">
+                    <span>I accept these terms and conditions</span>
+                </label>
+            </div>
+            <div class="signature-section">
+                <div class="signature-box" typeof="doco-fd:FormField" resource="#client_signature">
+                    <span class="signature-label" property="doco-fd:fieldLabel">Client Signature</span>
+                    <div class="signature-line"></div>
+                    <div class="signature-name" property="doco-fd:fieldValue">{{ client_name }}</div>
+                </div>
+                <div class="signature-box" typeof="doco-fd:FormField" resource="#signature_date">
+                    <span class="signature-label" property="doco-fd:fieldLabel">Date</span>
+                    <div class="signature-line"></div>
+                    <div class="signature-date" property="doco-fd:fieldValue schema:date">{{ signature_date }}</div>
+                </div>
+            </div>
+        </section>
+
+        <footer typeof="doco-fd:Footer" resource="#invoice_footer" class="footer">
+            <div class="footer-content">
+                <p property="doco:footnote" class="thank-you">Thank you for your business!</p>
+                <div class="footer-contact">
+                    <span>{{ company_name }}</span>
+                    <span>|</span>
+                    <span>{{ company_email }}</span>
+                    <span>|</span>
+                    <span>{{ company_phone }}</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

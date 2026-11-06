@@ -197,7 +197,7 @@ def compare_probe():
     them from the blocks kept at probe time, next to Surya's answers in results.jsonl (4,096-token runs)."""
     sys.path.insert(0, str(HERE.parent))
     from pipeline import generator as SURYA
-    from pipeline.compact_original import encode
+    from surya.inference.compact import encode
     index = {d["image"]: d for d in json.loads((HERE / "inputs" / "index.json").read_text(encoding="utf-8"))}
     lines = []
     for line in (HERE / "results.jsonl").read_text(encoding="utf-8").splitlines():

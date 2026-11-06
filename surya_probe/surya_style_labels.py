@@ -16,7 +16,8 @@ from huggingface_hub import hf_hub_download
 from tokenizers import Tokenizer
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from pipeline import compact_original as compact  # noqa: E402  Surya's own compact.py (encode / decode)
+import pipeline  # noqa: E402,F401  (puts originals/ on the path)
+from surya.inference import compact  # noqa: E402  Surya's own compact.py (encode / decode)
 tokenizer = Tokenizer.from_file(hf_hub_download("datalab-to/surya-ocr-2.5", "tokenizer.json"))
 
 

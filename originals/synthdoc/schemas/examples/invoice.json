@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "document_id": "inv_20240115_001",
+    "document_type": "invoice_commercial",
+    "archetype": "invoice",
+    "version": "1.0",
+    "status": "final",
+    "language": "en-US",
+    "page_count": 1,
+    "category": "business"
+  },
+  "header": {
+    "title": "INVOICE",
+    "document_number": "INV-20240115-001",
+    "issuer": {
+      "entity_type": "organization",
+      "name": "Acme Corporation",
+      "address": {
+        "street_1": "123 Business St",
+        "city": "San Francisco",
+        "state": "CA",
+        "postal_code": "94102",
+        "country": "US"
+      },
+      "contact": {
+        "phone": "(415) 555-0100",
+        "email": "billing@acme.com"
+      }
+    },
+    "recipient": {
+      "entity_type": "organization",
+      "name": "Client Company LLC",
+      "address": {
+        "street_1": "456 Market Ave",
+        "city": "Los Angeles",
+        "state": "CA",
+        "postal_code": "90001",
+        "country": "US"
+      }
+    },
+    "dates": {
+      "issue_date": "2024-01-15",
+      "due_date": "2024-02-15"
+    }
+  },
+  "content": {
+    "blocks": [
+      {
+        "block_id": "line_items_table",
+        "block_type": "table",
+        "num_rows": 3,
+        "num_cols": 4,
+        "headers": [
+          { "text": "Description", "column_index": 0 },
+          { "text": "Quantity", "column_index": 1 },
+          { "text": "Unit Price", "column_index": 2 },
+          { "text": "Amount", "column_index": 3 }
+        ],
+        "rows": [
+          {
+            "row_index": 0,
+            "cells": [
+              { "text": "Consulting Services", "column_index": 0, "data_type": "text" },
+              { "text": "40", "column_index": 1, "data_type": "number" },
+              { "text": "$150.00", "column_index": 2, "data_type": "currency" },
+              { "text": "$6,000.00", "column_index": 3, "data_type": "currency" }
+            ]
+          },
+          {
+            "row_index": 1,
+            "cells": [
+              { "text": "Software License", "column_index": 0, "data_type": "text" },
+              { "text": "5", "column_index": 1, "data_type": "number" },
+              { "text": "$299.00", "column_index": 2, "data_type": "currency" },
+              { "text": "$1,495.00", "column_index": 3, "data_type": "currency" }
+            ]
+          },
+          {
+            "row_index": 2,
+            "cells": [
+              { "text": "Training Workshop", "column_index": 0, "data_type": "text" },
+              { "text": "1", "column_index": 1, "data_type": "number" },
+              { "text": "$2,500.00", "column_index": 2, "data_type": "currency" },
+              { "text": "$2,500.00", "column_index": 3, "data_type": "currency" }
+            ]
+          }
+        ],
+        "bbox": { "x_min": 72, "y_min": 300, "x_max": 540, "y_max": 500 }
+      }
+    ],
+    "reading_order": ["line_items_table"]
+  },
+  "layout": {
+    "page": {
+      "size": "letter",
+      "orientation": "portrait",
+      "margins": { "top": 72, "right": 72, "bottom": 72, "left": 72 }
+    },
+    "flow": {
+      "type": "sequential",
+      "alignment": "left"
+    }
+  },
+  "footer": {
+    "totals": [
+      { "label": "Subtotal", "formula": "sum(line_items.amount)", "result": 9995.00, "format": "currency", "currency_code": "USD" },
+      { "label": "Tax (8.5%)", "formula": "subtotal * 0.085", "result": 849.58, "format": "currency", "currency_code": "USD" },
+      { "label": "Total", "formula": "subtotal + tax", "result": 10844.58, "format": "currency", "currency_code": "USD" }
+    ],
+    "disclaimers": [
+      { "text": "Payment due within 30 days. Late payments subject to 1.5% monthly interest.", "type": "terms" }
+    ],
+    "footer_text": "Thank you for your business!"
+  }
+}

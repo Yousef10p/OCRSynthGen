@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://synthetic-doc-ontology.org/schemas/v1.0/document.json",
+  "title": "Universal Document Structure Ontology",
+  "description": "Complete schema for representing document structure across all document types. 7-layer model: Metadata, Header, Content, Layout, Footer, Validation, Relationships.",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["metadata", "content"],
+  "properties": {
+    "metadata": {
+      "$ref": "metadata.schema.json#/definitions/Metadata",
+      "description": "Layer 1: Document-level metadata"
+    },
+    "header": {
+      "$ref": "header.schema.json#/definitions/Header",
+      "description": "Layer 2: Top-of-document information"
+    },
+    "content": {
+      "$ref": "content.schema.json#/definitions/Content",
+      "description": "Layer 3: Document body content"
+    },
+    "layout": {
+      "$ref": "layout.schema.json#/definitions/Layout",
+      "description": "Layer 4: Physical arrangement"
+    },
+    "footer": {
+      "$ref": "footer.schema.json#/definitions/Footer",
+      "description": "Layer 5: Bottom-of-document elements"
+    },
+    "validation": {
+      "$ref": "validation.schema.json#/definitions/Validation",
+      "description": "Layer 6: Certifications and security"
+    },
+    "relationships": {
+      "$ref": "relationships.schema.json#/definitions/Relationships",
+      "description": "Layer 7: Cross-document links"
+    }
+  },
+  "additionalProperties": false
+}

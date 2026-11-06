@@ -1,0 +1,152 @@
+============================================================
+RDF GRAPH STRUCTURE
+============================================================
+
+[Bankstatement]
+  ID: bankStatement
+  Types: schema:BankAccount, doco:BodyMatter
+  Contains: 3 children
+
+[Statement Header]
+  ID: statement_header
+  Types: doco-fd:Header
+  Contains: 2 children
+
+[Bank Info Section]
+  ID: bank_info_section
+  Types: doco-fd:FormSection
+  Contains: 2 children
+
+[Bank Name Field]
+  ID: bank_name_field
+  Types: schema:Organization, doco-fd:FormField
+  Properties:
+    schema:legalName -> {{ bank_name }}
+    doco-fd:fieldValue -> {{ bank_name }}
+
+[Bank Address Field]
+  ID: bank_address_field
+  Types: schema:PostalAddress, doco-fd:FormField
+  Properties:
+    schema:streetAddress -> {{ bank_address }}
+    doco-fd:fieldValue -> {{ bank_address }}
+
+[Account Info Section]
+  ID: account_info_section
+  Types: doco-fd:FormSection
+  Contains: 3 children
+
+[Account Holder Field]
+  ID: account_holder_field
+  Types: schema:Person, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:name -> {{ account_holder }}
+    foaf:name -> {{ account_holder }}
+    doco-fd:fieldValue -> {{ account_holder }}
+
+[Account Number Field]
+  ID: account_number_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:identifier -> {{ account_number }}
+    doco-fd:fieldValue -> {{ account_number }}
+
+[Statement Period Field]
+  ID: statement_period_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:startDate -> {{ start_date }}
+    doco-fd:fieldValue -> {{ start_date }}
+    doco-fd:fieldValue -> {{ end_date }}
+    schema:endDate -> {{ end_date }}
+
+[Account Summary Section]
+  ID: account_summary_section
+  Types: doco-fd:FormSection
+  Contains: 4 children
+
+[Beginning Balance Field]
+  ID: beginning_balance_field
+  Types: schema:MonetaryAmount, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Beginning Balance:
+    schema:value -> {{ beginning_balance }}
+    doco-fd:fieldValue -> {{ beginning_balance }}
+
+[Total Deposits Field]
+  ID: total_deposits_field
+  Types: schema:MonetaryAmount, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Total Deposits:
+    schema:value -> {{ total_deposits }}
+    doco-fd:fieldValue -> {{ total_deposits }}
+
+[Total Withdrawals Field]
+  ID: total_withdrawals_field
+  Types: schema:MonetaryAmount, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Total Withdrawals:
+    schema:value -> {{ total_withdrawals }}
+    doco-fd:fieldValue -> {{ total_withdrawals }}
+
+[Ending Balance Field]
+  ID: ending_balance_field
+  Types: schema:MonetaryAmount, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Ending Balance:
+    schema:value -> {{ ending_balance }}
+    doco-fd:fieldValue -> {{ ending_balance }}
+
+[Transaction Table]
+  ID: transaction_table
+  Types: doco:Table
+  Properties:
+    doco:caption -> Transaction History
+  Contains: 1 children
+
+[Headerrow]
+  ID: headerRow
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:columnHeader -> Date
+    doco-fd:columnHeader -> Description
+    doco-fd:columnHeader -> Withdrawals
+  Contains: 1 children
+
+[Transaction Row {{ Loop.Index }}]
+  ID: transaction_row_{{ loop.index }}
+  Types: doco-fd:TableRow
+  Properties:
+    schema:date -> {{ transaction.date }}
+    doco-fd:fieldValue -> {{ transaction.date }}
+    doco-fd:fieldValue -> {{ transaction.description }}
+    doco-fd:fieldValue -> {{ transaction.description }}
+    schema:legalName -> {{ transaction.description }}
+    schema:description -> {{ transaction.description }}
+    schema:identifier -> {{ transaction.ref_code }}
+    schema:value -> {{ transaction.debit_amt }}
+    schema:value -> {{ transaction.credit_amt }}
+    schema:value -> 
+  Contains: 1 children
+
+[Statement Footer]
+  ID: statement_footer
+  Types: doco-fd:Footer
+  Contains: 1 children
+
+[Customer Service Field]
+  ID: customer_service_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:telephone -> {{ customer_service_phone }}
+    doco-fd:fieldValue -> {{ customer_service_phone }}
+    doco-fd:fieldValue -> {{ customer_service_email }}
+    schema:email -> {{ customer_service_email }}
+
+============================================================
+Summary: 19 nodes
+============================================================

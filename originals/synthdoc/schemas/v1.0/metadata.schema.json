@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "metadata.schema.json",
+  "title": "Layer 1: Document Metadata",
+  "description": "Document-level identifying information and classification",
+  "definitions": {
+    "Metadata": {
+      "type": "object",
+      "required": ["document_id", "document_type", "archetype"],
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "description": "Unique identifier for this document instance",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "document_type": {
+          "type": "string",
+          "description": "Specific document template type",
+          "examples": ["tax_form_irs_1040_2023", "cms_1500_medical_claim", "invoice_commercial"]
+        },
+        "archetype": {
+          "type": "string",
+          "enum": ["form", "ledger", "letter", "invoice", "report", "certificate", "card", "legal", "ticket", "label"],
+          "description": "Fundamental layout pattern"
+        },
+        "version": {
+          "type": "string",
+          "description": "Document template version",
+          "pattern": "^v?\\d+\\.\\d+(\\.\\d+)?$"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["draft", "final", "void", "superseded", "archived"],
+          "description": "Document lifecycle state"
+        },
+        "language": {
+          "type": "string",
+          "pattern": "^[a-z]{2}(-[A-Z]{2})?$",
+          "description": "ISO 639-1 language code with optional region",
+          "examples": ["en-US", "es-MX", "zh-CN"]
+        },
+        "created_date": { "type": "string", "format": "date-time" },
+        "modified_date": { "type": "string", "format": "date-time" },
+        "page_count": { "type": "integer", "minimum": 1 },
+        "category": {
+          "type": "string",
+          "enum": [
+            "financial", "legal", "medical", "government", "business",
+            "education", "insurance", "real_estate", "transportation",
+            "logistics", "manufacturing", "retail", "technology"
+          ]
+        },
+        "regulatory_authority": {
+          "type": "string",
+          "description": "Governing body if applicable (IRS, FDA, SEC, etc.)"
+        },
+        "custom_metadata": {
+          "type": "object",
+          "description": "Domain-specific metadata fields"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

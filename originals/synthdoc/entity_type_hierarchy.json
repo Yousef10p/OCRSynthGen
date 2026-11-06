@@ -1,0 +1,4357 @@
+{
+  "_metadata": {
+    "version": "3.0",
+    "last_updated": "2026-01-11",
+    "total_generic_types": 42,
+    "description": "Entity type hierarchy with 18 generic types: PERSON, ORG, DATE, MONEY, ADDRESS, IDENTIFIER, NUMBER, TEXT, PHONE, EMAIL, LABEL, TITLE, BOOLEAN, SIGNATURE, GRAPHIC, LINK, TABLE, LAYOUT"
+  },
+  "entity_type_mappings": {
+    "_comment_1": "=== DOCUMENT REGIONS (The Skeleton) ===",
+    "DOCUMENT_FOOTER": {
+      "generic_type": "LAYOUT",
+      "description": "Footer content of the document"
+    },
+    "DOCUMENT_META": {
+      "generic_type": "TEXT",
+      "description": "Document metadata in header"
+    },
+    "COURT_SEAL_PLACEMENT": {
+      "generic_type": "LAYOUT",
+      "description": "Placement indicator for court seal"
+    },
+    "SEAL_PLACEMENT": {
+      "generic_type": "LAYOUT",
+      "description": "Placement indicator for official seal"
+    },
+    "NOTARY_ACKNOWLEDGMENT": {
+      "generic_type": "TEXT",
+      "description": "Notary acknowledgment section"
+    },
+    "_comment_2": "=== TEXT BLOCKS (The Flow) ===",
+    "DOCUMENT_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Main title of the document"
+    },
+    "DOCUMENT_SUBTITLE": {
+      "generic_type": "TITLE",
+      "description": "Subtitle of the document"
+    },
+    "DOCUMENT_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of document"
+    },
+    "FORM_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Title of a form"
+    },
+    "FORM_SUBTITLE": {
+      "generic_type": "TITLE",
+      "description": "Subtitle of a form"
+    },
+    "SECTION_HEADER": {
+      "generic_type": "LAYOUT",
+      "description": "Header for a section"
+    },
+    "CASE_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Title of a legal case"
+    },
+    "AGREEMENT_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Title of an agreement"
+    },
+    "AFFIDAVIT_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Title of an affidavit"
+    },
+    "HEADING": {
+      "generic_type": "TITLE",
+      "description": "Generic section or content heading"
+    },
+    "ORDER_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of court order"
+    },
+    "PARAGRAPH_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Paragraph number in legal document"
+    },
+    "AFFIDAVIT_FACT": {
+      "generic_type": "TEXT",
+      "description": "Statement of fact in affidavit"
+    },
+    "CLAIM_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of legal claim"
+    },
+    "RELIEF_SOUGHT": {
+      "generic_type": "TEXT",
+      "description": "Relief sought in legal pleading"
+    },
+    "ORDER_DETAILS": {
+      "generic_type": "TEXT",
+      "description": "Details of court order"
+    },
+    "JOB_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of job duties"
+    },
+    "BENEFITS": {
+      "generic_type": "TEXT",
+      "description": "Benefits description"
+    },
+    "CONFIDENTIAL_INFORMATION_DEFINITION": {
+      "generic_type": "TEXT",
+      "description": "Definition of confidential information"
+    },
+    "CONFIDENTIALITY_CLAUSE": {
+      "generic_type": "TEXT",
+      "description": "Confidentiality clause text"
+    },
+    "OBLIGATIONS_OF_RECEIVING_PARTY": {
+      "generic_type": "IDENTIFIER",
+      "description": "Obligations of receiving party"
+    },
+    "PERMITTED_DISCLOSURES": {
+      "generic_type": "IDENTIFIER",
+      "description": "Permitted disclosures text"
+    },
+    "EXCEPTIONS_TO_CONFIDENTIALITY": {
+      "generic_type": "TEXT",
+      "description": "Exceptions to confidentiality"
+    },
+    "REMEDIES_FOR_BREACH": {
+      "generic_type": "TEXT",
+      "description": "Remedies for breach text"
+    },
+    "GOVERNING_LAW": {
+      "generic_type": "TEXT",
+      "description": "Governing law clause"
+    },
+    "MISCELLANEOUS_TERMS": {
+      "generic_type": "TEXT",
+      "description": "Miscellaneous terms text"
+    },
+    "SCOPE_OF_AUTHORITY": {
+      "generic_type": "TEXT",
+      "description": "Scope of authority description"
+    },
+    "SPECIFIC_POWERS": {
+      "generic_type": "TEXT",
+      "description": "Specific powers granted"
+    },
+    "LIMITATIONS_ON_AUTHORITY": {
+      "generic_type": "TEXT",
+      "description": "Limitations on authority"
+    },
+    "DURABLE_POWER": {
+      "generic_type": "TEXT",
+      "description": "Durable power clause"
+    },
+    "EFFECTIVE_UPON_CONDITION": {
+      "generic_type": "DATE",
+      "description": "Effective upon condition text"
+    },
+    "COMPLIANCE_REQUIREMENTS": {
+      "generic_type": "TEXT",
+      "description": "Compliance requirements"
+    },
+    "TRUST_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of trust"
+    },
+    "TRUST_DURATION": {
+      "generic_type": "TEXT",
+      "description": "Duration of trust"
+    },
+    "BENEFICIARY_CONDITIONS": {
+      "generic_type": "TEXT",
+      "description": "Conditions for beneficiaries"
+    },
+    "DISTRIBUTION_SCHEDULE": {
+      "generic_type": "TEXT",
+      "description": "Distribution schedule text"
+    },
+    "REAL_PROPERTY_DISTRIBUTION": {
+      "generic_type": "TEXT",
+      "description": "Real property distribution terms"
+    },
+    "PERSONAL_PROPERTY_DISTRIBUTION": {
+      "generic_type": "TEXT",
+      "description": "Personal property distribution terms"
+    },
+    "FINANCIAL_ACCOUNTS_DISTRIBUTION": {
+      "generic_type": "IDENTIFIER",
+      "description": "Financial accounts distribution terms"
+    },
+    "OTHER_ASSETS_DISTRIBUTION": {
+      "generic_type": "TEXT",
+      "description": "Other assets distribution terms"
+    },
+    "ATTENTION_STATEMENT": {
+      "generic_type": "ADDRESS",
+      "description": "Attention statement or notice"
+    },
+    "USE_LIMITATIONS": {
+      "generic_type": "TEXT",
+      "description": "Use limitations text"
+    },
+    "AGREEMENT_DURATION": {
+      "generic_type": "TEXT",
+      "description": "Duration of agreement"
+    },
+    "PARAGRAPH": {
+      "generic_type": "TEXT",
+      "description": "Paragraph or block of body text in document"
+    },
+    "_comment_3": "=== FORM ELEMENTS (The Inputs) ===",
+    "FORM_ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Form identification label"
+    },
+    "FIELD_LABEL": {
+      "generic_type": "LABEL",
+      "description": "Form field label or descriptor"
+    },
+    "CHECKBOX": {
+      "generic_type": "BOOLEAN",
+      "description": "Checkbox form element for binary selection"
+    },
+    "SIGNATURE": {
+      "generic_type": "SIGNATURE",
+      "description": "Signature field or signature image"
+    },
+    "_comment_4": "=== STRUCTURED DATA (The Grids) ===",
+    "TABLE_HEADER": {
+      "generic_type": "TABLE",
+      "description": "Table column header"
+    },
+    "TABLE_CELL": {
+      "generic_type": "TABLE",
+      "description": "Table cell content"
+    },
+    "COLUMN_HEADER": {
+      "generic_type": "TABLE",
+      "description": "Generic column header in a table"
+    },
+    "TRANSACTION_DATE_HEADER": {
+      "generic_type": "TABLE",
+      "description": "Transaction date column header"
+    },
+    "TRANSACTION_DESCRIPTION_HEADER": {
+      "generic_type": "TABLE",
+      "description": "Transaction description column header"
+    },
+    "TRANSACTION_REFERENCE_HEADER": {
+      "generic_type": "TABLE",
+      "description": "Transaction reference column header"
+    },
+    "TRANSACTION_AMOUNT_HEADER": {
+      "generic_type": "TABLE",
+      "description": "Transaction amount column header"
+    },
+    "TRANSACTION_CATEGORY_HEADER": {
+      "generic_type": "TABLE",
+      "description": "Transaction category column header"
+    },
+    "_comment_5": "=== SEMANTIC DATA FIELDS - IDENTIFIERS ===",
+    "CASE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Case number in legal documents"
+    },
+    "ACCOUNT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Account number"
+    },
+    "SSN": {
+      "generic_type": "IDENTIFIER",
+      "description": "Social Security Number"
+    },
+    "EIN": {
+      "generic_type": "IDENTIFIER",
+      "description": "Employer Identification Number (tax ID)"
+    },
+    "TIN": {
+      "generic_type": "TEXT",
+      "description": "Taxpayer Identification Number"
+    },
+    "EMPLOYEE_ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Employee ID number"
+    },
+    "CERTIFICATE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Birth certificate number"
+    },
+    "REGISTRATION_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "State file or registration number for birth certificate"
+    },
+    "TRANSACTION_REFERENCE_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Transaction reference code"
+    },
+    "TRANSACTION_REFERENCE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Transaction reference number"
+    },
+    "NOTARY_COMMISSION_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Notary commission number"
+    },
+    "STATE_BAR_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "State bar number for attorney"
+    },
+    "LICENSE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "License or permit number"
+    },
+    "_comment_6": "=== SEMANTIC DATA FIELDS - DATES ===",
+    "DATE": {
+      "generic_type": "DATE",
+      "description": "Generic date field"
+    },
+    "DATE_FILED": {
+      "generic_type": "DATE",
+      "description": "Date document was filed"
+    },
+    "SIGNATURE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of signature"
+    },
+    "DATE_OF_BIRTH": {
+      "generic_type": "DATE",
+      "description": "Date of birth"
+    },
+    "REGISTRATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date birth certificate was registered"
+    },
+    "FILE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date birth certificate was filed"
+    },
+    "TRANSACTION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of transaction"
+    },
+    "STATEMENT_PERIOD_START_DATE": {
+      "generic_type": "DATE",
+      "description": "Start date of statement period"
+    },
+    "STATEMENT_PERIOD_END_DATE": {
+      "generic_type": "DATE",
+      "description": "End date of statement period"
+    },
+    "AGREEMENT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of agreement"
+    },
+    "START_DATE": {
+      "generic_type": "DATE",
+      "description": "Start date"
+    },
+    "END_DATE": {
+      "generic_type": "DATE",
+      "description": "End date"
+    },
+    "DUE_DATE": {
+      "generic_type": "DATE",
+      "description": "Due date"
+    },
+    "PAYMENT_DUE": {
+      "generic_type": "DATE",
+      "description": "Payment due date"
+    },
+    "ORDER_DATE": {
+      "generic_type": "DATE",
+      "description": "Date court order was issued"
+    },
+    "DEADLINE_DATE": {
+      "generic_type": "DATE",
+      "description": "Deadline date for compliance with court order"
+    },
+    "SERVED_DATE": {
+      "generic_type": "DATE",
+      "description": "Date legal document was served"
+    },
+    "CERTIFICATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of clerk certification"
+    },
+    "ISSUE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date flight itinerary was issued"
+    },
+    "EXPIRATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date document expires"
+    },
+    "_comment_7": "=== SEMANTIC DATA FIELDS - PERSONS ===",
+    "PLAINTIFF_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of plaintiff in legal document"
+    },
+    "DEFENDANT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of defendant in legal document"
+    },
+    "ATTORNEY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of attorney"
+    },
+    "EMPLOYEE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of employee"
+    },
+    "CHILD_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of child on birth certificate"
+    },
+    "MOTHER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Mother's name on birth certificate"
+    },
+    "MOTHER_MAIDEN_NAME": {
+      "generic_type": "PERSON",
+      "description": "Mother's maiden name on birth certificate"
+    },
+    "FATHER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Father's name on birth certificate"
+    },
+    "ATTENDANT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Birth attendant/physician name"
+    },
+    "REGISTRAR_NAME": {
+      "generic_type": "PERSON",
+      "description": "Registrar name on birth certificate"
+    },
+    "DEPONENT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of deponent in affidavit"
+    },
+    "NOTARY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of notary public"
+    },
+    "OFFICIAL_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of official or authority"
+    },
+    "PRINCIPAL_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of principal"
+    },
+    "AGENT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of agent"
+    },
+    "WITNESS_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of witness"
+    },
+    "ESTATE_OWNER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of estate owner"
+    },
+    "EXECUTOR_CONTACT": {
+      "generic_type": "TEXT",
+      "description": "Executor contact name"
+    },
+    "EXECUTOR_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of the executor"
+    },
+    "BACKUP_EXECUTOR_NAME": {
+      "generic_type": "PERSON",
+      "description": "Backup executor name"
+    },
+    "TRUSTEE_CONTACT": {
+      "generic_type": "TEXT",
+      "description": "Trustee contact name"
+    },
+    "TRUSTEE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of the trustee"
+    },
+    "BACKUP_TRUSTEE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Backup trustee name"
+    },
+    "GUARDIAN_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of guardian"
+    },
+    "GRANTEE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of grantee (recipient) in property deed"
+    },
+    "GRANTOR_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of grantor (seller/transferor) in property deed"
+    },
+    "DISCLOSING_PARTY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of disclosing party"
+    },
+    "RECEIVING_PARTY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of receiving party"
+    },
+    "COMPANY_REPRESENTATIVE_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of company representative"
+    },
+    "CARDHOLDER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of cardholder"
+    },
+    "ACCOUNT_HOLDER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of account holder on bank statement"
+    },
+    "SIGNATURE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name in signature block"
+    },
+    "SERVED_TO_PERSON": {
+      "generic_type": "PERSON",
+      "description": "Person served with legal document"
+    },
+    "JUDGE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of judge in court order"
+    },
+    "CLERK_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of court clerk"
+    },
+    "SERVER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of process server"
+    },
+    "FULL_NAME": {
+      "generic_type": "PERSON",
+      "description": "Full name of person"
+    },
+    "_comment_8": "=== SEMANTIC DATA FIELDS - ORGANIZATIONS ===",
+    "COURT_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of court"
+    },
+    "EMPLOYER_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of employer"
+    },
+    "BANK_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of bank or financial institution"
+    },
+    "BIRTH_HOSPITAL": {
+      "generic_type": "ORG",
+      "description": "Hospital or facility where birth occurred"
+    },
+    "LAW_FIRM": {
+      "generic_type": "ORG",
+      "description": "Name of law firm"
+    },
+    "DEPARTMENT": {
+      "generic_type": "ORG",
+      "description": "Department name"
+    },
+    "COMPANY_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of company"
+    },
+    "CREDIT_CARD_COMPANY": {
+      "generic_type": "ORG",
+      "description": "Name of credit card company"
+    },
+    "_comment_9": "=== SEMANTIC DATA FIELDS - ADDRESSES ===",
+    "ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Street address"
+    },
+    "BANK_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of bank or financial institution"
+    },
+    "EMPLOYEE_ADDRESS": {
+      "generic_type": "PERSON",
+      "description": "Address of employee"
+    },
+    "PARENT_ADDRESS": {
+      "generic_type": "PERSON",
+      "description": "Parents' residence address"
+    },
+    "DEPONENT_ADDRESS": {
+      "generic_type": "PERSON",
+      "description": "Address of deponent"
+    },
+    "PRINCIPAL_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of principal"
+    },
+    "AGENT_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of agent"
+    },
+    "WITNESS_ADDRESS": {
+      "generic_type": "PERSON",
+      "description": "Address of witness"
+    },
+    "ESTATE_OWNER_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of estate owner"
+    },
+    "DISCLOSING_PARTY_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of disclosing party"
+    },
+    "RECEIVING_PARTY_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of receiving party"
+    },
+    "COMPANY_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of company"
+    },
+    "BILLING_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Billing address"
+    },
+    "STREET_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Street address or physical location"
+    },
+    "POSTAL_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Postal or ZIP code"
+    },
+    "ZIP": {
+      "generic_type": "ADDRESS",
+      "description": "ZIP code or postal code"
+    },
+    "CITY": {
+      "generic_type": "ADDRESS",
+      "description": "City name or municipality"
+    },
+    "COUNTRY": {
+      "generic_type": "ADDRESS",
+      "description": "Country name or national identifier"
+    },
+    "_comment_10": "=== SEMANTIC DATA FIELDS - MONEY ===",
+    "DAMAGES_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount of damages claimed"
+    },
+    "BEGINNING_BALANCE": {
+      "generic_type": "MONEY",
+      "description": "Account balance at beginning of period"
+    },
+    "ENDING_BALANCE": {
+      "generic_type": "MONEY",
+      "description": "Account balance at end of period"
+    },
+    "TOTAL_DEPOSITS": {
+      "generic_type": "MONEY",
+      "description": "Total amount of deposits"
+    },
+    "TOTAL_WITHDRAWALS": {
+      "generic_type": "MONEY",
+      "description": "Total amount of withdrawals"
+    },
+    "TRANSACTION_DEBIT_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount debited in transaction"
+    },
+    "TRANSACTION_CREDIT_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount credited in transaction"
+    },
+    "TRANSACTION_RUNNING_BALANCE": {
+      "generic_type": "MONEY",
+      "description": "Running balance after transaction"
+    },
+    "TRANSACTION_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Transaction amount"
+    },
+    "WAGES": {
+      "generic_type": "MONEY",
+      "description": "Amount of wages"
+    },
+    "TAX_WITHHELD": {
+      "generic_type": "MONEY",
+      "description": "Amount of tax withheld"
+    },
+    "SALARY": {
+      "generic_type": "MONEY",
+      "description": "Salary amount"
+    },
+    "PREVIOUS_BALANCE": {
+      "generic_type": "MONEY",
+      "description": "Previous balance on account"
+    },
+    "NEW_CHARGES": {
+      "generic_type": "MONEY",
+      "description": "New charges amount"
+    },
+    "NEW_PAYMENTS": {
+      "generic_type": "MONEY",
+      "description": "New payments amount"
+    },
+    "NEW_BALANCE": {
+      "generic_type": "MONEY",
+      "description": "New balance on account"
+    },
+    "CURRENT_BALANCE": {
+      "generic_type": "MONEY",
+      "description": "Current account balance"
+    },
+    "MINIMUM_PAYMENT": {
+      "generic_type": "MONEY",
+      "description": "Minimum payment amount"
+    },
+    "_comment_11": "=== SEMANTIC DATA FIELDS - CONTACT INFO ===",
+    "PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number field"
+    },
+    "PHONE_NUMBER": {
+      "generic_type": "PHONE",
+      "description": "Phone number"
+    },
+    "EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Email address"
+    },
+    "EMAIL_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Email address field"
+    },
+    "CUSTOMER_SERVICE_INFO": {
+      "generic_type": "ORG",
+      "description": "Customer service contact information"
+    },
+    "PAYMENT_OPTIONS": {
+      "generic_type": "MONEY",
+      "description": "Payment options information"
+    },
+    "TERMS_INFO": {
+      "generic_type": "TEXT",
+      "description": "Terms and conditions information"
+    },
+    "_comment_12": "=== BUSINESS CARD ENTITIES ===",
+    "CONTACT_PERSON_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of person on business card"
+    },
+    "JOB_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Job title on business card"
+    },
+    "PROFESSIONAL_CREDENTIALS": {
+      "generic_type": "TEXT",
+      "description": "Professional credentials (certifications, degrees)"
+    },
+    "COMPANY_TAGLINE": {
+      "generic_type": "ORG",
+      "description": "Company tagline or slogan"
+    },
+    "WEBSITE_URL": {
+      "generic_type": "LINK",
+      "description": "Website URL"
+    },
+    "SOCIAL_MEDIA_HANDLE": {
+      "generic_type": "TEXT",
+      "description": "Social media handle or username"
+    },
+    "PROFESSIONAL_SPECIALTIES": {
+      "generic_type": "TEXT",
+      "description": "Professional specialties or areas of expertise"
+    },
+    "COMPANY_LOGO": {
+      "generic_type": "ORG",
+      "description": "Company logo image"
+    },
+    "QR_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "QR code on business card"
+    },
+    "BARCODE": {
+      "generic_type": "TEXT",
+      "description": "Barcode identifier (1D/2D barcode)"
+    },
+    "_comment_13": "=== MEMBERSHIP CARD ENTITIES ===",
+    "ORGANIZATION_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of organization issuing membership"
+    },
+    "MEMBERSHIP_LEVEL": {
+      "generic_type": "TEXT",
+      "description": "Membership tier or level (e.g., Gold, Silver, Platinum)"
+    },
+    "MEMBER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of member"
+    },
+    "MEMBER_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Member's title or role"
+    },
+    "MEMBERSHIP_ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Unique membership identification number"
+    },
+    "MEMBERSHIP_JOIN_DATE": {
+      "generic_type": "DATE",
+      "description": "Date member joined organization"
+    },
+    "MEMBERSHIP_EXPIRY_DATE": {
+      "generic_type": "DATE",
+      "description": "Date membership expires"
+    },
+    "MEMBERSHIP_BARCODE": {
+      "generic_type": "TEXT",
+      "description": "Barcode or QR code for membership identification"
+    },
+    "MEMBERSHIP_ADDITIONAL_INFO": {
+      "generic_type": "TEXT",
+      "description": "Additional membership information or benefits"
+    },
+    "MEMBERSHIP_TERMS": {
+      "generic_type": "TEXT",
+      "description": "Membership terms and conditions"
+    },
+    "_comment_14": "=== DELIVERY NOTE ENTITIES ===",
+    "IMAGE": {
+      "generic_type": "NUMBER",
+      "description": "Image or graphic element"
+    },
+    "NUMBER": {
+      "generic_type": "TEXT",
+      "description": "Numeric value, count, or index"
+    },
+    "TRANSACTION_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of transaction"
+    },
+    "TRANSACTION_CATEGORY": {
+      "generic_type": "TEXT",
+      "description": "Category of transaction"
+    },
+    "OCCUPATION": {
+      "generic_type": "TEXT",
+      "description": "Occupation of person"
+    },
+    "CHILD_SEX": {
+      "generic_type": "TEXT",
+      "description": "Sex/gender of child on birth certificate"
+    },
+    "BIRTH_TIME": {
+      "generic_type": "DATE",
+      "description": "Time of birth"
+    },
+    "BIRTH_CITY": {
+      "generic_type": "DATE",
+      "description": "City where birth occurred"
+    },
+    "BIRTH_COUNTY": {
+      "generic_type": "DATE",
+      "description": "County where birth occurred"
+    },
+    "COUNTY": {
+      "generic_type": "NUMBER",
+      "description": "County name or jurisdiction"
+    },
+    "BIRTH_STATE": {
+      "generic_type": "DATE",
+      "description": "State where birth occurred"
+    },
+    "MOTHER_BIRTHPLACE": {
+      "generic_type": "DATE",
+      "description": "Mother's birthplace"
+    },
+    "MOTHER_AGE": {
+      "generic_type": "NUMBER",
+      "description": "Mother's age at time of birth"
+    },
+    "FATHER_BIRTHPLACE": {
+      "generic_type": "DATE",
+      "description": "Father's birthplace"
+    },
+    "FATHER_AGE": {
+      "generic_type": "NUMBER",
+      "description": "Father's age at time of birth"
+    },
+    "AGE": {
+      "generic_type": "NUMBER",
+      "description": "Age of a person"
+    },
+    "ATTENDANT_TITLE": {
+      "generic_type": "DATE",
+      "description": "Title/role of birth attendant"
+    },
+    "ATTENDANT_SIGNATURE": {
+      "generic_type": "DATE",
+      "description": "Signature of birth attendant"
+    },
+    "REGISTRAR_SIGNATURE": {
+      "generic_type": "SIGNATURE",
+      "description": "Signature of registrar"
+    },
+    "CERTIFICATION_STATEMENT": {
+      "generic_type": "ADDRESS",
+      "description": "Certification statement on birth certificate"
+    },
+    "NOTARIZATION_STATEMENT": {
+      "generic_type": "ADDRESS",
+      "description": "Notarization statement on affidavit or legal document"
+    },
+    "SECURITY_FEATURES": {
+      "generic_type": "TEXT",
+      "description": "Security features notice on birth certificate"
+    },
+    "VITAL_RECORDS_CONTACT": {
+      "generic_type": "TEXT",
+      "description": "Vital records contact information"
+    },
+    "RELATIONSHIP": {
+      "generic_type": "TEXT",
+      "description": "Relationship to case or party"
+    },
+    "MARITAL_STATUS": {
+      "generic_type": "TEXT",
+      "description": "Marital status"
+    },
+    "JURISDICTION_STATE": {
+      "generic_type": "ADDRESS",
+      "description": "State of jurisdiction"
+    },
+    "STATE": {
+      "generic_type": "ADDRESS",
+      "description": "State name or abbreviation"
+    },
+    "JUDGE_TITLE": {
+      "generic_type": "PERSON",
+      "description": "Title of judge"
+    },
+    "CLERK_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Title of clerk"
+    },
+    "OFFICIAL_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Official title"
+    },
+    "SIGNATURE_ROLE": {
+      "generic_type": "SIGNATURE",
+      "description": "Role of signatory"
+    },
+    "COMPANY_REPRESENTATIVE_TITLE": {
+      "generic_type": "ORG",
+      "description": "Title of company representative"
+    },
+    "DISCLOSING_PARTY_ROLE": {
+      "generic_type": "TEXT",
+      "description": "Role of disclosing party"
+    },
+    "RECEIVING_PARTY_ROLE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Role of receiving party"
+    },
+    "PRINCIPAL_DATE_OF_BIRTH": {
+      "generic_type": "DATE",
+      "description": "Date of birth of principal"
+    },
+    "SERVICE_METHOD": {
+      "generic_type": "TEXT",
+      "description": "Method of service"
+    },
+    "SERVER_CREDENTIALS": {
+      "generic_type": "TEXT",
+      "description": "Credentials of process server"
+    },
+    "PAYMENT_FREQUENCY": {
+      "generic_type": "MONEY",
+      "description": "Frequency of payment"
+    },
+    "DELIVERY_NOTE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Delivery note identification number"
+    },
+    "DELIVERY_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of delivery"
+    },
+    "DELIVERY_TIME": {
+      "generic_type": "DATE",
+      "description": "Time of delivery"
+    },
+    "PO_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Purchase order number"
+    },
+    "SUPPLIER_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of supplier/sender"
+    },
+    "SUPPLIER_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of supplier"
+    },
+    "SUPPLIER_CONTACT": {
+      "generic_type": "ORG",
+      "description": "Supplier contact person"
+    },
+    "CUSTOMER_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of customer/recipient"
+    },
+    "CUSTOMER_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of customer"
+    },
+    "CUSTOMER_CONTACT": {
+      "generic_type": "ORG",
+      "description": "Customer contact person"
+    },
+    "CUSTOMER_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Customer phone number"
+    },
+    "_comment_shipping_label": "=== SHIPPING LABEL ENTITIES ===",
+    "TRACKING_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Shipment tracking number"
+    },
+    "SENDER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of sender/shipper"
+    },
+    "SENDER_ADDRESS": {
+      "generic_type": "DATE",
+      "description": "Address of sender"
+    },
+    "SENDER_CITY": {
+      "generic_type": "DATE",
+      "description": "City of sender"
+    },
+    "SENDER_STATE": {
+      "generic_type": "DATE",
+      "description": "State of sender"
+    },
+    "SENDER_ZIP": {
+      "generic_type": "DATE",
+      "description": "ZIP/postal code of sender"
+    },
+    "SENDER_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of sender"
+    },
+    "RECIPIENT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of recipient"
+    },
+    "RECIPIENT_COMPANY": {
+      "generic_type": "ORG",
+      "description": "Company name of recipient"
+    },
+    "RECIPIENT_CITY": {
+      "generic_type": "ADDRESS",
+      "description": "City of recipient"
+    },
+    "RECIPIENT_STATE": {
+      "generic_type": "ADDRESS",
+      "description": "State of recipient"
+    },
+    "RECIPIENT_ZIP": {
+      "generic_type": "ADDRESS",
+      "description": "ZIP/postal code of recipient"
+    },
+    "RECIPIENT_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of recipient"
+    },
+    "PACKAGE_WEIGHT": {
+      "generic_type": "NUMBER",
+      "description": "Weight of package"
+    },
+    "PACKAGE_TYPE": {
+      "generic_type": "NUMBER",
+      "description": "Type of package (box, envelope, etc.)"
+    },
+    "POSTAGE_STATUS": {
+      "generic_type": "NUMBER",
+      "description": "Postage payment status indicator"
+    },
+    "REFERENCE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Reference number for shipment"
+    },
+    "_comment_invoice": "=== INVOICE SPECIFIC ENTITIES ===",
+    "INVOICE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Invoice number or identifier"
+    },
+    "INVOICE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date invoice was issued"
+    },
+    "INVOICE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Total invoice amount (synonym for TOTAL_AMOUNT)"
+    },
+    "VENDOR_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of vendor/seller issuing invoice"
+    },
+    "VENDOR_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of vendor"
+    },
+    "VENDOR_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Vendor phone number"
+    },
+    "LEGAL_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Legal description of property or subject matter"
+    },
+    "LINE_ITEM_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of line item on invoice"
+    },
+    "LINE_ITEM_QUANTITY": {
+      "generic_type": "NUMBER",
+      "description": "Quantity for line item"
+    },
+    "LINE_ITEM_UNIT_PRICE": {
+      "generic_type": "MONEY",
+      "description": "Unit price for line item"
+    },
+    "LINE_ITEM_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Total amount for line item"
+    },
+    "SUBTOTAL_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Subtotal amount before tax"
+    },
+    "TAX_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Tax amount on invoice"
+    },
+    "TOTAL_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Total amount including all charges"
+    },
+    "PAYMENT_TERMS": {
+      "generic_type": "MONEY",
+      "description": "Payment terms and conditions"
+    },
+    "DELIVERY_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Actual delivery address"
+    },
+    "SCHEDULED_DELIVERY_DATE": {
+      "generic_type": "DATE",
+      "description": "Scheduled delivery date"
+    },
+    "DEPARTURE_TIME": {
+      "generic_type": "DATE",
+      "description": "Departure time for delivery"
+    },
+    "ARRIVAL_TIME": {
+      "generic_type": "DATE",
+      "description": "Arrival time for delivery"
+    },
+    "SHIPPING_METHOD": {
+      "generic_type": "TEXT",
+      "description": "Method of shipping/transport"
+    },
+    "DRIVER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of delivery driver"
+    },
+    "VEHICLE_REGISTRATION": {
+      "generic_type": "IDENTIFIER",
+      "description": "Vehicle registration/license plate"
+    },
+    "ITEM_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Item or product code"
+    },
+    "ITEM_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of item"
+    },
+    "QUANTITY_ORDERED": {
+      "generic_type": "NUMBER",
+      "description": "Quantity ordered"
+    },
+    "QUANTITY_DELIVERED": {
+      "generic_type": "NUMBER",
+      "description": "Quantity actually delivered"
+    },
+    "UNIT_OF_MEASURE": {
+      "generic_type": "TEXT",
+      "description": "Unit of measurement (kg, pcs, etc.)"
+    },
+    "ITEM_WEIGHT": {
+      "generic_type": "NUMBER",
+      "description": "Weight of item"
+    },
+    "ITEM_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition of delivered item"
+    },
+    "TOTAL_PACKAGES": {
+      "generic_type": "MONEY",
+      "description": "Total number of packages"
+    },
+    "TOTAL_WEIGHT": {
+      "generic_type": "MONEY",
+      "description": "Total weight of delivery"
+    },
+    "SPECIAL_INSTRUCTIONS": {
+      "generic_type": "TEXT",
+      "description": "Special delivery instructions"
+    },
+    "PROOF_OF_DELIVERY": {
+      "generic_type": "TEXT",
+      "description": "Proof of delivery method/reference"
+    },
+    "RECEIVED_DATE": {
+      "generic_type": "DATE",
+      "description": "Date package was received"
+    },
+    "DRIVER_SIGNATURE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of driver signature"
+    },
+    "CHECKBOX_FIELD": {
+      "generic_type": "BOOLEAN",
+      "description": "Checkbox form field"
+    },
+    "FOOTER_NOTE": {
+      "generic_type": "TEXT",
+      "description": "Footer note or disclaimer"
+    },
+    "FOOTER_TEXT": {
+      "generic_type": "TEXT",
+      "description": "Text content in document footer"
+    },
+    "_comment_15": "=== BUILDING PERMIT ENTITIES ===",
+    "PERMIT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Building permit number"
+    },
+    "PERMIT_TYPE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Type of building permit"
+    },
+    "PERMIT_ISSUE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date building permit was issued"
+    },
+    "PERMIT_EXPIRATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date building permit expires"
+    },
+    "PERMIT_STATUS": {
+      "generic_type": "IDENTIFIER",
+      "description": "Status of building permit"
+    },
+    "PERMIT_ISSUING_AUTHORITY": {
+      "generic_type": "IDENTIFIER",
+      "description": "Municipality or authority issuing the permit"
+    },
+    "PROPERTY_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of property for permit"
+    },
+    "PARCEL_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Property parcel number"
+    },
+    "PROPERTY_LEGAL_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Legal description of property"
+    },
+    "ZONING_DISTRICT": {
+      "generic_type": "TEXT",
+      "description": "Zoning district designation"
+    },
+    "LOT_SIZE": {
+      "generic_type": "TEXT",
+      "description": "Size of property lot"
+    },
+    "PROPERTY_EXISTING_USE": {
+      "generic_type": "TEXT",
+      "description": "Existing use of property"
+    },
+    "PROPERTY_PROPOSED_USE": {
+      "generic_type": "TEXT",
+      "description": "Proposed use of property"
+    },
+    "PROPERTY_OWNER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of property owner"
+    },
+    "PROPERTY_OWNER_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of property owner"
+    },
+    "PROPERTY_OWNER_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of property owner"
+    },
+    "PROPERTY_OWNER_EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Email of property owner"
+    },
+    "CONTRACTOR_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of contractor"
+    },
+    "CONTRACTOR_COMPANY": {
+      "generic_type": "ORG",
+      "description": "Contractor company name"
+    },
+    "CONTRACTOR_LICENSE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Contractor license number"
+    },
+    "CONTRACTOR_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of contractor"
+    },
+    "CONTRACTOR_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of contractor"
+    },
+    "CONTRACTOR_EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Email of contractor"
+    },
+    "WORK_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of work to be performed"
+    },
+    "WORK_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of work to be performed"
+    },
+    "SCOPE_OF_WORK": {
+      "generic_type": "TEXT",
+      "description": "Scope of work details"
+    },
+    "PROJECT_VALUE": {
+      "generic_type": "MONEY",
+      "description": "Total value of construction project"
+    },
+    "SQUARE_FOOTAGE": {
+      "generic_type": "NUMBER",
+      "description": "Square footage of construction"
+    },
+    "NUMBER_OF_STORIES": {
+      "generic_type": "TEXT",
+      "description": "Number of stories in building"
+    },
+    "OCCUPANCY_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Building occupancy classification"
+    },
+    "CONSTRUCTION_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of construction method"
+    },
+    "ESTIMATED_START_DATE": {
+      "generic_type": "DATE",
+      "description": "Estimated construction start date"
+    },
+    "ESTIMATED_COMPLETION_DATE": {
+      "generic_type": "DATE",
+      "description": "Estimated construction completion date"
+    },
+    "ZONING_APPROVAL_STATUS": {
+      "generic_type": "TEXT",
+      "description": "Status of zoning approval"
+    },
+    "SETBACK_COMPLIANCE_STATUS": {
+      "generic_type": "TEXT",
+      "description": "Status of setback compliance"
+    },
+    "HEIGHT_COMPLIANCE_STATUS": {
+      "generic_type": "NUMBER",
+      "description": "Status of height restriction compliance"
+    },
+    "PARKING_SPACES_PROVIDED": {
+      "generic_type": "TEXT",
+      "description": "Number of parking spaces provided"
+    },
+    "PARKING_SPACES_REQUIRED": {
+      "generic_type": "TEXT",
+      "description": "Number of parking spaces required"
+    },
+    "FEE_TYPE": {
+      "generic_type": "MONEY",
+      "description": "Type of fee charged"
+    },
+    "PERMIT_FEE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount of permit fee"
+    },
+    "PLAN_REVIEW_FEE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount of plan review fee"
+    },
+    "INSPECTION_FEE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount of inspection fee"
+    },
+    "IMPACT_FEE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount of impact fee"
+    },
+    "TOTAL_FEES": {
+      "generic_type": "MONEY",
+      "description": "Total amount of all fees"
+    },
+    "AMOUNT_PAID": {
+      "generic_type": "MONEY",
+      "description": "Amount paid toward fees"
+    },
+    "BALANCE_DUE": {
+      "generic_type": "DATE",
+      "description": "Balance due on fees"
+    },
+    "INSPECTION_REQUIREMENT": {
+      "generic_type": "TEXT",
+      "description": "Required inspection description"
+    },
+    "PERMIT_CONDITIONS": {
+      "generic_type": "IDENTIFIER",
+      "description": "Conditions and restrictions of permit"
+    },
+    "SPECIAL_REQUIREMENTS": {
+      "generic_type": "TEXT",
+      "description": "Special requirements for permit"
+    },
+    "PERMIT_VALIDITY_PERIOD": {
+      "generic_type": "DATE",
+      "description": "Validity period of permit"
+    },
+    "APPROVING_OFFICIAL_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of approving official"
+    },
+    "APPROVING_OFFICIAL_TITLE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Title of approving official"
+    },
+    "SIGNATURE_LINE": {
+      "generic_type": "SIGNATURE",
+      "description": "Signature line placeholder"
+    },
+    "APPROVAL_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of permit approval"
+    },
+    "_comment_16": "=== EVENT TICKET ENTITIES ===",
+    "TICKET_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Ticket identification number"
+    },
+    "ORDER_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Order number for ticket purchase"
+    },
+    "TICKET_BARCODE": {
+      "generic_type": "TEXT",
+      "description": "Ticket barcode or QR code"
+    },
+    "EVENT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of the event"
+    },
+    "EVENT_CATEGORY": {
+      "generic_type": "TEXT",
+      "description": "Category or type of event (concert, sports, theater, etc.)"
+    },
+    "EVENT_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of the event"
+    },
+    "EVENT_ORGANIZER": {
+      "generic_type": "TEXT",
+      "description": "Organization or person organizing the event"
+    },
+    "TICKET_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of ticket (VIP, General Admission, etc.)"
+    },
+    "EVENT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of the event"
+    },
+    "EVENT_TIME": {
+      "generic_type": "DATE",
+      "description": "Time the event starts"
+    },
+    "ENTRY_TIME": {
+      "generic_type": "DATE",
+      "description": "Time doors open or entry begins"
+    },
+    "EVENT_DURATION": {
+      "generic_type": "TEXT",
+      "description": "Duration of the event"
+    },
+    "VENUE_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of the venue"
+    },
+    "VENUE_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Street address of the venue"
+    },
+    "VENUE_CITY": {
+      "generic_type": "ADDRESS",
+      "description": "City where venue is located"
+    },
+    "VENUE_STATE": {
+      "generic_type": "ADDRESS",
+      "description": "State where venue is located"
+    },
+    "VENUE_ZIP": {
+      "generic_type": "ADDRESS",
+      "description": "ZIP code of the venue"
+    },
+    "ATTENDEE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of ticket holder/attendee"
+    },
+    "PURCHASE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date ticket was purchased"
+    },
+    "TICKET_SECTION": {
+      "generic_type": "TEXT",
+      "description": "Seating section designation"
+    },
+    "TICKET_ROW": {
+      "generic_type": "TABLE",
+      "description": "Seating row designation"
+    },
+    "SEAT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Seat number"
+    },
+    "SEATING_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of seating (Reserved, General Admission, etc.)"
+    },
+    "TICKET_PRICE": {
+      "generic_type": "MONEY",
+      "description": "Base price of the ticket"
+    },
+    "TICKET_FEES": {
+      "generic_type": "MONEY",
+      "description": "Fees and service charges"
+    },
+    "TOTAL_PRICE": {
+      "generic_type": "MONEY",
+      "description": "Total price including fees"
+    },
+    "TERMS_AND_CONDITIONS": {
+      "generic_type": "TEXT",
+      "description": "Terms and conditions text"
+    },
+    "TICKET_RESTRICTIONS": {
+      "generic_type": "TEXT",
+      "description": "Age restrictions or other ticket limitations"
+    },
+    "REFUND_POLICY": {
+      "generic_type": "TEXT",
+      "description": "Refund policy statement"
+    },
+    "_comment_17": "=== INSURANCE CLAIM ENTITIES ===",
+    "POLICY_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Insurance policy number"
+    },
+    "POLICY_HOLDER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of policy holder"
+    },
+    "POLICY_EFFECTIVE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date insurance policy becomes effective"
+    },
+    "POLICY_EXPIRATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date insurance policy expires"
+    },
+    "CLAIMANT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of insurance claimant"
+    },
+    "CLAIMANT_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of insurance claimant"
+    },
+    "CLAIM_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Insurance claim identification number"
+    },
+    "LOSS_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of loss or incident"
+    },
+    "LOSS_CAUSE": {
+      "generic_type": "TEXT",
+      "description": "Cause of loss or damage"
+    },
+    "LOSS_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of loss or damage"
+    },
+    "INCIDENT_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Location where incident occurred"
+    },
+    "INCIDENT_CITY": {
+      "generic_type": "ADDRESS",
+      "description": "City where incident occurred"
+    },
+    "INCIDENT_STATE": {
+      "generic_type": "ADDRESS",
+      "description": "State where incident occurred"
+    },
+    "INCIDENT_ZIP": {
+      "generic_type": "ADDRESS",
+      "description": "ZIP code where incident occurred"
+    },
+    "CLAIM_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount claimed for damages"
+    },
+    "APPROVED_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount approved for claim"
+    },
+    "DAMAGE_DESCRIPTION": {
+      "generic_type": "NUMBER",
+      "description": "Description of damaged items or property"
+    },
+    "ADJUSTER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of insurance adjuster"
+    },
+    "ADJUSTER_ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Insurance adjuster identification number"
+    },
+    "CLAIM_PROCESSED_DATE": {
+      "generic_type": "DATE",
+      "description": "Date claim was processed"
+    },
+    "CLAIM_STATUS": {
+      "generic_type": "TEXT",
+      "description": "Current status of insurance claim"
+    },
+    "INSURANCE_COMPANY_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of insurance company or provider"
+    },
+    "POLICYHOLDER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of insurance policyholder"
+    },
+    "POLICYHOLDER_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of insurance policyholder"
+    },
+    "POLICY_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of insurance policy (e.g., life, auto, health)"
+    },
+    "POLICY_ISSUE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date insurance policy was issued"
+    },
+    "POLICY_REVIEW_DATE": {
+      "generic_type": "DATE",
+      "description": "Date for insurance policy review"
+    },
+    "EFFECTIVE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date when insurance coverage becomes effective"
+    },
+    "PREMIUM_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Insurance premium amount"
+    },
+    "COVERAGE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount of insurance coverage"
+    },
+    "COVERAGE_DETAILS": {
+      "generic_type": "NUMBER",
+      "description": "Detailed description of warranty coverage"
+    },
+    "DEDUCTIBLE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Insurance deductible amount"
+    },
+    "BENEFICIARY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of insurance beneficiary"
+    },
+    "AGENT_LICENSE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "License number of insurance agent"
+    },
+    "INSURANCE_AGENT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of insurance agent providing the quote"
+    },
+    "INSURANCE_AGENT_LICENSE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "License number of insurance agent providing the quote"
+    },
+    "QUOTE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Unique identifier for insurance quote"
+    },
+    "QUOTE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date insurance quote was issued"
+    },
+    "QUOTE_EXPIRATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date when insurance quote expires"
+    },
+    "QUOTE_TOTAL_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Total amount quoted for insurance policy"
+    },
+    "POLICY_APPLICANT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of person applying for insurance policy"
+    },
+    "POLICY_APPLICANT_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of insurance policy applicant"
+    },
+    "POLICY_APPLICANT_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of insurance policy applicant"
+    },
+    "POLICY_APPLICANT_EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Email address of insurance policy applicant"
+    },
+    "POLICY_APPLICANT_DOB": {
+      "generic_type": "DATE",
+      "description": "Date of birth of insurance policy applicant"
+    },
+    "POLICY_APPLICANT_OCCUPATION": {
+      "generic_type": "TEXT",
+      "description": "Occupation of insurance policy applicant"
+    },
+    "COVERAGE_PERIOD": {
+      "generic_type": "DATE",
+      "description": "Period of insurance coverage (e.g., 12 months, annual)"
+    },
+    "POLICY_EXCLUSIONS": {
+      "generic_type": "TEXT",
+      "description": "List of exclusions from insurance policy coverage"
+    },
+    "BASE_PREMIUM_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Base premium amount before adjustments"
+    },
+    "TOTAL_PREMIUM_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Total premium amount after all adjustments"
+    },
+    "PREMIUM_PAYMENT_FREQUENCY": {
+      "generic_type": "MONEY",
+      "description": "Frequency of premium payments (e.g., monthly, annually)"
+    },
+    "PREMIUM_COMPONENT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of premium component or line item"
+    },
+    "PREMIUM_COMPONENT_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of premium component or line item"
+    },
+    "PREMIUM_COMPONENT_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount for specific premium component"
+    },
+    "DISCOUNT_TYPE": {
+      "generic_type": "NUMBER",
+      "description": "Type of discount applied (e.g., safe driver, multi-policy)"
+    },
+    "DISCOUNT_DESCRIPTION": {
+      "generic_type": "NUMBER",
+      "description": "Description of discount applied to quote"
+    },
+    "DISCOUNT_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount of discount applied to premium"
+    },
+    "TOTAL_DISCOUNTS_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Total amount of all discounts applied"
+    },
+    "PROCESSING_FEE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Processing or administrative fee amount"
+    },
+    "_comment_warranty_claim": "=== WARRANTY CLAIM ENTITIES ===",
+    "CLAIM_FILED_DATE": {
+      "generic_type": "DATE",
+      "description": "Date warranty claim was filed"
+    },
+    "CLAIMANT_EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Email address of warranty claimant"
+    },
+    "CLAIMANT_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of warranty claimant"
+    },
+    "CLAIMANT_SIGNATURE": {
+      "generic_type": "SIGNATURE",
+      "description": "Signature of warranty claimant"
+    },
+    "PRODUCT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of product under warranty"
+    },
+    "PRODUCT_MODEL_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Model number of product"
+    },
+    "PRODUCT_SERIAL_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Serial number of product"
+    },
+    "PRODUCT_CATEGORY": {
+      "generic_type": "TEXT",
+      "description": "Category of product (e.g., electronics, appliances)"
+    },
+    "PRODUCT_MANUFACTURER": {
+      "generic_type": "TEXT",
+      "description": "Manufacturer of the product"
+    },
+    "PRODUCT_PURCHASE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date product was purchased"
+    },
+    "PRODUCT_PURCHASE_PRICE": {
+      "generic_type": "MONEY",
+      "description": "Purchase price of product"
+    },
+    "WARRANTY_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Warranty identification number"
+    },
+    "WARRANTY_EFFECTIVE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date warranty becomes effective"
+    },
+    "WARRANTY_EXPIRATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date warranty expires"
+    },
+    "WARRANTY_TERMS": {
+      "generic_type": "TEXT",
+      "description": "Terms and conditions of warranty"
+    },
+    "WARRANTY_EXCLUSIONS": {
+      "generic_type": "TEXT",
+      "description": "Exclusions from warranty coverage"
+    },
+    "COVERAGE_TYPE": {
+      "generic_type": "NUMBER",
+      "description": "Type of warranty coverage (e.g., parts, labor, full)"
+    },
+    "DEFECT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date defect or problem occurred"
+    },
+    "DEFECT_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of product defect or problem"
+    },
+    "DEFECT_FREQUENCY": {
+      "generic_type": "TEXT",
+      "description": "Frequency of defect occurrence"
+    },
+    "DEFECT_IMPACT": {
+      "generic_type": "TEXT",
+      "description": "Impact of defect on product use"
+    },
+    "REPAIR_HISTORY": {
+      "generic_type": "TEXT",
+      "description": "History of previous repairs or service"
+    },
+    "REPAIR_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of repair or service"
+    },
+    "SERVICE_CENTER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of authorized service center"
+    },
+    "MANUFACTURER_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of manufacturer"
+    },
+    "RETAILER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of retailer or dealer"
+    },
+    "RETAILER_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of retailer or dealer"
+    },
+    "REQUESTED_REMEDY": {
+      "generic_type": "TEXT",
+      "description": "Requested action for warranty claim (e.g., repair, replace, refund)"
+    },
+    "REMEDY_PREFERENCE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Preference for claim resolution (e.g., repair vs replacement)"
+    },
+    "DEALER_SIGNATURE": {
+      "generic_type": "SIGNATURE",
+      "description": "Signature of authorized dealer"
+    },
+    "_comment_18": "=== DONATION RECEIPT ENTITIES ===",
+    "RECEIPT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Donation receipt identification number"
+    },
+    "DONATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of donation"
+    },
+    "RECEIPT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date receipt was issued"
+    },
+    "CHARITY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of charitable organization"
+    },
+    "CHARITY_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of charitable organization"
+    },
+    "CHARITY_TAX_ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Tax ID (EIN) of charitable organization"
+    },
+    "CHARITY_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of charitable organization"
+    },
+    "CHARITY_WEBSITE": {
+      "generic_type": "TEXT",
+      "description": "Website URL of charitable organization"
+    },
+    "DONOR_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of donor"
+    },
+    "DONOR_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of donor"
+    },
+    "DONATION_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Total amount of donation"
+    },
+    "DONATION_ITEM_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of donated item"
+    },
+    "DONATION_ITEM_QUANTITY": {
+      "generic_type": "NUMBER",
+      "description": "Quantity of donated items"
+    },
+    "DONATION_ITEM_VALUE": {
+      "generic_type": "MONEY",
+      "description": "Value of donated item"
+    },
+    "DONATION_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of donation (cash, non-cash, etc.)"
+    },
+    "PAYMENT_METHOD": {
+      "generic_type": "MONEY",
+      "description": "Method of payment for donation"
+    },
+    "TAX_DEDUCTIBLE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Tax deductible amount of donation"
+    },
+    "TAX_STATUS": {
+      "generic_type": "MONEY",
+      "description": "Tax-exempt status description"
+    },
+    "TAX_STATEMENT": {
+      "generic_type": "MONEY",
+      "description": "Tax deductibility statement"
+    },
+    "ACKNOWLEDGMENT_STATEMENT": {
+      "generic_type": "ADDRESS",
+      "description": "IRS compliance acknowledgment statement"
+    },
+    "THANK_YOU_MESSAGE": {
+      "generic_type": "NUMBER",
+      "description": "Thank you message to donor"
+    },
+    "MISSION_STATEMENT": {
+      "generic_type": "ADDRESS",
+      "description": "Organization mission statement"
+    },
+    "_comment_19": "=== LAB REPORT ENTITIES ===",
+    "LAB_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of laboratory or testing facility"
+    },
+    "PATIENT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of patient on CMS-1500 claim form"
+    },
+    "PATIENT_DOB": {
+      "generic_type": "DATE",
+      "description": "Patient date of birth on CMS-1500 form"
+    },
+    "PATIENT_ACCOUNT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Patient account number on CMS-1500 form"
+    },
+    "SPECIMEN_COLLECTION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date specimen was collected from patient"
+    },
+    "SPECIMEN_RECEIVED_DATE": {
+      "generic_type": "DATE",
+      "description": "Date specimen was received by laboratory"
+    },
+    "LAB_TEST_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of laboratory test or measurement"
+    },
+    "LAB_TEST_RESULT": {
+      "generic_type": "TEXT",
+      "description": "Result value of laboratory test"
+    },
+    "LAB_TEST_FLAG": {
+      "generic_type": "TEXT",
+      "description": "Flag indicating abnormal result (H, L, etc.)"
+    },
+    "LAB_TEST_UNITS": {
+      "generic_type": "NUMBER",
+      "description": "Unit of measurement for lab test result"
+    },
+    "LAB_TEST_REFERENCE_RANGE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Reference range for normal lab test values"
+    },
+    "LAB_PANEL_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of laboratory test panel or group"
+    },
+    "INTERPRETING_PHYSICIAN_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of physician who interpreted lab results"
+    },
+    "REPORT_SIGNATURE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date lab report was signed or finalized"
+    },
+    "_comment_19a": "=== MEDICAL PRESCRIPTION ENTITIES ===",
+    "PHYSICIAN_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of prescribing physician"
+    },
+    "PRESCRIPTION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date prescription was written"
+    },
+    "MEDICATION_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of prescribed medication"
+    },
+    "DOSAGE": {
+      "generic_type": "NUMBER",
+      "description": "Dosage instructions for medication"
+    },
+    "INSTRUCTIONS": {
+      "generic_type": "TEXT",
+      "description": "Patient instructions for medication"
+    },
+    "_comment_19c": "=== MEDICAL REPORT ENTITIES ===",
+    "DIAGNOSIS_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of medical diagnosis or condition"
+    },
+    "MEDICAL_HISTORY": {
+      "generic_type": "TEXT",
+      "description": "Patient medical history or history of present illness"
+    },
+    "EXAM_FINDINGS": {
+      "generic_type": "TEXT",
+      "description": "Physical examination findings"
+    },
+    "TREATMENT_PLAN": {
+      "generic_type": "TEXT",
+      "description": "Treatment plan or recommendations"
+    },
+    "_comment_19b": "=== LOAN AGREEMENT ENTITIES ===",
+    "LOAN_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Loan identification number"
+    },
+    "LOAN_AGREEMENT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date loan agreement was executed"
+    },
+    "LENDER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of lending institution or individual"
+    },
+    "LENDER_ADDRESS": {
+      "generic_type": "PERSON",
+      "description": "Address of lender"
+    },
+    "LENDER_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of lender"
+    },
+    "LENDER_EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Email address of lender"
+    },
+    "BORROWER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of borrower"
+    },
+    "BORROWER_ADDRESS": {
+      "generic_type": "PERSON",
+      "description": "Address of borrower"
+    },
+    "BORROWER_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of borrower"
+    },
+    "BORROWER_SSN": {
+      "generic_type": "PERSON",
+      "description": "Borrower's Social Security Number"
+    },
+    "LOAN_PRINCIPAL_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Principal amount of the loan"
+    },
+    "LOAN_PURPOSE": {
+      "generic_type": "TEXT",
+      "description": "Purpose or reason for the loan"
+    },
+    "LOAN_DISBURSEMENT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date loan funds will be disbursed"
+    },
+    "LOAN_MATURITY_DATE": {
+      "generic_type": "DATE",
+      "description": "Date loan becomes fully due"
+    },
+    "LOAN_TERM": {
+      "generic_type": "TEXT",
+      "description": "Duration or term of the loan"
+    },
+    "LOAN_INTEREST_RATE": {
+      "generic_type": "MONEY",
+      "description": "Interest rate charged on the loan"
+    },
+    "LOAN_INTEREST_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of interest (fixed, variable, etc.)"
+    },
+    "LOAN_APR": {
+      "generic_type": "TEXT",
+      "description": "Annual percentage rate"
+    },
+    "LOAN_COMPOUND_FREQUENCY": {
+      "generic_type": "TEXT",
+      "description": "Frequency of interest compounding"
+    },
+    "LOAN_PAYMENT_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount of each loan payment"
+    },
+    "FIRST_PAYMENT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date first payment is due"
+    },
+    "NUMBER_OF_PAYMENTS": {
+      "generic_type": "MONEY",
+      "description": "Total number of payments required"
+    },
+    "LATE_PAYMENT_FEE": {
+      "generic_type": "MONEY",
+      "description": "Fee charged for late payment"
+    },
+    "COLLATERAL_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of collateral securing the loan"
+    },
+    "COLLATERAL_VALUE": {
+      "generic_type": "MONEY",
+      "description": "Estimated value of collateral"
+    },
+    "SECURITY_INTEREST_STATEMENT": {
+      "generic_type": "ADDRESS",
+      "description": "Statement regarding security interest in collateral"
+    },
+    "PREPAYMENT_ALLOWED": {
+      "generic_type": "MONEY",
+      "description": "Whether prepayment is allowed"
+    },
+    "PREPAYMENT_PENALTY": {
+      "generic_type": "MONEY",
+      "description": "Penalty for early loan repayment"
+    },
+    "PREPAYMENT_TERMS": {
+      "generic_type": "MONEY",
+      "description": "Terms and conditions for prepayment"
+    },
+    "DEFAULT_CONDITIONS": {
+      "generic_type": "TEXT",
+      "description": "Conditions constituting loan default"
+    },
+    "GRACE_PERIOD": {
+      "generic_type": "DATE",
+      "description": "Grace period before default"
+    },
+    "ACCELERATION_CLAUSE": {
+      "generic_type": "TEXT",
+      "description": "Clause allowing lender to demand full payment"
+    },
+    "COLLECTION_COSTS": {
+      "generic_type": "MONEY",
+      "description": "Statement regarding collection costs"
+    },
+    "ASSIGNMENT_CLAUSE": {
+      "generic_type": "TEXT",
+      "description": "Clause regarding assignment of loan agreement"
+    },
+    "AMENDMENT_CLAUSE": {
+      "generic_type": "DATE",
+      "description": "Clause regarding amendments to agreement"
+    },
+    "SEVERABILITY_CLAUSE": {
+      "generic_type": "TEXT",
+      "description": "Clause regarding severability of provisions"
+    },
+    "GOVERNING_STATE": {
+      "generic_type": "ADDRESS",
+      "description": "State whose laws govern the agreement"
+    },
+    "JURISDICTION": {
+      "generic_type": "TEXT",
+      "description": "Jurisdiction for legal disputes"
+    },
+    "LENDER_SIGNATURE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date lender signed agreement"
+    },
+    "BORROWER_SIGNATURE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date borrower signed agreement"
+    },
+    "WITNESS_SIGNATURE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date witness signed agreement"
+    },
+    "_comment_20": "=== ACADEMIC TRANSCRIPT ENTITIES ===",
+    "INSTITUTION_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of educational institution"
+    },
+    "INSTITUTION_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of educational institution"
+    },
+    "STUDENT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of student on transcript"
+    },
+    "STUDENT_ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Student identification number"
+    },
+    "MAJOR": {
+      "generic_type": "TEXT",
+      "description": "Student's field of study or major"
+    },
+    "DEGREE_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of degree (Bachelor's, Master's, etc.)"
+    },
+    "ENROLLMENT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date student enrolled"
+    },
+    "GRADUATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date student graduated"
+    },
+    "TRANSCRIPT_ISSUE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date transcript was issued"
+    },
+    "ACADEMIC_TERM": {
+      "generic_type": "TEXT",
+      "description": "Academic term or semester (Fall 2023, Spring 2024, etc.)"
+    },
+    "COURSE_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Course code or identifier (CS101, MATH203, etc.)"
+    },
+    "COURSE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name or title of course"
+    },
+    "CREDIT_HOURS": {
+      "generic_type": "NUMBER",
+      "description": "Credit hours for a course"
+    },
+    "COURSE_GRADE": {
+      "generic_type": "NUMBER",
+      "description": "Grade received in course (A, B+, C-, etc.)"
+    },
+    "GRADE_POINTS": {
+      "generic_type": "NUMBER",
+      "description": "Grade points earned for a course"
+    },
+    "TERM_GPA": {
+      "generic_type": "NUMBER",
+      "description": "Grade point average for academic term"
+    },
+    "CUMULATIVE_GPA": {
+      "generic_type": "NUMBER",
+      "description": "Overall cumulative grade point average"
+    },
+    "TOTAL_CREDITS": {
+      "generic_type": "MONEY",
+      "description": "Total credit hours earned"
+    },
+    "_comment_aia_g702_g703": "=== AIA G702/G703 (CONSTRUCTION PAYMENT APPLICATION) ENTITIES ===",
+    "APPLICATION_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Application for payment number in construction billing"
+    },
+    "APPLICATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date application for payment was submitted"
+    },
+    "PROJECT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Project identification number"
+    },
+    "PROJECT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of construction or engineering project"
+    },
+    "PROJECT_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of project site"
+    },
+    "ARCHITECT_FIRM_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of architectural firm"
+    },
+    "ARCHITECT_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of architectural firm"
+    },
+    "ARCHITECT_PROJECT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Architect's project identification number"
+    },
+    "ARCHITECT_SIGNATORY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of architect's authorized signatory"
+    },
+    "CONTRACTOR_SIGNATORY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of contractor's authorized signatory"
+    },
+    "CONTRACT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of construction contract"
+    },
+    "CONTRACT_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of construction contract work"
+    },
+    "ORIGINAL_CONTRACT_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Original amount of construction contract"
+    },
+    "CHANGE_ORDER_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Total amount of approved change orders"
+    },
+    "ADJUSTED_CONTRACT_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Contract amount adjusted for change orders"
+    },
+    "PERIOD_START_DATE": {
+      "generic_type": "DATE",
+      "description": "Start date of billing period"
+    },
+    "PERIOD_END_DATE": {
+      "generic_type": "DATE",
+      "description": "End date of billing period"
+    },
+    "WORK_ITEM_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Work item or line item number in schedule of values"
+    },
+    "SCHEDULED_VALUE": {
+      "generic_type": "MONEY",
+      "description": "Scheduled value for work item"
+    },
+    "WORK_PREVIOUS_PERIOD": {
+      "generic_type": "DATE",
+      "description": "Work completed from previous applications"
+    },
+    "WORK_THIS_PERIOD": {
+      "generic_type": "DATE",
+      "description": "Work completed this period"
+    },
+    "WORK_COMPLETED_TO_DATE": {
+      "generic_type": "DATE",
+      "description": "Total work completed to date"
+    },
+    "MATERIALS_STORED": {
+      "generic_type": "TEXT",
+      "description": "Value of materials presently stored"
+    },
+    "WORK_TOTAL": {
+      "generic_type": "MONEY",
+      "description": "Total of work completed and materials stored"
+    },
+    "WORK_BALANCE": {
+      "generic_type": "MONEY",
+      "description": "Balance to finish work item"
+    },
+    "RETAINAGE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount of retainage withheld"
+    },
+    "COMPLETION_PERCENTAGE": {
+      "generic_type": "NUMBER",
+      "description": "Percentage of work completed"
+    },
+    "TOTAL_SCHEDULED_VALUE": {
+      "generic_type": "MONEY",
+      "description": "Total scheduled value for all work items"
+    },
+    "TOTAL_PREVIOUS_WORK": {
+      "generic_type": "MONEY",
+      "description": "Total work from previous applications"
+    },
+    "TOTAL_THIS_PERIOD": {
+      "generic_type": "DATE",
+      "description": "Total work completed this period"
+    },
+    "TOTAL_MATERIALS_STORED": {
+      "generic_type": "MONEY",
+      "description": "Total value of materials stored"
+    },
+    "TOTAL_RETAINAGE": {
+      "generic_type": "MONEY",
+      "description": "Total retainage withheld to date"
+    },
+    "TOTAL_BALANCE_TO_FINISH": {
+      "generic_type": "MONEY",
+      "description": "Total balance remaining to finish all work"
+    },
+    "GRAND_TOTAL_WORK": {
+      "generic_type": "MONEY",
+      "description": "Grand total of all work completed and materials stored"
+    },
+    "EARNED_LESS_RETAINAGE": {
+      "generic_type": "NUMBER",
+      "description": "Total earned less retainage withheld"
+    },
+    "PREVIOUS_PAYMENTS": {
+      "generic_type": "MONEY",
+      "description": "Total of previous payments received"
+    },
+    "CURRENT_PAYMENT_DUE": {
+      "generic_type": "DATE",
+      "description": "Current payment due to contractor"
+    },
+    "BALANCE_TO_FINISH": {
+      "generic_type": "MONEY",
+      "description": "Balance to finish including retainage"
+    },
+    "CERTIFIED_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Amount certified by architect for payment"
+    },
+    "CERTIFICATION_NOTE": {
+      "generic_type": "TEXT",
+      "description": "Certification statement or notes"
+    },
+    "LEGAL_NOTICE": {
+      "generic_type": "TEXT",
+      "description": "Legal notice or disclaimer on form"
+    },
+    "DISTRIBUTION_LIST": {
+      "generic_type": "TEXT",
+      "description": "Distribution list for form copies"
+    },
+    "PAGE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Page number of multi-page document"
+    },
+    "TOTAL_SHEETS": {
+      "generic_type": "MONEY",
+      "description": "Total number of sheets in document set"
+    },
+    "SHEET_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Sheet number in construction drawing set"
+    },
+    "IDENTIFIER": {
+      "generic_type": "TEXT",
+      "description": "Generic identifier or unique reference code"
+    },
+    "PERSON": {
+      "generic_type": "PERSON",
+      "description": "Generic person name or individual"
+    },
+    "ORGANIZATION": {
+      "generic_type": "ORG",
+      "description": "Generic organization, company, or institution name"
+    },
+    "ORG": {
+      "generic_type": "ORG",
+      "description": "Organization, company, or institution name"
+    },
+    "MONEY": {
+      "generic_type": "TEXT",
+      "description": "Generic monetary amount or currency value"
+    },
+    "PERCENTAGE": {
+      "generic_type": "NUMBER",
+      "description": "Percentage value or rate"
+    },
+    "BENEFICIARY_PERCENTAGE": {
+      "generic_type": "NUMBER",
+      "description": "Percentage allocated to a beneficiary"
+    },
+    "PERCENT": {
+      "generic_type": "TEXT",
+      "description": "Percentage value or rate (short form)"
+    },
+    "MEASUREMENT": {
+      "generic_type": "TEXT",
+      "description": "Measurement, dimension, quantity, or size value"
+    },
+    "TEXT": {
+      "generic_type": "TEXT",
+      "description": "Generic text content or unstructured text"
+    },
+    "POA_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Power of Attorney type or category (e.g., General, Limited, Durable, Medical)"
+    },
+    "TIME": {
+      "generic_type": "DATE",
+      "description": "Time value or temporal information"
+    },
+    "LABEL": {
+      "generic_type": "LABEL",
+      "description": "Text label or descriptor"
+    },
+    "CODE": {
+      "generic_type": "TEXT",
+      "description": "Generic code value or coded identifier"
+    },
+    "BOOLEAN": {
+      "generic_type": "BOOLEAN",
+      "description": "Boolean value, true/false indicator, yes/no flag"
+    },
+    "LOCATION": {
+      "generic_type": "ADDRESS",
+      "description": "Generic location or place reference"
+    },
+    "REGION": {
+      "generic_type": "LAYOUT",
+      "description": "Generic region or spatial area"
+    },
+    "URL": {
+      "generic_type": "LINK",
+      "description": "Web URL or hyperlink address"
+    },
+    "_comment_bom": "=== BILL OF MATERIALS (BOM) ENTITIES ===",
+    "BOM_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Bill of materials identification number"
+    },
+    "BOM_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of bill of materials (Engineering BOM, Manufacturing BOM, etc.)"
+    },
+    "BOM_VERSION": {
+      "generic_type": "TEXT",
+      "description": "Version number of bill of materials"
+    },
+    "BOM_REVISION_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Revision number of bill of materials"
+    },
+    "BOM_DATE": {
+      "generic_type": "DATE",
+      "description": "Date bill of materials was created or issued"
+    },
+    "BOM_APPROVAL_DATE": {
+      "generic_type": "DATE",
+      "description": "Date bill of materials was approved"
+    },
+    "BOM_DOCUMENT_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Title of bill of materials document"
+    },
+    "BOM_SECTION_HEADER": {
+      "generic_type": "LAYOUT",
+      "description": "Section header within bill of materials"
+    },
+    "BOM_COMPANY_NAME": {
+      "generic_type": "ORG",
+      "description": "Company name on bill of materials"
+    },
+    "BOM_PREPARED_BY": {
+      "generic_type": "TEXT",
+      "description": "Name of person who prepared the BOM"
+    },
+    "BOM_REVISED_BY": {
+      "generic_type": "TEXT",
+      "description": "Name of person who revised the BOM"
+    },
+    "BOM_VERIFIED_BY": {
+      "generic_type": "TEXT",
+      "description": "Name of person who verified the BOM"
+    },
+    "BOM_ENGINEERING_APPROVER": {
+      "generic_type": "TEXT",
+      "description": "Name of engineering approver for BOM"
+    },
+    "BOM_MANUFACTURING_APPROVER": {
+      "generic_type": "TEXT",
+      "description": "Name of manufacturing approver for BOM"
+    },
+    "BOM_ASSEMBLY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of assembly in bill of materials"
+    },
+    "BOM_ASSEMBLY_PART_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Part number of assembly"
+    },
+    "BOM_ASSEMBLY_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of assembly"
+    },
+    "BOM_ASSEMBLY_PROCEDURE": {
+      "generic_type": "TEXT",
+      "description": "Assembly procedure or instructions"
+    },
+    "BOM_ITEM_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Item line number in bill of materials"
+    },
+    "BOM_PART_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Part number for component"
+    },
+    "BOM_PART_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of part or component"
+    },
+    "BOM_QUANTITY": {
+      "generic_type": "NUMBER",
+      "description": "Quantity of component required"
+    },
+    "BOM_UNIT_OF_MEASURE": {
+      "generic_type": "TEXT",
+      "description": "Unit of measure for component (ea, kg, m, etc.)"
+    },
+    "BOM_LEVEL_TYPE": {
+      "generic_type": "TEXT",
+      "description": "BOM level or hierarchy type (Level 0, Level 1, subassembly, etc.)"
+    },
+    "BOM_REFERENCE_DESIGNATOR": {
+      "generic_type": "IDENTIFIER",
+      "description": "Reference designator for component (R1, C2, U3, etc.)"
+    },
+    "BOM_MANUFACTURER_PART_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Manufacturer's part number"
+    },
+    "BOM_VENDOR_NAME": {
+      "generic_type": "ORG",
+      "description": "Vendor or supplier name"
+    },
+    "BOM_UNIT_COST": {
+      "generic_type": "MONEY",
+      "description": "Unit cost for component"
+    },
+    "BOM_EXTENDED_COST": {
+      "generic_type": "MONEY",
+      "description": "Extended cost (quantity × unit cost)"
+    },
+    "BOM_SUBTOTAL": {
+      "generic_type": "MONEY",
+      "description": "Subtotal for BOM section or category"
+    },
+    "BOM_TOTAL_COST": {
+      "generic_type": "MONEY",
+      "description": "Total cost of bill of materials"
+    },
+    "BOM_SHIPPING_COST": {
+      "generic_type": "MONEY",
+      "description": "Shipping or freight cost"
+    },
+    "BOM_TAX_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Tax amount for BOM"
+    },
+    "BOM_TOTAL_COMPONENTS": {
+      "generic_type": "MONEY",
+      "description": "Total number of components in BOM"
+    },
+    "BOM_LEAD_TIME": {
+      "generic_type": "TEXT",
+      "description": "Lead time for procurement or manufacturing"
+    },
+    "BOM_PROCUREMENT_STATUS": {
+      "generic_type": "TEXT",
+      "description": "Procurement status of component"
+    },
+    "BOM_QUALITY_REQUIREMENTS": {
+      "generic_type": "TEXT",
+      "description": "Quality requirements or specifications"
+    },
+    "BOM_NOTES_TEXT": {
+      "generic_type": "TEXT",
+      "description": "Notes or comments on BOM"
+    },
+    "BOM_DRAWING_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Engineering drawing number reference"
+    },
+    "BOM_REVISION_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of revision changes"
+    },
+    "BOM_PAGE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Page number of BOM document"
+    },
+    "BOM_CONFIDENTIALITY_NOTICE": {
+      "generic_type": "TEXT",
+      "description": "Confidentiality or proprietary notice"
+    },
+    "_comment_blueprint": "=== BLUEPRINT / TECHNICAL DRAWING ENTITIES ===",
+    "DRAWING_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Technical drawing identification number"
+    },
+    "DRAWING_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Title of technical drawing or blueprint"
+    },
+    "DRAWING_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type or category of technical drawing"
+    },
+    "DRAWING_CATEGORY": {
+      "generic_type": "TEXT",
+      "description": "Category classification of drawing (architectural, mechanical, etc.)"
+    },
+    "DRAWING_DATE": {
+      "generic_type": "DATE",
+      "description": "Date technical drawing was created"
+    },
+    "DRAWING_ORIENTATION": {
+      "generic_type": "TEXT",
+      "description": "Orientation of drawing (landscape, portrait)"
+    },
+    "DRAWING_NOTES": {
+      "generic_type": "TEXT",
+      "description": "General notes on technical drawing"
+    },
+    "SHEET_SIZE": {
+      "generic_type": "TEXT",
+      "description": "Physical size of drawing sheet (A0, A1, 24x36, etc.)"
+    },
+    "REVISION_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Revision number or version of drawing"
+    },
+    "REVISION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of drawing revision"
+    },
+    "REVISION_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description of revision changes"
+    },
+    "REVISED_BY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of person who revised the drawing"
+    },
+    "PROJECT_PHASE": {
+      "generic_type": "TEXT",
+      "description": "Current phase of project (design, construction, etc.)"
+    },
+    "CLIENT_NAME": {
+      "generic_type": "ORG",
+      "description": "Name of the client who ordered the inspection"
+    },
+    "DRAFTER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of person who drafted the drawing"
+    },
+    "CHECKER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of person who checked the drawing"
+    },
+    "CHECKED_DATE": {
+      "generic_type": "DATE",
+      "description": "Date drawing was checked or reviewed"
+    },
+    "APPROVER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of person who approved the drawing"
+    },
+    "APPROVED_DATE": {
+      "generic_type": "DATE",
+      "description": "Date drawing was approved"
+    },
+    "PRINT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date drawing was printed"
+    },
+    "SCALE_RATIO": {
+      "generic_type": "TEXT",
+      "description": "Scale ratio of drawing (1:100, 1/4\"=1'-0\", etc.)"
+    },
+    "MEASUREMENT_UNIT": {
+      "generic_type": "TEXT",
+      "description": "Unit of measurement used (mm, inches, feet, etc.)"
+    },
+    "DIMENSION_VALUE": {
+      "generic_type": "MONEY",
+      "description": "Dimension measurement value on drawing"
+    },
+    "DIMENSION_REFERENCE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Reference code or callout for dimension"
+    },
+    "TOLERANCE_VALUE": {
+      "generic_type": "MONEY",
+      "description": "Tolerance specification for dimensions"
+    },
+    "GRID_REFERENCE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Grid line reference (A, B, C or 1, 2, 3)"
+    },
+    "VIEW_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of view shown (plan, elevation, section, detail)"
+    },
+    "DETAIL_LEVEL": {
+      "generic_type": "TEXT",
+      "description": "Level of detail shown in view"
+    },
+    "MATERIAL_SPECIFICATION": {
+      "generic_type": "TEXT",
+      "description": "Material specification or type"
+    },
+    "SPECIFICATIONS": {
+      "generic_type": "TEXT",
+      "description": "Technical specifications text"
+    },
+    "CONSTRUCTION_NOTES": {
+      "generic_type": "TEXT",
+      "description": "Construction-specific notes or instructions"
+    },
+    "LEGEND_DETAILS": {
+      "generic_type": "DATE",
+      "description": "Legend or symbol key details"
+    },
+    "ABBREVIATIONS": {
+      "generic_type": "TEXT",
+      "description": "Abbreviations key or list"
+    },
+    "LOGO_PLACEHOLDER": {
+      "generic_type": "ADDRESS",
+      "description": "Company or project logo placement"
+    },
+    "SIGNATURE_PLACEHOLDER": {
+      "generic_type": "ADDRESS",
+      "description": "Signature placeholder on drawing"
+    },
+    "FILE_PATH": {
+      "generic_type": "TEXT",
+      "description": "File path or location reference"
+    },
+    "WEIGHT": {
+      "generic_type": "NUMBER",
+      "description": "Weight specification or measurement"
+    },
+    "_comment_cms1500": "=== CMS-1500 HEALTH INSURANCE CLAIM FORM ENTITIES ===",
+    "PATIENT_SEX": {
+      "generic_type": "TEXT",
+      "description": "Patient sex/gender on CMS-1500 form"
+    },
+    "PATIENT_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Patient mailing address on CMS-1500 form"
+    },
+    "PATIENT_SIGNATURE": {
+      "generic_type": "SIGNATURE",
+      "description": "Patient signature authorizing release of information"
+    },
+    "PATIENT_RELATIONSHIP": {
+      "generic_type": "TEXT",
+      "description": "Patient relationship to insured (self, spouse, child, etc.)"
+    },
+    "INSURED_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of insured person on CMS-1500 form"
+    },
+    "INSURED_DOB": {
+      "generic_type": "DATE",
+      "description": "Date of birth of insured person"
+    },
+    "INSURED_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of insured person"
+    },
+    "INSURED_SIGNATURE": {
+      "generic_type": "SIGNATURE",
+      "description": "Insured person signature"
+    },
+    "INSURANCE_ID_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Insurance ID or member number"
+    },
+    "INSURANCE_PLAN_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of insurance plan or program"
+    },
+    "INSURANCE_TYPE_INDICATOR": {
+      "generic_type": "TEXT",
+      "description": "Insurance type indicator checkbox (Medicare, Medicaid, etc.)"
+    },
+    "OTHER_INSURED_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of other insured person if applicable"
+    },
+    "OTHER_INSURANCE_INDICATOR": {
+      "generic_type": "TEXT",
+      "description": "Indicator if patient has other insurance coverage"
+    },
+    "ICD_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "ICD diagnosis code on CMS-1500 form"
+    },
+    "CPT_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "CPT procedure code on CMS-1500 form"
+    },
+    "DIAGNOSIS_POINTER": {
+      "generic_type": "TEXT",
+      "description": "Diagnosis pointer linking service line to diagnosis code"
+    },
+    "PLACE_OF_SERVICE_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Place of service code (11=office, 21=inpatient hospital, etc.)"
+    },
+    "CLAIM_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Claim filing indicator code"
+    },
+    "PROVIDER_QUALIFIER": {
+      "generic_type": "TEXT",
+      "description": "Provider identifier qualifier code"
+    },
+    "RENDERING_PROVIDER_QUALIFIER": {
+      "generic_type": "DATE",
+      "description": "Rendering provider identifier qualifier"
+    },
+    "SERVICE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of service for medical procedure"
+    },
+    "ILLNESS_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of current illness, injury, or pregnancy"
+    },
+    "OTHER_DATE": {
+      "generic_type": "DATE",
+      "description": "Other date field on CMS-1500 form"
+    },
+    "HOSPITALIZATION_FROM_DATE": {
+      "generic_type": "DATE",
+      "description": "Start date of related hospitalization"
+    },
+    "HOSPITALIZATION_TO_DATE": {
+      "generic_type": "DATE",
+      "description": "End date of related hospitalization"
+    },
+    "DISABILITY_FROM_DATE": {
+      "generic_type": "DATE",
+      "description": "Start date patient unable to work due to condition"
+    },
+    "DISABILITY_TO_DATE": {
+      "generic_type": "DATE",
+      "description": "End date patient unable to work due to condition"
+    },
+    "BILLING_PROVIDER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of billing provider or organization"
+    },
+    "BILLING_PROVIDER_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of billing provider"
+    },
+    "BILLING_PROVIDER_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of billing provider"
+    },
+    "BILLING_PROVIDER_NPI": {
+      "generic_type": "TEXT",
+      "description": "National Provider Identifier (NPI) for billing provider"
+    },
+    "BILLING_PROVIDER_OTHER_ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Other identification number for billing provider"
+    },
+    "RENDERING_PROVIDER_ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Identification number for rendering provider"
+    },
+    "REFERRING_PROVIDER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of referring physician or provider"
+    },
+    "FACILITY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of service facility where services rendered"
+    },
+    "FACILITY_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Address of service facility"
+    },
+    "FACILITY_NPI": {
+      "generic_type": "TEXT",
+      "description": "National Provider Identifier for service facility"
+    },
+    "FACILITY_OTHER_ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Other identification number for service facility"
+    },
+    "NPI_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "National Provider Identifier number"
+    },
+    "TAX_ID_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Federal tax identification number (EIN or SSN)"
+    },
+    "TAX_ID_TYPE": {
+      "generic_type": "MONEY",
+      "description": "Type of tax ID (EIN or SSN)"
+    },
+    "PRIOR_AUTH_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Prior authorization or referral number"
+    },
+    "RESUBMISSION_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Resubmission code for corrected claim"
+    },
+    "SERVICE_CHARGE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Charge amount for service line item"
+    },
+    "TOTAL_CHARGE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Total charge amount for claim"
+    },
+    "LAB_CHARGE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Outside lab charge amount"
+    },
+    "SERVICE_UNITS": {
+      "generic_type": "NUMBER",
+      "description": "Units of service provided (days, visits, etc.)"
+    },
+    "ACCEPT_ASSIGNMENT_INDICATOR": {
+      "generic_type": "TEXT",
+      "description": "Indicator if provider accepts assignment of benefits"
+    },
+    "OUTSIDE_LAB_INDICATOR": {
+      "generic_type": "TEXT",
+      "description": "Indicator if outside laboratory services used"
+    },
+    "EMPLOYMENT_RELATED_INDICATOR": {
+      "generic_type": "TEXT",
+      "description": "Indicator if condition related to employment"
+    },
+    "AUTO_ACCIDENT_INDICATOR": {
+      "generic_type": "TEXT",
+      "description": "Indicator if condition related to auto accident"
+    },
+    "OTHER_ACCIDENT_INDICATOR": {
+      "generic_type": "TEXT",
+      "description": "Indicator if condition related to other accident"
+    },
+    "EMERGENCY_INDICATOR": {
+      "generic_type": "TEXT",
+      "description": "Indicator if service was emergency treatment"
+    },
+    "EPSDT_INDICATOR": {
+      "generic_type": "TEXT",
+      "description": "Early and Periodic Screening, Diagnosis, and Treatment indicator"
+    },
+    "PROVIDER_SIGNATURE": {
+      "generic_type": "SIGNATURE",
+      "description": "Signature of physician or supplier"
+    },
+    "ADDITIONAL_CLAIM_INFO": {
+      "generic_type": "TEXT",
+      "description": "Additional claim information or notes"
+    },
+    "FORM_VERSION": {
+      "generic_type": "TEXT",
+      "description": "CMS-1500 form version identifier"
+    },
+    "RESERVED_FIELD": {
+      "generic_type": "TEXT",
+      "description": "Reserved field for local use or future expansion"
+    },
+    "_comment_eob": "=== EXPLANATION OF BENEFITS (EOB) SPECIFIC ENTITIES ===",
+    "CURRENCY": {
+      "generic_type": "TEXT",
+      "description": "Generic currency or monetary amount"
+    },
+    "_comment_flight": "=== FLIGHT ITINERARY ENTITIES ===",
+    "BOOKING_REFERENCE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Flight booking reference or confirmation number"
+    },
+    "FLIGHT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Flight number identifier"
+    },
+    "FREQUENT_FLYER_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Frequent flyer membership number"
+    },
+    "AIRLINE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of airline carrier"
+    },
+    "BOOKING_AGENT": {
+      "generic_type": "NUMBER",
+      "description": "Name of travel agency or booking agent"
+    },
+    "PASSENGER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of passenger on flight itinerary"
+    },
+    "BOOKING_DATE": {
+      "generic_type": "DATE",
+      "description": "Date flight booking was made"
+    },
+    "DEPARTURE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of flight departure"
+    },
+    "ARRIVAL_DATE": {
+      "generic_type": "DATE",
+      "description": "Date of flight arrival"
+    },
+    "PASSENGER_EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Email address of passenger"
+    },
+    "PASSENGER_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Phone number of passenger"
+    },
+    "CUSTOMER_SERVICE_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Customer service phone number for airline or agent"
+    },
+    "AIRPORT_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Airport code (IATA or ICAO)"
+    },
+    "GATE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Airport gate number"
+    },
+    "TERMINAL_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Airport terminal number or designation"
+    },
+    "BOOKING_STATUS": {
+      "generic_type": "TEXT",
+      "description": "Status of flight booking (confirmed, pending, cancelled)"
+    },
+    "PAYMENT_STATUS": {
+      "generic_type": "MONEY",
+      "description": "Status of payment for booking"
+    },
+    "TRAVEL_CLASS": {
+      "generic_type": "TEXT",
+      "description": "Class of travel (economy, business, first class)"
+    },
+    "AIRCRAFT_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type or model of aircraft"
+    },
+    "FLIGHT_DURATION": {
+      "generic_type": "TEXT",
+      "description": "Total duration of flight"
+    },
+    "TOTAL_TRAVEL_TIME": {
+      "generic_type": "DATE",
+      "description": "Total travel time including layovers"
+    },
+    "TOTAL_DISTANCE": {
+      "generic_type": "MONEY",
+      "description": "Total flight distance"
+    },
+    "BAGGAGE_ALLOWANCE": {
+      "generic_type": "NUMBER",
+      "description": "Checked baggage allowance for passenger"
+    },
+    "CARRY_ON_ALLOWANCE": {
+      "generic_type": "TEXT",
+      "description": "Carry-on baggage allowance for passenger"
+    },
+    "CHECK_IN_INFO": {
+      "generic_type": "TEXT",
+      "description": "Check-in information and instructions"
+    },
+    "_comment_home_inspection": "=== HOME INSPECTION REPORT ===",
+    "REPORT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Unique identifier for the inspection report"
+    },
+    "REPORT_DATE": {
+      "generic_type": "DATE",
+      "description": "Date the inspection report was generated"
+    },
+    "INSPECTION_DATE": {
+      "generic_type": "DATE",
+      "description": "Date the property inspection was conducted"
+    },
+    "INSPECTOR_SIGNATURE_DATE": {
+      "generic_type": "DATE",
+      "description": "Date the inspector signed the report"
+    },
+    "INSPECTION_START_TIME": {
+      "generic_type": "DATE",
+      "description": "Time the inspection started"
+    },
+    "INSPECTION_END_TIME": {
+      "generic_type": "DATE",
+      "description": "Time the inspection ended"
+    },
+    "INSPECTOR_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of the property inspector"
+    },
+    "INSPECTOR_LICENSE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Inspector's professional license number"
+    },
+    "INSPECTOR_COMPANY": {
+      "generic_type": "ORG",
+      "description": "Name of the inspection company"
+    },
+    "INSPECTOR_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Inspector's contact phone number"
+    },
+    "INSPECTOR_EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Inspector's contact email address"
+    },
+    "CLIENT_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Client's contact phone number"
+    },
+    "CLIENT_EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Client's contact email address"
+    },
+    "PROPERTY_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of property being inspected (e.g., single-family, condo)"
+    },
+    "YEAR_BUILT": {
+      "generic_type": "DATE",
+      "description": "Year the property was constructed"
+    },
+    "BEDROOMS_COUNT": {
+      "generic_type": "NUMBER",
+      "description": "Number of bedrooms in the property"
+    },
+    "BATHROOMS_COUNT": {
+      "generic_type": "NUMBER",
+      "description": "Number of bathrooms in the property"
+    },
+    "OCCUPANCY_STATUS": {
+      "generic_type": "TEXT",
+      "description": "Whether property is occupied or vacant"
+    },
+    "PEOPLE_PRESENT": {
+      "generic_type": "TEXT",
+      "description": "People present during the inspection"
+    },
+    "WEATHER_CONDITIONS": {
+      "generic_type": "TEXT",
+      "description": "Weather conditions during the inspection"
+    },
+    "TEMPERATURE": {
+      "generic_type": "TEXT",
+      "description": "Temperature during the inspection"
+    },
+    "OVERALL_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Overall condition assessment of the property"
+    },
+    "MAJOR_CONCERNS_COUNT": {
+      "generic_type": "NUMBER",
+      "description": "Number of major concerns identified"
+    },
+    "SAFETY_ISSUES_COUNT": {
+      "generic_type": "NUMBER",
+      "description": "Number of safety issues identified"
+    },
+    "INTERIOR_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for interior condition"
+    },
+    "ROOF_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of roofing material"
+    },
+    "ROOF_AGE": {
+      "generic_type": "NUMBER",
+      "description": "Age of the roof in years"
+    },
+    "ROOF_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of the roof"
+    },
+    "ROOF_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for roof condition"
+    },
+    "FOUNDATION_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of foundation (e.g., slab, crawlspace)"
+    },
+    "FOUNDATION_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of the foundation"
+    },
+    "FOUNDATION_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for foundation condition"
+    },
+    "FRAMING_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of structural framing"
+    },
+    "FRAMING_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for framing condition"
+    },
+    "SIDING_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of exterior siding material"
+    },
+    "SIDING_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of the siding"
+    },
+    "SIDING_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for siding condition"
+    },
+    "GUTTERS_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of gutters and downspouts"
+    },
+    "GUTTERS_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for gutters condition"
+    },
+    "WINDOWS_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of windows"
+    },
+    "WINDOWS_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for windows condition"
+    },
+    "DOORS_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of doors"
+    },
+    "DOORS_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for doors condition"
+    },
+    "WALLS_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of interior walls"
+    },
+    "CEILINGS_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of ceilings"
+    },
+    "FLOORS_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of floors"
+    },
+    "ELECTRICAL_PANEL_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of electrical panel"
+    },
+    "ELECTRICAL_AMPERAGE": {
+      "generic_type": "NUMBER",
+      "description": "Amperage capacity of electrical service"
+    },
+    "ELECTRICAL_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of electrical system"
+    },
+    "ELECTRICAL_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for electrical system condition"
+    },
+    "GFCI_PRESENT": {
+      "generic_type": "TEXT",
+      "description": "Whether GFCI outlets are present"
+    },
+    "PLUMBING_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of plumbing system"
+    },
+    "PLUMBING_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for plumbing system condition"
+    },
+    "WATER_SUPPLY_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of water supply (e.g., municipal, well)"
+    },
+    "WATER_HEATER_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of water heater (e.g., tank, tankless)"
+    },
+    "WATER_HEATER_AGE": {
+      "generic_type": "NUMBER",
+      "description": "Age of the water heater in years"
+    },
+    "HEATING_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of heating system"
+    },
+    "HEATING_AGE": {
+      "generic_type": "NUMBER",
+      "description": "Age of the heating system in years"
+    },
+    "HEATING_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of heating system"
+    },
+    "HEATING_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for heating system condition"
+    },
+    "COOLING_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type of cooling/AC system"
+    },
+    "COOLING_AGE": {
+      "generic_type": "NUMBER",
+      "description": "Age of the cooling system in years"
+    },
+    "COOLING_CONDITION": {
+      "generic_type": "TEXT",
+      "description": "Condition assessment of cooling system"
+    },
+    "COOLING_RATING": {
+      "generic_type": "TEXT",
+      "description": "Rating for cooling system condition"
+    },
+    "FINDING_COMPONENT": {
+      "generic_type": "TEXT",
+      "description": "Component related to an inspection finding"
+    },
+    "FINDING_LOCATION": {
+      "generic_type": "ADDRESS",
+      "description": "Location of an inspection finding"
+    },
+    "FINDING_ISSUE": {
+      "generic_type": "TEXT",
+      "description": "Description of the issue found"
+    },
+    "FINDING_SEVERITY": {
+      "generic_type": "TEXT",
+      "description": "Severity level of the finding (e.g., minor, major, safety)"
+    },
+    "FINDING_RECOMMENDATION": {
+      "generic_type": "DATE",
+      "description": "Recommendation for addressing the finding"
+    },
+    "_comment_service_agreement": "=== SERVICE AGREEMENT ENTITIES ===",
+    "AGREEMENT_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Type or category of service agreement"
+    },
+    "SERVICE_PROVIDER": {
+      "generic_type": "TEXT",
+      "description": "Name of the organization or person providing the service"
+    },
+    "COMPENSATION_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Monetary compensation amount for services"
+    },
+    "DURATION": {
+      "generic_type": "TEXT",
+      "description": "Time period or duration of the agreement"
+    },
+    "_comment_w9_form": "=== W-9 FORM ENTITIES ===",
+    "TAXPAYER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of taxpayer as shown on income tax return"
+    },
+    "BUSINESS_NAME": {
+      "generic_type": "PERSON",
+      "description": "Business name or disregarded entity name"
+    },
+    "TAXPAYER_ADDRESS": {
+      "generic_type": "MONEY",
+      "description": "Street address of taxpayer"
+    },
+    "TAXPAYER_CITY": {
+      "generic_type": "MONEY",
+      "description": "City of taxpayer"
+    },
+    "TAXPAYER_STATE": {
+      "generic_type": "MONEY",
+      "description": "State of taxpayer"
+    },
+    "TAXPAYER_ZIP": {
+      "generic_type": "MONEY",
+      "description": "ZIP code of taxpayer"
+    },
+    "REQUESTER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Name of W-9 form requester"
+    },
+    "EXEMPT_PAYEE_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Exempt payee code for certain entities"
+    },
+    "FATCA_EXEMPTION_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Exemption from FATCA reporting code"
+    },
+    "FORM_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "IRS form number"
+    },
+    "FORM_REVISION": {
+      "generic_type": "TEXT",
+      "description": "Form revision date"
+    },
+    "ISSUING_DEPARTMENT": {
+      "generic_type": "ORG",
+      "description": "Government department issuing the form"
+    },
+    "CATALOG_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "IRS catalog number"
+    },
+    "TAX_CLASSIFICATION": {
+      "generic_type": "MONEY",
+      "description": "Federal tax classification (individual, corporation, partnership, etc.)"
+    },
+    "CLAIM_PROCESS": {
+      "generic_type": "TEXT",
+      "description": "Claim process description"
+    },
+    "CLAIM_TEXT": {
+      "generic_type": "TEXT",
+      "description": "General claim text"
+    },
+    "INVOICE_SUBTOTAL": {
+      "generic_type": "MONEY",
+      "description": "Invoice subtotal amount"
+    },
+    "INVOICE_TOTAL": {
+      "generic_type": "MONEY",
+      "description": "Invoice total amount"
+    },
+    "MEDICAL_NOTES": {
+      "generic_type": "TEXT",
+      "description": "Medical notes"
+    },
+    "MEDICAL_SPECIALTY": {
+      "generic_type": "TEXT",
+      "description": "Medical specialty name"
+    },
+    "PROPERTY_PARCEL_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Property parcel number"
+    },
+    "TAX_FISHING_INCOME": {
+      "generic_type": "MONEY",
+      "description": "Fishing income amount"
+    },
+    "TAX_ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Tax identification number"
+    },
+    "TAX_MEDICAL_PAYMENTS": {
+      "generic_type": "MONEY",
+      "description": "Medical payment amount"
+    },
+    "TAX_OTHER_INCOME": {
+      "generic_type": "MONEY",
+      "description": "Other income amount"
+    },
+    "TAX_RENTS": {
+      "generic_type": "MONEY",
+      "description": "Rental income amount"
+    },
+    "TAX_ROYALTIES": {
+      "generic_type": "MONEY",
+      "description": "Royalty income amount"
+    },
+    "TAX_YEAR": {
+      "generic_type": "DATE",
+      "description": "Tax year"
+    },
+    "ACCOUNTING_METHOD": {
+      "generic_type": "NUMBER",
+      "description": "Accounting Method (auto-mapped to NUMBER)"
+    },
+    "ACCOUNT_BALANCE": {
+      "generic_type": "MONEY",
+      "description": "Account Balance (auto-mapped to MONEY)"
+    },
+    "ADJUSTMENT_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Adjustment Amount (auto-mapped to MONEY)"
+    },
+    "AGI": {
+      "generic_type": "TEXT",
+      "description": "Agi (auto-mapped to TEXT)"
+    },
+    "AMOUNT_IN_WORDS": {
+      "generic_type": "MONEY",
+      "description": "Amount In Words (auto-mapped to MONEY)"
+    },
+    "AMOUNT_OWED": {
+      "generic_type": "MONEY",
+      "description": "Amount Owed (auto-mapped to MONEY)"
+    },
+    "APPLICANT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Applicant Name (auto-mapped to PERSON)"
+    },
+    "ASSIGNEE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Assignee Name (auto-mapped to PERSON)"
+    },
+    "AUTHORIZATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Authorization Date (auto-mapped to DATE)"
+    },
+    "AUTHORIZED_SIGNATURE": {
+      "generic_type": "SIGNATURE",
+      "description": "Authorized Signature (auto-mapped to SIGNATURE)"
+    },
+    "AUTHORIZED_SIGNER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Authorized Signer Name (auto-mapped to PERSON)"
+    },
+    "BADGE_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Badge Number (auto-mapped to IDENTIFIER)"
+    },
+    "BOOK_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Book Number (auto-mapped to IDENTIFIER)"
+    },
+    "CAPITAL_ACCOUNT": {
+      "generic_type": "NUMBER",
+      "description": "Capital Account (auto-mapped to NUMBER)"
+    },
+    "CAPITAL_CONTRIBUTION": {
+      "generic_type": "TEXT",
+      "description": "Capital Contribution (auto-mapped to TEXT)"
+    },
+    "CHECKBOX_STATE": {
+      "generic_type": "BOOLEAN",
+      "description": "Checkbox State (auto-mapped to BOOLEAN)"
+    },
+    "CLASSIFICATION_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Classification Code (auto-mapped to IDENTIFIER)"
+    },
+    "CONSIGNEE_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Consignee Address (auto-mapped to ADDRESS)"
+    },
+    "CONSIGNEE_NAME": {
+      "generic_type": "PERSON",
+      "description": "Consignee Name (auto-mapped to PERSON)"
+    },
+    "CONTACT_INFO": {
+      "generic_type": "TEXT",
+      "description": "Contact Info (auto-mapped to TEXT)"
+    },
+    "COUNTRY_NAME": {
+      "generic_type": "PERSON",
+      "description": "Country Name (auto-mapped to PERSON)"
+    },
+    "CURRENCY_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Currency Code (auto-mapped to IDENTIFIER)"
+    },
+    "CUSTOMER_SERVICE_EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Customer Service Email (auto-mapped to EMAIL)"
+    },
+    "DEALER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Dealer Name (auto-mapped to PERSON)"
+    },
+    "DEA_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Dea Number (auto-mapped to IDENTIFIER)"
+    },
+    "DEDUCTION_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Deduction Amount (auto-mapped to MONEY)"
+    },
+    "DEDUCTION_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Deduction Description (auto-mapped to TEXT)"
+    },
+    "DEDUCTION_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Deduction Type (auto-mapped to TEXT)"
+    },
+    "DEFAULT_INTEREST_RATE": {
+      "generic_type": "MONEY",
+      "description": "Default Interest Rate (auto-mapped to MONEY)"
+    },
+    "DEPARTMENT_NAME": {
+      "generic_type": "ORG",
+      "description": "Department Name (auto-mapped to ORG)"
+    },
+    "DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Description (auto-mapped to TEXT)"
+    },
+    "DIAGNOSIS": {
+      "generic_type": "TEXT",
+      "description": "Diagnosis (auto-mapped to TEXT)"
+    },
+    "DIAGNOSIS_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Diagnosis Code (auto-mapped to IDENTIFIER)"
+    },
+    "DISCLAIMER": {
+      "generic_type": "TEXT",
+      "description": "Disclaimer (auto-mapped to TEXT)"
+    },
+    "DOCKET_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Docket Number (auto-mapped to IDENTIFIER)"
+    },
+    "DOCUMENT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Document Number (auto-mapped to IDENTIFIER)"
+    },
+    "EARNINGS_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Earnings Type (auto-mapped to TEXT)"
+    },
+    "EARNING_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Earning Amount (auto-mapped to MONEY)"
+    },
+    "EARNING_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Earning Type (auto-mapped to TEXT)"
+    },
+    "EMERGENCY_CONTACT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Emergency Contact Name (auto-mapped to PERSON)"
+    },
+    "EMPLOYER_EIN": {
+      "generic_type": "ORG",
+      "description": "Employer Ein (auto-mapped to ORG)"
+    },
+    "EXCHANGE_RATE": {
+      "generic_type": "MONEY",
+      "description": "Exchange Rate (auto-mapped to MONEY)"
+    },
+    "EXTENDED_WARRANTY_AVAILABLE": {
+      "generic_type": "TEXT",
+      "description": "Extended Warranty Available (auto-mapped to TEXT)"
+    },
+    "FEDERAL_TAX_WITHHELD": {
+      "generic_type": "MONEY",
+      "description": "Federal Tax Withheld (auto-mapped to MONEY)"
+    },
+    "FILING_DATE": {
+      "generic_type": "DATE",
+      "description": "Filing Date (auto-mapped to DATE)"
+    },
+    "FILING_STATUS": {
+      "generic_type": "BOOLEAN",
+      "description": "Filing Status (auto-mapped to BOOLEAN)"
+    },
+    "FREIGHT_CHARGES": {
+      "generic_type": "MONEY",
+      "description": "Freight Charges (auto-mapped to MONEY)"
+    },
+    "GOVERNING_LAW_JURISDICTION": {
+      "generic_type": "TEXT",
+      "description": "Governing Law Jurisdiction (auto-mapped to TEXT)"
+    },
+    "GROSS_PAY": {
+      "generic_type": "TEXT",
+      "description": "Gross Pay (auto-mapped to TEXT)"
+    },
+    "GROSS_PAY_CURRENT": {
+      "generic_type": "TEXT",
+      "description": "Gross Pay Current (auto-mapped to TEXT)"
+    },
+    "GROSS_PAY_YTD": {
+      "generic_type": "TEXT",
+      "description": "Gross Pay Ytd (auto-mapped to TEXT)"
+    },
+    "GROUP_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Group Number (auto-mapped to IDENTIFIER)"
+    },
+    "HOURLY_RATE": {
+      "generic_type": "MONEY",
+      "description": "Hourly Rate (auto-mapped to MONEY)"
+    },
+    "HOURS_WORKED": {
+      "generic_type": "NUMBER",
+      "description": "Hours Worked (auto-mapped to NUMBER)"
+    },
+    "HS_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Hs Code (auto-mapped to IDENTIFIER)"
+    },
+    "INCOME_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Income Amount (auto-mapped to MONEY)"
+    },
+    "INCOME_DESCRIPTION": {
+      "generic_type": "MONEY",
+      "description": "Income Description (auto-mapped to MONEY)"
+    },
+    "INCOTERMS": {
+      "generic_type": "DATE",
+      "description": "Incoterms (auto-mapped to DATE)"
+    },
+    "INJURY_STATUS": {
+      "generic_type": "BOOLEAN",
+      "description": "Injury Status (auto-mapped to BOOLEAN)"
+    },
+    "INSURANCE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Insurance Amount (auto-mapped to MONEY)"
+    },
+    "INSURANCE_POLICY_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Insurance Policy Number (auto-mapped to IDENTIFIER)"
+    },
+    "INSURANCE_PROVIDER": {
+      "generic_type": "ORG",
+      "description": "Insurance Provider (auto-mapped to ORG)"
+    },
+    "INVENTOR_NAME": {
+      "generic_type": "PERSON",
+      "description": "Inventor Name (auto-mapped to PERSON)"
+    },
+    "ISSUING_AUTHORITY": {
+      "generic_type": "TEXT",
+      "description": "Issuing Authority (auto-mapped to TEXT)"
+    },
+    "ITEM_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Item Number (auto-mapped to IDENTIFIER)"
+    },
+    "ITEM_QUANTITY": {
+      "generic_type": "NUMBER",
+      "description": "Item Quantity (auto-mapped to NUMBER)"
+    },
+    "ITEM_TOTAL_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Item Total Amount (auto-mapped to MONEY)"
+    },
+    "ITEM_UNIT_PRICE": {
+      "generic_type": "MONEY",
+      "description": "Item Unit Price (auto-mapped to MONEY)"
+    },
+    "LABOR_COVERAGE": {
+      "generic_type": "TEXT",
+      "description": "Labor Coverage (auto-mapped to TEXT)"
+    },
+    "LAST_UPDATED_DATE": {
+      "generic_type": "DATE",
+      "description": "Last Updated Date (auto-mapped to DATE)"
+    },
+    "LATE_FEE": {
+      "generic_type": "MONEY",
+      "description": "Late Fee (auto-mapped to MONEY)"
+    },
+    "LICENSE_PLATE": {
+      "generic_type": "IDENTIFIER",
+      "description": "License Plate (auto-mapped to IDENTIFIER)"
+    },
+    "LIGHTING_CONDITIONS": {
+      "generic_type": "TEXT",
+      "description": "Lighting Conditions (auto-mapped to TEXT)"
+    },
+    "LINE_ITEM_TOTAL": {
+      "generic_type": "MONEY",
+      "description": "Line Item Total (auto-mapped to MONEY)"
+    },
+    "LOCATION_DESCRIPTION": {
+      "generic_type": "ADDRESS",
+      "description": "Location Description (auto-mapped to ADDRESS)"
+    },
+    "MANUFACTURER_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Manufacturer Address (auto-mapped to ORG)"
+    },
+    "MANUFACTURER_NAME": {
+      "generic_type": "ORG",
+      "description": "Manufacturer Name (auto-mapped to ORG)"
+    },
+    "MANUFACTURER_WEBSITE": {
+      "generic_type": "ORG",
+      "description": "Manufacturer Website (auto-mapped to ORG)"
+    },
+    "MEDICARE_WAGES": {
+      "generic_type": "MONEY",
+      "description": "Medicare Wages (auto-mapped to MONEY)"
+    },
+    "MEDICATIONS": {
+      "generic_type": "TEXT",
+      "description": "Medications (auto-mapped to TEXT)"
+    },
+    "MEDICATION_FORM": {
+      "generic_type": "TEXT",
+      "description": "Medication Form (auto-mapped to TEXT)"
+    },
+    "MEDICATION_QUANTITY": {
+      "generic_type": "NUMBER",
+      "description": "Medication Quantity (auto-mapped to NUMBER)"
+    },
+    "MEDICATION_STRENGTH": {
+      "generic_type": "TEXT",
+      "description": "Medication Strength (auto-mapped to TEXT)"
+    },
+    "NARRATIVE_TEXT": {
+      "generic_type": "TEXT",
+      "description": "Narrative Text (auto-mapped to TEXT)"
+    },
+    "NET_INCOME": {
+      "generic_type": "MONEY",
+      "description": "Net Income (auto-mapped to MONEY)"
+    },
+    "NET_PAY": {
+      "generic_type": "TEXT",
+      "description": "Net Pay (auto-mapped to TEXT)"
+    },
+    "NOTARIZATION_DATE": {
+      "generic_type": "DATE",
+      "description": "Notarization Date (auto-mapped to DATE)"
+    },
+    "NOTARY_COMMISSION_EXPIRY": {
+      "generic_type": "TEXT",
+      "description": "Notary Commission Expiry (auto-mapped to TEXT)"
+    },
+    "NOTARY_COUNTY": {
+      "generic_type": "NUMBER",
+      "description": "Notary County (auto-mapped to NUMBER)"
+    },
+    "NOTARY_DATE": {
+      "generic_type": "DATE",
+      "description": "Notary Date (auto-mapped to DATE)"
+    },
+    "NOTARY_STATE": {
+      "generic_type": "ADDRESS",
+      "description": "Notary State (auto-mapped to ADDRESS)"
+    },
+    "NOTE_DATE": {
+      "generic_type": "DATE",
+      "description": "Note Date (auto-mapped to DATE)"
+    },
+    "NOTE_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Note Type (auto-mapped to TEXT)"
+    },
+    "NOTICE": {
+      "generic_type": "TEXT",
+      "description": "Notice (auto-mapped to TEXT)"
+    },
+    "ORDER_STATUS": {
+      "generic_type": "BOOLEAN",
+      "description": "Order Status (auto-mapped to BOOLEAN)"
+    },
+    "OTHER_CHARGES": {
+      "generic_type": "MONEY",
+      "description": "Other Charges (auto-mapped to MONEY)"
+    },
+    "OWNERSHIP_PERCENTAGE": {
+      "generic_type": "PERSON",
+      "description": "Ownership Percentage (auto-mapped to PERSON)"
+    },
+    "PACKAGE_COUNT": {
+      "generic_type": "NUMBER",
+      "description": "Package Count (auto-mapped to NUMBER)"
+    },
+    "PARTNERSHIP_NAME": {
+      "generic_type": "PERSON",
+      "description": "Partnership Name (auto-mapped to PERSON)"
+    },
+    "PARTNER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Partner Name (auto-mapped to PERSON)"
+    },
+    "PARTS_COVERED": {
+      "generic_type": "TEXT",
+      "description": "Parts Covered (auto-mapped to TEXT)"
+    },
+    "PASSPORT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Passport Number (auto-mapped to IDENTIFIER)"
+    },
+    "PATENT_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Patent Number (auto-mapped to IDENTIFIER)"
+    },
+    "PATENT_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Patent Title (auto-mapped to TITLE)"
+    },
+    "PATIENT_AGE": {
+      "generic_type": "PERSON",
+      "description": "Patient Age (auto-mapped to PERSON)"
+    },
+    "PATIENT_FIRST_NAME": {
+      "generic_type": "PERSON",
+      "description": "Patient First Name (auto-mapped to PERSON)"
+    },
+    "PATIENT_LAST_NAME": {
+      "generic_type": "PERSON",
+      "description": "Patient Last Name (auto-mapped to PERSON)"
+    },
+    "PAYER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Payer Name (auto-mapped to PERSON)"
+    },
+    "PAY_CURRENT_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Pay Current Amount (auto-mapped to MONEY)"
+    },
+    "PAY_DATE": {
+      "generic_type": "DATE",
+      "description": "Pay Date (auto-mapped to DATE)"
+    },
+    "PAY_PERIOD": {
+      "generic_type": "DATE",
+      "description": "Pay Period (auto-mapped to DATE)"
+    },
+    "PAY_PERIOD_END_DATE": {
+      "generic_type": "DATE",
+      "description": "Pay Period End Date (auto-mapped to DATE)"
+    },
+    "PAY_PERIOD_START_DATE": {
+      "generic_type": "DATE",
+      "description": "Pay Period Start Date (auto-mapped to DATE)"
+    },
+    "PAY_RATE": {
+      "generic_type": "MONEY",
+      "description": "Pay Rate (auto-mapped to MONEY)"
+    },
+    "PAY_YTD_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Pay Ytd Amount (auto-mapped to MONEY)"
+    },
+    "PERSON_NAME": {
+      "generic_type": "PERSON",
+      "description": "Person Name (auto-mapped to PERSON)"
+    },
+    "PORT_NAME": {
+      "generic_type": "PERSON",
+      "description": "Port Name (auto-mapped to PERSON)"
+    },
+    "PRESCRIPTION_VALIDITY_PERIOD": {
+      "generic_type": "DATE",
+      "description": "Prescription Validity Period (auto-mapped to DATE)"
+    },
+    "PRIORITY_LEVEL": {
+      "generic_type": "TEXT",
+      "description": "Priority Level (auto-mapped to TEXT)"
+    },
+    "PRODUCT_DESCRIPTION": {
+      "generic_type": "TEXT",
+      "description": "Product Description (auto-mapped to TEXT)"
+    },
+    "PROVIDER_NAME": {
+      "generic_type": "ORG",
+      "description": "Provider Name (auto-mapped to ORG)"
+    },
+    "PUBLICATION_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Publication Number (auto-mapped to IDENTIFIER)"
+    },
+    "QUANTITY": {
+      "generic_type": "NUMBER",
+      "description": "Quantity (auto-mapped to NUMBER)"
+    },
+    "RECORDING_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Recording Number (auto-mapped to IDENTIFIER)"
+    },
+    "REFILLS_AUTHORIZED": {
+      "generic_type": "TEXT",
+      "description": "Refills Authorized (auto-mapped to TEXT)"
+    },
+    "REFUND_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Refund Amount (auto-mapped to MONEY)"
+    },
+    "REQUIRED_DOCUMENTS": {
+      "generic_type": "TEXT",
+      "description": "Required Documents (auto-mapped to TEXT)"
+    },
+    "ROAD_CONDITIONS": {
+      "generic_type": "TEXT",
+      "description": "Road Conditions (auto-mapped to TEXT)"
+    },
+    "SALARY_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Salary Amount (auto-mapped to MONEY)"
+    },
+    "SCHOOL_NAME": {
+      "generic_type": "ORG",
+      "description": "School Name (auto-mapped to ORG)"
+    },
+    "SECTION_HEADING": {
+      "generic_type": "TITLE",
+      "description": "Section Heading (auto-mapped to TITLE)"
+    },
+    "SERVICE_CENTER_INFO": {
+      "generic_type": "TEXT",
+      "description": "Service Center Info (auto-mapped to TEXT)"
+    },
+    "SHIPMENT_DATE": {
+      "generic_type": "DATE",
+      "description": "Shipment Date (auto-mapped to DATE)"
+    },
+    "SHIPPER_ADDRESS": {
+      "generic_type": "ADDRESS",
+      "description": "Shipper Address (auto-mapped to ADDRESS)"
+    },
+    "SHIPPER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Shipper Name (auto-mapped to PERSON)"
+    },
+    "SOCIAL_SECURITY_WAGES": {
+      "generic_type": "MONEY",
+      "description": "Social Security Wages (auto-mapped to MONEY)"
+    },
+    "SYMBOL": {
+      "generic_type": "TEXT",
+      "description": "Symbol (auto-mapped to TEXT)"
+    },
+    "TABLE_COLUMN_HEADER": {
+      "generic_type": "TEXT",
+      "description": "Table Column Header (auto-mapped to TEXT)"
+    },
+    "TABLE_COMPONENT": {
+      "generic_type": "TEXT",
+      "description": "Table Component (auto-mapped to TEXT)"
+    },
+    "TAXABLE_INCOME": {
+      "generic_type": "MONEY",
+      "description": "Taxable Income (auto-mapped to MONEY)"
+    },
+    "TOTAL_INCOME": {
+      "generic_type": "MONEY",
+      "description": "Total Income (auto-mapped to MONEY)"
+    },
+    "TOTAL_INVOICE_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Total Invoice Amount (auto-mapped to MONEY)"
+    },
+    "TRADEMARK_NAME": {
+      "generic_type": "PERSON",
+      "description": "Trademark Name (auto-mapped to PERSON)"
+    },
+    "TRADEMARK_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Trademark Type (auto-mapped to TEXT)"
+    },
+    "TRAFFIC_CONTROL_TYPE": {
+      "generic_type": "TEXT",
+      "description": "Traffic Control Type (auto-mapped to TEXT)"
+    },
+    "UNIT_PRICE": {
+      "generic_type": "MONEY",
+      "description": "Unit Price (auto-mapped to MONEY)"
+    },
+    "VEHICLE_MAKE": {
+      "generic_type": "TEXT",
+      "description": "Vehicle Make (auto-mapped to TEXT)"
+    },
+    "VEHICLE_MODEL": {
+      "generic_type": "TEXT",
+      "description": "Vehicle Model (auto-mapped to TEXT)"
+    },
+    "VIN": {
+      "generic_type": "IDENTIFIER",
+      "description": "Vin (auto-mapped to IDENTIFIER)"
+    },
+    "VISA_NUMBER": {
+      "generic_type": "IDENTIFIER",
+      "description": "Visa Number (auto-mapped to IDENTIFIER)"
+    },
+    "VISIT_REASON": {
+      "generic_type": "TEXT",
+      "description": "Visit Reason (auto-mapped to TEXT)"
+    },
+    "WAGES_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Wages Amount (auto-mapped to MONEY)"
+    },
+    "WARRANTY_CONDITIONS": {
+      "generic_type": "TEXT",
+      "description": "Warranty Conditions (auto-mapped to TEXT)"
+    },
+    "WARRANTY_DURATION": {
+      "generic_type": "DATE",
+      "description": "Warranty Duration (auto-mapped to DATE)"
+    },
+    "WARRANTY_HOLDER_ADDRESS": {
+      "generic_type": "PERSON",
+      "description": "Warranty Holder Address (auto-mapped to PERSON)"
+    },
+    "WARRANTY_HOLDER_EMAIL": {
+      "generic_type": "EMAIL",
+      "description": "Warranty Holder Email (auto-mapped to EMAIL)"
+    },
+    "WARRANTY_HOLDER_NAME": {
+      "generic_type": "PERSON",
+      "description": "Warranty Holder Name (auto-mapped to PERSON)"
+    },
+    "WARRANTY_HOLDER_PHONE": {
+      "generic_type": "PHONE",
+      "description": "Warranty Holder Phone (auto-mapped to PHONE)"
+    },
+    "WARRANTY_LIMITATIONS": {
+      "generic_type": "MONEY",
+      "description": "Warranty Limitations (auto-mapped to MONEY)"
+    },
+    "WARRANTY_REGISTRATION_INFO": {
+      "generic_type": "IDENTIFIER",
+      "description": "Warranty Registration Info (auto-mapped to IDENTIFIER)"
+    },
+    "WARRANTY_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Warranty Title (auto-mapped to TITLE)"
+    },
+    "WITHDRAWAL_AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Withdrawal Amount (auto-mapped to MONEY)"
+    },
+    "YEAR": {
+      "generic_type": "DATE",
+      "description": "Year (auto-mapped to DATE)"
+    },
+    "ZIP_CODE": {
+      "generic_type": "IDENTIFIER",
+      "description": "Zip Code (auto-mapped to ADDRESS)"
+    },
+    "AMOUNT": {
+      "generic_type": "MONEY",
+      "description": "Monetary amount"
+    },
+    "ID": {
+      "generic_type": "IDENTIFIER",
+      "description": "Identifier or reference number"
+    },
+    "TITLE": {
+      "generic_type": "TITLE",
+      "description": "Document or block title"
+    },
+    "SECTION_TITLE": {
+      "generic_type": "TITLE",
+      "description": "Section heading"
+    },
+    "CAPTION": {
+      "generic_type": "LABEL",
+      "description": "Table or figure caption"
+    }
+  }
+}

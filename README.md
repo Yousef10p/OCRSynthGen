@@ -29,32 +29,25 @@ empty template  ->  fill with text  ->  render in a browser  ->  scan/photo effe
 ## 1. Where everything is
 
 Everything is in **`D:\code\OCR\arabic-template-bank`**, branch `main`
-(GitHub: `Yousef10p/OCRSynthGen`). The three tools it uses sit next to it, unchanged:
+(GitHub: `Yousef10p/OCRSynthGen`). Nothing else is needed: the projects it uses are copied into it.
 
-```
-D:\code\OCR\
-  arabic-template-bank\      this project
-  synthdoc-arabic-test\      SynthDoc + its Arabic extension (renders the page)
-  ocrsmith\                  OCRSmith (fonts, paper, scan/photo effects)
-  scan-simulator\            scan-simulator (scan effects)
-```
-
-The code is 5 files in `pipeline/`:
+Our code is 5 files in `pipeline/`:
 
 | File | What it is |
 |---|---|
-| [generator.py](pipeline/generator.py) | the whole page-making path: the class **`DocPipeline`** and its steps, marked `STEP 1` ... `STEP 6` |
-| [compact_original.py](pipeline/compact_original.py) | Surya's own `compact.py` (`encode()` / `decode()`), copied unchanged |
+| [generator.py](pipeline/generator.py) | the steps: the class **`DocPipeline`**, marked `STEP 1` ... `STEP 6` |
+| [checking.py](pipeline/checking.py) | the checks and fixes around the steps: page checks, readability after the effect, box fixes, faster rendering |
 | [run.py](pipeline/run.py) | the two commands: `dataset` (make a training set) and `website` |
 | [pools.py](pipeline/pools.py) | downloads the Wikipedia text and the photos (once) |
 | [llm_templates.py](pipeline/llm_templates.py) | optional: templates written by an LLM |
 
+The other projects are in [originals/](originals/README.md), copied unchanged with their licences: SynthDoc
+and its Arabic extension (render the page), OCRSmith (fonts, paper, scan/photo effects), scan-simulator,
+Augraphy, and Surya's `compact.py` (`encode()` / `decode()`) and `prompts.py` (the prompts, allowed tags and
+labels). Fixes we need are applied in memory by `checking.py`; the files in `originals/` stay as written.
+
 If something fails, the error says in which step: `sample s07 failed in STEP 4 effect: ...`.
 Search `generator.py` for that `STEP`.
-
-A file copied from another project (Surya, OCRSmith, scan-simulator, Augraphy) is named `<its name>_original.py`
-and kept unchanged. Today that is only `compact_original.py`; OCRSmith, scan-simulator and Augraphy are used
-from their own folders.
 
 ---
 
@@ -68,16 +61,6 @@ py -3.12 -m venv .venv-pipeline
 ```
 ```bash
 .venv-pipeline\Scripts\python -m playwright install chromium
-```
-
-Then tell Python where the three tools are: put these four lines in
-`.venv-pipeline\Lib\site-packages\ocr_sources.pth` (on Linux `.venv-pipeline/lib/python3.12/site-packages/`):
-
-```
-D:\code\OCR\synthdoc-arabic-test\synthdoc\src
-D:\code\OCR\synthdoc-arabic-test\arabic_ext
-D:\code\OCR\ocrsmith\src
-D:\code\OCR\scan-simulator
 ```
 
 The text and photo pools are made once (not in git):
@@ -191,7 +174,7 @@ sequenceDiagram
     participant R as STEP 3 render (SynthDoc)
     participant D as STEP 4 effect
     participant Y as STEP 5 Surya blocks
-    participant E as compact_original.py (Surya's)
+    participant E as Surya's encode() (originals/)
     U->>P: DocPipeline(out_dir, ...)
     U->>P: sample(seed)
     loop until the page passes every check (at most 8 tries)
@@ -258,7 +241,7 @@ def sample(self, seed, name=None, language=None, effect=None, task=None):
 | 4 effect | `DocPipeline.degrade()` -> `degrade()` | STEP 4 | clean (15%), OCRSmith, Augraphy or scan-simulator; boxes move with the page; every word checked still readable, else retried lighter |
 | 5 regions | `slot_regions()` | STEP 6 | the words of each slot joined: its text and its box |
 | 5 blocks | `blocks()`, `divs()` | STEP 5 | Surya's blocks: label, HTML, box, reading order (section 8), as `<div data-bbox data-label>` HTML |
-| 5 answer | `encode()` | `compact_original.py` | Surya's own encoder writes the answer (`layout` is JSON: `layout()`) |
+| 5 answer | `encode()` | `originals/surya/inference/compact.py` | Surya's own encoder writes the answer (`layout` is JSON: `layout()`) |
 | 6 labels | `build_label()` | STEP 6 | the labels JSON (words, lines, slots) |
 
 ---
@@ -288,13 +271,13 @@ print(style["font"], style["size_pt"], style["theme"])
 **Put an effect on the page** (continuing from above; the word boxes come back moved with the page):
 
 ```python
-from pipeline import generator as G
+from pipeline import checking, generator as G
 
 words = ocr["words"]                           # each has x, y, width, height, line_id, text
 out, boxes, attacks = G.degrade(clean, words, seed=5, effect="ocrsmith", strength=0.5)
 print(attacks)                                 # e.g. ['ocrsmith-paper:solid', 'ocrsmith:fax', 'Downscale', ...]
 print(boxes[0])                                # the first word's box after the effect: [x, y, w, h]
-print(G.readable(G.legibility(clean, out, words, boxes)))   # is every word still readable?
+print(checking.readable(checking.legibility(clean, out, words, boxes)))   # is every word still readable?
 out.save("pipeline_out/try/scanned.jpg")
 ```
 
@@ -303,7 +286,8 @@ The effect can be `"clean"`, `"ocrsmith"`, `"augraphy"`, `"scan-simulator"` or `
 **Write a Surya answer from your own HTML, and read one back** (Surya's own encoder):
 
 ```python
-from pipeline.compact_original import encode, decode
+import pipeline  # puts originals/ on the path
+from surya.inference.compact import encode, decode
 
 html = ('<div data-bbox="71 33 143 45" data-label="Page-Header">Northwind</div>'
         '<div data-bbox="120 87 881 255" data-label="Text"><p>The agent is not trading.</p></div>')
@@ -315,8 +299,8 @@ print(decode(answer))                          # back to the div HTML, one div p
 **Check that a target is in Surya's format:**
 
 ```python
-from pipeline import generator as G
-print(G.problems("full_ocr", open("pipeline_out/mine/s01.target.txt", encoding="utf-8").read()))  # [] = fine
+from pipeline import checking
+print(checking.problems("full_ocr", open("pipeline_out/mine/s01.target.txt", encoding="utf-8").read()))  # [] = fine
 ```
 
 **Check a whole training set** (pairing, prompts, format, Surya's encoder, length):
@@ -353,7 +337,7 @@ height. A box from pixel (687, 764) to (901, 794) on a 1590 x 2248 page is `432 
 ```
 
 **Surya's `encode()` shortens it** into what the model really writes
-([pipeline/compact_original.py](pipeline/compact_original.py) is Surya's `compact.py`, copied unchanged, Apache-2.0):
+([originals/surya/inference/compact.py](originals/surya/inference/compact.py) is Surya's `compact.py`, copied unchanged, Apache-2.0):
 
 | Rule | Before | After |
 |---|---|---|
@@ -497,10 +481,10 @@ To make pages locally for training instead:
 ## 11. Files
 
 ```
-pipeline/                     the code: generator.py, compact_original.py, run.py, pools.py, llm_templates.py
+pipeline/                     our code: generator.py, checking.py, run.py, pools.py, llm_templates.py
+originals/                    SynthDoc, OCRSmith, scan-simulator, Augraphy, Surya's encoder and prompts, unchanged
 pipeline/static/              the website's page
 bank2000/                     the 2,000 templates (templates/<id>/template.html.j2 + template.json)
-synthdoc_arabic_ext/          SynthDoc's Arabic extension (a copy, so Colab gets it from this repository)
 surya_probe/                  Surya's own answers to our pages, and the scripts that asked and compared them
 notebooks/                    Colab: fine-tune Surya (ms-swift), make batches, KITAB-Bench before/after
 docs/                         the pictures in this README

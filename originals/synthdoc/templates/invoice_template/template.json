@@ -1,0 +1,5 @@
+{
+  "name": "invoice",
+  "category": "financial",
+  "class": "InvoiceTemplate"
+}

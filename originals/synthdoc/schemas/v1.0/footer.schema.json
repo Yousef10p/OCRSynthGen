@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "footer.schema.json",
+  "title": "Layer 5: Footer",
+  "description": "Bottom-of-page or end-of-document elements",
+  "definitions": {
+    "Footer": {
+      "type": "object",
+      "properties": {
+        "signatures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "signer_role": { "type": "string" },
+              "signer_name": { "type": "string" },
+              "signature_type": {
+                "type": "string",
+                "enum": ["handwritten", "digital", "stamp", "placeholder"]
+              },
+              "date_signed": { "type": "string", "format": "date" },
+              "bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" }
+            }
+          }
+        },
+        "totals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": { "type": "string" },
+              "formula": { "type": "string" },
+              "result": { "type": "number" },
+              "format": {
+                "type": "string",
+                "enum": ["integer", "decimal", "currency", "percentage"]
+              },
+              "currency_code": { "type": "string", "pattern": "^[A-Z]{3}$" },
+              "bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" }
+            }
+          }
+        },
+        "disclaimers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": { "type": "string" },
+              "bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" },
+              "font_size": { "type": "number" },
+              "type": {
+                "type": "string",
+                "enum": ["legal", "privacy", "terms", "warning", "notice"]
+              }
+            }
+          }
+        },
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "current_page": { "type": "integer" },
+            "total_pages": { "type": "integer" },
+            "format": {
+              "type": "string",
+              "examples": ["Page {n} of {total}", "{n}/{total}", "{n}"]
+            },
+            "bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" }
+          }
+        },
+        "contact_info": { "$ref": "definitions.schema.json#/definitions/ContactBlock" },
+        "footer_text": { "type": "string" }
+      }
+    }
+  }
+}

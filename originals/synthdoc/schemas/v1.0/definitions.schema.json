@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "definitions.schema.json",
+  "title": "Shared Definitions",
+  "description": "Reusable type definitions for the Universal Document Structure Ontology",
+  "definitions": {
+    "BoundingBox": {
+      "type": "object",
+      "description": "Spatial coordinates of an element on the page",
+      "required": ["x_min", "y_min", "x_max", "y_max"],
+      "properties": {
+        "x_min": { "type": "number" },
+        "y_min": { "type": "number" },
+        "x_max": { "type": "number" },
+        "y_max": { "type": "number" },
+        "coordinate_system": {
+          "type": "string",
+          "enum": ["pixels", "points", "normalized"],
+          "default": "pixels",
+          "description": "pixels (image coords), points (PDF/print), normalized (0-1000)"
+        },
+        "page_number": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "EntityBlock": {
+      "type": "object",
+      "description": "Person or organization information block",
+      "properties": {
+        "entity_type": {
+          "type": "string",
+          "enum": ["person", "organization", "government_agency"]
+        },
+        "name": { "type": "string" },
+        "title": { "type": "string", "description": "Job title or organizational role" },
+        "address": { "$ref": "#/definitions/Address" },
+        "contact": { "$ref": "#/definitions/ContactBlock" },
+        "identifiers": {
+          "type": "object",
+          "properties": {
+            "tax_id": { "type": "string" },
+            "business_id": { "type": "string" },
+            "account_number": { "type": "string" },
+            "license_number": { "type": "string" }
+          }
+        },
+        "bbox": { "$ref": "#/definitions/BoundingBox" }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "street_1": { "type": "string" },
+        "street_2": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "postal_code": { "type": "string" },
+        "country": { "type": "string", "pattern": "^[A-Z]{2}$" }
+      }
+    },
+    "ContactBlock": {
+      "type": "object",
+      "properties": {
+        "phone": { "type": "string" },
+        "fax": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "website": { "type": "string", "format": "uri" }
+      }
+    },
+    "NotarySeal": {
+      "type": "object",
+      "properties": {
+        "notary_name": { "type": "string" },
+        "commission_number": { "type": "string" },
+        "state": { "type": "string" },
+        "commission_expiration": { "type": "string", "format": "date" },
+        "seal_type": {
+          "type": "string",
+          "enum": ["embossed", "stamped", "digital"]
+        },
+        "bbox": { "$ref": "#/definitions/BoundingBox" }
+      }
+    }
+  }
+}

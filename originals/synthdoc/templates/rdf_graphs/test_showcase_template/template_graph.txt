@@ -1,0 +1,854 @@
+============================================================
+RDF GRAPH STRUCTURE
+============================================================
+
+[Transactionstable]
+  ID: transactionsTable
+  Types: doco:Table
+  Properties:
+    doco:caption -> Transaction History
+    doco-fd:columnHeader -> Date
+    doco-fd:columnHeader -> Description
+    doco-fd:columnHeader -> Debit
+  Contains: 2 children
+
+[Transaction{{ Loop.Index }}]
+  ID: transaction{{ loop.index }}
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> {{ transaction.date }}
+    doco-fd:cellValue -> {{ transaction.description }}
+    doco-fd:cellValue -> {{ transaction.debit }}
+    schema:date -> {{ transaction.date }}
+    schema:value -> {{ transaction.debit }}
+    schema:value -> {{ transaction.credit }}
+    schema:value -> 
+
+[Employmentinfo]
+  ID: employmentInfo
+  Types: doco-fd:FormSection
+  Contains: 7 children
+
+[Employeename]
+  ID: employeeName
+  Types: schema:Person, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Employee Name:
+    schema:name -> {{ employee_name }}
+    doco-fd:fieldValue -> {{ employee_name }}
+
+[Jobtitle]
+  ID: jobTitle
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Job Title:
+    schema:jobTitle -> {{ job_title }}
+    doco-fd:fieldValue -> {{ job_title }}
+
+[Company]
+  ID: company
+  Types: schema:Organization, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Company:
+    schema:legalName -> {{ company_name }}
+    doco-fd:fieldValue -> {{ company_name }}
+
+[Salary]
+  ID: salary
+  Types: schema:MonetaryAmount, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Salary:
+    schema:value -> {{ salary_amount }}
+    doco-fd:fieldValue -> {{ salary_amount }}
+
+[Ssn]
+  ID: ssn
+  Types: doco-fd:FormField, doco-fd:TableRow
+  Properties:
+    doco-fd:fieldLabel -> SSN:
+    schema:identifier -> {{ ssn }}
+    doco-fd:fieldValue -> {{ ssn }}
+    doco-fd:cellValue -> Social Security
+    doco-fd:cellValue -> $421.60
+    doco-fd:cellValue -> $5,059.20
+    schema:value -> $421.60
+    schema:value -> $5,059.20
+  Contains: 1 children
+
+[Dob]
+  ID: dob
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Date of Birth:
+    schema:birthDate -> {{ date_of_birth }}
+    doco-fd:fieldValue -> {{ date_of_birth }}
+
+[Employeeaddress]
+  ID: employeeAddress
+  Types: schema:PostalAddress, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Address:
+    schema:streetAddress -> {{ address }}
+    doco-fd:fieldValue -> {{ address }}
+
+[Personalcontact]
+  ID: personalContact
+  Types: doco-fd:FormSection
+  Properties:
+    doco:sectionTitle -> Personal Contact
+
+[Personname]
+  ID: personName
+  Types: schema:Person, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:name -> {{ person_name }}
+    doco-fd:fieldValue -> {{ person_name }}
+
+[Personphone]
+  ID: personPhone
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:telephone -> {{ phone_number }}
+    doco-fd:fieldValue -> {{ phone_number }}
+
+[Personaddress]
+  ID: personAddress
+  Types: schema:PostalAddress, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:streetAddress -> {{ address }}
+    doco-fd:fieldValue -> {{ address }}
+
+[Medicalprovider]
+  ID: medicalProvider
+  Types: doco-fd:FormSection
+  Properties:
+    doco:sectionTitle -> Medical Provider
+
+[Provider]
+  ID: provider
+  Types: schema:Physician, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:name -> {{ provider_name }}
+    doco-fd:fieldValue -> {{ provider_name }}
+
+[Patient]
+  ID: patient
+  Types: schema:Patient, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:name -> {{ patient_name }}
+    doco-fd:fieldValue -> {{ patient_name }}
+
+[Diagnosis]
+  ID: diagnosis
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    doco-fd:fieldValue -> {{ diagnosis }}
+
+[Signaturesection]
+  ID: signatureSection
+  Types: doco-fd:FormSection
+  Properties:
+    schema:name -> {{ plaintiff_name }}
+  Contains: 1 children
+
+[Attorneysignature]
+  ID: attorneySignature
+  Types: doco-fd:FormField
+  Properties:
+    schema:name -> {{ attorney_name }}
+    doco-fd:fieldValue -> {{ attorney_name }}
+
+[Signaturedate]
+  ID: signatureDate
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Dated:
+    schema:date -> {{ signature_date }}
+    doco-fd:fieldValue -> {{ signature_date }}
+
+[Notarysection]
+  ID: notarySection
+  Types: doco-fd:FormSection
+  Properties:
+    doco:sectionTitle -> NOTARY ACKNOWLEDGMENT
+
+[Notarydate]
+  ID: notaryDate
+  Types: doco-fd:FormField
+  Properties:
+    schema:date -> {{ generation_date }}
+    doco-fd:fieldValue -> {{ generation_date }}
+
+[Notary]
+  ID: notary
+  Types: schema:Person, doco-fd:FormField
+  Properties:
+    schema:name -> {{ notary_name }}
+    doco-fd:fieldValue -> {{ notary_name }}
+  Contains: 2 children
+
+[Commissionnum]
+  ID: commissionNum
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Commission No.:
+    schema:identifier -> {{ notary_commission_number }}
+    doco-fd:fieldValue -> {{ notary_commission_number }}
+
+[Witness]
+  ID: witness
+  Types: schema:Person, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Witness:
+    schema:name -> {{ witness_name }}
+    doco-fd:fieldValue -> {{ witness_name }}
+
+[Invoiceheader]
+  ID: invoiceHeader
+  Types: doco-fd:Header
+  Contains: 3 children
+
+[Invoicenumber]
+  ID: invoiceNumber
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:identifier -> INV-2026-001
+    doco-fd:fieldValue -> INV-2026-001
+
+[Invoicedate]
+  ID: invoiceDate
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:dateCreated -> {{ generation_date }}
+    doco-fd:fieldValue -> {{ generation_date }}
+
+[Duedate]
+  ID: dueDate
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> 
+    schema:paymentDueDate -> 02/04/2026
+    doco-fd:fieldValue -> 02/04/2026
+
+[Invoicecompany]
+  ID: invoiceCompany
+  Types: schema:Organization, doco-fd:FormField
+  Properties:
+    schema:legalName -> 
+    doco-fd:fieldValue -> 
+    doco-fd:fieldValue -> {{ address }}
+    doco-fd:fieldValue -> {{ phone_number }}
+    schema:address -> {{ address }}
+    schema:telephone -> {{ phone_number }}
+
+[Invoiceitemstable]
+  ID: invoiceItemsTable
+  Types: doco:Table
+  Properties:
+    doco:caption -> Invoice Line Items
+    doco-fd:columnHeader -> Item
+    doco-fd:columnHeader -> Description
+    doco-fd:columnHeader -> Qty
+  Contains: 1 children
+
+[Item1]
+  ID: item1
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 001
+    doco-fd:cellValue -> Professional Consulting Services
+    doco-fd:cellValue -> 40 hrs
+    schema:value -> $150.00
+    schema:value -> $6,000.00
+  Contains: 1 children
+
+[Item2]
+  ID: item2
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 002
+    doco-fd:cellValue -> Technical Documentation
+    doco-fd:cellValue -> 1
+    schema:value -> $500.00
+    schema:value -> $500.00
+  Contains: 1 children
+
+[Subtotalrow]
+  ID: subtotalRow
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> 
+    doco-fd:cellValue -> 
+    schema:value -> 
+  Contains: 1 children
+
+[Taxrow]
+  ID: taxRow
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> Tax (8.5%):
+    doco-fd:cellValue -> $552.50
+    schema:value -> $552.50
+  Contains: 1 children
+
+[Totalrow]
+  ID: totalRow
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> 
+    doco-fd:cellValue -> 
+    schema:value -> 
+    doco-fd:fieldValue -> {{ ein }}
+    doco-fd:fieldValue -> {{ ssn }}
+    doco-fd:fieldValue -> 2025
+    schema:identifier -> {{ ein }}
+    schema:identifier -> {{ ssn }}
+    schema:Date -> 2025
+
+[Patient Last Name Field]
+  ID: patient_last_name_field
+  Types: schema:Person, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Last Name
+    schema:familyName -> Rodriguez
+    doco-fd:fieldValue -> Rodriguez
+
+[Patient First Name Field]
+  ID: patient_first_name_field
+  Types: schema:Person, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> First Name
+    schema:givenName -> {{ patient_name }}
+    doco-fd:fieldValue -> {{ patient_name }}
+
+[Patient Dob Field]
+  ID: patient_dob_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Date of Birth
+    schema:birthDate -> {{ date_of_birth }}
+    doco-fd:fieldValue -> {{ date_of_birth }}
+
+[Patient Home Address Field]
+  ID: patient_home_address_field
+  Types: schema:PostalAddress, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Home Address
+    schema:streetAddress -> {{ address }}
+    doco-fd:fieldValue -> {{ address }}
+
+[Patient Phone Field]
+  ID: patient_phone_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Phone Number
+    schema:telephone -> {{ phone_number }}
+    doco-fd:fieldValue -> {{ phone_number }}
+
+[Emergency Contact Field]
+  ID: emergency_contact_field
+  Types: schema:Person, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Emergency Contact
+    schema:name -> Michael Chen
+    doco-fd:fieldValue -> Michael Chen
+
+[Emergency Relationship Field]
+  ID: emergency_relationship_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Relationship
+    doco-fd:fieldValue -> Spouse
+
+[Insurance Provider Field]
+  ID: insurance_provider_field
+  Types: schema:Organization, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Insurance Provider
+    schema:name -> Blue Cross Blue Shield
+    doco-fd:fieldValue -> Blue Cross Blue Shield
+
+[Insurance Policy Field]
+  ID: insurance_policy_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Policy Number
+    schema:identifier -> BCBS-987654321
+    doco-fd:fieldValue -> BCBS-987654321
+
+[Insurance Group Field]
+  ID: insurance_group_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Group Number
+    schema:identifier -> GRP-12345
+    doco-fd:fieldValue -> GRP-12345
+
+[Primary Physician Field]
+  ID: primary_physician_field
+  Types: schema:Physician, doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Primary Physician
+    schema:name -> {{ provider_name }}
+    doco-fd:fieldValue -> {{ provider_name }}
+
+[Medications Field]
+  ID: medications_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Current Medications:
+    doco-fd:fieldValue -> Lisinopril 10mg daily, Metformin 500mg t...
+
+[Visit Reason Field]
+  ID: visit_reason_field
+  Types: doco-fd:FormField
+  Properties:
+    doco-fd:fieldLabel -> Reason for Visit:
+    doco-fd:fieldValue -> Annual physical examination and routine ...
+    doco-fd:fieldValue -> {{ address }}
+    doco-fd:fieldValue -> 12/16/2025
+    schema:address -> {{ address }}
+    schema:Date -> 12/16/2025
+    schema:Date -> 12/31/2025
+    schema:Date -> 01/05/2026
+    schema:name -> {{ employee_name }}
+    schema:name -> EMP-123456
+
+[Earningstable]
+  ID: earningsTable
+  Types: doco:Table
+  Properties:
+    doco:caption -> Earnings
+    doco-fd:columnHeader -> Earnings
+    doco-fd:columnHeader -> Hours
+    doco-fd:columnHeader -> Rate
+  Contains: 1 children
+
+[Regularpay]
+  ID: regularPay
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> Regular Pay
+    doco-fd:cellValue -> 80.00
+    doco-fd:cellValue -> {{ salary_amount }}
+    schema:value -> {{ salary_amount }}
+    schema:value -> $6,800.00
+    schema:value -> $81,600.00
+  Contains: 1 children
+
+[Grosspay]
+  ID: grossPay
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> Gross Pay
+    doco-fd:cellValue -> $6,800.00
+    doco-fd:cellValue -> $81,600.00
+    schema:value -> $6,800.00
+    schema:value -> $81,600.00
+  Contains: 1 children
+
+[Deductionstable]
+  ID: deductionsTable
+  Types: doco:Table
+  Properties:
+    doco:caption -> Deductions
+    doco-fd:columnHeader -> Deductions
+    doco-fd:columnHeader -> Current
+    doco-fd:columnHeader -> YTD
+  Contains: 1 children
+
+[Fedtax]
+  ID: fedTax
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> Federal Income Tax
+    doco-fd:cellValue -> $1,020.00
+    doco-fd:cellValue -> $12,240.00
+    schema:value -> $1,020.00
+    schema:value -> $12,240.00
+  Contains: 1 children
+
+[Statetax]
+  ID: stateTax
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> State Income Tax
+    doco-fd:cellValue -> $340.00
+    doco-fd:cellValue -> $4,080.00
+    schema:value -> $340.00
+    schema:value -> $4,080.00
+  Contains: 1 children
+
+[Medicare]
+  ID: medicare
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> Medicare
+    doco-fd:cellValue -> $98.60
+    doco-fd:cellValue -> $1,183.20
+    schema:value -> $98.60
+    schema:value -> $1,183.20
+  Contains: 1 children
+
+[Totaldeductions]
+  ID: totalDeductions
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> Total Deductions
+    doco-fd:cellValue -> $1,880.20
+    doco-fd:cellValue -> $22,562.40
+    schema:value -> $1,880.20
+    schema:value -> $22,562.40
+  Contains: 1 children
+
+[Netpay]
+  ID: netPay
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> NET PAY
+    doco-fd:cellValue -> $4,919.80
+    doco-fd:cellValue -> $59,037.60
+    schema:value -> $4,919.80
+    schema:value -> $59,037.60
+    doco-fd:fieldValue -> $850,000.00
+    schema:MonetaryAmount -> $850,000.00
+
+[Loantermstable]
+  ID: loanTermsTable
+  Types: doco:Table
+  Properties:
+    doco:caption -> Loan Terms
+    doco-fd:columnHeader -> Loan Terms
+    doco-fd:columnHeader -> Amount
+  Contains: 1 children
+
+[Loanamount]
+  ID: loanAmount
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> Loan Amount
+    doco-fd:cellValue -> $680,000.00
+    schema:value -> $680,000.00
+  Contains: 1 children
+
+[Interestrate]
+  ID: interestRate
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> Interest Rate
+    doco-fd:cellValue -> 6.750%
+  Contains: 1 children
+
+[Monthlypayment]
+  ID: monthlyPayment
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> Monthly Principal & Interest
+    doco-fd:cellValue -> $4,409.85
+    schema:value -> $4,409.85
+  Contains: 1 children
+
+[Closingcosts]
+  ID: closingCosts
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> Estimated Total Closing Costs
+    doco-fd:cellValue -> $18,750.00
+    schema:value -> $18,750.00
+    doco-fd:fieldValue -> January 30, 2026
+    doco-fd:fieldValue -> LOAN-2026-00423
+    doco-fd:fieldValue -> SARAH JOHNSON
+    schema:Date -> January 30, 2026
+    schema:Date -> January 5, 2026
+    schema:Date -> January 15, 2026
+    schema:identifier -> LOAN-2026-00423
+    schema:identifier -> CV-2026-12345
+    schema:identifier -> 4532-8765-0012
+    schema:name -> SARAH JOHNSON
+    schema:name -> ABC CORPORATION
+    schema:name -> TechVentures Inc.
+    schema:MonetaryAmount -> $185,000.00
+    schema:address -> 456 Market St, San Francisco, CA 94102
+
+[Usagesummarytable]
+  ID: usageSummaryTable
+  Types: doco:Table
+  Properties:
+    doco:caption -> Usage Summary
+    doco-fd:columnHeader -> Service
+    doco-fd:columnHeader -> Usage
+    doco-fd:columnHeader -> Rate
+  Contains: 1 children
+
+[Electricservice]
+  ID: electricService
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> Electric Service
+    doco-fd:cellValue -> 650 kWh
+    doco-fd:cellValue -> $0.18/kWh
+    schema:value -> $117.00
+  Contains: 1 children
+
+[Gasservice]
+  ID: gasService
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> Gas Service
+    doco-fd:cellValue -> 45 therms
+    doco-fd:cellValue -> $1.25/therm
+    schema:value -> $56.25
+  Contains: 1 children
+
+[Servicefees]
+  ID: serviceFees
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> Service Fees
+    doco-fd:cellValue -> 
+    doco-fd:cellValue -> $14.20
+    schema:value -> $14.20
+  Contains: 1 children
+
+[Totalutility]
+  ID: totalUtility
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> TOTAL AMOUNT DUE
+    doco-fd:cellValue -> $187.45
+    schema:value -> $187.45
+    doco-fd:fieldValue -> February 1, 2026
+    schema:Date -> February 1, 2026
+
+[Creditcardtransactions]
+  ID: creditCardTransactions
+  Types: doco:Table
+  Properties:
+    doco:caption -> Transaction History
+    doco-fd:columnHeader -> Date
+    doco-fd:columnHeader -> Merchant
+    doco-fd:columnHeader -> Amount
+  Contains: 1 children
+
+[Cctrans1]
+  ID: ccTrans1
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 12/06/25
+    doco-fd:cellValue -> Amazon.com
+    doco-fd:cellValue -> $156.78
+    schema:date -> 12/06/25
+    schema:value -> $156.78
+  Contains: 1 children
+
+[Cctrans2]
+  ID: ccTrans2
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 12/08/25
+    doco-fd:cellValue -> Whole Foods Market
+    doco-fd:cellValue -> $87.45
+    schema:date -> 12/08/25
+    schema:value -> $87.45
+  Contains: 1 children
+
+[Cctrans3]
+  ID: ccTrans3
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 12/10/25
+    doco-fd:cellValue -> Shell Gas Station
+    doco-fd:cellValue -> $62.50
+    schema:date -> 12/10/25
+    schema:value -> $62.50
+  Contains: 1 children
+
+[Cctrans4]
+  ID: ccTrans4
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 12/15/25
+    doco-fd:cellValue -> Apple Store
+    doco-fd:cellValue -> $1,299.00
+    schema:date -> 12/15/25
+    schema:value -> $1,299.00
+  Contains: 1 children
+
+[Cctrans5]
+  ID: ccTrans5
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 12/20/25
+    doco-fd:cellValue -> Starbucks
+    doco-fd:cellValue -> $8.75
+    schema:date -> 12/20/25
+    schema:value -> $8.75
+    doco-fd:fieldValue -> $15,000.00
+    doco-fd:fieldValue -> $12,612.08
+    doco-fd:fieldValue -> 2026-001-SF
+    schema:MonetaryAmount -> $15,000.00
+    schema:MonetaryAmount -> $12,612.08
+    schema:identifier -> 2026-001-SF
+    schema:identifier -> 005
+    schema:Date -> December 31, 2025
+
+[Constructionpaymentapp]
+  ID: constructionPaymentApp
+  Types: doco:Table
+  Properties:
+    doco:caption -> Construction Payment Application
+    doco-fd:columnHeader -> Item
+    doco-fd:columnHeader -> Description
+    doco-fd:columnHeader -> Scheduled Value
+  Contains: 1 children
+
+[Constructionitem1]
+  ID: constructionItem1
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 01 General Requirements
+    doco-fd:cellValue -> Site mobilization, temp facilities
+    doco-fd:cellValue -> $450,000.00
+    schema:value -> $450,000.00
+    schema:value -> $450,000.00
+    schema:value -> $0.00
+  Contains: 1 children
+
+[Constructionitem2]
+  ID: constructionItem2
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 03 Concrete
+    doco-fd:cellValue -> Foundation and structural concrete
+    doco-fd:cellValue -> $2,850,000.00
+    schema:value -> $2,850,000.00
+    schema:value -> $1,995,000.00
+    schema:value -> $855,000.00
+  Contains: 1 children
+
+[Constructionitem3]
+  ID: constructionItem3
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 05 Metals
+    doco-fd:cellValue -> Structural steel and metal framing
+    doco-fd:cellValue -> $3,200,000.00
+    schema:value -> $3,200,000.00
+    schema:value -> $1,280,000.00
+    schema:value -> $1,920,000.00
+  Contains: 1 children
+
+[Constructiontotals]
+  ID: constructionTotals
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> TOTALS
+    doco-fd:cellValue -> $8,500,000.00
+    doco-fd:cellValue -> $3,725,000.00
+    doco-fd:cellValue -> $4,775,000.00
+    schema:value -> $8,500,000.00
+    schema:value -> $3,725,000.00
+    schema:value -> $4,775,000.00
+    doco-fd:fieldValue -> $372,500.00
+    doco-fd:fieldValue -> $2,800,000.00
+    doco-fd:fieldValue -> (512) 555-0199
+    schema:MonetaryAmount -> $372,500.00
+    schema:MonetaryAmount -> $2,800,000.00
+    schema:telephone -> (512) 555-0199
+    schema:telephone -> (415) 555-0142
+    schema:Date -> January 5, 2026
+    schema:identifier -> VEND-8472
+
+[Purchaseorderitems]
+  ID: purchaseOrderItems
+  Types: doco:Table
+  Properties:
+    doco:caption -> Purchase Order Line Items
+    doco-fd:columnHeader -> Item #
+    doco-fd:columnHeader -> Part Number
+    doco-fd:columnHeader -> Description
+  Contains: 1 children
+
+[Poitem1]
+  ID: poItem1
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 1
+    doco-fd:cellValue -> SKU-4587-A
+    doco-fd:cellValue -> Heavy Duty Ball Bearing - 2" Diameter
+    schema:value -> $12.50
+    schema:value -> $6,250.00
+  Contains: 1 children
+
+[Poitem2]
+  ID: poItem2
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 2
+    doco-fd:cellValue -> SKU-9821-B
+    doco-fd:cellValue -> Stainless Steel Fastener Kit (200 pcs)
+    schema:value -> $45.99
+    schema:value -> $4,599.00
+  Contains: 1 children
+
+[Poitem3]
+  ID: poItem3
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:cellValue -> 3
+    doco-fd:cellValue -> SKU-1456-C
+    doco-fd:cellValue -> Industrial Lubricant - 5 Gallon Containe...
+    schema:value -> $78.50
+    schema:value -> $3,925.00
+  Contains: 1 children
+
+[Posubtotal]
+  ID: poSubtotal
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> 
+    doco-fd:cellValue -> $14,774.00
+    schema:value -> $14,774.00
+  Contains: 1 children
+
+[Poshipping]
+  ID: poShipping
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> 
+    doco-fd:cellValue -> $350.00
+    schema:value -> $350.00
+  Contains: 1 children
+
+[Pototal]
+  ID: poTotal
+  Types: doco-fd:TableRow
+  Properties:
+    doco-fd:rowHeader -> TOTAL:
+    doco-fd:cellValue -> $15,124.00
+    schema:value -> $15,124.00
+    doco-fd:fieldValue -> Thomas Chen, Procurement Manager
+    doco-fd:fieldValue -> Deliver to Receiving Dock B. Notify ware...
+    doco-fd:fieldValue -> $7,400.00
+    schema:name -> Thomas Chen, Procurement Manager
+    schema:name -> Amanda K.
+    schema:name -> TechVentures Inc.
+    schema:MonetaryAmount -> $7,400.00
+    schema:telephone -> (415) 555-0180
+    schema:telephone -> (415) 555-0142
+    schema:Date -> 01/05/26 7:45 PM
+    schema:Date -> {{ generation_date }}
+    schema:email -> alexandra.martinez@email.com
+    schema:address -> San Francisco, CA
+
+============================================================
+Summary: 87 nodes
+============================================================

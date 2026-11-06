@@ -1,0 +1,1470 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:schema="http://schema.org/"
+      xmlns:doco="http://purl.org/spar/doco/"
+      xmlns:doco-fd="http://purl.org/doco-fd/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:dc="http://purl.org/dc/terms/">
+<head>
+    <meta charset="UTF-8">
+    <title>NER Comprehensive Test Showcase - Real Entity Types</title>
+    
+</head>
+<body vocab="https://schema.org/">
+    <!-- ========== PAGE 1: LEGAL DOCUMENT SHOWCASE ========== -->
+    <div class="legal-header">
+        <div class="court-info">
+            <div>{{ court_name }}</div>
+        </div>
+
+        <div class="case-box">
+            <div style="float:left; width:48%;">
+                <strong><span typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ plaintiff_name }}</span></strong>, an Individual,<br><br>
+                <span style="margin-left:100px;">Plaintiff,</span><br><br>
+                v.<br><br>
+                <strong><span typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ defendant_name }}</span></strong>, a Corporation,<br><br>
+                <span style="margin-left:100px;">Defendant.</span>
+            </div>
+            <div style="float:right; width:48%; text-align:left;">
+                Case No.: <strong><span property="doco-fd:fieldValue schema:identifier">{{ case_number }}</span></strong><br><br>
+                <strong><span property="doco-fd:fieldValue">{{ document_type }}</span></strong><br><br>
+                <strong>CLAIMS FOR:</strong><br>
+                1. <span property="doco-fd:fieldValue">{{ claim_type_1 }}</span><br>
+                2. <span property="doco-fd:fieldValue">{{ claim_type_2 }}</span><br>
+                3. <span property="doco-fd:fieldValue">{{ claim_type_3 }}</span><br>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+
+        <div style="margin-top:20px; text-align:left;">
+            <strong><span typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ attorney_name }}</span></strong><br>
+            <span typeof="schema:Organization" property="doco-fd:fieldValue schema:name">{{ law_firm }}</span><br>
+            State Bar No.: <span property="doco-fd:fieldValue schema:identifier">{{ license_number }}</span><br>
+            Date Filed: <span property="doco-fd:fieldValue schema:Date">{{ date_filed }}</span>
+        </div>
+    </div>
+
+    <!-- ========== LEGAL PLEADING SECTION ========== -->
+    <div class="legal-section">
+        <div class="legal-heading">I. PARTIES</div>
+
+        {% for para in legal_paragraphs %}
+        <div class="numbered-para">
+            <span class="para-number">{{ loop.index }}.</span>
+            <span property="doco-fd:fieldValue">{{ para }}</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- ========== SECTION 2: BANK STATEMENT WITH REAL ENTITY TYPES ========== -->
+    <div class="section-header">Financial Document - Bank Statement</div>
+
+    <div class="bank-header">
+        <div class="account-info">
+            <h2 property="doco:sectionTitle">{{ bank_name }}</h2>
+            <div>Account: <strong><span property="doco-fd:fieldValue schema:identifier">{{ account_number }}</span></strong></div>
+            <div>Statement Period: <span property="doco-fd:fieldValue schema:Date">{{ statement_period_start }}</span> to <span property="doco-fd:fieldValue schema:Date">{{ statement_period_end }}</span></div>
+        </div>
+    </div>
+
+    <div class="balance-summary">
+        <div class="balance-item">Beginning Balance: <strong><span property="doco-fd:fieldValue schema:MonetaryAmount">{{ beginning_balance }}</span></strong></div>
+        <div class="balance-item">Total Deposits: <span property="doco-fd:fieldValue schema:MonetaryAmount">{{ total_deposits }}</span></div>
+        <div class="balance-item">Total Withdrawals: <span property="doco-fd:fieldValue schema:MonetaryAmount">{{ total_withdrawals }}</span></div>
+        <div class="balance-item">Ending Balance: <strong><span property="doco-fd:fieldValue schema:Date">{{ ending_balance }}</span></strong></div>
+    </div>
+
+    <!-- Transaction table with real entity types from bank_statement template -->
+    <table typeof="doco-fd:Table" resource="#transactionsTable" class="transaction-table">
+        <caption property="doco:caption">Transaction History</caption>
+        <thead>
+            <tr typeof="doco-fd:TableRow">
+                <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Date</th>
+                <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Description</th>
+                <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Debit</th>
+                <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Credit</th>
+                <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr typeof="doco-fd:TableRow" resource="#transaction{{ loop.index }}">
+                <td typeof="doco-fd:TableCell" property="doco-fd:cellValue schema:date">{{ transaction.date }}</td>
+                <td typeof="doco-fd:TableCell" property="doco-fd:cellValue">{{ transaction.description }}<br><span style="font-size:8pt; color:#666;">Ref: {{ transaction.ref_code }}</span></td>
+                <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" class="money">{{ transaction.debit }}</td>
+                <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" class="money">{{ transaction.credit }}</td>
+                <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" class="money"><strong>{{ transaction.balance }}</strong></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- ========== SECTION 3: EMPLOYMENT/PERSONAL INFO FORM ========== -->
+    <div class="section-header">Employment Information Form</div>
+
+    <section typeof="doco-fd:FormSection" resource="#employmentInfo" class="form-section">
+        <div class="form-grid">
+            <div typeof="schema:Person doco-fd:FormField" resource="#employeeName" class="form-field">
+                <span property="doco-fd:fieldLabel" class="form-label">Employee Name:</span>
+                <span property="schema:name doco-fd:fieldValue" class="form-value">{{ employee_name }}</span>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#jobTitle" class="form-field">
+                <span property="doco-fd:fieldLabel" class="form-label">Job Title:</span>
+                <span property="schema:jobTitle doco-fd:fieldValue" class="form-value">{{ job_title }}</span>
+            </div>
+            <div typeof="schema:Organization doco-fd:FormField" resource="#company" class="form-field">
+                <span property="doco-fd:fieldLabel" class="form-label">Company:</span>
+                <span property="schema:legalName doco-fd:fieldValue" class="form-value">{{ company_name }}</span>
+            </div>
+            <div typeof="schema:MonetaryAmount doco-fd:FormField" resource="#salary" class="form-field">
+                <span property="doco-fd:fieldLabel" class="form-label">Salary:</span>
+                <span property="schema:value doco-fd:fieldValue" class="form-value">{{ salary_amount }}</span>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#ssn" class="form-field">
+                <span property="doco-fd:fieldLabel" class="form-label">SSN:</span>
+                <span property="schema:identifier doco-fd:fieldValue" class="form-value">{{ ssn }}</span>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#dob" class="form-field">
+                <span property="doco-fd:fieldLabel" class="form-label">Date of Birth:</span>
+                <span property="schema:birthDate doco-fd:fieldValue" class="form-value">{{ date_of_birth }}</span>
+            </div>
+            <div typeof="schema:PostalAddress doco-fd:FormField" resource="#employeeAddress" class="form-field" style="grid-column: 1 / -1;">
+                <span property="doco-fd:fieldLabel" class="form-label">Address:</span>
+                <span property="schema:streetAddress doco-fd:fieldValue" class="form-value">{{ address }}</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 4: TWO-COLUMN CONTACT LAYOUT ========== -->
+    <div class="section-header">Contact Information</div>
+
+    <div class="two-column">
+        <section typeof="doco-fd:FormSection" resource="#personalContact" class="column">
+            <div property="doco:sectionTitle" class="column-header">Personal Contact</div>
+            <div typeof="schema:Person doco-fd:FormField" resource="#personName" class="column-line">
+                <span property="doco-fd:fieldLabel"><strong>Name:</strong></span> <span property="schema:name doco-fd:fieldValue">{{ person_name }}</span>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#personPhone" class="column-line">
+                <span property="doco-fd:fieldLabel"><strong>Phone:</strong></span> <span property="schema:telephone doco-fd:fieldValue">{{ phone_number }}</span>
+            </div>
+            <div typeof="schema:PostalAddress doco-fd:FormField" resource="#personAddress" class="column-line">
+                <span property="doco-fd:fieldLabel"><strong>Address:</strong></span> <span property="schema:streetAddress doco-fd:fieldValue">{{ address }}</span>
+            </div>
+        </section>
+        <section typeof="doco-fd:FormSection" resource="#medicalProvider" class="column">
+            <div property="doco:sectionTitle" class="column-header">Medical Provider</div>
+            <div typeof="schema:Physician doco-fd:FormField" resource="#provider" class="column-line">
+                <span property="doco-fd:fieldLabel"><strong>Provider:</strong></span> <span property="schema:name doco-fd:fieldValue">{{ provider_name }}</span>
+            </div>
+            <div typeof="schema:Patient doco-fd:FormField" resource="#patient" class="column-line">
+                <span property="doco-fd:fieldLabel"><strong>Patient:</strong></span> <span property="schema:name doco-fd:fieldValue">{{ patient_name }}</span>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#diagnosis" class="column-line">
+                <span property="doco-fd:fieldLabel"><strong>Diagnosis:</strong></span> <span property="doco-fd:fieldValue">{{ diagnosis }}</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========== SECTION 5: SIGNATURE BLOCK WITH REAL ENTITY TYPES ========== -->
+    <div typeof="doco-fd:FormSection" resource="#signatureSection" class="signature-area">
+        <p>WHEREFORE, <span typeof="schema:Person" property="schema:name">{{ plaintiff_name }}</span> prays for judgment as set forth above.</p>
+
+        <div class="signature-flex">
+            <div typeof="doco-fd:FormField" resource="#attorneySignature" class="signature-block">
+                <div class="sig-line"></div>
+                <div class="sig-label"><span typeof="schema:Person" property="schema:name doco-fd:fieldValue">{{ attorney_name }}</span></div>
+                <div class="sig-label">Attorney for Plaintiff</div>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#signatureDate" class="signature-block">
+                <div class="sig-line"></div>
+                <div class="sig-label"><span property="doco-fd:fieldLabel">Dated:</span> <span property="schema:date doco-fd:fieldValue">{{ signature_date }}</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 6: NOTARY SECTION WITH REAL ENTITY TYPES ========== -->
+    <section typeof="doco-fd:FormSection" resource="#notarySection" class="notary-section">
+        <div property="doco:sectionTitle" class="notary-text" style="font-weight:bold; margin-bottom:10px;">NOTARY ACKNOWLEDGMENT</div>
+        <div class="notary-text">
+            Subscribed and sworn to before me this <span typeof="doco-fd:FormField" resource="#notaryDate"><span property="schema:date doco-fd:fieldValue">{{ generation_date }}</span></span>.
+        </div>
+        <div class="notary-text" style="margin-top:20px;">
+            <div style="border-top:1px solid #000; display:inline-block; width:200px; margin-top:30px;"></div><br>
+            <span typeof="schema:Person doco-fd:FormField" resource="#notary"><span property="schema:name doco-fd:fieldValue">{{ notary_name }}</span></span>, Notary Public<br>
+            <span typeof="doco-fd:FormField" resource="#commissionNum"><span property="doco-fd:fieldLabel">Commission No.:</span> <span property="schema:identifier doco-fd:fieldValue">{{ notary_commission_number }}</span></span><br>
+            My Commission Expires: 12/31/2027
+        </div>
+        <div typeof="schema:Person doco-fd:FormField" resource="#witness" class="notary-text" style="margin-top:15px;">
+            <span property="doco-fd:fieldLabel">Witness:</span> <span property="schema:name doco-fd:fieldValue">{{ witness_name }}</span>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 7: INVOICE LAYOUT (Commercial Invoice style) ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Commercial Invoice Layout</div>
+
+    <header typeof="doco-fd:Header" resource="#invoiceHeader" style="display: flex; justify-content: space-between; margin: 20px 0;">
+        <div>
+            <div typeof="doco-fd:FormField" resource="#invoiceNumber">
+                <span property="doco-fd:fieldLabel"><strong>INVOICE #:</strong></span> <span property="schema:identifier doco-fd:fieldValue">INV-2026-001</span>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#invoiceDate">
+                <span property="doco-fd:fieldLabel"><strong>Date:</strong></span> <span property="schema:dateCreated doco-fd:fieldValue">{{ generation_date }}</span>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#dueDate">
+                <span property="doco-fd:fieldLabel"><strong>Due Date:</strong></span> <span property="schema:paymentDueDate doco-fd:fieldValue">02/04/2026</span>
+            </div>
+        </div>
+        <div typeof="schema:Organization doco-fd:FormField" resource="#invoiceCompany" style="text-align: right;">
+            <div property="schema:legalName doco-fd:fieldValue"><strong>{{ company_name }}</strong></div>
+            <div property="schema:address doco-fd:fieldValue">{{ address }}</div>
+            <div property="schema:telephone doco-fd:fieldValue">{{ phone_number }}</div>
+        </div>
+    </header>
+
+    <table typeof="doco-fd:Table" resource="#invoiceItemsTable" class="transaction-table" style="margin: 30px 0;">
+        <caption property="doco:caption">Invoice Line Items</caption>
+        <thead>
+            <tr typeof="doco-fd:TableRow">
+                <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Item</th>
+                <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Description</th>
+                <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Qty</th>
+                <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Unit Price</th>
+                <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr typeof="doco-fd:TableRow" resource="#item1">
+                <td typeof="doco-fd:TableCell" property="doco-fd:cellValue">001</td>
+                <td typeof="doco-fd:TableCell" property="doco-fd:cellValue">Professional Consulting Services</td>
+                <td typeof="doco-fd:TableCell" property="doco-fd:cellValue">40 hrs</td>
+                <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" class="money">$150.00</td>
+                <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" class="money">$6,000.00</td>
+            </tr>
+            <tr typeof="doco-fd:TableRow" resource="#item2">
+                <td typeof="doco-fd:TableCell" property="doco-fd:cellValue">002</td>
+                <td typeof="doco-fd:TableCell" property="doco-fd:cellValue">Technical Documentation</td>
+                <td typeof="doco-fd:TableCell" property="doco-fd:cellValue">1</td>
+                <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" class="money">$500.00</td>
+                <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" class="money">$500.00</td>
+            </tr>
+            <tr typeof="doco-fd:TableRow" resource="#subtotalRow" style="border-top: 2px solid #000;">
+                <th typeof="doco-fd:TableHeader" colspan="4" property="doco-fd:rowHeader" style="text-align: right;"><strong>Subtotal:</strong></th>
+                <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" class="money"><strong>$6,500.00</strong></td>
+            </tr>
+            <tr typeof="doco-fd:TableRow" resource="#taxRow">
+                <th typeof="doco-fd:TableHeader" colspan="4" property="doco-fd:rowHeader" style="text-align: right;">Tax (8.5%):</th>
+                <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" class="money">$552.50</td>
+            </tr>
+            <tr typeof="doco-fd:TableRow" resource="#totalRow" style="background: #e8f4f8;">
+                <th typeof="doco-fd:TableHeader" colspan="4" property="doco-fd:rowHeader" style="text-align: right;"><strong>TOTAL DUE:</strong></th>
+                <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" class="money"><strong>$7,052.50</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ========== SECTION 8: TAX FORM LAYOUT (IRS style) ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Tax Form Layout - IRS Style</div>
+
+    <div style="border: 3px solid #000; padding: 20px; margin: 20px 0;">
+        <div style="text-align: center; font-weight: bold; font-size: 14pt; margin-bottom: 20px;">
+            FORM 1099-MISC<br>
+            <span style="font-size: 10pt;">Miscellaneous Income</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0;">
+            <div style="border: 1px solid #000; padding: 10px;">
+                <div style="font-size: 8pt; font-weight: bold;">PAYER'S name, street address, city, state, and ZIP code</div>
+                <div>{{ company_name }}</div>
+                <div>{{ address }}</div>
+                <div><strong>TIN:</strong> <span property="doco-fd:fieldValue schema:identifier">{{ ein }}</span></div>
+            </div>
+            <div style="border: 1px solid #000; padding: 10px;">
+                <div style="font-size: 8pt; font-weight: bold;">RECIPIENT'S name, street address, city, state, and ZIP code</div>
+                <div>{{ person_name }}</div>
+                <div>456 Oak St, Los Angeles, CA 90001</div>
+                <div><strong>SSN:</strong> <span property="doco-fd:fieldValue schema:identifier">{{ ssn }}</span></div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0;">
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt;">1. Rents</div>
+                <div class="money">$0.00</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt;">2. Royalties</div>
+                <div class="money">$0.00</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt;">3. Other income</div>
+                <div class="money">$15,250.00</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt;">4. Federal income tax withheld</div>
+                <div class="money">$2,287.50</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt;">5. Fishing boat proceeds</div>
+                <div class="money">$0.00</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt;">6. Medical and health care payments</div>
+                <div class="money">$0.00</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; font-size: 8pt;">
+            <strong>Tax Year:</strong> <span property="doco-fd:fieldValue schema:Date">2025</span>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 9: MEDICAL INTAKE FORM LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Medical Intake Form Layout</div>
+
+    <div style="border: 2px solid #2c5aa0; padding: 20px; margin: 20px 0;">
+        <h3 property="doco:sectionTitle" style="text-align: center; color: #2c5aa0;">PATIENT INFORMATION FORM</h3>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;">
+            <div typeof="schema:Person doco-fd:FormField" resource="#patient_last_name_field">
+                <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">Last Name</span>
+                <div property="schema:familyName doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">Rodriguez</div>
+            </div>
+            <div typeof="schema:Person doco-fd:FormField" resource="#patient_first_name_field">
+                <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">First Name</span>
+                <div property="schema:givenName doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">{{ patient_name }}</div>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#patient_dob_field">
+                <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">Date of Birth</span>
+                <div property="schema:birthDate doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">{{ date_of_birth }}</div>
+            </div>
+            <div typeof="schema:PostalAddress doco-fd:FormField" resource="#patient_home_address_field" style="grid-column: 1 / -1;">
+                <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">Home Address</span>
+                <div property="schema:streetAddress doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">{{ address }}</div>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#patient_phone_field">
+                <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">Phone Number</span>
+                <div property="schema:telephone doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">{{ phone_number }}</div>
+            </div>
+            <div typeof="schema:Person doco-fd:FormField" resource="#emergency_contact_field">
+                <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">Emergency Contact</span>
+                <div property="schema:name doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">Michael Chen</div>
+            </div>
+            <div typeof="doco-fd:FormField" resource="#emergency_relationship_field">
+                <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">Relationship</span>
+                <div property="doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">Spouse</div>
+            </div>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <div style="font-weight: bold; margin-bottom: 10px;">Insurance Information:</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div typeof="schema:Organization doco-fd:FormField" resource="#insurance_provider_field">
+                    <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">Insurance Provider</span>
+                    <div property="schema:name doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">Blue Cross Blue Shield</div>
+                </div>
+                <div typeof="doco-fd:FormField" resource="#insurance_policy_field">
+                    <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">Policy Number</span>
+                    <div property="schema:identifier doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">BCBS-987654321</div>
+                </div>
+                <div typeof="doco-fd:FormField" resource="#insurance_group_field">
+                    <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">Group Number</span>
+                    <div property="schema:identifier doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">GRP-12345</div>
+                </div>
+                <div typeof="schema:Physician doco-fd:FormField" resource="#primary_physician_field">
+                    <span property="doco-fd:fieldLabel" style="font-size: 8pt; font-weight: bold;">Primary Physician</span>
+                    <div property="schema:name doco-fd:fieldValue" style="border-bottom: 1px solid #000; padding: 5px;">{{ provider_name }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <div typeof="doco-fd:FormField" resource="#medications_field">
+                <span property="doco-fd:fieldLabel" style="font-weight: bold; margin-bottom: 10px; display: block;">Current Medications:</span>
+                <div property="doco-fd:fieldValue" style="border: 1px solid #ccc; padding: 10px; min-height: 60px;">Lisinopril 10mg daily, Metformin 500mg twice daily</div>
+            </div>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <div typeof="doco-fd:FormField" resource="#visit_reason_field">
+                <span property="doco-fd:fieldLabel" style="font-weight: bold; margin-bottom: 10px; display: block;">Reason for Visit:</span>
+                <div property="doco-fd:fieldValue" style="border: 1px solid #ccc; padding: 10px; min-height: 60px;">Annual physical examination and routine lab work</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 10: PAY STUB LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Payroll Earnings Statement Layout</div>
+
+    <div style="border: 2px solid #000; padding: 20px; margin: 20px 0;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 2px solid #000; padding-bottom: 10px;">
+            <div>
+                <strong>{{ company_name }}</strong><br>
+                <span property="doco-fd:fieldValue schema:address">{{ address }}</span>
+            </div>
+            <div style="text-align: right;">
+                <div><strong>Pay Period:</strong> <span property="doco-fd:fieldValue schema:Date">12/16/2025</span> - <span property="doco-fd:fieldValue schema:Date">12/31/2025</span></div>
+                <div><strong>Pay Date:</strong> <span property="doco-fd:fieldValue schema:Date">01/05/2026</span></div>
+            </div>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <strong>Employee:</strong> <span typeof="schema:Person" property="doco-fd:fieldValue schema:name">{{ employee_name }}</span><br>
+            <strong>Employee ID:</strong> <span property="doco-fd:fieldValue schema:name">EMP-123456</span><br>
+            <strong>Position:</strong> <span>{{ job_title }}</span>
+        </div>
+
+        <table typeof="doco-fd:Table" resource="#earningsTable" style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 9pt;">
+            <caption property="doco:caption">Earnings</caption>
+            <thead>
+                <tr typeof="doco-fd:TableRow" style="background: #2c5aa0; color: white;">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="padding: 8px; border: 1px solid #000;">Earnings</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="padding: 8px; border: 1px solid #000;">Hours</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="padding: 8px; border: 1px solid #000;">Rate</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="padding: 8px; border: 1px solid #000;">Current</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="padding: 8px; border: 1px solid #000;">YTD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr typeof="doco-fd:TableRow" resource="#regularPay">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="padding: 6px; border: 1px solid #ccc;">Regular Pay</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="padding: 6px; border: 1px solid #ccc; text-align: right;">80.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">{{ salary_amount }}</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">$6,800.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">$81,600.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#grossPay" style="background: #f0f0f0; font-weight: bold;">
+                    <th typeof="doco-fd:TableHeader" colspan="3" property="doco-fd:rowHeader" style="padding: 6px; border: 1px solid #000;">Gross Pay</th>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #000; text-align: right;">$6,800.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #000; text-align: right;">$81,600.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table typeof="doco-fd:Table" resource="#deductionsTable" style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 9pt;">
+            <caption property="doco:caption">Deductions</caption>
+            <thead>
+                <tr typeof="doco-fd:TableRow" style="background: #2c5aa0; color: white;">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="padding: 8px; border: 1px solid #000;">Deductions</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="padding: 8px; border: 1px solid #000;">Current</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="padding: 8px; border: 1px solid #000;">YTD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr typeof="doco-fd:TableRow" resource="#fedTax">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="padding: 6px; border: 1px solid #ccc;">Federal Income Tax</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">$1,020.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">$12,240.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#stateTax">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="padding: 6px; border: 1px solid #ccc;">State Income Tax</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">$340.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">$4,080.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#ssn">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="padding: 6px; border: 1px solid #ccc;">Social Security</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">$421.60</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">$5,059.20</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#medicare">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="padding: 6px; border: 1px solid #ccc;">Medicare</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">$98.60</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #ccc; text-align: right;">$1,183.20</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#totalDeductions" style="background: #f0f0f0; font-weight: bold;">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:rowHeader" style="padding: 6px; border: 1px solid #000;">Total Deductions</th>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #000; text-align: right;">$1,880.20</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 6px; border: 1px solid #000; text-align: right;">$22,562.40</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#netPay" style="background: #e8f4f8; font-weight: bold; font-size: 11pt;">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:rowHeader" style="padding: 8px; border: 2px solid #000;">NET PAY</th>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 8px; border: 2px solid #000; text-align: right;">$4,919.80</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="padding: 8px; border: 2px solid #000; text-align: right;">$59,037.60</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ========== SECTION 11: REAL ESTATE CLOSING DISCLOSURE LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Real Estate Closing Disclosure Layout</div>
+
+    <div style="border: 3px solid #000; padding: 20px;">
+        <div style="text-align: center; font-weight: bold; font-size: 14pt; margin-bottom: 15px;">
+            CLOSING DISCLOSURE
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+            <div style="border: 1px solid #000; padding: 10px;">
+                <div style="font-weight: bold; background: #e8f4f8; padding: 5px;">Borrower</div>
+                <div>Michael Thompson</div>
+                <div>789 Oak Street, San Francisco, CA 94102</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 10px;">
+                <div style="font-weight: bold; background: #e8f4f8; padding: 5px;">Seller</div>
+                <div>Jennifer Davis</div>
+                <div>Same as Property Address</div>
+            </div>
+        </div>
+
+        <div style="border: 1px solid #000; padding: 10px; margin-bottom: 15px;">
+            <div style="font-weight: bold; background: #e8f4f8; padding: 5px;">Property</div>
+            <div>789 Oak Street, San Francisco, CA 94102</div>
+            <div>Sale Price: <span property="doco-fd:fieldValue schema:MonetaryAmount">$850,000.00</span></div>
+        </div>
+
+        <table typeof="doco-fd:Table" resource="#loanTermsTable" style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">
+            <caption property="doco:caption">Loan Terms</caption>
+            <thead>
+                <tr typeof="doco-fd:TableRow" style="background: #e8f4f8;">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #000; padding: 8px; text-align: left;">Loan Terms</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #000; padding: 8px; text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr typeof="doco-fd:TableRow" resource="#loanAmount">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:rowHeader" style="border: 1px solid #000; padding: 6px;">Loan Amount</th>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 6px; text-align: right;">$680,000.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#interestRate">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:rowHeader" style="border: 1px solid #000; padding: 6px;">Interest Rate</th>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #000; padding: 6px; text-align: right;">6.750%</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#monthlyPayment">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:rowHeader" style="border: 1px solid #000; padding: 6px;">Monthly Principal & Interest</th>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 6px; text-align: right;">$4,409.85</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#closingCosts">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:rowHeader" style="border: 1px solid #000; padding: 6px;">Estimated Total Closing Costs</th>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 6px; text-align: right;">$18,750.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="font-size: 8pt; border: 1px solid #000; padding: 10px; background: #f9f9f9;">
+            <strong>Closing Date:</strong> <span property="doco-fd:fieldValue schema:Date">January 30, 2026</span><br>
+            <strong>Loan Number:</strong> <span property="doco-fd:fieldValue schema:identifier">LOAN-2026-00423</span>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 12: INSURANCE CLAIM FORM LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Insurance Claim Form Layout</div>
+
+    <div style="border: 2px solid #003366; padding: 20px;">
+        <div style="text-align: center; font-weight: bold; font-size: 14pt; margin-bottom: 10px; color: #003366;">
+            INSURANCE CLAIM FORM
+        </div>
+
+        <div style="background: #e6f2ff; padding: 10px; margin-bottom: 15px;">
+            <div style="font-weight: bold; margin-bottom: 5px;">Claim Information</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div>
+                    <div style="font-size: 8pt; font-weight: bold;">Claim Number</div>
+                    <div>CLM-2026-987654</div>
+                </div>
+                <div>
+                    <div style="font-size: 8pt; font-weight: bold;">Date of Loss</div>
+                    <div>December 15, 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div>
+                <div style="font-size: 8pt; font-weight: bold;">Insured Name</div>
+                <div style="border-bottom: 1px solid #000;">Robert Chen</div>
+            </div>
+            <div>
+                <div style="font-size: 8pt; font-weight: bold;">Policy Number</div>
+                <div style="border-bottom: 1px solid #000;">POL-2024-456789</div>
+            </div>
+            <div>
+                <div style="font-size: 8pt; font-weight: bold;">Policy Type</div>
+                <div style="border-bottom: 1px solid #000;">Homeowners Insurance</div>
+            </div>
+        </div>
+
+        <div style="border: 1px solid #003366; padding: 15px; margin-bottom: 15px;">
+            <div style="font-weight: bold; margin-bottom: 10px;">Description of Loss</div>
+            <div style="border: 1px solid #ccc; padding: 10px; min-height: 80px; background: #fff;">
+                Water damage to kitchen and dining room caused by burst pipe in wall. Affected areas include ceiling, walls, hardwood flooring, and kitchen cabinets. Incident occurred during freezing temperatures on December 15, 2025 at approximately 2:00 AM.
+            </div>
+        </div>
+
+        <div style="background: #f0f0f0; padding: 10px; border: 1px solid #000;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <strong>Estimated Damage Amount:</strong><br>
+                    <span style="font-size: 14pt; color: #003366; font-weight: bold;">$45,250.00</span>
+                </div>
+                <div>
+                    <strong>Deductible:</strong><br>
+                    <span style="font-size: 14pt; color: #003366; font-weight: bold;">$2,500.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 13: COURT ORDER LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Court Order Layout</div>
+
+    <div style="border: 3px double #000; padding: 25px;">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <div style="font-weight: bold; font-size: 11pt;">SUPERIOR COURT OF CALIFORNIA</div>
+            <div style="font-weight: bold; font-size: 11pt;">COUNTY OF SAN FRANCISCO</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="width: 60%;">
+                <div><span property="doco-fd:fieldValue schema:name">SARAH JOHNSON</span>,</div>
+                <div style="margin-left: 40px; margin-bottom: 10px;">Plaintiff,</div>
+                <div>v.</div>
+                <div><span property="doco-fd:fieldValue schema:name">ABC CORPORATION</span>,</div>
+                <div style="margin-left: 40px;">Defendant.</div>
+            </div>
+            <div style="border: 2px solid #000; padding: 15px; width: 35%;">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">Case No. <span property="doco-fd:fieldValue schema:identifier">CV-2026-12345</span></div>
+                <div style="text-align: center; font-weight: bold; text-decoration: underline;">ORDER GRANTING MOTION</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; font-weight: bold; font-size: 12pt; margin: 20px 0; text-decoration: underline;">
+            ORDER
+        </div>
+
+        <div style="text-indent: 40px; line-height: 1.8; margin-bottom: 15px;">
+            <p>
+                This matter having come before the Court on Plaintiff's Motion for Summary Judgment, and the Court having considered the moving papers, opposition, reply, and oral arguments of counsel, and good cause appearing therefor,
+            </p>
+            <p>
+                IT IS HEREBY ORDERED that Plaintiff's Motion for Summary Judgment is GRANTED.
+            </p>
+            <p>
+                IT IS FURTHER ORDERED that judgment shall be entered in favor of Plaintiff and against Defendant in the amount of $250,000.00 plus costs and attorney's fees to be determined.
+            </p>
+            <p>
+                IT IS SO ORDERED.
+            </p>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <div>DATED: <span property="doco-fd:fieldValue schema:Date">January 5, 2026</span></div>
+            <div style="margin-top: 30px; margin-left: 300px;">
+                <div>_______________________________</div>
+                <div>Hon. Patricia Anderson</div>
+                <div>Judge of the Superior Court</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 14: EMPLOYMENT CONTRACT LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Employment Contract Layout</div>
+
+    <div style="border: 1px solid #000; padding: 25px;">
+        <div style="text-align: center; font-weight: bold; font-size: 14pt; margin-bottom: 20px; text-decoration: underline;">
+            EMPLOYMENT AGREEMENT
+        </div>
+
+        <div style="text-align: justify; line-height: 1.6;">
+            <p style="text-indent: 40px;">
+                This Employment Agreement ("Agreement") is entered into as of <span property="doco-fd:fieldValue schema:Date">January 15, 2026</span>, by and between <span property="doco-fd:fieldValue schema:name">TechVentures Inc.</span>, a Delaware corporation ("Employer"), and <span property="doco-fd:fieldValue schema:name">Alexandra Martinez</span> ("Employee").
+            </p>
+
+            <div style="margin: 20px 0;">
+                <div style="font-weight: bold; margin-bottom: 10px;">1. POSITION AND DUTIES</div>
+                <p style="margin-left: 30px;">
+                    Employee shall serve as <span>Senior Software Engineer</span> and shall perform such duties as are customarily associated with such position, reporting to the Chief Technology Officer.
+                </p>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <div style="font-weight: bold; margin-bottom: 10px;">2. COMPENSATION</div>
+                <p style="margin-left: 30px;">
+                    Employer shall pay Employee an annual base salary of <span property="doco-fd:fieldValue schema:MonetaryAmount">$185,000.00</span>, payable in accordance with Employer's standard payroll practices. Employee shall be eligible for an annual performance bonus of up to <span>20%</span> of base salary.
+                </p>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <div style="font-weight: bold; margin-bottom: 10px;">3. BENEFITS</div>
+                <p style="margin-left: 30px;">
+                    Employee shall be entitled to participate in all employee benefit plans maintained by Employer, including health insurance, 401(k) retirement plan with 4% employer match, and stock option plan.
+                </p>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <div style="font-weight: bold; margin-bottom: 10px;">4. TERM</div>
+                <p style="margin-left: 30px;">
+                    This Agreement shall commence on <span property="doco-fd:fieldValue schema:Date">February 1, 2026</span> and shall continue on an at-will basis until terminated by either party.
+                </p>
+            </div>
+
+            <div style="margin: 20px 0;">
+                <div style="font-weight: bold; margin-bottom: 10px;">5. CONFIDENTIALITY</div>
+                <p style="margin-left: 30px;">
+                    Employee agrees to maintain in strict confidence all Confidential Information of Employer and shall not disclose such information to any third party without prior written consent.
+                </p>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div>
+                <div>EMPLOYER:</div>
+                <div style="margin-top: 40px;">______________________________</div>
+                <div>James Wilson, CEO</div>
+                <div>TechVentures Inc.</div>
+            </div>
+            <div>
+                <div>EMPLOYEE:</div>
+                <div style="margin-top: 40px;">______________________________</div>
+                <div>Alexandra Martinez</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 15: UTILITY BILL LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Utility Bill Layout</div>
+
+    <div style="border: 2px solid #006633; padding: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 3px solid #006633;">
+            <div>
+                <div style="font-weight: bold; font-size: 16pt; color: #006633;">Pacific Gas & Electric</div>
+                <div style="font-size: 10pt;">P.O. Box 997310, Sacramento, CA 95899</div>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-weight: bold; font-size: 12pt;">BILL DATE</div>
+                <div style="font-size: 14pt; color: #006633;">January 5, 2026</div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+            <div style="border: 1px solid #ccc; padding: 15px; background: #f9f9f9;">
+                <div style="font-weight: bold; color: #006633; margin-bottom: 10px;">Account Information</div>
+                <div><strong>Account Number:</strong> <span property="doco-fd:fieldValue schema:identifier">4532-8765-0012</span></div>
+                <div><strong>Service Address:</strong> <span property="doco-fd:fieldValue schema:address">456 Market St, San Francisco, CA 94102</span></div>
+                <div><strong>Customer Name:</strong> <span property="doco-fd:fieldValue schema:name">David Kim</span></div>
+            </div>
+            <div style="border: 2px solid #006633; padding: 15px; background: #e6ffe6;">
+                <div style="font-weight: bold; color: #006633; margin-bottom: 10px;">Amount Due</div>
+                <div style="font-size: 24pt; font-weight: bold; color: #006633;">$187.45</div>
+                <div style="margin-top: 10px;"><strong>Due Date:</strong> <span property="doco-fd:fieldValue schema:Date">January 25, 2026</span></div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="background: #006633; color: white; padding: 8px; font-weight: bold; margin-bottom: 5px;">Usage Summary</div>
+            <table typeof="doco-fd:Table" resource="#usageSummaryTable" style="width: 100%; border-collapse: collapse;">
+                <caption property="doco:caption">Usage Summary</caption>
+                <thead>
+                    <tr typeof="doco-fd:TableRow" style="background: #e6ffe6;">
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #ccc; padding: 8px; text-align: left;">Service</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #ccc; padding: 8px; text-align: right;">Usage</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #ccc; padding: 8px; text-align: right;">Rate</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #ccc; padding: 8px; text-align: right;">Charges</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr typeof="doco-fd:TableRow" resource="#electricService">
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">Electric Service</td>
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px; text-align: right;">650 kWh</td>
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$0.18/kWh</td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$117.00</td>
+                    </tr>
+                    <tr typeof="doco-fd:TableRow" resource="#gasService">
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">Gas Service</td>
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px; text-align: right;">45 therms</td>
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$1.25/therm</td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$56.25</td>
+                    </tr>
+                    <tr typeof="doco-fd:TableRow" resource="#serviceFees">
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">Service Fees</td>
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;" colspan="2"></td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$14.20</td>
+                    </tr>
+                    <tr typeof="doco-fd:TableRow" resource="#totalUtility" style="background: #e6ffe6; font-weight: bold;">
+                        <th typeof="doco-fd:TableHeader" colspan="3" property="doco-fd:rowHeader" style="border: 2px solid #006633; padding: 8px;">TOTAL AMOUNT DUE</th>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 2px solid #006633; padding: 8px; text-align: right;">$187.45</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 16: CREDIT CARD STATEMENT LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Credit Card Statement Layout</div>
+
+    <div style="border: 2px solid #0066cc; padding: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%); color: white; padding: 15px; margin-bottom: 20px;">
+            <div>
+                <div style="font-size: 18pt; font-weight: bold;">Chase Credit Card</div>
+                <div style="font-size: 10pt;">Account Statement</div>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 10pt;">Statement Date</div>
+                <div style="font-size: 12pt; font-weight: bold;">January 5, 2026</div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+            <div style="border: 1px solid #ccc; padding: 12px; background: #f0f8ff;">
+                <div style="font-size: 8pt; color: #666;">Account Number</div>
+                <div style="font-weight: bold;">****1234</div>
+            </div>
+            <div style="border: 1px solid #ccc; padding: 12px; background: #f0f8ff;">
+                <div style="font-size: 8pt; color: #666;">Previous Balance</div>
+                <div style="font-weight: bold;">$1,245.67</div>
+            </div>
+            <div style="border: 1px solid #ccc; padding: 12px; background: #f0f8ff;">
+                <div style="font-size: 8pt; color: #666;">Payments Received</div>
+                <div style="font-weight: bold; color: #009900;">-$1,245.67</div>
+            </div>
+        </div>
+
+        <div style="background: #ffe6e6; border: 2px solid #cc0000; padding: 15px; margin-bottom: 20px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <div style="font-size: 10pt; font-weight: bold; color: #cc0000;">NEW BALANCE</div>
+                    <div style="font-size: 24pt; font-weight: bold; color: #cc0000;">$2,387.92</div>
+                </div>
+                <div>
+                    <div style="font-size: 10pt; font-weight: bold; color: #cc0000;">MINIMUM PAYMENT DUE</div>
+                    <div style="font-size: 24pt; font-weight: bold; color: #cc0000;">$71.64</div>
+                    <div style="font-size: 8pt; margin-top: 5px;">Due Date: <span property="doco-fd:fieldValue schema:Date">February 1, 2026</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <div style="background: #0066cc; color: white; padding: 8px; font-weight: bold;">Transaction History</div>
+            <table typeof="doco-fd:Table" resource="#creditCardTransactions" style="width: 100%; border-collapse: collapse; font-size: 9pt;">
+                <caption property="doco:caption">Transaction History</caption>
+                <thead>
+                    <tr typeof="doco-fd:TableRow" style="background: #e6f2ff;">
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #ccc; padding: 6px; text-align: left;">Date</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #ccc; padding: 6px; text-align: left;">Merchant</th>
+                        <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #ccc; padding: 6px; text-align: right;">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr typeof="doco-fd:TableRow" resource="#ccTrans1">
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue schema:date" style="border: 1px solid #ccc; padding: 4px;">12/06/25</td>
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 4px;">Amazon.com</td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 4px; text-align: right;">$156.78</td>
+                    </tr>
+                    <tr typeof="doco-fd:TableRow" resource="#ccTrans2">
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue schema:date" style="border: 1px solid #ccc; padding: 4px;">12/08/25</td>
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 4px;">Whole Foods Market</td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 4px; text-align: right;">$87.45</td>
+                    </tr>
+                    <tr typeof="doco-fd:TableRow" resource="#ccTrans3">
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue schema:date" style="border: 1px solid #ccc; padding: 4px;">12/10/25</td>
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 4px;">Shell Gas Station</td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 4px; text-align: right;">$62.50</td>
+                    </tr>
+                    <tr typeof="doco-fd:TableRow" resource="#ccTrans4">
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue schema:date" style="border: 1px solid #ccc; padding: 4px;">12/15/25</td>
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 4px;">Apple Store</td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 4px; text-align: right;">$1,299.00</td>
+                    </tr>
+                    <tr typeof="doco-fd:TableRow" resource="#ccTrans5">
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue schema:date" style="border: 1px solid #ccc; padding: 4px;">12/20/25</td>
+                        <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 4px;">Starbucks</td>
+                        <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 4px; text-align: right;">$8.75</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="font-size: 8pt; color: #666;">
+            <strong>APR:</strong> <span>19.99%</span> |
+            <strong>Credit Limit:</strong> <span property="doco-fd:fieldValue schema:MonetaryAmount">$15,000.00</span> |
+            <strong>Available Credit:</strong> <span property="doco-fd:fieldValue schema:MonetaryAmount">$12,612.08</span>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 17: CONSTRUCTION PAYMENT APPLICATION (AIA G702/G703) ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Construction Payment Application Layout (AIA G702/G703)</div>
+
+    <div style="border: 2px solid #000; padding: 20px;">
+        <div style="text-align: center; font-weight: bold; font-size: 12pt; margin-bottom: 15px;">
+            APPLICATION AND CERTIFICATE FOR PAYMENT
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px;">
+            <div style="border: 1px solid #000; padding: 10px;">
+                <div style="font-weight: bold; background: #e0e0e0; padding: 5px;">TO OWNER:</div>
+                <div>Bay Area Development Corp.</div>
+                <div>100 Mission Street, San Francisco, CA 94105</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 10px;">
+                <div style="font-weight: bold; background: #e0e0e0; padding: 5px;">PROJECT:</div>
+                <div>Downtown Office Tower</div>
+                <div>Project No: <span property="doco-fd:fieldValue schema:identifier">2026-001-SF</span></div>
+            </div>
+        </div>
+
+        <div style="border: 1px solid #000; padding: 10px; margin-bottom: 15px;">
+            <div style="font-weight: bold; margin-bottom: 5px;">FROM CONTRACTOR:</div>
+            <div>Premier Construction Services LLC</div>
+            <div>Application No: <span property="doco-fd:fieldValue schema:identifier">005</span> | Period To: <span property="doco-fd:fieldValue schema:Date">December 31, 2025</span></div>
+        </div>
+
+        <table typeof="doco-fd:Table" resource="#constructionPaymentApp" style="width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 9pt;">
+            <caption property="doco:caption">Construction Payment Application</caption>
+            <thead>
+                <tr typeof="doco-fd:TableRow" style="background: #d0d0d0;">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #000; padding: 6px;">Item</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #000; padding: 6px;">Description</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #000; padding: 6px; text-align: right;">Scheduled Value</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #000; padding: 6px; text-align: right;">Work Completed</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #000; padding: 6px; text-align: right;">Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr typeof="doco-fd:TableRow" resource="#constructionItem1">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #000; padding: 4px;">01 General Requirements</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #000; padding: 4px;">Site mobilization, temp facilities</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 4px; text-align: right;">$450,000.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 4px; text-align: right;">$450,000.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 4px; text-align: right;">$0.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#constructionItem2">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #000; padding: 4px;">03 Concrete</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #000; padding: 4px;">Foundation and structural concrete</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 4px; text-align: right;">$2,850,000.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 4px; text-align: right;">$1,995,000.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 4px; text-align: right;">$855,000.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#constructionItem3">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #000; padding: 4px;">05 Metals</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #000; padding: 4px;">Structural steel and metal framing</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 4px; text-align: right;">$3,200,000.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 4px; text-align: right;">$1,280,000.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #000; padding: 4px; text-align: right;">$1,920,000.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#constructionTotals" style="background: #f0f0f0; font-weight: bold;">
+                    <th typeof="doco-fd:TableHeader" colspan="2" property="doco-fd:rowHeader" style="border: 2px solid #000; padding: 6px;">TOTALS</th>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 2px solid #000; padding: 6px; text-align: right;">$8,500,000.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 2px solid #000; padding: 6px; text-align: right;">$3,725,000.00</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 2px solid #000; padding: 6px; text-align: right;">$4,775,000.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="background: #fffacd; border: 2px solid #000; padding: 15px;">
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                <div>
+                    <div style="margin-bottom: 8px;"><strong>Less Retainage (10%):</strong> <span property="doco-fd:fieldValue schema:MonetaryAmount">$372,500.00</span></div>
+                    <div style="margin-bottom: 8px;"><strong>Less Previous Payments:</strong> <span property="doco-fd:fieldValue schema:MonetaryAmount">$2,800,000.00</span></div>
+                </div>
+                <div style="border: 2px solid #000; padding: 10px; background: #fff;">
+                    <div style="font-weight: bold; font-size: 11pt;">AMOUNT DUE:</div>
+                    <div style="font-size: 18pt; font-weight: bold;">$552,500.00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 18: SHIPPING LABEL / BILL OF LADING LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Shipping Label / Bill of Lading Layout</div>
+
+    <div style="border: 3px solid #ff6600; padding: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #ff6600; color: white; padding: 15px; margin-bottom: 15px;">
+            <div>
+                <div style="font-size: 20pt; font-weight: bold;">FedEx</div>
+                <div style="font-size: 10pt;">Express Shipping</div>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 10pt;">Tracking Number</div>
+                <div style="font-size: 16pt; font-weight: bold;">794682475821</div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px;">
+            <div style="border: 2px solid #000; padding: 15px;">
+                <div style="font-weight: bold; background: #e0e0e0; padding: 5px; margin-bottom: 10px;">SHIP FROM:</div>
+                <div>Tech Electronics Inc.</div>
+                <div>
+                    5500 Industrial Blvd<br>
+                    Austin, TX 78744
+                </div>
+                <div>Phone: <span property="doco-fd:fieldValue schema:telephone">(512) 555-0199</span></div>
+            </div>
+            <div style="border: 2px solid #000; padding: 15px;">
+                <div style="font-weight: bold; background: #e0e0e0; padding: 5px; margin-bottom: 10px;">SHIP TO:</div>
+                <div>Maria Rodriguez</div>
+                <div>
+                    123 Market Street, Apt 4B<br>
+                    San Francisco, CA 94102
+                </div>
+                <div>Phone: <span property="doco-fd:fieldValue schema:telephone">(415) 555-0142</span></div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div style="border: 1px solid #000; padding: 10px; text-align: center;">
+                <div style="font-size: 8pt; font-weight: bold;">Service</div>
+                <div style="font-size: 11pt; font-weight: bold;">Priority Overnight</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 10px; text-align: center;">
+                <div style="font-size: 8pt; font-weight: bold;">Weight</div>
+                <div style="font-size: 11pt; font-weight: bold;">12.5 lbs</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 10px; text-align: center;">
+                <div style="font-size: 8pt; font-weight: bold;">Pieces</div>
+                <div style="font-size: 11pt; font-weight: bold;">1</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 10px; text-align: center;">
+                <div style="font-size: 8pt; font-weight: bold;">Ship Date</div>
+                <div style="font-size: 11pt; font-weight: bold;">01/05/26</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 20px 0;">
+            <div style="font-family: 'Courier New', monospace; font-size: 36pt; letter-spacing: 5px; font-weight: bold;">
+                ||||| |||| ||||||| |||||| |||||
+            </div>
+            <div style="font-size: 14pt; margin-top: 5px;">794682475821</div>
+        </div>
+
+        <div style="border: 2px dashed #ff6600; padding: 15px; background: #fff3e0;">
+            <div style="font-weight: bold; color: #ff6600; font-size: 12pt; margin-bottom: 10px;">SPECIAL HANDLING:</div>
+            <div style="display: flex; gap: 30px;">
+                <div><strong>☑ FRAGILE</strong></div>
+                <div><strong>☐ THIS SIDE UP</strong></div>
+                <div><strong>☑ SIGNATURE REQUIRED</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 19: PURCHASE ORDER LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Purchase Order Layout</div>
+
+    <div style="border: 2px solid #336699; padding: 20px;">
+        <div style="background: #336699; color: white; padding: 15px; margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <div style="font-size: 18pt; font-weight: bold;">PURCHASE ORDER</div>
+                    <div style="font-size: 10pt;">Industrial Supplies Co.</div>
+                </div>
+                <div style="text-align: right;">
+                    <div>PO Number: <span style="font-size: 16pt; font-weight: bold;">PO-2026-0145</span></div>
+                    <div>Date: <span property="doco-fd:fieldValue schema:Date">January 5, 2026</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+            <div>
+                <div style="font-weight: bold; background: #e6f0ff; padding: 5px; margin-bottom: 5px;">VENDOR:</div>
+                <div>Precision Parts Manufacturing</div>
+                <div>
+                    4200 Industrial Way<br>
+                    San Jose, CA 95134
+                </div>
+                <div>Vendor ID: <span property="doco-fd:fieldValue schema:identifier">VEND-8472</span></div>
+            </div>
+            <div>
+                <div style="font-weight: bold; background: #e6f0ff; padding: 5px; margin-bottom: 5px;">SHIP TO:</div>
+                <div>Industrial Supplies Co. - Warehouse 3</div>
+                <div>
+                    8900 Distribution Center Dr<br>
+                    Oakland, CA 94621
+                </div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+            <div style="border: 1px solid #336699; padding: 10px; background: #f9f9f9;">
+                <div style="font-size: 8pt; font-weight: bold;">REQUISITION NO.</div>
+                <div>REQ-2026-0098</div>
+            </div>
+            <div style="border: 1px solid #336699; padding: 10px; background: #f9f9f9;">
+                <div style="font-size: 8pt; font-weight: bold;">PAYMENT TERMS</div>
+                <div>Net 30</div>
+            </div>
+            <div style="border: 1px solid #336699; padding: 10px; background: #f9f9f9;">
+                <div style="font-size: 8pt; font-weight: bold;">SHIP VIA</div>
+                <div>UPS Ground</div>
+            </div>
+        </div>
+
+        <table typeof="doco-fd:Table" resource="#purchaseOrderItems" style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">
+            <caption property="doco:caption">Purchase Order Line Items</caption>
+            <thead>
+                <tr typeof="doco-fd:TableRow" style="background: #336699; color: white;">
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #336699; padding: 8px; text-align: left;">Item #</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #336699; padding: 8px; text-align: left;">Part Number</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #336699; padding: 8px; text-align: left;">Description</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #336699; padding: 8px; text-align: right;">Qty</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #336699; padding: 8px; text-align: right;">Unit Price</th>
+                    <th typeof="doco-fd:TableHeader" property="doco-fd:columnHeader" style="border: 1px solid #336699; padding: 8px; text-align: right;">Ext. Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr typeof="doco-fd:TableRow" resource="#poItem1">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">1</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">SKU-4587-A</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">Heavy Duty Ball Bearing - 2" Diameter</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px; text-align: right;">500</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$12.50</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$6,250.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#poItem2">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">2</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">SKU-9821-B</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">Stainless Steel Fastener Kit (200 pcs)</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px; text-align: right;">100</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$45.99</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$4,599.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#poItem3">
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">3</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">SKU-1456-C</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px;">Industrial Lubricant - 5 Gallon Container</td>
+                    <td typeof="doco-fd:TableCell" property="doco-fd:cellValue" style="border: 1px solid #ccc; padding: 6px; text-align: right;">50</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$78.50</td>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #ccc; padding: 6px; text-align: right;">$3,925.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#poSubtotal" style="background: #e6f0ff;">
+                    <th typeof="doco-fd:TableHeader" colspan="5" property="doco-fd:rowHeader" style="border: 1px solid #336699; padding: 6px;" align="right"><strong>SUBTOTAL:</strong></th>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #336699; padding: 6px; text-align: right; font-weight: bold;">$14,774.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#poShipping" style="background: #e6f0ff;">
+                    <th typeof="doco-fd:TableHeader" colspan="5" property="doco-fd:rowHeader" style="border: 1px solid #336699; padding: 6px;" align="right"><strong>SHIPPING:</strong></th>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 1px solid #336699; padding: 6px; text-align: right; font-weight: bold;">$350.00</td>
+                </tr>
+                <tr typeof="doco-fd:TableRow" resource="#poTotal" style="background: #336699; color: white; font-weight: bold; font-size: 11pt;">
+                    <th typeof="doco-fd:TableHeader" colspan="5" property="doco-fd:rowHeader" style="border: 2px solid #336699; padding: 8px;" align="right">TOTAL:</th>
+                    <td typeof="doco-fd:TableCell schema:MonetaryAmount" property="doco-fd:cellValue schema:value" style="border: 2px solid #336699; padding: 8px; text-align: right;">$15,124.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="font-size: 8pt; border-top: 1px solid #336699; padding-top: 10px;">
+            <strong>Authorized By:</strong> <span property="doco-fd:fieldValue schema:name">Thomas Chen, Procurement Manager</span><br>
+            <strong>Special Instructions:</strong> <span property="doco-fd:fieldValue">Deliver to Receiving Dock B. Notify warehouse 24 hours before delivery.</span>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 20: W-2 TAX FORM LAYOUT ========== -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">W-2 Wage and Tax Statement Layout</div>
+
+    <div style="border: 3px solid #000; padding: 15px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <div>
+                <div style="font-weight: bold; font-size: 10pt;">Form W-2</div>
+                <div style="font-size: 8pt;">Wage and Tax Statement 2025</div>
+            </div>
+            <div style="text-align: right; font-size: 8pt;">
+                <div>Copy B—To Be Filed With Employee's FEDERAL Tax Return</div>
+                <div>This information is being furnished to the Internal Revenue Service</div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px;">
+            <div style="border: 1px solid #000; padding: 10px; background: #f9f9f9;">
+                <div style="font-size: 7pt; font-weight: bold;">a. Employee's social security number</div>
+                <div style="font-size: 11pt; font-weight: bold;">123-45-6789</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 10px; background: #f9f9f9;">
+                <div style="font-size: 7pt; font-weight: bold;">b. Employer Identification Number (EIN)</div>
+                <div style="font-size: 11pt; font-weight: bold;">94-1234567</div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px;">
+            <div style="border: 1px solid #000; padding: 10px;">
+                <div style="font-size: 7pt; font-weight: bold;">c. Employer's name, address, and ZIP code</div>
+                <div>TechVentures Inc.</div>
+                <div>1200 Technology Drive<br>San Francisco, CA 94107</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 10px;">
+                <div style="font-size: 7pt; font-weight: bold;">e. Employee's name</div>
+                <div style="font-size: 10pt; font-weight: bold;">Alexandra Martinez</div>
+                <div style="font-size: 7pt; font-weight: bold; margin-top: 8px;">f. Employee's address and ZIP code</div>
+                <div>456 Elm Avenue<br>San Francisco, CA 94110</div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px;">
+            <div style="border: 1px solid #000; padding: 8px; background: #e8f4f8;">
+                <div style="font-size: 7pt; font-weight: bold;">1. Wages, tips, other compensation</div>
+                <div style="font-size: 11pt; font-weight: bold;">$185,000.00</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 8px; background: #e8f4f8;">
+                <div style="font-size: 7pt; font-weight: bold;">2. Federal income tax withheld</div>
+                <div style="font-size: 11pt; font-weight: bold;">$38,450.00</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 8px; background: #e8f4f8;">
+                <div style="font-size: 7pt; font-weight: bold;">3. Social security wages</div>
+                <div style="font-size: 11pt; font-weight: bold;">$168,600.00</div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px;">
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt; font-weight: bold;">4. Social security tax withheld</div>
+                <div style="font-size: 11pt; font-weight: bold;">$10,453.20</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt; font-weight: bold;">5. Medicare wages and tips</div>
+                <div style="font-size: 11pt; font-weight: bold;">$185,000.00</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt; font-weight: bold;">6. Medicare tax withheld</div>
+                <div style="font-size: 11pt; font-weight: bold;">$2,682.50</div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt; font-weight: bold;">12a. Code</div>
+                <div style="display: flex; gap: 10px;">
+                    <div><span style="font-weight: bold;">D</span> <span property="doco-fd:fieldValue schema:MonetaryAmount">$7,400.00</span></div>
+                </div>
+                <div style="font-size: 6pt; margin-top: 5px;">D = Elective deferrals to 401(k)</div>
+            </div>
+            <div style="border: 1px solid #000; padding: 8px;">
+                <div style="font-size: 7pt; font-weight: bold;">13. Statutory employee / Retirement plan / Third-party sick pay</div>
+                <div><strong>☐</strong> Statutory employee <strong>☑</strong> Retirement plan <strong>☐</strong> Third-party sick pay</div>
+            </div>
+        </div>
+
+        <div style="border: 1px solid #000; padding: 8px; background: #fffacd;">
+            <div style="font-size: 7pt; font-weight: bold;">15. State / Employer's state ID number / 16. State wages, tips, etc. / 17. State income tax</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 2fr 2fr; gap: 10px; margin-top: 5px;">
+                <div>CA</div>
+                <div>1234567-890</div>
+                <div>$185,000.00</div>
+                <div>$12,950.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 21-30: MORE DIVERSE LAYOUTS ========== -->
+
+    <!-- Section 21: Restaurant Receipt -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Restaurant Receipt Layout</div>
+    <div style="border: 2px dashed #666; padding: 20px; max-width: 400px; margin: 0 auto; font-family: 'Courier New', monospace;">
+        <div style="text-align: center; font-weight: bold; font-size: 14pt;">The Golden Fork</div>
+        <div style="text-align: center; font-size: 9pt;">789 Restaurant Row, SF, CA 94110</div>
+        <div style="text-align: center; font-size: 9pt;">Tel: <span property="doco-fd:fieldValue schema:telephone">(415) 555-0180</span></div>
+        <div style="border-top: 1px dashed #666; margin: 10px 0;"></div>
+        <div>Server: <span property="doco-fd:fieldValue schema:name">Amanda K.</span> | Table: <span property="doco-fd:fieldValue">12</span></div>
+        <div>Date: <span property="doco-fd:fieldValue schema:Date">01/05/26 7:45 PM</span></div>
+        <div style="border-top: 1px dashed #666; margin: 10px 0;"></div>
+        <div><span property="doco-fd:fieldValue">2x Caesar Salad</span> <span style="float: right;">$24.00</span></div>
+        <div><span property="doco-fd:fieldValue">1x Grilled Salmon</span> <span style="float: right;">$32.00</span></div>
+        <div><span property="doco-fd:fieldValue">1x Filet Mignon</span> <span style="float: right;">$45.00</span></div>
+        <div><span property="doco-fd:fieldValue">2x House Wine</span> <span style="float: right;">$18.00</span></div>
+        <div style="border-top: 1px dashed #666; margin: 10px 0;"></div>
+        <div><strong>Subtotal:</strong> <span style="float: right;">$119.00</span></div>
+        <div><strong>Tax (8.5%):</strong> <span style="float: right;">$10.12</span></div>
+        <div style="font-size: 12pt; font-weight: bold; margin-top: 5px;"><strong>TOTAL:</strong> <span style="float: right;">$129.12</span></div>
+        <div style="border-top: 2px solid #000; margin: 10px 0;"></div>
+        <div style="text-align: center; margin-top: 15px;">THANK YOU!</div>
+    </div>
+
+    <!-- Section 22: Driver's License -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Driver's License Layout</div>
+    <div style="border: 3px solid #c00; padding: 20px; max-width: 550px; background: linear-gradient(180deg, #ffe6e6 0%, #fff 100%);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <div style="font-weight: bold; font-size: 14pt; color: #c00;">CALIFORNIA</div>
+            <div style="font-size: 10pt; font-weight: bold;">DRIVER LICENSE</div>
+        </div>
+        <div style="display: flex; gap: 20px;">
+            <div style="width: 120px; height: 140px; border: 2px solid #000; display: flex; align-items: center; justify-content: center; background: #f0f0f0;">
+                [PHOTO]
+            </div>
+            <div style="flex: 1;">
+                <div style="font-size: 8pt; color: #666;">DL</div>
+                <div style="font-weight: bold; font-size: 11pt;">D1234567</div>
+                <div style="font-size: 8pt; color: #666; margin-top: 10px;">LN</div>
+                <div style="font-weight: bold; font-size: 12pt;">MARTINEZ</div>
+                <div style="font-size: 8pt; color: #666; margin-top: 5px;">FN</div>
+                <div style="font-weight: bold; font-size: 12pt;">ALEXANDRA</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                    <div>
+                        <div style="font-size: 8pt; color: #666;">DOB</div>
+                        <div style="font-weight: bold;">08/14/1990</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 8pt; color: #666;">SEX</div>
+                        <div style="font-weight: bold;">F</div>
+                    </div>
+                </div>
+                <div style="margin-top: 5px;">
+                    <div style="font-size: 8pt; color: #666;">ADDRESS</div>
+                    <div style="font-size: 9pt;">456 Elm Avenue, San Francisco, CA 94110</div>
+                </div>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; border-top: 1px solid #ccc; padding-top: 10px;">
+            <div>
+                <div style="font-size: 8pt; color: #666;">ISS</div>
+                <div style="font-weight: bold;">01/10/2024</div>
+            </div>
+            <div>
+                <div style="font-size: 8pt; color: #666;">EXP</div>
+                <div style="font-weight: bold;">08/14/2029</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 23: Boarding Pass -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Boarding Pass Layout</div>
+    <div style="border: 2px solid #003d7a; padding: 0; max-width: 600px; font-family: Arial, sans-serif;">
+        <div style="background: #003d7a; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 20pt; font-weight: bold;">United</div>
+            <div style="font-size: 11pt;">BOARDING PASS</div>
+        </div>
+        <div style="padding: 20px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                <div>
+                    <div style="font-size: 9pt; color: #666;">PASSENGER NAME</div>
+                    <div style="font-size: 14pt; font-weight: bold;">MARTINEZ/ALEXANDRA</div>
+                </div>
+                <div>
+                    <div style="font-size: 9pt; color: #666;">CONFIRMATION CODE</div>
+                    <div style="font-size: 14pt; font-weight: bold;">ABC123</div>
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px;">
+                <div>
+                    <div style="font-size: 8pt; color: #666;">FROM</div>
+                    <div style="font-size: 18pt; font-weight: bold;">SFO</div>
+                    <div style="font-size: 9pt;">San Francisco</div>
+                </div>
+                <div>
+                    <div style="font-size: 8pt; color: #666;">TO</div>
+                    <div style="font-size: 18pt; font-weight: bold;">JFK</div>
+                    <div style="font-size: 9pt;">New York</div>
+                </div>
+                <div>
+                    <div style="font-size: 8pt; color: #666;">DATE</div>
+                    <div style="font-size: 11pt; font-weight: bold;">15 JAN</div>
+                </div>
+                <div>
+                    <div style="font-size: 8pt; color: #666;">FLIGHT</div>
+                    <div style="font-size: 11pt; font-weight: bold;">UA 245</div>
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                <div>
+                    <div style="font-size: 8pt; color: #666;">SEAT</div>
+                    <div style="font-size: 16pt; font-weight: bold;">12A</div>
+                </div>
+                <div>
+                    <div style="font-size: 8pt; color: #666;">BOARDING TIME</div>
+                    <div style="font-size: 11pt; font-weight: bold;">10:30 AM</div>
+                </div>
+                <div>
+                    <div style="font-size: 8pt; color: #666;">GATE</div>
+                    <div style="font-size: 16pt; font-weight: bold;">B42</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 20px; font-family: 'Courier New', monospace; font-size: 24pt; font-weight: bold;">
+                |||| ||| |||| ||| ||||
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 24: Certificate of Achievement -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Certificate Layout</div>
+    <div style="border: 10px double #d4af37; padding: 40px; background: linear-gradient(135deg, #fffef7 0%, #fff 100%); text-align: center;">
+        <div style="font-family: Georgia, serif; font-size: 14pt; font-style: italic; color: #8b7355; margin-bottom: 20px;">Certificate of Achievement</div>
+        <div style="font-size: 10pt; margin-bottom: 30px;">This certifies that</div>
+        <div style="font-family: Georgia, serif; font-size: 24pt; font-weight: bold; color: #2c3e50; margin: 20px 0; border-bottom: 2px solid #d4af37; padding-bottom: 10px;">Alexandra Martinez</div>
+        <div style="font-size: 11pt; margin: 20px 0;">has successfully completed the</div>
+        <div style="font-family: Georgia, serif; font-size: 16pt; font-weight: bold; color: #2c3e50; margin: 15px 0;">Advanced Machine Learning Certification Program</div>
+        <div style="font-size: 10pt; margin: 20px 0;">on this <span style="font-weight: bold;">5th day of January, 2026</span></div>
+        <div style="display: flex; justify-content: space-around; margin-top: 50px;">
+            <div style="text-align: center;">
+                <div style="border-top: 2px solid #000; width: 200px; margin-bottom: 5px;"></div>
+                <div style="font-size: 9pt; font-weight: bold;">Dr. James Wilson</div>
+                <div style="font-size: 8pt;">Program Director</div>
+            </div>
+            <div style="width: 80px; height: 80px; border: 2px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #fffef7;">
+                [SEAL]
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 25: Resume/CV Layout -->
+    <div style="page-break-before: always;"></div>
+    <div class="section-header">Resume/CV Layout</div>
+    <div style="padding: 30px; max-width: 700px;">
+        <div style="text-align: center; margin-bottom: 25px; border-bottom: 3px solid #2c3e50; padding-bottom: 15px;">
+            <div style="font-size: 22pt; font-weight: bold; color: #2c3e50;">ALEXANDRA MARTINEZ</div>
+            <div style="font-size: 10pt; margin-top: 5px;">
+                <span property="doco-fd:fieldValue schema:email">alexandra.martinez@email.com</span> |
+                <span property="doco-fd:fieldValue schema:telephone">(415) 555-0142</span> |
+                <span property="doco-fd:fieldValue schema:address">San Francisco, CA</span>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="font-size: 14pt; font-weight: bold; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 5px; margin-bottom: 10px;">EXPERIENCE</div>
+            <div style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; font-weight: bold;">
+                    <div><span>Senior Software Engineer</span> | <span property="doco-fd:fieldValue schema:name">TechVentures Inc.</span></div>
+                    <div>2022 - Present</div>
+                </div>
+                <ul style="margin: 5px 0;">
+                    <li>Led development of microservices architecture serving 2M+ users</li>
+                    <li>Mentored team of 5 junior engineers in best practices</li>
+                </ul>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; font-weight: bold;">
+                    <div><span>Software Engineer</span> | <span property="doco-fd:fieldValue schema:name">StartupXYZ</span></div>
+                    <div>2019 - 2022</div>
+                </div>
+                <ul style="margin: 5px 0;">
+                    <li>Built RESTful APIs processing 500K+ daily transactions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="font-size: 14pt; font-weight: bold; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 5px; margin-bottom: 10px;">EDUCATION</div>
+            <div style="display: flex; justify-content: space-between; font-weight: bold;">
+                <div><span property="doco-fd:fieldValue">B.S. Computer Science</span> | <span property="doco-fd:fieldValue schema:name">Stanford University</span></div>
+                <div>2019</div>
+            </div>
+        </div>
+
+        <div>
+            <div style="font-size: 14pt; font-weight: bold; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 5px; margin-bottom: 10px;">SKILLS</div>
+            <div>Python, Java, JavaScript, React, Node.js, AWS, Docker, Kubernetes, PostgreSQL, MongoDB</div>
+        </div>
+    </div>
+
+    <!-- ========== BARCODE SECTION ========== -->
+    <div class="barcode">{{ barcode }}</div>
+
+    <!-- ========== FOOTER WITH REAL ENTITY TYPES ========== -->
+    <div class="footer">
+        <div>{{ document_title }}</div>
+        <div>{{ footer_text }}</div>
+        <div>Version: <span property="doco-fd:fieldValue">{{ version }}</span> | Generated: <span property="doco-fd:fieldValue schema:Date">{{ generation_date }}</span></div>
+    </div>
+</body>
+</html>

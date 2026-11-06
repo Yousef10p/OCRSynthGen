@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Inspector - Dev Server</title>
+    <link rel="stylesheet" href="/css/inspector.css">
+</head>
+<body data-mode="dynamic">
+    <div class="dev-header">
+        <h1>Document Inspector</h1>
+        <div class="run-stats" id="run-stats"></div>
+        <div class="generation-toolbar" id="generation-toolbar">
+            <select id="run-selector" onchange="switchRun()">
+                <option value="">Select run...</option>
+            </select>
+            <button class="gen-btn" id="generate-btn" onclick="openGenerateModal()">Generate</button>
+            <button class="runs-btn" onclick="openRunsModal()">Runs</button>
+            <span class="gen-status" id="gen-status"></span>
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()" title="Collapse sidebar">◀</button>
+        <div class="sidebar-nav">
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="empty-state" id="empty-state">
+            <div class="dev-only-empty">
+                <h2>No Documents Generated</h2>
+                <p>Click "Generate" to create documents.</p>
+                <button class="gen-btn" onclick="openGenerateModal()">Generate</button>
+            </div>
+            <div class="static-only-spinner">
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <div class="container" id="template-container" style="display: none;">
+        </div>
+    </div>
+
+    <!-- Generate Modal -->
+    <div id="generateModal" class="generate-modal" onclick="closeGenerateModal(event)">
+        <div class="generate-modal-content" onclick="event.stopPropagation()">
+            <div class="generate-modal-header">
+                <h2>Select Templates</h2>
+                <button class="generate-modal-close" onclick="closeGenerateModal()">&times;</button>
+            </div>
+            <div id="template-list"></div>
+            <div class="generate-modal-footer">
+                <button class="btn-cancel" onclick="closeGenerateModal()">Cancel</button>
+                <button class="gen-btn" onclick="generateSelectedTemplates()">Generate</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Runs Modal -->
+    <div id="runsModal" class="generate-modal" onclick="closeRunsModal(event)">
+        <div class="runs-modal-content" onclick="event.stopPropagation()">
+            <div class="generate-modal-header">
+                <h2>Generation Runs</h2>
+                <button class="generate-modal-close" onclick="closeRunsModal()">&times;</button>
+            </div>
+            <div class="runs-modal-body">
+                <div class="runs-list" id="runs-list"></div>
+                <div class="run-log-viewer" id="run-log-viewer">
+                    <div class="run-log-header" id="run-log-header">Select a run to view its log</div>
+                    <pre class="run-log-content" id="run-log-content"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <button class="modal-close" onclick="closeImageModal()">Close (ESC)</button>
+        <div class="image-modal-content" onclick="event.stopPropagation()">
+            <img id="modalImage" src="" alt="Full screen image">
+        </div>
+    </div>
+
+    <!-- Note Dialog (right-click on bbox) -->
+    <div id="noteDialog" class="note-dialog" onclick="closeNoteDialog()">
+        <div class="note-dialog-content" onclick="event.stopPropagation()">
+            <div class="note-dialog-header">
+                <h3>Annotation Note</h3>
+                <button class="generate-modal-close" onclick="closeNoteDialog()">&times;</button>
+            </div>
+            <div class="note-dialog-meta" id="note-meta"></div>
+            <textarea id="note-text" class="note-textarea" placeholder="Describe the issue... (e.g. bbox too tight, wrong label, missing entity)" rows="4"></textarea>
+            <div class="note-dialog-footer">
+                <button class="btn-cancel" onclick="closeNoteDialog()">Cancel</button>
+                <button class="gen-btn" id="note-save-btn" onclick="saveNote()">Save Note</button>
+            </div>
+        </div>
+    </div>
+
+    <script id="templates-data" type="application/json">
+    []
+    </script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/graph.js"></script>
+    <script src="/js/inspector.js"></script>
+</body>
+</html>

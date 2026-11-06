@@ -1,0 +1,120 @@
+# Engine registry for SDS Benchmark
+#
+# Add new models here to make them available in run configs.
+# For NER/OCR: add the engine name + model_id. If it reuses an existing
+# runner (e.g. a different HuggingFace model), set `runner` to the
+# existing runner name.
+#
+# To add a completely new engine type, you also need to add a dispatch
+# entry in synthdoc.bench/config.py (_dispatch_ocr / _dispatch_ner / _dispatch_seg).
+
+ocr:
+  tesseract:
+    description: "Tesseract 5 OCR"
+    gpu: false
+
+  glm:
+    description: "GLM-OCR 0.9B"
+    model_id: zai-org/GLM-OCR
+    gpu: true
+
+  qwenvl:
+    description: "Qwen3-VL-8B"
+    model_id: Qwen/Qwen3-VL-8B-Instruct
+    gpu: true
+
+  gemma4:
+    description: "Gemma 4 31B VLM"
+    model_id: google/gemma-4-31B-it
+    runner: qwenvl
+    gpu: true
+
+  deepseek:
+    description: "DeepSeek-OCR-2"
+    model_id: deepseek-ai/DeepSeek-OCR-2
+    gpu: true
+
+ner:
+  spacy:
+    description: "spaCy en_core_web_trf"
+    gpu: false
+
+  deberta:
+    description: "DeBERTa-v3-large NER"
+    model_id: dslim/deberta-v3-large-ner
+    gpu: true
+
+  deberta-base:
+    description: "DeBERTa-v3-base NER"
+    model_id: dslim/deberta-v3-base-ner
+    runner: deberta
+    gpu: true
+
+  qwen3:
+    description: "Qwen3-8B (vLLM)"
+    model_id: Qwen/Qwen3-8B
+    gpu: true
+
+  qwen3-small:
+    description: "Qwen3-1.7B (vLLM)"
+    model_id: Qwen/Qwen3-1.7B
+    runner: qwen3
+    gpu: true
+
+  gemma4:
+    description: "Gemma 4 4B (vLLM)"
+    model_id: google/gemma-4-E4B-it
+    runner: qwen3
+    gpu: true
+
+  gemma4-small:
+    description: "Gemma 4 2B (vLLM)"
+    model_id: google/gemma-4-E2B-it
+    runner: qwen3
+    gpu: true
+
+  # ── Fine-tuned NER engines (after running sdd-finetune) ────────────────
+  # model_id is the checkpoint path relative to synthetic-document-generator/
+  # Checkpoints land at results/checkpoints/sft_ner_{engine}/final
+  # which is where train_sft_ner.py writes them when given --data-dir ./data
+
+  qwen3-ft:
+    description: "Qwen3-8B fine-tuned NER"
+    model_id: results/checkpoints/sft_ner_qwen3/final
+    runner: finetuned
+    gpu: true
+
+  qwen3-small-ft:
+    description: "Qwen3-1.7B fine-tuned NER"
+    model_id: results/checkpoints/sft_ner_qwen3-small/final
+    runner: finetuned
+    gpu: true
+
+  gemma4-ft:
+    description: "Gemma4-E4B fine-tuned NER"
+    model_id: results/checkpoints/sft_ner_gemma4/final
+    runner: finetuned
+    gpu: true
+
+  gemma4-small-ft:
+    description: "Gemma4-E2B fine-tuned NER"
+    model_id: results/checkpoints/sft_ner_gemma4-small/final
+    runner: finetuned
+    gpu: true
+
+seg:
+  qwenvl:
+    description: "Qwen3-VL-8B layout detection"
+    model_id: Qwen/Qwen3-VL-8B-Instruct
+    gpu: true
+
+  gemma4:
+    description: "Gemma 4 31B layout detection"
+    model_id: google/gemma-4-31B-it
+    runner: qwenvl
+    gpu: true
+
+  deepseek:
+    description: "DeepSeek-OCR-2 layout detection"
+    model_id: deepseek-ai/DeepSeek-OCR-2
+    gpu: true

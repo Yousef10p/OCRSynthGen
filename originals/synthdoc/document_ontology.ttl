@@ -1,0 +1,429 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix doc: <http://example.org/document-ontology#> .
+@prefix bbox: <http://example.org/bounding-box#> .
+@prefix schema: <http://schema.org/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dbr: <http://dbpedia.org/resource/> .
+
+# ============================================
+# Document Ontology for NER Training Data
+# Updated: 2026-01-10
+# Generic Types: 42 (15 data extraction + 27 layout/structure)
+# ============================================
+
+doc:DocumentOntology a owl:Ontology ;
+    rdfs:label "Document Structure Ontology"@en ;
+    rdfs:comment "Ontology for representing document structure, fields, and entity relationships in NER training data. Includes 42 generic entity types covering data extraction, spatial layout, text structure, visual content, form elements, tables, and document interaction/navigation."@en .
+
+# ============================================
+# CLASSES
+# ============================================
+
+# Document Classes
+doc:Document a owl:Class ;
+    rdfs:label "Document"@en ;
+    rdfs:comment "A document instance"@en ;
+    rdfs:subClassOf schema:DigitalDocument ;
+    owl:equivalentClass dbo:Document .
+
+doc:Page a owl:Class ;
+    rdfs:label "Page"@en ;
+    rdfs:comment "A page within a document"@en ;
+    rdfs:subClassOf doc:Document ;
+    rdfs:subClassOf schema:WebPage .
+
+doc:Section a owl:Class ;
+    rdfs:label "Section"@en ;
+    rdfs:comment "A logical section within a document or page"@en .
+
+doc:FormSection a owl:Class ;
+    rdfs:label "Form Section"@en ;
+    rdfs:subClassOf doc:Section .
+
+# Field Classes
+doc:Field a owl:Class ;
+    rdfs:label "Field"@en ;
+    rdfs:comment "A data field in a document"@en .
+
+doc:FormField a owl:Class ;
+    rdfs:label "Form Field"@en ;
+    rdfs:subClassOf doc:Field .
+
+# Text Element Classes (things that appear in the document)
+doc:TextElement a owl:Class ;
+    rdfs:label "Text Element"@en ;
+    rdfs:comment "A piece of text that appears in the document"@en .
+
+doc:FieldLabel a owl:Class ;
+    rdfs:label "Field Label"@en ;
+    rdfs:subClassOf doc:TextElement ;
+    rdfs:comment "A label for a form field (e.g., 'Policy Number:')"@en .
+
+doc:FieldValue a owl:Class ;
+    rdfs:label "Field Value"@en ;
+    rdfs:subClassOf doc:TextElement ;
+    rdfs:comment "A value in a form field (e.g., 'BCBS-987654321')"@en .
+
+# Entity Classes (semantic types - NOT annotations!)
+doc:Person a owl:Class ;
+    rdfs:label "Person"@en ;
+    owl:equivalentClass schema:Person ;
+    owl:equivalentClass dbo:Person .
+
+doc:Organization a owl:Class ;
+    rdfs:label "Organization"@en ;
+    owl:equivalentClass schema:Organization ;
+    owl:equivalentClass dbo:Organisation .
+
+doc:Identifier a owl:Class ;
+    rdfs:label "Identifier"@en ;
+    rdfs:subClassOf schema:PropertyValue .
+
+doc:Date a owl:Class ;
+    rdfs:label "Date"@en ;
+    rdfs:subClassOf schema:Date .
+
+doc:Money a owl:Class ;
+    rdfs:label "Money"@en ;
+    owl:equivalentClass schema:MonetaryAmount .
+
+doc:Address a owl:Class ;
+    rdfs:label "Address"@en ;
+    owl:equivalentClass schema:PostalAddress ;
+    owl:equivalentClass dbo:Address .
+
+doc:PhoneNumber a owl:Class ;
+    rdfs:label "Phone Number"@en ;
+    rdfs:subClassOf schema:ContactPoint .
+
+doc:Email a owl:Class ;
+    rdfs:label "Email"@en ;
+    rdfs:subClassOf schema:ContactPoint .
+
+doc:Time a owl:Class ;
+    rdfs:label "Time"@en ;
+    rdfs:subClassOf schema:Time .
+
+doc:Percentage a owl:Class ;
+    rdfs:label "Percentage"@en ;
+    rdfs:subClassOf schema:QuantitativeValue .
+
+doc:Measurement a owl:Class ;
+    rdfs:label "Measurement"@en ;
+    rdfs:subClassOf schema:QuantitativeValue .
+
+doc:Code a owl:Class ;
+    rdfs:label "Code"@en ;
+    rdfs:comment "Standardized codes (ZIP, ICD, CPT, etc.)"@en ;
+    rdfs:subClassOf schema:PropertyValue .
+
+doc:Text a owl:Class ;
+    rdfs:label "Text"@en ;
+    rdfs:comment "Narrative content"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Boolean a owl:Class ;
+    rdfs:label "Boolean"@en ;
+    rdfs:comment "Yes/No values, checkboxes"@en ;
+    rdfs:subClassOf schema:Boolean .
+
+doc:Index a owl:Class ;
+    rdfs:label "Index"@en ;
+    rdfs:comment "Sequential numbers for lists/paragraphs"@en ;
+    rdfs:subClassOf xsd:integer .
+
+# Spatial Layout Classes
+doc:Region a owl:Class ;
+    rdfs:label "Region"@en ;
+    rdfs:comment "Spatial zones/containers (HEADER, FOOTER, SIDEBAR, MARGIN)"@en ;
+    rdfs:subClassOf doc:Section .
+
+doc:Separator a owl:Class ;
+    rdfs:label "Separator"@en ;
+    rdfs:comment "Visual dividers (HORIZONTAL_LINE, VERTICAL_LINE, BORDER)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Background a owl:Class ;
+    rdfs:label "Background"@en ;
+    rdfs:comment "Page-level elements (WATERMARK, BACKGROUND_IMAGE)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Container a owl:Class ;
+    rdfs:label "Container"@en ;
+    rdfs:comment "Grouping elements (SECTION, BOX, FRAME, CALLOUT)"@en ;
+    rdfs:subClassOf doc:Section .
+
+doc:Overlay a owl:Class ;
+    rdfs:label "Overlay"@en ;
+    rdfs:comment "Elements on top of content (STAMP, SEAL, REDACTION)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Whitespace a owl:Class ;
+    rdfs:label "Whitespace"@en ;
+    rdfs:comment "Intentional empty space (MARGIN, PADDING, GUTTER)"@en .
+
+# Text Structure Classes
+doc:Title a owl:Class ;
+    rdfs:label "Title"@en ;
+    rdfs:comment "Headings/titles (DOCUMENT_TITLE, SECTION_HEADER, SUBTITLE)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Label a owl:Class ;
+    rdfs:label "Label"@en ;
+    rdfs:comment "Field/form labels (FIELD_LABEL, FORM_PROMPT, TABLE_HEADER)"@en ;
+    rdfs:subClassOf doc:FieldLabel .
+
+doc:Paragraph a owl:Class ;
+    rdfs:label "Paragraph"@en ;
+    rdfs:comment "Text blocks (BODY_TEXT, ABSTRACT, SUMMARY, CLAUSE)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:ListElement a owl:Class ;
+    rdfs:label "List Element"@en ;
+    rdfs:comment "List items (BULLETED_ITEM, NUMBERED_ITEM)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+# Visual Content Classes
+doc:Graphic a owl:Class ;
+    rdfs:label "Graphic"@en ;
+    rdfs:comment "Visual elements (LOGO, IMAGE, PHOTO, DIAGRAM)"@en ;
+    rdfs:subClassOf schema:ImageObject .
+
+doc:Chart a owl:Class ;
+    rdfs:label "Chart"@en ;
+    rdfs:comment "Data visualizations (BAR_CHART, PIE_CHART, LINE_GRAPH)"@en ;
+    rdfs:subClassOf schema:ImageObject .
+
+doc:Symbol a owl:Class ;
+    rdfs:label "Symbol"@en ;
+    rdfs:comment "Machine-readable codes (BARCODE, QR_CODE, OMR_MARK)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Decoration a owl:Class ;
+    rdfs:label "Decoration"@en ;
+    rdfs:comment "Ornamental elements (BORDER_DECORATION, FLOURISH, EMBLEM)"@en ;
+    rdfs:subClassOf schema:ImageObject .
+
+# Form Elements Classes
+doc:Input a owl:Class ;
+    rdfs:label "Input"@en ;
+    rdfs:comment "Data entry fields (TEXT_INPUT, TEXTAREA, COMBED_FIELD)"@en ;
+    rdfs:subClassOf doc:FormField .
+
+doc:Choice a owl:Class ;
+    rdfs:label "Choice"@en ;
+    rdfs:comment "Selection controls (CHECKBOX, RADIO_BUTTON, DROPDOWN)"@en ;
+    rdfs:subClassOf doc:FormField .
+
+doc:Signature a owl:Class ;
+    rdfs:label "Signature"@en ;
+    rdfs:comment "Signature elements (SIGNATURE_LINE, SIGNATURE_BLOCK, INITIAL_BOX)"@en ;
+    rdfs:subClassOf doc:FormField .
+
+doc:Button a owl:Class ;
+    rdfs:label "Button"@en ;
+    rdfs:comment "Action triggers (SUBMIT_BUTTON, RESET_BUTTON, ACTION_BUTTON)"@en ;
+    rdfs:subClassOf doc:FormField .
+
+# Table Structure Classes
+doc:Table a owl:Class ;
+    rdfs:label "Table"@en ;
+    rdfs:comment "Table containers (TABLE, DATA_TABLE, SCHEDULE, TRANSACTION_TABLE)"@en ;
+    rdfs:subClassOf doc:Section .
+
+doc:TableComponent a owl:Class ;
+    rdfs:label "Table Component"@en ;
+    rdfs:comment "Table substructures (TABLE_ROW, TABLE_CELL, COLUMN_HEADER, ROW_HEADER)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+# Document Interaction & Navigation Classes
+doc:Annotation a owl:Class ;
+    rdfs:label "Annotation"@en ;
+    rdfs:comment "Human/system marks (HANDWRITING, HIGHLIGHT, MARKUP, COMMENT)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Emphasis a owl:Class ;
+    rdfs:label "Emphasis"@en ;
+    rdfs:comment "Visual prominence (CALLOUT, ALERT_BOX, BANNER, WARNING_BOX)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Security a owl:Class ;
+    rdfs:label "Security"@en ;
+    rdfs:comment "Trust/verification markers (SIGNATURE_VERIFICATION, SECURITY_SEAL, TAMPER_SEAL)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Navigation a owl:Class ;
+    rdfs:label "Navigation"@en ;
+    rdfs:comment "Document wayfinding (BREADCRUMB, TOC_ENTRY, INDEX_ENTRY, BOOKMARK)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Link a owl:Class ;
+    rdfs:label "Link"@en ;
+    rdfs:comment "Navigational connections (HYPERLINK, URL, ANCHOR_LINK, CROSS_REFERENCE)"@en ;
+    rdfs:subClassOf schema:URL .
+
+doc:Edge a owl:Class ;
+    rdfs:label "Edge"@en ;
+    rdfs:comment "Visual connectors (ARROW, CONNECTOR, FLOW_LINE, RELATIONSHIP_LINE)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+doc:Notice a owl:Class ;
+    rdfs:label "Notice"@en ;
+    rdfs:comment "Legal/compliance text (DISCLAIMER, TERMS, PRIVACY_NOTICE, COPYRIGHT)"@en ;
+    rdfs:subClassOf doc:TextElement .
+
+# Bounding Box Class
+bbox:BoundingBox a owl:Class ;
+    rdfs:label "Bounding Box"@en ;
+    rdfs:comment "A rectangular region defined by coordinates"@en .
+
+# ============================================
+# OBJECT PROPERTIES (Relationships)
+# ============================================
+
+# Document Structure Relationships
+doc:hasPage a owl:ObjectProperty ;
+    rdfs:domain doc:Document ;
+    rdfs:range doc:Page ;
+    rdfs:label "has page"@en .
+
+doc:hasSection a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf (doc:Document doc:Page) ] ;
+    rdfs:range doc:Section ;
+    rdfs:label "has section"@en .
+
+doc:hasField a owl:ObjectProperty ;
+    rdfs:domain doc:Section ;
+    rdfs:range doc:Field ;
+    rdfs:label "has field"@en .
+
+doc:containsElement a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf (doc:Document doc:Page doc:Section doc:Field) ] ;
+    rdfs:range doc:TextElement ;
+    rdfs:label "contains text element"@en .
+
+# Field Relationships
+doc:hasLabel a owl:ObjectProperty ;
+    rdfs:domain doc:Field ;
+    rdfs:range doc:FieldLabel ;
+    rdfs:label "has label"@en ;
+    rdfs:comment "Links a field to its label text"@en .
+
+doc:hasValue a owl:ObjectProperty ;
+    rdfs:domain doc:Field ;
+    rdfs:range doc:FieldValue ;
+    rdfs:label "has value"@en ;
+    rdfs:comment "Links a field to its value text"@en .
+
+# Spatial/Visual Properties
+doc:hasBoundingBox a owl:ObjectProperty ;
+    rdfs:domain doc:TextElement ;
+    rdfs:range bbox:BoundingBox ;
+    rdfs:label "has bounding box"@en .
+
+# Spatial Relationships
+doc:containedIn a owl:ObjectProperty ;
+    rdfs:label "contained in"@en ;
+    rdfs:comment "Spatial containment relationship"@en .
+
+doc:precedes a owl:ObjectProperty ;
+    rdfs:label "precedes"@en ;
+    rdfs:comment "Sequential ordering relationship"@en .
+
+# ============================================
+# DATATYPE PROPERTIES
+# ============================================
+
+# Document Properties
+doc:documentId a owl:DatatypeProperty ;
+    rdfs:domain doc:Document ;
+    rdfs:range xsd:string ;
+    rdfs:label "document ID"@en .
+
+doc:documentType a owl:DatatypeProperty ;
+    rdfs:domain doc:Document ;
+    rdfs:range xsd:string ;
+    rdfs:label "document type"@en .
+
+doc:pageNumber a owl:DatatypeProperty ;
+    rdfs:domain doc:Page ;
+    rdfs:range xsd:integer ;
+    rdfs:label "page number"@en .
+
+# Section Properties
+doc:sectionId a owl:DatatypeProperty ;
+    rdfs:domain doc:Section ;
+    rdfs:range xsd:string ;
+    rdfs:label "section ID"@en .
+
+doc:sectionType a owl:DatatypeProperty ;
+    rdfs:domain doc:Section ;
+    rdfs:range xsd:string ;
+    rdfs:label "section type"@en .
+
+# Field Properties
+doc:fieldId a owl:DatatypeProperty ;
+    rdfs:domain doc:Field ;
+    rdfs:range xsd:string ;
+    rdfs:label "field ID"@en .
+
+doc:fieldType a owl:DatatypeProperty ;
+    rdfs:domain doc:Field ;
+    rdfs:range xsd:string ;
+    rdfs:label "field type"@en .
+
+# Text Element Properties
+doc:text a owl:DatatypeProperty ;
+    rdfs:domain doc:TextElement ;
+    rdfs:range xsd:string ;
+    rdfs:label "text"@en ;
+    rdfs:comment "The actual text content"@en .
+
+doc:elementId a owl:DatatypeProperty ;
+    rdfs:domain doc:TextElement ;
+    rdfs:range xsd:string ;
+    rdfs:label "element ID"@en .
+
+# Bounding Box Properties
+bbox:x a owl:DatatypeProperty ;
+    rdfs:domain bbox:BoundingBox ;
+    rdfs:range xsd:float ;
+    rdfs:label "x coordinate"@en .
+
+bbox:y a owl:DatatypeProperty ;
+    rdfs:domain bbox:BoundingBox ;
+    rdfs:range xsd:float ;
+    rdfs:label "y coordinate"@en .
+
+bbox:width a owl:DatatypeProperty ;
+    rdfs:domain bbox:BoundingBox ;
+    rdfs:range xsd:float ;
+    rdfs:label "width"@en .
+
+bbox:height a owl:DatatypeProperty ;
+    rdfs:domain bbox:BoundingBox ;
+    rdfs:range xsd:float ;
+    rdfs:label "height"@en .
+
+bbox:x1 a owl:DatatypeProperty ;
+    rdfs:domain bbox:BoundingBox ;
+    rdfs:range xsd:integer ;
+    rdfs:label "x1 normalized (0-1000)"@en .
+
+bbox:y1 a owl:DatatypeProperty ;
+    rdfs:domain bbox:BoundingBox ;
+    rdfs:range xsd:integer ;
+    rdfs:label "y1 normalized (0-1000)"@en .
+
+bbox:x2 a owl:DatatypeProperty ;
+    rdfs:domain bbox:BoundingBox ;
+    rdfs:range xsd:integer ;
+    rdfs:label "x2 normalized (0-1000)"@en .
+
+bbox:y2 a owl:DatatypeProperty ;
+    rdfs:domain bbox:BoundingBox ;
+    rdfs:range xsd:integer ;
+    rdfs:label "y2 normalized (0-1000)"@en .

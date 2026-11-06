@@ -7,7 +7,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from pipeline import generator as SURYA  # noqa: E402
-from pipeline.compact_original import encode  # noqa: E402
+from surya.inference.compact import encode  # noqa: E402
 from pipeline.generator import DocPipeline  # noqa: E402
 
 OUT = Path(__file__).resolve().parent / "inputs"

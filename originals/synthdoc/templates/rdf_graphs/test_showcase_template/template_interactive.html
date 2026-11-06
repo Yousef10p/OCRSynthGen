@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Template RDF Graph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+        }
+        #container {
+            display: flex;
+            height: 100vh;
+        }
+        #sidebar {
+            width: 300px;
+            background: #16213e;
+            color: #fff;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        #graph {
+            flex: 1;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #e94560;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            font-size: 12px;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            margin-right: 8px;
+        }
+        .node {
+            cursor: pointer;
+        }
+        .node circle {
+            stroke-width: 2px;
+        }
+        .node text {
+            font-size: 11px;
+            fill: #fff;
+            pointer-events: none;
+        }
+        .link {
+            fill: none;
+            stroke-opacity: 0.6;
+        }
+        .link-hierarchy {
+            stroke-dasharray: 5, 5;
+        }
+        .link-label {
+            font-size: 9px;
+            fill: #aaa;
+        }
+        .tooltip {
+            position: absolute;
+            background: #0f3460;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            pointer-events: none;
+            max-width: 250px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .stats {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        .stat-item {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .controls button {
+            background: #e94560;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .controls button:hover {
+            background: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="sidebar">
+            <h1>Template RDF Graph</h1>
+            <div id="legend"></div>
+            <div class="controls">
+                <button onclick="resetZoom()">Reset Zoom</button>
+                <button onclick="toggleHierarchy()">Toggle Hierarchy</button>
+            </div>
+            <div class="stats">
+                <h3 style="color:#e94560;font-size:14px;">Statistics</h3>
+                <div class="stat-item">Nodes: <span id="node-count"></span></div>
+                <div class="stat-item">Links: <span id="link-count"></span></div>
+            </div>
+        </div>
+        <div id="graph"></div>
+    </div>
+    <div class="tooltip" id="tooltip" style="display:none;"></div>
+
+    <script>
+        const data = {"nodes": [{"id": "transactionsTable", "label": "Transactionstable", "types": ["doco:Table"], "color": "#CCCCCC", "group": "Table"}, {"id": "transaction{{ loop.index }}", "label": "Transaction{{ Loop.Index }}", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "employmentInfo", "label": "Employmentinfo", "types": ["doco-fd:FormSection"], "color": "#F5DEB3", "group": "FormSection"}, {"id": "employeeName", "label": "Employeename", "types": ["schema:Person", "doco-fd:FormField"], "color": "#FFB6C1", "group": "Person"}, {"id": "jobTitle", "label": "Jobtitle", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "company", "label": "Company", "types": ["schema:Organization", "doco-fd:FormField"], "color": "#87CEEB", "group": "Organization"}, {"id": "salary", "label": "Salary", "types": ["schema:MonetaryAmount", "doco-fd:FormField"], "color": "#90EE90", "group": "MonetaryAmount"}, {"id": "ssn", "label": "Ssn", "types": ["doco-fd:FormField", "doco-fd:TableRow"], "color": "#E6E6FA", "group": "FormField"}, {"id": "dob", "label": "Dob", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "employeeAddress", "label": "Employeeaddress", "types": ["schema:PostalAddress", "doco-fd:FormField"], "color": "#DDA0DD", "group": "PostalAddress"}, {"id": "personalContact", "label": "Personalcontact", "types": ["doco-fd:FormSection"], "color": "#F5DEB3", "group": "FormSection"}, {"id": "personName", "label": "Personname", "types": ["schema:Person", "doco-fd:FormField"], "color": "#FFB6C1", "group": "Person"}, {"id": "personPhone", "label": "Personphone", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "personAddress", "label": "Personaddress", "types": ["schema:PostalAddress", "doco-fd:FormField"], "color": "#DDA0DD", "group": "PostalAddress"}, {"id": "medicalProvider", "label": "Medicalprovider", "types": ["doco-fd:FormSection"], "color": "#F5DEB3", "group": "FormSection"}, {"id": "provider", "label": "Provider", "types": ["schema:Physician", "doco-fd:FormField"], "color": "#CCCCCC", "group": "Physician"}, {"id": "patient", "label": "Patient", "types": ["schema:Patient", "doco-fd:FormField"], "color": "#CCCCCC", "group": "Patient"}, {"id": "diagnosis", "label": "Diagnosis", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "signatureSection", "label": "Signaturesection", "types": ["doco-fd:FormSection"], "color": "#F5DEB3", "group": "FormSection"}, {"id": "attorneySignature", "label": "Attorneysignature", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "signatureDate", "label": "Signaturedate", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "notarySection", "label": "Notarysection", "types": ["doco-fd:FormSection"], "color": "#F5DEB3", "group": "FormSection"}, {"id": "notaryDate", "label": "Notarydate", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "notary", "label": "Notary", "types": ["schema:Person", "doco-fd:FormField"], "color": "#FFB6C1", "group": "Person"}, {"id": "commissionNum", "label": "Commissionnum", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "witness", "label": "Witness", "types": ["schema:Person", "doco-fd:FormField"], "color": "#FFB6C1", "group": "Person"}, {"id": "invoiceHeader", "label": "Invoiceheader", "types": ["doco-fd:Header"], "color": "#FFD700", "group": "Header"}, {"id": "invoiceNumber", "label": "Invoicenumber", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "invoiceDate", "label": "Invoicedate", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "dueDate", "label": "Duedate", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "invoiceCompany", "label": "Invoicecompany", "types": ["schema:Organization", "doco-fd:FormField"], "color": "#87CEEB", "group": "Organization"}, {"id": "invoiceItemsTable", "label": "Invoiceitemstable", "types": ["doco:Table"], "color": "#CCCCCC", "group": "Table"}, {"id": "item1", "label": "Item1", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "item2", "label": "Item2", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "subtotalRow", "label": "Subtotalrow", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "taxRow", "label": "Taxrow", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "totalRow", "label": "Totalrow", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "patient_last_name_field", "label": "Patient Last Name Field", "types": ["schema:Person", "doco-fd:FormField"], "color": "#FFB6C1", "group": "Person"}, {"id": "patient_first_name_field", "label": "Patient First Name Field", "types": ["schema:Person", "doco-fd:FormField"], "color": "#FFB6C1", "group": "Person"}, {"id": "patient_dob_field", "label": "Patient Dob Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "patient_home_address_field", "label": "Patient Home Address Field", "types": ["schema:PostalAddress", "doco-fd:FormField"], "color": "#DDA0DD", "group": "PostalAddress"}, {"id": "patient_phone_field", "label": "Patient Phone Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "emergency_contact_field", "label": "Emergency Contact Field", "types": ["schema:Person", "doco-fd:FormField"], "color": "#FFB6C1", "group": "Person"}, {"id": "emergency_relationship_field", "label": "Emergency Relationship Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "insurance_provider_field", "label": "Insurance Provider Field", "types": ["schema:Organization", "doco-fd:FormField"], "color": "#87CEEB", "group": "Organization"}, {"id": "insurance_policy_field", "label": "Insurance Policy Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "insurance_group_field", "label": "Insurance Group Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "primary_physician_field", "label": "Primary Physician Field", "types": ["schema:Physician", "doco-fd:FormField"], "color": "#CCCCCC", "group": "Physician"}, {"id": "medications_field", "label": "Medications Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "visit_reason_field", "label": "Visit Reason Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "earningsTable", "label": "Earningstable", "types": ["doco:Table"], "color": "#CCCCCC", "group": "Table"}, {"id": "regularPay", "label": "Regularpay", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "grossPay", "label": "Grosspay", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "deductionsTable", "label": "Deductionstable", "types": ["doco:Table"], "color": "#CCCCCC", "group": "Table"}, {"id": "fedTax", "label": "Fedtax", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "stateTax", "label": "Statetax", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "medicare", "label": "Medicare", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "totalDeductions", "label": "Totaldeductions", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "netPay", "label": "Netpay", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "loanTermsTable", "label": "Loantermstable", "types": ["doco:Table"], "color": "#CCCCCC", "group": "Table"}, {"id": "loanAmount", "label": "Loanamount", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "interestRate", "label": "Interestrate", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "monthlyPayment", "label": "Monthlypayment", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "closingCosts", "label": "Closingcosts", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "usageSummaryTable", "label": "Usagesummarytable", "types": ["doco:Table"], "color": "#CCCCCC", "group": "Table"}, {"id": "electricService", "label": "Electricservice", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "gasService", "label": "Gasservice", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "serviceFees", "label": "Servicefees", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "totalUtility", "label": "Totalutility", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "creditCardTransactions", "label": "Creditcardtransactions", "types": ["doco:Table"], "color": "#CCCCCC", "group": "Table"}, {"id": "ccTrans1", "label": "Cctrans1", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "ccTrans2", "label": "Cctrans2", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "ccTrans3", "label": "Cctrans3", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "ccTrans4", "label": "Cctrans4", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "ccTrans5", "label": "Cctrans5", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "constructionPaymentApp", "label": "Constructionpaymentapp", "types": ["doco:Table"], "color": "#CCCCCC", "group": "Table"}, {"id": "constructionItem1", "label": "Constructionitem1", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "constructionItem2", "label": "Constructionitem2", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "constructionItem3", "label": "Constructionitem3", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "constructionTotals", "label": "Constructiontotals", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "purchaseOrderItems", "label": "Purchaseorderitems", "types": ["doco:Table"], "color": "#CCCCCC", "group": "Table"}, {"id": "poItem1", "label": "Poitem1", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "poItem2", "label": "Poitem2", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "poItem3", "label": "Poitem3", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "poSubtotal", "label": "Posubtotal", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "poShipping", "label": "Poshipping", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "poTotal", "label": "Pototal", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}], "links": [{"source": 0, "target": 1, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 0, "target": 2, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 2, "target": 3, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 2, "target": 4, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 2, "target": 5, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 2, "target": 6, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 2, "target": 7, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 2, "target": 8, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 2, "target": 9, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 18, "target": 19, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 23, "target": 24, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 23, "target": 25, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 26, "target": 27, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 26, "target": 28, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 26, "target": 29, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 31, "target": 32, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 32, "target": 33, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 33, "target": 34, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 34, "target": 35, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 35, "target": 36, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 50, "target": 51, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 51, "target": 52, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 52, "target": 53, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 53, "target": 54, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 54, "target": 55, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 55, "target": 7, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 7, "target": 56, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 56, "target": 57, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 57, "target": 58, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 59, "target": 60, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 60, "target": 61, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 61, "target": 62, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 62, "target": 63, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 64, "target": 65, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 65, "target": 66, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 66, "target": 67, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 67, "target": 68, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 69, "target": 70, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 70, "target": 71, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 71, "target": 72, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 72, "target": 73, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 73, "target": 74, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 75, "target": 76, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 76, "target": 77, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 77, "target": 78, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 78, "target": 79, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 80, "target": 81, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 81, "target": 82, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 82, "target": 83, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 83, "target": 84, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 84, "target": 85, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 85, "target": 86, "label": "contains", "type": "hierarchy", "dashed": true}]};
+
+        const width = document.getElementById('graph').clientWidth;
+        const height = window.innerHeight;
+
+        const svg = d3.select("#graph")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        const g = svg.append("g");
+
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 4])
+            .on("zoom", (event) => g.attr("transform", event.transform));
+
+        svg.call(zoom);
+
+        const simulation = d3.forceSimulation(data.nodes)
+            .force("link", d3.forceLink(data.links).id(d => d.id).distance(100))
+            .force("charge", d3.forceManyBody().strength(-300))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(40));
+
+        const link = g.append("g")
+            .selectAll("line")
+            .data(data.links)
+            .enter().append("line")
+            .attr("class", d => d.dashed ? "link link-hierarchy" : "link")
+            .attr("stroke", d => d.dashed ? "#666" : "#e94560")
+            .attr("stroke-width", d => d.dashed ? 1 : 2);
+
+        const linkLabels = g.append("g")
+            .selectAll("text")
+            .data(data.links)
+            .enter().append("text")
+            .attr("class", "link-label")
+            .text(d => d.label);
+
+        const node = g.append("g")
+            .selectAll("g")
+            .data(data.nodes)
+            .enter().append("g")
+            .attr("class", "node")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        node.append("circle")
+            .attr("r", 20)
+            .attr("fill", d => d.color)
+            .attr("stroke", "#fff");
+
+        node.append("text")
+            .attr("dy", 30)
+            .attr("text-anchor", "middle")
+            .text(d => d.label.length > 15 ? d.label.substring(0, 15) + "..." : d.label);
+
+        node.on("mouseover", showTooltip)
+            .on("mouseout", hideTooltip);
+
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            linkLabels
+                .attr("x", d => (d.source.x + d.target.x) / 2)
+                .attr("y", d => (d.source.y + d.target.y) / 2);
+
+            node.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+
+        function dragstarted(event) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            event.subject.fx = event.subject.x;
+            event.subject.fy = event.subject.y;
+        }
+
+        function dragged(event) {
+            event.subject.fx = event.x;
+            event.subject.fy = event.y;
+        }
+
+        function dragended(event) {
+            if (!event.active) simulation.alphaTarget(0);
+            event.subject.fx = null;
+            event.subject.fy = null;
+        }
+
+        function showTooltip(event, d) {
+            const tooltip = document.getElementById("tooltip");
+            tooltip.innerHTML = `
+                <strong>${d.label}</strong><br>
+                <small>Types: ${d.types.join(', ')}</small><br>
+                <small>ID: ${d.id}</small>
+            `;
+            tooltip.style.display = "block";
+            tooltip.style.left = (event.pageX + 10) + "px";
+            tooltip.style.top = (event.pageY - 10) + "px";
+        }
+
+        function hideTooltip() {
+            document.getElementById("tooltip").style.display = "none";
+        }
+
+        function resetZoom() {
+            svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+        }
+
+        let showHierarchy = true;
+        function toggleHierarchy() {
+            showHierarchy = !showHierarchy;
+            link.attr("display", d => (d.dashed && !showHierarchy) ? "none" : "block");
+            linkLabels.attr("display", d => (d.dashed && !showHierarchy) ? "none" : "block");
+        }
+
+        document.getElementById("node-count").textContent = data.nodes.length;
+        document.getElementById("link-count").textContent = data.links.length;
+
+        const groups = [...new Set(data.nodes.map(d => d.group))];
+        const legend = d3.select("#legend");
+        groups.forEach(g => {
+            const color = data.nodes.find(n => n.group === g).color;
+            legend.append("div")
+                .attr("class", "legend-item")
+                .html(`<div class="legend-color" style="background:${color}"></div>${g}`);
+        });
+    </script>
+</body>
+</html>

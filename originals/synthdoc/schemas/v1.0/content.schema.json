@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "content.schema.json",
+  "title": "Layer 3: Content",
+  "description": "Document body composed of typed content blocks",
+  "definitions": {
+    "Content": {
+      "type": "object",
+      "properties": {
+        "blocks": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ContentBlock" }
+        },
+        "reading_order": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Ordered list of block IDs defining logical reading sequence"
+        }
+      }
+    },
+    "ContentBlock": {
+      "type": "object",
+      "required": ["block_id", "block_type"],
+      "properties": {
+        "block_id": {
+          "type": "string",
+          "description": "Unique identifier for this block within document"
+        },
+        "block_type": {
+          "type": "string",
+          "enum": [
+            "text", "paragraph", "heading", "list", "quote",
+            "form_field", "checkbox", "radio_group", "selection_mark",
+            "table", "key_value_pair", "definition_list",
+            "image", "chart", "diagram",
+            "barcode", "qr_code", "mrz",
+            "signature", "notary_block", "witness",
+            "calculation", "formula", "total",
+            "divider", "spacer", "container", "page_break",
+            "comment", "redaction", "watermark"
+          ]
+        },
+        "bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" },
+        "parent_block": {
+          "type": "string",
+          "description": "ID of containing block if nested"
+        },
+        "child_blocks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "IDs of contained blocks"
+        },
+        "z_index": {
+          "type": "integer",
+          "description": "Layer ordering for overlapping blocks"
+        },
+        "text_content": { "type": "string" },
+        "font_family": { "type": "string" },
+        "font_size": { "type": "number" },
+        "font_weight": {
+          "type": "string",
+          "enum": ["normal", "bold", "100", "200", "300", "400", "500", "600", "700", "800", "900"]
+        },
+        "font_style": {
+          "type": "string",
+          "enum": ["normal", "italic", "oblique"]
+        },
+        "text_align": {
+          "type": "string",
+          "enum": ["left", "center", "right", "justify"]
+        },
+        "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "field_name": { "type": "string" },
+        "field_type": {
+          "type": "string",
+          "enum": ["text", "number", "date", "email", "phone", "ssn", "textarea", "select", "file"]
+        },
+        "label": { "type": "string" },
+        "label_bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" },
+        "input_bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" },
+        "placeholder": { "type": "string" },
+        "required": { "type": "boolean" },
+        "help_text": { "type": "string" },
+        "caption": { "type": "string" },
+        "num_rows": { "type": "integer", "minimum": 1 },
+        "num_cols": { "type": "integer", "minimum": 1 },
+        "headers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": { "type": "string" },
+              "bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" },
+              "column_index": { "type": "integer" },
+              "row_index": { "type": "integer" },
+              "is_row_header": { "type": "boolean" }
+            }
+          }
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "row_index": { "type": "integer" },
+              "cells": {
+                "type": "array",
+                "items": { "$ref": "#/definitions/TableCell" }
+              }
+            }
+          }
+        },
+        "formula": { "type": "string" },
+        "result": { "type": "number" },
+        "format": {
+          "type": "string",
+          "enum": ["integer", "decimal", "currency", "percentage"]
+        },
+        "currency_code": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "signer_role": { "type": "string" },
+        "signer_name": { "type": "string" },
+        "signature_type": {
+          "type": "string",
+          "enum": ["handwritten", "digital", "stamp", "placeholder"]
+        },
+        "date_signed": { "type": "string", "format": "date" }
+      }
+    },
+    "TableCell": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "bbox": { "$ref": "definitions.schema.json#/definitions/BoundingBox" },
+        "row_span": { "type": "integer", "minimum": 1, "default": 1 },
+        "col_span": { "type": "integer", "minimum": 1, "default": 1 },
+        "column_index": { "type": "integer" },
+        "row_index": { "type": "integer" },
+        "is_header": { "type": "boolean" },
+        "text_align": { "type": "string", "enum": ["left", "center", "right"] },
+        "data_type": {
+          "type": "string",
+          "enum": ["text", "number", "currency", "percentage", "date"]
+        }
+      }
+    }
+  }
+}

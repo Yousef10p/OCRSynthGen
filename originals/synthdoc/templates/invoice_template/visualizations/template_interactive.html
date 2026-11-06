@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Template RDF Graph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+        }
+        #container {
+            display: flex;
+            height: 100vh;
+        }
+        #sidebar {
+            width: 300px;
+            background: #16213e;
+            color: #fff;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        #graph {
+            flex: 1;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #e94560;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            font-size: 12px;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            margin-right: 8px;
+        }
+        .node {
+            cursor: pointer;
+        }
+        .node circle {
+            stroke-width: 2px;
+        }
+        .node text {
+            font-size: 11px;
+            fill: #fff;
+            pointer-events: none;
+        }
+        .link {
+            fill: none;
+            stroke-opacity: 0.6;
+        }
+        .link-hierarchy {
+            stroke-dasharray: 5, 5;
+        }
+        .link-label {
+            font-size: 9px;
+            fill: #aaa;
+        }
+        .tooltip {
+            position: absolute;
+            background: #0f3460;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            pointer-events: none;
+            max-width: 250px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .stats {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        .stat-item {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .controls button {
+            background: #e94560;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .controls button:hover {
+            background: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="sidebar">
+            <h1>Template RDF Graph</h1>
+            <div id="legend"></div>
+            <div class="controls">
+                <button onclick="resetZoom()">Reset Zoom</button>
+                <button onclick="toggleHierarchy()">Toggle Hierarchy</button>
+            </div>
+            <div class="stats">
+                <h3 style="color:#e94560;font-size:14px;">Statistics</h3>
+                <div class="stat-item">Nodes: <span id="node-count"></span></div>
+                <div class="stat-item">Links: <span id="link-count"></span></div>
+            </div>
+        </div>
+        <div id="graph"></div>
+    </div>
+    <div class="tooltip" id="tooltip" style="display:none;"></div>
+
+    <script>
+        const data = {"nodes": [{"id": "invoice", "label": "Invoice", "types": ["schema:Invoice", "doco:BodyMatter"], "color": "#F0E68C", "group": "Invoice"}, {"id": "invoice_header", "label": "Invoice Header", "types": ["doco-fd:Header"], "color": "#FFD700", "group": "Header"}, {"id": "company_info_section", "label": "Company Info Section", "types": ["doco-fd:FormSection"], "color": "#F5DEB3", "group": "FormSection"}, {"id": "company_name_field", "label": "Company Name Field", "types": ["schema:Organization", "doco-fd:FormField"], "color": "#87CEEB", "group": "Organization"}, {"id": "company_address_field", "label": "Company Address Field", "types": ["schema:PostalAddress", "doco-fd:FormField"], "color": "#DDA0DD", "group": "PostalAddress"}, {"id": "company_contact_field", "label": "Company Contact Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "client_info_section", "label": "Client Info Section", "types": ["doco-fd:FormSection"], "color": "#F5DEB3", "group": "FormSection"}, {"id": "client_name_field", "label": "Client Name Field", "types": ["schema:Person", "doco-fd:FormField"], "color": "#FFB6C1", "group": "Person"}, {"id": "client_address_field", "label": "Client Address Field", "types": ["schema:PostalAddress", "doco-fd:FormField"], "color": "#DDA0DD", "group": "PostalAddress"}, {"id": "client_contact_field", "label": "Client Contact Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "invoice_details_section", "label": "Invoice Details Section", "types": ["doco-fd:FormSection"], "color": "#F5DEB3", "group": "FormSection"}, {"id": "invoice_number_field", "label": "Invoice Number Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "invoice_date_field", "label": "Invoice Date Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "due_date_field", "label": "Due Date Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}, {"id": "invoice_items_table", "label": "Invoice Items Table", "types": ["doco:Table"], "color": "#CCCCCC", "group": "Table"}, {"id": "header_row", "label": "Header Row", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "invoice_item_row_{{ loop.index }}", "label": "Invoice Item Row {{ Loop.Index }}", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "subtotal_row", "label": "Subtotal Row", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "tax_row", "label": "Tax Row", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "total_row", "label": "Total Row", "types": ["doco-fd:TableRow"], "color": "#CCCCCC", "group": "TableRow"}, {"id": "invoice_footer", "label": "Invoice Footer", "types": ["doco-fd:Footer"], "color": "#D3D3D3", "group": "Footer"}, {"id": "payment_terms_field", "label": "Payment Terms Field", "types": ["doco-fd:FormField"], "color": "#E6E6FA", "group": "FormField"}], "links": [{"source": 0, "target": 1, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 0, "target": 2, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 0, "target": 6, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 0, "target": 10, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 0, "target": 14, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 2, "target": 3, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 2, "target": 4, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 2, "target": 5, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 6, "target": 7, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 6, "target": 8, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 6, "target": 9, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 10, "target": 11, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 10, "target": 12, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 10, "target": 13, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 14, "target": 15, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 15, "target": 16, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 16, "target": 17, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 17, "target": 18, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 18, "target": 19, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 19, "target": 20, "label": "contains", "type": "hierarchy", "dashed": true}, {"source": 20, "target": 21, "label": "contains", "type": "hierarchy", "dashed": true}]};
+
+        const width = document.getElementById('graph').clientWidth;
+        const height = window.innerHeight;
+
+        const svg = d3.select("#graph")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        const g = svg.append("g");
+
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 4])
+            .on("zoom", (event) => g.attr("transform", event.transform));
+
+        svg.call(zoom);
+
+        const simulation = d3.forceSimulation(data.nodes)
+            .force("link", d3.forceLink(data.links).id(d => d.id).distance(100))
+            .force("charge", d3.forceManyBody().strength(-300))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(40));
+
+        const link = g.append("g")
+            .selectAll("line")
+            .data(data.links)
+            .enter().append("line")
+            .attr("class", d => d.dashed ? "link link-hierarchy" : "link")
+            .attr("stroke", d => d.dashed ? "#666" : "#e94560")
+            .attr("stroke-width", d => d.dashed ? 1 : 2);
+
+        const linkLabels = g.append("g")
+            .selectAll("text")
+            .data(data.links)
+            .enter().append("text")
+            .attr("class", "link-label")
+            .text(d => d.label);
+
+        const node = g.append("g")
+            .selectAll("g")
+            .data(data.nodes)
+            .enter().append("g")
+            .attr("class", "node")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        node.append("circle")
+            .attr("r", 20)
+            .attr("fill", d => d.color)
+            .attr("stroke", "#fff");
+
+        node.append("text")
+            .attr("dy", 30)
+            .attr("text-anchor", "middle")
+            .text(d => d.label.length > 15 ? d.label.substring(0, 15) + "..." : d.label);
+
+        node.on("mouseover", showTooltip)
+            .on("mouseout", hideTooltip);
+
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+
+            linkLabels
+                .attr("x", d => (d.source.x + d.target.x) / 2)
+                .attr("y", d => (d.source.y + d.target.y) / 2);
+
+            node.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+
+        function dragstarted(event) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            event.subject.fx = event.subject.x;
+            event.subject.fy = event.subject.y;
+        }
+
+        function dragged(event) {
+            event.subject.fx = event.x;
+            event.subject.fy = event.y;
+        }
+
+        function dragended(event) {
+            if (!event.active) simulation.alphaTarget(0);
+            event.subject.fx = null;
+            event.subject.fy = null;
+        }
+
+        function showTooltip(event, d) {
+            const tooltip = document.getElementById("tooltip");
+            tooltip.innerHTML = `
+                <strong>${d.label}</strong><br>
+                <small>Types: ${d.types.join(', ')}</small><br>
+                <small>ID: ${d.id}</small>
+            `;
+            tooltip.style.display = "block";
+            tooltip.style.left = (event.pageX + 10) + "px";
+            tooltip.style.top = (event.pageY - 10) + "px";
+        }
+
+        function hideTooltip() {
+            document.getElementById("tooltip").style.display = "none";
+        }
+
+        function resetZoom() {
+            svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
+        }
+
+        let showHierarchy = true;
+        function toggleHierarchy() {
+            showHierarchy = !showHierarchy;
+            link.attr("display", d => (d.dashed && !showHierarchy) ? "none" : "block");
+            linkLabels.attr("display", d => (d.dashed && !showHierarchy) ? "none" : "block");
+        }
+
+        document.getElementById("node-count").textContent = data.nodes.length;
+        document.getElementById("link-count").textContent = data.links.length;
+
+        const groups = [...new Set(data.nodes.map(d => d.group))];
+        const legend = d3.select("#legend");
+        groups.forEach(g => {
+            const color = data.nodes.find(n => n.group === g).color;
+            legend.append("div")
+                .attr("class", "legend-item")
+                .html(`<div class="legend-color" style="background:${color}"></div>${g}`);
+        });
+    </script>
+</body>
+</html>

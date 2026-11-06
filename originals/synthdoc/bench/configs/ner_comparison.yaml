@@ -1,0 +1,22 @@
+# NER Model Comparison
+# Phase 1 baseline: run all NER engines against one shared OCR output.
+# OCR runs once and is cached — all NER engines consume the same text.
+#
+# Usage:
+#   python -m synthdoc.bench run benchmarks/ner_comparison.yaml
+#   python -m synthdoc.bench run benchmarks/ner_comparison.yaml --limit 50
+
+name: NER Comparison
+
+data: ../data
+output: ../results/ner_comparison
+
+ocr: qwenvl
+
+ner:
+  - spacy
+  - deberta
+  - qwen3
+  - qwen3-small
+  - gemma4
+  - gemma4-small
