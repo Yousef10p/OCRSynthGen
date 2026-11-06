@@ -95,6 +95,8 @@ def dataset(argv):
                          "35%% block_ocr; table only when asked); full_ocr+block_ocr: only those two, 40:35")
     ap.add_argument("--tashkeel", choices=["none", "partial", "full"],
                     help="Arabic diacritics on every Arabic page at this level (default: 40%% none, 30%% partial, 30%% full)")
+    ap.add_argument("--colour-share", type=float, default=0.5,
+                    help="share of pages in colour, 0 to 1 (the rest light: white, off-white or a light tint)")
     a = ap.parse_args(argv)
     sys.stdout.reconfigure(encoding="utf-8")
     out = Path(a.out).resolve()
@@ -102,6 +104,7 @@ def dataset(argv):
         (out / folder).mkdir(parents=True, exist_ok=True)
     options = {"languages": {a.language: 1} if a.language else None, "sources": {a.source: 1} if a.source else None,
                "strengths": {t: getattr(a, f"strength_{t.replace('-', '_')}") for t in ("ocrsmith", "augraphy", "scan-simulator")},
+               "colour_share": a.colour_share,
                "effects": {a.effect: 1} if a.effect else None, "text": a.text,
                "tashkeel": {a.tashkeel: 1} if a.tashkeel else None, "tasks": ({"full_ocr": 0.4, "block_ocr": 0.35} if a.task == "full_ocr+block_ocr"
                          else {a.task: 1} if a.task else None)}
@@ -189,7 +192,8 @@ def make_sample(out_dir, seed, name, options):
                        effects=CHOICES["effect"][options["effect"]], sources=CHOICES["source"][options["source"]],
                        templates=options["templates"], llm=LLMTemplates.from_env() if options["templates"] == "llm" else None,
                        text=CHOICES["text"][options["text"]], strengths=options["strengths"],
-                       tashkeel=CHOICES["tashkeel"][options["tashkeel"]], tasks=CHOICES["task"][options["task"]])
+                       tashkeel=CHOICES["tashkeel"][options["tashkeel"]], tasks=CHOICES["task"][options["task"]],
+                       colour_share=options["colour_share"])
     return pipe.sample(seed, name)
 
 
@@ -201,8 +205,13 @@ def start_job(options):
             strengths[tool] = min(1.0, max(0.0, float((options.get("strengths") or {}).get(tool, 50)) / 100))
         except (TypeError, ValueError):
             strengths[tool] = 0.5
+    try:  # 0-100 on the page: the share of pages in colour
+        colour_share = min(1.0, max(0.0, float(options.get("colour", 50)) / 100))
+    except (TypeError, ValueError):
+        colour_share = 0.5
     options = {k: options.get(k) if options.get(k) in CHOICES[k] else next(iter(CHOICES[k])) for k in CHOICES} | \
-              {"templates": "llm" if options.get("templates") == "llm" else "bank", "strengths": strengths}
+              {"templates": "llm" if options.get("templates") == "llm" else "bank", "strengths": strengths,
+               "colour_share": colour_share}
     run = time.strftime("run_%Y%m%d_%H%M%S") + f"_{PORT}"  # two generators started in the same second don't mix
     out_dir, seed = OUT / run, random.randrange(10**6)
     job = {"id": run, "n": n, "options": options, "started": time.time(), "samples": [None] * n, "errors": []}

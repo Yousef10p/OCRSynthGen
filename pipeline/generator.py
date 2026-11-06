@@ -277,17 +277,94 @@ def mix(color, white):
     return "#" + "".join(f"{round(c + (255 - c) * white):02x}" for c in (r, g, b))
 
 
-def theme(rng, source):
-    accent = rng.choice(ACCENTS)
-    tint, soft = mix(accent, rng.uniform(0.88, 0.94)), mix(accent, rng.uniform(0.95, 0.975))
+def hex_rgb(color):
+    return tuple(int(color[i:i + 2], 16) for i in (1, 3, 5))
+
+
+def blend(a, b, t):
+    """Colour a moved toward colour b by t (0 = a, 1 = b)."""
+    return "#" + "".join(f"{round(x + (y - x) * t):02x}" for x, y in zip(hex_rgb(a), hex_rgb(b)))
+
+
+def hsl(h, s, l):
+    """A colour from hue (degrees), saturation and lightness (0-1)."""
+    c = (1 - abs(2 * l - 1)) * s
+    x, m = c * (1 - abs((h / 60) % 2 - 1)), l - c / 2
+    r, g, b = [(c, x, 0), (x, c, 0), (0, c, x), (0, x, c), (x, 0, c), (c, 0, x)][int(h // 60) % 6]
+    return "#" + "".join(f"{round((v + m) * 255):02x}" for v in (r, g, b))
+
+
+def luminance(color):
+    def f(v):
+        v /= 255
+        return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+    r, g, b = (f(v) for v in hex_rgb(color))
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+
+def contrast_ratio(a, b):
+    """WCAG contrast between two colours: 1 (same) to 21 (black on white)."""
+    la, lb = luminance(a), luminance(b)
+    return (max(la, lb) + 0.05) / (min(la, lb) + 0.05)
+
+
+def readable_on(color, background, least):
+    """color, or black or white (whichever reads better) if it has less than `least` contrast."""
+    if contrast_ratio(color, background) >= least:
+        return color
+    return max(("#111111", "#ffffff"), key=lambda c: contrast_ratio(c, background))
+
+
+def colour_page(rng):
+    """A coloured page: (background, text ink, accent, light tint, stronger tint, border mix). Dark (40%) or
+    coloured light / mid (60%) background of any hue; text at least 7:1 against it, the accent at least 4.5:1,
+    and the tints that boxes and table rows get keep the text at least 4.5:1 too."""
+    hue = rng.uniform(0, 360)
+    dark = rng.random() < 0.4
+    sat = rng.uniform(0.15, 0.6) if dark else rng.uniform(0.25, 0.75)
+    light = rng.uniform(0.10, 0.30) if dark else rng.uniform(0.62, 0.88)
+    page = hsl(hue, sat, light)
+    # a mid colour no text reaches 7:1 on: made darker (dark page) or lighter until black or white text does
+    while max(contrast_ratio("#ffffff", page), contrast_ratio("#111111", page)) < 7.0:
+        light = light - 0.02 if dark else light + 0.02
+        page = hsl(hue, sat, light)
+    if dark:
+        ink = rng.choice(["#ffffff", "#f5f5f5", "#fdf6e3", hsl(hue, rng.uniform(0.2, 0.5), rng.uniform(0.92, 0.97))])
+    else:
+        ink = rng.choice(THEME_INKS + [hsl(hue, rng.uniform(0.3, 0.7), rng.uniform(0.08, 0.15))])
+    ink = readable_on(ink, page, 7.0)
+    accent_hue = (hue + rng.choice([0, 30, 150, 180, 210, 330])) % 360
+    accent = hsl(accent_hue, rng.uniform(0.5, 0.85), rng.uniform(0.70, 0.85) if dark else rng.uniform(0.18, 0.32))
+    accent = readable_on(accent, page, 4.5)
+    soft, tint = blend(page, ink, rng.uniform(0.05, 0.08)), blend(page, ink, rng.uniform(0.10, 0.15))
+    if contrast_ratio(ink, tint) < 4.5:
+        soft, tint = blend(page, ink, 0.04), blend(page, ink, 0.07)
+    return page, ink, accent, soft, tint, lambda color, t: blend(color, page, t)
+
+
+COLOUR_SHARE = 0.5  # share of pages in colour (the rest light); DocPipeline(colour_share=...), the website's slider
+
+
+def theme(rng, source, colour_share=COLOUR_SHARE):
+    """(record, CSS, settings for the page script). A share of the pages (1 - colour_share) is light: white,
+    off-white or a light tint, with near-black text. The rest are in colour (colour_page): any hue, dark or
+    bright, with text and accents picked to stay readable on it. After that the page script still checks every
+    text's contrast and fixes anything under 4.5:1, and the page checks reject anything under 3:1."""
+    if rng.random() >= colour_share:  # light page, near-black text
+        accent = rng.choice(ACCENTS)
+        tint, soft = mix(accent, rng.uniform(0.88, 0.94)), mix(accent, rng.uniform(0.95, 0.975))
+        page_kind = rng.choices(["white", "off-white", "tint"], weights=[5, 3, 2])[0]
+        page_bg = {"white": "#ffffff", "off-white": rng.choice(["#fbfaf7", "#fafafa", "#f9f8f4"]), "tint": soft}[page_kind]
+        ink, faded = rng.choice(THEME_INKS), mix
+    else:  # coloured page, readable text
+        page_bg, ink, accent, soft, tint, faded = colour_page(rng)
+        page_kind = "colour"
     rec = {"accent": accent, "heading": rng.choice(["plain", "accent", "underline", "bar", "band", "rule-above"]),
            "table": rng.choice(["grid", "striped", "header-tint", "rules", "boxed"]),
-           "box": rng.choice(["tint", "bar", "outline", "plain"]),
-           "page": rng.choices(["white", "off-white", "tint"], weights=[5, 3, 2])[0],
+           "box": rng.choice(["tint", "bar", "outline", "plain"]), "page": page_kind, "page_color": page_bg,
            "bullet": rng.choice(["disc", "square", "circle"]), "radius": rng.choice([0, 0, 3, 6]),
            "paragraph_gap": round(rng.uniform(0.3, 1.0), 2), "heading_gap": round(rng.uniform(0.5, 1.4), 2),
-           "ink": rng.choice(THEME_INKS)}
-    page_bg = {"white": "#ffffff", "off-white": rng.choice(["#fbfaf7", "#fafafa", "#f9f8f4"]), "tint": soft}[rec["page"]]
+           "ink": ink}
     imp = " !important"
     css = [f"ol, ul {{ list-style-type: {rec['bullet']}{imp}; }}",
            f"li::marker {{ color: {accent}; }}",
@@ -303,27 +380,28 @@ def theme(rng, source):
                "accent": f"color: {accent}{imp};",
                "underline": f"color: {accent}{imp}; border-block-end: 2px solid {accent}{imp};",
                "bar": f"color: {accent}{imp}; border-inline-start: 4px solid {accent}{imp}; padding-inline-start: 0.4em;",
-               "band": f"color: {accent}{imp}; background-color: {tint}{imp}; padding-inline: 0.3em;",
+               "band": f"color: {readable_on(accent, tint, 4.5)}{imp}; background-color: {tint}{imp}; padding-inline: 0.3em;",
                "rule-above": f"color: {rec['ink']}{imp}; border-block-start: 2px solid {accent}{imp};"}[rec["heading"]]
     if source == "doclaynet":  # fixed-size boxes: colours only, nothing that takes room
         heading = heading.replace("padding-inline-start: 0.4em;", "").replace("padding-inline: 0.3em;", "")
         heading = heading.replace("border-block-end: 2px", "border-block-end: 1px").replace(
             "border-block-start: 2px", "border-block-start: 1px").replace("border-inline-start: 4px", "border-inline-start: 3px")
+    th = readable_on(accent, tint if rec["table"] == "header-tint" else soft if rec["table"] == "boxed" else page_bg, 4.5)
     css += [f"h1, h2, h3, h4, h5, h6, dt, strong {{ {heading} }}",
             f"body, .page, p, li, td, dd, span, div {{ color: {rec['ink']}; }}",
-            f"th {{ color: {accent}{imp}; }}"]
-    table = {"grid": f"th, td {{ border-color: {mix(accent, 0.55)}{imp}; }}",
+            f"th {{ color: {th}{imp}; }}"]
+    table = {"grid": f"th, td {{ border-color: {faded(accent, 0.55)}{imp}; }}",
              "striped": f"tbody tr:nth-child(even) td {{ background-color: {soft}{imp}; }} "
                         f"th {{ border-block-end: 2px solid {accent}{imp}; }}",
-             "header-tint": f"th {{ background-color: {tint}{imp}; }} th, td {{ border-color: {mix(accent, 0.6)}{imp}; }}",
+             "header-tint": f"th {{ background-color: {tint}{imp}; }} th, td {{ border-color: {faded(accent, 0.6)}{imp}; }}",
              "rules": f"th, td {{ border-inline: none{imp}; border-block-start: none{imp}; "
-                      f"border-block-end: 1px solid {mix(accent, 0.6)}{imp}; }}",
+                      f"border-block-end: 1px solid {faded(accent, 0.6)}{imp}; }}",
              "boxed": f"table {{ outline: 2px solid {accent}; }} th {{ background-color: {soft}{imp}; }}"}[rec["table"]]
-    box = {"tint": f"aside, blockquote {{ background-color: {soft}{imp}; border-color: {mix(accent, 0.5)}{imp}; }}",
+    box = {"tint": f"aside, blockquote {{ background-color: {soft}{imp}; border-color: {faded(accent, 0.5)}{imp}; }}",
            "bar": f"aside, blockquote {{ border-inline-start: 4px solid {accent}{imp}; }}",
            "outline": f"aside, blockquote {{ border-color: {accent}{imp}; }}",
            "plain": ""}[rec["box"]]
-    css += [table, box, f"hr {{ border-color: {mix(accent, 0.5)}; }}"]
+    css += [table, box, f"hr {{ border-color: {faded(accent, 0.5)}; }}"]
     if source == "grammar":
         css += [f"p {{ margin-block-end: {rec['paragraph_gap']}em; }}",
                 f"h2, h3 {{ margin-block-start: {rec['heading_gap']}em; }}",
@@ -1381,7 +1459,7 @@ class DocPipeline:
 
     def __init__(self, out_dir, languages=None, effects=None, sources=None, templates="bank", llm=None,
                  pictures=None, text=None, extras=True, bank=None, strengths=None, check=True, tashkeel=None,
-                 tasks=None):
+                 tasks=None, colour_share=COLOUR_SHARE):
         self.out = Path(out_dir).resolve()
         self.out.mkdir(parents=True, exist_ok=True)
         self.bank = Path(bank) if bank else BANK2000
@@ -1390,6 +1468,7 @@ class DocPipeline:
         self.strengths = {**STRENGTHS, **(strengths or {})}
         self.tashkeel = tashkeel or TASHKEEL  # Arabic pages: none / partial / full marks
         self.tasks = tasks or TASKS
+        self.colour_share = colour_share  # share of pages in colour, the rest light (theme)
         self.pictures = ImagePool() if pictures is None else pictures
         self.categories = {f.name: c for c, files in getattr(self.pictures, "by_category", {}).items() for f in files}
         self.text = text or ("wikipedia" if TextPool.exists("ar") and TextPool.exists("en") else "demo")
@@ -1438,7 +1517,7 @@ class DocPipeline:
             s, css = style(rng, arabic_fonts())
         else:
             s, css = style_latin(rng)
-        look, theme_css, theme_js = theme(rng, meta["source"])
+        look, theme_css, theme_js = theme(rng, meta["source"], self.colour_share)
         words = text_pool(lang) if self.text == "wikipedia" else None
         if words:
             words.begin(rng)  # one article per page

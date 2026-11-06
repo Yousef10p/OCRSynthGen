@@ -88,6 +88,9 @@ dialog::backdrop { background: rgba(15, 20, 25, .6); }
     <label title="Augraphy: 50 = its own settings">Augraphy <input type="range" id="s-augraphy" min="0" max="100" value="50"><b id="v-augraphy">50</b></label>
     <label title="scan-simulator: 50 = its own settings">scan-sim <input type="range" id="s-scan-simulator" min="0" max="100" value="50"><b id="v-scan-simulator">50</b></label>
   </span>
+  <span class="strength">Colour pages
+    <label title="% of pages in colour (any hue, dark or bright, text kept readable); the rest are light: white, off-white or a light tint">% <input type="range" id="s-colour" min="0" max="100" value="50"><b id="v-colour">50</b></label>
+  </span>
   <button id="go">Generate 16 samples</button>
   <div class="bar"><i id="bar"></i></div>
   <span id="status"></span>
@@ -116,7 +119,7 @@ const mdLines = (text) => text.split(/\r?\n/).filter(Boolean).map((line, i) => {
   const m = line.match(GT_LINE);
   return `<span class="ln" data-i="${i}">${m ? `&lt;text&gt;<bdi>${esc(m[1])}</bdi> &lt;bbox&gt;${m.slice(2).join(", ")}&lt;/bbox&gt;&lt;/text&gt;` : esc(line)}</span>`;
 }).join("");
-for (const t of ["ocrsmith", "augraphy", "scan-simulator"]) $("s-" + t).oninput = (e) => { $("v-" + t).textContent = e.target.value; };
+for (const t of ["ocrsmith", "augraphy", "scan-simulator", "colour"]) $("s-" + t).oninput = (e) => { $("v-" + t).textContent = e.target.value; };
 const url = (s, kind) => `/out/${job.id}/${s.name}${FILE[kind]}`;
 
 fetch("/api/info").then((r) => r.json()).then((info) => {
@@ -127,7 +130,8 @@ fetch("/api/info").then((r) => r.json()).then((info) => {
 $("go").onclick = async () => {
   const body = {n: 16, language: $("language").value, effect: $("effect").value, source: $("source").value,
                 templates: $("templates").value, text: $("text").value, tashkeel: $("tashkeel").value, task: $("task").value,
-                strengths: Object.fromEntries(["ocrsmith", "augraphy", "scan-simulator"].map((t) => [t, +$("s-" + t).value]))};
+                strengths: Object.fromEntries(["ocrsmith", "augraphy", "scan-simulator"].map((t) => [t, +$("s-" + t).value])),
+                colour: +$("s-colour").value};
   $("go").disabled = true;
   const r = await (await fetch("/api/generate", {method: "POST", body: JSON.stringify(body)})).json();
   job = {id: r.id, n: r.n}; samples = new Array(r.n).fill(null);
@@ -179,7 +183,7 @@ async function show() {
     + `<a class="small" style="margin-inline-start:auto;align-self:center" href="${url(s, tab === "info" ? "json" : tab)}" target="_blank">open file ↗</a>`;
   const body = $("pv-body");
   if (tab === "info") {
-    const rows = [["Template", `${s.template} (${s.source})`], ["Language", s.lang], ["Tashkeel", s.tashkeel || "none"], ["Font", `${s.font}, ${s.size_pt}pt`],
+    const rows = [["Template", `${s.template} (${s.source})`], ["Page colours", s.theme ? `${s.theme.page}${s.theme.page_color ? " " + s.theme.page_color : ""}, text ${s.theme.ink}` : ""], ["Language", s.lang], ["Tashkeel", s.tashkeel || "none"], ["Font", `${s.font}, ${s.size_pt}pt`],
       ["Effect", `${s.effect}${s.effect === "clean" ? "" : " at strength " + Math.round(s.strength * 100)}`],
       ["Applied", s.attacks.join(", ")],
       ["Readability after the effect", Object.entries(s.legibility || {}).map(([k, v]) => `${k} ${v}`).join(" · ")],

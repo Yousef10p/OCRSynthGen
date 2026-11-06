@@ -87,7 +87,7 @@ All commands below run from `D:\code\OCR\arabic-template-bank`.
 ```
 
 Open http://localhost:8765 and press **Generate 16 samples**. Menus choose the language, effect, Surya task,
-template source and tashkeel; sliders set each effect's strength. Click a card to see the page, its Surya
+template source and tashkeel; sliders set each effect's strength and the % of pages in colour. Click a card to see the page, its Surya
 answer, the boxes, the HTML and the labels. Every run is saved in `pipeline_out/run_<time>_<port>/`.
 
 **b) A training set** (many samples in parallel):
@@ -102,6 +102,7 @@ answer, the boxes, the HTML and the labels. Every run is saved in `pipeline_out/
 | `--language ar` / `en` | one language only (default 50/50) |
 | `--effect clean` / `ocrsmith` / `augraphy` / `scan-simulator` | one effect only (default: 15% clean, the rest even) |
 | `--tashkeel none` / `partial` / `full` | Arabic diacritics (default 40/30/30) |
+| `--colour-share 0.5` | share of pages in colour, 0 to 1 (the rest light: white, off-white or a light tint) |
 | `--strength-ocrsmith 0.5` (and `-augraphy`, `-scan-simulator`) | 0 lightest, 0.5 the tool's own settings, 1 strongest |
 | `--seed 1` | the same seed makes the same pages; use a new seed for each batch |
 | `--val 0.05` | share of pages in the validation split |
@@ -235,7 +236,7 @@ def sample(self, seed, name=None, language=None, effect=None, task=None):
 | Step | Call | Where in `generator.py` | What happens |
 |---|---|---|---|
 | 1 template | `DocPipeline.template()` | STEP 1 | a random template from `bank2000/` (2,000, half Arabic, half English; 4 sources: grammar, WebSight v0.1, WebSight v0.2, DocLayNet), or one written by an LLM (`llm_templates.py`) |
-| 2 fill | `DocPipeline.fill()` | STEP 2 (text and photos from `pools.py`) | Wikipedia text (one article per page), random fonts, sizes and colour theme, photos for picture slots, Arabic diacritics |
+| 2 fill | `DocPipeline.fill()` | STEP 2 (text and photos from `pools.py`) | Wikipedia text (one article per page), random fonts and sizes, a colour theme (half the pages light: white, off-white or a light tint with near-black text; half in colour: any hue, dark or bright, with text at least 7:1 against it and accents at least 4.5:1), photos for picture slots, Arabic diacritics |
 | 3 render | `DocPipeline.render()` | STEP 3 | SynthDoc lays the page out in Chromium at 2x (about 192 dpi), takes the screenshot and measures every word, table, list and picture |
 | 3 checks | `render_issues()`, `ink_issues()` | STEP 3 | hidden, cut, overlapping, covered, off-page, low-contrast or invisible text: the page is made again |
 | 4 effect | `DocPipeline.degrade()` -> `degrade()` | STEP 4 | clean (15%), OCRSmith, Augraphy or scan-simulator; boxes move with the page; every word checked still readable, else retried lighter |
