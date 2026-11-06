@@ -1,4 +1,4 @@
-"""Our pages' labels made the way Surya's own code makes them (OCRREADME.md):
+"""Our pages' labels made the way Surya's own code makes them (README.md):
 
   full_ocr   the page as <div data-bbox data-label> HTML, encoded with Surya's own encode() (pipeline/surya_compact.py)
   block_ocr  the cut-out block's HTML, encoded the same way

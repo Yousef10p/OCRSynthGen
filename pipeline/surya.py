@@ -2,7 +2,7 @@
 
 Each sample is made for one of Surya's prompts, drawn per page (TASKS), and its label is the answer Surya 2.5
 gives to that prompt, written the way the model writes it. Found by asking the model itself, one image at a
-time (surya_probe/, surya_inference_findings.md), and by Surya's own code (datalab-to/surya: inference/prompts.py,
+time (surya_probe/, README.md), and by Surya's own code (datalab-to/surya: inference/prompts.py,
 compact.py, parsers.py), whose prompt texts are "the model's training-time contract":
 
   full_ocr   the page -> compact blocks, one after another with nothing between them:
