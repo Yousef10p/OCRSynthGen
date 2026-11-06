@@ -39,8 +39,22 @@ D:\code\OCR\
   scan-simulator\            scan-simulator (scan effects)
 ```
 
-The whole generator is one class, **`DocPipeline`**, in [pipeline/doc_pipeline.py](pipeline/doc_pipeline.py).
-Every other file in `pipeline/` is one step it calls (section 5).
+The code is 5 files in `pipeline/`:
+
+| File | What it is |
+|---|---|
+| [generator.py](pipeline/generator.py) | the whole page-making path: the class **`DocPipeline`** and its steps, marked `STEP 1` ... `STEP 6` |
+| [compact_original.py](pipeline/compact_original.py) | Surya's own `compact.py` (`encode()` / `decode()`), copied unchanged |
+| [run.py](pipeline/run.py) | the two commands: `dataset` (make a training set) and `website` |
+| [pools.py](pipeline/pools.py) | downloads the Wikipedia text and the photos (once) |
+| [llm_templates.py](pipeline/llm_templates.py) | optional: templates written by an LLM |
+
+If something fails, the error says in which step: `sample s07 failed in STEP 4 effect: ...`.
+Search `generator.py` for that `STEP`.
+
+A file copied from another project (Surya, OCRSmith, scan-simulator, Augraphy) is named `<its name>_original.py`
+and kept unchanged. Today that is only `compact_original.py`; OCRSmith, scan-simulator and Augraphy are used
+from their own folders.
 
 ---
 
@@ -69,10 +83,10 @@ D:\code\OCR\scan-simulator
 The text and photo pools are made once (not in git):
 
 ```bash
-.venv-pipeline\Scripts\python -m pipeline.text_pool --articles 5000
+.venv-pipeline\Scripts\python -m pipeline.pools text --articles 5000
 ```
 ```bash
-.venv-pipeline\Scripts\python -m pipeline.img_pool
+.venv-pipeline\Scripts\python -m pipeline.pools images
 ```
 
 Optional: `npm install` (Node.js) and a `.env` with `GROQ_API_KEY`, only for templates written by an LLM.
@@ -86,7 +100,7 @@ All commands below run from `D:\code\OCR\arabic-template-bank`.
 **a) The website** (look at samples one by one):
 
 ```bash
-.venv-pipeline\Scripts\python pipeline\server.py
+.venv-pipeline\Scripts\python -m pipeline.run website
 ```
 
 Open http://localhost:8765 and press **Generate 16 samples**. Menus choose the language, effect, Surya task,
@@ -96,7 +110,7 @@ answer, the boxes, the HTML and the labels. Every run is saved in `pipeline_out/
 **b) A training set** (many samples in parallel):
 
 ```bash
-.venv-pipeline\Scripts\python -m pipeline.dataset --n 1000 --out datasets\v1 --workers 4 --seed 1
+.venv-pipeline\Scripts\python -m pipeline.run dataset --n 1000 --out datasets\v1 --workers 4 --seed 1
 ```
 
 | Option | Meaning |
@@ -115,7 +129,7 @@ about 1.5 GB of memory.
 **c) From Python:**
 
 ```python
-from pipeline.doc_pipeline import DocPipeline
+from pipeline.generator import DocPipeline
 
 pipe = DocPipeline("pipeline_out/mine")       # files go here
 summary = pipe.sample(seed=7)                 # one sample
@@ -172,30 +186,30 @@ OCR this image to HTML. Each block is a div with data-label and data-bbox (x0 y0
 
 ```mermaid
 sequenceDiagram
-    participant U as You / server.py / dataset.py
-    participant P as DocPipeline (doc_pipeline.py)
-    participant R as SynthDoc (render.py)
-    participant Q as qa.py
-    participant D as degrade.py
-    participant Y as surya.py
+    participant U as You / run.py
+    participant P as DocPipeline (generator.py)
+    participant R as STEP 3 render (SynthDoc)
+    participant D as STEP 4 effect
+    participant Y as STEP 5 Surya blocks
+    participant E as compact_original.py (Surya's)
     U->>P: DocPipeline(out_dir, ...)
     U->>P: sample(seed)
     loop until the page passes every check (at most 8 tries)
         P->>P: template()  pick an empty template
         P->>P: fill()      text, fonts, theme, photos
         P->>R: render()    browser screenshot + every word measured
-        P->>Q: render_issues(), ink_issues()
+        P->>R: render_issues(), ink_issues()
     end
     P->>D: degrade()  clean / OCRSmith / Augraphy / scan-simulator, boxes move with the page
-    P->>Y: blocks()   Surya blocks: label, box, HTML, reading order
-    P->>Y: full_ocr() / layout() / block_ocr()  the answer, by Surya's encode()
+    P->>Y: blocks(), divs()   Surya blocks: label, box, HTML, reading order
+    P->>E: encode(divs)       the answer, written by Surya's own encoder
     P-->>U: summary (files written to out_dir)
 ```
 
 ### 5.2 The same, as code
 
 This is `DocPipeline.sample()` with only its calls kept (the real one is in
-[pipeline/doc_pipeline.py](pipeline/doc_pipeline.py)):
+[pipeline/generator.py](pipeline/generator.py)):
 
 ```python
 def sample(self, seed, name=None, language=None, effect=None, task=None):
@@ -214,37 +228,38 @@ def sample(self, seed, name=None, language=None, effect=None, task=None):
             break
 
     words, cut = split_words(ocr)                     # the measured words
-    plan = SURYA.carry(qa["struct"])                  # tables, rows, columns, lists, pictures
+    plan = carry(qa["struct"])                        # tables, rows, columns, lists, pictures
+    plan = to_ink(plan, clean)                        # lists and tables: only what is drawn in them
     image, boxes, attacks, strength, check, moved = self.degrade(     # 4. effect
-        clean, words, rng, effect, SURYA.corners(plan))
-    regions = GT.regions(meta["slots"], words, boxes, lang, positioning, qa["slots"])  # one per slot
+        clean, words, rng, effect, corners(plan))
+    regions = slot_regions(meta["slots"], words, boxes, lang, positioning, qa["slots"])  # one per slot
 
     width, height = image.size                        # 5. Surya labels
-    rects = SURYA.rebuild(plan, moved, width, height)
-    blks = SURYA.blocks(regions, roles, qa["struct"], rects, lang, positioning, self.categories, width, height)
+    rects = rebuild(plan, moved, width, height)
+    blks = blocks(regions, roles, qa["struct"], rects, lang, positioning, self.categories, width, height)
     if task == "full_ocr":
-        target = SURYA.full_ocr(blks, width, height)
+        target = encode(divs(blks, width, height))    # Surya's encode() on the page's div HTML
     elif task == "layout":
-        target = SURYA.layout(blks, width, height)
+        target = layout(blks, width, height)          # JSON, one line
     elif task == "block_ocr":
         block, crop = rng.choice(cuts)                # a block whose cut-out takes in no neighbour
-        target = SURYA.block_ocr(block)
+        target = encode(block["html"])                # Surya's encode() on that block's content
     # 6. write <name>.jpg, .prompt.txt, .target.txt, .json, .md, .html
 ```
 
 ### 5.3 Each step, its file, and what it does
 
-| Step | Call | File | What happens |
+| Step | Call | Where in `generator.py` | What happens |
 |---|---|---|---|
-| 1 template | `DocPipeline.template()` | `doc_pipeline.py` | a random template from `bank2000/` (2,000, half Arabic, half English; 4 sources: grammar, WebSight v0.1, WebSight v0.2, DocLayNet), or one written by an LLM (`llm_templates.py`) |
-| 2 fill | `DocPipeline.fill()` | `style.py`, `themes.py`, `text_pool.py`, `img_pool.py`, `tashkeel.py` | Wikipedia text (one article per page), random fonts, sizes and colour theme, photos for picture slots, Arabic diacritics |
-| 3 render | `DocPipeline.render()` | `render.py` | SynthDoc lays the page out in Chromium at 2x (about 192 dpi), takes the screenshot and measures every word, table, list and picture |
-| 3 checks | `render_issues()`, `ink_issues()` | `qa.py` | hidden, cut, overlapping, covered, off-page, low-contrast or invisible text: the page is made again |
-| 4 effect | `DocPipeline.degrade()` -> `degrade.degrade()` | `degrade.py` | clean (15%), OCRSmith, Augraphy or scan-simulator; boxes move with the page; every word checked still readable, else retried lighter |
-| 5 regions | `groundtruth.regions()` | `groundtruth.py` | the words of each slot joined: its text and its box |
-| 5 blocks | `surya.blocks()` | `surya.py` | Surya's blocks: label, HTML, box, reading order (section 8) |
-| 5 answer | `surya.full_ocr()`, `layout()`, `block_ocr()` | `surya.py`, `surya_compact.py` | the answer, written by Surya's own `encode()` |
-| 6 labels | `build_label()` | `labels.py` | the labels JSON (words, lines, slots) |
+| 1 template | `DocPipeline.template()` | STEP 1 | a random template from `bank2000/` (2,000, half Arabic, half English; 4 sources: grammar, WebSight v0.1, WebSight v0.2, DocLayNet), or one written by an LLM (`llm_templates.py`) |
+| 2 fill | `DocPipeline.fill()` | STEP 2 (text and photos from `pools.py`) | Wikipedia text (one article per page), random fonts, sizes and colour theme, photos for picture slots, Arabic diacritics |
+| 3 render | `DocPipeline.render()` | STEP 3 | SynthDoc lays the page out in Chromium at 2x (about 192 dpi), takes the screenshot and measures every word, table, list and picture |
+| 3 checks | `render_issues()`, `ink_issues()` | STEP 3 | hidden, cut, overlapping, covered, off-page, low-contrast or invisible text: the page is made again |
+| 4 effect | `DocPipeline.degrade()` -> `degrade()` | STEP 4 | clean (15%), OCRSmith, Augraphy or scan-simulator; boxes move with the page; every word checked still readable, else retried lighter |
+| 5 regions | `slot_regions()` | STEP 6 | the words of each slot joined: its text and its box |
+| 5 blocks | `blocks()`, `divs()` | STEP 5 | Surya's blocks: label, HTML, box, reading order (section 8), as `<div data-bbox data-label>` HTML |
+| 5 answer | `encode()` | `compact_original.py` | Surya's own encoder writes the answer (`layout` is JSON: `layout()`) |
+| 6 labels | `build_label()` | STEP 6 | the labels JSON (words, lines, slots) |
 
 ---
 
@@ -257,7 +272,7 @@ On Windows, run `set PYTHONIOENCODING=utf-8` first, or printing Arabic text fail
 
 ```python
 import random
-from pipeline.doc_pipeline import DocPipeline
+from pipeline.generator import DocPipeline
 
 pipe = DocPipeline("pipeline_out/try")
 rng = random.Random(3)
@@ -273,13 +288,13 @@ print(style["font"], style["size_pt"], style["theme"])
 **Put an effect on the page** (continuing from above; the word boxes come back moved with the page):
 
 ```python
-from pipeline import degrade as D
+from pipeline import generator as G
 
 words = ocr["words"]                           # each has x, y, width, height, line_id, text
-out, boxes, attacks = D.degrade(clean, words, seed=5, effect="ocrsmith", strength=0.5)
+out, boxes, attacks = G.degrade(clean, words, seed=5, effect="ocrsmith", strength=0.5)
 print(attacks)                                 # e.g. ['ocrsmith-paper:solid', 'ocrsmith:fax', 'Downscale', ...]
 print(boxes[0])                                # the first word's box after the effect: [x, y, w, h]
-print(D.readable(D.legibility(clean, out, words, boxes)))   # is every word still readable?
+print(G.readable(G.legibility(clean, out, words, boxes)))   # is every word still readable?
 out.save("pipeline_out/try/scanned.jpg")
 ```
 
@@ -288,20 +303,20 @@ The effect can be `"clean"`, `"ocrsmith"`, `"augraphy"`, `"scan-simulator"` or `
 **Write a Surya answer from your own HTML, and read one back** (Surya's own encoder):
 
 ```python
-from pipeline import surya_compact
+from pipeline.compact_original import encode, decode
 
 html = ('<div data-bbox="71 33 143 45" data-label="Page-Header">Northwind</div>'
         '<div data-bbox="120 87 881 255" data-label="Text"><p>The agent is not trading.</p></div>')
-answer = surya_compact.encode(html)
+answer = encode(html)
 print(answer)        # <|Page-Header|><|71|><|33|><|143|><|45|>Northwind<|Text|><|120|><|87|><|881|><|255|><p>...</p>
-print(surya_compact.decode(answer))            # back to the div HTML, one div per line
+print(decode(answer))                          # back to the div HTML, one div per line
 ```
 
 **Check that a target is in Surya's format:**
 
 ```python
-from pipeline import surya
-print(surya.problems("full_ocr", open("pipeline_out/mine/s01.target.txt", encoding="utf-8").read()))  # [] = fine
+from pipeline import generator as G
+print(G.problems("full_ocr", open("pipeline_out/mine/s01.target.txt", encoding="utf-8").read()))  # [] = fine
 ```
 
 **Check a whole training set** (pairing, prompts, format, Surya's encoder, length):
@@ -310,21 +325,13 @@ print(surya.problems("full_ocr", open("pipeline_out/mine/s01.target.txt", encodi
 .venv-pipeline\Scripts\python surya_probe\check_dataset.py datasets\v1
 ```
 
-**Check finished samples independently and draw their boxes:**
-
-```bash
-.venv-pipeline\Scripts\python -m pipeline.qa --n 40
-```
-```bash
-.venv-pipeline\Scripts\python -m pipeline.audit pipeline_out\qa
-```
 
 ---
 
 ## 7. Surya's label format
 
 Surya OCR 2.5 answers four fixed prompts. Its code calls them "the model's training-time contract", so we use
-them word for word (`surya.PROMPTS`):
+them word for word (`PROMPTS` in `generator.py`):
 
 | Task | Share | Surya is shown | It answers |
 |---|---|---|---|
@@ -346,7 +353,7 @@ height. A box from pixel (687, 764) to (901, 794) on a 1590 x 2248 page is `432 
 ```
 
 **Surya's `encode()` shortens it** into what the model really writes
-([pipeline/surya_compact.py](pipeline/surya_compact.py) is Surya's `compact.py`, copied unchanged, Apache-2.0):
+([pipeline/compact_original.py](pipeline/compact_original.py) is Surya's `compact.py`, copied unchanged, Apache-2.0):
 
 | Rule | Before | After |
 |---|---|---|
@@ -377,7 +384,7 @@ is `block_ocr` (content only: never a label or a box).
 
 We sent 100 of our pages per prompt to a Surya 2.5 server and kept every answer (`surya_probe/batch100/`,
 `clean100/`; each answer next to the image it was shown, our label and the prompt). Where Surya does one thing
-most of the time, our labels now do the same (`pipeline/surya.py`):
+most of the time, our labels now do the same (STEP 5 in `generator.py`):
 
 | Rule | Example |
 |---|---|
@@ -386,7 +393,6 @@ most of the time, our labels now do the same (`pipeline/surya.py`):
 | a list right under another list is one list (45 of 67) | one `List-Group` with both items |
 | texts on one line that almost touch are one block (20 of 23) | `<p>Population: 12,000</p>` |
 | short lines stacked with almost no gap are one block, split by `<br/>` (30 of 35) | `<p><b>Born:</b> 1950<br/><b>Died:</b> 2010</p>` |
-| boxes start a little left (0.65% of the width) and higher (0.35% of the height) | `432 340` -> `425 337` |
 | two-column English pages are read one column at a time | left column, then right column |
 | the text is what the image shows, word for word | `historica lly` -> `historically` |
 
@@ -398,11 +404,12 @@ joining paragraphs. There we keep one simple choice.
 One page, ours and Surya's (page `full_ocr/0000004`):
 
 ```text
-ours:   <|Text|><|425|><|337|><|567|><|353|><p>MAD, MAD/I, and:</p><|Text|><|65|><|709|><|229|><|730|><p>MAD (Michigan.</p>...
-Surya:  <|Text|><|425|><|334|><|571|><|354|><p>MAD, MAD/I, and:</p><|Text|><|64|><|708|><|230|><|731|><p>MAD (Michigan.</p>...
+ours:   <|Text|><|432|><|340|><|567|><|353|><p>MAD, MAD/I, and:</p>...
+Surya:  <|Text|><|425|><|334|><|571|><|354|><p>MAD, MAD/I, and:</p>...
 ```
 
-Same blocks, order, labels and tags; boxes a few thousandths apart.
+Same blocks, order, labels and tags. Our boxes sit tight on the text; Surya's own start a little further left
+and higher (0.65% of the width, 0.35% of the height), so fine-tuning on ours teaches it tighter boxes.
 
 ---
 
@@ -421,6 +428,37 @@ Checked by painting every word as a solid block in its own colour and running ea
 rotation (5°), perspective, page binding, wrinkles and curls all stay within 2-6 px of the words. (Two bugs
 found this way are fixed: OCRSmith's page curl slid boxes up to 42 px off their words, and touching lines cut
 each other's boxes in scan-simulator.)
+
+### Known problem: a turned page gets upright boxes
+
+**Surya's box is 2 points, not 4.** `x0 y0 x1 y1` is the top-left corner and the bottom-right corner. Two
+points can only draw an upright box:
+
+![Surya's box: two points, top-left and bottom-right](docs/box_two_points.png)
+
+When the page is turned (OCRSmith or scan-simulator rotation, perspective), the text is turned too. A box that
+turns with the text needs 4 points (8 numbers, blue below). With 2 points, the best possible box is the
+smallest upright box that holds the turned text (green): it touches the text's highest, lowest, leftmost and
+rightmost points, and has empty corners.
+
+![Upright box (2 points) and turned box (4 points)](docs/box_upright_vs_turned.png)
+
+**Why we keep upright boxes.** Surya's own `encode()` and parser read exactly 4 numbers per box. Training on
+4-point (8-number) boxes would change Surya's answer format, and everything that reads Surya's output would
+break. So on a turned page every label box is the tightest upright box around the turned text: correct for
+Surya's format, but it shows empty corners, and boxes of neighbouring blocks can overlap a little.
+
+On one of our turned pages (rotation, OCRSmith "archive"), the boxes of our label:
+
+![Our label boxes on a turned page](docs/turned_page_our_boxes.jpg)
+
+Surya itself does the same: its own answer on one of our turned pages (`surya_probe/batch100`, page 0000037)
+has upright boxes too, of the same size as ours (on all our turned pages: 1.03 times our box height).
+
+![Surya's own boxes on a turned page](docs/turned_page_surya_boxes.jpg)
+
+If tighter boxes on turned pages matter more than having turned pages, the way out is to turn pages less (for
+example at most 1°); the boxes then stay tight because the text is nearly straight.
 
 ---
 
@@ -451,7 +489,7 @@ It needs a read-only GitHub token in Colab's *Secrets* as `GITHUB_TOKEN` (to clo
 To make pages locally for training instead:
 
 ```bash
-.venv-pipeline\Scripts\python -m pipeline.dataset --n 1000 --out batches\epoch_001 --task full_ocr+block_ocr --tashkeel none --seed 1
+.venv-pipeline\Scripts\python -m pipeline.run dataset --n 1000 --out batches\epoch_001 --task full_ocr+block_ocr --tashkeel none --seed 1
 ```
 
 ---
@@ -459,26 +497,13 @@ To make pages locally for training instead:
 ## 11. Files
 
 ```
-pipeline/doc_pipeline.py      DocPipeline: template -> fill -> render -> effect -> labels
-pipeline/render.py            SynthDoc in Chromium: 2x render, one browser per process, word measuring
-pipeline/style.py             random typography (fonts, sizes, digits) and the text of each slot
-pipeline/themes.py            theme colours, heading / table / box styles
-pipeline/tashkeel.py          Arabic diacritics (none / partial / full)
-pipeline/text_pool.py         builds text_pool/ (Wikipedia, ar + en) and cuts text to fit each slot
-pipeline/img_pool.py          downloads img_pool/ and picks a photo for each picture slot
-pipeline/degrade.py           OCRSmith, Augraphy, scan-simulator, with strength and readability checks
-pipeline/qa.py, audit.py      checks of rendered pages and of finished samples
-pipeline/groundtruth.py       slot regions and the .md
-pipeline/labels.py            the labels JSON (words, lines, slots)
-pipeline/surya.py             Surya labels: blocks, prompts, answers
-pipeline/surya_compact.py     Surya's own compact.py (encode / decode), unchanged
-pipeline/dataset.py           the dataset command
-pipeline/server.py, static/   the website (Generate 16 samples + preview)
-pipeline/llm_templates.py     optional: templates written by an LLM (Groq or local Ollama)
+pipeline/                     the code: generator.py, compact_original.py, run.py, pools.py, llm_templates.py
+pipeline/static/              the website's page
 bank2000/                     the 2,000 templates (templates/<id>/template.html.j2 + template.json)
 synthdoc_arabic_ext/          SynthDoc's Arabic extension (a copy, so Colab gets it from this repository)
 surya_probe/                  Surya's own answers to our pages, and the scripts that asked and compared them
 notebooks/                    Colab: fine-tune Surya (ms-swift), make batches, KITAB-Bench before/after
+docs/                         the pictures in this README
 ```
 
 Not in git (made locally): `text_pool/`, `img_pool/`, `pipeline_out/`, `datasets/`, `batches/`,
@@ -504,6 +529,8 @@ paragraph, cell, list item...) and a word range, and each picture slot a hint (f
 The scripts that built `bank2000/` are in the git history up to commit d88ba8665c.
 
 **Limits:**
+- On a turned page boxes are upright, so they have empty corners and can overlap a little
+  ([why](#known-problem-a-turned-page-gets-upright-boxes)).
 - WebSight pages look like websites (menus, cards), not printed documents.
 - Text inside photos is not in the labels (photos with signs or posters in their titles are skipped).
 - Augraphy's noise is random even for the same seed, so Augraphy pages can't be remade exactly.

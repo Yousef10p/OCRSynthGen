@@ -14,9 +14,9 @@ Nothing here is needed when templates come from the bank.
 
 How a page becomes a template (as WebSight pages became bank templates): scripts, links and media are dropped,
 pictures become grey boxes (class "ph"), form fields become field slots, every piece of text becomes a slot
-{{ slot_N }} with a role from its tag, and the CSS is flipped to right to left with rtlcss (pipeline/
-rtlcss_flip.js, node; npm install in the repository folder). adapt() then gives it the bank's form: its
-language, and each grey box a picture slot.
+{{ slot_N }} with a role from its tag, and the CSS is flipped to right to left with rtlcss (node; npm install
+in the repository folder). adapt() then gives it the bank's form: its language, and each grey box a picture
+slot.
 """
 import json
 import math
@@ -31,7 +31,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup, Comment, NavigableString
 
-from pipeline.render import page_dims
+from pipeline.generator import page_dims
 
 ROOT = Path(__file__).resolve().parents[1]
 ENV_FILE = ROOT / ".env"
@@ -334,10 +334,17 @@ def strip_page(text):
     return soup, sheet, slots, f
 
 
+# Node script: a JSON array of CSS strings on stdin -> each flipped to RTL by rtlcss (null if it can't parse)
+RTLCSS_JS = ('const rtlcss = require("rtlcss"); let input = ""; process.stdin.setEncoding("utf8");'
+             ' process.stdin.on("data", (d) => (input += d)); process.stdin.on("end", () => {'
+             ' process.stdout.write(JSON.stringify(JSON.parse(input).map((css) => {'
+             ' try { return rtlcss.process(css); } catch (e) { return null; } }))); });')
+
+
 def flip(css_list):
     """Flip many CSS strings to RTL in one rtlcss (node) call."""
     node = shutil.which("node") or r"C:\Program Files\nodejs\node.exe"
-    out = subprocess.run([node, str(ROOT / "pipeline" / "rtlcss_flip.js")], input=json.dumps(css_list),
+    out = subprocess.run([node, "-e", RTLCSS_JS], input=json.dumps(css_list),
                          capture_output=True, text=True, encoding="utf-8", check=True, cwd=ROOT)
     return json.loads(out.stdout)
 

@@ -6,8 +6,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from pipeline import surya as SURYA  # noqa: E402
-from pipeline.doc_pipeline import DocPipeline  # noqa: E402
+from pipeline import generator as SURYA  # noqa: E402
+from pipeline.compact_original import encode  # noqa: E402
+from pipeline.generator import DocPipeline  # noqa: E402
 
 OUT = Path(__file__).resolve().parent / "inputs"
 PLAN = [  # (language, source, effect)
@@ -35,7 +36,7 @@ def main():
         width, height = im.size
         blks = label["surya"]["blocks"]
         index.append({"image": f"g{k:02d}_page.jpg", "kind": "page", "lang": lang, "source": source, "effect": effect,
-                      "size": [width, height], "ours_full_ocr": SURYA.full_ocr(blks, width, height),
+                      "size": [width, height], "ours_full_ocr": encode(SURYA.divs(blks, width, height)),
                       "ours_layout": SURYA.layout(blks, width, height)})
         print("page", k, lang, source, effect, len(blks), "blocks", flush=True)
         # cut-outs: one table (if any) and two other blocks of different kinds, clean of neighbours

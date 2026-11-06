@@ -29,7 +29,7 @@ MARKS = re.compile(r"[ً-ْٰـ]")  # tashkeel, superscript alef, tatweel
 
 def make(n_full, n_block):
     sys.path.insert(0, str(HERE.parent))
-    from pipeline.doc_pipeline import DocPipeline
+    from pipeline.generator import DocPipeline
     WORK.mkdir(exist_ok=True)
     lists = {"full_ocr": [], "block_ocr": []}
     k = 0
@@ -196,7 +196,8 @@ def compare_probe():
     """The same comparison on the probe's images (surya_probe/inputs): our targets as the current surya.py writes
     them from the blocks kept at probe time, next to Surya's answers in results.jsonl (4,096-token runs)."""
     sys.path.insert(0, str(HERE.parent))
-    from pipeline import surya as SURYA
+    from pipeline import generator as SURYA
+    from pipeline.compact_original import encode
     index = {d["image"]: d for d in json.loads((HERE / "inputs" / "index.json").read_text(encoding="utf-8"))}
     lines = []
     for line in (HERE / "results.jsonl").read_text(encoding="utf-8").splitlines():
@@ -210,10 +211,10 @@ def compare_probe():
             continue
         if d["kind"] == "page":
             label = json.loads((HERE / "_work" / name.replace("_page.jpg", ".json")).read_text(encoding="utf-8"))
-            ours = SURYA.full_ocr(label["surya"]["blocks"], *d["size"])
+            ours = encode(SURYA.divs(label["surya"]["blocks"], *d["size"]))
         else:
             label = {"lang": d["lang"], "effect": d["effect"]}
-            ours = SURYA.compact(d["ours_html"])
+            ours = encode(d["ours_html"])
         lines.append((name, d, label, ours, r))
     return lines
 
