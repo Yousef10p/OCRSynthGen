@@ -441,6 +441,15 @@ has upright boxes too, of the same size as ours (on all our turned pages: 1.03 t
 
 ![Surya's own boxes on a turned page](docs/turned_page_surya_boxes.jpg)
 
+**Why not keep only two of the turned corners?** Turn the box's 4 corners with the page (blue), then keep only
+its turned top-left and bottom-right corners as `x0 y0 x1 y1` (red). The box looks tighter, but on a block of
+three lines turned 4° it is 119 px tall while the text is about 200 px: the right end of the first line and the
+left end of the last line fall outside it. Any 2 points make an upright box, and the blue box's other two
+corners still stick out of it. So the only upright box that holds all the turned text is the min / max of the
+4 turned corners (green), which is what the labels use.
+
+![Blue: the 4 turned corners. Red: only the turned top-left and bottom-right corners, cuts the text off. Green: min / max of the 4 turned corners, what the labels use](docs/box_two_turned_corners.png)
+
 If tighter boxes on turned pages matter more than having turned pages, the way out is to turn pages less (for
 example at most 1°); the boxes then stay tight because the text is nearly straight.
 
