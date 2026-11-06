@@ -1,9 +1,4 @@
-"""Label helpers shared by the two attack scripts (attack.py and attack_ocrsmith.py).
-
-Needs only NumPy, since the two scripts run in different venvs (the attacks venv and OCRSmith's).
-"""
-import json
-
+"""The labels JSON of a sample: words, lines and slots with their boxes after the effects."""
 import numpy as np
 
 # Paper minus ink brightness inside word boxes (0-255). Below this the text is too faint to be a fair label.
@@ -11,6 +6,7 @@ MIN_CONTRAST = 35
 
 
 def union(boxes):
+    """The box [x, y, w, h] around boxes [x, y, w, h] (None if there are none)."""
     boxes = [b for b in boxes if b]
     if not boxes:
         return None
@@ -31,13 +27,6 @@ def contrast(gray, boxes):
     return float(np.median(values)) if values else 0.0
 
 
-def load_page(src, page):
-    """SynthDoc's word/line OCR labels and slot boxes for one page, with cut words split off."""
-    ocr = json.loads((src / "ocr" / f"{page}.json").read_text(encoding="utf-8"))
-    slots = json.loads((src / "labels" / f"{page}.json").read_text(encoding="utf-8"))["annotations"]
-    return (ocr, slots, *split_words(ocr))
-
-
 def split_words(ocr):
     """(words whose letters are whole, number of cut words dropped).
 
@@ -48,6 +37,7 @@ def split_words(ocr):
 
     def at_edge(w):
         return w["x"] <= 0.5 or w["y"] <= 0.5 or w["x"] + w["width"] >= pw or w["y"] + w["height"] >= ph
+
     def measured_wide(w):
         """A box far wider than the word's letters: punctuation at both ends of a word in right-to-left text
         puts it in several direction runs, and its box then spans the whole line, over its neighbours."""
@@ -60,8 +50,8 @@ def split_words(ocr):
 
 
 def build_label(page, size, seed, attacks, page_contrast, ocr, slots, words, word_boxes, cut):
-    """The attacked page's labels: word boxes as given, lines and slots rebuilt from their words. A line's or a
-    slot's text is its labelled words only, so a word that is cut, hidden or lost is in no text either."""
+    """The page's labels: word boxes as given, lines and slots rebuilt from their words. A line's or a slot's
+    text is its labelled words only, so a word that is cut, hidden or lost is in no text either."""
     def group(keep):
         kept = [(w, word_boxes[i]) for i, w in enumerate(words) if word_boxes[i] and keep(w)]
         return " ".join(w["text"] for w, _ in kept), union([b for _, b in kept])
@@ -81,9 +71,3 @@ def build_label(page, size, seed, attacks, page_contrast, ocr, slots, words, wor
                       for w, b in zip(words, word_boxes) if b],
             "lines": [ln for ln in lines if ln["box"]], "slots": [s for s in slot_boxes if s["box"]],
             "lost_words": sum(b is None for b in word_boxes), "cut_words_dropped": cut}
-
-
-def summary(label, words):
-    return {"page": label["page"], "attacks": label["attacks"], "contrast": label["contrast"],
-            "low_contrast": label["low_contrast"], "no_text": label["no_text"],
-            "lost_words": label["lost_words"], "words": words}

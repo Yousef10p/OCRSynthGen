@@ -1,7 +1,7 @@
 """Random visual themes: the same template looks different on every page, and always readable.
 
 theme(rng, source) -> (record, css, js). The CSS goes into the template's {{ style }} hook after the
-typography (demo/fill_style.py); the JS settings go to the page script (pipeline/doc_pipeline.py, PAGE_JS).
+typography (pipeline/style.py); the JS settings go to the page script (pipeline/render.py, PAGE_JS).
 
   * Grammar and DocLayNet templates are plain black-on-white layouts, so a theme styles them fully: a colour
     palette (13 professional accents, each dark enough to read on white) with headings in one of 6

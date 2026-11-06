@@ -1,7 +1,8 @@
 # OCRSynthGen: Arabic Document Template Bank and Synthetic OCR Generator
 
 This project turns a bank of **empty document templates** (Arabic and English) into a **labelled synthetic
-OCR dataset**: page images with word, line and block boxes, text and Markdown.
+OCR dataset for Surya OCR 2.5**: page images labelled the way Surya answers its own prompts (blocks with
+labels, boxes and HTML, written by Surya's own encoder), plus word, line and block boxes and text.
 
 A template is a page layout with no text. Every place where text should go is a placeholder such as
 `{{ slot_3 }}`, and each placeholder has a type (title, paragraph, table cell…) and a word range. The
@@ -28,10 +29,10 @@ flowchart LR
     S["2. style<br/>fonts, sizes, theme colours,<br/>heading/table/box styles"] --> R
     R["3. SynthDoc render (2x)<br/>slot boxes measured,<br/>page checked (QA)"] --> D
     D["4. degrade<br/>clean · OCRSmith · Augraphy ·<br/>scan-simulator, strength 0–100,<br/>readability checked"] --> G
-    G["5. outputs<br/>image · Markdown (ground truth) · labels · html"]
+    G["5. outputs<br/>image · Surya prompt + answer ·<br/>labels · Markdown · html"]
 ```
 
-1. **Templates** ([src/bank2000.py](src/bank2000.py)): 2,000 templates chosen for diversity (farthest-first on
+1. **Templates** (`bank2000/`): 2,000 templates chosen for diversity (farthest-first on
    layout features; no two share 75% of their features, no two have the same structure) from four sources:
    500 from the grammar (random combinations of headings, paragraphs, lists, tables, forms, card grids,
    key/value lists, stat boxes, timelines, picture rows, callouts, in single/columns/grid/sidebar/letter/report
@@ -45,13 +46,13 @@ flowchart LR
 3. **Pictures** ([pipeline/img_pool.py](pipeline/img_pool.py)): `img_pool/` holds 3,193 photos (Picsum and
    Wikimedia Commons quality images: animals, landscapes, nature, architecture, people, food, sports,
    transport, patterns); a picture slot gets one that matches its hint (a "team" slot gets people).
-4. **Style** ([demo/fill_style.py](demo/fill_style.py), [pipeline/themes.py](pipeline/themes.py)): font family,
+4. **Style** ([pipeline/style.py](pipeline/style.py), [pipeline/themes.py](pipeline/themes.py)): font family,
    size, weights, line height, alignment, margins, ink, digits, plus a theme: accent colour, heading style
    (plain, accent, underline, side bar, band, rule above), table style (grid, striped, tinted header, rules,
    boxed), box style and page tint. WebSight pages keep their own design with its colours turned around the
    colour wheel. Hundreds of different-looking pages come from one template.
-5. **Render + checks** ([pipeline/doc_pipeline.py](pipeline/doc_pipeline.py), [pipeline/qa.py](pipeline/qa.py)):
-   SynthDoc renders at 2x. Before layout, text that doesn't fit its box is fitted (tighter lines, smaller
+5. **Render + checks** ([pipeline/render.py](pipeline/render.py), [pipeline/qa.py](pipeline/qa.py)):
+   SynthDoc renders at 2x, in one Chromium kept open per process. Before layout, text that doesn't fit its box is fitted (tighter lines, smaller
    font down to 80%, then whole words dropped) and low-contrast text is darkened. After layout every word is checked: hidden, cut, outside the page, overlapping
    another slot's text, covered by a picture or anything opaque, low contrast, CSS-generated text, and
    whether it has ink in the rendered image at all. A page with any of these is
@@ -61,8 +62,13 @@ flowchart LR
    on the generator page or on the command line. After the effect every word is checked again (still there
    and inside the picture, not under a streak or blot,
    not faded, sharp enough, standing out from the noise); if not, the effect is retried lighter.
-7. **Ground truth = the Markdown** ([pipeline/groundtruth.py](pipeline/groundtruth.py)): `<name>.md` holds only
-   this, one line per slot (text block), in reading order, text first and box last, in image pixels:
+7. **Surya labels** ([pipeline/surya.py](pipeline/surya.py)): each sample is made for one Surya prompt
+   (`full_ocr` 40%, `layout` 25%, `block_ocr` 35%; `table` on request). The page's blocks get Surya's labels,
+   HTML tags, boxes (0-1000) and reading order, and the answer is written by Surya's own `encode()`
+   ([pipeline/surya_compact.py](pipeline/surya_compact.py), its compact.py unchanged). Details:
+   [OCRREADME.md](OCRREADME.md).
+8. **Markdown** ([pipeline/groundtruth.py](pipeline/groundtruth.py)): `<name>.md` holds one line per slot
+   (text block), in reading order, text first and box last, in image pixels:
 
    ```
    <text>المملكة العربية السعودية <bbox>50, 20, 450, 65</bbox></text>
@@ -81,21 +87,25 @@ cd D:\code\OCR\arabic-template-bank
 
 | In `--out` | What |
 |---|---|
-| `images/<id>.jpg` | the page |
-| `labels/<id>.json` | words, lines and slots (blocks), each with its box in image pixels and its text; how the page was made (template, style, theme, effect, strength, readability); the Wikipedia articles used |
-| `markdown/<id>.md` | the ground truth: `<text>… <bbox>x1, y1, x2, y2</bbox></text>`, one line per text block, nothing else |
+| `images/<id>.jpg` | what the model is shown: the page, or a block cut out of it (`block_ocr`, `table`) |
+| `prompts/<id>.prompt.txt` | the Surya prompt the sample is made for |
+| `targets/<id>.target.txt` / `.target.json` | Surya's answer to it (the training target) |
+| `pages/<id>_page.jpg` | the whole page, for samples whose image is a cut-out |
+| `labels/<id>.json` | words, lines, slots and Surya blocks, each with its box in image pixels and its text; how the page was made (template, style, theme, effect, strength, readability); the Wikipedia articles used |
+| `markdown/<id>.md` | `<text>… <bbox>x1, y1, x2, y2</bbox></text>`, one line per text block |
 | `html/<id>.html` | the filled page |
 | `manifest.jsonl` | one line per sample: id, `split` (train/val, 5% val), files, language, template, effects… |
 | `dataset.json` | counts and the options, sources and licences of the set |
 
-Options: `--task full_ocr|layout|block_ocr|table` (Surya OCR 2.5 prompts, this `surya` branch; see
+Options: `--task full_ocr|layout|block_ocr|table|full_ocr+block_ocr` (Surya OCR 2.5 prompts; see
 [OCRREADME.md](OCRREADME.md) and [surya-format.md](surya-format.md)),
 `--language ar|en`, `--source grammar|websight|websight2|doclaynet`, `--tashkeel none|partial|full`
 (Arabic diacritics; default 40% none, 30% partial, 30% full),
 `--effect clean|ocrsmith|augraphy|scan-simulator|augraphy+scan-simulator`,
 `--strength-ocrsmith 0.5`, `--strength-augraphy 0.5`, `--strength-scan-simulator 0.5` (0 lightest, 1
 strongest), `--val 0.05`, `--seed 0` (the same seed makes the same set). An interrupted run continues where
-it stopped when run again. Speed: about 3–6 s per sample per worker; each worker needs about 1.5 GB of memory.
+it stopped when run again. Speed: about 4 s per sample per worker (half of it the effects); each worker
+needs about 1.5 GB of memory.
 
 To look at samples one by one: `.venv-pipeline\Scripts\python pipeline\server.py`, then open
 http://localhost:8765. Menus pick the language, template source (or **Template maker: LLM** for a new Groq
@@ -112,8 +122,9 @@ box, no overlapping text), and to draw the ground-truth boxes on every page with
 .venv-pipeline\Scripts\python -m pipeline.audit pipeline_out\qa     :: audit them, draw the boxes
 ```
 
-`bank2000/` is built once and kept in git. Building it again needs the earlier bank from the git history
-(commit 2f6c254: `templates/`, `data/raw/` and `python -m src.bank2000 --workers 6`).
+`bank2000/` is built once and kept in git. The scripts that built it (`src/`: the grammar, the WebSight and
+DocLayNet converters, the diversity screening) are in the git history up to commit d88ba8665c; building it
+again also needs the earlier bank (commit 2f6c254: `templates/`, `data/raw/`).
 
 **Licences of a generated set:** the text is Wikipedia (CC BY-SA 4.0), so a set you share must keep
 CC BY-SA and the attribution (each label lists its articles); photos are from Picsum (Unsplash License) and
@@ -146,8 +157,8 @@ flowchart LR
    document), else OCRSmith, Augraphy or scan-simulator, equally often (about 28% each; Augraphy followed
    by scan-simulator is still available with `--effect augraphy+scan-simulator`). Every box moves
    with the page; faint pages are retried with a new seed.
-5. **Markdown:** the ground truth only, one `<text>… <bbox>x1, y1, x2, y2</bbox></text>` line per text block
-   in reading order. Word and line boxes are in the sample's `.json`.
+5. **Labels:** the Surya prompt and its answer, the page's Surya blocks, word, line and slot boxes (`.json`),
+   and one `<text>… <bbox>x1, y1, x2, y2</bbox></text>` line per text block (`.md`).
 
 **Text, from Wikipedia:** the words come from Arabic and English Wikipedia (the `wikimedia/wikipedia` dataset,
 dump of 2023-11-01, through Hugging Face's dataset server): edited and cited text, openly licensed
@@ -190,8 +201,10 @@ on the page that the labels don't know about. To download again (about 500 MB):
 .venv-pipeline\Scripts\python -m pipeline.img_pool
 ```
 
-Each sample writes `<name>.jpg` (final), `<name>_clean.jpg`, `<name>.html`, `<name>.md`, `<name>.json`
-(labels) and `<name>_words.jpg` / `<name>_slots.jpg` (boxes drawn).
+Each sample writes `<name>.jpg` (what the model is shown), `<name>.prompt.txt` and `<name>.target.txt` /
+`.target.json` (the Surya prompt and answer), `<name>_page.jpg` (the page, for a cut-out), `<name>.html`,
+`<name>.md`, `<name>.json` (labels), and with extras `<name>_clean.jpg` and `<name>_words.jpg` /
+`_slots.jpg` / `_blocks.jpg` (boxes drawn).
 
 ```python
 from pipeline.doc_pipeline import DocPipeline
@@ -209,10 +222,10 @@ pipe.run(n=16)                                          # sixteen
 The page has menus to force the language, the effect or the template source, and a preview window with
 tabs: final page, word boxes, slot boxes, clean render, HTML code, Markdown, labels and details (timings,
 seed). With 4 worker processes, 16 samples take about 10–15 seconds; one sample takes 2–7 seconds, most of it
-SynthDoc's render. Every run is kept in `pipeline_out/run_<time>_<port>/`.
+the effects. Every run is kept in `pipeline_out/run_<time>_<port>/`.
 
-**One environment for everything:** `.venv-pipeline` holds the packages of the SynthDoc, OCRSmith and
-attacks environments (same versions, `requirements-pipeline.txt`). SynthDoc, its Arabic extension, OCRSmith
+**One environment for everything:** `.venv-pipeline` holds the packages of SynthDoc, OCRSmith, Augraphy and
+scan-simulator (`requirements-pipeline.txt`). SynthDoc, its Arabic extension, OCRSmith
 and scan-simulator are used from their folders through a path file in the venv, without installing or
 changing them:
 
@@ -300,22 +313,25 @@ Optional: Node.js and `npm install` (rtlcss) only for LLM-written templates, and
 ## Project layout
 
 ```
-pipeline/doc_pipeline.py      DocPipeline: template -> text -> SynthDoc -> effects -> ground truth
-pipeline/dataset.py           the dataset command (many samples, manifest, train/val split)
-pipeline/server.py, static/   the sample generator page (Generate 16 samples + preview)
-pipeline/degrade.py           OCRSmith, Augraphy, scan-simulator, with strength and readability checks
-pipeline/groundtruth.py       the Markdown ground truth
-pipeline/qa.py, audit.py      checks of rendered pages and of finished samples
+pipeline/doc_pipeline.py      DocPipeline: template -> fill -> render -> effects -> labels
+pipeline/render.py            SynthDoc in Chromium: 2x render, one browser per process, word measuring, PAGE_JS
+pipeline/style.py             the random typography (fonts, sizes, digits) and the slot texts
 pipeline/themes.py            theme colours, heading / table / box styles
 pipeline/tashkeel.py          Arabic diacritics (none / partial / full)
 pipeline/text_pool.py         builds text_pool/ (Wikipedia, ar + en) and cuts text to fit each slot
 pipeline/img_pool.py          downloads img_pool/ and picks its photos
-pipeline/llm_templates.py     optional: templates written by an LLM (Groq or local Ollama)
-demo/fill_style.py            the random style (fonts, sizes, digits) and the slot texts
-synthdoc_adapter/             SynthDoc page export, labels, Augraphy and OCRSmith helpers
-src/                          template helpers (bank.py, dedup.py), bank2000.py (how the bank was chosen;
-                              adapt() also prepares LLM templates), grammar.py, near_dedup.py, from_websight.py
-config/roles.json             default word range per slot type
+pipeline/degrade.py           OCRSmith, Augraphy, scan-simulator, with strength and readability checks
+pipeline/labels.py            the labels JSON (words, lines, slots)
+pipeline/surya.py             Surya OCR 2.5 labels: blocks, prompts and answers
+pipeline/surya_compact.py     Surya's own compact.py (encode / decode), unchanged
+pipeline/groundtruth.py       slot regions and the Markdown
+pipeline/qa.py, audit.py      checks of rendered pages and of finished samples
+pipeline/dataset.py           the dataset command (many samples, manifest, train/val split)
+pipeline/server.py, static/   the sample generator page (Generate 16 samples + preview)
+pipeline/llm_templates.py     optional: templates written by an LLM (Groq or local Ollama), rtlcss_flip.js
+synthdoc_arabic_ext/          SynthDoc's Arabic extension (a copy, so Colab gets it from the repository)
+surya_probe/                  Surya's own answers to our pages, and the scripts that asked and compared them
+notebooks/                    Colab: make batches, fine-tune Surya (ms-swift), KITAB-Bench before/after
 bank2000/                     the 2,000-template bank (templates/, index.jsonl, report.json)
 text_pool/, img_pool/         Wikipedia text and photos (made locally, not in git)
 pipeline_out/                 generated samples, one folder per run (not in git)

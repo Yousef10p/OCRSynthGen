@@ -1,24 +1,31 @@
-"""DocPipeline: one class for the whole path from an empty template to a labelled, scan-like page.
+"""DocPipeline: one class for the whole path from an empty template to a page labelled the way Surya OCR 2.5
+answers it.
 
     1. template  a template from the 2,000-template bank (bank2000/, each Arabic or English), or one written
-                 by an LLM (Groq) when asked
-    2. fill      a random typography and visual theme (pipeline/themes.py), text from Wikipedia that follows
-                 one article per page (pipeline/text_pool.py), a photo from img_pool/ for every picture slot
-                 (by the slot's hint: food, people, city...)
-    3. render    SynthDoc lays the page out in Chromium (at 2x, about 192 dpi) and measures every word; a
-                 script in the page fits text to its boxes and fixes contrast first; the page is checked
-                 (pipeline/qa.py) and made again until no text is hidden, cut, overlapping or covered
+                 by an LLM (Groq) when asked (pipeline/llm_templates.py)
+    2. fill      a random typography (pipeline/style.py) and visual theme (pipeline/themes.py), text from
+                 Wikipedia that follows one article per page (pipeline/text_pool.py), a photo from img_pool/
+                 for every picture slot (by the slot's hint: food, people, city...)
+    3. render    SynthDoc lays the page out in Chromium (at 2x, about 192 dpi) and measures every word
+                 (pipeline/render.py); a script in the page fits text to its boxes and fixes contrast first;
+                 the page is checked (pipeline/qa.py) and made again until no text is hidden, cut,
+                 overlapping or covered
     4. effects   clean (15%), or OCRSmith, Augraphy or scan-simulator at a chosen strength
                  (pipeline/degrade.py); every box moves with the page; checked word by word for lost,
                  faint or blurred-away text, retried with new seeds and then less strength
-    5. outputs   the image; the slot-level ground truth (<text>... <bbox>x1, y1, x2, y2</bbox></text>, one
-                 line per filled slot, pipeline/groundtruth.py) as the Markdown; labels JSON (words, lines,
-                 slots); the filled HTML
+    5. labels    the page's blocks in Surya's format, and the answer to the Surya prompt the sample is made
+                 for (pipeline/surya.py, written by Surya's own encoder, pipeline/surya_compact.py); also the
+                 words, lines and slots with their boxes, and one <text>... <bbox>...</bbox></text> line per
+                 slot (pipeline/groundtruth.py)
 
 Each sample writes, in out_dir:
-    <name>.jpg        final page                     <name>.md       the ground truth: one line per text block,
-    <name>.json       labels: words, lines, slots                      <text>... <bbox>x1, y1, x2, y2</bbox></text>
-    <name>.html       filled page                    <name>_clean.jpg, _words.jpg, _slots.jpg (extras)
+    <name>.jpg           what the model is shown: the page, or (block_ocr, table) a block cut out of it
+    <name>.prompt.txt    the Surya prompt          <name>.target.txt / .target.json   Surya's answer to it
+    <name>_page.jpg      the whole page, when <name>.jpg is a cut-out
+    <name>.json          labels: words, lines, slots, Surya blocks, how the page was made
+    <name>.md            one <text>... <bbox>x1, y1, x2, y2</bbox></text> line per slot
+    <name>.html          the filled page
+    <name>_clean.jpg, _words.jpg, _slots.jpg, _blocks.jpg   with extras=True: the clean render, boxes drawn
 
 Runs in .venv-pipeline (SynthDoc, OCRSmith, Augraphy and scan-simulator in one environment):
 
@@ -26,180 +33,31 @@ Runs in .venv-pipeline (SynthDoc, OCRSmith, Augraphy and scan-simulator in one e
 """
 import json
 import random
-import re
-import sys
 import time
 from pathlib import Path
 
+import numpy as np
 from jinja2 import Template
 from markupsafe import Markup
 from PIL import Image, ImageDraw
 
+from pipeline import degrade as D
+from pipeline import groundtruth as GT
+from pipeline import render as R
+from pipeline import surya as SURYA
+from pipeline import tashkeel as TASHKEEL
+from pipeline.degrade import warm_up  # noqa: F401  (dataset.py and server.py call it in each worker)
+from pipeline.img_pool import ImagePool
+from pipeline.labels import build_label, contrast, split_words
+from pipeline.qa import ink_issues, render_issues
+from pipeline.style import fill, font_families, style, style_latin
+from pipeline.text_pool import TextPool
+from pipeline.themes import theme
+from synthdoc.ner_data_generator import NERDataGenerator
+from synthdoc_arabic import pipeline as synthdoc_arabic
+from synthdoc_arabic.ocr_gt import build_page_gt
+
 ROOT = Path(__file__).resolve().parents[1]
-for p in (ROOT, ROOT / "demo", ROOT / "synthdoc_adapter"):
-    if str(p) not in sys.path:
-        sys.path.insert(0, str(p))
-
-import attack  # noqa: E402  (Augraphy warm-up, word mask; synthdoc_adapter/attack.py)
-import numpy as np  # noqa: E402
-from export import synthdoc_html  # noqa: E402
-from fill_style import fill, font_families, style, style_latin  # noqa: E402
-from labels import build_label, contrast, split_words  # noqa: E402
-from playwright.sync_api import Browser  # noqa: E402
-from synthdoc.ner_data_generator import NERDataGenerator  # noqa: E402
-from synthdoc_arabic import pipeline as synthdoc_arabic  # noqa: E402
-from synthdoc_arabic.ocr_gt import build_page_gt  # noqa: E402
-
-# -- rendering at a higher resolution -----------------------------------------------------------------------
-# SynthDoc's browser page has no resolution setting: a page is screenshot at 1 pixel per CSS pixel (96 dpi;
-# 9 pt text is 12 px tall), too small for OCR training. Playwright pages are opened here with a device scale
-# factor of RENDER_SCALE (2 = about 192 dpi); the measured boxes are in CSS pixels and are scaled to match.
-RENDER_SCALE = 2
-_new_page = Browser.new_page
-
-
-def _scaled_new_page(self, *args, **kwargs):
-    kwargs.setdefault("device_scale_factor", RENDER_SCALE)
-    return _new_page(self, *args, **kwargs)
-
-
-Browser.new_page = _scaled_new_page
-
-# -- what the Arabic extension's word script measures, extended (in memory; the SynthDoc folder is unchanged)
-# Per word: cut_x, cut on its left or right; cut_y, the share of its letters' height hidden above or below
-# (measured on the letters with canvas metrics, against the clipping edge, not on the font's taller line slot);
-# slot, the template slot it is in. Per page (qa): every slot's full text (to find words that are hidden), the
-# rectangles of pictures, and every slot's text contrast against what is behind it.
-CUT_Y_JS = ("(() => { const m = ctx.measureText(shown); const base = b.t + m.fontBoundingBoxAscent;"
-            " const top = base - m.actualBoundingBoxAscent, bottom = base + m.actualBoundingBoxDescent;"
-            " return (Math.max(0, clip.t - top) + Math.max(0, bottom - clip.b)) / Math.max(1, bottom - top); })()")
-CONTRAST_JS = """
-  const rgb = (c) => { const m = (c || '').match(/[\\d.]+/g); return m ? m.map(Number) : [0, 0, 0, 0]; };
-  const lum = ([r, g, b]) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
-                               return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b); };
-  // an element's own paint: null for a picture, its colour if opaque, undefined if see-through
-  const paint = (e) => { const s = getComputedStyle(e);
-    if (s.backgroundImage && s.backgroundImage !== 'none') return null;
-    const c = rgb(s.backgroundColor); return c.length < 4 || c[3] > 0.5 ? c.slice(0, 3) : undefined; };
-  // what is painted under a point of the text: the elements stacked there, from the text down, so another
-  // element's dark band under the text counts (not only the text's own boxes); undefined if not visible there
-  const under = (el, x, y) => { if (x < 0 || y < 0 || x >= innerWidth || y >= innerHeight) return undefined;
-    const stack = document.elementsFromPoint(x, y), i = stack.findIndex((e) => e === el || el.contains(e));
-    if (i < 0) return undefined;
-    for (const e of stack.slice(i)) { const p = paint(e); if (p !== undefined) return p; }
-    return [255, 255, 255]; };
-  // otherwise: the nearest ancestor whose box covers the text (text overflowing a dark band stands on the
-  // page, not on the band)
-  const behind = (el) => { const r = el.getBoundingClientRect();
-    for (let e = el; e; e = e.parentElement) { const b = e.getBoundingClientRect();
-      if (e !== el && e !== document.documentElement && e !== document.body && (r.top < b.top - 1 || r.bottom > b.bottom + 1
-          || r.left < b.left - 1 || r.right > b.right + 1)) continue;
-      const p = paint(e); if (p !== undefined) return p; }
-    return [255, 255, 255]; };
-  const pair = (fg, bg) => { const a = lum(fg), b = lum(bg); return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05); };
-  // the worst contrast over the text's lines; the colour behind it is that of its worst line (null: a picture)
-  const look = (el) => { const fg = rgb(getComputedStyle(el).color).slice(0, 3);
-    let worst = 21, bg = null;
-    const rects = [...el.getClientRects()].filter((r) => r.width > 0 && r.height > 0).slice(0, 8);
-    for (const r of rects.length ? rects : [el.getBoundingClientRect()]) {
-      let c = under(el, r.left + r.width / 2, r.top + r.height / 2);
-      if (c === undefined) c = behind(el);
-      if (c && pair(fg, c) < worst) { worst = pair(fg, c); bg = c; }
-    }
-    return {ratio: worst, bg}; };
-  const ratio = (el) => look(el).ratio;
-"""
-QA_JS = """(() => {""" + CONTRAST_JS + """
-  const slots = {}, pictures = [], contrast = [], covered = [];
-  for (const s of content.querySelectorAll('[data-slot]')) {
-    slots[s.dataset.slot] = ((slots[s.dataset.slot] || '') + ' ' + s.textContent).trim();
-    if (s.textContent.trim()) contrast.push({slot: s.dataset.slot, ratio: Math.round(ratio(s) * 100) / 100});
-    // anything opaque painted over the text (a band, a box, a picture positioned on top of it): three points
-    // across the middle of each of its lines
-    let hits = 0;
-    for (const r of [...s.getClientRects()].filter((r) => r.width > 0 && r.height > 0)) {
-      for (const f of [0.2, 0.5, 0.8]) {
-        const x = r.left + r.width * f, y = r.top + r.height / 2;
-        if (x < 0 || y < 0 || x >= innerWidth || y >= innerHeight) continue;
-        const stack = document.elementsFromPoint(x, y);
-        const i = stack.findIndex((e) => e === s || s.contains(e));
-        const above = i < 0 ? stack.slice(0, 1) : stack.slice(0, i);
-        if (above.some((e) => !e.contains(s) && paint(e) !== undefined)) hits++;
-      }
-    }
-    if (hits) covered.push({slot: s.dataset.slot, points: hits});
-  }
-  for (const im of content.querySelectorAll('img, .ph, .pic-frame, [data-img]')) {
-    const r = im.getBoundingClientRect();
-    if (r.width >= 2 && r.height >= 2) pictures.push({x: r.left - pr.left, y: r.top - pr.top, width: r.width, height: r.height});
-  }
-  // the page's structure, for block-level labels (pipeline/surya.py): tables with their rows and cells, lists
-  // with their items and marker, pictures, each slot's heading tag and weight, all in document order
-  const rel = (r) => ({x: r.left - pr.left, y: r.top - pr.top, width: r.width, height: r.height});
-  const own = (el, scope) => [...el.querySelectorAll('[data-slot]')].filter((s) => s.closest(scope) === el)
-    .map((s) => s.dataset.slot);
-  const struct = {tables: [], lists: [], images: [], styles: {}, order: {}};
-  let order = 0;
-  for (const el of content.querySelectorAll('[data-slot], table, ul, ol, .pic-frame, [data-img], img')) {
-    el.dataset.order = order++;
-  }
-  for (const t of content.querySelectorAll('table')) {
-    if (t.parentElement.closest('table')) continue;  // a table inside a cell belongs to the outer table
-    const rows = [];
-    for (const tr of t.querySelectorAll('tr')) {
-      if (tr.closest('table') !== t) continue;
-      const cells = [...tr.children].filter((c) => c.tagName === 'TD' || c.tagName === 'TH').map((c) => ({
-        tag: c.tagName.toLowerCase(), colspan: c.colSpan || 1, rowspan: c.rowSpan || 1, rect: rel(c.getBoundingClientRect()),
-        slots: [...c.querySelectorAll('[data-slot]')].map((s) => s.dataset.slot),
-        bold: +getComputedStyle(c).fontWeight >= 600}));
-      if (cells.length) rows.push({rect: rel(tr.getBoundingClientRect()), cells});
-    }
-    if (rows.length) struct.tables.push({rect: rel(t.getBoundingClientRect()), rows, order: +t.dataset.order});
-  }
-  for (const l of content.querySelectorAll('ul, ol')) {
-    if (l.parentElement.closest('ul, ol, table')) continue;  // nested lists are items of the outer one
-    const items = [...l.querySelectorAll('li')].map((li) => own(li, 'li')).filter((s) => s.length);
-    const first = l.querySelector('li');
-    const marker = first && getComputedStyle(first).display === 'list-item' ? getComputedStyle(first).listStyleType : 'none';
-    if (items.length) struct.lists.push({rect: rel(l.getBoundingClientRect()), items, marker, order: +l.dataset.order});
-  }
-  for (const im of content.querySelectorAll('.pic-frame, [data-img], img')) {
-    if (im.tagName === 'IMG' && im.closest('.pic-frame, [data-img]')) continue;
-    const r = im.getBoundingClientRect();
-    if (r.width < 8 || r.height < 8) continue;
-    const img = im.tagName === 'IMG' ? im : im.querySelector('img');
-    const src = img ? img.getAttribute('src') || '' : (getComputedStyle(im).backgroundImage.match(/url\\("?([^")]*)"?\\)/) || [])[1] || '';
-    struct.images.push({rect: rel(r), src: src.split('/').pop(), order: +im.dataset.order});
-  }
-  for (const s of content.querySelectorAll('[data-slot]')) {
-    const cs = getComputedStyle(s), h = s.closest('h1, h2, h3, h4, h5, h6');
-    struct.styles[s.dataset.slot] = {h: h ? h.tagName.toLowerCase() : null, bold: +cs.fontWeight >= 600,
-                                     italic: cs.fontStyle === 'italic'};
-    if (!(s.dataset.slot in struct.order)) struct.order[s.dataset.slot] = +s.dataset.order;
-  }
-  return {slots, pictures, contrast, covered, struct};
-})()"""
-# glyph_y: the top and bottom of the word's letters on the page (canvas metrics around the baseline). Word boxes
-# are the font's whole line slot, taller than the letters: on closely set lines the slots of two lines overlap
-# while the letters don't, so overlap is checked on the letters.
-GLYPH_JS = ("(() => { const m = ctx.measureText(shown); const base = b.t + m.fontBoundingBoxAscent;"
-            " return [base - m.actualBoundingBoxAscent - pr.top, base + m.actualBoundingBoxDescent - pr.top]; })()")
-if "cut_x:" not in synthdoc_arabic.WORDS_JS:
-    synthdoc_arabic.WORDS_JS = synthdoc_arabic.WORDS_JS.replace(
-        "split_word:", "cut_x: (l > b.l + 1 || r < b.r - 1), cut_y: " + CUT_Y_JS + ", glyph_y: " + GLYPH_JS
-                       + ", slot: (el.closest('[data-slot]') || {dataset: {}}).dataset.slot || null, split_word:", 1)
-    synthdoc_arabic.WORDS_JS = synthdoc_arabic.WORDS_JS.replace(
-        "generated_text: generated};", "generated_text: generated, qa: " + QA_JS + "};", 1)
-
-from pipeline import degrade as D  # noqa: E402
-from pipeline import groundtruth as GT  # noqa: E402
-from pipeline import surya as SURYA  # noqa: E402
-from pipeline import tashkeel as TASHKEEL  # noqa: E402
-from pipeline.img_pool import ImagePool  # noqa: E402
-from pipeline.qa import ink_issues, render_issues  # noqa: E402
-from pipeline.text_pool import TextPool  # noqa: E402
-from pipeline.themes import theme  # noqa: E402
-
 BANK2000 = ROOT / "bank2000"
 LANGUAGES = {"ar": 0.5, "en": 0.5}
 # "clean": some pages stay exactly as SynthDoc rendered them (born-digital documents); the rest are split evenly
@@ -208,134 +66,6 @@ EFFECTS = {"clean": 0.15, "ocrsmith": 0.85 / 3, "augraphy": 0.85 / 3, "scan-simu
 STRENGTHS = {tool: D.DEFAULT_STRENGTH for tool in D.TOOLS}
 ATTEMPTS = 8         # renders per sample until one passes the checks (a new template every second one)
 EFFECT_TRIES = 3     # seeds per strength level before the strength is lowered
-
-# Runs in Paged.js's "before" hook, once the page's fonts and pictures have loaded and before Paged.js lays the
-# page out (window.PagedConfig must exist before Paged.js loads: this goes at the end of <head>, before
-# SynthDoc's Paged.js script):
-#  1. colours: a web design's colours are turned around the colour wheel (themes.py: hue only, so contrast
-#     stays);
-#  2. text that doesn't fit its box (a template box sized for its source's text is often too small for the
-#     words a slot gets in our fonts): line-height 1.2, then a smaller font down to 80%, then words removed
-#     from the end of its last slot until it fits;
-#  3. a row wider than its column (a form row: a no-wrap label and a 5em value in a narrow column) may wrap;
-#  4. the page itself is one sheet with overflow:hidden: a slot running into the bottom margin or off a side
-#     loses words from its end; a slot left empty hides its paragraph;
-#  5. contrast: a slot whose text has less than 4.5:1 contrast with what is behind it gets near-black or white
-#     text, whichever reads better;
-#  6. empty boxes of a solid colour, at least 30 x 30 px (a web page's image placeholder the converter couldn't
-#     name: a grey or coloured square or banner with nothing in it) get a photo.
-PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
-  const cfg = SYNTH_CONFIG;
-  await document.fonts.ready;
-  await Promise.all([...document.images].map((i) => i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; })));""" \
-  + CONTRAST_JS + """
-  if (cfg.hue || cfg.saturate !== 1) {
-    const turn = (c) => { const m = (c || '').match(/[\\d.]+/g); if (!m || m.length < 3) return null;
-      let [r, g, b] = m.slice(0, 3).map((v) => v / 255); const a = m[3] === undefined ? 1 : +m[3];
-      const mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2; let h = 0, s = 0;
-      if (mx !== mn) { const d = mx - mn; s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
-        h = mx === r ? (g - b) / d + (g < b ? 6 : 0) : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h *= 60; }
-      if (s < 0.08) return null;
-      h = (h + cfg.hue) % 360; s = Math.min(1, s * cfg.saturate);
-      return `hsla(${h.toFixed(1)}, ${(s * 100).toFixed(1)}%, ${(l * 100).toFixed(1)}%, ${a})`; };
-    for (const el of document.body.querySelectorAll('*')) {
-      if (el.tagName === 'IMG') continue;
-      const cs = getComputedStyle(el);
-      for (const [prop, val] of [['color', cs.color], ['background-color', cs.backgroundColor],
-          ['border-top-color', cs.borderTopColor], ['border-bottom-color', cs.borderBottomColor],
-          ['border-left-color', cs.borderLeftColor], ['border-right-color', cs.borderRightColor]]) {
-        const t = turn(val); if (t) el.style.setProperty(prop, t);
-      }
-    }
-  }
-  for (const el of document.body.querySelectorAll("*")) {
-    if (el.classList.contains("page") || !el.textContent.trim()) continue;
-    const cs = getComputedStyle(el);
-    if (!/hidden|clip/.test(cs.overflowX + " " + cs.overflowY)) continue;
-    const fits = () => el.scrollHeight <= el.clientHeight + 1 && el.scrollWidth <= el.clientWidth + 1;
-    if (fits()) continue;
-    el.style.setProperty("line-height", "1.2", "important");
-    let size = parseFloat(cs.fontSize);
-    for (const min = size * 0.8; !fits() && size > min;) {
-      size *= 0.95;
-      el.style.setProperty("font-size", size + "px", "important");
-    }
-    const spans = [...el.querySelectorAll("[data-slot]")];
-    for (let i = spans.length - 1; i >= 0 && !fits(); i--) {
-      const words = spans[i].textContent.split(/\\s+/).filter(Boolean);
-      let lo = 0, hi = words.length;  // the most words that still fit
-      while (lo < hi) {
-        const mid = Math.ceil((lo + hi) / 2);
-        spans[i].textContent = words.slice(0, mid).join(" ");
-        if (fits()) lo = mid; else hi = mid - 1;
-      }
-      spans[i].textContent = words.slice(0, lo).join(" ");
-    }
-  }
-  // a box whose text fits can still clip the tops and tails of letters (hamza, accents and descenders reach
-  // past the line box, and DocLayNet boxes are tight): it lets their ink show; a box framing a picture keeps
-  // clipping it
-  for (const el of document.body.querySelectorAll("*")) {
-    if (el.classList.contains("page") || el.classList.contains("pic-frame") || !el.textContent.trim()) continue;
-    if (el.querySelector("img, .pic-frame, [data-img]")) continue;
-    const cs = getComputedStyle(el);
-    if (!/hidden|clip/.test(cs.overflowX + " " + cs.overflowY)) continue;
-    if (el.scrollHeight <= el.clientHeight + 1 && el.scrollWidth <= el.clientWidth + 1)
-      el.style.setProperty("overflow", "visible", "important");
-  }
-  for (const el of document.body.querySelectorAll("*")) {
-    if (el.classList.contains("page") || !el.textContent.trim() || el.scrollWidth <= el.clientWidth + 1) continue;
-    if (/hidden|clip/.test(getComputedStyle(el).overflowX) || !el.clientWidth) continue;
-    el.style.setProperty("flex-wrap", "wrap", "important");
-    for (const c of el.children) {
-      c.style.setProperty("white-space", "normal", "important");
-      c.style.setProperty("min-inline-size", "0", "important");
-      c.style.setProperty("overflow-wrap", "anywhere", "important");
-    }
-  }
-  for (const page of document.querySelectorAll(".page")) {
-    const pr = page.getBoundingClientRect(), bottom = pr.bottom - parseFloat(getComputedStyle(page).paddingBottom);
-    const out = (el) => [...el.getClientRects()].some((r) => r.bottom > bottom + 1 || r.right > pr.right + 1
-                                                             || r.left < pr.left - 1);
-    const spans = [...page.querySelectorAll("[data-slot]")];
-    for (let i = spans.length - 1; i >= 0; i--) {
-      const s = spans[i];
-      if (!out(s)) continue;
-      const words = s.textContent.split(/\\s+/).filter(Boolean);
-      let lo = 0, hi = words.length;  // the most words that stay on the page
-      while (lo < hi) {
-        const mid = Math.ceil((lo + hi) / 2);
-        s.textContent = words.slice(0, mid).join(" ");
-        if (out(s)) hi = mid - 1; else lo = mid;
-      }
-      s.textContent = words.slice(0, lo).join(" ");
-      const block = s.closest("p, li, h1, h2, h3, h4, h5, h6, blockquote, figcaption, dt, dd, caption, label");
-      if (!lo && block && !block.textContent.trim()) block.style.display = "none";
-    }
-  }
-  for (const s of document.querySelectorAll("[data-slot]")) {
-    if (!s.textContent.trim()) continue;
-    const {ratio: r, bg} = look(s);
-    if (r >= 4.5) continue;
-    s.style.setProperty("color", lum(bg || [255, 255, 255]) > 0.18 ? "#111111" : "#ffffff", "important");
-  }
-  const photos = cfg.photos; let k = 0;
-  for (const el of document.body.querySelectorAll("*")) {
-    if (k >= photos.length) break;
-    if (/^(TD|TH|TR|TABLE|INPUT|SELECT|TEXTAREA|BUTTON|HR|BR|IMG|SVG|SCRIPT|STYLE)$/.test(el.tagName)) continue;
-    if (el.textContent.trim() || el.querySelector("img") || el.dataset.img) continue;
-    const r = el.getBoundingClientRect();
-    if (r.width < 30 || r.height < 30) continue;
-    const m = getComputedStyle(el).backgroundColor.match(/\\d+(\\.\\d+)?/g);
-    if (!m || (m[3] !== undefined && +m[3] === 0)) continue;
-    const [R, G, B] = m.map(Number), mean = (R + G + B) / 3;
-    if (mean > 238) continue;  // a white or near-white box is page, not a picture placeholder
-    el.style.setProperty("background", `url("${photos[k++]}") center / cover no-repeat`, "important");
-    el.dataset.img = "grey-box";
-  }
-}};"""
-# The opening tag of a grey picture box (old bank): any element whose class list has "ph"
-PICTURE_BOX = re.compile(r'<(\w+)\b([^>]*\bclass="(?:[^"]*\s)?ph(?:\s[^"]*)?"[^>]*)>')
 _cache = {}
 
 
@@ -406,7 +136,7 @@ class DocPipeline:
         note = ""
         if self.templates == "llm":
             if self.llm is not None and self.llm.available():
-                from src.bank2000 import adapt  # same form as the bank: language, <img> picture slots
+                from pipeline.llm_templates import adapt  # same form as the bank: language, <img> picture slots
                 try:
                     made = self.llm.template(rng, f"llm_{name}")
                 except Exception as e:  # e.g. still rate-limited after waiting: reuse an earlier LLM template
@@ -436,9 +166,9 @@ class DocPipeline:
     def fill(self, meta, text, folder, rng, lang):
         """(page for SynthDoc, values for its slots, pictures and style, record of everything picked)."""
         if lang == "ar":
-            s, css = style(rng, arabic_fonts(), transparent=False)
+            s, css = style(rng, arabic_fonts())
         else:
-            s, css = style_latin(rng, transparent=False)
+            s, css = style_latin(rng)
         look, theme_css, theme_js = theme(rng, meta["source"])
         words = text_pool(lang) if self.text == "wikipedia" else None
         if words:
@@ -456,8 +186,8 @@ class DocPipeline:
             values[pic["id"]] = Markup(photo.as_uri() if photo else "")
             if photo:
                 used.append(photo.name)
-        page, more = self.fill_pictures(synthdoc_html(meta, text, lang, folder), rng, theme_js)
-        s = {**s, "theme": look, "tashkeel": level, "pictures": used + more, "text": self.text,
+        page = self.page_script(R.synthdoc_html(meta, text, lang, folder), rng, theme_js)
+        s = {**s, "theme": look, "tashkeel": level, "pictures": used, "text": self.text,
              "text_sources": words.sources() if words else []}
         # The style travels with the page, so SynthDoc's word labels record it (the Arabic extension reads this)
         variant = {"template": meta["id"], "source": meta["source"], "lang": lang, **s}
@@ -465,23 +195,12 @@ class DocPipeline:
         page = page.replace("</head>", f'<meta name="synthdoc-ar-variant" content="{tag}">\n</head>', 1)
         return page, {**values, "style": Markup(css + theme_css)}, s
 
-    def fill_pictures(self, page, rng, theme_js=None):
-        """Grey picture boxes of the old bank get a photo as background; the page script is added."""
-        used = []
-        if self.pictures:
-            def put(m):
-                photo = self.pictures.pick(rng, re.search(r'data-hint="([^"]*)"', m.group(2)) and
-                                        re.search(r'data-hint="([^"]*)"', m.group(2)).group(1))
-                used.append(photo.name)
-                bg = f"background: url({photo.as_uri()}) center / cover no-repeat !important;"
-                attrs = m.group(2)
-                attrs = attrs.replace(' style="', f' style="{bg} ', 1) if ' style="' in attrs else f'{attrs} style="{bg}"'
-                return f'<{m.group(1)}{attrs} data-img="img_pool/{photo.name}">'
-            page = PICTURE_BOX.sub(put, page)
+    def page_script(self, page, rng, theme_js):
+        """The page with PAGE_JS (pipeline/render.py) added: the theme's colours and 12 photos for empty boxes."""
         config = {"photos": [self.pictures.pick(rng).as_uri() for _ in range(12)] if self.pictures else [],
                   "hue": 0, "saturate": 1.0, **(theme_js or {})}
-        script = PAGE_JS.replace("SYNTH_CONFIG", json.dumps(config))
-        return page.replace("</head>", f"<script>{script}</script>\n</head>", 1), used
+        script = R.PAGE_JS.replace("SYNTH_CONFIG", json.dumps(config))
+        return page.replace("</head>", f"<script>{script}</script>\n</head>", 1)
 
     # -- 3. render --------------------------------------------------------------------------------------------
 
@@ -543,8 +262,6 @@ class DocPipeline:
         return (clean, exact, ["clean (effect left text unreadable)"], 0.0, {"lost": 0, "faint": 0.0, "sharpness": 1.0},
                 same)
 
-    # -- 5. outputs -------------------------------------------------------------------------------------------
-
     # -- one sample, many samples ---------------------------------------------------------------------------
 
     def sample(self, seed, name=None, language=None, effect=None, task=None):
@@ -600,7 +317,7 @@ class DocPipeline:
         label.update({"slots": regions, "template": meta["id"], "source": meta["source"], "lang": lang,
                       "effect": effect, "strength": strength, "legibility": check, "style": s,
                       "pages_rendered": pages, "attempts": attempts, "rejected": rejected,
-                      "render_scale": RENDER_SCALE})
+                      "render_scale": R.RENDER_SCALE})
         t["effects"] = time.perf_counter() - mark
         mark = time.perf_counter()
         # The HTML says exactly what is on the page: each slot holds its labelled words
@@ -714,11 +431,6 @@ def scale_measurements(ocr, slots, qa, k):
         for key in ("x", "y", "width", "height"):
             if key in g:
                 g[key] *= k
-
-
-def warm_up():
-    """Augraphy compiles its noise code (numba) on first use, about 15 s: do it before the first real page."""
-    attack.run_augraphy(np.full((200, 200, 3), 255, np.uint8), 0)
 
 
 def draw(image, boxes, color, path):

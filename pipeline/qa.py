@@ -1,6 +1,6 @@
 """Quality checks on a rendered page, before it can become a training sample.
 
-render_issues() looks at what the browser measured after SynthDoc laid the page out (pipeline/doc_pipeline.py
+render_issues() looks at what the browser measured after SynthDoc laid the page out (pipeline/render.py
 adds the measurements to the Arabic extension's word script) and counts, per kind of problem:
 
   hidden      words that are in a slot's text but were not measured on the page (fully clipped, outside every
@@ -21,7 +21,6 @@ DocPipeline makes the page again (new style and text, then another template) unt
 sample's ground truth always matches what is visible. run() is the test harness: python -m pipeline.qa.
 """
 import json
-import random
 import re
 import sys
 import time

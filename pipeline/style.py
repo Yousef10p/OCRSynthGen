@@ -1,7 +1,8 @@
-"""Text and style for filling bank templates: our sample Arabic text and a random typography per page.
+"""Text and style for filling a template: the text of each slot and a random typography per page.
 
-Shared by demo/render_demo.py and synthdoc_adapter/, so it needs only Pillow (no OCRSmith install);
-the fonts themselves are read from OCRSmith's font folder.
+Slots get text from the Wikipedia text pool (pipeline/text_pool.py) or, without it, from the sample
+sentences below; numbers, dates and phone numbers are random. Arabic fonts are read from OCRSmith's font
+folder, English pages use installed Latin fonts.
 """
 import html
 from pathlib import Path
@@ -139,10 +140,8 @@ def pick_weight(rng, faces, wanted):
     return min(weights, key=lambda w: abs(w - rng.choice(wanted)))
 
 
-def style(rng, families, transparent=True):
-    """Random typography for one page, written as CSS for the template's {{ style }} hook.
-
-    transparent=True clears the page background, so the render can be laid on paper afterwards."""
+def style(rng, families):
+    """Random typography for one page: (its settings, CSS for the template's {{ style }} hook)."""
     body_family = rng.choice(sorted(families))
     head_family = body_family if rng.random() < 0.7 else rng.choice(sorted(families))
     body_w = pick_weight(rng, families[body_family], [300, 400, 400, 500])
@@ -152,16 +151,16 @@ def style(rng, families, transparent=True):
         f'@font-face {{ font-family: "{fam}"; src: url("{path.as_uri()}"); font-weight: {w};'
         f' font-style: {"italic" if it else "normal"}; }}' + "\n"
         for fam in sorted({body_family, head_family}) for (w, it), path in families[fam].items())
-    return s, faces + style_css(s, transparent)
+    return s, faces + style_css(s)
 
 
-def style_latin(rng, transparent=True):
+def style_latin(rng):
     """The same random typography for an English page, from installed Latin fonts."""
     body_family = rng.choice(LATIN_FONTS)
     head_family = body_family if rng.random() < 0.7 else rng.choice(LATIN_FONTS)
     s = page_style(rng, body_family, head_family, 400, 700, "western")
     # Arabic letter numbering in lists means nothing on an English page
-    return s, style_css(s, transparent) + "ol { list-style-type: decimal !important; }\n"
+    return s, style_css(s) + "ol { list-style-type: decimal !important; }\n"
 
 
 def page_style(rng, body_family, head_family, body_w, head_w, digits=None):
@@ -173,11 +172,9 @@ def page_style(rng, body_family, head_family, body_w, head_w, digits=None):
             "ink": f"rgb{ink}", "digits": digits or rng.choice(["western", "western", "arabic-indic"])}
 
 
-def style_css(s, transparent):
-    clear = " background: transparent !important;" if transparent else ""
+def style_css(s):
     return (f':root {{ --font-body: "{s["font"]}", serif; --font-heading: "{s["heading_font"]}", serif;'
             f' --base-size: {s["size_pt"]}pt; --line-height: {s["line_height"]}; --align: {s["align"]};'
             f' --page-margin: {s["margin_mm"]}mm; }}\n'
-            + ("html, body {" + clear + " }\n" if transparent else "")
-            + f".page {{ color: {s['ink']}; font-weight: {s['body_weight']};{clear} }}\n"
+            f".page {{ color: {s['ink']}; font-weight: {s['body_weight']}; }}\n"
             f"h1, h2, h3, h4, th {{ font-weight: {s['heading_weight']}; }}\n")

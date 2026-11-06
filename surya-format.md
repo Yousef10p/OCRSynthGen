@@ -1,6 +1,6 @@
 # surya-format: training pages in Surya OCR 2.5's own output format
 
-The `surya` branch changes one thing about the generator:
+Labelling for Surya changes one thing about the generator:
 **every page is made for one of Surya OCR 2.5's prompts, and its label is the answer Surya 2.5 gives to that
 prompt, written exactly the way the model writes it.** Everything else (templates, Wikipedia text, styling,
 SynthDoc rendering, effects, checks) is the same pipeline as on `main`.
@@ -51,7 +51,7 @@ block has no `</div>`; nothing (no newline) between blocks; `</td>`, `</th>` and
 `</table>`, `</p>`, `</li>`, `</ul>`, `</h1>` are written); a merged table cell is a `data-kind="parent"` cell
 with `data-cs` (columns) or `data-rs` (rows), followed by `data-kind="ghost"` cells for the places it covers.
 
-Real examples from this branch:
+Real examples from the generator:
 
 `full_ocr` (an Arabic grammar page; the real file is one long line):
 
@@ -288,7 +288,7 @@ fixed positions) top to bottom in bands, right to left for Arabic and left to ri
 
 ## 5. How boxes survive the effects
 
-Effects can turn, warp or crop the page. Word boxes always moved with the page; on this branch, table, row,
+Effects can turn, warp or crop the page. Word boxes always moved with the page; now table, row,
 column, list and picture boxes move too:
 
 ```mermaid
@@ -346,7 +346,7 @@ In a dataset (`pipeline.dataset`): `images/`, `prompts/`, `targets/`, `pages/`, 
 
 ## 8. How to run it: commands and Python
 
-All commands run from this branch's folder:
+All commands run from the repository folder:
 
 ```bash
 cd D:\code\OCR\arabic-template-bank-surya

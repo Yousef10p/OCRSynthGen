@@ -333,6 +333,18 @@ each is at most 6 words and less than 0.2 of a line apart; 3 of 31 when further 
 - A word flagged as clipped was left out of the label while its letters still showed (17 words on 7 of 400
   pages). Now such a page is made again, like any page with cut text: 0 words left out on 200 new pages.
 
+**8.11 Boxes stay on their words when the page is turned, curled or warped.** Checked by painting every word
+as a solid block in its own colour and running each tool's moving steps alone: rotation (5°), perspective,
+page binding and wrinkles all land within 2-6 px of the painted words. Two fixes (pipeline/degrade.py):
+
+- OCRSmith's page curl moved each box corner by the warp read at the corner's old place instead of its new
+  one, so near the curled edge boxes slid off their words: 35-58% of words more than 4 px off, up to 42 px.
+  Now the corner's new place is solved for: at most 5 px. Table, row, column, list and picture corners move
+  the same way.
+- scan-simulator's boxes come from a word-id mask moved with the page. Where two lines' boxes touched, the
+  later word was painted over the earlier one and cut its box (16 of 7,371 words, up to 9 px). Overlapping
+  words now go in separate mask layers: 0 words cut.
+
 ---
 
 ## 9. What Surya does not do the same way twice

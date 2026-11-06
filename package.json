@@ -1,7 +1,7 @@
 {
   "name": "arabic-template-bank",
   "private": true,
-  "description": "rtlcss is used by src/from_websight.py to flip WebSight CSS to RTL",
+  "description": "rtlcss flips the CSS of LLM-written pages to right to left (pipeline/llm_templates.py)",
   "dependencies": {
     "rtlcss": "^4.3.0"
   }

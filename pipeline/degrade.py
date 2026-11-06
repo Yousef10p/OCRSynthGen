@@ -12,8 +12,9 @@ Every tool takes a strength from 0 to 1 (the generator page has a slider per too
   * scan-simulator: the chosen preset's transforms (rotation, perspective, folds, noise, blur, stains...) have
     their ranges scaled by f around neutral and their probabilities by (0.5 + strength).
 
-Boxes move with the page: OCRSmith moves its own annotation (Page/Region/Line/Word); scan-simulator warps a
-16-bit word-id mask with the image; Augraphy moves nothing.
+Boxes move with the page: OCRSmith moves its own annotation (Page/Region/Line/Word: each word's four corners,
+through the same rotation, perspective, curl or wrinkles as the pixels); scan-simulator warps a word-id mask
+with the image (word_mask: words that overlap go in separate layers); Augraphy moves nothing.
 
 legibility() checks the result word by word, so a strong setting can't silently destroy text: no word may be
 lost (pushed off the page, under a hole), at most 1% of words may be faint (ink vs paper < 25 of 255) or
@@ -23,25 +24,25 @@ with new seeds, then with less strength, and keeps only a page that passes.
 """
 import copy
 import random
-import sys
-from pathlib import Path
 
 import cv2
 import numpy as np
+from ocrsmith.core.backgrounds import gradient_background, image_background, paper_background, solid_background
+from ocrsmith.core.degradations import build_preset
+from ocrsmith.core.degradations import physical as _ocr_physical
+from ocrsmith.core.degradations.base import map_page as _ocr_map_page
+from ocrsmith.domain.annotations import Line, Page, Region, RegionType, Word
+from ocrsmith.domain.geometry import BBox
+from ocrsmith.text.script import Direction
 from PIL import Image
+from scan_simulator import ScanSimulator
+from scan_simulator.config import PipelineConfig
+from scan_simulator.presets import PRESETS as SCAN_PRESETS
+from scan_simulator.transforms import damage as _scan_damage, paper as _scan_paper, scanner as _scan_scanner
+from scipy import fft as _fft
+from scipy.ndimage import find_objects, gaussian_filter as _gaussian_filter
 
-for _p in (Path(__file__).resolve().parents[1] / "synthdoc_adapter", Path(__file__).resolve().parents[1] / "demo"):
-    if str(_p) not in sys.path:
-        sys.path.insert(0, str(_p))
-import attack  # noqa: E402  synthdoc_adapter/attack.py (Augraphy helpers, word mask)
-import attack_ocrsmith  # noqa: E402  synthdoc_adapter/attack_ocrsmith.py (OCRSmith paper, Page conversion)
-from ocrsmith.core.degradations import build_preset  # noqa: E402
-from scan_simulator import ScanSimulator  # noqa: E402
-from scan_simulator.config import PipelineConfig  # noqa: E402
-from scan_simulator.presets import PRESETS as SCAN_PRESETS  # noqa: E402
-from scan_simulator.transforms import damage as _scan_damage, paper as _scan_paper, scanner as _scan_scanner  # noqa: E402
-from scipy import fft as _fft  # noqa: E402
-from scipy.ndimage import gaussian_filter as _gaussian_filter  # noqa: E402
+from pipeline.style import OCRSMITH
 
 
 # scan-simulator blurs whole pages with scipy's gaussian_filter at radii up to a fifth of the page (paper colour,
@@ -82,10 +83,35 @@ def fast_gaussian_filter(input, sigma, order=0, output=None, mode="reflect", cva
 for _module in (_scan_damage, _scan_paper, _scan_scanner):
     _module.gaussian_filter = fast_gaussian_filter
 
+
+# OCRSmith's page curl and wrinkles move the pixels by a field d: the new pixel q shows the old pixel q + d(q).
+# Its boxes move each corner p to p - d(p), the field read at the old place, but the corner's new place q is
+# where q + d(q) = p. Where the field changes fast (near a curled edge) the two differ by up to 40 px: boxes
+# slid off their words. Here the corner's new place is found by repeating q = p - d(q) (the field changes by
+# well under a pixel per pixel, so this converges in a few rounds). The pixels are unchanged. Replaced in
+# memory; OCRSmith's folder is not changed.
+def _displace(self, image, page, rng):
+    width, height = image.size
+    dx, dy = self._field(width, height, rng)[:2]
+    dx, dy = np.broadcast_to(dx, (height, width)), np.broadcast_to(dy, (height, width))
+
+    def mapper(x, y):
+        qx, qy = x, y
+        for _ in range(10):
+            col, row = min(max(int(round(qx)), 0), width - 1), min(max(int(round(qy)), 0), height - 1)
+            qx, qy = x - float(dx[row, col]), y - float(dy[row, col])
+        return qx, qy
+    return _ocr_physical._remap(image, dx, dy, self.fill), _ocr_map_page(page, mapper, width, height), self._field_params
+
+
+_ocr_physical._DisplacementDegradation.apply = _displace
+
 TOOLS = ("ocrsmith", "augraphy", "scan-simulator")
 DEFAULT_STRENGTH = 0.5
-OCRSMITH_PRESETS = attack_ocrsmith.PRESETS  # scan 4, photo 3, fax 0.7, archive 1.5
-SCAN_PRESET_WEIGHTS = attack.PRESETS        # scan-clean, scan-heavy, photo-indoor, photo-outdoor, photocopy, archive
+# how often each preset is picked
+OCRSMITH_PRESETS = {"scan": 4.0, "photo": 3.0, "fax": 0.7, "archive": 1.5}
+SCAN_PRESET_WEIGHTS = {"scan-clean": 2, "scan-heavy": 2, "photo-indoor": 2, "photo-outdoor": 2, "photocopy": 1.5,
+                       "archive": 1.5}
 
 
 def numeric(v):
@@ -132,15 +158,65 @@ def ocrsmith_pipeline(preset, strength):
     return pipeline
 
 
+def ocrsmith_paper(rng, w, h):
+    """An OCRSmith paper for the page to be printed on: (RGBA image, its kind)."""
+    kind = rng.choices(["paper", "solid", "gradient", "photo texture"], weights=[5, 2, 1.5, 0.8])[0]
+
+    def tint():
+        # One factor for all channels, from cream to white: real paper never turns pink or green.
+        f = rng.random()
+        return tuple(int(a + f * (b - a)) for a, b in zip((226, 218, 198), (255, 255, 252)))
+
+    if kind == "paper":
+        bg = paper_background(tint(), rng.uniform(2.0, 9.0), rng)
+    elif kind == "solid":
+        bg = solid_background(tint())
+    elif kind == "gradient":
+        bg = gradient_background(tint(), tint(), rng.choice(["horizontal", "vertical", "diagonal"]))
+    else:
+        # OCRSmith's other photos (bricks, containers, city...) hide the text; a document sits on paper.
+        kind = "photo texture (white paper)"
+        bg = image_background(OCRSMITH / "backgrounds" / "white_paper.jpg")
+    return bg(w, h).convert("RGBA"), kind
+
+
+def to_page(words, width, height):
+    """Words as an OCRSmith Page (which its degradations move): one region per line, each word's text set to
+    its index."""
+    by_line = {}
+    for i, w in enumerate(words):
+        by_line.setdefault(w["line_id"], []).append(
+            Word(str(i), BBox.from_xywh(w["x"], w["y"], w["width"], w["height"])))
+    regions = []
+    for ws in by_line.values():
+        box = BBox(min(w.bbox.x0 for w in ws), min(w.bbox.y0 for w in ws),
+                   max(w.bbox.x1 for w in ws), max(w.bbox.y1 for w in ws))
+        regions.append(Region(RegionType.PARAGRAPH, box, (Line("", box, tuple(ws), Direction.RTL),)))
+    return Page(width, height, tuple(regions), Direction.RTL)
+
+
+def from_page(page, n):
+    """Word boxes [x, y, w, h] by index from an OCRSmith Page; None for a word pushed off the page."""
+    boxes = [None] * n
+    for region in page.regions:
+        for line in region.lines:
+            for w in line.words:
+                b = w.bbox
+                if b.x1 - b.x0 >= 1 and b.y1 - b.y0 >= 1:
+                    x, y = int(b.x0), int(b.y0)
+                    boxes[int(w.text)] = [x, y, int(np.ceil(b.x1)) - x, int(np.ceil(b.y1)) - y]
+    return boxes
+
+
 def degrade_ocrsmith(image, words, seed, strength):
     """OCRSmith paper, then one capture preset at this strength; returns (image, word boxes, attacks)."""
     rng = random.Random(seed)
-    paper, kind = attack_ocrsmith.background(rng, *image.size)
+    paper, kind = ocrsmith_paper(rng, *image.size)
     out = Image.fromarray((np.asarray(image, np.float32) * np.asarray(paper.convert("RGB"), np.float32) / 255)
                           .round().astype(np.uint8))
     preset = rng.choices(list(OCRSMITH_PRESETS), weights=list(OCRSMITH_PRESETS.values()))[0]
-    out, page, records = ocrsmith_pipeline(preset, strength).apply(out, attack_ocrsmith.to_page(words, *image.size), rng)
-    return (out.convert("RGB"), attack_ocrsmith.from_page(page, len(words)),
+    out, page, records = ocrsmith_pipeline(preset, strength).apply(out, to_page(words, *image.size), rng)
+    return (out.convert("RGB"), from_page(page, len(words)),
             [f"ocrsmith-paper:{kind}", f"ocrsmith:{preset}"] + [r.name for r in records])
 
 
@@ -191,7 +267,6 @@ def degrade_augraphy(image, words, seed, strength):
 
 # -- scan-simulator -----------------------------------------------------------------------------------------
 
-NEUTRAL = {"quality": 100, "darkness": 0}
 INTEGER_SIZES = ("size", "kernel", "line_width", "radius", "shift")
 
 
@@ -214,6 +289,29 @@ def scan_config(preset, strength):
     return PipelineConfig.from_dict(cfg)
 
 
+def word_mask(shape, words, layers=3):
+    """Word i painted with id i + 1 (0 = no word), in the first of `layers` channels where it overlaps no word
+    already painted: a word painted over another (two lines' boxes touching) would cut the other's box.
+    scan-simulator moves this mask with the page."""
+    mask = np.zeros((*shape, layers), np.uint16)
+    for i, w in enumerate(words):
+        x, y = max(0, round(w["x"])), max(0, round(w["y"]))
+        area = mask[y:round(w["y"] + w["height"]) + 1, x:round(w["x"] + w["width"]) + 1]
+        k = next((k for k in range(layers) if not area[..., k].any()), layers - 1)
+        area[..., k] = i + 1
+    return mask
+
+
+def mask_boxes(mask, n):
+    """Each word's box [x, y, w, h] after the effect: the extent of its id (None if it is gone)."""
+    boxes = [None] * n
+    for k in range(mask.shape[2]):
+        for i, f in enumerate(find_objects(mask[..., k].astype(np.int32), max_label=n)):
+            if f:
+                boxes[i] = [f[1].start, f[0].start, f[1].stop - f[1].start, f[0].stop - f[0].start]
+    return boxes
+
+
 SCAN_PAD = 0.04  # paper added on each side before scan-simulator, times the page's longer side (x 1 at strength 0.5)
 
 
@@ -231,8 +329,8 @@ def degrade_scan(image, words, seed, strength, use_augraphy=False):
     pad = int(round(SCAN_PAD * max(bgr.shape[:2]) * (0.5 + strength)))
     bgr = cv2.copyMakeBorder(bgr, pad, pad, pad, pad, cv2.BORDER_REPLICATE)
     words = [{**wd, "x": wd["x"] + pad, "y": wd["y"] + pad} for wd in words]
-    out, mask = ScanSimulator(scan_config(preset, strength), seed=seed)(bgr, attack.word_mask(bgr.shape[:2], words))
-    return (Image.fromarray(cv2.cvtColor(out, cv2.COLOR_BGR2RGB)), attack.mask_boxes(mask, len(words)),
+    out, mask = ScanSimulator(scan_config(preset, strength), seed=seed)(bgr, word_mask(bgr.shape[:2], words))
+    return (Image.fromarray(cv2.cvtColor(out, cv2.COLOR_BGR2RGB)), mask_boxes(mask, len(words)),
             attacks + [f"scan-simulator:{preset}"])
 
 
@@ -355,3 +453,8 @@ def readable(check):
     least 10% of the clean page's (a strong blur still readable passes, a page blurred away does not)."""
     return (check["lost"] == 0 and check.get("edge", 0) == 0 and check.get("blotted", 0) == 0
             and check["faint"] <= 0.01 and check["sharpness"] >= 0.10 and check.get("drowned", 0) <= 0.01)
+
+
+def warm_up():
+    """Augraphy compiles its noise code (numba) on first use, about 15 s: do it before the first real page."""
+    degrade_augraphy(Image.new("RGB", (200, 200), "white"), [], 0, DEFAULT_STRENGTH)

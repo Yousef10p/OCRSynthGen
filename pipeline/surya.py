@@ -1,4 +1,4 @@
-"""Labels in Surya OCR 2.5's own output format (branch surya).
+"""Labels in Surya OCR 2.5's own output format.
 
 Each sample is made for one of Surya's prompts, drawn per page (TASKS), and its label is the answer Surya 2.5
 gives to that prompt, written the way the model writes it. Found by asking the model itself, one image at a
