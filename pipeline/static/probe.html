@@ -36,7 +36,7 @@ button { font: inherit; cursor: pointer; border-radius: 6px; }
 .tabs button.on { background: var(--accent); color: #fff; border-color: var(--accent); }
 .tabs button.bad { color: var(--bad); }
 .tabs button.on.bad { background: var(--bad); border-color: var(--bad); color: #fff; }
-.split { display: grid; grid-template-columns: 1fr 1fr; min-block-size: 0; }
+.split { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1fr) minmax(0, 1fr); min-block-size: 0; }
 .split > div { overflow: auto; min-block-size: 0; }
 .page { padding: 10px; background: #f6f7f8; }
 .frame { position: relative; }
@@ -44,6 +44,12 @@ button { font: inherit; cursor: pointer; border-radius: 6px; }
 .frame svg { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; pointer-events: none; }
 .frame rect { fill: none; stroke: rgba(210, 50, 50, .45); stroke-width: 2; vector-effect: non-scaling-stroke; }
 .frame rect.on { fill: rgba(255, 200, 0, .3); stroke: #d23232; stroke-width: 3; }
+.frame rect.o { stroke: rgba(31, 111, 235, .5); }
+.frame rect.o.on { fill: rgba(31, 111, 235, .18); stroke: #1f6feb; }
+.frame.no-s rect:not(.o), .frame.no-o rect.o { display: none; }
+.colhead { padding: 8px 16px; font-size: 12.5px; font-weight: 600; border-block-end: 1px solid #e3e6e9; display: flex; gap: 8px; align-items: center; }
+.colhead label { margin-inline-start: auto; font-weight: 400; font-size: 12px; }
+.key { inline-size: 10px; block-size: 10px; border: 2px solid; border-radius: 2px; flex: none; }
 .answer { border-inline-start: 1px solid #e3e6e9; }
 .prompt { padding: 10px 16px; font-size: 12.5px; color: var(--muted); border-block-end: 1px solid #e3e6e9; }
 .facts { padding: 8px 16px; font-size: 12.5px; color: var(--muted); border-block-end: 1px solid #e3e6e9; display: flex; flex-wrap: wrap; gap: 4px 14px; }
@@ -52,8 +58,6 @@ pre { margin: 0; padding: 14px 16px; white-space: pre-wrap; word-break: break-wo
 .ln { display: block; border-radius: 4px; }
 .ln:hover { background: #fff3c4; }
 .ln.inl { display: inline; }
-.ours { border-block-start: 1px dashed var(--line); }
-.ours summary { padding: 8px 16px; cursor: pointer; color: var(--muted); font-size: 12.5px; }
 .empty { color: var(--muted); padding: 60px 20px; text-align: center; }
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; block-size: auto; }
@@ -67,12 +71,9 @@ pre { margin: 0; padding: 14px 16px; white-space: pre-wrap; word-break: break-wo
 <header>
   <h1>Surya Answers</h1>
   <a href="/">← Sample Generator</a>
-  <label>Show <select id="kind">
-    <option value="">all images</option><option value="reference">reference pages</option>
-    <option value="page">our pages</option><option value="cut">cut-out blocks</option>
-  </select></label>
+  <label>Show <select id="kind"><option value="">all images</option></select></label>
   <span class="small" id="count"></span>
-  <span class="small">Surya OCR 2.5 answers from surya_probe/results.jsonl (one request at a time, 4,096 tokens). Hover a line to see its box.</span>
+  <span class="small">Surya OCR 2.5 answers from surya_probe/results.jsonl and every surya_probe/&lt;batch&gt;/&lt;prompt&gt;/surya.jsonl (one request at a time). Hover a line to see its box.</span>
 </header>
 <div class="layout">
   <nav class="list" id="list"></nav>
@@ -86,7 +87,8 @@ const PROMPTS = {
   table: 'Output the table rows then columns as JSON. Each entry is a dict with "label" ("Row" or "Col") and "bbox" (x0 y0 x1 y1, normalized 0-1000).',
 };
 const ORDER = ["full_ocr", "block_ocr", "layout", "table", "layout_schema", "table_schema"];
-const KINDS = { reference: "Reference pages", page: "Our pages", cut: "Cut-out blocks" };
+const KINDS = { reference: "Reference pages", page: "Our pages", cut: "Cut-out blocks" };  // + one group per batch/prompt
+const OLD = new Set(Object.keys(KINDS));
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const $ = (id) => document.getElementById(id);
 let DATA = [], current = null, tab = "full_ocr";
@@ -109,11 +111,11 @@ const boxOf = (l) => (l.match(/^<\|[A-Za-z-]+\|><\|(\d+)\|><\|(\d+)\|><\|(\d+)\|
 // tags shown as they are, the text between them isolated so Arabic doesn't reorder the tags around it
 const shown = (line) => line.split(/(<[^>]+>)/).map((part, k) => k % 2 ? esc(part) : part ? `<bdi>${esc(part)}</bdi>` : "").join("");
 
-function listing(text) {
+function listing(text, key = "i") {  // key: data-i for Surya's lines, data-o for ours
   const { json, entries } = pieces(text);
   let n = 0;
-  const html = json ? esc(text).replace(/\{[^{}]*\}/g, (m) => `<span class="ln inl" data-i="${n++}">${m}</span>`)
-                    : entries.map((l, i) => `<span class="ln" data-i="${i}">${shown(l)}</span>`).join("");
+  const html = json ? esc(text).replace(/\{[^{}]*\}/g, (m) => `<span class="ln inl" data-${key}="${n++}">${m}</span>`)
+                    : entries.map((l, i) => `<span class="ln" data-${key}="${i}">${shown(l)}</span>`).join("");
   return { html, boxes: entries.map(boxOf) };
 }
 
@@ -126,7 +128,7 @@ function renderList() {
     const group = shownItems.filter((d) => d.kind === k);
     if (!group.length) continue;
     html += `<h3>${KINDS[k]} (${group.length})</h3>` + group.map((d) => `<div class="item${d === current ? " on" : ""}" data-image="${esc(d.image)}">
-      <img src="/probe/${encodeURIComponent(d.image)}" alt="" loading="lazy"><span>${esc(d.image)}</span></div>`).join("");
+      <img src="/probe/${encodeURIComponent(d.image)}" alt="" loading="lazy"><span>${esc(d.title || d.image)}</span></div>`).join("");
   }
   $("list").innerHTML = html || `<div class="empty">No images</div>`;
 }
@@ -144,10 +146,14 @@ function renderView() {
   const a = d.answers[tab] || {};
   const ok = a.status === 200;
   const { html, boxes } = listing(ok ? a.content : `HTTP ${a.status}: ${a.content || ""}`);
-  const ours = tab === "block_ocr" ? d.ours.html : d.ours[tab];
+  const ours = d.ours[tab] ?? (tab === "block_ocr" ? d.ours.html : undefined);
   const base = tab.replace("_schema", "");
+  const oursNote = OLD.has(d.kind) ? "Our label when the probe ran (old form)" : "Our label (new pipeline)";
+  const mine = listing(ours || "", "o");
+  const rects = (bs, cls, key) => bs.map((b, i) => b.length === 4
+    ? `<rect class="${cls}" data-${key}="${i}" x="${b[0]}" y="${b[1]}" width="${Math.max(1, b[2] - b[0])}" height="${Math.max(1, b[3] - b[1])}"/>` : "").join("");
   view.innerHTML = `
-    <div class="head"><h2>${esc(d.image)}</h2>
+    <div class="head"><h2>${esc(d.title || d.image)}</h2>
       <span class="chip">${esc(KINDS[d.kind] || d.kind)}${d.label ? " · " + esc(d.label) : ""}</span>
       ${d.lang ? `<span class="chip ${esc(d.lang)}">${esc(d.lang)}</span>` : ""}
       ${d.effect ? `<span class="chip">${esc(d.effect)}</span>` : ""}
@@ -157,18 +163,24 @@ function renderView() {
       return `<button data-tab="${t}" class="${t === tab ? "on" : ""}${bad ? " bad" : ""}">${t.replace("_schema", " + schema")}</button>`;
     }).join("")}</div>
     <div class="split">
-      <div class="page"><div class="frame"><img src="/probe/${encodeURIComponent(d.image)}" alt="">
-        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">${boxes.map((b, i) => b.length === 4
-          ? `<rect data-i="${i}" x="${b[0]}" y="${b[1]}" width="${Math.max(1, b[2] - b[0])}" height="${Math.max(1, b[3] - b[1])}"/>` : "").join("")}</svg>
+      <div class="page"><div class="frame" id="frame"><img src="/probe/${encodeURIComponent(d.image)}" alt="">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">${rects(boxes, "s", "i")}${rects(mine.boxes, "o", "o")}</svg>
       </div></div>
       <div class="answer">
-        <div class="prompt"><b>Prompt:</b> ${esc(PROMPTS[base])}${tab.endsWith("_schema") ? " <i>(sent with the JSON schema for guided decoding)</i>" : ""}</div>
+        <div class="colhead"><span class="key" style="border-color:#d23232"></span>Surya's answer
+          <label><input type="checkbox" data-show="s" checked> boxes</label></div>
+        <div class="prompt"><b>Prompt:</b> ${esc(a.prompt || PROMPTS[base])}${tab.endsWith("_schema") ? " <i>(sent with the JSON schema for guided decoding)</i>" : ""}</div>
         <div class="facts"><span>status <b class="${ok ? "" : "warn"}">${esc(a.status)}</b></span>
-          <span>${esc(a.seconds)} s</span><span>finish <b>${esc(a.finish_reason ?? "–")}</b></span>
-          <span>${esc(a.tokens ?? "–")} / ${esc(a.max_tokens)} tokens</span>
+          <span>${esc(a.seconds ?? "–")} s</span><span>finish <b>${esc(a.finish_reason ?? "–")}</b></span>
+          <span>${esc(a.tokens ?? "–")}${a.max_tokens ? " / " + esc(a.max_tokens) : ""} tokens</span>
           <span>${boxes.filter((b) => b.length === 4).length} boxes</span></div>
         <pre id="answer">${html}</pre>
-        ${ours ? `<details class="ours"><summary>Our label for this image when the probe ran (${esc(tab === "block_ocr" ? "block_ocr" : base)}, the old form from before the probe changed surya.py)</summary><pre>${esc(ours)}</pre></details>` : ""}
+      </div>
+      <div class="answer">
+        <div class="colhead"><span class="key" style="border-color:#1f6feb"></span>${oursNote}
+          <label><input type="checkbox" data-show="o" checked> boxes</label></div>
+        <div class="facts"><span>${mine.boxes.filter((b) => b.length === 4).length} boxes</span></div>
+        ${ours ? `<pre id="ours">${mine.html}</pre>` : `<div class="empty">No label of ours for this image.</div>`}
       </div>
     </div>`;
 }
@@ -177,10 +189,16 @@ $("view").addEventListener("click", (e) => {
   const b = e.target.closest("[data-tab]");
   if (b) { tab = b.dataset.tab; renderView(); }
 });
+$("view").addEventListener("change", (e) => {  // show / hide Surya's or our boxes on the image
+  const box = e.target.closest("[data-show]");
+  if (box) $("frame").classList.toggle("no-" + box.dataset.show, !box.checked);
+});
 for (const [type, on] of [["mouseover", true], ["mouseout", false]]) {
   $("view").addEventListener(type, (e) => {
-    const ln = e.target.closest("#answer .ln");
-    if (ln) $("view").querySelector(`rect[data-i="${ln.dataset.i}"]`)?.classList.toggle("on", on);
+    const ln = e.target.closest("#answer .ln, #ours .ln");
+    if (!ln) return;
+    const sel = ln.dataset.o !== undefined ? `rect[data-o="${ln.dataset.o}"]` : `rect[data-i="${ln.dataset.i}"]`;
+    $("view").querySelector(sel)?.classList.toggle("on", on);
   });
 }
 $("list").addEventListener("click", (e) => {
@@ -192,6 +210,9 @@ addEventListener("hashchange", () => select(decodeURIComponent(location.hash.sli
 
 fetch("/api/probe").then((r) => r.json()).then((data) => {
   DATA = data;
+  for (const d of DATA) if (!(d.kind in KINDS)) KINDS[d.kind] = d.kind;  // the batch groups, e.g. batch100/full_ocr
+  $("kind").innerHTML += Object.keys(KINDS).filter((k) => DATA.some((d) => d.kind === k))
+    .map((k) => `<option value="${esc(k)}">${esc(KINDS[k])}</option>`).join("");
   if (!DATA.length) { $("view").innerHTML = `<div class="empty">No probe answers yet (run surya_probe/probe.py).</div>`; return; }
   select(decodeURIComponent(location.hash.slice(1)) || DATA[0].image);
 });

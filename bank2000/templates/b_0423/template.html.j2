@@ -14,6 +14,9 @@ h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
 </style>
 <style>{{ style }}</style>
+<style>/* flowing columns (reading order): a block stays in one column, a heading stays with what follows */
+[style*="column-count"] > *, [style*="column-width"] > * { break-inside: avoid; }
+[style*="column-count"] > h1, [style*="column-count"] > h2, [style*="column-count"] > h3, [style*="column-count"] > h4, [style*="column-count"] > h5, [style*="column-count"] > h6, [style*="column-width"] > h1, [style*="column-width"] > h2, [style*="column-width"] > h3, [style*="column-width"] > h4, [style*="column-width"] > h5, [style*="column-width"] > h6 { break-after: avoid; }</style>
 </head>
 <body><div class="page">
 <header style="display: flex; justify-content: space-between; gap: 1em; font-size: 0.85em; padding-block: 0.3em; margin-block: 0.8em; border-block-end: 1px solid #444"><span>{{ slot_0 }}</span><span>{{ slot_1 }}</span><span>{{ slot_2 }}</span></header><main style="column-count: 2; column-gap: 8mm; column-rule: none"><figure style="margin-block: 0.8em; margin-inline: 0; break-inside: avoid"><div  style="block-size: 26mm; margin-inline: auto; inline-size: 75%" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>

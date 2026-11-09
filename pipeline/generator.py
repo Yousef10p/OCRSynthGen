@@ -23,9 +23,11 @@ import copy
 import html
 import json
 import math
+import os
 import random
 import re
 import time
+import urllib.parse
 from pathlib import Path
 
 import cv2
@@ -52,7 +54,7 @@ from tokenizers import Tokenizer
 
 from pipeline.checking import (PAGE_JS, RENDER_SCALE, ink_issues, legibility, overlap, readable, render_issues,
                                split_words, to_ink)
-from pipeline.pools import ImagePool, TextPool
+from pipeline.pools import ImagePool, TextPool, font_pool
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -205,6 +207,14 @@ def pick_weight(rng, faces, wanted):
     return min(weights, key=lambda w: abs(w - rng.choice(wanted)))
 
 
+def font_faces(families, names):
+    """@font-face rules for the families that come as files ({} faces: installed, used by name)."""
+    return "".join(
+        f'@font-face {{ font-family: "{fam}"; src: url("{path.as_uri()}"); font-weight: {w};'
+        f' font-style: {"italic" if it else "normal"}; }}' + "\n"
+        for fam in sorted(names) for (w, it), path in families.get(fam, {}).items())
+
+
 def style(rng, families):
     """Random typography for one page: (its settings, CSS for the template's {{ style }} hook)."""
     body_family = rng.choice(sorted(families))
@@ -212,20 +222,18 @@ def style(rng, families):
     body_w = pick_weight(rng, families[body_family], [300, 400, 400, 500])
     head_w = pick_weight(rng, families[head_family], [600, 700, 700, 800, 900])
     s = page_style(rng, body_family, head_family, body_w, head_w)
-    faces = "".join(
-        f'@font-face {{ font-family: "{fam}"; src: url("{path.as_uri()}"); font-weight: {w};'
-        f' font-style: {"italic" if it else "normal"}; }}' + "\n"
-        for fam in sorted({body_family, head_family}) for (w, it), path in families[fam].items())
-    return s, faces + style_css(s)
+    return s, font_faces(families, {body_family, head_family}) + style_css(s)
 
 
 def style_latin(rng):
-    """The same random typography for an English page, from installed Latin fonts."""
-    body_family = rng.choice(LATIN_FONTS)
-    head_family = body_family if rng.random() < 0.7 else rng.choice(LATIN_FONTS)
+    """The same random typography for an English page: installed Latin fonts and the font pool's (every family
+    there has Latin letters, the Arabic ones too)."""
+    families = latin_fonts()
+    body_family = rng.choice(sorted(families))
+    head_family = body_family if rng.random() < 0.7 else rng.choice(sorted(families))
     s = page_style(rng, body_family, head_family, 400, 700, "western")
     # Arabic letter numbering in lists means nothing on an English page
-    return s, style_css(s) + "ol { list-style-type: decimal !important; }\n"
+    return s, font_faces(families, {body_family, head_family}) + style_css(s) + "ol { list-style-type: decimal !important; }\n"
 
 
 def page_style(rng, body_family, head_family, body_w, head_w, digits=None):
@@ -367,6 +375,11 @@ def theme(rng, source, colour_share=COLOUR_SHARE):
            "ink": ink}
     imp = " !important"
     css = [f"ol, ul {{ list-style-type: {rec['bullet']}{imp}; }}",
+           # a list laid out in a row (a menu: flex, grid or inline items) has no room for a marker outside its
+           # items: it would be drawn into the previous item's words. There the marker goes inside its own item.
+           '[class~="flex"] > li, [class~="inline-flex"] > li, [class~="grid"] > li, [class*=":flex"] > li, '
+           '[class*=":grid"] > li, [style*="flex"] > li, [style*="grid"] > li, li[class~="inline-block"], '
+           f'li[class~="inline"], li[style*="inline"] {{ list-style-position: inside{imp}; }}',
            f"li::marker {{ color: {accent}; }}",
            f"html, body, .page {{ background-color: {page_bg}{imp}; }}"]
     js = {"hue": 0, "saturate": 1.0}
@@ -425,14 +438,21 @@ def theme(rng, source, colour_share=COLOUR_SHARE):
 #     partial   shadda kept everywhere and all marks on about a third of the words (how newspapers, school
 #               books and signs often mark only some words)
 #     full      every letter marked (religious, classical and teaching texts)
-# 
-# The labels are always what is drawn: the ground truth comes from the rendered page's words, marks included.
+#
+# The marks are drawn but never in the labels: the words are measured with their marks (the boxes hold them),
+# then the marks are taken out of every text the labels are made from (no_marks, in DocPipeline._make). The model
+# learns to read the letters whether a page is marked or not; Surya's answers have the letters only.
 
 TASHKEEL = {"none": 0.4, "partial": 0.3, "full": 0.3}
 ARABIC = re.compile(r"[ء-ي]")
 MARKS = re.compile(r"[ً-ْٰ]")
 VOWELS = re.compile(r"[ً-ِْٰ]")  # every mark but shadda (U+0651)
 PARTIAL_WORDS = 0.35
+ALL_MARKS = re.compile("[\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06ed]")  # tashkeel and Quranic marks
+
+
+def no_marks(text):
+    return ALL_MARKS.sub("", text)
 TASHKEEL_LINE_HEIGHT = {"partial": 1.6, "full": 1.75}  # the least line height a page with marks gets
 _model = None
 
@@ -553,6 +573,7 @@ def synthdoc_html(meta, text, lang, folder):
 
 TOOLS = ("ocrsmith", "augraphy", "scan-simulator")
 DEFAULT_STRENGTH = 0.5
+MAX_ANGLE = 2.0  # a page is never turned more than this many degrees (OCRSmith and scan-simulator Rotation)
 # how often each preset is picked
 OCRSMITH_PRESETS = {"scan": 4.0, "photo": 3.0, "fax": 0.7, "archive": 1.5}
 SCAN_PRESET_WEIGHTS = {"scan-clean": 2, "scan-heavy": 2, "photo-indoor": 2, "photo-outdoor": 2, "photocopy": 1.5,
@@ -600,6 +621,8 @@ def ocrsmith_pipeline(preset, strength):
                 setattr(d, k, toward(v, 0, f, 0))
             else:
                 setattr(d, k, toward(v, 0, f, 0))
+        if name == "Rotation":
+            d.max_angle = min(d.max_angle, MAX_ANGLE)
     return pipeline
 
 
@@ -731,6 +754,10 @@ def scan_config(preset, strength):
                 params[k] = toward(v, 0, f, 1)
             else:
                 params[k] = toward(v, 0, f)
+        if name == "Rotation" and "angle" in params:
+            a = params["angle"]
+            params["angle"] = ([max(-MAX_ANGLE, min(MAX_ANGLE, x)) for x in a] if isinstance(a, (list, tuple))
+                               else max(-MAX_ANGLE, min(MAX_ANGLE, a)))
     return PipelineConfig.from_dict(cfg)
 
 
@@ -843,7 +870,7 @@ ROLE_LABEL = {"title": "Section-Header", "subtitle": "Section-Header", "heading"
               "page_number": "Page-Footer", "caption": "Caption", "footnote": "Footnote", "list_item": "List-Group"}
 ROLE_TAG = {"title": "h1", "heading": "h2", "subtitle": "h3", "table_header": "h3"}
 MARKERS = {"disc": "•", "circle": "◦", "square": "▪"}
-# Picture descriptions by img_pool category (Surya describes each picture; our photos have no captions yet)
+# Picture descriptions by img_pool category, for a picture without captions (an older pool)
 PHOTOS = {
     "animals": ("An animal in its natural surroundings.", "A photograph of an animal in its natural surroundings."),
     "landscapes": ("A wide landscape view.", "A wide landscape photograph showing terrain, sky and distant scenery."),
@@ -856,6 +883,252 @@ PHOTOS = {
     "patterns": ("A close-up of a texture.", "A close-up photograph of a surface texture or pattern."),
     "general": ("A general scene.", "A photograph of a general scene."),
 }
+
+
+# What kind of picture the captions describe -> Surya's alt prefix and how its description starts (Surya writes
+# "Photo:" for 129 of 133 pictures in surya_probe/batch100, "Artwork:" and "Illustration:" for the rest). The kind
+# is what the picture is, so only the start of a caption counts ("a painting of a man", not "girls pass a painting").
+PICTURE_KINDS = [("Artwork", "An artwork showing", re.compile(
+                     r"^(?:an? |the )?(?:\w+ ){0,2}(?:painting|artwork|sculpture|statue|engraving|etching|lithograph|"
+                     r"fresco|mosaic)s?\b", re.I)),
+                 ("Illustration", "An illustration showing", re.compile(
+                     r"^(?:an? |the )?(?:\w+ ){0,2}(?:illustration|drawing|sketch|cartoon|watercolou?r)s?\b", re.I))]
+CAPTION_LEAD = re.compile(r"^(the|this|an?) (image|picture|photo|photograph|scene) (shows|depicts|is of|features) ", re.I)
+
+
+def picture_html(captions, category="general"):
+    """A picture's block as Surya writes it, from the picture's own captions: <img alt="Photo: <the shortest
+    caption, one sentence>"/><p class="img-desc"><the longest caption></p>. A caption written as "The image shows
+    X" (PD12M) becomes "A photograph showing X", Surya's most common start; a person's caption, a sentence of its
+    own, is kept as written. Artwork / Illustration when the caption starts with one. A picture without captions
+    gets its category's description."""
+    if not captions:
+        short, long = PHOTOS.get(category, PHOTOS["general"])
+        return f'<img alt="Photo: {esc(short)}"/><p class="img-desc">{esc(long)}</p>'
+    short, long = min(captions, key=len), max(captions, key=len)
+    led = bool(CAPTION_LEAD.match(long))
+    short, long = CAPTION_LEAD.sub("", short), CAPTION_LEAD.sub("", long)
+    kind, lead = next(((k, l) for k, l, start in PICTURE_KINDS if start.match(long) or start.match(short)),
+                      ("Photo", "A photograph showing"))
+    short = re.split(r"(?<=[.!?]) ", short)[0]  # the alt text: one sentence
+    short = short[:1].upper() + short[1:]
+    if led:  # "The image shows a man ..." -> "A photograph showing a man ..."
+        long = f"{lead} {long[:1].lower() + long[1:] if not long[1:2].isupper() else long}"
+    else:
+        long = long[:1].upper() + long[1:]
+    return f'<img alt="{kind}: {esc(short)}"/><p class="img-desc">{esc(long)}</p>'
+
+# -- special blocks: every other label Surya writes ----------------------------------------------------------
+#
+# Surya 2.5 writes 19 block labels; the templates' own slots give Text, Section-Header, List-Group, Table, Image,
+# Caption, Footnote, Page-Header and Page-Footer. The rest are added here, each in the form Surya's own answers give
+# it (surya_inference/debug_docling_outputs: real pages Surya read):
+#
+#   picture boxes (GRAPHIC_SHARE of them) get a drawn picture from img_pool/graphics/ instead of a photo:
+#     Figure          a chart: <img alt="Bar chart: ..."/>, legend, axes, the data as <table class="chart-data">
+#     Diagram         a flowchart: <img alt="Flowchart: ..."/>, its words, its Mermaid source, a description
+#     Chemical-Block  a molecule: <img alt="Chemical structure of the molecule SMILES."/>
+#   a paragraph's box (on SPECIAL_SHARE of pages, one or two) gets a block instead of its text:
+#     Equation-Block  an equation drawn from LaTeX: <math display="block">LaTeX</math>
+#     Code-Block      Python code (from Python's own library): <pre>code</pre>
+#     Bibliography    numbered references: <ul style="list-style-type: none; padding-left: 0;"><li>[1] ...</li></ul>
+#     Table-Of-Contents  entries and page numbers: <table><tr><td>1<td>Title<td>5 ...
+#     Form            labels, blank lines and check boxes: <table><tr><td><b>1</b> Name: ____ ...
+#     Complex-Block   an infographic panel (a photo, a figure, a sentence): <img alt="Photo: ..."/><p><b>42%</b></p>...
+#   BLANK_SHARE of samples are a blank page (paper and the effect only): one block, 0 0 1000 1000, no content.
+#
+# Surya never wrote Code-Block or Complex-Block on a whole page in those answers (code came back as Text with
+# <pre>; Code-Block with <pre> came in its layout answer), so their content follows that layout answer and Surya's
+# general picture form. "Picture" is not generated: Surya's model has no such label (its code renames the model's
+# Image to Picture), and teaching both for one thing would make them a coin toss.
+#
+# What the label says is what the block shows: the block is drawn from the same HTML (a code line, a table cell)
+# its label is written from; a block that doesn't fit its box (a DocLayNet box has a fixed size) or is split by a
+# page break makes the page fail its checks, and it is made again.
+
+GRAPHIC_SHARE = 0.35
+GRAPHIC_KINDS = {"Figure": 0.45, "Diagram": 0.3, "Chemical-Block": 0.25}
+SPECIAL_SHARE = 0.5
+SPECIAL_KINDS = {"Equation-Block": 1.0, "Code-Block": 1.0, "Bibliography": 0.8, "Table-Of-Contents": 0.7,
+                 "Form": 0.8, "Complex-Block": 0.6}
+BLANK_SHARE = 0.01
+NO_CUT = {"Image", "Figure", "Diagram", "Chemical-Block", "Blank-Page"}  # pictures: never a block_ocr cut-out
+SPECIAL_SLOT = r'<(p|div|blockquote|section|article|aside)(\s[^>]*)?>\s*<span[^>]*data-slot="{slot}"[^>]*>\{{\{{ {slot} \}}\}}</span>\s*</\1>'
+SPECIAL_CSS = (  # a special block's own look, whatever the theme does to tables and lists
+    "[data-special] { break-inside: avoid; }\n"
+    ".sp-toc td, .sp-toc th { border: none !important; background: transparent !important; padding: 0.12em 0.4em !important; }\n"
+    ".sp-toc td:last-child { text-align: end; }\n"
+    ".sp-form { border-collapse: collapse; inline-size: 100%; }\n"
+    ".sp-form td { border: 1px solid currentColor !important; padding: 0.3em 0.5em !important; vertical-align: top; }\n"
+    'img[src*="/graphics/"] { object-fit: contain !important; background: #fff; }\n')
+NAMES_EN = (["A.", "B.", "C.", "D.", "E.", "F.", "G.", "H.", "J.", "K.", "L.", "M.", "N.", "P.", "R.", "S.", "T.", "W."],
+            ["Smith", "Johnson", "Chen", "Garcia", "Kumar", "Müller", "Rossi", "Tanaka", "Brown", "Martin", "Lee", "Novak",
+             "Haddad", "Silva", "Kowalski", "Nguyen", "Dubois", "Ahmed"])
+NAMES_AR = (["أحمد", "محمد", "سارة", "خالد", "فاطمة", "عبدالله", "نورة", "يوسف", "مريم", "عمر", "ليلى", "حسن"],
+            ["العتيبي", "الزهراني", "المصري", "الحربي", "القحطاني", "الشمري", "السيد", "الكعبي", "النجار", "الخطيب"])
+VENUES = {"en": ["Journal of Applied Physics", "Proceedings of the National Academy of Sciences", "IEEE Transactions on Pattern Analysis",
+                 "Nature Communications", "Journal of Economic Studies", "Computational Linguistics", "The Lancet", "Water Research",
+                 "Annual Review of Sociology", "Journal of Modern History"],
+          "ar": ["مجلة العلوم الإنسانية", "المجلة العربية للعلوم", "مجلة جامعة الملك سعود", "مجلة الدراسات الاقتصادية",
+                 "المجلة العلمية للتربية", "مجلة البحوث الهندسية", "مجلة اللغة العربية وآدابها", "مجلة العلوم الصحية"]}
+FORM_WORDS = {"en": {"yes": "Yes", "no": "No", "options": [["Single", "Married"], ["Full time", "Part time", "Contract"],
+                                                         ["Email", "Phone", "Post"], ["Male", "Female"]],
+                     "sign": "Signature", "date": "Date"},
+              "ar": {"yes": "نعم", "no": "لا", "options": [["أعزب", "متزوج"], ["دوام كامل", "دوام جزئي", "عقد"],
+                                                         ["البريد الإلكتروني", "الهاتف", "البريد"], ["ذكر", "أنثى"]],
+                     "sign": "التوقيع", "date": "التاريخ"}}
+STATS = ["42%", "3.5x", "1,250", "87%", "12 million", "2 of 3", "65%", "4,800", "9.2", "300+"]
+_code = []
+
+
+def code_snippets():
+    """Short Python functions from Python's own library (PSF licence): 4 to 14 lines, none longer than 64
+    characters, so a block never runs off its box."""
+    if not _code:
+        lib = Path(os.__file__).parent
+        for path in sorted(lib.glob("*.py"))[:200]:
+            lines = path.read_text(encoding="utf-8", errors="ignore").splitlines()
+            for i, line in enumerate(lines):
+                if not line.startswith("def ") and not line.startswith("    def "):
+                    continue
+                indent = len(line) - len(line.lstrip())
+                body = [line]
+                for nxt in lines[i + 1:i + 15]:
+                    if nxt.strip() and len(nxt) - len(nxt.lstrip()) <= indent:
+                        break
+                    body.append(nxt)
+                body = [b[indent:] for b in body]
+                while body and not body[-1].strip():
+                    body.pop()
+                if 4 <= len(body) <= 14 and all(len(b) <= 64 and "\t" not in b and '"""' not in b for b in body):
+                    _code.append("\n".join(body))
+    return _code
+
+
+def toc(rng, lang, words, digits):
+    """(render, label) of a table of contents: chapters in bold, sections under them, page numbers going up."""
+    n, page, rows, chapter = rng.randint(5, 12), rng.randint(1, 9), [], 0
+    three = rng.random() < 0.5  # number | title | page, or "number title . . . . ." | page
+    dots = not three and rng.random() < 0.7
+    for i in range(n):
+        top = i == 0 or rng.random() < 0.3
+        if top:
+            chapter, section = chapter + 1, 0
+            num = str(chapter)
+        else:
+            section += 1
+            num = f"{chapter}.{section}"
+        title = html.escape(words.text("heading", rng.randint(2, 6), rng) if words else phrase(rng, rng.randint(2, 5), WORDS_EN if lang == "en" else WORDS))
+        page += rng.randint(1, 6)
+        num_s, page_s = (num.translate(ARABIC_DIGITS), str(page).translate(ARABIC_DIGITS)) if digits == "arabic-indic" else (num, str(page))
+        b = (lambda t: f"<b>{t}</b>") if top else (lambda t: t)
+        cells = [b(num_s), b(title), b(page_s)] if three else [b(f"{num_s} {title}" + (" . . . . ." if dots else "")), b(page_s)]
+        rows.append("<tr>" + "".join(f"<td>{c}</td>" for c in cells) + "</tr>")
+    body = "".join(rows)
+    return f'<table class="sp-toc" style="inline-size: 100%">{body}</table>', f"<table>{body}</table>"
+
+
+def bibliography(rng, lang, words, digits):
+    first, last = NAMES_AR if lang == "ar" else NAMES_EN
+    items = []
+    for i in range(rng.randint(3, 7)):
+        people = [f"{rng.choice(first)} {rng.choice(last)}" for _ in range(rng.randint(1, 3))]
+        joined = "، ".join(people) if lang == "ar" else (", ".join(people[:-1]) + (", and " if len(people) > 2 else " and ") + people[-1]
+                                                          if len(people) > 1 else people[0])
+        title = (words.text("heading", rng.randint(4, 9), rng) if words else phrase(rng, rng.randint(4, 8), WORDS_EN if lang == "en" else WORDS)).rstrip(".")
+        year = str(rng.randint(1985, 2024))
+        n = str(i + 1)
+        if digits == "arabic-indic":
+            year, n = year.translate(ARABIC_DIGITS), n.translate(ARABIC_DIGITS)
+        sep = "، " if lang == "ar" else ", "
+        items.append(f"<li>[{n}] {html.escape(joined)}. {html.escape(title)}. <i>{html.escape(rng.choice(VENUES[lang]))}</i>{sep}{year}.</li>")
+    body = "".join(items)
+    return (f'<ul style="list-style-type: none !important; padding: 0 !important; margin: 0.4em 0">{body}</ul>',
+            f'<ul style="list-style-type: none; padding-left: 0;">{body}</ul>')
+
+
+def form(rng, lang, words, digits):
+    """(render, label) of a form: numbered fields with a blank line, check boxes, and a signature and date row."""
+    w = FORM_WORDS[lang]
+    rows = []
+    for i in range(rng.randint(2, 5)):
+        num = str(i + 1).translate(ARABIC_DIGITS) if digits == "arabic-indic" else str(i + 1)
+        name = html.escape((words.text("label", 2, rng) if words else phrase(rng, 2, WORDS_EN if lang == "en" else WORDS) + ":"))
+        if rng.random() < 0.4:
+            options = rng.choice(w["options"] + [[w["yes"], w["no"]]])
+            boxes = "   ".join(f'<input type="checkbox"{" checked" if rng.random() < 0.3 else ""}/> {html.escape(o)}' for o in options)
+            rows.append(f"<tr><td><b>{num}</b> {name}<br/>{boxes}</td></tr>")
+        else:
+            rows.append(f"<tr><td><b>{num}</b> {name} {'_' * rng.randint(12, 24)}</td></tr>")
+    rows.append(f"<tr><td><b>{w['sign']}</b> {'_' * 14}</td><td><b>{w['date']}</b> {'_' * 10}</td></tr>")
+    body = "".join(rows)
+    return f'<table class="sp-form">{body}</table>', f"<table>{body}</table>"
+
+
+def complex_panel(rng, lang, words, pictures, info):
+    """(render, label) of an infographic panel: a photo, a big figure and a sentence side by side."""
+    photo = pictures.pick(rng) if pictures else None
+    if photo is None:
+        return None
+    stat = rng.choice(STATS)
+    text = html.escape(words.text("caption", rng.randint(8, 16), rng) if words else prose(rng, rng.randint(8, 14), SENTENCES_EN if lang == "en" else SENTENCES))
+    alt = re.search(r'<img alt="([^"]*)"/>', info.get(photo.name, ("Image", '<img alt="Photo: A general scene."/>'))[1]).group(1)
+    tint = rng.choice(["#eef4fb", "#fdf3e7", "#eef8f0", "#f6eefb", "#f3f3f3"])
+    render = (f'<div style="display: flex; gap: 0.8em; align-items: center; padding: 0.6em; background: {tint};'
+              f' border-radius: 6px"><img src="{photo.as_uri()}" alt="" style="inline-size: 32%; block-size: auto;'
+              f' border-radius: 4px"><div><p style="font-size: 2.2em; font-weight: 700; margin: 0">{stat}</p>'
+              f'<p style="margin: 0.2em 0 0">{text}</p></div></div>')
+    return render, f'<img alt="{alt}"/><p><b>{stat}</b></p><p>{text}</p>'
+
+
+def special_block(kind, rng, lang, words, digits, pictures, info, mono):
+    """(render HTML, label HTML) of one special block, or None if it can't be made."""
+    if kind == "Equation-Block":
+        g = pictures.graphic(rng, "Equation-Block", lang) if pictures else None
+        if not g:
+            return None
+        path, r = g
+        return (f'<div style="text-align: center; margin: 0.5em 0"><img src="{path.as_uri()}" alt=""'
+                f' style="block-size: {r["height_em"]}em; inline-size: auto"></div>', r["html"])
+    if kind == "Code-Block":
+        code = html.escape(rng.choice(code_snippets()), quote=False)
+        bg = rng.choice(["#f6f8fa", "#f4f4f4", "#ffffff", "#fbf7ee"])
+        # no ligatures: a code font would draw -> as an arrow and <= as one sign, and the label has the characters
+        return (f'<pre dir="ltr" style="font-family: \'{mono}\', monospace; font-size: 0.8em; line-height: 1.35;'
+                f' font-variant-ligatures: none; font-feature-settings: \'liga\' 0, \'calt\' 0, \'dlig\' 0;'
+                f' white-space: pre; text-align: left; margin: 0.4em 0; padding: 0.5em 0.7em; background: {bg};'
+                f' border: 1px solid #ccc">{code}</pre>', f"<pre>{code}</pre>")
+    if kind == "Table-Of-Contents":
+        return toc(rng, lang, words, digits)
+    if kind == "Bibliography":
+        return bibliography(rng, lang, words, digits)
+    if kind == "Form":
+        return form(rng, lang, words, digits)
+    return complex_panel(rng, lang, words, pictures, info)
+
+
+def add_specials(page, meta, rng, lang, words, digits, pictures, info, mono):
+    """The page with one or two paragraph boxes holding a special block instead: (page, [{label, html}])."""
+    slots = [s["id"] for s in meta["slots"] if s["role"] in ("paragraph", "quote", "sidebar")]
+    rng.shuffle(slots)
+    specials = []
+    for slot in slots:
+        if len(specials) >= (2 if rng.random() < 0.3 else 1):
+            break
+        m = re.search(SPECIAL_SLOT.format(slot=slot), page)
+        if not m:
+            continue
+        kind = pick(rng, SPECIAL_KINDS)
+        made = special_block(kind, rng, lang, words, digits, pictures, info, mono)
+        if not made:
+            continue
+        render, label = made
+        k = len(specials)
+        specials.append({"label": kind, "html": label})
+        div = f'<div{m.group(2) or ""} data-special="{k}">{{% raw %}}{render}{{% endraw %}}</div>'
+        page = page[:m.start()] + div + page[m.end():]
+    return page, specials
+
 
 
 def esc(text):
@@ -890,17 +1163,22 @@ def union(boxes):
 
 def carry(struct):
     """[(key, rect)] of the boxes to move with the page: tables, their rows and columns, lists, pictures (page
-    pixels, {x, y, width, height}). Columns are the union of the cells that span one column."""
+    pixels, {x, y, width, height}). Columns are the union of the cells that span one column; a place taken by a
+    cell merged down from a row above (rowspan) is skipped, so the next cells keep their own column."""
     out = []
     for i, t in enumerate(struct.get("tables", [])):
         out.append((("table", i), t["rect"]))
-        cols = {}
+        cols, taken = {}, set()  # taken: (row, column) covered by a rowspan from a row above
         for j, row in enumerate(t["rows"]):
             out.append((("row", i, j), row["rect"]))
             k = 0
             for cell in row["cells"]:
+                while (j, k) in taken:
+                    k += 1
                 if cell["colspan"] == 1:
                     cols.setdefault(k, []).append(cell["rect"])
+                for dr in range(1, cell.get("rowspan", 1)):
+                    taken.update((j + dr, k + dc) for dc in range(cell["colspan"]))
                 k += cell["colspan"]
         for k, rects in sorted(cols.items()):
             x0 = min(r["x"] for r in rects)
@@ -911,6 +1189,8 @@ def carry(struct):
         out.append((("list", i), lst["rect"]))
     for i, im in enumerate(struct.get("images", [])):
         out.append((("image", i), im["rect"]))
+    for i, sp in enumerate(struct.get("specials", [])):
+        out.append((("special", i), sp["rect"]))
     return out
 
 
@@ -936,7 +1216,7 @@ def rebuild(plan, moved, width, height):
 
 # -- blocks -------------------------------------------------------------------------------------------------
 
-def blocks(regions, roles, struct, rects, lang, positioning, categories, width, height):
+def blocks(regions, roles, struct, rects, lang, pictures, width, height, specials=()):
     """The page's blocks in reading order: [{label, box [x0, y0, x1, y1] (image pixels), html}]."""
     by_slot = {r["id"]: r for r in regions}
     styles, order = struct.get("styles", {}), struct.get("order", {})
@@ -986,9 +1266,13 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, width, 
         box = rects.get(("image", i))
         if not box:
             continue
-        short, long = PHOTOS.get(categories.get(im.get("src"), "general"), PHOTOS["general"])
-        out.append({"label": "Image", "box": box, "html": f'<img alt="Photo: {esc(short)}"/><p class="img-desc">{esc(long)}</p>',
-                    "dom": im.get("order", 0)})
+        label, content = pictures.get(urllib.parse.unquote(im.get("src") or ""), ("Image", picture_html([])))
+        out.append({"label": label, "box": box, "html": content, "dom": im.get("order", 0)})
+    for i, sp in enumerate(struct.get("specials", [])):  # equations, code, contents, references, forms, panels
+        box = rects.get(("special_ink", i)) or rects.get(("special", i))
+        if box and sp["k"] < len(specials):
+            out.append({"label": specials[sp["k"]]["label"], "box": box, "html": specials[sp["k"]]["html"],
+                        "dom": sp.get("order", 0)})
     # every other labelled slot is a block of its own; a label and the value beside it are one Text block, and
     # list items outside any list markup make one List-Group
     rest = [r for r in regions if r["id"] not in used]
@@ -1031,7 +1315,16 @@ def blocks(regions, roles, struct, rects, lang, positioning, categories, width, 
         else:
             out.append(text_block(label, r["text"], r["bbox"], styles.get(r["id"], {}), order.get(r["id"], 0)))
         k += 1
-    out = reading_order([b for b in out if b["box"]], positioning, lang, width, height)
+    paths = struct.get("paths", {})  # the containers each block sits in (keyed by its document order)
+    frames, size = struct.get("frames", {}), struct.get("size") or [0, 0]  # its element's box on the clean page
+    sx, sy = (width / size[0], height / size[1]) if size[0] and size[1] else (0, 0)
+    scaled = lambda f: [f["x"] * sx, f["y"] * sy, (f["x"] + f["width"]) * sx, (f["y"] + f["height"]) * sy] if f and sx else None
+    containers = {int(k): scaled(v) for k, v in struct.get("boxes", {}).items()}
+    for b in out:
+        b["path"] = paths.get(str(b.get("dom")), [])
+        b["frame"] = scaled(frames.get(str(b.get("dom"))))
+        b["containers"] = containers
+    out = reading_order([b for b in out if b["box"]], lang, width, height)
     heights = sorted(r["bbox"][3] - r["bbox"][1] for r in regions)
     line = heights[len(heights) // 4] if heights else 0.02 * height  # most short slots are one line
     out = joined(edges(out, width, height), width, line, height)
@@ -1169,27 +1462,56 @@ def touching(a, b, width):
     return min(a[2], b[2]) > max(a[0], b[0]) and max(a[1], b[1]) - min(a[3], b[3]) < line
 
 
-def reading_order(out, positioning, lang, width, height):
-    """Flowing pages: document order (a block's place is that of its first labelled text, or of its element for
-    pictures). Absolutely placed pages (DocLayNet): English column by column, as Surya reads them (half the
-    order differences of top-to-bottom bands in surya_probe/batch100); Arabic top to bottom in bands, right to
-    left (Surya doesn't read those column by column)."""
-    if positioning == "absolute" and lang != "ar":
-        return columns_first(out, 0.004 * width, 0.008 * height)
-    if positioning == "absolute":
-        heights = sorted(b["box"][3] - b["box"][1] for b in out)
-        band = max(8, heights[len(heights) // 2] // 2) if heights else 8
-        side = -1 if lang == "ar" else 1
-        return sorted(out, key=lambda b: (b["box"][1] // band, side * b["box"][0]))
-    return sorted(out, key=lambda b: b["dom"])
+def reading_order(out, lang, width, height):
+    """One rule for every page: the page's visual groups first, then what is inside each group, each time cut along
+    empty strips, rows first (a strip across: the part above is read before the part below), then columns, Arabic
+    right to left and English left to right (xy_cut, mirrored for Arabic).
+
+    The groups are the template's containers (b["path"]: the containers a block sits in, from the page script): a
+    column, a card or a sidebar is read whole before the next. Cutting the bare blocks instead lets an empty strip
+    that happens to line up across a row of cards (under their pictures, say) read all the pictures, then all the
+    headings; with other text the strip is gone and the cards are read one by one. On 730 bank templates rendered
+    twice, that made the order change with the text on 303. Inside a container whose text flows through columns
+    (column-count: a negative id in the path) the order is the flow: down one column, then the next. Blocks without
+    a path are cut as one group.
+
+    Boxes for the order are the containers' own boxes and the blocks' frames (the element's box on the clean
+    page), not the ink: the ink of a short text ends higher, and the effects move it, so cuts made on ink come and
+    go with the text. A DocLayNet region has a fixed size (its container), a card is measured as the whole card.
+    A block without a frame uses its box."""
+    gx, gy = 0.004 * width, 0.008 * height
+    where = (lambda b: b.get("frame") or b["box"]) if all(b.get("frame") for b in out) else (lambda b: b["box"])
+
+    def box_of(key, members):  # a group is measured by its container's own box (fixed by the layout) when known
+        box = isinstance(key, int) and (members[0].get("containers") or {}).get(key)
+        return box or union([where(b) for b in members])
+    flip = (lambda b: [width - b[2], b[1], width - b[0], b[3]]) if lang == "ar" else (lambda b: b)
+
+    def order(blocks, depth):
+        groups = {}
+        for b in blocks:  # the container at this depth; a block with no deeper container stands alone
+            path = b.get("path") or []
+            groups.setdefault(path[depth] if len(path) > depth else ("block", id(b)), []).append(b)
+        if len(groups) == 1 and len(blocks) > 1:  # one wrapper around everything: look inside it
+            return order(blocks, depth + 1)
+        units = [{"box": flip(box_of(key, g)), "members": g} for key, g in groups.items()]
+        parent = (blocks[0].get("path") or [0])[depth - 1] if depth else 0
+        if parent < 0:  # text flowing through columns: in its flow (document) order
+            units.sort(key=lambda u: min(b.get("dom", 0) for b in u["members"]))
+        else:
+            units = xy_cut(units, gx, gy, rows_first=True)
+        return [b for u in units for b in (order(u["members"], depth + 1) if len(u["members"]) > 1 else u["members"])]
+
+    return order(out, 0)
 
 
-def columns_first(out, gap_x, gap_y):
-    """Left to right in columns (an empty strip from top to bottom between them), else top to bottom in bands
-    (an empty strip across), each part ordered the same way; blocks with neither left top to bottom."""
+def xy_cut(out, gap_x, gap_y, rows_first=False):
+    """Blocks cut into parts along empty strips: columns (an empty strip from top to bottom, parts left to right)
+    and rows (an empty strip across, parts top to bottom), columns tried first or rows first, each part ordered
+    the same way; blocks that can't be cut, top to bottom then left to right."""
     if len(out) <= 1:
         return out
-    for axis, gap in ((0, gap_x), (1, gap_y)):
+    for axis, gap in (((1, gap_y), (0, gap_x)) if rows_first else ((0, gap_x), (1, gap_y))):
         spans = sorted((b["box"][axis], b["box"][axis + 2]) for b in out)
         cuts, end = [], spans[0][1]
         for start, stop in spans[1:]:
@@ -1200,7 +1522,7 @@ def columns_first(out, gap_x, gap_y):
             parts = [[] for _ in range(len(cuts) + 1)]
             for b in out:
                 parts[sum((b["box"][axis] + b["box"][axis + 2]) / 2 > x for x in cuts)].append(b)
-            return [b for part in parts for b in columns_first(part, gap_x, gap_y)]
+            return [b for part in parts for b in xy_cut(part, gap_x, gap_y, rows_first)]
     return sorted(out, key=lambda b: (b["box"][1], b["box"][0]))
 
 
@@ -1212,16 +1534,33 @@ def on_page(b):
     return inner(b["html"]) if b["label"] == "Page-Header" else b["html"]
 
 
+# How Surya 2.5 draws a block's box compared with the box on the text: its mean edge shift (x0, y0, x1, y1) in
+# thousandths of the page, measured on 1,219 blocks of surya_probe/batch100 (full_ocr + layout, Surya's box paired
+# with ours at IoU >= 0.7). The left and top edges sit further out; it does not grow with the letters' size.
+SURYA_SHIFT = {"Image": (-4.1, -1.7, -1.4, -1.1), "other": (-6.9, -3.0, 2.0, -0.8)}
+TEXT_MARGIN = 3.0  # then a text block's box gets this much room on every side (thousandths of the page)
+
+
+def as_surya(b, width, height):
+    """A block's box as Surya writes it (SURYA_SHIFT) with some room around text (TEXT_MARGIN), for the answers'
+    block headers only."""
+    image = b["label"] == "Image"
+    shift = SURYA_SHIFT["Image" if image else "other"]
+    room = 0 if image else TEXT_MARGIN
+    return [v + (s + (room if k >= 2 else -room)) * (width if k % 2 == 0 else height) / 1000
+            for k, (v, s) in enumerate(zip(b["box"], shift))]
+
+
 def divs(blks, width, height):
     """The page's blocks as Surya's <div data-bbox data-label> HTML: encode() turns it into the full_ocr answer."""
-    return "\n".join(f'<div data-bbox="{norm(b["box"], width, height)}" data-label="{b["label"]}">{on_page(b)}</div>'
-                     for b in blks)
+    return "\n".join(f'<div data-bbox="{norm(as_surya(b, width, height), width, height)}" data-label="{b["label"]}">'
+                     f'{on_page(b)}</div>' for b in blks)
 
 
 def layout(blks, width, height):
     """The layout answer: the JSON array on one line."""
-    return json.dumps([{"label": b["label"], "bbox": norm(b["box"], width, height), "count": count(b["html"])}
-                       for b in blks], ensure_ascii=False)
+    return json.dumps([{"label": b["label"], "bbox": norm(as_surya(b, width, height), width, height),
+                        "count": count(b["html"])} for b in blks], ensure_ascii=False)
 
 
 def on_crop(box, crop):
@@ -1241,6 +1580,15 @@ def table_structure(rects, i, crop):
     cols = [rects[k] for k in sorted(k for k in rects if k[0] == "col" and k[1] == i)]
     return ([{"label": "Row", "bbox": on_crop(b, crop)} for b in rows]
             + [{"label": "Col", "bbox": on_crop(b, crop)} for b in cols])
+
+
+def whole_table(rects, i, n_rows, crop, slack=2):
+    """Every row and column of table i (n_rows rows) is on the image and in the cut-out: a table running off the
+    page (or past its block's box) would give rows that are not in the picture."""
+    parts = [rects[k] for k in rects if k[0] in ("row", "col") and k[1] == i]
+    rows = sum(k[0] == "row" and k[1] == i for k in rects)
+    return bool(parts) and rows == n_rows and all(r[0] >= crop[0] - slack and r[1] >= crop[1] - slack and r[2] <= crop[2] + slack
+                               and r[3] <= crop[3] + slack and r[2] - r[0] > 2 and r[3] - r[1] > 2 for r in parts)
 
 
 def clear(crop, others, slack=2):
@@ -1429,9 +1777,34 @@ def bank_entries(bank_dir):
 
 
 def arabic_fonts():
+    """Families with Arabic letters: OCRSmith's and the font pool's (pools.py, font_pool/)."""
     if "fonts" not in _cache:
-        _cache["fonts"] = font_families()
+        families = font_families()
+        for fam, f in font_pool().items():
+            if "arabic" in f["scripts"]:
+                families.setdefault(fam, {}).update({(w, False): path for w, path in f["files"].items()})
+        _cache["fonts"] = families
     return _cache["fonts"]
+
+
+def latin_fonts():
+    """Families for English pages: {name: {}} for the installed ones, files for the font pool's (no monospace)."""
+    if "latin" not in _cache:
+        families = {name: {} for name in LATIN_FONTS}
+        for fam, f in font_pool().items():
+            if f["category"] != "Monospace":
+                families[fam] = {(w, False): path for w, path in f["files"].items()}
+        _cache["latin"] = families
+    return _cache["latin"]
+
+
+def mono_fonts():
+    """Monospace families for code blocks: the font pool's, else the installed Consolas."""
+    if "mono" not in _cache:
+        families = {fam: {(w, False): path for w, path in f["files"].items()}
+                    for fam, f in font_pool().items() if f["category"] == "Monospace"}
+        _cache["mono"] = families or {"Consolas": {}}
+    return _cache["mono"]
 
 
 def text_pool(lang):
@@ -1459,10 +1832,11 @@ class DocPipeline:
 
     def __init__(self, out_dir, languages=None, effects=None, sources=None, templates="bank", llm=None,
                  pictures=None, text=None, extras=True, bank=None, strengths=None, check=True, tashkeel=None,
-                 tasks=None, colour_share=COLOUR_SHARE):
+                 tasks=None, colour_share=COLOUR_SHARE, graphic_share=GRAPHIC_SHARE, special_share=SPECIAL_SHARE,
+                 blank_share=BLANK_SHARE):
         self.out = Path(out_dir).resolve()
         self.out.mkdir(parents=True, exist_ok=True)
-        self.bank = Path(bank) if bank else BANK2000
+        self.bank = Path(bank).resolve() if bank else BANK2000
         self.languages, self.effects = languages or LANGUAGES, effects or EFFECTS
         self.sources, self.templates, self.llm = sources, templates, llm
         self.strengths = {**STRENGTHS, **(strengths or {})}
@@ -1470,7 +1844,13 @@ class DocPipeline:
         self.tasks = tasks or TASKS
         self.colour_share = colour_share  # share of pages in colour, the rest light (theme)
         self.pictures = ImagePool() if pictures is None else pictures
-        self.categories = {f.name: c for c, files in getattr(self.pictures, "by_category", {}).items() for f in files}
+        captions = getattr(self.pictures, "captions", {})  # file name -> (label, its HTML in the answers)
+        self.picture_info = {f.name: ("Image", picture_html(captions.get(f.name, []), c))
+                             for c, files in getattr(self.pictures, "by_category", {}).items() for f in files}
+        for label, by_lang in getattr(self.pictures, "graphics", {}).items():
+            for items in by_lang.values():
+                self.picture_info.update({path.name: (label, r["html"]) for path, r in items})
+        self.graphic_share, self.special_share, self.blank_share = graphic_share, special_share, blank_share
         self.text = text or ("wikipedia" if TextPool.exists("ar") and TextPool.exists("en") else "demo")
         self.extras, self.check = extras, check
         synthdoc_arabic.install()  # SynthDoc then also measures every word (the Arabic extension)
@@ -1511,7 +1891,7 @@ class DocPipeline:
 
     # -- STEP 2: fill --------------------------------------------------------------------------------------------
 
-    def fill(self, meta, text, folder, rng, lang):
+    def fill(self, meta, text, folder, rng, lang, specials=True):
         """(page for SynthDoc, values for its slots, pictures and style, record of everything picked)."""
         if lang == "ar":
             s, css = style(rng, arabic_fonts())
@@ -1529,14 +1909,25 @@ class DocPipeline:
             s = {**s, "line_height": max(s["line_height"], TASHKEEL_LINE_HEIGHT[level])}
             css += f"\n:root {{ --line-height: {s['line_height']}; }}"
         used = []
-        for pic in meta.get("pictures", []):  # <img src="{{ pic_N }}"> slots: a photo of the hinted kind
-            photo = self.pictures.pick(rng, pic.get("hint")) if self.pictures else None
+        for pic in meta.get("pictures", []):  # <img src="{{ pic_N }}"> slots: a photo of the hinted kind, or a
+            photo = None  # chart, flowchart or molecule (special blocks above)
+            if self.pictures and rng.random() < self.graphic_share:
+                drawn = self.pictures.graphic(rng, pick(rng, GRAPHIC_KINDS), lang)
+                photo = drawn[0] if drawn else None
+            if photo is None and self.pictures:
+                photo = self.pictures.pick(rng, pic.get("hint"))
             values[pic["id"]] = Markup(photo.as_uri() if photo else "")
             if photo:
                 used.append(photo.name)
-        page = self.page_script(synthdoc_html(meta, text, lang, folder), rng, theme_js)
+        page, specials = synthdoc_html(meta, text, lang, folder), []
+        if rng.random() < self.special_share and specials:
+            mono = rng.choice(sorted(mono_fonts()))
+            page, specials = add_specials(page, meta, rng, lang, words, s["digits"], self.pictures, self.picture_info, mono)
+            css += font_faces(mono_fonts(), {mono})
+        css += SPECIAL_CSS
+        page = self.page_script(page, rng, theme_js)
         s = {**s, "theme": look, "tashkeel": level, "pictures": used, "text": self.text,
-             "text_sources": words.sources() if words else []}
+             "specials": specials, "text_sources": words.sources() if words else []}
         # The style travels with the page, so SynthDoc's word labels record it (the Arabic extension reads this)
         variant = {"template": meta["id"], "source": meta["source"], "lang": lang, **s}
         tag = Markup.escape(json.dumps(variant, ensure_ascii=False))
@@ -1627,6 +2018,8 @@ class DocPipeline:
         rng = random.Random(seed)
         lang, effect = language or pick(rng, self.languages), effect or pick(rng, self.effects)
         task = task or pick(rng, self.tasks)  # the Surya prompt this sample is made for
+        if rng.random() < self.blank_share:
+            return self.blank(rng, seed, name, lang, effect, task)
         t = {"template": 0, "fill": 0, "render": 0}
         rejected, attempts = {}, 0
         for attempts in range(1, ATTEMPTS + 1):  # until the rendered page passes every check
@@ -1638,7 +2031,9 @@ class DocPipeline:
                 t["template"] += time.perf_counter() - mark
             at[0] = "STEP 2 fill"
             mark = time.perf_counter()
-            page, values, s = self.fill(meta, text, folder, rng, lang)
+            # special blocks only in the first half of the attempts: a page that keeps failing with them (a block
+            # too big for its box, say) is then made without them, so every sample can be made
+            page, values, s = self.fill(meta, text, folder, rng, lang, specials=attempts <= ATTEMPTS // 2)
             t["fill"] += time.perf_counter() - mark
             at[0] = "STEP 3 render"
             mark = time.perf_counter()
@@ -1663,6 +2058,10 @@ class DocPipeline:
         else:
             raise RuntimeError(f"no page without hidden, cut or overlapping text after {ATTEMPTS} attempts: {rejected}")
         words, cut = split_words(ocr)  # (the checks passed, so nothing is dropped here)
+        for w in words:  # tashkeel is drawn, never labelled: every text below is made from these words
+            w["text"] = no_marks(w["text"])
+        if qa.get("slots"):
+            qa["slots"] = {k: no_marks(v) for k, v in qa["slots"].items()}
         for w in words:  # boxes hug the letters, not the line's leading: big text doesn't reach into its neighbours
             top, h = w["glyph_box"][1], w["glyph_box"][3]
             pad = max(2.0, 0.12 * h)
@@ -1696,19 +2095,22 @@ class DocPipeline:
         width, height = image.size
         rects = rebuild(plan, moved, width, height)
         blks = blocks(regions, {sl["id"]: sl["role"] for sl in meta["slots"]}, qa.get("struct") or {}, rects,
-                            lang, meta.get("positioning", "flow"), self.categories, width, height)
+                      lang, self.picture_info, width, height, s.get("specials", []))
+        for b in blks:  # a special block's text (references, a form) may have marks of its own
+            b["html"] = no_marks(b["html"])
         # a cut-out (block_ocr: one block, not a picture; table: a table) shows its block and nothing of another:
         # blocks whose cut-out would take in part of a neighbour (a turned page's upright boxes overlap) are not
         # used; none left: full_ocr instead
         cuts = []
         if task in ("block_ocr", "table"):
             for b in blks:
-                if b["label"] == "Image" or (task == "table" and b["label"] != "Table"):
+                if b["label"] in NO_CUT or (task == "table" and b["label"] != "Table"):
                     continue
                 others = [x["box"] for x in blks if x is not b]
                 c = crop_box(b["box"], width, height, rng, others,
                                    share=(0.03, 0.12) if task == "table" else None)
-                if clear(c, others):
+                if clear(c, others) and (task != "table" or whole_table(
+                        rects, b["table"], len((qa.get("struct") or {}).get("tables", [])[b["table"]]["rows"]), c)):
                     cuts.append((b, c))
             if not cuts:
                 note, task = (note + "; " if note else "") + f"no {task} block that cuts out clean: full_ocr instead", "full_ocr"
@@ -1756,6 +2158,41 @@ class DocPipeline:
                 "attempts": attempts, "rejected": rejected, "pictures": len(s["pictures"]), "text": s["text"],
                 "text_sources": len(s["text_sources"]), "seconds": {**times, "total": round(sum(times.values()), 2)}}
 
+    def blank(self, rng, seed, name, lang, effect, task):
+        """A blank page (blank_share of the samples): paper in a page colour, the effect, and one Blank-Page block
+        over the whole page with nothing in it, as Surya answers a blank page."""
+        mark = time.perf_counter()
+        w_mm, h_mm = page_dims(rng.choice(list(PAGE_MM)), rng.choice(["portrait", "portrait", "landscape"]))
+        size = (round(w_mm / 25.4 * 96 * RENDER_SCALE), round(h_mm / 25.4 * 96 * RENDER_SCALE))
+        look = theme(rng, "grammar", self.colour_share)[0]
+        image, attacks, strength = Image.new("RGB", size, hex_rgb(look["page_color"])), ["clean"], 0.0
+        if effect != "clean":
+            tool = "augraphy" if effect == "augraphy" else ("ocrsmith" if effect == "ocrsmith" else "scan-simulator")
+            strength = self.strengths[tool]
+            image, _, attacks = degrade(image, [], rng.randrange(2**31), effect, strength)
+        task = task if task in ("full_ocr", "layout") else "full_ocr"  # nothing on it to cut out
+        width, height = image.size
+        blks = [{"label": "Blank-Page", "box": [0, 0, width, height], "html": ""}]
+        target = encode(divs(blks, width, height)) if task == "full_ocr" else layout(blks, width, height)
+        label = {"page": name, "width": width, "height": height, "seed": seed, "attacks": attacks, "words": [],
+                 "lines": [], "slots": [], "lost_words": 0, "cut_words_dropped": 0, "template": "blank",
+                 "source": "blank", "lang": lang, "effect": effect, "strength": strength, "style": {"theme": look},
+                 "surya": {"task": task, "prompt": PROMPTS[task], "target": target, "crop": None, "table_structure": None,
+                           "page_size": [width, height], "divs": divs(blks, width, height),
+                           "blocks": [{"label": "Blank-Page", "box": [0, 0, width, height], "html": ""}]}}
+        image.save(self.out / f"{name}.jpg", quality=90)
+        (self.out / f"{name}.prompt.txt").write_text(PROMPTS[task], encoding="utf-8", newline="\n")
+        (self.out / f"{name}{SUFFIX[task]}").write_text(target, encoding="utf-8", newline="\n")
+        (self.out / f"{name}.md").write_text("", encoding="utf-8")
+        (self.out / f"{name}.json").write_text(json.dumps(label, ensure_ascii=False), encoding="utf-8")
+        seconds = round(time.perf_counter() - mark, 2)
+        return {"name": name, "seed": seed, "template": "blank", "source": "blank", "lang": lang, "task": task,
+                "target_file": f"{name}{SUFFIX[task]}", "blocks": 1, "crop": None, "effect": effect, "strength": strength,
+                "attacks": attacks, "font": None, "size_pt": None, "theme": look, "tashkeel": "none", "contrast": None,
+                "legibility": None, "words": 0, "regions": 0, "lost_words": 0, "pages_rendered": 0, "note": "blank page",
+                "attempts": 1, "rejected": {}, "pictures": 0, "text": None, "text_sources": 0,
+                "seconds": {"template": 0, "fill": 0, "render": 0, "effects": seconds, "markdown": 0, "total": seconds}}
+
     def run(self, n=16, seed=None, on_sample=None):
         """n samples one after another; on_sample(summary) is called as each one is done."""
         seed = random.randrange(10**6) if seed is None else seed
@@ -1789,7 +2226,7 @@ def scale_measurements(ocr, slots, qa, k):
     st = qa.get("struct") or {}
     rects = ([t["rect"] for t in st.get("tables", [])] + [r["rect"] for t in st.get("tables", []) for r in t["rows"]]
              + [c["rect"] for t in st.get("tables", []) for r in t["rows"] for c in r["cells"]]
-             + [x["rect"] for x in st.get("lists", []) + st.get("images", [])])
+             + [x["rect"] for x in st.get("lists", []) + st.get("images", []) + st.get("specials", [])])
     for rect in rects:
         for key in ("x", "y", "width", "height"):
             rect[key] *= k

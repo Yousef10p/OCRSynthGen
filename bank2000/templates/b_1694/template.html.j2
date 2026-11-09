@@ -1,39 +1,124 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8">
-<style>@page { size: Letter portrait; margin: 0; }
-:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 0mm; }
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
 html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
 body { margin: 0; }
 h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
 .page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
 .ph { background: #d0d0d0; }
-.page { position: relative; block-size: var(--page-height); padding: 0; overflow: hidden; }
-.box { position: absolute; margin: 0; padding: 0; overflow: hidden; box-sizing: border-box; }
-h1.box, h2.box { font-weight: bold; }
-ul.box { list-style-position: inside; }
-.box table { inline-size: 100%; block-size: 100%; border-collapse: collapse; table-layout: fixed; }
-.box th, .box td { border: 1px solid #888; padding: 0 0.2em; overflow: hidden; }
+*,::after,::before{box-sizing:border-box}
+html{-moz-tab-size:4;tab-size:4}
+html{line-height:1.15;-webkit-text-size-adjust:100%}
+body{margin:0}
+body{font-family: var(--font-body)}
+hr{height:0;color:inherit}
+abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}
+b,strong{font-weight:bolder}
+code,kbd,pre,samp{font-family: var(--font-body);font-size:1em}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sub{bottom:-.25em}
+sup{top:-.5em}
+table{text-indent:0;border-color:inherit}
+button,input,optgroup,select,textarea{font-family: var(--font-body);font-size:100%;line-height:1.15;margin:0}
+button,select{text-transform:none}
+[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}
+::-moz-focus-inner{border-style:none;padding:0}
+:-moz-focusring{outline:1px dotted ButtonText}
+:-moz-ui-invalid{box-shadow:none}
+legend{padding:0}
+progress{vertical-align:baseline}
+::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}
+[type=search]{-webkit-appearance:textfield;outline-offset:-2px}
+::-webkit-search-decoration{-webkit-appearance:none}
+::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+summary{display:list-item}
+blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}
+button{background-color:transparent;background-image:none}
+fieldset{margin:0;padding:0}
+ol,ul{list-style:none;margin:0;padding:0}
+html{font-family: var(--font-body);line-height:1.5}
+body{font-family: var(--font-body);line-height:inherit}
+*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:currentColor}
+hr{border-top-width:1px}
+img{border-style:solid}
+textarea{resize:vertical}
+input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}
+[role=button],button{cursor:pointer}
+:-moz-focusring{outline:auto}
+table{border-collapse:collapse}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}
+a{color:inherit;text-decoration:inherit}
+button,input,optgroup,select,textarea{padding:0;line-height:inherit;color:inherit}
+code,kbd,pre,samp{font-family: var(--font-body)}
+audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}
+img,video{max-width:100%;height:auto}
+[hidden]{display:none}
+*,::after,::before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}
+.container{width:100%}
+.mx-auto{margin-right:auto;margin-left:auto}
+.mt-6{margin-top:1.5rem}
+.mb-6{margin-bottom:1.5rem}
+.flex{display:flex}
+.h-screen{height:100vh}
+.w-full{width:100%}
+.justify-center{justify-content:center}
+.bg-gray-100{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}
+.bg-gray-200{--tw-bg-opacity:1;background-color:rgba(229,231,235,var(--tw-bg-opacity))}
+.bg-cover{background-size:cover}
+.bg-center{background-position:center}
+.px-4{padding-right:1rem;padding-left:1rem}
+.px-6{padding-right:1.5rem;padding-left:1.5rem}
+.py-12{padding-top:3rem;padding-bottom:3rem}
+.font-sans{font-family: var(--font-body)}
+.text-3xl{font-size:1.875rem;line-height:2.25rem}
+.leading-normal{line-height:1.5}
+.tracking-normal{letter-spacing:0}
+*,::after,::before{--tw-shadow:0 0 #0000}
+*,::after,::before{--tw-ring-inset:var(--tw-empty, );--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59, 130, 246, 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}
+@media (min-width:640px){.container{max-width:640px}}
+@media (min-width:768px){.container{max-width:768px}.md\:py-24{padding-top:6rem;padding-bottom:6rem}}
+@media (min-width:1024px){.container{max-width:1024px}}
+@media (min-width:1280px){.container{max-width:1280px}}
+@media (min-width:1536px){.container{max-width:1536px}}
+.ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
 .pic-frame { overflow: hidden; min-block-size: 2em; }
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
-</style>
-<style>{{ style }}</style>
-</head>
-<body><div class="page">
-<header class="box" style="inset-inline-start: 99.0mm; inset-block-start: 19.9mm; inline-size: 23.1mm; block-size: 3.7mm; font-size: 10.3pt">{{ slot_0 }}</header><header class="box" style="inset-inline-start: 63.3mm; inset-block-start: 25.2mm; inline-size: 4.5mm; block-size: 3.6mm; font-size: 10.3pt">{{ slot_1 }}</header><p class="box" style="inset-inline-start: 58.8mm; inset-block-start: 30.5mm; inline-size: 14.5mm; block-size: 2.7mm; font-size: 7.6pt">{{ slot_2 }}</p>
-<p class="box" style="inset-inline-start: 141.2mm; inset-block-start: 32.2mm; inline-size: 14.4mm; block-size: 2.7mm; font-size: 7.6pt">{{ slot_3 }}</p>
-<div  style="inset-inline-start: 33.3mm; inset-block-start: 35.0mm; inline-size: 70.7mm; block-size: 41.3mm; font-size: 39.0pt" class="box pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
-<div  style="inset-inline-start: 115.6mm; inset-block-start: 34.4mm; inline-size: 71.2mm; block-size: 30.4mm; font-size: 12.3pt" class="box pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
-<div  style="inset-inline-start: 115.4mm; inset-block-start: 65.7mm; inline-size: 71.2mm; block-size: 30.2mm; font-size: 17.1pt" class="box pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
-<div  style="inset-inline-start: 33.6mm; inset-block-start: 78.4mm; inline-size: 70.9mm; block-size: 42.5mm; font-size: 40.0pt" class="box pic-frame"><img data-pic="pic_3" src="{{ pic_3 }}" alt=""></div>
-<div  style="inset-inline-start: 115.8mm; inset-block-start: 97.1mm; inline-size: 71.0mm; block-size: 30.1mm; font-size: 40.0pt" class="box pic-frame"><img data-pic="pic_4" src="{{ pic_4 }}" alt=""></div>
-<div  style="inset-inline-start: 33.6mm; inset-block-start: 122.5mm; inline-size: 70.9mm; block-size: 42.9mm; font-size: 15.2pt" class="box pic-frame"><img data-pic="pic_5" src="{{ pic_5 }}" alt=""></div>
-<div  style="inset-inline-start: 115.6mm; inset-block-start: 128.4mm; inline-size: 71.0mm; block-size: 30.2mm; font-size: 40.0pt" class="box pic-frame"><img data-pic="pic_6" src="{{ pic_6 }}" alt=""></div>
-<div  style="inset-inline-start: 115.6mm; inset-block-start: 159.4mm; inline-size: 71.0mm; block-size: 30.4mm; font-size: 40.0pt" class="box pic-frame"><img data-pic="pic_7" src="{{ pic_7 }}" alt=""></div>
-<div  style="inset-inline-start: 33.3mm; inset-block-start: 167.2mm; inline-size: 70.7mm; block-size: 29.9mm; font-size: 14.1pt" class="box pic-frame"><img data-pic="pic_8" src="{{ pic_8 }}" alt=""></div>
-<div  style="inset-inline-start: 33.4mm; inset-block-start: 198.8mm; inline-size: 70.6mm; block-size: 30.4mm; font-size: 40.0pt" class="box pic-frame"><img data-pic="pic_9" src="{{ pic_9 }}" alt=""></div>
-<div  style="inset-inline-start: 115.5mm; inset-block-start: 198.0mm; inline-size: 71.2mm; block-size: 62.9mm; font-size: 40.0pt" class="box pic-frame"><img data-pic="pic_10" src="{{ pic_10 }}" alt=""></div>
-<div  style="inset-inline-start: 33.1mm; inset-block-start: 230.9mm; inline-size: 70.6mm; block-size: 30.2mm; font-size: 14.3pt" class="box pic-frame"><img data-pic="pic_11" src="{{ pic_11 }}" alt=""></div>
-</div></body>
-</html>
+</style><style>{{ style }}</style></head><body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<header class="w-full h-screen bg-cover bg-center" style="background-image: none">
+<div class="container mx-auto px-6 py-12 md:py-24">
+<div style="inline-size: 100%; block-size: 150px" class="mx-auto mb-6 pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<nav class="flex justify-center">
+<a class="px-4">{{ slot_0 }}</a>
+<a class="px-4">{{ slot_1 }}</a>
+<a class="px-4">{{ slot_2 }}</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="py-12" id="about">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl">{{ slot_3 }}</h2>
+<p class="mt-6">
+                    {{ slot_4 }}
+                </p>
+</div>
+</section>
+<section class="py-12 bg-gray-200" id="services">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl">{{ slot_5 }}</h2>
+<p class="mt-6">
+                    {{ slot_6 }}
+                </p>
+</div>
+</section>
+<section class="py-12" id="contact">
+<div class="container mx-auto px-6">
+<h2 class="text-3xl">{{ slot_7 }}</h2>
+<p class="mt-6">
+                    {{ slot_8 }}
+                </p>
+</div>
+</section>
+</main>
+</body></html>

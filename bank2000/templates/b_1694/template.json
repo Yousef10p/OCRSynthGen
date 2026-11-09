@@ -1,10 +1,8 @@
 {
  "id": "b_1694",
- "source": "doclaynet",
- "source_ref": "docling-project/DocLayNet-v1.1:train:shard24:row1010",
- "license": "CDLA-Permissive-1.0",
- "attribution": "DocLayNet v1.1 (IBM Research), patents, layout geometry only",
- "positioning": "absolute",
+ "source": "websight2",
+ "source_ref": "v0.2:shard586:rg17:row2",
+ "positioning": "flow",
  "page": {
   "size": "Letter",
   "orientation": "portrait"
@@ -12,43 +10,88 @@
  "slots": [
   {
    "id": "slot_0",
-   "role": "header",
+   "role": "label",
    "words": [
     1,
-    1
+    3
    ],
    "dir": "rtl"
   },
   {
    "id": "slot_1",
-   "role": "header",
+   "role": "label",
    "words": [
     1,
-    1
+    3
    ],
    "dir": "rtl"
   },
   {
    "id": "slot_2",
-   "role": "paragraph",
+   "role": "label",
    "words": [
     1,
-    1
+    3
    ],
    "dir": "rtl"
   },
   {
    "id": "slot_3",
-   "role": "paragraph",
+   "role": "heading",
    "words": [
     1,
-    1
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_4",
+   "role": "paragraph",
+   "words": [
+    26,
+    51
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_5",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_6",
+   "role": "paragraph",
+   "words": [
+    25,
+    50
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_7",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "rtl"
+  },
+  {
+   "id": "slot_8",
+   "role": "paragraph",
+   "words": [
+    9,
+    20
    ],
    "dir": "rtl"
   }
  ],
  "features": {
-  "columns": 2,
+  "columns": 1,
   "tables": 0,
   "lists": 0,
   "list_depth": 0,
@@ -56,59 +99,17 @@
   "asides": 0,
   "has_header": true,
   "has_footer": false,
-  "slot_count": 4
+  "slot_count": 9
  },
- "structure_hash": "fdcaf99087787392e0c07a9731c84a317d37d2d34cd961172664f48f61206b2d",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
  "lang": "ar",
  "pictures": [
   {
    "id": "pic_0",
-   "hint": ""
-  },
-  {
-   "id": "pic_1",
-   "hint": ""
-  },
-  {
-   "id": "pic_2",
-   "hint": ""
-  },
-  {
-   "id": "pic_3",
-   "hint": ""
-  },
-  {
-   "id": "pic_4",
-   "hint": ""
-  },
-  {
-   "id": "pic_5",
-   "hint": ""
-  },
-  {
-   "id": "pic_6",
-   "hint": ""
-  },
-  {
-   "id": "pic_7",
-   "hint": ""
-  },
-  {
-   "id": "pic_8",
-   "hint": ""
-  },
-  {
-   "id": "pic_9",
-   "hint": ""
-  },
-  {
-   "id": "pic_10",
-   "hint": ""
-  },
-  {
-   "id": "pic_11",
-   "hint": ""
+   "hint": "logo logo auto"
   }
  ],
- "source_template": "d_t_24_1010"
+ "source_template": "b_1694",
+ "structure_hash": "994dfe38ac81a167bd6c29ed8862d7e7af32ab071f69751ceff67b4a8c3c0035"
 }

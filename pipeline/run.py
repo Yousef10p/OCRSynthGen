@@ -15,7 +15,7 @@ import zlib
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -139,8 +139,9 @@ def dataset(argv):
         "template_sources": count("source"), "options": vars(a),
         "text": "Wikipedia (ar, en), CC BY-SA 4.0: each label lists its articles; a shared set must keep "
                 "CC BY-SA and the attribution",
-        "pictures": "img_pool/: Unsplash photos via picsum.photos (Unsplash License) and Wikimedia Commons quality "
-                    "images (each file's licence and author in img_pool/sources.json)",
+        "pictures": "img_pool/: captioned pictures from Flickr8k (research use), Polaris (BSD-3-Clause; COCO / nocaps "
+                    "images) and PD12M (public domain / CC0); each picture's source and licence in "
+                    "img_pool/captions.jsonl",
         "templates": "bank2000/: Grammar (own), WebSight v0.1 and v0.2 (CC BY 4.0), DocLayNet v1.1 (CDLA-Permissive-1.0)",
     }, indent=1), encoding="utf-8")
     print(f"done: {len(rows)} samples in {out} ({failed} failed this run; run again to make them)")
@@ -258,7 +259,31 @@ def probe_answers():
                                       "finish_reason": r.get("finish_reason"),
                                       "tokens": (r.get("usage") or {}).get("completion_tokens"),
                                       "content": r.get("content") if r["status"] == 200 else r.get("error")}
-    return sorted(images.values(), key=lambda e: (e["kind"] != "reference", e["image"]))
+    return sorted(images.values(), key=lambda e: (e["kind"] != "reference", e["image"])) + batch_answers()
+
+
+def batch_answers():
+    """The same entries for every sample Surya answered in surya_probe/<batch>/<prompt>/surya.jsonl (batch100,
+    clean100): its image, Surya's answer and our label (samples/<id>/our_label.* when there, else the target)."""
+    entries = []
+    for path in sorted(PROBE.glob("*/*/surya.jsonl")):
+        folder = path.parent
+        rows = {}
+        if (folder / "manifest.jsonl").exists():
+            rows = {r["id"]: r for r in map(json.loads, (folder / "manifest.jsonl").read_text(encoding="utf-8").splitlines()) if r}
+        for line in path.read_text(encoding="utf-8").splitlines():
+            r = json.loads(line)
+            ours = next((folder / "samples" / r["id"]).glob("our_label.*"), None) if (folder / "samples" / r["id"]).is_dir() else None
+            ours = ours or folder / r["target"]
+            entries.append({"image": f"{folder.parent.name}/{folder.name}/{r['image']}", "title": f"{folder.name}/{r['id']}",
+                            "kind": f"{folder.parent.name}/{folder.name}", "lang": r.get("lang"),
+                            "label": rows.get(r["id"], {}).get("source"), "effect": rows.get(r["id"], {}).get("effect"),
+                            "ours": {r["task"]: ours.read_text(encoding="utf-8") if ours.is_file() else None},
+                            "answers": {r["task"]: {"status": r["status"], "seconds": r.get("seconds"), "prompt": r.get("prompt"),
+                                                    "finish_reason": r.get("finish_reason"),
+                                                    "tokens": (r.get("usage") or {}).get("completion_tokens"),
+                                                    "content": r.get("content") if r["status"] == 200 else r.get("error")}}})
+    return entries
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -297,9 +322,10 @@ class Handler(SimpleHTTPRequestHandler):
                 return self.send_json({**job, "elapsed": round(time.time() - job["started"], 1)})
         if url.path == "/api/probe":  # the Surya probe: every image and Surya's answers (surya_probe/results.jsonl)
             return self.send_json(probe_answers())
-        if url.path.startswith("/probe/"):  # the probe's input images
-            path = (PROBE / "inputs" / url.path[len("/probe/"):]).resolve()
-            if (PROBE / "inputs").resolve() not in path.parents or not path.is_file():
+        if url.path.startswith("/probe/"):  # the probe's input images, and the batches' (surya_probe/<batch>/...)
+            name = unquote(url.path[len("/probe/"):])
+            path = (PROBE / ("" if "/" in name else "inputs") / name).resolve()
+            if PROBE.resolve() not in path.parents or not path.is_file():
                 return self.send_error(404)
             data = path.read_bytes()
             self.send_response(200)

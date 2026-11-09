@@ -55,104 +55,51 @@ audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:midd
 img,video{max-width:100%;height:auto}
 [hidden]{display:none}
 *,::after,::before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}
-.container{width:100%}
-@media (min-width:640px){.container{max-width:640px}}
-@media (min-width:768px){.container{max-width:768px}}
-@media (min-width:1024px){.container{max-width:1024px}}
-@media (min-width:1280px){.container{max-width:1280px}}
-@media (min-width:1536px){.container{max-width:1536px}}
-.relative{position:relative}
-.z-10{z-index:10}
-.float-right{float:left}
-.float-left{float:right}
 .mx-auto{margin-right:auto;margin-left:auto}
-.mt-0{margin-top:0}
-.mt-6{margin-top:1.5rem}
-.mt-12{margin-top:3rem}
-.mr-3{margin-left:.75rem}
-.mr-4{margin-left:1rem}
-.mb-2{margin-bottom:.5rem}
+.mt-4{margin-top:1rem}
+.mb-4{margin-bottom:1rem}
 .flex{display:flex}
-.h-full{height:100%}
+.w-1\/4{width:25%}
+.w-3\/4{width:75%}
 .w-full{width:100%}
-.flex-col{flex-direction:column}
-.items-center{align-items:center}
-.justify-end{justify-content:flex-end}
-.justify-between{justify-content:space-between}
-.rounded-full{border-radius:9999px}
 .bg-white{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}
-.bg-cover{background-size:cover}
-.bg-center{background-position:center}
-.px-6{padding-right:1.5rem;padding-left:1.5rem}
-.px-8{padding-right:2rem;padding-left:2rem}
-.py-4{padding-top:1rem;padding-bottom:1rem}
-.py-6{padding-top:1.5rem;padding-bottom:1.5rem}
-.py-12{padding-top:3rem;padding-bottom:3rem}
+.bg-indigo-500{--tw-bg-opacity:1;background-color:rgba(99,102,241,var(--tw-bg-opacity))}
+.p-4{padding:1rem}
 .text-center{text-align:center}
-.font-sans{font-family: var(--font-body)}
-.text-lg{font-size:1.125rem;line-height:1.75rem}
-.text-2xl{font-size:1.5rem;line-height:2rem}
-.text-3xl{font-size:1.875rem;line-height:2.25rem}
-.text-5xl{font-size:3rem;line-height:1}
-.font-bold{font-weight:700}
-.leading-tight{line-height:1.25}
-.leading-normal{line-height:1.5}
-.tracking-normal{letter-spacing:0}
+.text-justify{text-align:justify}
+.text-4xl{font-size:2.25rem;line-height:2.5rem}
+.text-black{--tw-text-opacity:1;color:rgba(0,0,0,var(--tw-text-opacity))}
 .text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}
-.no-underline{text-decoration:none}
 *,::after,::before{--tw-shadow:0 0 #0000}
-.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0, 0, 0, 0.1),0 4px 6px -2px rgba(0, 0, 0, 0.05);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
 *,::after,::before{--tw-ring-inset:var(--tw-empty, );--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59, 130, 246, 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}
-@media (min-width:768px){.md\:flex-row{flex-direction:row}}
-@media (min-width:768px){.md\:px-12{padding-right:3rem;padding-left:3rem}}
 .ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
 .pic-frame { overflow: hidden; min-block-size: 2em; }
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
-</style><style>{{ style }}</style></head>
-<body class="font-sans leading-normal tracking-normal">
-<header class="bg-cover bg-center" style="background-image: none">
-<div class="container mx-auto px-6 md:px-12 relative z-10 flex items-center h-full">
-<div class="w-full">
-<div style="inline-size: 100%; block-size: 150px" class="float-left mr-4 pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
-<nav class="float-right">
-<ul class="list-reset flex justify-end">
-<li class="mr-3"><a class="no-underline text-grey-darkest">{{ slot_0 }}</a></li>
-<li class="mr-3"><a class="no-underline text-grey-darkest">{{ slot_1 }}</a></li>
-<li class="mr-3"><a class="no-underline text-grey-darkest">{{ slot_2 }}</a></li>
-<li><a class="no-underline text-grey-darkest">{{ slot_3 }}</a></li>
+</style><style>{{ style }}</style></head><body class="bg-indigo-500 text-white">
+<div class="flex">
+<div class="w-1/4 bg-white text-black p-4">
+<div style="inline-size: 100%; block-size: 150px" class="mx-auto pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<nav>
+<ul>
+<li><a>{{ slot_0 }}</a></li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
 </ul>
 </nav>
-</div>
-<div class="text-center">
-<h1 class="text-5xl font-bold text-white leading-tight mt-0 mb-2">{{ slot_4 }}</h1>
-<p class="text-2xl text-white">{{ slot_5 }}</p>
-<button class="bg-white text-green-darkest font-bold rounded-full mt-6 py-4 px-8 shadow-lg">{{ slot_6 }}</button>
+<div class="mt-4">
+<h2>{{ slot_4 }}</h2>
+
 </div>
 </div>
-</header>
-<main class="container mx-auto px-6 md:px-12 py-12">
-<section>
-<h2 class="text-3xl font-bold mb-2">{{ slot_7 }}</h2>
-<p class="text-lg">{{ slot_8 }}</p>
-</section>
-<section class="mt-12">
-<h2 class="text-3xl font-bold mb-2">{{ slot_9 }}</h2>
-<p class="text-lg">{{ slot_10 }}</p>
-</section>
-</main>
-<footer class="bg-grey-darkest text-white py-6">
-<div class="container mx-auto px-6 md:px-12">
-<div class="flex flex-col md:flex-row justify-between">
-<div>
-<p>{{ slot_11 }}</p>
-</div>
-<div>
-<a class="text-white mr-4">{{ slot_12 }}</a>
-<a class="text-white mr-4">{{ slot_13 }}</a>
-<a class="text-white">{{ slot_14 }}</a>
+<div class="w-3/4">
+<div style="inline-size: 100%; block-size: 150px" class="w-full pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<div class="p-4">
+<h1 class="text-center text-4xl mb-4">{{ slot_5 }}</h1>
+<p class="text-justify">
+          {{ slot_6 }}
+        </p>
 </div>
 </div>
 </div>
-</footer>
-</body>
-</html>
+</body></html>

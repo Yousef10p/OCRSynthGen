@@ -1,11 +1,8 @@
 {
  "id": "b_1253",
  "source": "websight2",
- "source_ref": "v0.2:s221_r00191",
- "license": "CC-BY-4.0",
- "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "source_ref": "v0.2:shard113:rg9:row1",
  "positioning": "flow",
- "lang": "en",
  "page": {
   "size": "A4",
   "orientation": "portrait"
@@ -13,7 +10,7 @@
  "slots": [
   {
    "id": "slot_0",
-   "role": "title",
+   "role": "heading",
    "words": [
     1,
     4
@@ -22,25 +19,25 @@
   },
   {
    "id": "slot_1",
-   "role": "header",
+   "role": "list_item",
    "words": [
-    4,
-    9
+    1,
+    4
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_2",
-   "role": "label",
+   "role": "list_item",
    "words": [
     1,
-    3
+    4
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_3",
-   "role": "label",
+   "role": "list_item",
    "words": [
     1,
     4
@@ -49,10 +46,10 @@
   },
   {
    "id": "slot_4",
-   "role": "label",
+   "role": "field_value",
    "words": [
     1,
-    3
+    6
    ],
    "dir": "ltr"
   },
@@ -61,70 +58,25 @@
    "role": "label",
    "words": [
     1,
-    4
+    3
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_6",
-   "role": "paragraph",
+   "role": "title",
    "words": [
-    60,
-    113
+    3,
+    8
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_7",
-   "role": "footer",
+   "role": "paragraph",
    "words": [
-    4,
-    11
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_8",
-   "role": "footer",
-   "words": [
-    1,
-    3
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_9",
-   "role": "footer",
-   "words": [
-    1,
-    3
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_10",
-   "role": "footer",
-   "words": [
-    1,
-    3
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_11",
-   "role": "footer",
-   "words": [
-    1,
-    3
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_12",
-   "role": "footer",
-   "words": [
-    1,
-    3
+    70,
+    131
    ],
    "dir": "ltr"
   }
@@ -134,13 +86,21 @@
   "tables": 0,
   "lists": 1,
   "list_depth": 1,
-  "forms": 0,
+  "forms": 1,
   "asides": 0,
-  "has_header": true,
-  "has_footer": true,
-  "slot_count": 13
+  "has_header": false,
+  "has_footer": false,
+  "slot_count": 8
  },
- "structure_hash": "d17af2701b49a37259b9e83fe2c9feccfd8005a47c51f154008e9a70c01c4ed2",
- "pictures": [],
- "source_template": "w2_s221_r00191"
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "lang": "en",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "campus campus full"
+  }
+ ],
+ "source_template": "b_1253",
+ "structure_hash": "1bdf6f30351ee9aeaf1d54119a9568e0660a415d8acad14ae56e570bed9bf4ac"
 }

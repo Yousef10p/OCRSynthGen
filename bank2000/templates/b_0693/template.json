@@ -1,9 +1,7 @@
 {
  "id": "b_0693",
  "source": "websight",
- "source_ref": "v0.1:shard25:row11148",
- "license": "CC-BY-4.0",
- "attribution": "WebSight (HuggingFaceM4)",
+ "source_ref": "v0.1:shard64:rg65:row3",
  "positioning": "flow",
  "page": {
   "size": "Letter",
@@ -12,7 +10,16 @@
  "slots": [
   {
    "id": "slot_0",
-   "role": "list_item",
+   "role": "title",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_1",
+   "role": "label",
    "words": [
     1,
     3
@@ -20,29 +27,20 @@
    "dir": "ltr"
   },
   {
-   "id": "slot_1",
-   "role": "list_item",
-   "words": [
-    1,
-    4
-   ],
-   "dir": "ltr"
-  },
-  {
    "id": "slot_2",
-   "role": "list_item",
+   "role": "label",
    "words": [
     1,
-    4
+    3
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_3",
-   "role": "heading",
+   "role": "label",
    "words": [
     1,
-    4
+    3
    ],
    "dir": "ltr"
   },
@@ -51,16 +49,16 @@
    "role": "label",
    "words": [
     1,
-    4
+    3
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_5",
-   "role": "paragraph",
+   "role": "label",
    "words": [
-    3,
-    8
+    1,
+    4
    ],
    "dir": "ltr"
   },
@@ -75,16 +73,16 @@
   },
   {
    "id": "slot_7",
-   "role": "paragraph",
+   "role": "label",
    "words": [
-    3,
-    8
+    1,
+    4
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_8",
-   "role": "label",
+   "role": "heading",
    "words": [
     1,
     4
@@ -95,23 +93,23 @@
    "id": "slot_9",
    "role": "paragraph",
    "words": [
-    3,
-    8
+    1,
+    4
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_10",
-   "role": "heading",
+   "role": "paragraph",
    "words": [
-    2,
-    5
+    1,
+    4
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_11",
-   "role": "label",
+   "role": "heading",
    "words": [
     1,
     4
@@ -122,14 +120,14 @@
    "id": "slot_12",
    "role": "paragraph",
    "words": [
-    3,
-    8
+    1,
+    4
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_13",
-   "role": "label",
+   "role": "paragraph",
    "words": [
     1,
     4
@@ -138,25 +136,25 @@
   },
   {
    "id": "slot_14",
-   "role": "paragraph",
+   "role": "heading",
    "words": [
-    3,
-    8
+    1,
+    4
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_15",
-   "role": "heading",
+   "role": "paragraph",
    "words": [
-    2,
-    5
+    1,
+    4
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_16",
-   "role": "label",
+   "role": "paragraph",
    "words": [
     1,
     4
@@ -165,16 +163,7 @@
   },
   {
    "id": "slot_17",
-   "role": "paragraph",
-   "words": [
-    3,
-    8
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_18",
-   "role": "label",
+   "role": "heading",
    "words": [
     1,
     4
@@ -182,11 +171,56 @@
    "dir": "ltr"
   },
   {
+   "id": "slot_18",
+   "role": "paragraph",
+   "words": [
+    17,
+    34
+   ],
+   "dir": "ltr"
+  },
+  {
    "id": "slot_19",
+   "role": "heading",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_20",
    "role": "paragraph",
    "words": [
     3,
     8
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_21",
+   "role": "paragraph",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_22",
+   "role": "paragraph",
+   "words": [
+    1,
+    4
+   ],
+   "dir": "ltr"
+  },
+  {
+   "id": "slot_23",
+   "role": "footer",
+   "words": [
+    4,
+    11
    ],
    "dir": "ltr"
   }
@@ -194,21 +228,18 @@
  "features": {
   "columns": 1,
   "tables": 0,
-  "lists": 1,
-  "list_depth": 1,
+  "lists": 0,
+  "list_depth": 0,
   "forms": 0,
   "asides": 0,
-  "has_header": false,
-  "has_footer": false,
-  "slot_count": 20
+  "has_header": true,
+  "has_footer": true,
+  "slot_count": 24
  },
- "structure_hash": "33baf61d3d6efd6cda2eeeb9cf3cb1bf242f521ad986c6788bd567b110497818",
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight (HuggingFaceM4)",
  "lang": "en",
- "pictures": [
-  {
-   "id": "pic_0",
-   "hint": ""
-  }
- ],
- "source_template": "w_25_11148"
+ "pictures": [],
+ "source_template": "b_0693",
+ "structure_hash": "71827db7fcf30c389ab527fe5a02e6482c47c9bb804950c0c4bbd008713e2cbe"
 }

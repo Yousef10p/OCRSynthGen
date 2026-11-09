@@ -76,6 +76,7 @@ python-barcode==0.16.1
 python-bidi==0.6.12
 python-dateutil==3.0.0
 rdflib==7.6.0
+rdkit==2026.9.1
 referencing==0.37.0
 requests==2.34.2
 rich==15.0.0

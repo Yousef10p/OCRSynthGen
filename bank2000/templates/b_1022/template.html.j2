@@ -55,118 +55,48 @@ audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:midd
 img,video{max-width:100%;height:auto}
 [hidden]{display:none}
 *,::after,::before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}
-.mx-2{margin-right:.5rem;margin-left:.5rem}
-.mx-auto{margin-right:auto;margin-left:auto}
-.my-6{margin-top:1.5rem;margin-bottom:1.5rem}
-.mt-0{margin-top:0}
-.mt-4{margin-top:1rem}
-.mr-3{margin-left:.75rem}
 .mb-2{margin-bottom:.5rem}
 .mb-4{margin-bottom:1rem}
-.mb-8{margin-bottom:2rem}
-.block{display:block}
 .flex{display:flex}
 .w-full{width:100%}
-.max-w-sm{max-width:24rem}
-.flex-shrink-0{flex-shrink:0}
-.appearance-none{-webkit-appearance:none;appearance:none}
-.items-center{align-items:center}
-.justify-center{justify-content:center}
-.justify-between{justify-content:space-between}
-.rounded{border-radius:.25rem}
-.rounded-full{border-radius:9999px}
-.border-4{border-width:4px}
-.border{border-width:1px}
-.border-b-2{border-bottom-width:2px}
-.border-b{border-bottom-width:1px}
-.border-none{border-style:none}
-.bg-transparent{background-color:transparent}
-.bg-white{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}
-.bg-gray-100{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}
-.bg-gray-800{--tw-bg-opacity:1;background-color:rgba(31,41,55,var(--tw-bg-opacity))}
-.bg-purple-500{--tw-bg-opacity:1;background-color:rgba(139,92,246,var(--tw-bg-opacity))}
-.bg-cover{background-size:cover}
-.bg-center{background-position:center}
-.px-2{padding-right:.5rem;padding-left:.5rem}
-.px-3{padding-right:.75rem;padding-left:.75rem}
-.px-4{padding-right:1rem;padding-left:1rem}
-.px-6{padding-right:1.5rem;padding-left:1.5rem}
-.px-8{padding-right:2rem;padding-left:2rem}
-.py-1{padding-top:.25rem;padding-bottom:.25rem}
-.py-2{padding-top:.5rem;padding-bottom:.5rem}
-.py-4{padding-top:1rem;padding-bottom:1rem}
-.py-8{padding-top:2rem;padding-bottom:2rem}
-.text-center{text-align:center}
-.font-sans{font-family: var(--font-body)}
-.text-sm{font-size:.875rem;line-height:1.25rem}
-.text-lg{font-size:1.125rem;line-height:1.75rem}
+.list-disc{list-style-type:disc}
+.flex-col{flex-direction:column}
+.bg-yellow-100{--tw-bg-opacity:1;background-color:rgba(254,243,199,var(--tw-bg-opacity))}
+.bg-yellow-300{--tw-bg-opacity:1;background-color:rgba(252,211,77,var(--tw-bg-opacity))}
+.p-4{padding:1rem}
+.pl-4{padding-right:1rem}
+.text-xl{font-size:1.25rem;line-height:1.75rem}
 .text-2xl{font-size:1.5rem;line-height:2rem}
-.text-3xl{font-size:1.875rem;line-height:2.25rem}
-.text-5xl{font-size:3rem;line-height:1}
 .font-bold{font-weight:700}
-.leading-tight{line-height:1.25}
-.leading-normal{line-height:1.5}
-.leading-relaxed{line-height:1.625}
-.tracking-normal{letter-spacing:0}
-.text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}
-.text-gray-700{--tw-text-opacity:1;color:rgba(55,65,81,var(--tw-text-opacity))}
-.text-gray-800{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}
 *,::after,::before{--tw-shadow:0 0 #0000}
-.shadow{--tw-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
-.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0, 0, 0, 0.1),0 4px 6px -2px rgba(0, 0, 0, 0.05);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
 *,::after,::before{--tw-ring-inset:var(--tw-empty, );--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59, 130, 246, 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}
-@media (min-width:1024px){.lg\:mx-0{margin-right:0;margin-left:0}}
+@media (min-width:768px){.md\:w-1\/4{width:25%}.md\:w-3\/4{width:75%}.md\:flex-row{flex-direction:row}}
 .ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
 .pic-frame { overflow: hidden; min-block-size: 2em; }
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
-</style><style>{{ style }}</style></head>
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
-<header class="bg-cover bg-center flex items-center justify-center" style="background-image: none">
-<div class="text-center px-6">
-<h1 class="text-5xl text-white leading-tight font-bold mt-0 mb-2">{{ slot_0 }}</h1>
-<p class="text-2xl text-white mb-8">{{ slot_1 }}</p>
-<button class="mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">{{ slot_2 }}</button>
+</style><style>{{ style }}</style></head><body class="bg-yellow-100">
+<div class="flex flex-col md:flex-row">
+<div class="w-full md:w-1/4 bg-yellow-300 p-4">
+<h1 class="text-2xl font-bold mb-4">{{ slot_0 }}</h1>
+<p class="mb-4">
+                {{ slot_1 }}
+            </p>
+<h2 class="text-xl font-bold mb-2">{{ slot_2 }}</h2>
+<ul class="list-disc pl-4">
+<li>{{ slot_3 }}</li>
+<li>{{ slot_4 }}</li>
+<li>{{ slot_5 }}</li>
+</ul>
 </div>
-</header>
-<section class="py-8 px-4">
-<h2 class="text-3xl text-center font-bold mb-4">{{ slot_3 }}</h2>
-<p class="text-lg text-gray-700 mx-auto leading-relaxed">
-            {{ slot_4 }}
-        </p>
-</section>
-<section class="py-8 px-4">
-<h2 class="text-3xl text-center font-bold mb-4">{{ slot_5 }}</h2>
-<form class="w-full max-w-sm mx-auto">
-<div class="mb-4">
-<label class="block text-gray-700 text-sm font-bold mb-2">
-                    {{ slot_6 }}
-                </label>
-<span class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_7 }}</span>
+<div class="w-full md:w-3/4 p-4">
+<h2 class="text-xl font-bold mb-2">{{ slot_6 }}</h2>
+<p class="mb-4">
+                {{ slot_7 }}
+            </p>
+<h2 class="text-xl font-bold mb-2">{{ slot_8 }}</h2>
+<p class="mb-4">
+                {{ slot_9 }}
+            </p>
 </div>
-<div class="flex items-center justify-between">
-<button class="bg-purple-500 text-white font-bold py-2 px-4 rounded">
-                    {{ slot_8 }}
-                </button>
 </div>
-</form>
-</section>
-<footer class="bg-gray-800 text-center text-white py-8">
-<p class="mb-4">{{ slot_9 }}</p>
-<div class="flex justify-center">
-<a class="text-white mx-2">{{ slot_10 }}</a>
-<a class="text-white mx-2">{{ slot_11 }}</a>
-<a class="text-white mx-2">{{ slot_12 }}</a>
-</div>
-<p class="mt-4">{{ slot_13 }}</p>
-<form class="w-full max-w-sm mx-auto mt-4">
-<div class="flex items-center border-b border-b-2 border-teal-500 py-2">
-<span class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_14 }}</span>
-<button class="flex-shrink-0 bg-teal-500 border-teal-500 text-sm border-4 text-white py-1 px-2 rounded">
-                    {{ slot_15 }}
-                </button>
-</div>
-</form>
-<a class="block text-white mt-4">{{ slot_16 }}</a>
-</footer>
-</body>
-</html>
+</body></html>

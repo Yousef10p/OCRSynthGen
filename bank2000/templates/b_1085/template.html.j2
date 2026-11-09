@@ -55,79 +55,58 @@ audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:midd
 img,video{max-width:100%;height:auto}
 [hidden]{display:none}
 *,::after,::before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}
-.container{width:100%}
-@media (min-width:640px){.container{max-width:640px}}
-@media (min-width:768px){.container{max-width:768px}}
-@media (min-width:1024px){.container{max-width:1024px}}
-@media (min-width:1280px){.container{max-width:1280px}}
-@media (min-width:1536px){.container{max-width:1536px}}
-.mx-2{margin-left:.5rem;margin-right:.5rem}
-.mx-auto{margin-left:auto;margin-right:auto}
+.mt-4{margin-top:1rem}
+.mt-8{margin-top:2rem}
 .flex{display:flex}
-.grid{display:grid}
 .h-10{height:2.5rem}
-.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .items-center{align-items:center}
-.justify-center{justify-content:center}
 .justify-between{justify-content:space-between}
-.gap-4{gap:1rem}
+.space-x-4>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-left:calc(1rem * var(--tw-space-x-reverse));margin-right:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}
+.rounded{border-radius:.25rem}
 .bg-white{--tw-bg-opacity:1;background-color:rgba(255,255,255,var(--tw-bg-opacity))}
 .bg-gray-100{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}
+.bg-gray-800{--tw-bg-opacity:1;background-color:rgba(31,41,55,var(--tw-bg-opacity))}
+.bg-blue-500{--tw-bg-opacity:1;background-color:rgba(59,130,246,var(--tw-bg-opacity))}
+.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgba(29,78,216,var(--tw-bg-opacity))}
 .bg-cover{background-size:cover}
 .bg-center{background-position:center}
 .p-4{padding:1rem}
-.px-4{padding-left:1rem;padding-right:1rem}
+.px-4{padding-right:1rem;padding-left:1rem}
 .py-2{padding-top:.5rem;padding-bottom:.5rem}
-.py-8{padding-top:2rem;padding-bottom:2rem}
+.py-16{padding-top:4rem;padding-bottom:4rem}
 .text-center{text-align:center}
-.text-lg{font-size:1.125rem;line-height:1.75rem}
 .text-xl{font-size:1.25rem;line-height:1.75rem}
 .text-4xl{font-size:2.25rem;line-height:2.5rem}
 .font-bold{font-weight:700}
 .text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}
-.text-gray-800{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}
+.text-gray-600{--tw-text-opacity:1;color:rgba(75,85,99,var(--tw-text-opacity))}
+.hover\:text-gray-800:hover{--tw-text-opacity:1;color:rgba(31,41,55,var(--tw-text-opacity))}
 *,::after,::before{--tw-shadow:0 0 #0000}
+.shadow{--tw-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
 *,::after,::before{--tw-ring-inset:var(--tw-empty, );--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59, 130, 246, 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}
 .ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
 .pic-frame { overflow: hidden; min-block-size: 2em; }
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
-</style><style>{{ style }}</style></head>
-<body class="bg-gray-100">
-<header class="flex justify-center items-center bg-cover bg-center" style="background-image: none">
-<div class="text-center">
-<h1 class="text-white text-4xl">{{ slot_0 }}</h1>
-<p class="text-white text-xl">{{ slot_1 }}</p>
-</div>
-</header>
-<nav class="flex justify-between items-center px-4 py-2 bg-white">
-<div>
+</style><style>{{ style }}</style></head><body class="bg-gray-100">
+<header class="flex justify-between items-center p-4 bg-white shadow">
 <div style="inline-size: 100%; block-size: 150px" class="h-10 pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
-</div>
-<div>
-<a class="text-gray-800 mx-2">{{ slot_2 }}</a>
-<a class="text-gray-800 mx-2">{{ slot_3 }}</a>
-<a class="text-gray-800 mx-2">{{ slot_4 }}</a>
-<a class="text-gray-800 mx-2">{{ slot_5 }}</a>
-</div>
+<nav>
+<ul class="flex space-x-4">
+<li><a class="text-gray-600 hover:text-gray-800">{{ slot_0 }}</a></li>
+<li><a class="text-gray-600 hover:text-gray-800">{{ slot_1 }}</a></li>
+<li><a class="text-gray-600 hover:text-gray-800">{{ slot_2 }}</a></li>
+<li><a class="text-gray-600 hover:text-gray-800">{{ slot_3 }}</a></li>
+</ul>
 </nav>
-<main class="container mx-auto px-4 py-8">
-
+</header>
+<main>
+<section class="py-16 text-center bg-cover bg-center" style="background-image: none">
+<h1 class="text-4xl font-bold text-white">{{ slot_4 }}</h1>
+<p class="mt-4 text-xl text-white">{{ slot_5 }}</p>
+<button class="px-4 py-2 mt-8 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">{{ slot_6 }}</button>
+</section>
 </main>
-<footer class="bg-white p-4">
-<div class="grid grid-cols-3 gap-4">
-<div>
-<h3 class="text-lg font-bold">{{ slot_6 }}</h3>
+<footer class="p-4 mt-8 text-center text-white bg-gray-800">
 <p>{{ slot_7 }}</p>
-</div>
-<div>
-<h3 class="text-lg font-bold">{{ slot_8 }}</h3>
-<p>{{ slot_9 }}<br>{{ slot_10 }}<br>{{ slot_11 }}<br>{{ slot_12 }}</p>
-</div>
-<div>
-<h3 class="text-lg font-bold">{{ slot_13 }}</h3>
-<p>{{ slot_14 }}<br>{{ slot_15 }}<br>{{ slot_16 }}<br>{{ slot_17 }}</p>
-</div>
-</div>
 </footer>
-</body>
-</html>
+</body></html>

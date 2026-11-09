@@ -63,14 +63,51 @@ py -3.12 -m venv .venv-pipeline
 .venv-pipeline\Scripts\python -m playwright install chromium
 ```
 
-The text and photo pools are made once (not in git):
+The text, picture, font and graphics pools are made once (not in git):
 
 ```bash
 .venv-pipeline\Scripts\python -m pipeline.pools text --articles 5000
 ```
 ```bash
-.venv-pipeline\Scripts\python -m pipeline.pools images
+.venv-pipeline\Scripts\python -m pipeline.pools images --polaris-shards 30 --pd12m 20000
 ```
+```bash
+.venv-pipeline\Scripts\python -m pipeline.pools fonts
+```
+```bash
+.venv-pipeline\Scripts\python -m pipeline.pools graphics
+```
+
+**Fonts** (`font_pool/`, 100 families from Google Fonts, SIL OFL or Apache, chosen by Google Fonts' own
+popularity rank): the 10 most used families with Arabic letters (Google Sans, Rubik, Cairo, Tajawal, IBM Plex Sans
+Arabic, Almarai, Amiri, Readex Pro, Vazirmatn, Changa), the 10 most used for English (Roboto, Open Sans, Inter,
+Montserrat, Lato, Arimo, Roboto Condensed, Oswald, DM Sans, Playfair Display), and 80 more: every other family
+with Arabic letters (all of them have Latin letters too), then English families of every kind (serif, sans,
+display, handwriting, monospace). Each family's regular and bold TrueType files are kept only if they have every
+character its pages need (fontTools reads the file's character map): Arabic letters, tashkeel marks and
+Arabic-Indic digits for an Arabic family, A-Z, a-z, 0-9 and punctuation for a Latin one. Arabic pages pick from
+these and OCRSmith's Arabic fonts, English pages from these (the Arabic families too: they have Latin letters)
+and the installed Windows fonts; code blocks use the monospace ones. Index: `font_pool/fonts.json`.
+
+**Graphics** (`img_pool/graphics/`, 6,000 pictures drawn once, each with its exact label): 2,000 charts
+(Figure), 1,000 flowcharts (Diagram), 1,500 molecules (Chemical-Block: ZINC-250k molecules, laid out by RDKit,
+drawn with matplotlib) and 1,500 equations (Equation-Block, matplotlib's mathtext). Charts and flowcharts carry
+Arabic words on Arabic pages and English on English ones. Index: `img_pool/graphics/graphics.jsonl`.
+
+The picture pool is captioned photos, each with the captions that become its label
+(`<img alt="Photo: ..."/><p class="img-desc">...</p>`, `generator.picture_html()`). The index is
+`img_pool/captions.jsonl` (one line per picture: file, source, licence, captions, category). Three sources:
+
+| Source | Pictures | Captions |
+|---|---|---|
+| `img_pool/output_dataset/k*/` (uploaded Flickr8k: `Images/` + `captions.txt`) | 7,612 of 8,000 | 5 by people |
+| Polaris (`yuwd/Polaris`, 30 train shards; only the human `refs`, not the rated `cand`) | 7,272 | 5-10 by people |
+| PD12M (`Spawning/PD12M`, 20,000 drawn from 12 metadata shards) | 20,000 | 1 long, generated |
+
+A picture whose captions mention text in it (signs, posters, maps, coins, letters...) is left out, because the
+labels can't know that text. People's captions are kept as written; "The image shows X" (PD12M) becomes "A
+photograph showing X", Surya's most common start; a painting or drawing gets `Artwork:` / `Illustration:` as
+Surya writes them. The download keeps the files it has, so a stopped run can be started again.
 
 Optional: `npm install` (Node.js) and a `.env` with `GROQ_API_KEY`, only for templates written by an LLM.
 
@@ -325,11 +362,43 @@ them word for word (`PROMPTS` in `generator.py`):
 | `block_ocr` | 35% | one block cut out | that block's content only |
 | `table` | only when asked | a table cut out | rows, then columns (Surya 2's format; 2.5 reads tables through `block_ocr`) |
 
+The `table` task is off by default: Surya 2.5 answers it with an error (`surya_table --mode simple` needs a Surya 2
+checkpoint), so 2.5 learns tables as HTML in `full_ocr` and `block_ocr`. When asked for, a table is cut out only if
+the whole table, every row and column, is on the image and in the cut-out (`whole_table()`); a page without one
+becomes `full_ocr`. A cell merged down from the row above (rowspan) keeps the next cells in their own column.
+
 **Boxes** are `x0 y0 x1 y1` (left, top, right, bottom) as whole numbers from 0 to 1000 of the image's width and
 height. A box from pixel (687, 764) to (901, 794) on a 1590 x 2248 page is `432 340 567 353`.
 
-**A page's label is HTML, one `div` per block**, in reading order. We use 9 of Surya's labels: `Text`,
-`Section-Header`, `List-Group`, `Table`, `Image`, `Caption`, `Footnote`, `Page-Header`, `Page-Footer`.
+**A page's label is HTML, one `div` per block**, in reading order. We use all 19 labels Surya's model writes.
+The templates' own slots give `Text`, `Section-Header`, `List-Group`, `Table`, `Image`, `Caption`, `Footnote`,
+`Page-Header`, `Page-Footer`; the rest are added to the pages, each in the form Surya's own answers give it
+(its answers on real pages: `surya_inference/debug_docling_outputs/`):
+
+| Label | Where it comes from | Its content in the answer |
+|---|---|---|
+| `Figure` | a chart in a picture box (35% of picture boxes get a drawn picture) | `<img alt="Bar chart: ..."/>`, legend `<p class="img-text">`, `<p class="chart-axes">`, the data drawn as `<table class="chart-data">`, `<p class="img-desc">` |
+| `Diagram` | a flowchart in a picture box | `<img alt="Flowchart: ..."/>`, its words, its Mermaid source `<pre class="mermaid">graph TD ...</pre>`, a description |
+| `Chemical-Block` | a molecule in a picture box | `<img alt="Chemical structure of the molecule SMILES."/>` |
+| `Equation-Block` | an equation in place of a paragraph (half the pages get one or two such blocks) | `<math display="block">LaTeX</math>` |
+| `Code-Block` | Python code (from Python's own library), line breaks kept | `<pre>code</pre>` |
+| `Bibliography` | numbered references | `<ul style="list-style-type: none; padding-left: 0;"><li>[1] ...</li></ul>` |
+| `Table-Of-Contents` | entries and page numbers | `<table><tr><td>1<td>Title<td>5 ...` |
+| `Form` | fields with blank lines, check boxes, a signature and date row | `<table><tr><td><b>1</b> Name: ____ ...`, `<input type="checkbox"/>` |
+| `Complex-Block` | an infographic panel: a photo, a big figure, a sentence | `<img alt="Photo: ..."/><p><b>42%</b></p><p>...</p>` |
+| `Blank-Page` | 1% of the samples: paper and the effect, nothing else | one block over the whole page (`0 0 1000 1000`), no content |
+
+A special block is drawn from the same HTML its label is written from, so what the label says is what the image
+shows; a block that doesn't show whole (cut by a fixed-size box, split by a page break) makes the page fail its
+checks and it is made again. Surya never used `Code-Block` or `Complex-Block` in a whole-page answer on those real
+pages (code came back as `Text` with `<pre>`; `Code-Block` with `<pre>` in its layout answer), so their content
+follows that layout answer and Surya's picture form. `Picture` is not generated: Surya's model has no such label
+(its code renames the model's `Image` to `Picture`), and two labels for one thing would teach a coin toss.
+
+**Tashkeel is drawn but never labelled.** Arabic pages get no marks (40%), some (30%) or all (30%); the words are
+measured with their marks, so their boxes hold them, and then every mark is taken out of every text the labels
+are made from (`no_marks` in `generator.py`). The model learns to read the letters whether a page is marked or
+not.
 
 ```html
 <div data-bbox="71 33 143 45" data-label="Page-Header">Northwind Logistics</div>
@@ -378,7 +447,7 @@ most of the time, our labels now do the same (STEP 5 in `generator.py`):
 | a list right under another list is one list (45 of 67) | one `List-Group` with both items |
 | texts on one line that almost touch are one block (20 of 23) | `<p>Population: 12,000</p>` |
 | short lines stacked with almost no gap are one block, split by `<br/>` (30 of 35) | `<p><b>Born:</b> 1950<br/><b>Died:</b> 2010</p>` |
-| two-column English pages are read one column at a time | left column, then right column |
+| reading order (`reading_order()`, see below): one rule for every page | the page's groups (columns, cards, regions), then inside each; rows first, then columns; Arabic right to left |
 | the text is what the image shows, word for word | `historica lly` -> `historically` |
 
 How close we are, on the same images: block labels 91% the same, box overlap 0.90 (median), answer format
@@ -386,15 +455,60 @@ How close we are, on the same images: block labels 91% the same, box overlap 0.9
 is not consistent itself: heading levels (`h2` or `h3` for the same kind of heading), bold inside headings,
 joining paragraphs. There we keep one simple choice.
 
+**Reading order.** Surya 2.5 has no fixed reading-order rule: its order is a habit it learned, so it reads some
+pages by columns and others by rows. The labels use **one rule for every page** (`reading_order()` and
+`xy_cut()` in `pipeline/generator.py`):
+
+1. The page's groups first, then what is inside each group. The groups are the template's containers (a
+   column, a card, a sidebar, a DocLayNet region), recorded by the page script for every block (`paths`), so a
+   card or a column is read whole before the next.
+2. Groups, and the blocks in a group, are cut along empty strips: rows first (a strip across: the part above
+   is read before the part below), then columns, right to left on Arabic pages, left to right on English ones.
+3. The strips are measured on the containers' own boxes and the elements' boxes on the clean page (`boxes`,
+   `frames`), not on the ink: the ink of a short text ends higher, and the effects move it, so strips found
+   on ink come and go with the text. A DocLayNet region has a fixed size; a card is measured as the whole card.
+4. Text flowing through newspaper columns (`column-count`) is read in its flow: down one column, then the next.
+
+How the templates were checked: every one of the 2,000 templates rendered twice (other text, fonts and colours),
+the blocks' order recorded each time (`python surya_probe/check_templates.py OUT.jsonl`).
+A template is ambiguous when its two renders put the same elements in different orders, or (flow pages) when
+the order goes against the template's own document order on more than 15% of block pairs:
+
+| | Before | After |
+|---|---|---|
+| ambiguous templates | 680 of 2,000 (34%) | 96 of 2,000 (4.8%) |
+| templates that never render (fail every attempt) | 16 (+7 that fail half the time) | 0 |
+| Surya's 100 full pages in Surya's exact order | 55 (91.8% of block pairs) | 61 (93.2%) |
+
+What changed in the templates (still exactly 2,000, all different):
+
+- 92 templates with newspaper columns got one CSS rule: a block stays in one column and a heading stays with
+  what follows it (`break-inside` / `break-after: avoid`); before, a section broke across two columns and its
+  box covered both.
+- 23 templates that never rendered or failed half the time (hidden text, text cut at the page edge, a page of
+  12 pictures over its 4 captions) were replaced by new WebSight pages converted the way the others were
+  (`llm_templates.to_template` and `adapt`, WebSight v0.2 with the Tailwind rules it uses inlined), each kept
+  only if it rendered on two seeds, its order was not ambiguous and its structure was new. Two of them were
+  DocLayNet templates: DocLayNet is now 598 templates, WebSight v0.2 452.
+- A list laid out in a row (a menu) gets its markers inside its items (`list-style-position: inside`): the
+  theme gives every list a marker, and outside a row's items it was drawn into the previous item's words.
+
+Table cells keep the page's order (on
+Arabic tables Surya writes 31 of 47 rows that way, 16 reversed).
+
 One page, ours and Surya's (page `full_ocr/0000004`):
 
 ```text
-ours:   <|Text|><|432|><|340|><|567|><|353|><p>MAD, MAD/I, and:</p>...
+ours:   <|Text|><|425|><|337|><|569|><|352|><p>MAD, MAD/I, and:</p>...
 Surya:  <|Text|><|425|><|334|><|571|><|354|><p>MAD, MAD/I, and:</p>...
 ```
 
-Same blocks, order, labels and tags. Our boxes sit tight on the text; Surya's own start a little further left
-and higher (0.65% of the width, 0.35% of the height), so fine-tuning on ours teaches it tighter boxes.
+Same blocks, order, labels and tags. Boxes are drawn the way Surya draws them: its boxes start a little further
+left and higher than the text (0.69% of the width, 0.30% of the height; pictures 0.41% and 0.17%), so the answers
+move each block box by Surya's measured edge shift (`SURYA_SHIFT` and `as_surya()` in `pipeline/generator.py`,
+measured on 1,219 blocks of `surya_probe/batch100`). Text blocks then get a little room on every side
+(`TEXT_MARGIN`, 0.3% of the page: about 5 px across and 6 px down), so a box never sits right on the letters.
+Only the boxes written in the answers move; the crops and the reading order use the box on the text.
 
 ---
 
@@ -406,6 +520,9 @@ Every effect that moves the page moves the boxes with it:
   the pixels.
 - **scan-simulator** moves a word-id mask with the image; words that overlap go in separate mask layers.
 - **Augraphy** only changes colours, so nothing moves.
+
+A page is never turned more than 2° (`MAX_ANGLE` in `pipeline/generator.py` caps OCRSmith's and
+scan-simulator's rotation at every strength).
 
 Tables, rows, columns, lists and pictures ride along as corner points.
 
@@ -451,8 +568,8 @@ corners still stick out of it. So the only upright box that holds all the turned
 
 ![Blue: the 4 turned corners. Red: only the turned top-left and bottom-right corners, cuts the text off. Green: min / max of the 4 turned corners, what the labels use](docs/box_two_turned_corners.png)
 
-If tighter boxes on turned pages matter more than having turned pages, the way out is to turn pages less (for
-example at most 1°); the boxes then stay tight because the text is nearly straight.
+This is why rotation is capped at 2° (`MAX_ANGLE`): the text stays nearly straight, so the upright boxes stay
+close to it. Lower `MAX_ANGLE` for tighter boxes on turned pages.
 
 ---
 
@@ -517,7 +634,10 @@ paragraph, cell, list item...) and a word range, and each picture slot a hint (f
 | templates `w_` | WebSight v0.1 and v0.2 (Hugging Face) | CC BY 4.0 |
 | templates `d_` | DocLayNet v1.1 layouts (IBM) | CDLA-Permissive-1.0 |
 | text | Arabic and English Wikipedia (dump 2023-11-01); each label lists its articles | CC BY-SA 4.0: a shared set must keep it and the attribution |
-| photos | Lorem Picsum (Unsplash licence) and Wikimedia Commons (each photo's licence in `img_pool/sources.json`) | per photo |
+| pictures | Flickr8k (uploaded, research use), Polaris (BSD-3-Clause; images from COCO / nocaps), PD12M (public domain / CC0); each picture's source and licence in `img_pool/captions.jsonl` | per picture |
+| fonts | Google Fonts (`font_pool/fonts.json`) and OCRSmith's Arabic fonts | SIL OFL 1.1 or Apache 2.0 |
+| molecules | ZINC-250k (`aspuru-guzik-group/chemical_vae`) | molecule structures |
+| code | Python's own library (`Lib/*.py`) | PSF licence |
 | Surya's encoder | `datalab-to/surya` `compact.py`, commit 9d5aadf | Apache-2.0 |
 
 The scripts that built `bank2000/` are in the git history up to commit d88ba8665c.
@@ -526,6 +646,12 @@ The scripts that built `bank2000/` are in the git history up to commit d88ba8665
 - On a turned page boxes are upright, so they have empty corners and can overlap a little
   ([why](#known-problem-a-turned-page-gets-upright-boxes)).
 - WebSight pages look like websites (menus, cards), not printed documents.
-- Text inside photos is not in the labels (photos with signs or posters in their titles are skipped).
+- Text inside photos is not in the labels (pictures whose captions mention text are skipped; a caption can
+  miss some, so a few pictures may still show a word).
+- Flickr8k and COCO images are for research use; for a dataset shared or used commercially, use PD12M only.
 - Augraphy's noise is random even for the same seed, so Augraphy pages can't be remade exactly.
-- English pages use Windows Latin fonts; on Linux, install `ttf-mscorefonts-installer` or pages look more alike.
+- English pages can also pick 14 installed Windows fonts by name; on Linux, install `ttf-mscorefonts-installer`
+  or those pages fall back to a default font (the font pool's 100 families come as files and work anywhere).
+- RDKit's drawing library is blocked on some Windows machines, so molecules are drawn with matplotlib from RDKit's
+  2D layout: no wedges or charges are drawn, so molecules with charges are left out and the SMILES has no stereo
+  marks.

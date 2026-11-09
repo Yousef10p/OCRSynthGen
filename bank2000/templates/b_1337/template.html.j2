@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
-:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
 html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
 body { margin: 0; }
 h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
@@ -56,63 +56,76 @@ img,video{max-width:100%;height:auto}
 [hidden]{display:none}
 *,::after,::before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}
 .mt-4{margin-top:1rem}
+.mr-4{margin-left:1rem}
+.mr-6{margin-left:1.5rem}
+.mb-4{margin-bottom:1rem}
+.block{display:block}
 .flex{display:flex}
+.h-3{height:.75rem}
+.w-3{width:.75rem}
+.w-full{width:100%}
+.flex-grow{flex-grow:1}
+.flex-wrap{flex-wrap:wrap}
 .items-center{align-items:center}
-.justify-center{justify-content:center}
-.justify-around{justify-content:space-around}
-.rounded-full{border-radius:9999px}
+.justify-between{justify-content:space-between}
+.rounded{border-radius:.25rem}
+.border{border-width:1px}
+.hover\:border-white:hover{--tw-border-opacity:1;border-color:rgba(255,255,255,var(--tw-border-opacity))}
 .bg-gray-100{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}
-.bg-gray-800{--tw-bg-opacity:1;background-color:rgba(31,41,55,var(--tw-bg-opacity))}
-.bg-cover{background-size:cover}
-.bg-center{background-position:center}
-.p-4{padding:1rem}
-.px-4{padding-right:1rem;padding-left:1rem}
+.fill-current{fill:currentColor}
+.p-6{padding:1.5rem}
+.p-8{padding:2rem}
+.px-3{padding-right:.75rem;padding-left:.75rem}
 .py-2{padding-top:.5rem;padding-bottom:.5rem}
 .text-center{text-align:center}
+.text-justify{text-align:justify}
 .font-sans{font-family: var(--font-body)}
+.text-sm{font-size:.875rem;line-height:1.25rem}
+.text-lg{font-size:1.125rem;line-height:1.75rem}
 .text-xl{font-size:1.25rem;line-height:1.75rem}
-.text-2xl{font-size:1.5rem;line-height:2rem}
-.text-5xl{font-size:3rem;line-height:1}
+.text-4xl{font-size:2.25rem;line-height:2.5rem}
+.font-semibold{font-weight:600}
+.font-bold{font-weight:700}
 .leading-normal{line-height:1.5}
+.tracking-tight{letter-spacing:-.025em}
 .tracking-normal{letter-spacing:0}
 .text-white{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}
+.text-gray-700{--tw-text-opacity:1;color:rgba(55,65,81,var(--tw-text-opacity))}
+.hover\:text-white:hover{--tw-text-opacity:1;color:rgba(255,255,255,var(--tw-text-opacity))}
 *,::after,::before{--tw-shadow:0 0 #0000}
 *,::after,::before{--tw-ring-inset:var(--tw-empty, );--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59, 130, 246, 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000}
+@media (min-width:1024px){.lg\:mt-0{margin-top:0}.lg\:inline-block{display:inline-block}.lg\:flex{display:flex}.lg\:hidden{display:none}.lg\:w-auto{width:auto}.lg\:flex-grow{flex-grow:1}.lg\:items-center{align-items:center}}
 .ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
 .pic-frame { overflow: hidden; min-block-size: 2em; }
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
-</style><style>{{ style }}</style></head>
-<body class="bg-gray-100 font-sans leading-normal tracking-normal">
-<header class="bg-cover bg-center flex items-center justify-center text-white text-center" style="background-image: none">
-<div>
-<h1 class="text-5xl">{{ slot_0 }}</h1>
-<p class="text-2xl">{{ slot_1 }}</p>
-<div class="mt-4">
-<span class="px-4 py-2 rounded-full" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_2 }}</span>
+</style><style>{{ style }}</style></head><body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+<div class="flex items-center flex-no-shrink text-white mr-6">
+<span class="font-semibold text-xl tracking-tight">{{ slot_0 }}</span>
+</div>
+<div class="block lg:hidden">
+<button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+<div style="inline-size: 100%; block-size: 150px" class="fill-current h-3 w-3 pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+</button>
+</div>
+<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+<div class="text-sm lg:flex-grow">
+<a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                    {{ slot_1 }}
+                </a>
+<a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                    {{ slot_2 }}
+                </a>
+<a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+                    {{ slot_3 }}
+                </a>
 </div>
 </div>
-</header>
-<footer class="bg-gray-800 text-white text-center p-4">
-<div class="flex justify-around">
-<div>
-<h3 class="text-xl">{{ slot_3 }}</h3>
-<p>{{ slot_4 }}</p>
-<p>{{ slot_5 }}</p>
-<p>{{ slot_6 }}</p>
-</div>
-<div>
-<h3 class="text-xl">{{ slot_7 }}</h3>
-<p>{{ slot_8 }}</p>
-<p>{{ slot_9 }}</p>
-<p>{{ slot_10 }}</p>
-</div>
-<div>
-<h3 class="text-xl">{{ slot_11 }}</h3>
-<p>{{ slot_12 }}</p>
-<p>{{ slot_13 }}</p>
-<p>{{ slot_14 }}</p>
-</div>
-</div>
-</footer>
-</body>
-</html>
+</nav>
+<section class="text-gray-700 p-8">
+<h1 class="text-4xl text-center font-bold mb-4">{{ slot_4 }}</h1>
+<p class="text-lg text-justify">
+            {{ slot_5 }}
+        </p>
+</section>
+</body></html>

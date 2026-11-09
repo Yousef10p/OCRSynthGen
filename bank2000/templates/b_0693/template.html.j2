@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
-:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+<html lang="en" dir="ltr"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
 html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
 body { margin: 0; }
 h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
@@ -9,34 +9,56 @@ h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
 
 body {
     font-family: var(--font-body);
-    margin: 0;
-    padding: 0;
 }
 
-#header {
-    position: fixed;
-    width: 100%;
-    background-color: white;
+header {
+    background-color: #f5f5f5;
+    padding: 20px;
 }
-#logo {
-    content: none;
+
+h1 {
+    margin: 0;
 }
-nav ul {
-    list-style: none;
+
+nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+#slideshow .slide {
+    background-color: #ffa500; 
+    height: 200px;
+    margin: 20px 0;
+}
+
+#slideshow .slide:nth-child(2) {
+    background-color: #add8e6; 
+}
+
+#slideshow .slide:nth-child(3) {
+    background-color: #90ee90; 
+}
+
+.item {
+    margin: 20px 0;
+}
+
+.item h2 {
+    margin-bottom: 10px;
+}
+
+#about, #contact {
+    margin: 20px 0;
+}
+
+footer {
+    background-color: #f5f5f5;
     padding: 10px;
-}
-nav li {
-    display: inline;
-    margin: 20px;
-    font-size: 20px;
-    font-weight: bold;
-}
-.section {
-    margin: 80px 0;
-}
-.product {
-    width: 30%;
-    margin: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
@@ -44,31 +66,53 @@ nav li {
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
 </style><style>{{ style }}</style></head>
 <body>
-<div id="header">
-<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<header>
+<h1>{{ slot_0 }}</h1>
 <nav>
-<ul>
-<li>{{ slot_0 }}</li>
-<li>{{ slot_1 }}</li>
-<li>{{ slot_2 }}</li>
-</ul>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
+<a>{{ slot_4 }}</a>
 </nav>
+</header>
+<main>
+<section id="slideshow">
+<div class="slide">{{ slot_5 }}</div>
+<div class="slide">{{ slot_6 }}</div>
+<div class="slide">{{ slot_7 }}</div>
+</section>
+<section id="menu">
+<div class="item">
+<h2>{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
+<p>{{ slot_10 }}</p>
 </div>
-<section class="section" id="designer">
-<h2>{{ slot_3 }}</h2>
-<div class="product">{{ slot_4 }} <p>{{ slot_5 }}</p></div>
-<div class="product">{{ slot_6 }} <p>{{ slot_7 }}</p></div>
-<div class="product">{{ slot_8 }} <p>{{ slot_9 }}</p></div>
+<div class="item">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
+<p>{{ slot_13 }}</p>
+</div>
+<div class="item">
+<h2>{{ slot_14 }}</h2>
+<p>{{ slot_15 }}</p>
+<p>{{ slot_16 }}</p>
+</div>
 </section>
-<section class="section" id="spring-summer">
-<h2>{{ slot_10 }}</h2>
-<div class="product">{{ slot_11 }} <p>{{ slot_12 }}</p></div>
-<div class="product">{{ slot_13 }} <p>{{ slot_14 }}</p></div>
+<section id="about">
+<h2>{{ slot_17 }}</h2>
+<p>
+                {{ slot_18 }}
+            </p>
 </section>
-<section class="section" id="fall-winter">
-<h2>{{ slot_15 }}</h2>
-<div class="product">{{ slot_16 }} <p>{{ slot_17 }}</p></div>
-<div class="product">{{ slot_18 }} <p>{{ slot_19 }}</p></div>
+<section id="contact">
+<h2>{{ slot_19 }}</h2>
+<p>{{ slot_20 }}</p>
+<p>{{ slot_21 }}</p>
+<p>{{ slot_22 }}</p>
 </section>
+</main>
+<footer>
+<p>{{ slot_23 }}</p>
+</footer>
 </body>
 </html>

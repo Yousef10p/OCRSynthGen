@@ -7,139 +7,80 @@ h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
 .page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
 .ph { background: #d0d0d0; }
 
-body {
-    font-family: var(--font-body);
-    background-color: #ED8D37;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+:root {
+    --background: #f3f3f3;
+    --text: #000;
+    --border: #000;
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: white;
+    font-family: var(--font-body);
+    color: var(--text);
 }
 
-nav ul {
-    display: flex;
-    list-style-type: none;
-    justify-content: space-around;
-    width: 45%;
-    margin: auto;
-    padding: 2em 0;
-}
-
-nav a {
-    color: #1B4298;
-    text-decoration: none;
-    font-size: 1.2em;
-}
-
-nav a:hover {
-    font-size: 1.2em;
-    text-size-adjust: 0.05em;
-    font-weight: bold;
+body {
+    background-color: var(--background);
 }
 
 section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    margin: auto;
-    padding: 1em;
+    margin: 20px;
+    padding: 20px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--background);
+    border-top: 1px solid var(--border);
+}
+
+h1, h2 {
+    color: var(--text);
     text-align: center;
 }
 
-figure {
-    border: 1px solid white;
-    margin: 1em;
-    padding: 1em;
+.img-placeholder {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background-color: grey;
 }
-
-iframe {
-    border: none;
-    width: 80vw;
-    height: 45vw;
-    margin: auto;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    margin: 1em;
-    padding: 1em;
-    text-align: center;
-}
-
-input[type="text"], input[type="email"], input[type="submit"] {
-    margin: 0.5em;
-    padding: 0.5em;
-    border: none;
-}
-
 
 .ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
 .pic-frame { overflow: hidden; min-block-size: 2em; }
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
 </style><style>{{ style }}</style></head>
 <body>
-<nav>
-<ul>
-<li><a>{{ slot_0 }}</a></li>
-<li><a>{{ slot_1 }}</a></li>
-<li><a>{{ slot_2 }}</a></li>
-<li><a>{{ slot_3 }}</a></li>
-<li><a>{{ slot_4 }}</a></li>
-<li><a>{{ slot_5 }}</a></li>
-</ul>
-</nav>
+<header>
+<h1>{{ slot_0 }}</h1>
+</header>
 <main>
-<section id="home">
-<h1>{{ slot_6 }}</h1>
-<p>{{ slot_7 }}</p>
-</section>
 <section id="about">
-<h2>{{ slot_8 }}</h2>
-<p>{{ slot_9 }}</p>
+<h2>{{ slot_1 }}</h2>
+<p>{{ slot_2 }}</p>
 </section>
-<section id="attractions">
-<h2>{{ slot_10 }}</h2>
-<p>{{ slot_11 }}</p>
-<figure>
-<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
-<figcaption>{{ slot_12 }}</figcaption>
-</figure>
-<figure>
-<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
-<figcaption>{{ slot_13 }}</figcaption>
-</figure>
+<section id="services">
+<h2>{{ slot_3 }}</h2>
+<p>{{ slot_4 }}</p>
 </section>
-<section id="travel-guide">
-<h2>{{ slot_14 }}</h2>
-<p>{{ slot_15 }}</p>
-<div  style="inline-size: 560px; block-size: 315px" class="pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
-</section>
-<section id="booking">
-<h2>{{ slot_16 }}</h2>
+<section id="portfolio">
+<h2>{{ slot_5 }}</h2>
 
-<p>{{ slot_17 }}</p>
-<form>
-<label>{{ slot_18 }}</label>
-<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_19 }}</span>
-<label>{{ slot_20 }}</label>
-<span class="" style="display: inline-block; min-inline-size: 10em; border: 1px solid #999; padding: 0.2em 0.4em">{{ slot_21 }}</span>
-<span class="">{{ slot_22 }}</span>
-</form>
-</section>
-<section id="contact">
-<h2>{{ slot_23 }}</h2>
-<p>{{ slot_24 }}</p>
-<p>{{ slot_25 }}</p>
-<p>{{ slot_26 }}</p>
-<p>{{ slot_27 }}</p>
-<p>{{ slot_28 }}</p>
+<div class="img-placeholder pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
+<div class="img-placeholder pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
+<div class="img-placeholder pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
 </section>
 </main>
+<footer>
+<h2>{{ slot_6 }}</h2>
+<p>{{ slot_7 }}</p>
+<p>{{ slot_8 }}</p>
+<p>{{ slot_9 }}</p>
+</footer>
 </body>
 </html>

@@ -3,9 +3,10 @@ __pycache__/
 .venv-pipeline/
 node_modules/
 
-# made locally, not in git (python -m pipeline.text_pool, python -m pipeline.img_pool)
+# made locally, not in git (python -m pipeline.pools text | images | fonts | graphics)
 text_pool/
 img_pool/
+font_pool/
 augraphy_cache/
 
 # generated samples and datasets (re-create them with the commands in README.md)

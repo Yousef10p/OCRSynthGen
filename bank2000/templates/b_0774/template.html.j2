@@ -8,72 +8,54 @@ h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
 .ph { background: #d0d0d0; }
 
 body {
-	font-family: var(--font-body);
-	color: #333;
-	background-color: #fff;
-}
-
-header {
-	background-color: #000;
-	color: #fff;
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
 }
 
 nav {
-	position: fixed;
-	top: 0;
-	right: 0;
-	width: 100%;
-	background-color: #ddd;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
 }
 
-nav ul {
-	list-style-type: none;
-	padding: 0;
+a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0 20px;
 }
 
-nav ul li {
-	display: inline-block;
-	margin-left: 10px;
+header {
+    background-color: #a37;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
 }
 
-nav ul li a {
-	color: #333;
-	text-decoration: none;
+.hero {
+    width: 100%;
+    height: 300px;
+    background-color: #ccc;
+    text-align: center;
+    padding: 50px 0;
 }
 
-article img {
-	display: block;
-	width: 100%;
-	height: auto;
-}
-
-.teaser p {
-	font-size: 1.2em;
-	line-height: 1.6em;
-}
-
-.article-preview,
-.recent-post {
-	margin-bottom: 20px;
-}
-
-.article-preview img,
-.recent-post img {
-	width: 100px;
-	height: 100px;
+.left-panel, .right-panel {
+    width: 50%;
+    float: right;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 footer {
-	background-color: #000;
-	color: #fff;
-	text-align: center;
-	padding: 10px 0;
-}
-
-footer a {
-	color: #fff;
-	text-decoration: none;
-	margin-left: 10px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
 }
 
 .ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
@@ -81,63 +63,34 @@ footer a {
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
 </style><style>{{ style }}</style></head>
 <body>
-<header>
-<h1>{{ slot_0 }}</h1>
-</header>
-<main>
 <nav>
-<ul>
-<li><a>{{ slot_1 }}</a></li>
-<li><a>{{ slot_2 }}</a></li>
-<li><a>{{ slot_3 }}</a></li>
-<li><a>{{ slot_4 }}</a></li>
-<li><a>{{ slot_5 }}</a></li>
-</ul>
+<a>{{ slot_0 }}</a>
+<a>{{ slot_1 }}</a>
+<a>{{ slot_2 }}</a>
+<a>{{ slot_3 }}</a>
 </nav>
-<article>
-<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_0" src="{{ pic_0 }}" alt=""></div>
-<h2>{{ slot_6 }}</h2>
-<div class="teaser">
+<header>
+<h1>{{ slot_4 }}</h1>
+</header>
+<div class="hero">{{ slot_5 }}</div>
+<div class="left-panel">
+<h2 id="mission">{{ slot_6 }}</h2>
 <p>{{ slot_7 }}</p>
 </div>
-</article>
-<div class="sidebar">
-<h2>{{ slot_8 }}</h2>
-<div class="article-preview">
-<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_1" src="{{ pic_1 }}" alt=""></div>
-<h3>{{ slot_9 }}</h3>
+<div class="right-panel">
+<h2 id="services">{{ slot_8 }}</h2>
+<p>{{ slot_9 }}</p>
 </div>
-<div class="article-preview">
-<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_2" src="{{ pic_2 }}" alt=""></div>
-<h3>{{ slot_10 }}</h3>
+<div class="left-panel">
+<h2 id="neighborhoods">{{ slot_10 }}</h2>
+<p>{{ slot_11 }}</p>
 </div>
-<div class="article-preview">
-<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_3" src="{{ pic_3 }}" alt=""></div>
-<h3>{{ slot_11 }}</h3>
+<div class="right-panel">
+<h2 id="contact">{{ slot_12 }}</h2>
+<p>{{ slot_13 }}</p>
 </div>
-<h2>{{ slot_12 }}</h2>
-<div class="recent-post">
-<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_4" src="{{ pic_4 }}" alt=""></div>
-<h3>{{ slot_13 }}</h3>
-</div>
-<div class="recent-post">
-<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_5" src="{{ pic_5 }}" alt=""></div>
-<h3>{{ slot_14 }}</h3>
-</div>
-<div class="recent-post">
-<div  style="inline-size: 100%; block-size: 150px" class="pic-frame"><img data-pic="pic_6" src="{{ pic_6 }}" alt=""></div>
-<h3>{{ slot_15 }}</h3>
-</div>
-</div>
-</main>
 <footer>
-<ul>
-<li><a>{{ slot_16 }}</a></li>
-<li><a>{{ slot_17 }}</a></li>
-<li><a>{{ slot_18 }}</a></li>
-<li><a>{{ slot_19 }}</a></li>
-<li><a>{{ slot_20 }}</a></li>
-</ul>
+<p>{{ slot_14 }}</p>
 </footer>
 </body>
 </html>

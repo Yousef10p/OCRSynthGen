@@ -60,7 +60,10 @@ footer {
 .ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
 .pic-frame { overflow: hidden; min-block-size: 2em; }
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
-</style><style>{{ style }}</style></head>
+</style><style>{{ style }}</style><style>/* flowing columns (reading order): a block stays in one column, a heading stays with what follows */
+.product-reviews > * { break-inside: avoid; }
+.product-reviews > h1, .product-reviews > h2, .product-reviews > h3, .product-reviews > h4, .product-reviews > h5, .product-reviews > h6 { break-after: avoid; }</style>
+</head>
 <body>
 <header>
 <nav>

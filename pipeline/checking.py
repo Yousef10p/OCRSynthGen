@@ -73,6 +73,13 @@ class _OneBrowser:
     def new_page(self, **kwargs):
         page = _kept["browser"].new_page(**kwargs)
         self.pages.append(page)
+        goto = page.goto
+
+        def load(url, **kw):  # the page is a local file: "load" (every picture, font and script in), not
+            if kw.get("wait_until") == "networkidle":  # "networkidle", which waits 500 ms more for nothing;
+                kw["wait_until"] = "load"  # Paged.js being done is waited for next (_wait_for_pagination)
+            return goto(url, **kw)
+        page.goto = load
         return page
 
     def close(self):
@@ -169,6 +176,10 @@ CONTRAST_JS = """
 """
 QA_JS = """(() => {""" + CONTRAST_JS + """
   const slots = {}, pictures = [], contrast = [], covered = [];
+  // the text in special blocks (contents, references, forms, code, panels) must read as well as a slot's
+  for (const t of content.querySelectorAll('[data-special] td, [data-special] li, [data-special] p, [data-special] pre')) {
+    if (t.textContent.trim()) contrast.push({slot: 'special', ratio: Math.round(ratio(t) * 100) / 100});
+  }
   for (const s of content.querySelectorAll('[data-slot]')) {
     slots[s.dataset.slot] = ((slots[s.dataset.slot] || '') + ' ' + s.textContent).trim();
     if (s.textContent.trim()) contrast.push({slot: s.dataset.slot, ratio: Math.round(ratio(s) * 100) / 100});
@@ -196,13 +207,41 @@ QA_JS = """(() => {""" + CONTRAST_JS + """
   const rel = (r) => ({x: r.left - pr.left, y: r.top - pr.top, width: r.width, height: r.height});
   const own = (el, scope) => [...el.querySelectorAll('[data-slot]')].filter((s) => s.closest(scope) === el)
     .map((s) => s.dataset.slot);
-  const struct = {tables: [], lists: [], images: [], styles: {}, order: {}};
+  // paths: per element (by its order), the containers it sits in, outermost first (an id per container; inline
+  // elements don't group): the reading order keeps a column, a card or a sidebar together. A container whose
+  // text flows through columns (column-count / column-width) gets a negative id: read in its flow order.
+  // frames: per element, its box on the clean page as the template lays it out (fixed, whatever its text): the
+  // reading order is decided on these, so it doesn't change with the text's length or the effects; size: the page
+  // boxes: per container id, the container's own box (a DocLayNet region has a fixed size, a card is the whole card)
+  const struct = {tables: [], lists: [], images: [], styles: {}, order: {}, paths: {}, frames: {}, boxes: {},
+                  specials: [], size: [pr.width, pr.height]};
+  // inside a special block (an equation, code, contents, references, a form: the pipeline writes its label) a
+  // table, list or picture is part of that block, not one of its own
+  const inSpecial = (el) => !!(el.parentElement && el.parentElement.closest('[data-special]'));
+  const ids = new Map();
+  const pathOf = (el) => {
+    const path = [];
+    for (let a = el.parentElement; a && a !== content; a = a.parentElement) {
+      const cs = getComputedStyle(a);
+      if (cs.display === 'inline' || cs.display === 'contents') continue;
+      if (!ids.has(a)) {
+        const flowing = (parseInt(cs.columnCount) || 1) > 1 || cs.columnWidth !== 'auto';
+        ids.set(a, (flowing ? -1 : 1) * (ids.size + 1));
+        struct.boxes[ids.get(a)] = rel(a.getBoundingClientRect());
+      }
+      path.unshift(ids.get(a));
+    }
+    return path;
+  };
   let order = 0;
-  for (const el of content.querySelectorAll('[data-slot], table, ul, ol, .pic-frame, [data-img], img')) {
+  for (const el of content.querySelectorAll('[data-slot], table, ul, ol, .pic-frame, [data-img], img, [data-special]')) {
+    if (inSpecial(el)) continue;
+    struct.paths[order] = pathOf(el);
+    struct.frames[order] = rel(el.getBoundingClientRect());
     el.dataset.order = order++;
   }
   for (const t of content.querySelectorAll('table')) {
-    if (t.parentElement.closest('table')) continue;  // a table inside a cell belongs to the outer table
+    if (t.parentElement.closest('table') || inSpecial(t)) continue;  // a table inside a cell belongs to the outer table
     const rows = [];
     for (const tr of t.querySelectorAll('tr')) {
       if (tr.closest('table') !== t) continue;
@@ -215,19 +254,30 @@ QA_JS = """(() => {""" + CONTRAST_JS + """
     if (rows.length) struct.tables.push({rect: rel(t.getBoundingClientRect()), rows, order: +t.dataset.order});
   }
   for (const l of content.querySelectorAll('ul, ol')) {
-    if (l.parentElement.closest('ul, ol, table')) continue;  // nested lists are items of the outer one
+    if (l.parentElement.closest('ul, ol, table') || inSpecial(l)) continue;  // nested lists are items of the outer one
     const items = [...l.querySelectorAll('li')].map((li) => own(li, 'li')).filter((s) => s.length);
     const first = l.querySelector('li');
     const marker = first && getComputedStyle(first).display === 'list-item' ? getComputedStyle(first).listStyleType : 'none';
     if (items.length) struct.lists.push({rect: rel(l.getBoundingClientRect()), items, marker, order: +l.dataset.order});
   }
   for (const im of content.querySelectorAll('.pic-frame, [data-img], img')) {
-    if (im.tagName === 'IMG' && im.closest('.pic-frame, [data-img]')) continue;
+    if ((im.tagName === 'IMG' && im.closest('.pic-frame, [data-img]')) || inSpecial(im)) continue;
     const r = im.getBoundingClientRect();
     if (r.width < 8 || r.height < 8) continue;
     const img = im.tagName === 'IMG' ? im : im.querySelector('img');
     const src = img ? img.getAttribute('src') || '' : (getComputedStyle(im).backgroundImage.match(/url\\("?([^")]*)"?\\)/) || [])[1] || '';
     struct.images.push({rect: rel(r), src: src.split('/').pop(), order: +im.dataset.order});
+  }
+  // a special block: its box, and whether all of it shows (not cut by its box, a page break or the page's edge)
+  for (const sp of content.querySelectorAll('[data-special]')) {
+    const r = sp.getBoundingClientRect();
+    // the block or anything in it overflowing (a <pre> a stylesheet gives overflow: auto clips its own long lines)
+    const cut = [sp, ...sp.querySelectorAll('*')].some((e) => e.scrollHeight > e.clientHeight + 2 && e.clientHeight
+                                                          || e.scrollWidth > e.clientWidth + 2 && e.clientWidth)
+      || sp.hasAttribute('data-split-to') || sp.hasAttribute('data-split-from')
+      || r.top < pr.top - 1 || r.bottom > pr.bottom + 1 || r.left < pr.left - 1 || r.right > pr.right + 1;
+    const inside = !!sp.parentElement.closest('table, ul, ol, [data-slot]');
+    struct.specials.push({rect: rel(r), k: +sp.dataset.special, order: +sp.dataset.order, cut, inside});
   }
   for (const s of content.querySelectorAll('[data-slot]')) {
     const cs = getComputedStyle(s), h = s.closest('h1, h2, h3, h4, h5, h6');
@@ -356,7 +406,8 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
       if (!lo && block && !block.textContent.trim()) block.style.display = "none";
     }
   }
-  for (const s of document.querySelectorAll("[data-slot]")) {
+  // slots and the text in special blocks: readable on any theme
+  for (const s of document.querySelectorAll("[data-slot], [data-special] td, [data-special] li, [data-special] p, [data-special] pre")) {
     if (!s.textContent.trim()) continue;
     const {ratio: r, bg} = look(s);
     if (r >= 4.5) continue;
@@ -478,6 +529,8 @@ def render_issues(ocr, qa):
         elif re.search(r"[^\W_]", g["content"].strip("\"'")):
             issues["generated"] += 1
     issues["contrast"] += sum(1 for c in (qa or {}).get("contrast", []) if c["ratio"] < 3.0)
+    # a special block must show whole (its label holds all of it) and stand on its own
+    issues["special"] += sum(1 for sp in ((qa or {}).get("struct") or {}).get("specials", []) if sp["cut"] or sp["inside"])
     issues["covered"] += sum(c["points"] for c in (qa or {}).get("covered", []))
     return {k: v for k, v in issues.items() if v}
 
@@ -699,14 +752,14 @@ def overlap(a, b):
 
 
 def to_ink(plan, gray):
-    """Lists and tables: also the box of what is drawn in them, as ("list_ink", i) / ("table_ink", i). Their HTML
+    """Lists, tables and special blocks: also the box of what is drawn in them, as ("list_ink", i) etc. Their HTML
     element is often the page's whole width while the items or cells are much narrower (centred text, bullets
     at the far side), and the label's box must hold what the image shows. On the clean page (gray), the box
     around every pixel that differs from the element's most common shade (its background): text, bullets,
     table lines. The element's own box stays for the rules that group and order blocks (tuned on it)."""
     out = list(plan)
     for key, r in plan:
-        if key[0] in ("list", "table"):
+        if key[0] in ("list", "table", "special"):
             x0, y0 = max(0, int(r["x"])), max(0, int(r["y"]))
             c = gray[y0:int(r["y"] + r["height"]) + 1, x0:int(r["x"] + r["width"]) + 1]
             if c.size:

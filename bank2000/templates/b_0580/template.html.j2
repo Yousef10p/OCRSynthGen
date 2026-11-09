@@ -1,40 +1,61 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: Letter portrait; margin: 0; }
-:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 215.9mm; --page-height: 279.4mm; --page-margin: 18mm; }
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><style>@page { size: A4 portrait; margin: 0; }
+:root { --font-body: "Noto Naskh Arabic", "Amiri", serif; --font-heading: "Noto Naskh Arabic", "Amiri", serif; --base-size: 11pt; --line-height: 1.6; --align: justify; --page-width: 210mm; --page-height: 297mm; --page-margin: 18mm; }
 html { font-family: var(--font-body); font-size: var(--base-size); line-height: var(--line-height); }
 body { margin: 0; }
 h1, h2, h3, h4 { font-family: var(--font-heading); margin-block: 0 0.4em; }
 .page { box-sizing: border-box; inline-size: var(--page-width); min-block-size: var(--page-height); padding: var(--page-margin); text-align: var(--align); }
 .ph { background: #d0d0d0; }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-body);
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
 }
-aside, main {
-  float: right;
-  height: 100%;
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
 }
-aside {
-  width: 20%;
-  background-color: #F0F0F0;
+
+header h1 {
+    margin: 0;
+    text-align: center;
 }
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
 main {
-  width: 80%;
-  background-color: #D9D9D9;
+    margin: 20px;
 }
-#info, #contact {
-  padding: 10px;
+
+main section {
+    background-color: #eee;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
 }
-h1, h2 {
-  text-align: center;
-}
-.testimonial {
-  background-color: #A9A9A9;
-  margin: 10px;
-  padding: 10px;
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
 }
 
 .ph { background: #d0d0d0 !important; background-image: none !important; min-block-size: 2em; }
@@ -42,34 +63,37 @@ h1, h2 {
 .pic-frame > img { display: block; inline-size: 100%; block-size: 100%; object-fit: cover; }
 </style><style>{{ style }}</style></head>
 <body>
-<aside>
-<section id="info">
+<header>
 <h1>{{ slot_0 }}</h1>
-<p>{{ slot_1 }}</p>
-</section>
-<section id="testimonials">
-<h2>{{ slot_2 }}</h2>
-<div class="testimonial">
-<p>{{ slot_3 }}</p>
-</div>
-<div class="testimonial">
-<p>{{ slot_4 }}</p>
-</div>
-</section>
-<section id="contact">
-<h2>{{ slot_5 }}</h2>
-<p>{{ slot_6 }}<br>{{ slot_7 }}<br>{{ slot_8 }}<br>{{ slot_9 }}<br>{{ slot_10 }}</p>
-</section>
-</aside>
-<main>
-<section id="services">
-<h2>{{ slot_11 }}</h2>
+<nav>
 <ul>
-<li>{{ slot_12 }}</li>
-<li>{{ slot_13 }}</li>
-<li>{{ slot_14 }}</li>
+<li><a>{{ slot_1 }}</a></li>
+<li><a>{{ slot_2 }}</a></li>
+<li><a>{{ slot_3 }}</a></li>
+<li><a>{{ slot_4 }}</a></li>
 </ul>
+</nav>
+</header>
+<main>
+<section id="dashboard">
+<h2>{{ slot_5 }}</h2>
+<p>{{ slot_6 }}</p>
+</section>
+<section id="workout">
+<h2>{{ slot_7 }}</h2>
+<p>{{ slot_8 }}</p>
+</section>
+<section id="coach">
+<h2>{{ slot_9 }}</h2>
+<p>{{ slot_10 }}</p>
+</section>
+<section id="music">
+<h2>{{ slot_11 }}</h2>
+<p>{{ slot_12 }}</p>
 </section>
 </main>
+<footer>
+<p>{{ slot_13 }}</p>
+</footer>
 </body>
 </html>

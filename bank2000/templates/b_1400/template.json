@@ -1,11 +1,8 @@
 {
  "id": "b_1400",
  "source": "websight2",
- "source_ref": "v0.2:s627_r00080",
- "license": "CC-BY-4.0",
- "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "source_ref": "v0.2:shard100:rg14:row3",
  "positioning": "flow",
- "lang": "en",
  "page": {
   "size": "Letter",
   "orientation": "portrait"
@@ -15,8 +12,8 @@
    "id": "slot_0",
    "role": "title",
    "words": [
-    2,
-    7
+    1,
+    4
    ],
    "dir": "ltr"
   },
@@ -24,8 +21,8 @@
    "id": "slot_1",
    "role": "paragraph",
    "words": [
-    7,
-    16
+    35,
+    66
    ],
    "dir": "ltr"
   },
@@ -33,95 +30,23 @@
    "id": "slot_2",
    "role": "heading",
    "words": [
-    1,
-    3
+    2,
+    5
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_3",
-   "role": "paragraph",
+   "role": "heading",
    "words": [
-    14,
-    27
+    2,
+    5
    ],
    "dir": "ltr"
   },
   {
    "id": "slot_4",
    "role": "heading",
-   "words": [
-    1,
-    3
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_5",
-   "role": "field_value",
-   "words": [
-    1,
-    6
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_6",
-   "role": "field_value",
-   "words": [
-    1,
-    6
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_7",
-   "role": "label",
-   "words": [
-    1,
-    3
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_8",
-   "role": "heading",
-   "words": [
-    1,
-    3
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_9",
-   "role": "paragraph",
-   "words": [
-    14,
-    29
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_10",
-   "role": "footer",
-   "words": [
-    1,
-    4
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_11",
-   "role": "footer",
-   "words": [
-    3,
-    8
-   ],
-   "dir": "ltr"
-  },
-  {
-   "id": "slot_12",
-   "role": "footer",
    "words": [
     2,
     5
@@ -130,17 +55,33 @@
   }
  ],
  "features": {
-  "columns": 1,
+  "columns": 3,
   "tables": 0,
   "lists": 0,
   "list_depth": 0,
-  "forms": 1,
+  "forms": 0,
   "asides": 0,
   "has_header": false,
-  "has_footer": true,
-  "slot_count": 13
+  "has_footer": false,
+  "slot_count": 5
  },
- "structure_hash": "000af45360c648921744ab95634d33d1307dbe7b293a3edcbddc5316d6bd717b",
- "pictures": [],
- "source_template": "w2_s627_r00080"
+ "license": "CC-BY-4.0",
+ "attribution": "WebSight v0.2 (HuggingFaceM4)",
+ "lang": "en",
+ "pictures": [
+  {
+   "id": "pic_0",
+   "hint": "art art piece full"
+  },
+  {
+   "id": "pic_1",
+   "hint": "art art piece full"
+  },
+  {
+   "id": "pic_2",
+   "hint": "art art piece full"
+  }
+ ],
+ "source_template": "b_1400",
+ "structure_hash": "deab1d600cdc757f910560bfcbe50808f0678d4fcbd440180ce889840ab7b1c0"
 }
