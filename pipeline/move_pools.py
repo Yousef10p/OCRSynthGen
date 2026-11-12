@@ -58,7 +58,8 @@ def main():
     sys.stdout.reconfigure(encoding="utf-8")
     todo = moves()
     if not todo:
-        print(f"nothing to move: the pools are in {DATASET_POOL}")
+        print(f"nothing to move: the pools are in {DATASET_POOL}" if DATASET_POOL.exists() else
+              "nothing to move: no pools here (text_pool/, img_pool/, font_pool/); the generator uses dataset_pool_sample/")
         return
     clash = [t for _, t in todo if t.exists()]
     for f, t in todo:
