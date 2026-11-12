@@ -1,0 +1,332 @@
+[
+ {
+  "family": "Noto Sans Arabic",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Sans Serif",
+  "scripts": [
+   "arabic",
+   "latin"
+  ],
+  "popularity": 148,
+  "files": {
+   "400": "font_pool/Noto_Sans_Arabic/400.ttf",
+   "700": "font_pool/Noto_Sans_Arabic/700.ttf"
+  },
+  "group": "top-arabic",
+  "in_generator": false
+ },
+ {
+  "family": "IBM Plex Sans Arabic",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Sans Serif",
+  "scripts": [
+   "arabic",
+   "latin"
+  ],
+  "popularity": 175,
+  "files": {
+   "400": "font_pool/IBM_Plex_Sans_Arabic/400.ttf",
+   "700": "font_pool/IBM_Plex_Sans_Arabic/700.ttf"
+  },
+  "group": "top-arabic",
+  "in_generator": true
+ },
+ {
+  "family": "Noto Kufi Arabic",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Sans Serif",
+  "scripts": [
+   "arabic",
+   "latin"
+  ],
+  "popularity": 207,
+  "files": {
+   "400": "font_pool/Noto_Kufi_Arabic/400.ttf",
+   "700": "font_pool/Noto_Kufi_Arabic/700.ttf"
+  },
+  "group": "top-arabic",
+  "in_generator": false
+ },
+ {
+  "family": "Amiri",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Serif",
+  "scripts": [
+   "arabic",
+   "latin"
+  ],
+  "popularity": 209,
+  "files": {
+   "400": "font_pool/Amiri/400.ttf",
+   "700": "font_pool/Amiri/700.ttf"
+  },
+  "group": "top-arabic",
+  "in_generator": true
+ },
+ {
+  "family": "Noto Naskh Arabic",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Serif",
+  "scripts": [
+   "arabic",
+   "latin"
+  ],
+  "popularity": 221,
+  "files": {
+   "400": "font_pool/Noto_Naskh_Arabic/400.ttf",
+   "700": "font_pool/Noto_Naskh_Arabic/700.ttf"
+  },
+  "group": "top-arabic",
+  "in_generator": false
+ },
+ {
+  "family": "Open Sans",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Sans Serif",
+  "scripts": [
+   "latin"
+  ],
+  "popularity": 3,
+  "files": {
+   "400": "font_pool/Open_Sans/400.ttf",
+   "700": "font_pool/Open_Sans/700.ttf"
+  },
+  "group": "top-latin",
+  "in_generator": true
+ },
+ {
+  "family": "Roboto Condensed",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Sans Serif",
+  "scripts": [
+   "latin"
+  ],
+  "popularity": 15,
+  "files": {
+   "400": "font_pool/Roboto_Condensed/400.ttf",
+   "700": "font_pool/Roboto_Condensed/700.ttf"
+  },
+  "group": "top-latin",
+  "in_generator": true
+ },
+ {
+  "family": "DM Sans",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Sans Serif",
+  "scripts": [
+   "latin"
+  ],
+  "popularity": 20,
+  "files": {
+   "400": "font_pool/DM_Sans/400.ttf",
+   "700": "font_pool/DM_Sans/700.ttf"
+  },
+  "group": "top-latin",
+  "in_generator": true
+ },
+ {
+  "family": "Readex Pro",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Sans Serif",
+  "scripts": [
+   "arabic",
+   "latin"
+  ],
+  "popularity": 236,
+  "files": {
+   "400": "font_pool/Readex_Pro/400.ttf",
+   "700": "font_pool/Readex_Pro/700.ttf"
+  },
+  "group": "arabic",
+  "in_generator": true
+ },
+ {
+  "family": "El Messiri",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Sans Serif",
+  "scripts": [
+   "arabic",
+   "latin"
+  ],
+  "popularity": 359,
+  "files": {
+   "400": "font_pool/El_Messiri/400.ttf",
+   "700": "font_pool/El_Messiri/700.ttf"
+  },
+  "group": "arabic",
+  "in_generator": true
+ },
+ {
+  "family": "Reem Kufi",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Sans Serif",
+  "scripts": [
+   "arabic",
+   "latin"
+  ],
+  "popularity": 452,
+  "files": {
+   "400": "font_pool/Reem_Kufi/400.ttf",
+   "700": "font_pool/Reem_Kufi/700.ttf"
+  },
+  "group": "arabic",
+  "in_generator": true
+ },
+ {
+  "family": "Markazi Text",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Serif",
+  "scripts": [
+   "arabic",
+   "latin"
+  ],
+  "popularity": 793,
+  "files": {
+   "400": "font_pool/Markazi_Text/400.ttf",
+   "700": "font_pool/Markazi_Text/700.ttf"
+  },
+  "group": "arabic",
+  "in_generator": true
+ },
+ {
+  "family": "Scheherazade New",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Serif",
+  "scripts": [
+   "arabic",
+   "latin"
+  ],
+  "popularity": 851,
+  "files": {
+   "400": "font_pool/Scheherazade_New/400.ttf",
+   "700": "font_pool/Scheherazade_New/700.ttf"
+  },
+  "group": "arabic",
+  "in_generator": true
+ },
+ {
+  "family": "Playfair Display",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Serif",
+  "scripts": [
+   "latin"
+  ],
+  "popularity": 22,
+  "files": {
+   "400": "font_pool/Playfair_Display/400.ttf",
+   "700": "font_pool/Playfair_Display/700.ttf"
+  },
+  "group": "have",
+  "in_generator": true
+ },
+ {
+  "family": "Lora",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Serif",
+  "scripts": [
+   "latin"
+  ],
+  "popularity": 40,
+  "files": {
+   "400": "font_pool/Lora/400.ttf",
+   "700": "font_pool/Lora/700.ttf"
+  },
+  "group": "have",
+  "in_generator": true
+ },
+ {
+  "family": "JetBrains Mono",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Monospace",
+  "scripts": [
+   "latin"
+  ],
+  "popularity": 41,
+  "files": {
+   "400": "font_pool/JetBrains_Mono/400.ttf",
+   "700": "font_pool/JetBrains_Mono/700.ttf"
+  },
+  "group": "have",
+  "in_generator": true
+ },
+ {
+  "family": "Source Code Pro",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Monospace",
+  "scripts": [
+   "latin"
+  ],
+  "popularity": 55,
+  "files": {
+   "400": "font_pool/Source_Code_Pro/400.ttf",
+   "700": "font_pool/Source_Code_Pro/700.ttf"
+  },
+  "group": "have",
+  "in_generator": true
+ },
+ {
+  "family": "Libre Baskerville",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Serif",
+  "scripts": [
+   "latin"
+  ],
+  "popularity": 69,
+  "files": {
+   "400": "font_pool/Libre_Baskerville/400.ttf",
+   "700": "font_pool/Libre_Baskerville/700.ttf"
+  },
+  "group": "have",
+  "in_generator": true
+ },
+ {
+  "family": "PT Serif",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Serif",
+  "scripts": [
+   "latin"
+  ],
+  "popularity": 77,
+  "files": {
+   "400": "font_pool/PT_Serif/400.ttf",
+   "700": "font_pool/PT_Serif/700.ttf"
+  },
+  "group": "have",
+  "in_generator": true
+ },
+ {
+  "family": "Work Sans",
+  "source": "Google Fonts",
+  "license": "SIL OFL 1.1 / Apache-2.0 / UFL",
+  "category": "Sans Serif",
+  "scripts": [
+   "latin"
+  ],
+  "popularity": 39,
+  "files": {
+   "400": "font_pool/Work_Sans/400.ttf",
+   "700": "font_pool/Work_Sans/700.ttf"
+  },
+  "group": "popular",
+  "in_generator": false
+ }
+]

@@ -1,0 +1,2 @@
+# the sample pool is read by byte offset (.idx next to each .jsonl): kept byte for byte, no line-ending changes
+dataset_pool_sample/** -text

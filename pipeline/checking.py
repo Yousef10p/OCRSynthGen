@@ -254,19 +254,65 @@ QA_JS = """(() => {""" + CONTRAST_JS + """
     if (rows.length) struct.tables.push({rect: rel(t.getBoundingClientRect()), rows, order: +t.dataset.order});
   }
   for (const l of content.querySelectorAll('ul, ol')) {
-    if (l.parentElement.closest('ul, ol, table') || inSpecial(l)) continue;  // nested lists are items of the outer one
-    const items = [...l.querySelectorAll('li')].map((li) => own(li, 'li')).filter((s) => s.length);
-    const first = l.querySelector('li');
-    const marker = first && getComputedStyle(first).display === 'list-item' ? getComputedStyle(first).listStyleType : 'none';
-    if (items.length) struct.lists.push({rect: rel(l.getBoundingClientRect()), items, marker, order: +l.dataset.order});
+    if (l.parentElement.closest('ul, ol, table') || inSpecial(l)) continue;  // a nested list is part of the outer one
+    // a list of cards (items holding a heading) is drawn as boxes, not a list (theme: no marker): its headings and
+    // text are labelled by their own roles
+    if (l.querySelector('li h1, li h2, li h3, li h4, li h5, li h6')) continue;
+    if (l.closest('[data-menu]')) continue;  // a menu (items in a row): no list, its items one Text
+    // per item: its slots, how deep it is nested (0 = the outer list), its own list's marker and its number there
+    // (Surya writes a nested list inside the item before it: <li>text<ul><li>...</li></ul></li>)
+    const items = [], depths = [], markers = [], nums = [], tags = [], marks = [];
+    for (const li of l.querySelectorAll('li')) {
+      const slots = own(li, 'li');
+      if (!slots.length) continue;
+      // where its bullet or number is drawn: before the item's start edge (an outside marker), on its first line
+      // (the label's box holds the marks: their ink is found there on the clean page, to_ink)
+      const first = document.createRange();
+      first.selectNodeContents(li.querySelector(`[data-slot="${slots[0]}"]`));
+      const line = [...first.getClientRects()].find((r) => r.width > 0 && r.height > 0);
+      if (line && getComputedStyle(li).display === 'list-item' && getComputedStyle(li).listStyleType !== 'none') {
+        const lr = li.getBoundingClientRect(), em = parseFloat(getComputedStyle(li).fontSize);
+        const r2l = getComputedStyle(li).direction === 'rtl';
+        const at = getComputedStyle(li).listStylePosition === 'outside' ? (r2l ? lr.right : lr.left) : (r2l ? line.right : line.left);
+        const [x0, x1] = r2l ? [at, at + 2.5 * em] : [at - 2.5 * em, at];
+        marks.push(rel({left: x0, right: x1, top: line.top, bottom: line.bottom, width: x1 - x0, height: line.bottom - line.top}));
+      }
+      let depth = -1;
+      for (let p = li.parentElement; p && p !== l.parentElement; p = p.parentElement) if (p.matches('ul, ol')) depth++;
+      const css = getComputedStyle(li);
+      items.push(slots);
+      depths.push(Math.max(0, depth));
+      markers.push(css.display === 'list-item' ? css.listStyleType : 'none');
+      nums.push([...li.parentElement.children].filter((c) => c.tagName === 'LI').indexOf(li) + 1);
+      tags.push(li.parentElement.tagName.toLowerCase() === 'ol' ? 'ol' : 'ul');
+    }
+    // the list's box reaches over its bullets: an outside marker hangs before the item, often outside the list's
+    // own box (to_ink then trims the box to what is drawn)
+    const box = l.getBoundingClientRect(), first = l.querySelector('li');
+    const hang = markers.some((m) => m !== 'none') && first && getComputedStyle(first).listStylePosition === 'outside'
+      ? 1.5 * parseFloat(getComputedStyle(first).fontSize) : 0;
+    const rtl = getComputedStyle(l).direction === 'rtl';
+    const rect = {left: box.left - (rtl ? 0 : hang), right: box.right + (rtl ? hang : 0), top: box.top, bottom: box.bottom};
+    rect.width = rect.right - rect.left; rect.height = rect.bottom - rect.top;
+    if (items.length) struct.lists.push({rect: rel(rect), items, depths, markers, nums, tags, marks,
+                                         marker: markers[0], order: +l.dataset.order});
   }
   for (const im of content.querySelectorAll('.pic-frame, [data-img], img')) {
     if ((im.tagName === 'IMG' && im.closest('.pic-frame, [data-img]')) || inSpecial(im)) continue;
-    const r = im.getBoundingClientRect();
-    if (r.width < 8 || r.height < 8) continue;
+    if (getComputedStyle(im).visibility === 'hidden') continue;  // hidden by PAGE_JS (too small, off the page)
     const img = im.tagName === 'IMG' ? im : im.querySelector('img');
+    // what is drawn: a picture shown whole (object-fit: contain) fills only part of its box; kept to the page
+    let [x0, y0, x1, y1] = (({left, top, right, bottom}) => [left, top, right, bottom])(im.getBoundingClientRect());
+    if (img && img.naturalWidth && getComputedStyle(img).objectFit === 'contain') {
+      const b = img.getBoundingClientRect(), s = Math.min(b.width / img.naturalWidth, b.height / img.naturalHeight);
+      const w = img.naturalWidth * s, h = img.naturalHeight * s, x = b.left + (b.width - w) / 2, y = b.top + (b.height - h) / 2;
+      [x0, y0, x1, y1] = [Math.max(x0, x), Math.max(y0, y), Math.min(x1, x + w), Math.min(y1, y + h)];
+    }
+    [x0, y0, x1, y1] = [Math.max(x0, pr.left), Math.max(y0, pr.top), Math.min(x1, pr.right), Math.min(y1, pr.bottom)];
+    if (x1 - x0 < 8 || y1 - y0 < 8) continue;
     const src = img ? img.getAttribute('src') || '' : (getComputedStyle(im).backgroundImage.match(/url\\("?([^")]*)"?\\)/) || [])[1] || '';
-    struct.images.push({rect: rel(r), src: src.split('/').pop(), order: +im.dataset.order});
+    struct.images.push({rect: rel({left: x0, top: y0, width: x1 - x0, height: y1 - y0}), src: src.split('/').pop(),
+                        graphic: /[/](graphics|flowcharts)[/]/.test(src), order: +im.dataset.order});
   }
   // a special block: its box, and whether all of it shows (not cut by its box, a page break or the page's edge)
   for (const sp of content.querySelectorAll('[data-special]')) {
@@ -277,12 +323,40 @@ QA_JS = """(() => {""" + CONTRAST_JS + """
       || sp.hasAttribute('data-split-to') || sp.hasAttribute('data-split-from')
       || r.top < pr.top - 1 || r.bottom > pr.bottom + 1 || r.left < pr.left - 1 || r.right > pr.right + 1;
     const inside = !!sp.parentElement.closest('table, ul, ol, [data-slot]');
-    struct.specials.push({rect: rel(r), k: +sp.dataset.special, order: +sp.dataset.order, cut, inside});
+    // the box of its text alone (its text nodes' line boxes), without the panel or padding around it
+    let t = null;
+    const walk = document.createTreeWalker(sp, NodeFilter.SHOW_TEXT);
+    for (let n = walk.nextNode(); n; n = walk.nextNode()) {
+      if (!n.textContent.trim()) continue;
+      const range = document.createRange();
+      range.selectNodeContents(n);
+      for (const q of range.getClientRects()) {
+        if (!q.width || !q.height) continue;
+        t = t ? {left: Math.min(t.left, q.left), top: Math.min(t.top, q.top), right: Math.max(t.right, q.right),
+                 bottom: Math.max(t.bottom, q.bottom)} : {left: q.left, top: q.top, right: q.right, bottom: q.bottom};
+      }
+    }
+    struct.specials.push({rect: rel(r), text: t && rel({left: t.left, top: t.top, width: t.right - t.left, height: t.bottom - t.top}),
+                          k: +sp.dataset.special, order: +sp.dataset.order, cut, inside});
   }
+  // per slot, what the label must keep of the page: heading level, bold, italic, the page's own <u>, <sup>, <sub>,
+  // <del> around it, the element it is part of (el: a paragraph, item, cell... with two slots is one block) and
+  // whether the page breaks the line before it in that element (br: <br/> in the label)
+  const BLOCK = 'p, li, td, th, h1, h2, h3, h4, h5, h6, figcaption, blockquote, dd, dt, caption, label';
+  const elIds = new Map(), lastSlot = new Map(), menuIds = new Map();
   for (const s of content.querySelectorAll('[data-slot]')) {
-    const cs = getComputedStyle(s), h = s.closest('h1, h2, h3, h4, h5, h6');
+    const cs = getComputedStyle(s), h = s.closest('h1, h2, h3, h4, h5, h6'), blk = s.closest(BLOCK);
+    if (blk && !elIds.has(blk)) elIds.set(blk, elIds.size);
+    const prev = blk && lastSlot.get(blk);
+    const br = !!prev && [...blk.querySelectorAll('br')].some((b) =>
+      (prev.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) && (b.compareDocumentPosition(s) & Node.DOCUMENT_POSITION_FOLLOWING));
+    if (blk) lastSlot.set(blk, s);
     struct.styles[s.dataset.slot] = {h: h ? h.tagName.toLowerCase() : null, bold: +cs.fontWeight >= 600,
-                                     italic: cs.fontStyle === 'italic'};
+                                     italic: cs.fontStyle === 'italic', u: !!s.closest('u, ins'),
+                                     sup: !!s.closest('sup'), sub: !!s.closest('sub'), del: !!s.closest('del, s, strike'),
+                                     el: blk ? elIds.get(blk) : null, br, role: s.dataset.role,
+                                     menu: s.closest('[data-menu]') ? (menuIds.has(s.closest('[data-menu]')) ? menuIds.get(s.closest('[data-menu]'))
+                                           : (menuIds.set(s.closest('[data-menu]'), menuIds.size), menuIds.size - 1)) : null};
     if (!(s.dataset.slot in struct.order)) struct.order[s.dataset.slot] = +s.dataset.order;
   }
   return {slots, pictures, contrast, covered, struct};
@@ -322,6 +396,44 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
   await document.fonts.ready;
   await Promise.all([...document.images].map((i) => i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; })));""" \
   + CONTRAST_JS + """
+  // a template's block content nested in a heading (a converter's <h3><a>title <h4>..</h4><p>..</p></a></h3>) is
+  // moved out, right after the heading: the heading holds only its title, and a paragraph is drawn as a paragraph,
+  // not in the heading's size and weight
+  const HEADS = "h1, h2, h3, h4, h5, h6";
+  for (const h of document.body.querySelectorAll(HEADS)) {
+    if (!h.isConnected) continue;
+    const blocks = [...h.querySelectorAll("p, div, ul, ol, table, figure, blockquote, pre, " + HEADS)]
+      .filter((e) => e.parentElement.closest(HEADS) === h && !e.parentElement.closest("p, li, td, th"));
+    let after = h;
+    for (const e of blocks) { after.after(e); after = e; }
+  }
+  // a list is drawn as a list, or it is no list: items one under the other get a visible bullet (the theme's) or
+  // number (the page's digits) even where the template hid them (list-style: none, items not drawn as list items),
+  // with room for it on the line's start side (right on an Arabic page); items laid out in a row (a menu) are no
+  // list: marked data-menu, they keep their look and the label writes them as one Text, as Surya does
+  for (const l of document.body.querySelectorAll("ul, ol")) {
+    if (l.closest("[data-special]") || l.parentElement.closest("ul, ol")) continue;  // a nested list goes with its own
+    if (l.querySelector("li h1, li h2, li h3, li h4, li h5, li h6")) continue;  // a list of cards: boxes, not a list
+    const items = [...l.children].filter((li) => li.tagName === "LI" && li.textContent.trim());
+    if (!items.length) continue;
+    const r = items.map((li) => li.getBoundingClientRect());
+    const row = r.some((a, i) => r.some((b, j) => j > i && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top)
+                                                       > 0.5 * Math.min(a.height, b.height)));
+    if (row) {
+      l.dataset.menu = "1";
+      for (const li of l.querySelectorAll("li")) li.style.setProperty("list-style-type", "none", "important");
+      continue;
+    }
+    for (const list of [l, ...l.querySelectorAll("ul, ol")]) {
+      const type = list.tagName === "OL" ? (cfg.numbers || "decimal") : (cfg.bullet || "disc");
+      if (parseFloat(getComputedStyle(list).paddingInlineStart) < 14) list.style.setProperty("padding-inline-start", "1.6em", "important");
+      for (const li of [...list.children].filter((c) => c.tagName === "LI")) {
+        li.style.setProperty("display", "list-item", "important");
+        li.style.setProperty("list-style-type", type, "important");
+        li.style.setProperty("list-style-position", "outside", "important");
+      }
+    }
+  }
   if (cfg.hue || cfg.saturate !== 1) {
     const turn = (c) => { const m = (c || '').match(/[\\d.]+/g); if (!m || m.length < 3) return null;
       let [r, g, b] = m.slice(0, 3).map((v) => v / 255); const a = m[3] === undefined ? 1 : +m[3];
@@ -341,6 +453,46 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
       }
     }
   }
+  // a table that doesn't fit loses whole rows from its end, never words cell by cell (that left empty rows and
+  // cells drawn on the page): the row and every row after it go, a cell merged down into them is shortened, and a
+  // table left with no row of data (header rows only, or nothing) is hidden
+  const dropRows = (tr) => {
+    const table = tr.closest("table"), rows = [...table.rows], k = rows.indexOf(tr);
+    for (const r of rows.slice(k)) r.remove();
+    const left = table.rows.length;
+    for (let i = 0; i < left; i++) for (const c of table.rows[i].cells) if (c.rowSpan > left - i) c.rowSpan = left - i;
+    const data = [...table.querySelectorAll("td [data-slot], td")].some((c) => c.textContent.trim());
+    if (!left || !data) table.style.display = "none";
+  };
+  // the footnote area looks like one: its notes under a short rule on the line's start side (not a rule across
+  // the page, as a page footer has), in smaller type than the body; each note opens with its number (fill)
+  {
+    const notes = [...document.body.querySelectorAll('[data-role="footnote"]')].filter((x) => x.textContent.trim());
+    const own = (e) => [...e.querySelectorAll("[data-slot]")].every((x) => /^footnote/.test(x.dataset.role) || !x.textContent.trim());
+    if (notes.length) {
+      let area = notes[0].parentElement;
+      while (area.parentElement && area.parentElement !== document.body && !area.parentElement.classList.contains("page")
+             && own(area.parentElement) && !area.parentElement.querySelector("img")) area = area.parentElement;
+      if (area === notes[0].parentElement && area.matches("p, span, li") && area.parentElement && own(area.parentElement)) area = area.parentElement;
+      area.style.setProperty("border-block-start", "none", "important");
+      area.style.setProperty("border-top", "none", "important");
+      const rule = document.createElement("hr");
+      rule.dataset.fnRule = "1";
+      rule.style.cssText = "display: block; inline-size: 30%; max-inline-size: 12em; block-size: 0; margin-block: 0.2em 0.35em;"
+        + " margin-inline: 0 auto; border: 0; border-block-start: 1px solid currentColor; background: none;";
+      if (getComputedStyle(area).position === "absolute") {  // a region of fixed size (DocLayNet): the rule above it,
+        // not in it (it would push the note out of its box)
+        const r2l = getComputedStyle(area).direction === "rtl", w = Math.min(0.3 * area.offsetWidth + 40, 160);
+        rule.style.cssText += `position: absolute; inline-size: ${w}px; margin: 0; top: ${area.offsetTop - 4}px;`
+          + `left: ${r2l ? area.offsetLeft + area.offsetWidth - w : area.offsetLeft}px;`;
+        area.parentElement.insertBefore(rule, area);
+      } else area.insertBefore(rule, area.firstChild);
+      const para = document.querySelector('[data-role="paragraph"]');
+      const bodySize = para ? parseFloat(getComputedStyle(para).fontSize) : 16;
+      if (parseFloat(getComputedStyle(notes[0]).fontSize) > 0.88 * bodySize)
+        area.style.setProperty("font-size", 0.8 * bodySize + "px", "important");
+    }
+  }
   for (const el of document.body.querySelectorAll("*")) {
     if (el.classList.contains("page") || !el.textContent.trim()) continue;
     const cs = getComputedStyle(el);
@@ -353,8 +505,11 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
       size *= 0.95;
       el.style.setProperty("font-size", size + "px", "important");
     }
-    const spans = [...el.querySelectorAll("[data-slot]")];
+    const spans = [...el.querySelectorAll("[data-slot]")].filter((x) => !/^footnote_/.test(x.dataset.role));  // a mark stays whole
     for (let i = spans.length - 1; i >= 0 && !fits(); i--) {
+      if (!spans[i].isConnected) continue;  // its row is already gone
+      const row = spans[i].closest("tr");
+      if (row) { dropRows(row); continue; }
       const words = spans[i].textContent.split(/\\s+/).filter(Boolean);
       let lo = 0, hi = words.length;  // the most words that still fit
       while (lo < hi) {
@@ -376,11 +531,29 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
     if (el.scrollHeight <= el.clientHeight + 1 && el.scrollWidth <= el.clientWidth + 1)
       el.style.setProperty("overflow", "visible", "important");
   }
+  // code keeps its own lines, as in an editor: a code panel wider than its column gets a smaller font (down to
+  // 60%), and one that still doesn't fit is left off the page (its block with it: only drawn blocks are labelled),
+  // never wrapped (wrapped, "def __next__(self):" was drawn as "def / __next__(self) / : token =" while the
+  // label had the real lines)
+  for (const pre of document.querySelectorAll("[data-special] pre, pre[data-code]")) {
+    pre.style.setProperty("white-space", "pre", "important");
+    pre.style.setProperty("overflow-wrap", "normal", "important");
+    pre.style.setProperty("word-break", "normal", "important");
+    const box = pre.closest("[data-special]") || pre, room = () => box.parentElement.clientWidth || box.clientWidth;
+    const wide = () => pre.scrollWidth > pre.clientWidth + 1 || box.getBoundingClientRect().width > room() + 1;
+    let size = parseFloat(getComputedStyle(pre).fontSize);
+    for (const min = size * 0.6; wide() && size > min;) {
+      size *= 0.95;
+      pre.style.setProperty("font-size", size + "px", "important");
+    }
+    if (wide()) box.style.setProperty("display", "none", "important");
+  }
   for (const el of document.body.querySelectorAll("*")) {
     if (el.classList.contains("page") || !el.textContent.trim() || el.scrollWidth <= el.clientWidth + 1) continue;
     if (/hidden|clip/.test(getComputedStyle(el).overflowX) || !el.clientWidth) continue;
     el.style.setProperty("flex-wrap", "wrap", "important");
     for (const c of el.children) {
+      if (c.matches("pre") || c.querySelector("pre")) continue;  // code: see above
       c.style.setProperty("white-space", "normal", "important");
       c.style.setProperty("min-inline-size", "0", "important");
       c.style.setProperty("overflow-wrap", "anywhere", "important");
@@ -390,10 +563,33 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
     const pr = page.getBoundingClientRect(), bottom = pr.bottom - parseFloat(getComputedStyle(page).paddingBottom);
     const out = (el) => [...el.getClientRects()].some((r) => r.bottom > bottom + 1 || r.right > pr.right + 1
                                                              || r.left < pr.left - 1);
+    // footnotes stand at the foot of the page: when they run off it, the body text above them is shortened first
+    // (from its last paragraph or item back), so the notes are kept rather than cut away as the page's last text
+    const notes = [...page.querySelectorAll('[data-role="footnote"]')].filter((x) => x.textContent.trim());
+    if (notes.length && notes.some(out)) {
+      const first = notes[0];
+      const body = [...page.querySelectorAll('[data-role="paragraph"], [data-role="list_item"]')]
+        .filter((x) => x.compareDocumentPosition(first) & Node.DOCUMENT_POSITION_FOLLOWING && !x.closest("tr"));
+      const kept = body.slice(-3).map((x) => [x, x.textContent, x.closest("p, li") && x.closest("p, li").style.display]);
+      for (let i = body.length - 1; i >= Math.max(0, body.length - 3) && notes.some(out); i--) {  // at most 3 texts
+        const words = body[i].textContent.split(/\\s+/).filter(Boolean);
+        let lo = 0, hi = words.length;  // the most words that still leave the notes on the page
+        while (lo < hi) {
+          const mid = Math.ceil((lo + hi) / 2);
+          body[i].textContent = words.slice(0, mid).join(" ");
+          if (notes.some(out)) hi = mid - 1; else lo = mid;
+        }
+        body[i].textContent = words.slice(0, lo).join(" ");
+        if (!lo) { const b = body[i].closest("p, li"); if (b && !b.textContent.trim()) b.style.display = "none"; }
+      }
+      if (notes.some(out))  // too much to give up for them: the body as it was, the notes cut as the page's end
+        for (const [x, t, d] of kept) { x.textContent = t; if (x.closest("p, li")) x.closest("p, li").style.display = d || ""; }
+    }
     const spans = [...page.querySelectorAll("[data-slot]")];
     for (let i = spans.length - 1; i >= 0; i--) {
       const s = spans[i];
-      if (!out(s)) continue;
+      if (!s.isConnected || !out(s)) continue;
+      if (s.closest("tr")) { dropRows(s.closest("tr")); continue; }  // a table: whole rows, see dropRows
       const words = s.textContent.split(/\\s+/).filter(Boolean);
       let lo = 0, hi = words.length;  // the most words that stay on the page
       while (lo < hi) {
@@ -404,7 +600,124 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
       s.textContent = words.slice(0, lo).join(" ");
       const block = s.closest("p, li, h1, h2, h3, h4, h5, h6, blockquote, figcaption, dt, dd, caption, label");
       if (!lo && block && !block.textContent.trim()) block.style.display = "none";
+      // a box (a card, a framed field) left with no text: hidden, not drawn empty on the page with no label
+      let e = s;
+      while (!lo && e.parentElement && e.parentElement !== page && !e.parentElement.textContent.trim()
+             && !e.parentElement.querySelector("img")) e = e.parentElement;
+      if (!lo && e !== s && !s.closest("table")) e.style.setProperty("visibility", "hidden", "important");
     }
+  }
+  // every heading introduces a section: one whose next text on the page (in document order) is a heading of the
+  // same or a higher level, or nothing at all (its section cut off the page), heads nothing and is removed
+  const shown = (el) => { for (let e = el; e && e !== document.body; e = e.parentElement) {
+    const cs = getComputedStyle(e); if (cs.display === "none" || cs.visibility === "hidden") return false; } return true; };
+  const headOf = (el) => el.closest("h1, h2, h3, h4, h5, h6") || el.closest('[data-role="heading"]');
+  // a block taken off the page: its slots emptied (as when text doesn't fit), so its words count as removed, not
+  // as hidden text
+  const drop = (el) => { for (const s of [el, ...el.querySelectorAll("[data-slot]")]) if (s.dataset && s.dataset.slot) s.textContent = "";
+    el.style.setProperty("display", "none", "important"); };
+  const level = (h) => /^H[1-6]$/.test(h.tagName) ? +h.tagName[1] : 3;
+  // a page header or footer is in a region of its own: a header slot (or a page number) with the page's body
+  // above it or beside it in its band, or a footer slot with body below or beside it, is no page header or footer
+  // (a website's tagline under its title, links halfway down) and is taken off the page, never labelled as body
+  // text; body text is never moved there. Run again after the passes below remove content (a heading, a caption,
+  // a row): a footer decided at the foot of a page whose content then shrank stood halfway up it
+  const edgeRegions = () => {
+    const edge = new Set(["header", "footer", "page_number"]);
+    const body = [...document.body.querySelectorAll("[data-slot]")]
+      .filter((x) => !edge.has(x.dataset.role) && x.textContent.trim() && shown(x))
+      .concat([...document.body.querySelectorAll("img, [data-special]")].filter(shown))
+      .map((x) => x.getBoundingClientRect()).filter((q) => q.width > 2 && q.height > 2);
+    // the sheet's middle: a page element can be only as tall as its content (a web page's), so the sheet's own
+    // height (cfg.pageHeight, from the template's page size) when that is more
+    const pg = (document.querySelector(".page") || document.body).getBoundingClientRect();
+    const mid = pg.top + Math.max(pg.height, cfg.pageHeight || 0) / 2;
+    for (const x of document.body.querySelectorAll('[data-role="header"], [data-role="footer"], [data-role="page_number"]')) {
+      if (!x.textContent.trim() || !shown(x)) continue;
+      const q = x.getBoundingClientRect(), tol = 2;
+      const beside = body.some((o) => Math.min(o.bottom, q.bottom) - Math.max(o.top, q.top) > tol);
+      const top = q.top < mid && !beside && !body.some((o) => o.bottom <= q.top + tol);
+      const bottom = q.bottom > mid && !beside && !body.some((o) => o.top >= q.bottom - tol);
+      if (!(x.dataset.role === "header" ? top : x.dataset.role === "footer" ? bottom : top || bottom)) drop(x);
+    }
+  };
+  edgeRegions();
+  // a footnote only with its mark: the note shown, under all of the page's body (beside it is fine: a column's
+  // foot), its number before it and the same number after a paragraph that still shows text; otherwise the note
+  // and its mark are taken off the page (no note without its mark, no mark without its note)
+  {
+    const edge = new Set(["header", "footer", "page_number", "footnote", "footnote_mark", "footnote_ref"]);
+    const body = [...document.body.querySelectorAll("[data-slot]")]
+      .filter((x) => !edge.has(x.dataset.role) && x.textContent.trim() && shown(x))
+      .concat([...document.body.querySelectorAll("img, [data-special]")].filter(shown))
+      .map((x) => x.getBoundingClientRect()).filter((q) => q.width > 2 && q.height > 2);
+    for (const x of document.body.querySelectorAll('[data-role="footnote"]')) {
+      const num = x.previousElementSibling && x.previousElementSibling.matches("sup[data-fn]") ? x.previousElementSibling : null;
+      const ref = num && document.body.querySelector(`sup[data-fnref="${num.dataset.fn}"]`);
+      const marked = ref && shown(ref) && ref.textContent.trim() && ref.previousElementSibling
+        && ref.previousElementSibling.textContent.trim() && shown(ref.previousElementSibling);
+      const q = x.getBoundingClientRect();
+      const under = !body.some((o) => o.top >= q.top - 2);
+      if (x.textContent.trim() && shown(x) && num && marked && under) continue;
+      if (ref) { for (const r of ref.querySelectorAll("[data-slot]")) r.textContent = ""; ref.style.setProperty("display", "none", "important"); }
+      if (num) drop(num);
+      const blk = x.parentElement;
+      if (blk && blk.matches("p, li, div") && [...blk.querySelectorAll("[data-slot]")].every((s) => s === x || num && num.contains(s))) drop(blk);
+      else drop(x);
+    }
+    const kept = [...document.body.querySelectorAll('[data-role="footnote"]')].filter((x) => x.textContent.trim() && shown(x));
+    if (!kept.length) for (const rule of document.querySelectorAll("hr[data-fn-rule]")) rule.remove();
+    kept.forEach((x, k) => {  // numbered 1, 2... as drawn (a note taken off leaves no gap)
+      const num = x.previousElementSibling, ref = document.body.querySelector(`sup[data-fnref="${num.dataset.fn}"]`);
+      const ar = /[٠-٩]/.test(num.textContent);
+      const n = [...String(k + 1)].map((c) => (ar ? "٠١٢٣٤٥٦٧٨٩"[+c] : c)).join("");
+      for (const m of [num, ref]) m.querySelector("[data-slot]").textContent = n;
+    });
+  }
+  const orphanHeadings = () => { for (const h of [...document.body.querySelectorAll('h1, h2, h3, h4, h5, h6, [data-role="heading"]')]) {
+    if (!h.textContent.trim() || !shown(h) || (h.matches('[data-role="heading"]') && h.closest("h1, h2, h3, h4, h5, h6"))) continue;
+    const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    walk.currentNode = h;
+    let next = null;
+    for (let t = walk.nextNode(); t; t = walk.nextNode()) {
+      if (h.contains(t) || !t.textContent.trim() || !shown(t.parentElement)) continue;
+      next = t.parentElement;
+      break;
+    }
+    const nh = next && headOf(next);
+    if (!next || (nh && nh !== h && level(nh) <= level(h))) drop(h);
+  } };
+  orphanHeadings();
+  // a caption is with what it captions: a figure or table still showing a picture, drawing or table, or one right
+  // beside it; a caption with none of them is removed (never a caption under nothing)
+  const captioned = (e) => e && shown(e) && e.matches("img, svg, canvas, table, .pic-frame, [data-special], [data-img]")
+    || (e && shown(e) && [...e.querySelectorAll("img, svg, canvas, table, .pic-frame, [data-special], [data-img]")].some(shown));
+  for (const s of document.body.querySelectorAll('[data-role="caption"]')) {
+    const cap = s.closest("figcaption, caption") || s.closest("p, div, span") || s;
+    if (!s.textContent.trim() || !shown(cap)) continue;
+    const box = cap.closest("figure, table");
+    let ok = box && captioned(box) && [...box.querySelectorAll("img, svg, canvas, table, .pic-frame, [data-special], [data-img]")].some(shown);
+    for (let e = cap; !ok && e && e !== document.body; e = e.parentElement) {
+      if (captioned(e.previousElementSibling) || captioned(e.nextElementSibling)) ok = true;
+      if (e.parentElement && e.parentElement.children.length > 1) break;  // only its own neighbours
+    }
+    if (!ok) drop(cap);
+  }
+  // a list item left with no text (its slot emptied to fit its box) would draw a bullet or number next to
+  // nothing: removed, so the numbering on the page is that of the items the label has
+  for (const li of document.querySelectorAll(".page li")) {
+    if (!li.textContent.trim() && !li.querySelector("img, svg, input, table")) li.remove();
+  }
+  // a table row with no text at all (a template's spare rows) is not drawn: removed, unless a merged cell runs
+  // through it; a table with no row of data left is hidden
+  for (const table of document.querySelectorAll(".page table")) {
+    if (table.closest("[data-special]")) continue;
+    const rows = [...table.rows], spanned = new Set();
+    rows.forEach((r, i) => { for (const c of r.cells) for (let k = 1; k < c.rowSpan; k++) spanned.add(i + k); });
+    rows.forEach((r, i) => {
+      if (!r.textContent.trim() && !spanned.has(i) && ![...r.cells].some((c) => c.rowSpan > 1)) r.remove();
+    });
+    if (![...table.querySelectorAll("td")].some((c) => c.textContent.trim())) table.style.display = "none";
   }
   // slots and the text in special blocks: readable on any theme
   for (const s of document.querySelectorAll("[data-slot], [data-special] td, [data-special] li, [data-special] p, [data-special] pre")) {
@@ -413,7 +726,48 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
     if (r >= 4.5) continue;
     s.style.setProperty("color", lum(bg || [255, 255, 255]) > 0.18 ? "#111111" : "#ffffff", "important");
   }
+  // list bullets and numbers: as readable as the text. The label writes them; a theme's faint accent marker (grey
+  // on light green) was left out of the list's ink box and so out of its block_ocr cut-out
+  const marks = document.createElement("style");
+  marks.textContent = "li.mk-dark::marker { color: #111111 !important; } li.mk-light::marker { color: #ffffff !important; }";
+  document.head.appendChild(marks);
+  for (const li of document.querySelectorAll("li")) {
+    const css = getComputedStyle(li);
+    if (css.display !== "list-item" || css.listStyleType === "none" || !li.textContent.trim()) continue;
+    const bg = behind(li);
+    if (pair(rgb(getComputedStyle(li, "::marker").color).slice(0, 3), bg) >= 4.5) continue;
+    li.classList.add(lum(bg) > 0.18 ? "mk-dark" : "mk-light");
+  }
+  // pictures (not those in special blocks): a chart, flowchart or molecule drawn at less than 0.3 of its size
+  // (too small to read) becomes a photo; a photo its box would cut by more than half is shown whole (contain);
+  // a picture still under 56 x 56 px, or running off the page, is hidden: never cut or shrunk to nothing
   const photos = cfg.photos; let k = 0;
+  const drawn = (im) => { const r = im.getBoundingClientRect(), nw = im.naturalWidth, nh = im.naturalHeight;
+    if (getComputedStyle(im).objectFit !== "contain") return {r, s: Math.max(r.width / nw, r.height / nh)};
+    const s = Math.min(r.width / nw, r.height / nh), w = nw * s, h = nh * s, x = r.left + (r.width - w) / 2,
+          y = r.top + (r.height - h) / 2;
+    return {r: {left: x, top: y, right: x + w, bottom: y + h, width: w, height: h}, s}; };
+  for (const im of document.querySelectorAll("img")) {
+    if (im.closest("[data-special]") || !im.naturalWidth) continue;
+    // (a flowchart of the flowchart pool is drawn about twice as large as graphics/' drawings: half the scale)
+    const least = /[/]flowcharts[/]/.test(im.src) ? 0.15 : 0.3;
+    if (/[/](graphics|flowcharts)[/]/.test(im.src) && drawn(im).s < least && k < photos.length) {
+      im.src = photos[k++];
+      await im.decode().catch(() => null);
+    }
+    const r = im.getBoundingClientRect(), a = (r.width / r.height) / (im.naturalWidth / im.naturalHeight);
+    if (!/[/](graphics|flowcharts)[/]/.test(im.src) && Math.min(a, 1 / a) < 0.5) im.style.setProperty("object-fit", "contain", "important");
+    const d = drawn(im).r, page = im.closest(".page"), pr = page && page.getBoundingClientRect();
+    const off = pr && (d.bottom > pr.bottom + 1 || d.right > pr.right + 1 || d.left < pr.left - 1 || d.top < pr.top - 1);
+    if (d.width < 56 || d.height < 56 || off) {
+      (im.closest(".pic-frame") || im).style.setProperty("visibility", "hidden", "important");
+      // its caption goes with it: a caption under no picture is no caption
+      const cap = im.closest("figure") && im.closest("figure").querySelector("figcaption");
+      if (cap) drop(cap);
+    }
+  }
+  edgeRegions();  // the page as it now stands: headers and footers still in their own regions,
+  orphanHeadings();  // and no heading left heading only a footer that went
   for (const el of document.body.querySelectorAll("*")) {
     if (k >= photos.length) break;
     if (/^(TD|TH|TR|TABLE|INPUT|SELECT|TEXTAREA|BUTTON|HR|BR|IMG|SVG|SCRIPT|STYLE)$/.test(el.tagName)) continue;
@@ -454,7 +808,10 @@ PAGE_JS = """window.PagedConfig = {auto: true, before: async () => {
 # DocPipeline makes the page again (new style and text, then another template) until every count is 0, so a
 # sample's ground truth always matches what is visible.
 
-BULLETS = {"disc", "circle", "square", "none", "disclosure-closed", "disclosure-open"}
+# list markers the label writes as text (generator.marker): bullets, and the numbers of an ordered list in the
+# page's digits (an ordered list was rejected as unlabelled text before, so no page had one)
+BULLETS = {"disc", "circle", "square", "none", "disclosure-closed", "disclosure-open", "decimal",
+           "decimal-leading-zero", "arabic-indic"}
 
 
 def _area(b):
@@ -751,15 +1108,61 @@ def overlap(a, b):
     return c if c[2] > c[0] and c[3] > c[1] else a
 
 
+def fit_ink(words, gray):
+    """Each word's box fitted to what the clean page (gray) draws of it: the measured box is the text's advance
+    and line, which cuts off letters reaching past them (an italic or bold overhang, tashkeel and accents above
+    a heading's tight line) and holds the line's empty leading. Searched in the letters' height (font metrics)
+    grown by 30% above and 25% below (marks, not the leading: a rule under a field's text stays out) and the
+    advance widened by 15% of that height on each side (well under a space, so no neighbour's letters); ink is
+    any pixel differing from the most common shade there (its background) by more than 40, rows
+    or columns inked across 90% of the search area (a rule, an underline, a highlight's edge) aside. A word with
+    no ink found keeps its letters' height (glyph box, 12% padded)."""
+    H, W = gray.shape
+    for w in words:
+        gy, gh = w["glyph_box"][1], w["glyph_box"][3]
+        m = max(2.0, 0.15 * gh)
+        X0, X1 = int(max(0, w["x"] - m)), int(min(W, w["x"] + w["width"] + m + 1))
+        Y0, Y1 = int(max(0, gy - 0.3 * gh)), int(min(H, gy + gh + 0.25 * gh + 1))  # room for marks, not the leading
+        c = gray[Y0:Y1, X0:X1]
+        if c.size:
+            ink = np.abs(c.astype(int) - int(np.bincount(c.ravel().astype(np.uint8)).argmax())) > 40
+            ink &= (ink.mean(axis=1) < 0.9)[:, None] & (ink.mean(axis=0) < 0.9)[None, :]  # no rules or bands
+            lined = ink.any(axis=1)
+            core = [r for r in range(int(gy - Y0), int(gy + gh - Y0) + 1) if 0 <= r < len(lined) and lined[r]]
+            rows = np.array([], dtype=int)
+            if core:  # the letters' rows, then up and down only through ink close to them (marks above and below
+                # sit a few pixels from their letters; the next line's descenders or ascenders are further off)
+                top, bottom, allow = core[0], core[-1], max(2, round(0.1 * gh))
+                for step in (-1, 1):
+                    r, gap = (top if step < 0 else bottom) + step, 0
+                    while 0 <= r < len(lined) and gap <= allow:
+                        if lined[r]:
+                            top, bottom, gap = (r, bottom, 0) if step < 0 else (top, r, 0)
+                        else:
+                            gap += 1
+                        r += step
+                rows = np.arange(top, bottom + 1)
+            cols = np.flatnonzero(ink[rows].any(axis=0)) if rows.size else rows
+            if rows.size and cols.size and rows[-1] - rows[0] + 1 >= 0.3 * gh:
+                w["x"], w["width"] = float(X0 + cols[0]), float(cols[-1] - cols[0] + 1)
+                w["y"], w["height"] = float(Y0 + rows[0]), float(rows[-1] - rows[0] + 1)
+                continue
+        pad = max(2.0, 0.12 * gh)
+        y0, y1 = max(w["y"], gy - pad), min(w["y"] + w["height"], gy + gh + pad)
+        if y1 - y0 >= 0.5 * gh:
+            w["y"], w["height"] = y0, y1 - y0
+
+
 def to_ink(plan, gray):
-    """Lists, tables and special blocks: also the box of what is drawn in them, as ("list_ink", i) etc. Their HTML
+    """Lists, tables, special blocks and drawn graphics (a chart on its white ground): also the box of what is
+    drawn in them, as ("list_ink", i) etc. Their HTML
     element is often the page's whole width while the items or cells are much narrower (centred text, bullets
     at the far side), and the label's box must hold what the image shows. On the clean page (gray), the box
     around every pixel that differs from the element's most common shade (its background): text, bullets,
     table lines. The element's own box stays for the rules that group and order blocks (tuned on it)."""
     out = list(plan)
     for key, r in plan:
-        if key[0] in ("list", "table", "special"):
+        if key[0] in ("list", "table", "special", "graphic", "mark"):
             x0, y0 = max(0, int(r["x"])), max(0, int(r["y"]))
             c = gray[y0:int(r["y"] + r["height"]) + 1, x0:int(r["x"] + r["width"]) + 1]
             if c.size:
@@ -790,7 +1193,9 @@ def problems(task, target):
         if x1 < x0 or y1 < y0 or max(x0, y0, x1, y1) > 1000:
             out.append(f"{where}: bbox order/range {' '.join(values)}")
     if task in ("full_ocr", "block_ocr"):
-        if "\n" in target or "</div>" in target or "<div" in target:
+        # line breaks only inside <pre> (code, Mermaid) and just before a flowchart's Mermaid, as Surya writes them
+        outside_pre = re.sub(r'(\n(?=<pre class="mermaid">))?<pre[^>]*>.*?</pre>', "", target, flags=re.S)
+        if "\n" in outside_pre or "</div>" in target or "<div" in target:
             out.append("newline or div in a compact answer")
         if CELL_END.search(target):
             out.append("</td>, </th> or </tr> written out")
@@ -808,7 +1213,7 @@ def problems(task, target):
                     out.append(f"block {k}: label {m.group(1)}")
                 box_ok(m.groups()[1:], f"block {k}")
                 end = heads[k + 1].start() if k + 1 < len(heads) else len(target)
-                if m.end() == end:
+                if m.end() == end and m.group(1) != "Blank-Page":  # a blank page's one block is empty, as Surya's
                     out.append(f"block {k}: empty")
     elif task in ("layout", "table"):
         if "\n" in target:

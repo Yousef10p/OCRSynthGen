@@ -1,8 +1,9 @@
 {
   "name": "arabic-template-bank",
   "private": true,
-  "description": "rtlcss flips the CSS of LLM-written pages to right to left (pipeline/llm_templates.py)",
+  "description": "mathjax-full draws equations (pipeline/mathjax_svg.js); rtlcss flips the CSS of LLM-written pages to right to left (pipeline/llm_templates.py)",
   "dependencies": {
+    "mathjax-full": "^3.2.2",
     "rtlcss": "^4.3.0"
   }
 }

@@ -9,18 +9,47 @@ import argparse
 import hashlib
 import io
 import json
+import math
+import os
 import random
 import re
 import shutil
 import time
 import urllib.parse
 import urllib.request
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
+
+# -- where the pools are --------------------------------------------------------------------------------------------
+# Every downloaded pool goes into one folder, dataset_pool/ (pipeline/move_pools.py moves them there, a rename each,
+# nothing copied); until then each is read from its first home. Names in dataset_pool/:
+#   wikipedia/  the small Wikipedia text pool (text_pool/ar.json, en.json)       images/  img_pool/ as a whole
+#   fonts/      font_pool/ as a whole (fonts.json and fonts-more.json share files)
+#   text/ parallel/ layout/ tables/ captions/ equations/ code/ molecules/ references/ chartdata/ cosyn/
+#   diagrams/ vocab/ _lid/ _logs/ _download/ _downloads/   text_pool/pools/<the same name>
+DATASET_POOL = ROOT / "dataset_pool"
+SAMPLE_POOL = ROOT / "dataset_pool_sample"  # about 20 items per label, in git: a fresh copy generates with it
+FIRST_HOMES = {"wikipedia": "text_pool", "images": "img_pool", "fonts": "font_pool"}
+
+
+def home(name):
+    """A pool's folder: dataset_pool/<name> once moved there, else its first home, else (a fresh copy of the
+    repository, without the full pools) dataset_pool_sample/<name>."""
+    moved, first, sample = DATASET_POOL / name, ROOT / FIRST_HOMES.get(name, f"text_pool/pools/{name}"), SAMPLE_POOL / name
+    return moved if moved.exists() else first if first.exists() or not sample.exists() else sample
+
+
+def pool_file(path, name):
+    """A file an index names by its path from the repository (font_pool/Amiri/400.ttf,
+    img_pool/flowcharts/000/000000.png), wherever its pool (name) is now."""
+    first = FIRST_HOMES[name] + "/"
+    rel = path[len(first):] if path.startswith(first) else path
+    return home(name) / rel
 
 
 # ====================================================================================================================
@@ -44,7 +73,7 @@ ROOT = Path(__file__).resolve().parents[1]
 #
 #     .venv-pipeline\\Scripts\\python -m pipeline.pools text --articles 5000
 
-TEXT_POOL = ROOT / "text_pool"
+TEXT_POOL = home("wikipedia")
 DATASET, DUMP = "wikimedia/wikipedia", "20231101"
 ROWS = "https://datasets-server.huggingface.co/rows?dataset={d}&config={c}&split=train&offset={o}&length=100"
 SIZE = "https://datasets-server.huggingface.co/size?dataset={d}&config={c}"
@@ -85,6 +114,24 @@ def one_script(text, lang):
 
 def clean(line):
     return re.sub(r"\s+", " ", line.replace("‏", "").replace("‎", "")).strip()
+
+
+def tidy(text):
+    """Wikipedia text without the husks of what the dump left out (pronunciations, coordinates, birth names):
+    "( )" and "(; )" go, "(; ; born 1973)" -> "(born 1973)", no space before punctuation. Such husks are on the
+    page and in the label alike, but they are no text a document has ("Prabda Yoon (; ; born 2 August")."""
+    text = re.sub(r"\(\s*(?:[;,،:]\s*)*\)", "", text)
+    text = re.sub(r"\(\s*(?:[;,،]\s*)+", "(", text)
+    text = re.sub(r"\s*(?:[;,،]\s*)+\)", ")", text)
+    text = re.sub(r"\s+([.,;:!?،؛)])", r"\1", text)
+    text = re.sub(r"^[\s,;،:.]+", "", text)  # a text that began with one: ", in Renfrewshire"
+    # an article's list flattened into its text keeps its bullets ("• In 1974 ..."): no text of ours draws its
+    # own, so a list item showed two (the page's and this) and a paragraph opened like a list item
+    text = re.sub(r"(?:^|\s)[•●▪◦]+(?=\s|$)", " ", text)
+    text = re.sub(r"^\s*[-–—*]\s+", "", text)
+    # Persian letter forms in Arabic text (catalogues and PDFs mix them in: تدریبی): the Arabic ones
+    text = text.translate({ord("ی"): "ي", ord("ک"): "ك"})
+    return re.sub(r"\s{2,}", " ", text).strip()
 
 
 def split_article(text, lang):
@@ -149,8 +196,9 @@ class TextPool:
     def __init__(self, lang, folder=TEXT_POOL):
         data = json.loads((Path(folder) / f"{lang}.json").read_text(encoding="utf-8"))
         self.lang, self.articles, self.license = lang, data["articles"], data["license"]
-        self.titles, self.headings, self.items = data["titles"], data["headings"], data["items"]
-        self.paragraphs = data["paragraphs"]
+        tidied = lambda entries: [[t, a] for t, a in ((tidy(t), a) for t, a in entries) if t]  # noqa: E731
+        self.titles, self.headings, self.items = tidied(data["titles"]), tidied(data["headings"]), tidied(data["items"])
+        self.paragraphs = tidied(data["paragraphs"])
         self.used = set()
         self._by_length = {}
         for h in self.headings + self.titles:
@@ -344,7 +392,7 @@ class TextPool:
 #
 #     .venv-pipeline\\Scripts\\python -m pipeline.pools images --polaris-shards 30 --pd12m 20000
 
-IMG_POOL = ROOT / "img_pool"
+IMG_POOL = home("images")
 INDEX = IMG_POOL / "captions.jsonl"
 UPLOADED = IMG_POOL / "output_dataset"
 MAX_SIDE = 1024
@@ -536,7 +584,7 @@ def hint_category(hint):
 #
 #     .venv-pipeline\\Scripts\\python -m pipeline.pools fonts
 
-FONT_POOL = ROOT / "font_pool"
+FONT_POOL = home("fonts")
 FONT_INDEX = FONT_POOL / "fonts.json"
 GOOGLE_FONTS = "https://fonts.google.com/metadata/fonts"
 GOOGLE_CSS = "https://fonts.googleapis.com/css2?family={family}:wght@{weights}"
@@ -642,12 +690,16 @@ def build_font_pool(top=10, extra=80):
 
 
 def font_pool():
-    """{family: {"scripts", "category", "files": {weight: Path}}} from font_pool/fonts.json ({} if not made)."""
-    if not FONT_INDEX.exists():
-        return {}
-    return {f["family"]: {"scripts": f["scripts"], "category": f["category"],
-                          "files": {int(w): ROOT / p for w, p in f["files"].items()}}
-            for f in json.loads(FONT_INDEX.read_text(encoding="utf-8"))}
+    """{family: {"scripts", "category", "files": {weight: Path}}}: the 100 readable families of fonts-more.json (the
+    10 most used Arabic and Latin ones included; at most 100 families in all), else fonts.json's; {} if neither."""
+    out = {}
+    more = FONT_POOL / "fonts-more.json"
+    for index in [more] if more.exists() else [FONT_INDEX]:
+        for f in json.loads(index.read_text(encoding="utf-8")) if index.exists() else []:
+            files = {int(w): pool_file(p, "fonts") for w, p in f["files"].items()}
+            if f["family"] not in out and all(p.exists() for p in files.values()):
+                out[f["family"]] = {"scripts": f["scripts"], "category": f["category"], "files": files}
+    return out
 
 
 # ====================================================================================================================
@@ -656,13 +708,17 @@ def font_pool():
 # Pictures Surya labels other than a photo, each drawn once with the exact answer Surya gives for it (its format
 # taken from Surya's own answers on real pages, surya_inference/debug_docling_outputs):
 #
-#   Figure          a bar, line, pie or scatter chart (matplotlib, random data): <img alt="Bar chart: ..."/>, the
-#                   legend in <p class="img-text">, the axes in <p class="chart-axes">, the data drawn in
-#                   <table class="chart-data">, a description in <p class="img-desc">
-#   Diagram         a flowchart (matplotlib boxes and arrows): <img alt="Flowchart: ..."/>, its words in
-#                   <p class="img-text">, the same chart as Mermaid in <pre class="mermaid">, <p class="img-desc">
+#   Figure          a bar, line, pie or scatter chart (matplotlib, random data): <img alt="Bar chart: ..."/>, its
+#                   title in <p class="img-text">, the axes in <p class="chart-axes">, the data in
+#                   <table class="chart-data"> (values read off the plot as ~8900; a pie's printed percentages
+#                   exact), a description in <p class="img-desc">
+#   Diagram         a flowchart (matplotlib boxes and arrows): <img alt="Flowchart: ..."/>, a line break, the chart
+#                   as Mermaid in <pre class="mermaid"> (Surya's style: A([Start]) --> B[Step], C -- Yes --> D),
+#                   <p class="img-desc">; no <p class="img-text"> (its words are in the Mermaid)
 #   Chemical-Block  a molecule (2D layout by RDKit, drawn with matplotlib; molecules from ZINC-250k):
-#                   <img alt="Chemical structure of the molecule SMILES."/>
+#                   <img alt="Chemical structure of a molecule. It consists of a benzene ring and a pyridine ring,
+#                   with an amide group."/><chem>SMILES</chem> (Surya's form: a description in the alt, the SMILES in
+#                   <chem>, a tag in its ALLOWED_TAGS; the description says what RDKit finds, molecule_description())
 #   Equation-Block  a displayed equation (matplotlib's mathtext): <math display="block">LaTeX</math>
 #
 # The words in charts and flowcharts are Arabic on Arabic ones (matplotlib 3.11 joins and orders Arabic itself),
@@ -714,30 +770,134 @@ EQUATIONS = [r"E = m c^{2}", r"F = G \frac{m_1 m_2}{r^{2}}", r"x = \frac{-b \pm 
              r"R = \frac{{V}}{{I}} = {a}\,\Omega", r"\left| x - {a} \right| < {b}"]
 
 
-def chart(rng, lang, path):
+def approx(v):
+    """A value read off a chart: ~ and two significant figures (8948 -> ~8900, 4.37 -> ~4.4)."""
+    return f"~{float(f'{v:.2g}'):g}"
+
+
+def chart_number(text):
+    """A chart value as written in its data ("5,000", "70%", "1.2e3") as a number, or None."""
+    try:
+        v = float(str(text).replace(",", "").replace("%", "").strip())
+    except ValueError:
+        return None
+    return v if math.isfinite(v) else None
+
+
+def chart_data(item, lang, rng):
+    """A real chart's data from the chart pool (dataset_pool/chartdata) as chart() draws it, or None when it doesn't
+    make a readable chart: {kind, cats, data (a list per series), names (the series), names_en, title, title_en,
+    x, x_en, y, ordered (years, months: a line chart can join them)}. The generator asks for English charts only
+    (draw_graphic); World Bank's Arabic names are read for lang="ar"."""
+    src, ar = item.get("source"), lang == "ar"
+    if src == "worldbank":
+        pts = [(y, v) for y, v in zip(item["years"], item["values"]) if v is not None and math.isfinite(v)]
+        if len(pts) < 4:
+            return None
+        n = rng.randint(4, min(12, len(pts)))
+        start = rng.randrange(len(pts) - n + 1)
+        pts = pts[start:start + n]
+        name = item["name_ar"] if ar else item["name_en"]
+        title = f"{name}، {item['country_ar']}" if ar else f"{item['name_en']}, {item['country_en']}"
+        d = {"cats": [str(y) for y, _ in pts], "data": [[v for _, v in pts]], "names": [name],
+             "names_en": [item["name_en"]], "title": title, "title_en": f"{item['name_en']}, {item['country_en']}",
+             "x": "السنة" if ar else "Year", "x_en": "Year", "y": name, "ordered": True, "lang": lang}
+    elif src == "sbsfigures":
+        models = [m for m in item.get("models", []) if m.get("x") and m.get("y")][:4]
+        if not models:
+            return None
+        cats = [str(c) for c in models[0]["x"]]
+        data = [[chart_number(v) for v in m["y"]] for m in models]
+        if any(len(d) != len(cats) or None in d for d in data):
+            return None
+        names = [str(m.get("name") or "") for m in models]
+        title = item.get("title") or item.get("y_axis") or item.get("x_axis") or names[0]
+        x = item.get("x_axis") or "Category"
+        d = {"cats": cats, "data": data, "names": names, "names_en": names, "title": title, "title_en": title,
+             "x": x, "x_en": x, "y": item.get("y_axis") or title, "ordered": False, "lang": "en"}
+    elif src == "unichart":
+        rows = [[c.strip() for c in line.strip().strip("|").split("|")] for line in item.get("table", "").splitlines()
+                if line.strip().startswith("|") and not set(line.strip()) <= set("|-: ")]
+        if len(rows) < 4 or len(rows[0]) < 2:
+            return None
+        head, body = rows[0], [r for r in rows[1:] if len(r) == len(rows[0])][:12]
+        data = [[chart_number(r[j]) for r in body] for j in range(1, min(len(head), 5))]
+        if len(body) < 3 or any(None in d for d in data):
+            return None
+        names = head[1:1 + len(data)]
+        x = head[0] or "Category"
+        title = names[0] if len(names) == 1 else " and ".join(names) if len(names) == 2 else f"{names[0]} and others"
+        d = {"cats": [r[0] for r in body], "data": data, "names": names, "names_en": names, "title": title,
+             "title_en": title, "x": x, "x_en": x, "y": names[0] if len(names) == 1 else "Value",
+             "ordered": bool(re.fullmatch(r"\d{4}(\.0)?", body[0][0])), "lang": "en"}
+    else:
+        return None
+    d["cats"] = [re.sub(r"\.0$", "", c) for c in d["cats"]]
+    # drawn texts that fit the picture (a longer title or axis name ran off its edges): a title with its country
+    # becomes the indicator alone, a long value axis "Value" (its unit added below)
+    if len(d["title"]) > 48 and src == "worldbank":
+        d["title"], d["title_en"] = d["names"][0], d["names_en"][0]
+    if len(d["title"]) > 48:
+        return None
+    if len(d["y"]) > 30:
+        d["y"] = "القيمة" if d["lang"] == "ar" else "Value"
+    if (not 3 <= len(d["cats"]) <= 12 or any(len(c) > 18 for c in d["cats"]) or len(d["title"]) > 90
+            or any(len(t) > 70 for t in [d["x"], d["y"], *d["names"]])):
+        return None
+    # values a chart can print plainly: large ones in thousands, millions or billions (the unit then in the value
+    # axis's name, as the chart writes it), none so small that matplotlib would switch to an offset
+    top = max(abs(v) for row in d["data"] for v in row)
+    if top < 0.01:
+        return None
+    for power, en, ar_unit in ((9, "billions", "بالمليارات"), (6, "millions", "بالملايين"), (3, "thousands", "بالآلاف")):
+        if top >= 10 ** (power + 2):
+            d["data"] = [[v / 10 ** power for v in row] for row in d["data"]]
+            unit = f" ({ar_unit})" if d["lang"] == "ar" else f" ({en})"
+            d["y"] += unit
+            if len(d["names"]) == 1:
+                d["names"] = [d["y"]]
+                d["names_en"] = [d["names_en"][0] + f" ({en})"]
+            break
+    single = len(d["data"]) == 1
+    kinds = ["line", "line", "bar"] if d["ordered"] else ["bar", "bar", "hbar"] + (["pie"] if single and len(d["cats"]) <= 7
+                                                                                    and min(d["data"][0]) > 0 else [])
+    d["kind"] = rng.choice(kinds if single or d["ordered"] else ["bar", "line"])
+    return d
+
+
+def chart(rng, lang, path, real=None):
+    """A chart drawn with matplotlib and its answer; real: a record of the chart pool (chart_data), else made-up
+    data on one of TOPICS."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     from matplotlib.font_manager import FontProperties
+    real = chart_data(real, lang, rng) if real else None
+    lang = real["lang"] if real else lang  # an English source draws an English chart
     font = FontProperties(fname=str(ARABIC_FONT)) if lang == "ar" else FontProperties(family="DejaVu Sans")
     k = 1 if lang == "ar" else 0
-    kind = rng.choice(["bar", "bar", "hbar", "line", "line", "pie", "scatter"])
-    topic = rng.choice(TOPICS)
-    axis = rng.choice(["year", "month", "quarter", "city", "sector"] if kind != "line" else ["year", "month", "quarter"])
-    names_en, names_ar, cats_en, cats_ar = AXES[axis]
-    n = rng.randint(3, min(8, len(cats_en)))
-    start = rng.randrange(len(cats_en) - n + 1)
-    cats = (cats_ar if lang == "ar" else cats_en)[start:start + n]
-    series = rng.choice(SERIES) if kind in ("bar", "line") and rng.random() < 0.5 else ([topic[0]], [topic[1]])
-    snames = series[k]
-    scale = rng.choice([1, 10, 100, 1000])
-    data = [[round(rng.uniform(1, 9) * scale * (1 if scale > 1 else 1), 0 if scale > 1 else 1) for _ in cats] for _ in snames]
-    if kind == "scatter":
-        cats = [str(round(rng.uniform(0, 100), 1)) for _ in range(n + 4)]
-        data = [[round(rng.uniform(1, 9) * scale, 0 if scale > 1 else 1) for _ in cats]]
-        names_en, names_ar = "Measured value", "القيمة المقاسة"
-    num = lambda v: f"{v:g}" if isinstance(v, float) else str(v)  # noqa: E731
-    xname, yname = (names_ar if lang == "ar" else names_en), topic[k]
+    kind = real["kind"] if real else rng.choice(["bar", "bar", "hbar", "line", "line", "pie", "scatter"])
+    if real:  # a real chart's data: its title, axes, categories and series as the source has them
+        topic, axis = (real["title_en"], real["title"]), "year" if real["ordered"] else "city"
+        names_en, cats, data, n = real["x_en"], real["cats"], real["data"], len(real["cats"])
+        series, snames = (real["names_en"], real["names"]), real["names"]
+        xname, yname = real["x"], real["y"]
+    else:
+        topic = rng.choice(TOPICS)
+        axis = rng.choice(["year", "month", "quarter", "city", "sector"] if kind != "line" else ["year", "month", "quarter"])
+        names_en, names_ar, cats_en, cats_ar = AXES[axis]
+        n = rng.randint(3, min(8, len(cats_en)))
+        start = rng.randrange(len(cats_en) - n + 1)
+        cats = (cats_ar if lang == "ar" else cats_en)[start:start + n]
+        series = rng.choice(SERIES) if kind in ("bar", "line") and rng.random() < 0.5 else ([topic[0]], [topic[1]])
+        snames = series[k]
+        scale = rng.choice([1, 10, 100, 1000])
+        data = [[round(rng.uniform(1, 9) * scale * (1 if scale > 1 else 1), 0 if scale > 1 else 1) for _ in cats] for _ in snames]
+        if kind == "scatter":
+            cats = [str(round(rng.uniform(0, 100), 1)) for _ in range(n + 4)]
+            data = [[round(rng.uniform(1, 9) * scale, 0 if scale > 1 else 1) for _ in cats]]
+            names_en, names_ar = "Measured value", "القيمة المقاسة"
+        xname, yname = (names_ar if lang == "ar" else names_en), topic[k]
     plt.style.use(rng.choice(["default", "ggplot", "bmh", "seaborn-v0_8-whitegrid", "fast"]))
     fig, ax = plt.subplots(figsize=(rng.uniform(4.2, 6.2), rng.uniform(2.8, 4.2)), dpi=150)
     labels = [c for c in cats]
@@ -768,7 +928,9 @@ def chart(rng, lang, path):
         (ax.set_xlabel if kind == "hbar" else ax.set_ylabel)(yname, fontproperties=font)
         if len(snames) > 1:
             ax.legend(prop=font)
-        rows = [[c] + [num(d[i]) for d in data] for i, c in enumerate(cats)]
+        # values as Surya reads them off a plot (80% of its chart values: ~ and about two figures); a scatter's x
+        # values are read off too; pie percentages are printed on the chart, so they stay exact
+        rows = [[approx(float(c)) if kind == "scatter" else c] + [approx(d[i]) for d in data] for i, c in enumerate(cats)]
         head = [xname] + list(snames) if len(snames) > 1 else [xname, yname]
     ax.set_title(f"{topic[k]}", fontproperties=font)
     fig.tight_layout()
@@ -777,27 +939,29 @@ def chart(rng, lang, path):
         fig.canvas.draw()
         lo, hi = (ax.get_xlim() if kind == "hbar" else ax.get_ylim())
         ticks = [t for t in (value_axis.get_majorticklocs()) if lo - 1e-9 <= t <= hi + 1e-9]
-        axes_text = (f"x: {xname}" + (f", {cats[0]} to {cats[-1]}" if axis == "year" and kind != "scatter" else "")
-                     + f"; y: {yname}, {ticks[0]:g} to {ticks[-1]:g}")
+        # as Surya writes the axes: an ordered category axis with its first and last category ("Month, Jan to Mar",
+        # "Quarter, Q1 to Q4"), an unordered one bare ("y: City"); "،" after an Arabic axis name
+        sep = "، " if lang == "ar" else ", "
+        span = f"{sep}{cats[0]} to {cats[-1]}" if axis in ("year", "month", "quarter") else ""
+        values = f"{sep}{ticks[0]:g} to {ticks[-1]:g}"
+        axes_text = f"x: {xname}{span}; y: {yname}{values}"
         if kind == "scatter":
             xlo, xhi = ax.get_xlim()
             xt = [t for t in ax.xaxis.get_majorticklocs() if xlo - 1e-9 <= t <= xhi + 1e-9]
-            axes_text = f"x: {xname}, {xt[0]:g} to {xt[-1]:g}; y: {yname}, {ticks[0]:g} to {ticks[-1]:g}"
+            axes_text = f"x: {xname}{sep}{xt[0]:g} to {xt[-1]:g}; y: {yname}{values}"
         if kind == "hbar":
-            axes_text = f"x: {yname}, {ticks[0]:g} to {ticks[-1]:g}; y: {xname}"
+            axes_text = f"x: {yname}{values}; y: {xname}{span}"
     plt.close(fig)
-    title_en = f"{topic[0]} by {names_en.lower()}" if kind != "scatter" else f"{topic[0]} against a measured value"
+    title_en = topic[0] if real else f"{topic[0]} by {names_en.lower()}" if kind != "scatter" else f"{topic[0]} against a measured value"
     what = {"bar": "Bar chart", "hbar": "Bar chart", "line": "Line chart", "pie": "Pie chart", "scatter": "Scatter plot"}[kind]
-    html = f'<img alt="{what}: {html_escape(title_en)}."/>'
-    if len(snames) > 1:
-        html += '<p class="img-text">' + "<br/>".join(text_escape(s) for s in snames) + "</p>"
+    html = f'<img alt="{what}: {html_escape(title_en)}."/><p class="img-text">{text_escape(topic[k])}</p>'  # the title
     if kind != "pie":
         html += f'<p class="chart-axes">{text_escape(axes_text)}</p>'
     html += ('<table class="chart-data"><tr>' + "".join(f"<th>{text_escape(h)}</th>" for h in head) + "</tr>"
              + "".join("<tr>" + "".join(f"<td>{text_escape(v)}</td>" for v in r) + "</tr>" for r in rows) + "</table>")
     shown = {"bar": "a bar chart", "hbar": "a horizontal bar chart", "line": "a line chart", "pie": "a pie chart",
              "scatter": "a scatter plot"}[kind]
-    desc = f"{shown[0].upper()}{shown[1:]} showing {topic[0].lower()} by {names_en.lower()}" if kind != "scatter" else \
+    desc = f"{shown[0].upper()}{shown[1:]} showing {topic[0] if real else topic[0].lower()} by {names_en.lower()}" if kind != "scatter" else \
         f"A scatter plot of {topic[0].lower()} against a measured value"
     if len(snames) > 1:
         desc += " for " + " and ".join(series[0])
@@ -805,7 +969,9 @@ def chart(rng, lang, path):
     return {"label": "Figure", "lang": lang, "html": html}
 
 
-def diagram(rng, lang, path):
+def diagram(rng, lang, path, process=None):
+    """A flowchart drawn with matplotlib and its answer (Mermaid); process: a real process of the vocab pool
+    (dataset_pool/vocab: title, steps and yes/no questions in Arabic and English), else made-up steps."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -813,12 +979,24 @@ def diagram(rng, lang, path):
     from matplotlib.patches import FancyBboxPatch, Polygon
     font = FontProperties(fname=str(ARABIC_FONT), size=10) if lang == "ar" else FontProperties(family="DejaVu Sans", size=10)
     k = 1 if lang == "ar" else 0
-    steps = rng.sample(STEPS, rng.randint(2, 5))
+    pool_steps, pool_questions = STEPS, QUESTIONS
+    if process:  # a real process: only steps and questions short enough for their boxes
+        fits = lambda t: all(len(t[i]) <= (26 if i == 0 else 30) for i in (0, 1))  # noqa: E731
+        pool_steps = [s for s in ((x["en"], x["ar"]) for x in process.get("steps", [])) if fits(s)]
+        pool_questions = [q for q in ((x["en"], x["ar"]) for x in process.get("questions", [])) if fits(q)] or QUESTIONS
+        if len(pool_steps) < 4:
+            pool_steps, process = STEPS, None
+    if process:
+        n = rng.randint(2, 5)
+        first = rng.randrange(len(pool_steps) - n)
+        steps = pool_steps[first:first + n]  # consecutive steps: the process in its order
+    else:
+        steps = rng.sample(pool_steps, rng.randint(2, 5))
     nodes = [("start", FIXED["start"])] + [("step", s) for s in steps] + [("end", FIXED["end"])]
     ask = rng.random() < 0.5
     if ask:  # a question after the first step: yes goes on, no goes to a side step and back
-        q = rng.choice(QUESTIONS)
-        side = rng.choice([s for s in STEPS if s not in steps])
+        q = rng.choice(pool_questions)
+        side = rng.choice([s for s in pool_steps if s not in steps])
         nodes.insert(2, ("ask", q))
     ids = [chr(65 + i) for i in range(len(nodes))]
     h = 0.9 * len(nodes) + 0.4
@@ -849,26 +1027,41 @@ def diagram(rng, lang, path):
         ax.text(0.08, y - 0.62, FIXED["yes"][k], fontproperties=font, fontsize=8)
     fig.savefig(path, bbox_inches="tight", pad_inches=0.1)
     plt.close(fig)
-    quote = lambda w: '"' + w.replace('"', "'") + '"'  # noqa: E731
+    # Mermaid as Surya writes it: a node's shape and words where it first appears on an edge line
+    # (A([Start]) --> B[Collect data]), words quoted only when Mermaid needs it, edge words as -- Yes -->
+    label = lambda w: '"' + w.replace('"', "'") + '"' if re.search(r'[?()\[\]{}"|<>#:;]', w) else w  # noqa: E731
+    shapes = {ids[i]: ("{%s}" if kind == "ask" else "([%s])" if kind in ("start", "end") else "[%s]") % label(words[k])
+              for i, (kind, words) in enumerate(nodes)}
+    shapes["S"] = f"[{label(side[k])}]" if ask else None
+    seen = set()
+    node = lambda n: n + ("" if n in seen or seen.add(n) else shapes[n])  # noqa: E731
     lines = ["graph TD"]
-    for i, (kind, words) in enumerate(nodes):
-        shape = ("{%s}" if kind == "ask" else "([%s])" if kind in ("start", "end") else "[%s]") % quote(words[k])
-        if i == 0:
-            lines.append(f"    {ids[0]}{shape}")
-        else:
-            edge = f"-->|{FIXED['yes'][k]}|" if nodes[i - 1][0] == "ask" else "-->"
-            lines.append(f"    {ids[i - 1]} {edge} {ids[i]}{shape}")
-    words_drawn = [w[k] for _, w in nodes]
+    for i in range(1, len(nodes)):
+        edge = f"-- {FIXED['yes'][k]} -->" if nodes[i - 1][0] == "ask" else "-->"
+        lines.append(f"    {node(ids[i - 1])} {edge} {node(ids[i])}")
     if ask:
-        lines += [f"    C -->|{FIXED['no'][k]}| S[{quote(side[k])}]", "    S --> B"]
-        words_drawn += [side[k], FIXED["no"][k], FIXED["yes"][k]]
+        lines += [f"    C -- {FIXED['no'][k]} --> {node('S')}", "    S --> B"]
     title = " then ".join(s[0].lower() for s in steps[:2])
-    html = (f'<img alt="Flowchart: steps to {html_escape(title)}."/>'
-            f'<p class="img-text">{"<br/>".join(text_escape(w) for w in words_drawn)}</p>'
-            f'<pre class="mermaid">{text_escape(chr(10).join(lines))}</pre>'
-            f'<p class="img-desc">A flowchart of {len(nodes)} steps from start to end'
-            f'{", with a decision that loops back when the answer is no" if ask else ""}.</p>')
+    alt = f"Flowchart: {process['title']['en'].rstrip('.')}." if process else f"Flowchart: steps to {title}."
+    html = diagram_html(alt, f"A flowchart of {len(nodes)} steps from start to end"
+                        f'{", with a decision that loops back when the answer is no" if ask else ""}.',
+                        mermaid="\n".join(lines))
     return {"label": "Diagram", "lang": lang, "html": html}
+
+
+def diagram_html(alt, desc, mermaid=None, texts=()):
+    """A Diagram's answer as Surya writes it: <img alt="..."/>, then the words the picture draws outside any box or
+    arrow in <p class="img-text">, one per <br/> (Surya on an anatomy chart's callouts: "MOUTH<br/>VOICE BOX<br/>
+    THROAT", on icons' captions: "Deaths<br/>Prevalence<br/>Risk factors"), then the flow as Mermaid when there is
+    one, then <p class="img-desc">. A flowchart's words are all in its boxes and arrows, so all in its Mermaid, and
+    it has no img-text (as on Surya's 27 flowcharts). Mermaid right after the picture starts on a new line, as
+    Surya writes it."""
+    html = f'<img alt="{html_escape(alt)}"/>'
+    if texts:
+        html += '<p class="img-text">' + "<br/>".join(text_escape(t) for t in texts) + "</p>"
+    if mermaid is not None:
+        html += ("" if texts else "\n") + f'<pre class="mermaid">{text_escape(mermaid)}</pre>'
+    return html + f'<p class="img-desc">{text_escape(desc)}</p>'
 
 
 def molecule(smiles, path):
@@ -912,7 +1105,69 @@ def molecule(smiles, path):
                 bbox={"fc": "white", "ec": "none", "pad": 0.5})
     fig.savefig(path, bbox_inches="tight", pad_inches=0.05)
     plt.close(fig)
-    return {"label": "Chemical-Block", "lang": "any", "html": f'<img alt="Chemical structure of the molecule {html_escape(smiles)}."/>'}
+    return {"label": "Chemical-Block", "lang": "any", "html": molecule_html(smiles)}
+
+
+def molecule_html(smiles):
+    """A molecule's answer as Surya writes it: the picture with a description of the structure, nothing else (Surya
+    wrote <img alt="Chemical structure of ... It consists of ..."/> for 92% of the molecules on our pages and never a
+    <chem> SMILES string; its names are often wrong, so ours describes only what RDKit finds: the rings and the
+    functional groups)."""
+    return f'<img alt="{html_escape(molecule_description(smiles))}"/>'
+
+
+# Rings by (size, aromatic, heteroatoms in it, ring steps between its two heteroatoms or None); any other ring is
+# described by its size, aromatic or not, and its heteroatoms
+RING_NAMES = {(6, True, "", None): "benzene", (6, True, "N", None): "pyridine", (6, True, "NN", 1): "pyridazine",
+              (6, True, "NN", 2): "pyrimidine", (6, True, "NN", 3): "pyrazine", (5, True, "S", None): "thiophene",
+              (5, True, "O", None): "furan", (5, True, "N", None): "pyrrole", (5, True, "NN", 1): "pyrazole",
+              (5, True, "NN", 2): "imidazole", (5, True, "NS", 2): "thiazole", (5, True, "NS", 1): "isothiazole",
+              (5, True, "NO", 2): "oxazole", (5, True, "NO", 1): "isoxazole", (3, False, "", None): "cyclopropane",
+              (4, False, "", None): "cyclobutane", (5, False, "", None): "cyclopentane", (6, False, "", None): "cyclohexane",
+              (5, False, "N", None): "pyrrolidine", (6, False, "N", None): "piperidine", (6, False, "NN", 3): "piperazine",
+              (6, False, "NO", 3): "morpholine", (5, False, "O", None): "tetrahydrofuran", (6, False, "O", None): "tetrahydropyran"}
+GROUPS = [("a urea group", "[NX3]C(=O)[NX3]"), ("an amide group", "[#6]C(=O)[NX3]"), ("an ester group", "[#6]C(=O)O[#6]"),
+          ("a carboxylic acid group", "C(=O)[OX2H1]"), ("a ketone group", "[#6][CX3](=O)[#6]"),
+          ("a sulfonamide group", "S(=O)(=O)[NX3]"), ("a nitrile group", "C#N"), ("a nitro group", "[N+](=O)[O-]"),
+          ("a hydroxyl group", "[CX4,c][OX2H1]"), ("an ether link", "[#6][OX2;!R;!$(OC=O)][#6]"),
+          ("a thioether link", "[#6][SX2;!R][#6]"),
+          ("an amine group", "[NX3;H1,H2;!$(NC=O);!$(NS=O);!a]"), ("a fluorine atom", "F"), ("a chlorine atom", "Cl"),
+          ("a bromine atom", "Br"), ("an iodine atom", "I")]
+WORDS = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight"}
+
+
+def listing(items):
+    return " and ".join([", ".join(items[:-1]), items[-1]] if len(items) > 1 else items)
+
+
+def molecule_description(smiles):
+    """'Chemical structure of a molecule. It consists of two benzene rings and a piperidine ring, with an amide
+    group and a chlorine atom.' (what RDKit finds in the SMILES: each ring, then each functional group once)"""
+    from rdkit import Chem
+    mol = Chem.MolFromSmiles(smiles)
+    rings = Counter()
+    for atoms in mol.GetRingInfo().AtomRings():  # atoms in ring order
+        symbols = [mol.GetAtomWithIdx(i).GetSymbol() for i in atoms]
+        flags = {mol.GetAtomWithIdx(i).GetIsAromatic() for i in atoms}
+        hetero = [k for k, x in enumerate(symbols) if x != "C"]
+        gap = min(abs(hetero[0] - hetero[1]), len(atoms) - abs(hetero[0] - hetero[1])) if len(hetero) == 2 else None
+        key = (len(atoms), flags == {True}, "".join(sorted(symbols[k] for k in hetero)))
+        name = (RING_NAMES.get((*key, gap)) or RING_NAMES.get((*key, None))) if len(flags) == 1 else None
+        if name:
+            rings[name + " ring"] += 1
+        else:  # another ring, or one partly aromatic (fused to an aromatic ring)
+            het = sorted({symbols[k] for k in hetero})
+            rings[f"{WORDS.get(len(atoms), len(atoms))}-membered {'aromatic ' if flags == {True} else ''}ring"
+                  + (f" containing {' and '.join(het)}" if het else "")] += 1
+    parts = [f"{WORDS.get(n, n)} {r.replace('ring', 'rings', 1)}" if n > 1 else ("an " if r[0] in "aeiou" else "a ") + r
+             for r, n in rings.items()]
+    groups = [g for g, pattern in GROUPS if mol.HasSubstructMatch(Chem.MolFromSmarts(pattern))]
+    if "a urea group" in groups and not mol.HasSubstructMatch(Chem.MolFromSmarts("[#6]C(=O)[NX3]")):
+        groups = [g for g in groups if g != "an amide group"]
+    said = listing(parts) or "a chain"
+    if groups:
+        said += ", with " + listing(groups)
+    return f"Chemical structure of a molecule. It consists of {said}."
 
 
 def equation(rng, path):
@@ -982,11 +1237,63 @@ def build_graphics(charts=2000, diagrams=1000, molecules=1500, equations=1500, s
     print(f"{len(records)} graphics in {GRAPHICS_INDEX}: {counts}")
 
 
+class LineIndex:
+    """Random lines of a big JSON-lines file without reading it all: the byte offset of every line (and of the lines
+    of each value of `by`, e.g. a photo's category), kept in <file>.offsets.json and made again when the file is
+    newer (a pool still being written: a half-written last line is skipped)."""
+
+    def __init__(self, path, by=None):
+        self.path, self.by = Path(path), by
+        cache = self.path.with_suffix(".offsets.json")
+        self.offsets = None
+        if cache.exists() and cache.stat().st_mtime >= self.path.stat().st_mtime:
+            try:
+                self.offsets = json.loads(cache.read_text(encoding="utf-8"))
+            except (ValueError, OSError):  # another process is writing it: made here too
+                pass
+        if self.offsets is None:
+            self.offsets, pos = {}, 0
+            with open(self.path, "rb") as f:
+                for line in f:
+                    if line.endswith(b"\n") and line.strip():
+                        try:
+                            key = json.loads(line).get(by, "") if by else ""
+                        except ValueError:
+                            key = None
+                        if key is not None:
+                            self.offsets.setdefault(str(key), []).append(pos)
+                    pos += len(line)
+            part = cache.with_suffix(f".{os.getpid()}.part")  # several workers at once: each writes its own, then
+            part.write_text(json.dumps(self.offsets), encoding="utf-8")  # one rename (a reader never sees half)
+            try:
+                os.replace(part, cache)
+            except OSError:
+                part.unlink(missing_ok=True)
+        self.all = [o for v in self.offsets.values() for o in v]
+
+    def __len__(self):
+        return len(self.all)
+
+    def pick(self, rng, key=None):
+        offsets = self.offsets.get(key) if key is not None else None
+        with open(self.path, "rb") as f:
+            f.seek(rng.choice(offsets or self.all))
+            return json.loads(f.readline())
+
+
+# share of picks from the big pools when they are there: photos from photos.jsonl (300,000 PD12M photos, 489
+# collections) rather than captions.jsonl's 35,000 (human captions: Flickr8k, Polaris); flowcharts from
+# images/flowcharts/ (drawn from real processes, English); charts, molecules and equations drawn for the page
+# from dataset_pool's chart data, PubChem molecules and LaTeX formulas (content_pools.draw_graphic)
+BIG_PHOTOS, BIG_FLOWCHARTS, FRESH_GRAPHICS = 0.75, 0.7, 0.85
+
+
 class ImagePool:
-    """The pictures in img_pool/ (captions.jsonl), by category, with their captions."""
+    """The pictures in img_pool/ (captions.jsonl), by category, with their captions; the big photo and flowchart
+    pools beside them (read a line at a time); new drawings from the content pools."""
 
     def __init__(self, folder=IMG_POOL):
-        folder = Path(folder)
+        folder = self.folder = Path(folder)
         index, sources = folder / "captions.jsonl", folder / "sources.json"
         if index.exists():
             records = [json.loads(line) for line in index.read_text(encoding="utf-8").splitlines() if line.strip()]
@@ -1001,6 +1308,10 @@ class ImagePool:
                 self.files.append(path)
                 self.by_category.setdefault(r.get("category", "general"), []).append(path)
                 self.captions[path.name] = r.get("captions") or []
+        self.photos = LineIndex(folder / "photos.jsonl", by="category") if (folder / "photos.jsonl").exists() else None
+        flows = folder / "flowcharts" / "flowcharts.jsonl"
+        self.flowcharts = LineIndex(flows) if flows.exists() else None
+        self.picked = {}  # file name -> (label, captions or answer, category) of each big-pool picture handed out
         # charts, flowcharts, molecules and equations (img_pool/graphics/graphics.jsonl): {label: {lang: [(path, record)]}}
         self.graphics = {}
         index = folder / "graphics" / "graphics.jsonl"
@@ -1016,10 +1327,34 @@ class ImagePool:
     def pick(self, rng, hint=None):
         """A random picture; from the hint's category when the hint names one and the pool has it."""
         category = hint_category(hint)
+        if self.photos and rng.random() < BIG_PHOTOS:
+            for _ in range(5):
+                r = self.photos.pick(rng, category if category in self.photos.offsets else None)
+                path = self.folder / r["file"]
+                if path.exists():
+                    self.picked[path.name] = ("Image", r.get("captions") or [], r.get("category", "general"))
+                    return path
         return rng.choice(self.by_category.get(category) or self.files)
 
     def graphic(self, rng, label, lang):
-        """(path, record) of a random drawn picture of this label in this page's language, or None."""
+        """(path, record) of a drawn picture of this label for a page in this language, or None: a flowchart from
+        the flowchart pool, a chart, molecule or equation drawn now from the content pools, else one of
+        graphics/'s."""
+        if label in ("Figure", "Diagram"):  # English on every page (the user's choice: English is enough for them)
+            lang = "en"
+        if label == "Diagram" and self.flowcharts and rng.random() < BIG_FLOWCHARTS:
+            for _ in range(5):
+                r = self.flowcharts.pick(rng)
+                path = pool_file(r["file"], "images")
+                if path.exists():
+                    self.picked[path.name] = (r["label"], r["html"], None)
+                    return path, r
+        if label in ("Figure", "Diagram", "Chemical-Block", "Equation-Block") and rng.random() < FRESH_GRAPHICS:
+            from pipeline.content_pools import draw_graphic
+            drawn = draw_graphic(rng, label, lang)
+            if drawn:
+                self.picked[drawn[0].name] = (label, drawn[1]["html"], None)
+                return drawn
         found = [g for key in (lang, "any") for g in self.graphics.get(label, {}).get(key, [])]
         return rng.choice(found) if found else None
 
