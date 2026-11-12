@@ -7,34 +7,34 @@ node_modules/
 
 # the full content pools (about 80 GB; pipeline/content_pools.py builds them, pipeline/move_pools.py moves them here);
 # dataset_pool_sample/ (20 items per label) is in git
-dataset_pool/
-text_pool/
-img_pool/
-font_pool/
-augraphy_cache/
+/dataset_pool/
+/text_pool/
+/img_pool/
+/font_pool/
+/augraphy_cache/
 # random-access caches the pools make next to their indexes
 *.offsets.json
 *.part
 
-# generated samples and datasets
-datasets/
-pipeline_out/
-batches/
-runnigs/
+# generated samples and datasets (top level only: originals/ocrsmith/datasets/ is code)
+/datasets/
+/pipeline_out/
+/batches/
+/runnigs/
 
 # local tools, not part of this repository: the gallery website, Surya's own code (a clone, for its parser),
 # the Surya probe and its results, the API client with its key, the Colab notebooks, notes for Claude Code
-pipeline/website.py
-pipeline/static/
-surya/
-surya_inference/
-suryan_outputs/
-surya_probe/*
-!surya_probe/check_dataset.py
-!surya_probe/check_labels.py
-!surya_probe/check_boxes.py
-!surya_probe/surya_pipeline.py
-notebooks/
-docs/
-CLAUDE.md
-requirements-pipeline.txt
+/pipeline/website.py
+/pipeline/static/
+/surya/
+/surya_inference/
+/suryan_outputs/
+/surya_probe/*
+!/surya_probe/check_dataset.py
+!/surya_probe/check_labels.py
+!/surya_probe/check_boxes.py
+!/surya_probe/surya_pipeline.py
+/notebooks/
+/docs/
+/CLAUDE.md
+/requirements-pipeline.txt

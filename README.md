@@ -24,7 +24,7 @@ Windows or Linux, Python 3.12.
 py -3.12 -m venv .venv-pipeline
 ```
 ```bash
-.venv-pipeline\Scripts\pip install -r requirements.txt
+.venv-pipeline\Scripts\python -m pip install -r requirements.txt
 ```
 ```bash
 .venv-pipeline\Scripts\python -m playwright install chromium
